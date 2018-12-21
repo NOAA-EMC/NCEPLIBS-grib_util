@@ -1,49 +1,16 @@
  
- You are on WCOSS:  Luna-XC40
+ You are on WCOSS:  Mars-p3
  
-15.0.3.187
-Currently Loaded Modulefiles:
-  1) modules/3.2.6.7
-  2) eswrap/1.3.3-1.020200.1278.0
-  3) switch/1.0-1.0502.57058.1.58.ari
-  4) /opt/cray/craype/default/modulefiles/craype-network-aries
-  5) ncep/1.0
-  6) xt-lsfhpc/9.1.3
-  7) imagemagick-intel-sandybridge/6.8.3
-  8) GrADS/2.0.2
-  9) prod_util/1.0.5
- 10) craype-sandybridge
- 11) jasper-gnu-sandybridge/1.900.1
- 12) png-intel-sandybridge/1.2.49
- 13) zlib-intel-sandybridge/1.2.7
- 14) craype/2.3.0
- 15) intel/15.0.6.233
- 16) cray-libsci/13.0.3
- 17) udreg/2.3.2-1.0502.9889.2.20.ari
- 18) ugni/6.0-1.0502.10245.9.9.ari
- 19) pmi/5.0.6-1.0000.10439.140.2.ari
- 20) dmapp/7.0.1-1.0502.10246.8.47.ari
- 21) gni-headers/4.0-1.0502.10317.9.2.ari
- 22) xpmem/0.1-2.0502.57015.1.15.ari
- 23) dvs/2.5_0.9.0-1.0502.1958.2.55.ari
- 24) alps/5.2.3-2.0502.9295.14.14.ari
- 25) rca/1.0.0-2.0502.57212.2.56.ari
- 26) atp/1.8.1
- 27) PrgEnv-intel/5.2.56
- 28) bacio-intel/2.0.1
- 29) w3emc-intel/2.2.0
- 30) w3nco-intel/2.0.6
- 31) ip-intel/3.0.0
- 32) sp-intel/2.0.2
- 33) g2-intel/3.1.0
- 34) iobuf/2.0.7
- 35) build_grib_util/cray/1.0.5
-cc -O3 -m64  -axCORE-AVX2 -o wgrib -DDEF_T62_NCEP_TABLE=opn -DFAST_GRIBTAB -DP_TABLE_FIRST wgrib.c
-wgrib.c(495): (col. 33) remark: main has been targeted for automatic cpu dispatch
-wgrib.c(2450): (col. 50) remark: missing_points has been targeted for automatic cpu dispatch
-wgrib.c(1710): (col. 47) remark: BDS_unpack has been targeted for automatic cpu dispatch
-wgrib.c(1834): (col. 44) remark: flt2ieee has been targeted for automatic cpu dispatch
-wgrib.c(1905): (col. 60) remark: wrtieee has been targeted for automatic cpu dispatch
-wgrib.c(10894): (col. 30) remark: GDS_grid has been targeted for automatic cpu dispatch
+
+Currently Loaded Modules:
+  1) EnvVars/1.0.2      6) imagemagick/6.9.9-25  11) pigz/2.3.4       16) jasper/1.900.29  21) w3nco/2.0.6
+  2) lsf/10.1           7) perl/XML-Parser/2.44  12) python/3.6.3     17) libpng/1.2.59    22) ip/3.0.1
+  3) prod_envir/1.0.2   8) cmake/3.10.0          13) prod_util/1.1.0  18) zlib/1.2.11      23) sp/2.0.2
+  4) GrADS/2.2.0        9) idl/8.6.1             14) ips/18.0.1.163   19) bacio/2.0.2      24) g2/3.1.0
+  5) git/2.14.3        10) perl/DateTime/1.44    15) impi/18.0.1      20) w3emc/2.3.0      25) build_grib_util/dell/1.1.0
+
+ 
+
+icc -O3 -m64 -o wgrib -DDEF_T62_NCEP_TABLE=opn -DFAST_GRIBTAB -DP_TABLE_FIRST wgrib.c
 mkdir -p ../../exec
 cp -p wgrib ../../exec

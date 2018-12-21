@@ -1,21 +1,59 @@
 ################################################################################
 # This makefile was produced by fmjif at 17:21:11 on 97/02/24.
-SHELL=	/bin/sh
-CMD=	copygb2
-FOPTS=  -g -O3 -r8 -convert big_endian -axCORE-AVX2
-LOPTS=  -openmp
-#INCS=	-I/nwprod/lib/incmod/g2_d
-INCS= -I${G2_INCd}
-OBJS=	copygb2.o
-#LIBS= -L/nwprod/lib  -lg2_d -lw3nco_d -lbacio_4 -lip_d -lsp_d \
-        -lpng -ljasper -lz
-LIBS=   ${G2_LIBd} ${W3NCO_LIBd} ${BACIO_LIB4} ${IP_LIBd} ${SP_LIBd} ${PNG_LIB} ${JASPER_LIB} ${Z_LIB}
+
+ SHELL = /bin/sh
+ CMD   = copygb2
+ FC    = ftn
+ LD    = ftn
+ FOPTS = -g -O3 -r8 -convert big_endian -axCORE-AVX2
+ LOPTS = -openmp
+ INCS  = -I${G2_INCd} -I${IP_INCd}
+ OBJS  = copygb2.o \
+         polates0.o polatev0.o \
+         polates1.o polatev1.o \
+         polates2.o polatev2.o \
+         polates3.o polatev3.o \
+         polates6.o polatev6.o
+
+ LIBS  = ${G2_LIBd} ${W3NCO_LIBd} ${BACIO_LIB4} ${IP_LIBd} ${SP_LIBd}\
+         ${PNG_LIB} ${JASPER_LIB} ${Z_LIB}
+
 ################################################################################
 $(phony all):	$(CMD)
 $(CMD):	$(OBJS)
-	ftn $(LOPTS) $(OBJS) $(LIBS) -o $(CMD)
+	$(LD) $(LOPTS) $(OBJS) $(LIBS) -o $(CMD)
 copygb2.o:	copygb2.f
-	ftn -c $(INCS) $(FOPTS) $*.f
+	$(FC) -c $(INCS) $(FOPTS) $*.f
+polates0.o:	polates0.f90
+	$(FC) -c $(INCS) $(FOPTS) $<
+
+polatev0.o:	polatev0.f90
+	$(FC) -c $(INCS) $(FOPTS) $<
+
+polates1.o:	polates1.f90
+	$(FC) -c $(INCS) $(FOPTS) $<
+
+polatev1.o:	polatev1.f90
+	$(FC) -c $(INCS) $(FOPTS) $<
+
+polates2.o:	polates2.f90
+	$(FC) -c $(INCS) $(FOPTS) $<
+
+polatev2.o:	polatev2.f90
+	$(FC) -c $(INCS) $(FOPTS) $<
+
+polates3.o:	polates3.f90
+	$(FC) -c $(INCS) $(FOPTS) $<
+
+polatev3.o:	polatev3.f90
+	$(FC) -c $(INCS) $(FOPTS) $<
+
+polates6.o:	polates6.f90
+	$(FC) -c $(INCS) $(FOPTS) $<
+
+polatev6.o:	polatev6.f90
+	$(FC) -c $(INCS) $(FOPTS) $<
+
 install:
 	mkdir -p ../../exec
 	cp -p $(CMD) ../../exec

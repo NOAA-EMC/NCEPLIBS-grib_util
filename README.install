@@ -1,57 +1,54 @@
 
-I. The grib_util version 1.0.5 needs to implement on CRAY (Surge or Luna) and WCOSS (Tide or Gyre)
-The G2 library must be installed first on WCOSS (Tide or Gyre) and CRAY (Surge or Luna)
-The following GRIB2 utilities require to recompile after the G2 compiled successfully on
-    CRAY and WCOSS.
-            GRB2INDEX
-            TOCGRIB2
-            TOCGRIB2SUPER
-            CNVGRIB
-            CNVGRIB21_GFS
-            COPYGB2
-            DEGRIB2
-            COPYGB
-            GRBINDEX
-            TOCGRIB
-            GRIB2GRIB
-1. Check out grib_util v1.0.5 source code from EMC SVN
+I. The grib_util version 1.1.0 needs to implement on CRAY (Surge or Luna) and WCOSS (Tide or Gyre)
+   and DELL (Mars and Venus).
+   The following GRIB2 utilities must be compiled on WCOSS:
+           GRB2INDEX
+           TOCGRIB2
+           TOCGRIB2SUPER
+           CNVGRIB
+           COPYGB2
+           DEGRIB2
+           COPYGB
+           GRBINDEX
+           TOCGRIB
+           GRIB2GRIB
 
-2. Change to grib_util.v1.0.5 directory 
+   NOTE:
+           Removed CNVGRIB21_GFS in grib_util.v1.1.0
 
-3. Then, cd to sorc directory
+1. Check out grib_util v1.1.0 source code from EMC VLAB
 
-4. Compile for all grib utilities by the script install_all_grib_util_wcoss.sh or 
-   install_all_grib_util_cray.sh
+2. Change to grib_util.v1.1.0/sorc directory.  If you are on Dell, load the ips/18.0.1.163 module to ensure
+   that the prod_util module is accessible.
 
-5. Run the script to compile each grib utility on  the following machine:
-            -  WCOSS (Tide or Gyre) with Intel Fortran 
-                     -   cd to grib utility directory.  Example,   cd  cnvgrib.fd
-                     -   run  script  compile_cnvgrib_wcoss.sh
-                     -   run script  compile_xxxxx_wcoss.sh  where xxxx is name of grib utility.
-                         They are following:
-                             cnvgrib, cnvgrib21_gfs, copygb, copygb2, degrib2, grb2index, grbindex,
-                             grib2grib, tocgrib, tocgrib2, tocgrib2super.
-                     NOTE: 
-                         Install WGRIB and WGRIB2.   They do not compile with G2 library v3.1.0 
+3. Do one of the following:
+   
+   A. To compile all grib utilities:
 
-            -  CRAY (CRAY (ftn) Fortran Compiler - craype-sandybridge)
-                    -   cd to grib utility directory.  Example,   cd  cnvgrib.fd
-                    -   run  script  compile_cnvgrib_cray.sh
-                    -   run script  compile_xxxxx_cray.sh  where xxxx is name of grib utility.
-                        They are following:
-                             cnvgrib, cnvgrib21_gfs, copygb, copygb2, degrib2, grb2index, grbindex,
-                             grib2grib, tocgrib, tocgrib2, tocgrib2super. 
-                        NOTE: 
-                             Install WGRIB and WGRIB2.   They do not compile with G2 library v3.1.0 
+      - run install_all_grib_util_wcoss.sh
 
-II. Building module file for GRIB UTIL v1.0.5 on the following machine:
-         -WCOSS (Tide or Gyre)
-                ##   Module file grib_util v1.0.5 ##
-                cd  ./grib_util.v1.0.5/modulefiles/grib_util/wcoss
-                cp v1.0.5 to /nwprod2/modulefilesgrib_util
+      NOTE:
+      DO NOT compile wgrib2 with module IOBUF on CRAY
 
-                 -CRAY  (Surge or Luna)
-                ##   Module file grib_util v1.0.5 ##
-                        cd  ./grib_util.v1.0.5/modulefiles/grib_util/wcoss
-                cp 1.0.5 to /gpfs/hps/nco/nwprod/modulefiles/grib_util
+   B. To compile one or more grib utilities separately:
 
+      - cd to grib utility directory.  Example,  cd cnvgrib.fd
+      - run script  compile_xxxxx_wcoss.sh  where xxxx is name of grib utility.
+        they are following:
+            cnvgrib, copygb, copygb2, degrib2, grb2index, grbindex,
+            grib2grib, tocgrib, tocgrib2, tocgrib2super.
+      - install WGRIB and WGRIB2
+
+II. Building module file for grib_util v1.1.0 on the following machine:
+
+      * WCOSS (Tide or Gyre)
+            -  cd  ./grib_util.v1.1.0/modulefiles/grib_util/wcoss
+            -  cp v1.1.0 to /nwprod2/modulefiles/grib_util/
+
+      * CRAY (Surge or Luna)
+            -  cd  ./grib_util.v1.1.0/modulefiles/grib_util/cray
+            -  cp 1.1.0 to /gpfs/hps/nco/nwprod/modulefiles/grib_util/
+
+      * DELL (Mars or Venus)
+            -  cd  ./grib_util.v1.1.0/modulefiles/grib_util/dell
+            -  cp 1.1.0 to /gpfs/dell1/nco/ops/nwprod/modulefiles/compiler_prod/ips/18.0.1/grib_util

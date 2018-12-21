@@ -1,0 +1,23 @@
+#%Module######################################################################
+
+proc ModulesHelp { } {
+    puts stderr "Set environment veriables for wgrib2"
+    puts stderr "This module initializes the users environment"
+    puts stderr "to build the wgrib2 for WCOSS production.\n"
+}
+module-whatis "wgrib2"
+
+setenv CC icc
+setenv FC ifort
+setenv COMP_SYS intel_linux
+
+module load ips/18.0.1.163
+module load HDF5-serial/1.8.20
+module load NetCDF/4.5.0
+module load jasper/1.900.1
+module load libpng/1.2.59
+module load zlib/1.2.11
+module load ip/3.0.1
+module load sp/2.0.2
+module load g2c/1.5.0
+

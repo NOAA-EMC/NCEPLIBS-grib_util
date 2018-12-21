@@ -123,3 +123,8 @@ cnvgrib-3.0.0 - OCT 2016  - Added new parameters in conversion entries
                           - Code assumes masked fields have at least one point turned on.  If all points are masked out,
                             the code will crash or produce a bad grib record once in a while. These fixes are for simple
                             coding and complex coding.
+
+cnvgrib-3.1.0 - JAN 2017  - Re-compiled with G2LIB version 3.1.0
+
+cnvgrib-3.1.1 - July 2018 - Checked Time Range for continuous accumulated APCP
+                            after F252 when convert from grib2 to grib1

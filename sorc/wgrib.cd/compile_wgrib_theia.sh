@@ -1,14 +1,9 @@
 #!/bin/sh
 
-set -x
+LMOD_EXACT_MATCH=no
 
-. /apps/lmod/lmod/init/sh
-
-export machine_lc=theia
-module use /scratch3/NCEPDEV/nwprod/lib/modulefiles
-module use /apps/modules/modulefamilies/intel
-
-makefile=makefile_${machine_lc}
+machine_lc=theia
+makefile=makefile_wcoss_${machine_lc}
 
 # Load required modules
 module use ../../modulefiles
@@ -17,4 +12,3 @@ module list
 
 make -f $makefile
 make -f $makefile install
-

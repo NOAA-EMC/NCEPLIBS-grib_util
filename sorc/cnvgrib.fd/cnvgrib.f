@@ -20,6 +20,8 @@ C 2013-07-24  Vuong    Changed Master Table Version Number from 2 to 11
 C 2016-09-30  Vuong    Modified to correct forecast hour beyon F252 when 
 C                      convert from grib2 to grib1.
 C                      Fixed memory leak and complex packing
+C 2018-07-26  Vuong    Checked Time Range for continuous accumulated
+C                      APCP after F252 when convert from grib2 to grib1
 C
 C USAGE:
 C   INPUT FILES:
@@ -59,7 +61,7 @@ C     Set current Master table version 2
 C
       curmastertab_ver='2'
       table_ver=2
-      mastertab=17    ! WMO GRIB2 version 17 (released in May 4, 2016)
+      mastertab=21    ! WMO GRIB2 version 21 (released in May 2, 2018)
 C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 C  GET ARGUMENTS
 
@@ -180,6 +182,12 @@ C  GET ARGUMENTS
              case('-mastertable_ver_20')
                 table_ver=20
                 master_table_ver='20'
+             case('-mastertable_ver_21')
+                table_ver=21
+                master_table_ver='21'
+             case('-mastertable_ver_22')
+                table_ver=22
+                master_table_ver='22'
              case default
                 call usage(0)
                 CALL ERREXIT(2)
@@ -292,7 +300,8 @@ C 2010-12-02  Vuong   -  Changed the cnvgrib_ver
 C 2011-07-12  Vuong   -  Changed the cnvgrib_ver
 C 2013-07-24  Vuong   -  Changed the cnvgrib_ver
 C 2016-09-30  Vuong   -  Changed the cnvgrib_ver-3.0.0
-C 2017-01-21  Vuong   -  Changed the cnvgrib_ver-3.0.0
+C 2017-01-21  Vuong   -  Changed the cnvgrib_ver-3.1.0
+C 2018-07-26  Vuong   -  Changed the cnvgrib_ver-3.1.1
 C
 C USAGE:    CALL usage(iopt)
 C   INPUT ARGUMENT LIST:
@@ -307,7 +316,7 @@ C   LANGUAGE: Fortran 90
 C   MACHINE:  IBM SP
 C
 C$$$
-         character(len=15) :: cnvgrib_ver="cnvgrib-v3.1.0"
+         character(len=15) :: cnvgrib_ver="cnvgrib-v3.1.1"
          integer,intent(in) :: iopt 
 
          if ( iopt.eq.0 ) then
@@ -354,7 +363,7 @@ C$$$
          call errmsg('   -m0     No explicit missing values'//
      &               ' included within the data values')
          call errmsg('   -mastertable_ver_x     Master Table version'//
-     &               ' where x is number from 2 to 11')
+     &               ' where x is number from 2 to 21')
          call errmsg ('  ')
          endif
       return

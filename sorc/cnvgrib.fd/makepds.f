@@ -37,6 +37,8 @@ C 2012-03-29  Boi Vuong  - Added check Time Range for APCP in FNMOC
 C 2014-05-20  Boi Vuong  - Added check Time Range after F252 
 C 2014-11-14  Boi Vuong  - Added check Time Range for 15-hr or 18-hr or 21-hr or
 C                          24-hr Accumulation for APCP after F240 
+C 2018-07-26  Boi Vuong  - Added check Time Range for continuous accumulated APCP 
+C                          after F252 when convert from grib2 to grib1
 C
 C USAGE:    CALL makepds(idisc,idsect,ipdsnum,ipdstmpl,ibmap,
 C                        idrsnum,idrstmpl,kpds,iret)
@@ -282,6 +284,13 @@ C
                kpds(13)= 12                          ! Forecast time unit is 12-hour
                kpds(14)=ipdstmpl(9)/12               ! Time range P1
                kpds(15)=ipdstmpl(ipos+3)/12+kpds(14) ! Time range P2
+           end if
+        end if
+        if (ipdsnum .eq. 8 .AND. ipdstmpl(9) .eq. 0) then
+           if (ipdstmpl(ipos+3).ge.252) then
+               kpds(13)= 10                          ! Forecast time unit is hour
+               kpds(14)=ipdstmpl(9)/3                ! Time range P1
+               kpds(15)=ipdstmpl(ipos+3)/3+kpds(14)  ! Time range P2
            end if
         end if
 C

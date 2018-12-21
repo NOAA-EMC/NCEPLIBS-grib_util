@@ -1,17 +1,18 @@
 #!/bin/sh
 
+LMOD_EXACT_MATCH=no
 module load prod_util
+module load prod_util/1.1.0
 machine=$(getsystem.pl -t)
 
-if [ "$machine" = "IBM" ] || [ "$machine" = "Cray" ]; then
+if [ "$machine" = "IBM" ] || [ "$machine" = "Cray" ] || [ "$machine" = "Dell" ]; then
    echo " "
    echo " You are on WCOSS:  $(getsystem.pl -p)"
 else
    echo " "
-   echo " Your machine is $machine NOT found "
-   echo " The script $0 can not continue.  Aborted ! "
+   echo " Your machine is $machine is not recognized as a WCOSS machine."
+   echo " The script $0 can not continue.  Aborting!"
    echo " "
-   echo " Your machine must be (SURGE/LUNA) or (TIDE/GYRE)"
    exit
 fi
 echo " "

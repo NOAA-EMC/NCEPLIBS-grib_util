@@ -1,0 +1,36 @@
+#%Module######################################################################
+#############################################################
+##     First.Last@noaa.gov
+##     ORGANIZATION
+## Grib utilities
+#############################################################
+proc ModulesHelp { } {
+puts stderr "Set environment veriables for GRIB utilities"
+}
+module-whatis "This module sets the environment variables for \
+               nco production grib utilities: cnvgrib, copygb \
+               copygb2, degrib2, grb2index, grbindex, grib2grib \
+               tocgrib, tocgrib2, tocgrib2super, wgrib, wgrib2"
+
+conflict grib_util
+
+set ver v1.1.0
+set envir prod
+
+set    HOMEgrib /gpfs/dell1/nco/ops/nw${envir}/grib_util.$ver
+set    EXECgrib ${HOMEgrib}/exec
+
+module prereq ips/18.0.1.163
+
+setenv CNVGRIB $EXECgrib/cnvgrib
+setenv COPYGB $EXECgrib/copygb
+setenv COPYGB2 $EXECgrib/copygb2
+setenv DEGRIB2 $EXECgrib/degrib2
+setenv GRB2INDEX $EXECgrib/grb2index
+setenv GRBINDEX $EXECgrib/grbindex
+setenv GRIB2GRIB $EXECgrib/grib2grib
+setenv TOCGRIB $EXECgrib/tocgrib
+setenv TOCGRIB2 $EXECgrib/tocgrib2
+setenv TOCGRIB2SUPER $EXECgrib/tocgrib2super
+setenv WGRIB $EXECgrib/wgrib
+setenv WGRIB2 $EXECgrib/wgrib2

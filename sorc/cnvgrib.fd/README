@@ -1,4 +1,4 @@
-                                                          September 30, 2016
+                                                          July 16, 2018
                                                           W/EMC:VUONG
 
 cnvgrib utility.
@@ -30,7 +30,7 @@ Usage: cnvgrib [-h] {-g12|-g21|-g22} [-m|-m0] [-nv]
 Usage: cnvgrib  -h  For helps and shows all options
 
 
-cnvgrib:  version cnvgrib-3.0.0 
+cnvgrib:  version cnvgrib-3.1.1 
   
 Must use one of the following options:
    -g12     converts GRIB1 to GRIB2
@@ -53,5 +53,5 @@ Other Optional options:
   
    -m      Primary missing values included within the data values
    -m0     No explicit missing values included within the data values
-   -mastertable_ver_x     Master Table version where x is number from 2 to 17
+   -mastertable_ver_x     Master Table version where x is number from 2 to 21
 
