@@ -1,0 +1,957 @@
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking for gcc... cc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether cc accepts -g... yes
+checking for cc option to accept ISO C89... none needed
+checking for style of include used by make... GNU
+checking dependency style of cc... gcc3
+checking whether ln -s works... yes
+checking whether make sets $(MAKE)... (cached) yes
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by cc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking the maximum length of command line arguments... 3458764513820540925
+checking whether the shell understands some XSI constructs... yes
+checking whether the shell understands "+="... yes
+checking how to convert x86_64-unknown-linux-gnu file names to x86_64-unknown-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-unknown-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from cc object... ok
+checking for sysroot... no
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking how to run the C preprocessor... cc -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if cc supports -fno-rtti -fno-exceptions... yes
+checking for cc option to produce PIC... -fPIC -DPIC
+checking if cc PIC flag -fPIC -DPIC works... yes
+checking if cc static flag -static works... yes
+checking if cc supports -c -o file.o... yes
+checking if cc supports -c -o file.o... (cached) yes
+checking whether the cc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking dynamic linker characteristics... icc: warning #10315: specifying -lm before files may supersede the Intel(R) math library and affect performance
+icc: warning #10315: specifying -lm before files may supersede the Intel(R) math library and affect performance
+icc: warning #10315: specifying -lm before files may supersede the Intel(R) math library and affect performance
+GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... no
+checking whether to build static libraries... yes
+checking for exp in -lm... yes
+checking for ANSI C header files... (cached) yes
+checking jni.h usability... no
+checking jni.h presence... no
+checking for jni.h... no
+checking whether to enable Java/JNI support... disabled
+checking for mutexes... enabled, pthread
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating man/Makefile
+config.status: creating man/man1/Makefile
+config.status: creating man/man3/Makefile
+config.status: creating nad/Makefile
+config.status: creating jniwrap/Makefile
+config.status: creating jniwrap/org/Makefile
+config.status: creating jniwrap/org/proj4/Makefile
+config.status: creating src/proj_config.h
+config.status: src/proj_config.h is unchanged
+config.status: executing depfiles commands
+config.status: executing libtool commands
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating man/Makefile
+config.status: creating man/man1/Makefile
+config.status: creating man/man3/Makefile
+config.status: creating nad/Makefile
+config.status: creating jniwrap/Makefile
+config.status: creating jniwrap/org/Makefile
+config.status: creating jniwrap/org/proj4/Makefile
+config.status: creating proj.pc
+config.status: creating src/proj_config.h
+config.status: src/proj_config.h is unchanged
+config.status: executing depfiles commands
+config.status: executing libtool commands
+
+Currently Loaded Modulefiles:
+  1) craype-network-aries
+  2) craype/2.3.0
+  3) intel/15.0.6.233
+  4) cray-libsci/13.0.3
+  5) udreg/2.3.2-1.0502.9889.2.20.ari
+  6) ugni/6.0-1.0502.10245.9.9.ari
+  7) pmi/5.0.6-1.0000.10439.140.2.ari
+  8) dmapp/7.0.1-1.0502.10246.8.47.ari
+  9) gni-headers/4.0-1.0502.10317.9.2.ari
+ 10) xpmem/0.1-2.0502.57015.1.15.ari
+ 11) dvs/2.5_0.9.0-1.0502.1958.2.55.ari
+ 12) alps/5.2.3-2.0502.9295.14.14.ari
+ 13) rca/1.0.0-2.0502.57212.2.56.ari
+ 14) atp/1.8.1
+ 15) PrgEnv-intel/5.2.56
+ 16) craype-sandybridge
+
+Making install in src
+make[1]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/src'
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_aeqd.lo -MD -MP -MF .deps/PJ_aeqd.Tpo -c -o PJ_aeqd.lo PJ_aeqd.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_aeqd.lo -MD -MP -MF .deps/PJ_aeqd.Tpo -c PJ_aeqd.c -o PJ_aeqd.o
+PJ_aeqd.c(54): (col. 1) remark: e_guam_fwd has been targeted for automatic cpu dispatch
+PJ_aeqd.c(65): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_aeqd.c(105): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_aeqd.c(142): (col. 1) remark: e_guam_inv has been targeted for automatic cpu dispatch
+PJ_aeqd.c(156): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_aeqd.c(189): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+PJ_aeqd.c(230): (col. 1) remark: pj_aeqd has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_aeqd.Tpo .deps/PJ_aeqd.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_gnom.lo -MD -MP -MF .deps/PJ_gnom.Tpo -c -o PJ_gnom.lo PJ_gnom.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_gnom.lo -MD -MP -MF .deps/PJ_gnom.Tpo -c PJ_gnom.c -o PJ_gnom.o
+PJ_gnom.c(13): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_gnom.c(50): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_gnom.Tpo .deps/PJ_gnom.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_laea.lo -MD -MP -MF .deps/PJ_laea.Tpo -c -o PJ_laea.lo PJ_laea.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_laea.lo -MD -MP -MF .deps/PJ_laea.Tpo -c PJ_laea.c -o PJ_laea.o
+PJ_laea.c(24): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_laea.c(74): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_laea.c(104): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_laea.c(145): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+PJ_laea.c(186): (col. 1) remark: pj_laea has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_laea.Tpo .deps/PJ_laea.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_mod_ster.lo -MD -MP -MF .deps/PJ_mod_ster.Tpo -c -o PJ_mod_ster.lo PJ_mod_ster.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_mod_ster.lo -MD -MP -MF .deps/PJ_mod_ster.Tpo -c PJ_mod_ster.c -o PJ_mod_ster.o
+PJ_mod_ster.c(15): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_mod_ster.c(34): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_mod_ster.c(143): (col. 1) remark: pj_alsk has been targeted for automatic cpu dispatch
+PJ_mod_ster.c(173): (col. 1) remark: pj_gs50 has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_mod_ster.Tpo .deps/PJ_mod_ster.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_nsper.lo -MD -MP -MF .deps/PJ_nsper.Tpo -c -o PJ_nsper.lo PJ_nsper.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_nsper.lo -MD -MP -MF .deps/PJ_nsper.Tpo -c PJ_nsper.c -o PJ_nsper.o
+PJ_nsper.c(25): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_nsper.c(72): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+PJ_nsper.c(138): (col. 1) remark: pj_nsper has been targeted for automatic cpu dispatch
+PJ_nsper.c(141): (col. 1) remark: pj_tpers has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_nsper.Tpo .deps/PJ_nsper.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_nzmg.lo -MD -MP -MF .deps/PJ_nzmg.Tpo -c -o PJ_nzmg.lo PJ_nzmg.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_nzmg.lo -MD -MP -MF .deps/PJ_nzmg.Tpo -c PJ_nzmg.c -o PJ_nzmg.o
+PJ_nzmg.c(57): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_nzmg.c(72): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_nzmg.Tpo .deps/PJ_nzmg.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_ortho.lo -MD -MP -MF .deps/PJ_ortho.Tpo -c -o PJ_ortho.lo PJ_ortho.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_ortho.lo -MD -MP -MF .deps/PJ_ortho.Tpo -c PJ_ortho.c -o PJ_ortho.o
+PJ_ortho.c(13): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_ortho.c(39): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_ortho.Tpo .deps/PJ_ortho.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_stere.lo -MD -MP -MF .deps/PJ_stere.Tpo -c -o PJ_stere.lo PJ_stere.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_stere.lo -MD -MP -MF .deps/PJ_stere.Tpo -c PJ_stere.c -o PJ_stere.o
+PJ_stere.c(27): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_stere.c(61): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_stere.c(91): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_stere.c(133): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+PJ_stere.c(228): (col. 1) remark: pj_stere has been targeted for automatic cpu dispatch
+PJ_stere.c(232): (col. 1) remark: pj_ups has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_stere.Tpo .deps/PJ_stere.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_sterea.lo -MD -MP -MF .deps/PJ_sterea.Tpo -c -o PJ_sterea.lo PJ_sterea.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_sterea.lo -MD -MP -MF .deps/PJ_sterea.Tpo -c PJ_sterea.c -o PJ_sterea.o
+PJ_sterea.c(42): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_sterea.c(54): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_sterea.Tpo .deps/PJ_sterea.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_aea.lo -MD -MP -MF .deps/PJ_aea.Tpo -c -o PJ_aea.lo PJ_aea.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_aea.lo -MD -MP -MF .deps/PJ_aea.Tpo -c PJ_aea.c -o PJ_aea.o
+PJ_aea.c(80): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_aea.c(88): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_aea.c(155): (col. 1) remark: pj_aea has been targeted for automatic cpu dispatch
+PJ_aea.c(159): (col. 1) remark: pj_leac has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_aea.Tpo .deps/PJ_aea.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_bipc.lo -MD -MP -MF .deps/PJ_bipc.Tpo -c -o PJ_bipc.lo PJ_bipc.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_bipc.lo -MD -MP -MF .deps/PJ_bipc.Tpo -c PJ_bipc.c -o PJ_bipc.o
+PJ_bipc.c(26): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_bipc.c(84): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_bipc.Tpo .deps/PJ_bipc.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_bonne.lo -MD -MP -MF .deps/PJ_bonne.Tpo -c -o PJ_bonne.lo PJ_bonne.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_bonne.lo -MD -MP -MF .deps/PJ_bonne.Tpo -c PJ_bonne.c -o PJ_bonne.o
+PJ_bonne.c(12): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_bonne.c(21): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_bonne.c(44): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_bonne.c(65): (col. 1) remark: pj_bonne has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_bonne.Tpo .deps/PJ_bonne.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_eqdc.lo -MD -MP -MF .deps/PJ_eqdc.Tpo -c -o PJ_eqdc.lo PJ_eqdc.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_eqdc.lo -MD -MP -MF .deps/PJ_eqdc.Tpo -c PJ_eqdc.c -o PJ_eqdc.o
+PJ_eqdc.c(15): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_eqdc.Tpo .deps/PJ_eqdc.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_isea.lo -MD -MP -MF .deps/PJ_isea.Tpo -c -o PJ_isea.lo PJ_isea.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_isea.lo -MD -MP -MF .deps/PJ_isea.Tpo -c PJ_isea.c -o PJ_isea.o
+PJ_isea.c(796): (col. 81) remark: isea_dddi has been targeted for automatic cpu dispatch
+PJ_isea.c(1042): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_isea.Tpo .deps/PJ_isea.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_imw_p.lo -MD -MP -MF .deps/PJ_imw_p.Tpo -c -o PJ_imw_p.lo PJ_imw_p.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_imw_p.lo -MD -MP -MF .deps/PJ_imw_p.Tpo -c PJ_imw_p.c -o PJ_imw_p.o
+PJ_imw_p.c(75): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_imw_p.c(80): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_imw_p.c(104): (col. 1) remark: pj_imw_p has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_imw_p.Tpo .deps/PJ_imw_p.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_krovak.lo -MD -MP -MF .deps/PJ_krovak.Tpo -c -o PJ_krovak.lo PJ_krovak.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_krovak.lo -MD -MP -MF .deps/PJ_krovak.Tpo -c PJ_krovak.c -o PJ_krovak.o
+PJ_krovak.c(69): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_krovak.c(135): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_krovak.Tpo .deps/PJ_krovak.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_lcc.lo -MD -MP -MF .deps/PJ_lcc.Tpo -c -o PJ_lcc.lo PJ_lcc.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_lcc.lo -MD -MP -MF .deps/PJ_lcc.Tpo -c PJ_lcc.c -o PJ_lcc.o
+PJ_lcc.c(13): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_lcc.c(26): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_lcc.c(49): (col. 14) remark: fac has been targeted for automatic cpu dispatch
+PJ_lcc.c(63): (col. 1) remark: pj_lcc has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_lcc.Tpo .deps/PJ_lcc.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_poly.lo -MD -MP -MF .deps/PJ_poly.Tpo -c -o PJ_poly.lo PJ_poly.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_poly.lo -MD -MP -MF .deps/PJ_poly.Tpo -c PJ_poly.c -o PJ_poly.o
+PJ_poly.c(13): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_poly.c(25): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_poly.c(36): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_poly.c(67): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_poly.Tpo .deps/PJ_poly.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_rpoly.lo -MD -MP -MF .deps/PJ_rpoly.Tpo -c -o PJ_rpoly.lo PJ_rpoly.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_rpoly.lo -MD -MP -MF .deps/PJ_rpoly.Tpo -c PJ_rpoly.c -o PJ_rpoly.o
+PJ_rpoly.c(11): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_rpoly.Tpo .deps/PJ_rpoly.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_sconics.lo -MD -MP -MF .deps/PJ_sconics.Tpo -c -o PJ_sconics.lo PJ_sconics.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_sconics.lo -MD -MP -MF .deps/PJ_sconics.Tpo -c PJ_sconics.c -o PJ_sconics.o
+PJ_sconics.c(53): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_sconics.Tpo .deps/PJ_sconics.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT proj_rouss.lo -MD -MP -MF .deps/proj_rouss.Tpo -c -o proj_rouss.lo proj_rouss.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT proj_rouss.lo -MD -MP -MF .deps/proj_rouss.Tpo -c proj_rouss.c -o proj_rouss.o
+proj_rouss.c(38): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+proj_rouss.c(54): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+proj_rouss.c(76): (col. 1) remark: pj_rouss has been targeted for automatic cpu dispatch
+mv -f .deps/proj_rouss.Tpo .deps/proj_rouss.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_cass.lo -MD -MP -MF .deps/PJ_cass.Tpo -c -o PJ_cass.lo PJ_cass.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_cass.lo -MD -MP -MF .deps/PJ_cass.Tpo -c PJ_cass.c -o PJ_cass.o
+PJ_cass.c(22): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_cass.c(40): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_cass.Tpo .deps/PJ_cass.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_cc.lo -MD -MP -MF .deps/PJ_cc.Tpo -c -o PJ_cc.lo PJ_cc.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_cc.lo -MD -MP -MF .deps/PJ_cc.Tpo -c PJ_cc.c -o PJ_cc.o
+mv -f .deps/PJ_cc.Tpo .deps/PJ_cc.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_cea.lo -MD -MP -MF .deps/PJ_cea.Tpo -c -o PJ_cea.lo PJ_cea.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_cea.lo -MD -MP -MF .deps/PJ_cea.Tpo -c PJ_cea.c -o PJ_cea.o
+PJ_cea.c(42): (col. 1) remark: pj_cea has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_cea.Tpo .deps/PJ_cea.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_eqc.lo -MD -MP -MF .deps/PJ_eqc.Tpo -c -o PJ_eqc.lo PJ_eqc.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_eqc.lo -MD -MP -MF .deps/PJ_eqc.Tpo -c PJ_eqc.c -o PJ_eqc.o
+mv -f .deps/PJ_eqc.Tpo .deps/PJ_eqc.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_gall.lo -MD -MP -MF .deps/PJ_gall.Tpo -c -o PJ_gall.lo PJ_gall.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_gall.lo -MD -MP -MF .deps/PJ_gall.Tpo -c PJ_gall.c -o PJ_gall.o
+mv -f .deps/PJ_gall.Tpo .deps/PJ_gall.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_labrd.lo -MD -MP -MF .deps/PJ_labrd.Tpo -c -o PJ_labrd.lo PJ_labrd.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_labrd.lo -MD -MP -MF .deps/PJ_labrd.Tpo -c PJ_labrd.c -o PJ_labrd.o
+PJ_labrd.c(8): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_labrd.c(37): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_labrd.c(86): (col. 1) remark: pj_labrd has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_labrd.Tpo .deps/PJ_labrd.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_lsat.lo -MD -MP -MF .deps/PJ_lsat.Tpo -c -o PJ_lsat.lo PJ_lsat.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_lsat.lo -MD -MP -MF .deps/PJ_lsat.Tpo -c PJ_lsat.c -o PJ_lsat.o
+PJ_lsat.c(32): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_lsat.c(84): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_lsat.c(126): (col. 1) remark: pj_lsat has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_lsat.Tpo .deps/PJ_lsat.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_merc.lo -MD -MP -MF .deps/PJ_merc.Tpo -c -o PJ_merc.lo PJ_merc.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_merc.lo -MD -MP -MF .deps/PJ_merc.Tpo -c PJ_merc.c -o PJ_merc.o
+PJ_merc.c(11): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_merc.Tpo .deps/PJ_merc.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_mill.lo -MD -MP -MF .deps/PJ_mill.Tpo -c -o PJ_mill.lo PJ_mill.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_mill.lo -MD -MP -MF .deps/PJ_mill.Tpo -c PJ_mill.c -o PJ_mill.o
+PJ_mill.c(4): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_mill.Tpo .deps/PJ_mill.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_ocea.lo -MD -MP -MF .deps/PJ_ocea.Tpo -c -o PJ_ocea.lo PJ_ocea.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_ocea.lo -MD -MP -MF .deps/PJ_ocea.Tpo -c PJ_ocea.c -o PJ_ocea.o
+PJ_ocea.c(12): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_ocea.c(27): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+PJ_ocea.c(39): (col. 1) remark: pj_ocea has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_ocea.Tpo .deps/PJ_ocea.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_omerc.lo -MD -MP -MF .deps/PJ_omerc.Tpo -c -o PJ_omerc.lo PJ_omerc.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_omerc.lo -MD -MP -MF .deps/PJ_omerc.Tpo -c PJ_omerc.c -o PJ_omerc.o
+PJ_omerc.c(37): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_omerc.c(67): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_omerc.c(95): (col. 1) remark: pj_omerc has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_omerc.Tpo .deps/PJ_omerc.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_somerc.lo -MD -MP -MF .deps/PJ_somerc.Tpo -c -o PJ_somerc.lo PJ_somerc.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_somerc.lo -MD -MP -MF .deps/PJ_somerc.Tpo -c PJ_somerc.c -o PJ_somerc.o
+PJ_somerc.c(8): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_somerc.c(23): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_somerc.c(50): (col. 1) remark: pj_somerc has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_somerc.Tpo .deps/PJ_somerc.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_tcc.lo -MD -MP -MF .deps/PJ_tcc.Tpo -c -o PJ_tcc.lo PJ_tcc.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_tcc.lo -MD -MP -MF .deps/PJ_tcc.Tpo -c PJ_tcc.c -o PJ_tcc.o
+PJ_tcc.c(7): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_tcc.Tpo .deps/PJ_tcc.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_tcea.lo -MD -MP -MF .deps/PJ_tcea.Tpo -c -o PJ_tcea.lo PJ_tcea.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_tcea.lo -MD -MP -MF .deps/PJ_tcea.Tpo -c PJ_tcea.c -o PJ_tcea.o
+PJ_tcea.c(11): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_tcea.Tpo .deps/PJ_tcea.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_tmerc.lo -MD -MP -MF .deps/PJ_tmerc.Tpo -c -o PJ_tmerc.lo PJ_tmerc.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_tmerc.lo -MD -MP -MF .deps/PJ_tmerc.Tpo -c PJ_tmerc.c -o PJ_tmerc.o
+PJ_tmerc.c(21): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_tmerc.c(59): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_tmerc.c(89): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_tmerc.c(119): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_tmerc.Tpo .deps/PJ_tmerc.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_airy.lo -MD -MP -MF .deps/PJ_airy.Tpo -c -o PJ_airy.lo PJ_airy.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_airy.lo -MD -MP -MF .deps/PJ_airy.Tpo -c PJ_airy.c -o PJ_airy.o
+PJ_airy.c(49): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_airy.Tpo .deps/PJ_airy.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_aitoff.lo -MD -MP -MF .deps/PJ_aitoff.Tpo -c -o PJ_aitoff.lo PJ_aitoff.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_aitoff.lo -MD -MP -MF .deps/PJ_aitoff.Tpo -c PJ_aitoff.c -o PJ_aitoff.o
+PJ_aitoff.c(42): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_aitoff.Tpo .deps/PJ_aitoff.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_august.lo -MD -MP -MF .deps/PJ_august.Tpo -c -o PJ_august.lo PJ_august.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_august.lo -MD -MP -MF .deps/PJ_august.Tpo -c PJ_august.c -o PJ_august.o
+PJ_august.c(5): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_august.Tpo .deps/PJ_august.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_bacon.lo -MD -MP -MF .deps/PJ_bacon.Tpo -c -o PJ_bacon.lo PJ_bacon.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_bacon.lo -MD -MP -MF .deps/PJ_bacon.Tpo -c PJ_bacon.c -o PJ_bacon.o
+PJ_bacon.c(11): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_bacon.Tpo .deps/PJ_bacon.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_chamb.lo -MD -MP -MF .deps/PJ_chamb.Tpo -c -o PJ_chamb.lo PJ_chamb.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_chamb.lo -MD -MP -MF .deps/PJ_chamb.Tpo -c PJ_chamb.c -o PJ_chamb.o
+PJ_chamb.c(42): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_chamb.c(84): (col. 1) remark: pj_chamb has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_chamb.Tpo .deps/PJ_chamb.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_hammer.lo -MD -MP -MF .deps/PJ_hammer.Tpo -c -o PJ_hammer.lo PJ_hammer.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_hammer.lo -MD -MP -MF .deps/PJ_hammer.Tpo -c PJ_hammer.c -o PJ_hammer.o
+PJ_hammer.c(8): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_hammer.Tpo .deps/PJ_hammer.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_lagrng.lo -MD -MP -MF .deps/PJ_lagrng.Tpo -c -o PJ_lagrng.lo PJ_lagrng.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_lagrng.lo -MD -MP -MF .deps/PJ_lagrng.Tpo -c PJ_lagrng.c -o PJ_lagrng.o
+PJ_lagrng.c(9): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_lagrng.Tpo .deps/PJ_lagrng.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_larr.lo -MD -MP -MF .deps/PJ_larr.Tpo -c -o PJ_larr.lo PJ_larr.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_larr.lo -MD -MP -MF .deps/PJ_larr.Tpo -c PJ_larr.c -o PJ_larr.o
+PJ_larr.c(6): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_larr.Tpo .deps/PJ_larr.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_lask.lo -MD -MP -MF .deps/PJ_lask.Tpo -c -o PJ_lask.lo PJ_lask.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_lask.lo -MD -MP -MF .deps/PJ_lask.Tpo -c PJ_lask.c -o PJ_lask.o
+PJ_lask.c(15): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_lask.Tpo .deps/PJ_lask.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_nocol.lo -MD -MP -MF .deps/PJ_nocol.Tpo -c -o PJ_nocol.lo PJ_nocol.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_nocol.lo -MD -MP -MF .deps/PJ_nocol.Tpo -c PJ_nocol.c -o PJ_nocol.o
+PJ_nocol.c(5): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_nocol.Tpo .deps/PJ_nocol.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_ob_tran.lo -MD -MP -MF .deps/PJ_ob_tran.Tpo -c -o PJ_ob_tran.lo PJ_ob_tran.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_ob_tran.lo -MD -MP -MF .deps/PJ_ob_tran.Tpo -c PJ_ob_tran.c -o PJ_ob_tran.o
+PJ_ob_tran.c(14): (col. 1) remark: o_forward has been targeted for automatic cpu dispatch
+PJ_ob_tran.c(38): (col. 1) remark: o_inverse has been targeted for automatic cpu dispatch
+PJ_ob_tran.c(71): (col. 1) remark: pj_ob_tran has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_ob_tran.Tpo .deps/PJ_ob_tran.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_oea.lo -MD -MP -MF .deps/PJ_oea.Tpo -c -o PJ_oea.lo PJ_oea.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_oea.lo -MD -MP -MF .deps/PJ_oea.Tpo -c PJ_oea.c -o PJ_oea.o
+PJ_oea.c(9): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_oea.c(23): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_oea.Tpo .deps/PJ_oea.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_tpeqd.lo -MD -MP -MF .deps/PJ_tpeqd.Tpo -c -o PJ_tpeqd.lo PJ_tpeqd.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_tpeqd.lo -MD -MP -MF .deps/PJ_tpeqd.Tpo -c PJ_tpeqd.c -o PJ_tpeqd.o
+PJ_tpeqd.c(8): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_tpeqd.c(24): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+PJ_tpeqd.c(43): (col. 1) remark: pj_tpeqd has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_tpeqd.Tpo .deps/PJ_tpeqd.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_vandg.lo -MD -MP -MF .deps/PJ_vandg.Tpo -c -o PJ_vandg.lo PJ_vandg.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_vandg.lo -MD -MP -MF .deps/PJ_vandg.Tpo -c PJ_vandg.c -o PJ_vandg.o
+PJ_vandg.c(12): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_vandg.c(45): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_vandg.Tpo .deps/PJ_vandg.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_vandg2.lo -MD -MP -MF .deps/PJ_vandg2.Tpo -c -o PJ_vandg2.lo PJ_vandg2.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_vandg2.lo -MD -MP -MF .deps/PJ_vandg2.Tpo -c PJ_vandg2.c -o PJ_vandg2.o
+PJ_vandg2.c(9): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_vandg2.Tpo .deps/PJ_vandg2.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_vandg4.lo -MD -MP -MF .deps/PJ_vandg4.Tpo -c -o PJ_vandg4.lo PJ_vandg4.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_vandg4.lo -MD -MP -MF .deps/PJ_vandg4.Tpo -c PJ_vandg4.c -o PJ_vandg4.o
+PJ_vandg4.c(6): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_vandg4.Tpo .deps/PJ_vandg4.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_wag7.lo -MD -MP -MF .deps/PJ_wag7.Tpo -c -o PJ_wag7.lo PJ_wag7.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_wag7.lo -MD -MP -MF .deps/PJ_wag7.Tpo -c PJ_wag7.c -o PJ_wag7.o
+PJ_wag7.c(4): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_wag7.Tpo .deps/PJ_wag7.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_lcca.lo -MD -MP -MF .deps/PJ_lcca.Tpo -c -o PJ_lcca.lo PJ_lcca.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_lcca.lo -MD -MP -MF .deps/PJ_lcca.Tpo -c PJ_lcca.c -o PJ_lcca.o
+PJ_lcca.c(24): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_lcca.c(34): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_lcca.c(53): (col. 1) remark: pj_lcca has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_lcca.Tpo .deps/PJ_lcca.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_geos.lo -MD -MP -MF .deps/PJ_geos.Tpo -c -o PJ_geos.lo PJ_geos.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_geos.lo -MD -MP -MF .deps/PJ_geos.Tpo -c PJ_geos.c -o PJ_geos.o
+PJ_geos.c(47): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_geos.c(72): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_geos.c(100): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+PJ_geos.c(129): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_geos.c(161): (col. 1) remark: pj_geos has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_geos.Tpo .deps/PJ_geos.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT proj_etmerc.lo -MD -MP -MF .deps/proj_etmerc.Tpo -c -o proj_etmerc.lo proj_etmerc.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT proj_etmerc.lo -MD -MP -MF .deps/proj_etmerc.Tpo -c proj_etmerc.c -o proj_etmerc.o
+proj_etmerc.c(128): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+proj_etmerc.c(160): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+proj_etmerc.c(197): (col. 1) remark: pj_etmerc has been targeted for automatic cpu dispatch
+mv -f .deps/proj_etmerc.Tpo .deps/proj_etmerc.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_boggs.lo -MD -MP -MF .deps/PJ_boggs.Tpo -c -o PJ_boggs.lo PJ_boggs.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_boggs.lo -MD -MP -MF .deps/PJ_boggs.Tpo -c PJ_boggs.c -o PJ_boggs.o
+PJ_boggs.c(11): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_boggs.Tpo .deps/PJ_boggs.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_collg.lo -MD -MP -MF .deps/PJ_collg.Tpo -c -o PJ_collg.lo PJ_collg.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_collg.lo -MD -MP -MF .deps/PJ_collg.Tpo -c PJ_collg.c -o PJ_collg.o
+PJ_collg.c(7): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_collg.c(16): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_collg.Tpo .deps/PJ_collg.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_crast.lo -MD -MP -MF .deps/PJ_crast.Tpo -c -o PJ_crast.lo PJ_crast.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_crast.lo -MD -MP -MF .deps/PJ_crast.Tpo -c PJ_crast.c -o PJ_crast.o
+PJ_crast.c(10): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_crast.c(16): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_crast.Tpo .deps/PJ_crast.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_denoy.lo -MD -MP -MF .deps/PJ_denoy.Tpo -c -o PJ_denoy.lo PJ_denoy.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_denoy.lo -MD -MP -MF .deps/PJ_denoy.Tpo -c PJ_denoy.c -o PJ_denoy.o
+PJ_denoy.c(9): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_denoy.Tpo .deps/PJ_denoy.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_eck1.lo -MD -MP -MF .deps/PJ_eck1.Tpo -c -o PJ_eck1.lo PJ_eck1.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_eck1.lo -MD -MP -MF .deps/PJ_eck1.Tpo -c PJ_eck1.c -o PJ_eck1.o
+PJ_eck1.c(6): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_eck1.c(11): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_eck1.Tpo .deps/PJ_eck1.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_eck2.lo -MD -MP -MF .deps/PJ_eck2.Tpo -c -o PJ_eck2.lo PJ_eck2.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_eck2.lo -MD -MP -MF .deps/PJ_eck2.Tpo -c PJ_eck2.c -o PJ_eck2.o
+PJ_eck2.c(8): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_eck2.c(14): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_eck2.Tpo .deps/PJ_eck2.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_eck3.lo -MD -MP -MF .deps/PJ_eck3.Tpo -c -o PJ_eck3.lo PJ_eck3.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_eck3.lo -MD -MP -MF .deps/PJ_eck3.Tpo -c PJ_eck3.c -o PJ_eck3.o
+PJ_eck3.c(9): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_eck3.c(14): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_eck3.Tpo .deps/PJ_eck3.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_eck4.lo -MD -MP -MF .deps/PJ_eck4.Tpo -c -o PJ_eck4.lo PJ_eck4.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_eck4.lo -MD -MP -MF .deps/PJ_eck4.Tpo -c PJ_eck4.c -o PJ_eck4.o
+PJ_eck4.c(11): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_eck4.c(35): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_eck4.Tpo .deps/PJ_eck4.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_eck5.lo -MD -MP -MF .deps/PJ_eck5.Tpo -c -o PJ_eck5.lo PJ_eck5.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_eck5.lo -MD -MP -MF .deps/PJ_eck5.Tpo -c PJ_eck5.c -o PJ_eck5.o
+PJ_eck5.c(8): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_eck5.Tpo .deps/PJ_eck5.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_fahey.lo -MD -MP -MF .deps/PJ_fahey.Tpo -c -o PJ_fahey.lo PJ_fahey.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_fahey.lo -MD -MP -MF .deps/PJ_fahey.Tpo -c PJ_fahey.c -o PJ_fahey.o
+PJ_fahey.c(5): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_fahey.c(10): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_fahey.Tpo .deps/PJ_fahey.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_fouc_s.lo -MD -MP -MF .deps/PJ_fouc_s.Tpo -c -o PJ_fouc_s.lo PJ_fouc_s.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_fouc_s.lo -MD -MP -MF .deps/PJ_fouc_s.Tpo -c PJ_fouc_s.c -o PJ_fouc_s.o
+PJ_fouc_s.c(8): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_fouc_s.c(16): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_fouc_s.Tpo .deps/PJ_fouc_s.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_gins8.lo -MD -MP -MF .deps/PJ_gins8.Tpo -c -o PJ_gins8.lo PJ_gins8.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_gins8.lo -MD -MP -MF .deps/PJ_gins8.Tpo -c PJ_gins8.c -o PJ_gins8.o
+PJ_gins8.c(7): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_gins8.Tpo .deps/PJ_gins8.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_gstmerc.lo -MD -MP -MF .deps/PJ_gstmerc.Tpo -c -o PJ_gstmerc.lo PJ_gstmerc.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_gstmerc.lo -MD -MP -MF .deps/PJ_gstmerc.Tpo -c PJ_gstmerc.c -o PJ_gstmerc.o
+PJ_gstmerc.c(14): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_gstmerc.c(25): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+PJ_gstmerc.c(36): (col. 1) remark: pj_gstmerc has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_gstmerc.Tpo .deps/PJ_gstmerc.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_gn_sinu.lo -MD -MP -MF .deps/PJ_gn_sinu.Tpo -c -o PJ_gn_sinu.lo PJ_gn_sinu.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_gn_sinu.lo -MD -MP -MF .deps/PJ_gn_sinu.Tpo -c PJ_gn_sinu.c -o PJ_gn_sinu.o
+PJ_gn_sinu.c(14): (col. 1) remark: e_forward has been targeted for automatic cpu dispatch
+PJ_gn_sinu.c(21): (col. 1) remark: e_inverse has been targeted for automatic cpu dispatch
+PJ_gn_sinu.c(33): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_gn_sinu.c(54): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_gn_sinu.Tpo .deps/PJ_gn_sinu.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_goode.lo -MD -MP -MF .deps/PJ_goode.Tpo -c -o PJ_goode.lo PJ_goode.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_goode.lo -MD -MP -MF .deps/PJ_goode.Tpo -c PJ_goode.c -o PJ_goode.o
+mv -f .deps/PJ_goode.Tpo .deps/PJ_goode.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_igh.lo -MD -MP -MF .deps/PJ_igh.Tpo -c -o PJ_igh.lo PJ_igh.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_igh.lo -MD -MP -MF .deps/PJ_igh.Tpo -c PJ_igh.c -o PJ_igh.o
+mv -f .deps/PJ_igh.Tpo .deps/PJ_igh.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_hatano.lo -MD -MP -MF .deps/PJ_hatano.Tpo -c -o PJ_hatano.lo PJ_hatano.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_hatano.lo -MD -MP -MF .deps/PJ_hatano.Tpo -c PJ_hatano.c -o PJ_hatano.o
+mv -f .deps/PJ_hatano.Tpo .deps/PJ_hatano.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_loxim.lo -MD -MP -MF .deps/PJ_loxim.Tpo -c -o PJ_loxim.lo PJ_loxim.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_loxim.lo -MD -MP -MF .deps/PJ_loxim.Tpo -c PJ_loxim.c -o PJ_loxim.o
+PJ_loxim.c(9): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_loxim.c(22): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+PJ_loxim.c(35): (col. 1) remark: pj_loxim has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_loxim.Tpo .deps/PJ_loxim.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_mbt_fps.lo -MD -MP -MF .deps/PJ_mbt_fps.Tpo -c -o PJ_mbt_fps.lo PJ_mbt_fps.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_mbt_fps.lo -MD -MP -MF .deps/PJ_mbt_fps.Tpo -c PJ_mbt_fps.c -o PJ_mbt_fps.o
+PJ_mbt_fps.c(12): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_mbt_fps.c(29): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_mbt_fps.Tpo .deps/PJ_mbt_fps.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_mbtfpp.lo -MD -MP -MF .deps/PJ_mbtfpp.Tpo -c -o PJ_mbtfpp.lo PJ_mbtfpp.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_mbtfpp.lo -MD -MP -MF .deps/PJ_mbtfpp.Tpo -c PJ_mbtfpp.c -o PJ_mbtfpp.o
+PJ_mbtfpp.c(10): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_mbtfpp.c(16): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_mbtfpp.Tpo .deps/PJ_mbtfpp.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_mbtfpq.lo -MD -MP -MF .deps/PJ_mbtfpq.Tpo -c -o PJ_mbtfpq.lo PJ_mbtfpq.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_mbtfpq.lo -MD -MP -MF .deps/PJ_mbtfpq.Tpo -c PJ_mbtfpq.c -o PJ_mbtfpq.o
+PJ_mbtfpq.c(13): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_mbtfpq.Tpo .deps/PJ_mbtfpq.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_moll.lo -MD -MP -MF .deps/PJ_moll.Tpo -c -o PJ_moll.lo PJ_moll.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_moll.lo -MD -MP -MF .deps/PJ_moll.Tpo -c PJ_moll.c -o PJ_moll.o
+PJ_moll.c(29): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_moll.Tpo .deps/PJ_moll.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_nell.lo -MD -MP -MF .deps/PJ_nell.Tpo -c -o PJ_nell.lo PJ_nell.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_nell.lo -MD -MP -MF .deps/PJ_nell.Tpo -c PJ_nell.c -o PJ_nell.o
+PJ_nell.c(6): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_nell.Tpo .deps/PJ_nell.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_nell_h.lo -MD -MP -MF .deps/PJ_nell_h.Tpo -c -o PJ_nell_h.lo PJ_nell_h.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_nell_h.lo -MD -MP -MF .deps/PJ_nell_h.Tpo -c PJ_nell_h.c -o PJ_nell_h.o
+PJ_nell_h.c(6): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_nell_h.Tpo .deps/PJ_nell_h.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_putp2.lo -MD -MP -MF .deps/PJ_putp2.Tpo -c -o PJ_putp2.lo PJ_putp2.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_putp2.lo -MD -MP -MF .deps/PJ_putp2.Tpo -c PJ_putp2.c -o PJ_putp2.o
+PJ_putp2.c(10): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_putp2.c(31): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_putp2.Tpo .deps/PJ_putp2.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_putp3.lo -MD -MP -MF .deps/PJ_putp3.Tpo -c -o PJ_putp3.lo PJ_putp3.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_putp3.lo -MD -MP -MF .deps/PJ_putp3.Tpo -c PJ_putp3.c -o PJ_putp3.o
+PJ_putp3.c(9): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_putp3.c(14): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_putp3.Tpo .deps/PJ_putp3.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_putp4p.lo -MD -MP -MF .deps/PJ_putp4p.Tpo -c -o PJ_putp4p.lo PJ_putp4p.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_putp4p.lo -MD -MP -MF .deps/PJ_putp4p.Tpo -c PJ_putp4p.c -o PJ_putp4p.o
+mv -f .deps/PJ_putp4p.Tpo .deps/PJ_putp4p.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_putp5.lo -MD -MP -MF .deps/PJ_putp5.Tpo -c -o PJ_putp5.lo PJ_putp5.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_putp5.lo -MD -MP -MF .deps/PJ_putp5.Tpo -c PJ_putp5.c -o PJ_putp5.o
+PJ_putp5.c(9): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_putp5.c(14): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_putp5.Tpo .deps/PJ_putp5.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_putp6.lo -MD -MP -MF .deps/PJ_putp6.Tpo -c -o PJ_putp6.lo PJ_putp6.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_putp6.lo -MD -MP -MF .deps/PJ_putp6.Tpo -c PJ_putp6.c -o PJ_putp6.o
+PJ_putp6.c(10): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_putp6.c(29): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_putp6.Tpo .deps/PJ_putp6.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_robin.lo -MD -MP -MF .deps/PJ_robin.Tpo -c -o PJ_robin.lo PJ_robin.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_robin.lo -MD -MP -MF .deps/PJ_robin.Tpo -c PJ_robin.c -o PJ_robin.o
+PJ_robin.c(56): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_robin.c(68): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_robin.Tpo .deps/PJ_robin.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_sts.lo -MD -MP -MF .deps/PJ_sts.Tpo -c -o PJ_sts.lo PJ_sts.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_sts.lo -MD -MP -MF .deps/PJ_sts.Tpo -c PJ_sts.c -o PJ_sts.o
+mv -f .deps/PJ_sts.Tpo .deps/PJ_sts.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_urm5.lo -MD -MP -MF .deps/PJ_urm5.Tpo -c -o PJ_urm5.lo PJ_urm5.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_urm5.lo -MD -MP -MF .deps/PJ_urm5.Tpo -c PJ_urm5.c -o PJ_urm5.o
+PJ_urm5.c(6): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_urm5.c(16): (col. 1) remark: pj_urm5 has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_urm5.Tpo .deps/PJ_urm5.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_urmfps.lo -MD -MP -MF .deps/PJ_urmfps.Tpo -c -o PJ_urmfps.lo PJ_urmfps.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_urmfps.lo -MD -MP -MF .deps/PJ_urmfps.Tpo -c PJ_urmfps.c -o PJ_urmfps.o
+mv -f .deps/PJ_urmfps.Tpo .deps/PJ_urmfps.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_wag2.lo -MD -MP -MF .deps/PJ_wag2.Tpo -c -o PJ_wag2.lo PJ_wag2.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_wag2.lo -MD -MP -MF .deps/PJ_wag2.Tpo -c PJ_wag2.c -o PJ_wag2.o
+mv -f .deps/PJ_wag2.Tpo .deps/PJ_wag2.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_wag3.lo -MD -MP -MF .deps/PJ_wag3.Tpo -c -o PJ_wag3.lo PJ_wag3.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_wag3.lo -MD -MP -MF .deps/PJ_wag3.Tpo -c PJ_wag3.c -o PJ_wag3.o
+mv -f .deps/PJ_wag3.Tpo .deps/PJ_wag3.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_wink1.lo -MD -MP -MF .deps/PJ_wink1.Tpo -c -o PJ_wink1.lo PJ_wink1.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_wink1.lo -MD -MP -MF .deps/PJ_wink1.Tpo -c PJ_wink1.c -o PJ_wink1.o
+mv -f .deps/PJ_wink1.Tpo .deps/PJ_wink1.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_wink2.lo -MD -MP -MF .deps/PJ_wink2.Tpo -c -o PJ_wink2.lo PJ_wink2.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_wink2.lo -MD -MP -MF .deps/PJ_wink2.Tpo -c PJ_wink2.c -o PJ_wink2.o
+PJ_wink2.c(9): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_wink2.Tpo .deps/PJ_wink2.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_latlong.lo -MD -MP -MF .deps/pj_latlong.Tpo -c -o pj_latlong.lo pj_latlong.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_latlong.lo -MD -MP -MF .deps/pj_latlong.Tpo -c pj_latlong.c -o pj_latlong.o
+mv -f .deps/pj_latlong.Tpo .deps/pj_latlong.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_geocent.lo -MD -MP -MF .deps/pj_geocent.Tpo -c -o pj_geocent.lo pj_geocent.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_geocent.lo -MD -MP -MF .deps/pj_geocent.Tpo -c pj_geocent.c -o pj_geocent.o
+mv -f .deps/pj_geocent.Tpo .deps/pj_geocent.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT aasincos.lo -MD -MP -MF .deps/aasincos.Tpo -c -o aasincos.lo aasincos.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT aasincos.lo -MD -MP -MF .deps/aasincos.Tpo -c aasincos.c -o aasincos.o
+mv -f .deps/aasincos.Tpo .deps/aasincos.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT adjlon.lo -MD -MP -MF .deps/adjlon.Tpo -c -o adjlon.lo adjlon.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT adjlon.lo -MD -MP -MF .deps/adjlon.Tpo -c adjlon.c -o adjlon.o
+adjlon.c(9): (col. 28) remark: adjlon has been targeted for automatic cpu dispatch
+mv -f .deps/adjlon.Tpo .deps/adjlon.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT bch2bps.lo -MD -MP -MF .deps/bch2bps.Tpo -c -o bch2bps.lo bch2bps.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT bch2bps.lo -MD -MP -MF .deps/bch2bps.Tpo -c bch2bps.c -o bch2bps.o
+bch2bps.c(124): (col. 57) remark: bch2bps has been targeted for automatic cpu dispatch
+mv -f .deps/bch2bps.Tpo .deps/bch2bps.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT bchgen.lo -MD -MP -MF .deps/bchgen.Tpo -c -o bchgen.lo bchgen.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT bchgen.lo -MD -MP -MF .deps/bchgen.Tpo -c bchgen.c -o bchgen.o
+bchgen.c(4): (col. 79) remark: bchgen has been targeted for automatic cpu dispatch
+mv -f .deps/bchgen.Tpo .deps/bchgen.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT biveval.lo -MD -MP -MF .deps/biveval.Tpo -c -o biveval.lo biveval.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT biveval.lo -MD -MP -MF .deps/biveval.Tpo -c biveval.c -o biveval.o
+biveval.c(32): (col. 32) remark: bcheval has been targeted for automatic cpu dispatch
+biveval.c(51): (col. 32) remark: bpseval has been targeted for automatic cpu dispatch
+biveval.c(79): (col. 32) remark: biveval has been targeted for automatic cpu dispatch
+mv -f .deps/biveval.Tpo .deps/biveval.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT dmstor.lo -MD -MP -MF .deps/dmstor.Tpo -c -o dmstor.lo dmstor.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT dmstor.lo -MD -MP -MF .deps/dmstor.Tpo -c dmstor.c -o dmstor.o
+mv -f .deps/dmstor.Tpo .deps/dmstor.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT mk_cheby.lo -MD -MP -MF .deps/mk_cheby.Tpo -c -o mk_cheby.lo mk_cheby.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT mk_cheby.lo -MD -MP -MF .deps/mk_cheby.Tpo -c mk_cheby.c -o mk_cheby.o
+mv -f .deps/mk_cheby.Tpo .deps/mk_cheby.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_auth.lo -MD -MP -MF .deps/pj_auth.Tpo -c -o pj_auth.lo pj_auth.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_auth.lo -MD -MP -MF .deps/pj_auth.Tpo -c pj_auth.c -o pj_auth.o
+pj_auth.c(11): (col. 23) remark: pj_authset has been targeted for automatic cpu dispatch
+pj_auth.c(27): (col. 38) remark: pj_authlat has been targeted for automatic cpu dispatch
+mv -f .deps/pj_auth.Tpo .deps/pj_auth.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_deriv.lo -MD -MP -MF .deps/pj_deriv.Tpo -c -o pj_deriv.lo pj_deriv.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_deriv.lo -MD -MP -MF .deps/pj_deriv.Tpo -c pj_deriv.c -o pj_deriv.o
+mv -f .deps/pj_deriv.Tpo .deps/pj_deriv.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_ell_set.lo -MD -MP -MF .deps/pj_ell_set.Tpo -c -o pj_ell_set.lo pj_ell_set.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_ell_set.lo -MD -MP -MF .deps/pj_ell_set.Tpo -c pj_ell_set.c -o pj_ell_set.o
+pj_ell_set.c(10): (col. 62) remark: pj_ell_set has been targeted for automatic cpu dispatch
+mv -f .deps/pj_ell_set.Tpo .deps/pj_ell_set.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_ellps.lo -MD -MP -MF .deps/pj_ellps.Tpo -c -o pj_ellps.lo pj_ellps.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_ellps.lo -MD -MP -MF .deps/pj_ellps.Tpo -c pj_ellps.c -o pj_ellps.o
+mv -f .deps/pj_ellps.Tpo .deps/pj_ellps.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_errno.lo -MD -MP -MF .deps/pj_errno.Tpo -c -o pj_errno.lo pj_errno.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_errno.lo -MD -MP -MF .deps/pj_errno.Tpo -c pj_errno.c -o pj_errno.o
+mv -f .deps/pj_errno.Tpo .deps/pj_errno.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_factors.lo -MD -MP -MF .deps/pj_factors.Tpo -c -o pj_factors.lo pj_factors.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_factors.lo -MD -MP -MF .deps/pj_factors.Tpo -c pj_factors.c -o pj_factors.o
+pj_factors.c(10): (col. 57) remark: pj_factors has been targeted for automatic cpu dispatch
+mv -f .deps/pj_factors.Tpo .deps/pj_factors.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_fwd.lo -MD -MP -MF .deps/pj_fwd.Tpo -c -o pj_fwd.lo pj_fwd.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_fwd.lo -MD -MP -MF .deps/pj_fwd.Tpo -c pj_fwd.c -o pj_fwd.o
+pj_fwd.c(7): (col. 22) remark: pj_fwd has been targeted for automatic cpu dispatch
+mv -f .deps/pj_fwd.Tpo .deps/pj_fwd.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_init.lo -MD -MP -MF .deps/pj_init.Tpo -c -o pj_init.lo pj_init.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_init.lo -MD -MP -MF .deps/pj_init.Tpo -c pj_init.c -o pj_init.o
+mv -f .deps/pj_init.Tpo .deps/pj_init.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_inv.lo -MD -MP -MF .deps/pj_inv.Tpo -c -o pj_inv.lo pj_inv.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_inv.lo -MD -MP -MF .deps/pj_inv.Tpo -c pj_inv.c -o pj_inv.o
+pj_inv.c(7): (col. 22) remark: pj_inv has been targeted for automatic cpu dispatch
+mv -f .deps/pj_inv.Tpo .deps/pj_inv.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_list.lo -MD -MP -MF .deps/pj_list.Tpo -c -o pj_list.lo pj_list.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_list.lo -MD -MP -MF .deps/pj_list.Tpo -c pj_list.c -o pj_list.o
+mv -f .deps/pj_list.Tpo .deps/pj_list.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_malloc.lo -MD -MP -MF .deps/pj_malloc.Tpo -c -o pj_malloc.lo pj_malloc.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_malloc.lo -MD -MP -MF .deps/pj_malloc.Tpo -c pj_malloc.c -o pj_malloc.o
+mv -f .deps/pj_malloc.Tpo .deps/pj_malloc.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_mlfn.lo -MD -MP -MF .deps/pj_mlfn.Tpo -c -o pj_mlfn.lo pj_mlfn.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_mlfn.lo -MD -MP -MF .deps/pj_mlfn.Tpo -c pj_mlfn.c -o pj_mlfn.o
+pj_mlfn.c(23): (col. 20) remark: pj_enfn has been targeted for automatic cpu dispatch
+pj_mlfn.c(36): (col. 59) remark: pj_mlfn has been targeted for automatic cpu dispatch
+pj_mlfn.c(43): (col. 61) remark: pj_inv_mlfn has been targeted for automatic cpu dispatch
+mv -f .deps/pj_mlfn.Tpo .deps/pj_mlfn.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_msfn.lo -MD -MP -MF .deps/pj_msfn.Tpo -c -o pj_msfn.lo pj_msfn.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_msfn.lo -MD -MP -MF .deps/pj_msfn.Tpo -c pj_msfn.c -o pj_msfn.o
+pj_msfn.c(5): (col. 50) remark: pj_msfn has been targeted for automatic cpu dispatch
+mv -f .deps/pj_msfn.Tpo .deps/pj_msfn.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT proj_mdist.lo -MD -MP -MF .deps/proj_mdist.Tpo -c -o proj_mdist.lo proj_mdist.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT proj_mdist.lo -MD -MP -MF .deps/proj_mdist.Tpo -c proj_mdist.c -o proj_mdist.o
+proj_mdist.c(93): (col. 65) remark: proj_mdist has been targeted for automatic cpu dispatch
+proj_mdist.c(105): (col. 57) remark: proj_inv_mdist has been targeted for automatic cpu dispatch
+mv -f .deps/proj_mdist.Tpo .deps/proj_mdist.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_open_lib.lo -MD -MP -MF .deps/pj_open_lib.Tpo -c -o pj_open_lib.lo pj_open_lib.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_open_lib.lo -MD -MP -MF .deps/pj_open_lib.Tpo -c pj_open_lib.c -o pj_open_lib.o
+mv -f .deps/pj_open_lib.Tpo .deps/pj_open_lib.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_param.lo -MD -MP -MF .deps/pj_param.Tpo -c -o pj_param.lo pj_param.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_param.lo -MD -MP -MF .deps/pj_param.Tpo -c pj_param.c -o pj_param.o
+mv -f .deps/pj_param.Tpo .deps/pj_param.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_phi2.lo -MD -MP -MF .deps/pj_phi2.Tpo -c -o pj_phi2.lo pj_phi2.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_phi2.lo -MD -MP -MF .deps/pj_phi2.Tpo -c pj_phi2.c -o pj_phi2.o
+pj_phi2.c(9): (col. 43) remark: pj_phi2 has been targeted for automatic cpu dispatch
+mv -f .deps/pj_phi2.Tpo .deps/pj_phi2.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_pr_list.lo -MD -MP -MF .deps/pj_pr_list.Tpo -c -o pj_pr_list.lo pj_pr_list.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_pr_list.lo -MD -MP -MF .deps/pj_pr_list.Tpo -c pj_pr_list.c -o pj_pr_list.o
+mv -f .deps/pj_pr_list.Tpo .deps/pj_pr_list.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_qsfn.lo -MD -MP -MF .deps/pj_qsfn.Tpo -c -o pj_qsfn.lo pj_qsfn.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_qsfn.lo -MD -MP -MF .deps/pj_qsfn.Tpo -c pj_qsfn.c -o pj_qsfn.o
+pj_qsfn.c(7): (col. 49) remark: pj_qsfn has been targeted for automatic cpu dispatch
+mv -f .deps/pj_qsfn.Tpo .deps/pj_qsfn.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_strerrno.lo -MD -MP -MF .deps/pj_strerrno.Tpo -c -o pj_strerrno.lo pj_strerrno.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_strerrno.lo -MD -MP -MF .deps/pj_strerrno.Tpo -c pj_strerrno.c -o pj_strerrno.o
+mv -f .deps/pj_strerrno.Tpo .deps/pj_strerrno.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_tsfn.lo -MD -MP -MF .deps/pj_tsfn.Tpo -c -o pj_tsfn.lo pj_tsfn.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_tsfn.lo -MD -MP -MF .deps/pj_tsfn.Tpo -c pj_tsfn.c -o pj_tsfn.o
+pj_tsfn.c(6): (col. 46) remark: pj_tsfn has been targeted for automatic cpu dispatch
+mv -f .deps/pj_tsfn.Tpo .deps/pj_tsfn.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_units.lo -MD -MP -MF .deps/pj_units.Tpo -c -o pj_units.lo pj_units.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_units.lo -MD -MP -MF .deps/pj_units.Tpo -c pj_units.c -o pj_units.o
+mv -f .deps/pj_units.Tpo .deps/pj_units.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_ctx.lo -MD -MP -MF .deps/pj_ctx.Tpo -c -o pj_ctx.lo pj_ctx.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_ctx.lo -MD -MP -MF .deps/pj_ctx.Tpo -c pj_ctx.c -o pj_ctx.o
+mv -f .deps/pj_ctx.Tpo .deps/pj_ctx.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_log.lo -MD -MP -MF .deps/pj_log.Tpo -c -o pj_log.lo pj_log.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_log.lo -MD -MP -MF .deps/pj_log.Tpo -c pj_log.c -o pj_log.o
+mv -f .deps/pj_log.Tpo .deps/pj_log.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_zpoly1.lo -MD -MP -MF .deps/pj_zpoly1.Tpo -c -o pj_zpoly1.lo pj_zpoly1.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_zpoly1.lo -MD -MP -MF .deps/pj_zpoly1.Tpo -c pj_zpoly1.c -o pj_zpoly1.o
+pj_zpoly1.c(8): (col. 41) remark: pj_zpoly1 has been targeted for automatic cpu dispatch
+pj_zpoly1.c(23): (col. 56) remark: pj_zpolyd1 has been targeted for automatic cpu dispatch
+mv -f .deps/pj_zpoly1.Tpo .deps/pj_zpoly1.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT rtodms.lo -MD -MP -MF .deps/rtodms.Tpo -c -o rtodms.lo rtodms.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT rtodms.lo -MD -MP -MF .deps/rtodms.Tpo -c rtodms.c -o rtodms.o
+rtodms.c(19): (col. 34) remark: set_rtodms has been targeted for automatic cpu dispatch
+rtodms.c(38): (col. 45) remark: rtodms has been targeted for automatic cpu dispatch
+mv -f .deps/rtodms.Tpo .deps/rtodms.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT vector1.lo -MD -MP -MF .deps/vector1.Tpo -c -o vector1.lo vector1.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT vector1.lo -MD -MP -MF .deps/vector1.Tpo -c vector1.c -o vector1.o
+mv -f .deps/vector1.Tpo .deps/vector1.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_release.lo -MD -MP -MF .deps/pj_release.Tpo -c -o pj_release.lo pj_release.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_release.lo -MD -MP -MF .deps/pj_release.Tpo -c pj_release.c -o pj_release.o
+mv -f .deps/pj_release.Tpo .deps/pj_release.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_gauss.lo -MD -MP -MF .deps/pj_gauss.Tpo -c -o pj_gauss.lo pj_gauss.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_gauss.lo -MD -MP -MF .deps/pj_gauss.Tpo -c pj_gauss.c -o pj_gauss.o
+pj_gauss.c(47): (col. 62) remark: pj_gauss_ini has been targeted for automatic cpu dispatch
+pj_gauss.c(67): (col. 47) remark: pj_gauss has been targeted for automatic cpu dispatch
+pj_gauss.c(77): (col. 51) remark: pj_inv_gauss has been targeted for automatic cpu dispatch
+mv -f .deps/pj_gauss.Tpo .deps/pj_gauss.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_healpix.lo -MD -MP -MF .deps/PJ_healpix.Tpo -c -o PJ_healpix.lo PJ_healpix.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_healpix.lo -MD -MP -MF .deps/PJ_healpix.Tpo -c PJ_healpix.c -o PJ_healpix.o
+PJ_healpix.c(253): (col. 51) remark: auth_lat has been targeted for automatic cpu dispatch
+PJ_healpix.c(277): (col. 32) remark: healpix_sphere has been targeted for automatic cpu dispatch
+PJ_healpix.c(305): (col. 36) remark: healpix_sphere_inv has been targeted for automatic cpu dispatch
+PJ_healpix.c(560): (col. 1) remark: e_healpix_forward has been targeted for automatic cpu dispatch
+PJ_healpix.c(567): (col. 1) remark: s_healpix_forward has been targeted for automatic cpu dispatch
+PJ_healpix.c(570): (col. 1) remark: e_healpix_inverse has been targeted for automatic cpu dispatch
+PJ_healpix.c(202): (col. 65) remark: in_image has been targeted for automatic cpu dispatch
+PJ_healpix.c(591): (col. 1) remark: s_healpix_inverse has been targeted for automatic cpu dispatch
+PJ_healpix.c(606): (col. 1) remark: e_rhealpix_forward has been targeted for automatic cpu dispatch
+PJ_healpix.c(612): (col. 1) remark: s_rhealpix_forward has been targeted for automatic cpu dispatch
+PJ_healpix.c(617): (col. 1) remark: e_rhealpix_inverse has been targeted for automatic cpu dispatch
+PJ_healpix.c(633): (col. 1) remark: s_rhealpix_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_healpix.Tpo .deps/PJ_healpix.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT PJ_natearth.lo -MD -MP -MF .deps/PJ_natearth.Tpo -c -o PJ_natearth.lo PJ_natearth.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT PJ_natearth.lo -MD -MP -MF .deps/PJ_natearth.Tpo -c PJ_natearth.c -o PJ_natearth.o
+PJ_natearth.c(37): (col. 1) remark: s_forward has been targeted for automatic cpu dispatch
+PJ_natearth.c(46): (col. 1) remark: s_inverse has been targeted for automatic cpu dispatch
+mv -f .deps/PJ_natearth.Tpo .deps/PJ_natearth.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT nad_cvt.lo -MD -MP -MF .deps/nad_cvt.Tpo -c -o nad_cvt.lo nad_cvt.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT nad_cvt.lo -MD -MP -MF .deps/nad_cvt.Tpo -c nad_cvt.c -o nad_cvt.o
+mv -f .deps/nad_cvt.Tpo .deps/nad_cvt.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT nad_init.lo -MD -MP -MF .deps/nad_init.Tpo -c -o nad_init.lo nad_init.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT nad_init.lo -MD -MP -MF .deps/nad_init.Tpo -c nad_init.c -o nad_init.o
+mv -f .deps/nad_init.Tpo .deps/nad_init.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT nad_intr.lo -MD -MP -MF .deps/nad_intr.Tpo -c -o nad_intr.lo nad_intr.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT nad_intr.lo -MD -MP -MF .deps/nad_intr.Tpo -c nad_intr.c -o nad_intr.o
+nad_intr.c(5): (col. 35) remark: nad_intr has been targeted for automatic cpu dispatch
+mv -f .deps/nad_intr.Tpo .deps/nad_intr.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT emess.lo -MD -MP -MF .deps/emess.Tpo -c -o emess.lo emess.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT emess.lo -MD -MP -MF .deps/emess.Tpo -c emess.c -o emess.o
+mv -f .deps/emess.Tpo .deps/emess.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_apply_gridshift.lo -MD -MP -MF .deps/pj_apply_gridshift.Tpo -c -o pj_apply_gridshift.lo pj_apply_gridshift.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_apply_gridshift.lo -MD -MP -MF .deps/pj_apply_gridshift.Tpo -c pj_apply_gridshift.c -o pj_apply_gridshift.o
+pj_apply_gridshift.c(52): (col. 1) remark: pj_apply_gridshift has been targeted for automatic cpu dispatch
+pj_apply_gridshift.c(87): (col. 1) remark: pj_apply_gridshift_2 has been targeted for automatic cpu dispatch
+pj_apply_gridshift.c(115): (col. 1) remark: pj_apply_gridshift_3 has been targeted for automatic cpu dispatch
+mv -f .deps/pj_apply_gridshift.Tpo .deps/pj_apply_gridshift.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_datums.lo -MD -MP -MF .deps/pj_datums.Tpo -c -o pj_datums.lo pj_datums.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_datums.lo -MD -MP -MF .deps/pj_datums.Tpo -c pj_datums.c -o pj_datums.o
+mv -f .deps/pj_datums.Tpo .deps/pj_datums.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_datum_set.lo -MD -MP -MF .deps/pj_datum_set.Tpo -c -o pj_datum_set.lo pj_datum_set.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_datum_set.lo -MD -MP -MF .deps/pj_datum_set.Tpo -c pj_datum_set.c -o pj_datum_set.o
+mv -f .deps/pj_datum_set.Tpo .deps/pj_datum_set.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_transform.lo -MD -MP -MF .deps/pj_transform.Tpo -c -o pj_transform.lo pj_transform.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_transform.lo -MD -MP -MF .deps/pj_transform.Tpo -c pj_transform.c -o pj_transform.o
+pj_transform.c(90): (col. 1) remark: pj_transform has been targeted for automatic cpu dispatch
+pj_transform.c(506): (col. 1) remark: pj_geocentric_to_wgs84 has been targeted for automatic cpu dispatch
+pj_transform.c(554): (col. 1) remark: pj_geocentric_from_wgs84 has been targeted for automatic cpu dispatch
+pj_transform.c(606): (col. 1) remark: pj_datum_transform has been targeted for automatic cpu dispatch
+mv -f .deps/pj_transform.Tpo .deps/pj_transform.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT geocent.lo -MD -MP -MF .deps/geocent.Tpo -c -o geocent.lo geocent.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT geocent.lo -MD -MP -MF .deps/geocent.Tpo -c geocent.c -o geocent.o
+geocent.c(102): (col. 1) remark: pj_Set_Geocentric_Parameters has been targeted for automatic cpu dispatch
+geocent.c(155): (col. 1) remark: pj_Convert_Geodetic_To_Geocentric has been targeted for automatic cpu dispatch
+geocent.c(227): (col. 1) remark: pj_Convert_Geocentric_To_Geodetic has been targeted for automatic cpu dispatch
+mv -f .deps/geocent.Tpo .deps/geocent.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_utils.lo -MD -MP -MF .deps/pj_utils.Tpo -c -o pj_utils.lo pj_utils.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_utils.lo -MD -MP -MF .deps/pj_utils.Tpo -c pj_utils.c -o pj_utils.o
+mv -f .deps/pj_utils.Tpo .deps/pj_utils.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_gridinfo.lo -MD -MP -MF .deps/pj_gridinfo.Tpo -c -o pj_gridinfo.lo pj_gridinfo.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_gridinfo.lo -MD -MP -MF .deps/pj_gridinfo.Tpo -c pj_gridinfo.c -o pj_gridinfo.o
+pj_gridinfo.c(120): (col. 1) remark: pj_gridinfo_load has been targeted for automatic cpu dispatch
+pj_gridinfo.c(766): (col. 1) remark: pj_gridinfo_init has been targeted for automatic cpu dispatch
+mv -f .deps/pj_gridinfo.Tpo .deps/pj_gridinfo.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_gridlist.lo -MD -MP -MF .deps/pj_gridlist.Tpo -c -o pj_gridlist.lo pj_gridlist.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_gridlist.lo -MD -MP -MF .deps/pj_gridlist.Tpo -c pj_gridlist.c -o pj_gridlist.o
+mv -f .deps/pj_gridlist.Tpo .deps/pj_gridlist.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT jniproj.lo -MD -MP -MF .deps/jniproj.Tpo -c -o jniproj.lo jniproj.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT jniproj.lo -MD -MP -MF .deps/jniproj.Tpo -c jniproj.c -o jniproj.o
+mv -f .deps/jniproj.Tpo .deps/jniproj.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_mutex.lo -MD -MP -MF .deps/pj_mutex.Tpo -c -o pj_mutex.lo pj_mutex.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_mutex.lo -MD -MP -MF .deps/pj_mutex.Tpo -c pj_mutex.c -o pj_mutex.o
+mv -f .deps/pj_mutex.Tpo .deps/pj_mutex.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_initcache.lo -MD -MP -MF .deps/pj_initcache.Tpo -c -o pj_initcache.lo pj_initcache.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_initcache.lo -MD -MP -MF .deps/pj_initcache.Tpo -c pj_initcache.c -o pj_initcache.o
+mv -f .deps/pj_initcache.Tpo .deps/pj_initcache.Plo
+/bin/sh ../libtool --tag=CC   --mode=compile cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT pj_apply_vgridshift.lo -MD -MP -MF .deps/pj_apply_vgridshift.Tpo -c -o pj_apply_vgridshift.lo pj_apply_vgridshift.c
+libtool: compile:  cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread -O3 -axCORE-AVX2 -MT pj_apply_vgridshift.lo -MD -MP -MF .deps/pj_apply_vgridshift.Tpo -c pj_apply_vgridshift.c -o pj_apply_vgridshift.o
+pj_apply_vgridshift.c(53): (col. 1) remark: pj_apply_vgridshift has been targeted for automatic cpu dispatch
+mv -f .deps/pj_apply_vgridshift.Tpo .deps/pj_apply_vgridshift.Plo
+/bin/sh ../libtool --tag=CC   --mode=link cc  -O3 -axCORE-AVX2 -static -no-undefined -version-info 7:0:7  -o libproj.la -rpath /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/lib PJ_aeqd.lo PJ_gnom.lo PJ_laea.lo PJ_mod_ster.lo PJ_nsper.lo PJ_nzmg.lo PJ_ortho.lo PJ_stere.lo PJ_sterea.lo PJ_aea.lo PJ_bipc.lo PJ_bonne.lo PJ_eqdc.lo PJ_isea.lo PJ_imw_p.lo PJ_krovak.lo PJ_lcc.lo PJ_poly.lo PJ_rpoly.lo PJ_sconics.lo proj_rouss.lo PJ_cass.lo PJ_cc.lo PJ_cea.lo PJ_eqc.lo PJ_gall.lo PJ_labrd.lo PJ_lsat.lo PJ_merc.lo PJ_mill.lo PJ_ocea.lo PJ_omerc.lo PJ_somerc.lo PJ_tcc.lo PJ_tcea.lo PJ_tmerc.lo PJ_airy.lo PJ_aitoff.lo PJ_august.lo PJ_bacon.lo PJ_chamb.lo PJ_hammer.lo PJ_lagrng.lo PJ_larr.lo PJ_lask.lo PJ_nocol.lo PJ_ob_tran.lo PJ_oea.lo PJ_tpeqd.lo PJ_vandg.lo PJ_vandg2.lo PJ_vandg4.lo PJ_wag7.lo PJ_lcca.lo PJ_geos.lo proj_etmerc.lo PJ_boggs.lo PJ_collg.lo PJ_crast.lo PJ_denoy.lo PJ_eck1.lo PJ_eck2.lo PJ_eck3.lo PJ_eck4.lo PJ_eck5.lo PJ_fahey.lo PJ_fouc_s.lo PJ_gins8.lo PJ_gstmerc.lo PJ_gn_sinu.lo PJ_goode.lo PJ_igh.lo PJ_hatano.lo PJ_loxim.lo PJ_mbt_fps.lo PJ_mbtfpp.lo PJ_mbtfpq.lo PJ_moll.lo PJ_nell.lo PJ_nell_h.lo PJ_putp2.lo PJ_putp3.lo PJ_putp4p.lo PJ_putp5.lo PJ_putp6.lo PJ_robin.lo PJ_sts.lo PJ_urm5.lo PJ_urmfps.lo PJ_wag2.lo PJ_wag3.lo PJ_wink1.lo PJ_wink2.lo pj_latlong.lo pj_geocent.lo aasincos.lo adjlon.lo bch2bps.lo bchgen.lo biveval.lo dmstor.lo mk_cheby.lo pj_auth.lo pj_deriv.lo pj_ell_set.lo pj_ellps.lo pj_errno.lo pj_factors.lo pj_fwd.lo pj_init.lo pj_inv.lo pj_list.lo pj_malloc.lo pj_mlfn.lo pj_msfn.lo proj_mdist.lo pj_open_lib.lo pj_param.lo pj_phi2.lo pj_pr_list.lo pj_qsfn.lo pj_strerrno.lo pj_tsfn.lo pj_units.lo pj_ctx.lo pj_log.lo pj_zpoly1.lo rtodms.lo vector1.lo pj_release.lo pj_gauss.lo PJ_healpix.lo PJ_natearth.lo nad_cvt.lo nad_init.lo nad_intr.lo emess.lo pj_apply_gridshift.lo pj_datums.lo pj_datum_set.lo pj_transform.lo geocent.lo pj_utils.lo pj_gridinfo.lo pj_gridlist.lo jniproj.lo pj_mutex.lo pj_initcache.lo pj_apply_vgridshift.lo  -lm 
+libtool: link: ar cru .libs/libproj.a  PJ_aeqd.o PJ_gnom.o PJ_laea.o PJ_mod_ster.o PJ_nsper.o PJ_nzmg.o PJ_ortho.o PJ_stere.o PJ_sterea.o PJ_aea.o PJ_bipc.o PJ_bonne.o PJ_eqdc.o PJ_isea.o PJ_imw_p.o PJ_krovak.o PJ_lcc.o PJ_poly.o PJ_rpoly.o PJ_sconics.o proj_rouss.o PJ_cass.o PJ_cc.o PJ_cea.o PJ_eqc.o PJ_gall.o PJ_labrd.o PJ_lsat.o PJ_merc.o PJ_mill.o PJ_ocea.o PJ_omerc.o PJ_somerc.o PJ_tcc.o PJ_tcea.o PJ_tmerc.o PJ_airy.o PJ_aitoff.o PJ_august.o PJ_bacon.o PJ_chamb.o PJ_hammer.o PJ_lagrng.o PJ_larr.o PJ_lask.o PJ_nocol.o PJ_ob_tran.o PJ_oea.o PJ_tpeqd.o PJ_vandg.o PJ_vandg2.o PJ_vandg4.o PJ_wag7.o PJ_lcca.o PJ_geos.o proj_etmerc.o PJ_boggs.o PJ_collg.o PJ_crast.o PJ_denoy.o PJ_eck1.o PJ_eck2.o PJ_eck3.o PJ_eck4.o PJ_eck5.o PJ_fahey.o PJ_fouc_s.o PJ_gins8.o PJ_gstmerc.o PJ_gn_sinu.o PJ_goode.o PJ_igh.o PJ_hatano.o PJ_loxim.o PJ_mbt_fps.o PJ_mbtfpp.o PJ_mbtfpq.o PJ_moll.o PJ_nell.o PJ_nell_h.o PJ_putp2.o PJ_putp3.o PJ_putp4p.o PJ_putp5.o PJ_putp6.o PJ_robin.o PJ_sts.o PJ_urm5.o PJ_urmfps.o PJ_wag2.o PJ_wag3.o PJ_wink1.o PJ_wink2.o pj_latlong.o pj_geocent.o aasincos.o adjlon.o bch2bps.o bchgen.o biveval.o dmstor.o mk_cheby.o pj_auth.o pj_deriv.o pj_ell_set.o pj_ellps.o pj_errno.o pj_factors.o pj_fwd.o pj_init.o pj_inv.o pj_list.o pj_malloc.o pj_mlfn.o pj_msfn.o proj_mdist.o pj_open_lib.o pj_param.o pj_phi2.o pj_pr_list.o pj_qsfn.o pj_strerrno.o pj_tsfn.o pj_units.o pj_ctx.o pj_log.o pj_zpoly1.o rtodms.o vector1.o pj_release.o pj_gauss.o PJ_healpix.o PJ_natearth.o nad_cvt.o nad_init.o nad_intr.o emess.o pj_apply_gridshift.o pj_datums.o pj_datum_set.o pj_transform.o geocent.o pj_utils.o pj_gridinfo.o pj_gridlist.o jniproj.o pj_mutex.o pj_initcache.o pj_apply_vgridshift.o
+libtool: link: ranlib .libs/libproj.a
+libtool: link: ( cd ".libs" && rm -f "libproj.la" && ln -s "../libproj.la" "libproj.la" )
+cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT proj.o -MD -MP -MF .deps/proj.Tpo -c -o proj.o proj.c
+proj.c(247): (col. 33) remark: main has been targeted for automatic cpu dispatch
+mv -f .deps/proj.Tpo .deps/proj.Po
+cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT gen_cheb.o -MD -MP -MF .deps/gen_cheb.Tpo -c -o gen_cheb.o gen_cheb.c
+mv -f .deps/gen_cheb.Tpo .deps/gen_cheb.Po
+cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT p_series.o -MD -MP -MF .deps/p_series.Tpo -c -o p_series.o p_series.c
+mv -f .deps/p_series.Tpo .deps/p_series.Po
+/bin/sh ../libtool --tag=CC   --mode=link cc  -O3 -axCORE-AVX2 -static   -o proj proj.o gen_cheb.o p_series.o libproj.la -lm 
+libtool: link: cc -O3 -axCORE-AVX2 -o proj proj.o gen_cheb.o p_series.o  ./.libs/libproj.a -lm
+cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT nad2bin.o -MD -MP -MF .deps/nad2bin.Tpo -c -o nad2bin.o nad2bin.c
+nad2bin.c(56): (col. 33) remark: main has been targeted for automatic cpu dispatch
+mv -f .deps/nad2bin.Tpo .deps/nad2bin.Po
+/bin/sh ../libtool --tag=CC   --mode=link cc  -O3 -axCORE-AVX2 -static   -o nad2bin nad2bin.o libproj.la -lm 
+libtool: link: cc -O3 -axCORE-AVX2 -o nad2bin nad2bin.o  ./.libs/libproj.a -lm
+cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT geod.o -MD -MP -MF .deps/geod.Tpo -c -o geod.o geod.c
+mv -f .deps/geod.Tpo .deps/geod.Po
+cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT geod_set.o -MD -MP -MF .deps/geod_set.Tpo -c -o geod_set.o geod_set.c
+mv -f .deps/geod_set.Tpo .deps/geod_set.Po
+cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT geod_for.o -MD -MP -MF .deps/geod_for.Tpo -c -o geod_for.o geod_for.c
+geod_for.c(9): (col. 16) remark: geod_pre has been targeted for automatic cpu dispatch
+geod_for.c(46): (col. 16) remark: geod_for has been targeted for automatic cpu dispatch
+mv -f .deps/geod_for.Tpo .deps/geod_for.Po
+cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT geod_inv.o -MD -MP -MF .deps/geod_inv.Tpo -c -o geod_inv.o geod_inv.c
+geod_inv.c(5): (col. 16) remark: geod_inv has been targeted for automatic cpu dispatch
+mv -f .deps/geod_inv.Tpo .deps/geod_inv.Po
+/bin/sh ../libtool --tag=CC   --mode=link cc  -O3 -axCORE-AVX2 -static   -o geod geod.o geod_set.o geod_for.o geod_inv.o libproj.la -lm 
+libtool: link: cc -O3 -axCORE-AVX2 -o geod geod.o geod_set.o geod_for.o geod_inv.o  ./.libs/libproj.a -lm
+cc -DHAVE_CONFIG_H -I. -DPROJ_LIB=\"/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj\" -DMUTEX_pthread     -O3 -axCORE-AVX2 -static -MT cs2cs.o -MD -MP -MF .deps/cs2cs.Tpo -c -o cs2cs.o cs2cs.c
+mv -f .deps/cs2cs.Tpo .deps/cs2cs.Po
+/bin/sh ../libtool --tag=CC   --mode=link cc  -O3 -axCORE-AVX2 -static   -o cs2cs cs2cs.o gen_cheb.o p_series.o libproj.la -lm 
+libtool: link: cc -O3 -axCORE-AVX2 -o cs2cs cs2cs.o gen_cheb.o p_series.o  ./.libs/libproj.a -lm
+make[2]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/src'
+test -z "/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/lib" || /bin/mkdir -p "/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/lib"
+ /bin/sh ../libtool   --mode=install /usr/bin/install -c   libproj.la '/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/lib'
+libtool: install: /usr/bin/install -c .libs/libproj.lai /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/lib/libproj.la
+libtool: install: /usr/bin/install -c .libs/libproj.a /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/lib/libproj.a
+libtool: install: chmod 644 /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/lib/libproj.a
+libtool: install: ranlib /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/lib/libproj.a
+libtool: finish: PATH="/opt/intel/composer_xe_2015.6.233/bin/intel64:/opt/intel/composer_xe_2015.6.233/debugger/gdb/intel64_mic/bin:/opt/cray/rca/1.0.0-2.0502.57212.2.56.ari/bin:/opt/cray/alps/5.2.3-2.0502.9295.14.14.ari/sbin:/opt/cray/alps/5.2.3-2.0502.9295.14.14.ari/bin:/opt/cray/dvs/2.5_0.9.0-1.0502.1958.2.55.ari/bin:/opt/cray/xpmem/0.1-2.0502.57015.1.15.ari/bin:/opt/cray/pmi/5.0.6-1.0000.10439.140.2.ari/bin:/opt/cray/ugni/6.0-1.0502.10245.9.9.ari/bin:/opt/cray/udreg/2.3.2-1.0502.9889.2.20.ari/bin:/opt/cray/craype/2.3.0/bin:/u/Kit.Menlove/bin:/gpfs/gp1/nco/ops/nwprod/spa_util:/gpfs/gp1/nco/ops/nwprod/spa_util/jobinfo:/u/Kit.Menlove/bin:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/X11R6/bin:/usr/games:/opt/bin:/usr/lib/mit/bin:/usr/lib/mit/sbin:/sbin:/usr/sbin:.:/usr/lib/qt3/bin:/gpfs/gp1/u/Kit.Menlove/bin:/opt/cray/bin:/sbin" ldconfig -n /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/lib
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the `-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the `LD_RUN_PATH' environment variable
+     during linking
+   - use the `-Wl,-rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to `/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+test -z "/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/bin" || /bin/mkdir -p "/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/bin"
+  /bin/sh ../libtool   --mode=install /usr/bin/install -c proj nad2bin geod cs2cs '/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/bin'
+libtool: install: /usr/bin/install -c proj /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/bin/proj
+libtool: install: /usr/bin/install -c nad2bin /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/bin/nad2bin
+libtool: install: /usr/bin/install -c geod /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/bin/geod
+libtool: install: /usr/bin/install -c cs2cs /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/bin/cs2cs
+rm -f /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/bin/invproj
+(cd /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/bin; ln -s proj invproj)
+rm -f /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/bin/invgeod
+(cd /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/bin; ln -s geod invgeod)
+test -z "/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/include" || /bin/mkdir -p "/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/include"
+ /usr/bin/install -c -m 644 proj_api.h org_proj4_Projections.h '/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/include'
+make[2]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/src'
+make[1]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/src'
+Making install in man
+make[1]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/man'
+Making install in man1
+make[2]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/man/man1'
+make[3]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/man/man1'
+make[3]: Nothing to be done for `install-exec-am'.
+test -z "/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/man/man1" || /bin/mkdir -p "/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/man/man1"
+ /usr/bin/install -c -m 644 geod.1 proj.1 cs2cs.1 '/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/man/man1'
+make[3]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/man/man1'
+make[2]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/man/man1'
+Making install in man3
+make[2]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/man/man3'
+make[3]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/man/man3'
+make[3]: Nothing to be done for `install-exec-am'.
+test -z "/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/man/man3" || /bin/mkdir -p "/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/man/man3"
+ /usr/bin/install -c -m 644 pj_init.3 '/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/man/man3'
+make[3]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/man/man3'
+make[2]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/man/man3'
+make[2]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/man'
+make[3]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/man'
+make[3]: Nothing to be done for `install-exec-am'.
+make[3]: Nothing to be done for `install-data-am'.
+make[3]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/man'
+make[2]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/man'
+make[1]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/man'
+Making install in nad
+make[1]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/nad'
+make[2]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/nad'
+make[2]: Nothing to be done for `install-exec-am'.
+/bin/sh ../mkinstalldirs /gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj
+nad2nad NADCON source files not present
+test -z "/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj" || /bin/mkdir -p "/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj"
+ /usr/bin/install -c -m 644 GL27 nad.lst nad27 nad83 proj_def.dat world epsg esri esri.extra other.extra IGNF '/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/share/proj'
+make[2]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/nad'
+make[1]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/nad'
+Making install in jniwrap
+make[1]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap'
+Making install in org
+make[2]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap/org'
+Making install in proj4
+make[3]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap/org/proj4'
+make[4]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap/org/proj4'
+make[4]: Nothing to be done for `install-exec-am'.
+make[4]: Nothing to be done for `install-data-am'.
+make[4]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap/org/proj4'
+make[3]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap/org/proj4'
+make[3]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap/org'
+make[4]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap/org'
+make[4]: Nothing to be done for `install-exec-am'.
+make[4]: Nothing to be done for `install-data-am'.
+make[4]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap/org'
+make[3]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap/org'
+make[2]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap/org'
+make[2]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap'
+make[3]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap'
+make[3]: Nothing to be done for `install-exec-am'.
+echo In jniwrap
+In jniwrap
+make[3]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap'
+make[2]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap'
+make[1]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0/jniwrap'
+make[1]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0'
+make[2]: Entering directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0'
+make[2]: Nothing to be done for `install-exec-am'.
+test -z "/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/lib/pkgconfig" || /bin/mkdir -p "/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/lib/pkgconfig"
+ /usr/bin/install -c -m 644 proj.pc '/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/lib/pkgconfig'
+make[2]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0'
+make[1]: Leaving directory `/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5/sorc/proj-4.8.0'

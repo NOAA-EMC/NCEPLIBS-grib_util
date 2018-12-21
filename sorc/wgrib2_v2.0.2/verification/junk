@@ -1,0 +1,15 @@
+d=2012013000:AOTK:entire atmosphere:anl:aerosol=Total Aerosol:aerosol_size <2e+07:aerosol_wavelength >=5.45e+11,<=5.65e+11
+d=2012013000:AOTK:entire atmosphere:anl:aerosol=Total Aerosol:aerosol_size <2e+07:aerosol_wavelength >=3.38e+11,<=3.42e+11
+d=2012013000:AOTK:entire atmosphere:anl:aerosol=Total Aerosol:aerosol_size <2e+07:aerosol_wavelength >=4.3e+11,<=4.5e+11
+d=2012013000:AOTK:entire atmosphere:anl:aerosol=Total Aerosol:aerosol_size <2e+07:aerosol_wavelength >=6.2e+11,<=6.7e+11
+d=2012013000:AOTK:entire atmosphere:anl:aerosol=Total Aerosol:aerosol_size <2e+07:aerosol_wavelength >=8.41e+11,<=8.76e+11
+d=2012013000:AOTK:entire atmosphere:anl:aerosol=Total Aerosol:aerosol_size <2e+07:aerosol_wavelength >=1.628e+12,<=1.652e+12
+d=2012013000:AOTK:entire atmosphere:anl:aerosol=Total Aerosol:aerosol_size <2e+07:aerosol_wavelength >=1.1e+13,<=1.12e+13
+d=2012013000:AEMFLX:entire atmosphere:anl:aerosol=Dust Dry:aerosol_size <2e+07:aerosol_wavelength <0
+d=2012013000:SEDMFLX:entire atmosphere:anl:aerosol=Dust Dry:aerosol_size <2e+07:aerosol_wavelength <0
+d=2012013000:DDMFLX:entire atmosphere:anl:aerosol=Dust Dry:aerosol_size <2e+07:aerosol_wavelength <0
+d=2012013000:WLSMFLX:entire atmosphere:anl:aerosol=Dust Dry:aerosol_size <2e+07:aerosol_wavelength <0
+d=2012013000:MASSDEN:surface:anl:aerosol=Dust Dry:aerosol_size <1e+07:aerosol_wavelength <0
+d=2012013000:MASSDEN:surface:anl:aerosol=Dust Dry:aerosol_size <2.5e+08:aerosol_wavelength <0
+d=2012013000:COLMD:entire atmosphere:anl:aerosol=Dust Dry:aerosol_size <1e+07:aerosol_wavelength <0
+d=2012013000:COLMD:entire atmosphere:anl:aerosol=Dust Dry:aerosol_size <2.5e+08:aerosol_wavelength <0

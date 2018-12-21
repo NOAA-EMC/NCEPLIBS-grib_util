@@ -1,0 +1,35 @@
+
+The test plans for grib_util v1.0.4 are in unit_test:
+1. Change to grib_util.v1.0.4/unit_test
+2. There are three scripts to test G2 library version 3.0.0 and Grib_util v1.0.4
+WCOSS (Tide or Gyre) or CRAY. Run the following scripts:
+A. Test_cnvgrib_and cnvgrib21_gfs_wcoss.sh
+   or Test_cnvgrib_and cnvgrib21_gfs_cray.sh
+
+      This script uses to test cnvgrib (prod) and cnvgrib21_gfs  
+      The script will compare two output files: one is from cnvgrib and one is from cnvgrib21_gfs.
+      The cnvgrib will correct the forecast hour > F252 when it convert from GRIB2 to GRIb1.
+      Then, the WGRIB use to display content (inventory) of grib1 file for comparison
+      and The result will write into output file:  $file.grib1.cnvgrib_cnvgrib21gfs.wgrib.o.
+
+ B. test_cnvgrib_prod_and_new_wcoss.sh
+    or test_cnvgrib_prod_and_new_cray.sh
+
+      This script uses to test the utility cnvgrib which compiled with new G2 library v3.0.0
+      The script will compare two output files: one is old cnvgrib (current in operational) and
+      one is new cnvgrib (cnvgrib v3.0.0).
+      The conversion cnvgrib will convert from grib2 to grib1 and from grib1 to grib2.
+      Then, the WGRIB2 and DEGRIB2 use to display content (inventory) of grib2 file for comparison
+      and The result will write into output file:  $file.grib2.prod_test.wgrib2.o.
+
+
+C. test_copygb2_prod_and_new_wcoss.sh
+      or  test_copygb2_prod_and_new_cray.sh
+
+      This script uses to test the utility copygb2 which compiled with new G2 library v3.0.0
+      The script will compare two output files: one is copygb2 (current in operational) and
+      one is new copygb2 (grib_util.v1.0.4).
+      The copygb2 will interpolate into small grid. Then, the WGRIB2 and DEGRIB2 use to display content
+      (inventory) of grib2 file for comparison and The result will write into output file:
+      awps_file_f${fcsthrs}_${GRID}_copygb2_prod_test.o
+

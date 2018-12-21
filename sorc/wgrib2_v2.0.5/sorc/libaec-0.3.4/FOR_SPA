@@ -1,0 +1,13 @@
+Build instructions on the IBM iDataPlex:
+
+  - module load ics/15.0.6
+  - ./configure CC=icc --prefix=$(dirname $(dirname $PWD)) --disable-shared &>compile_libaec_wcoss.log
+  - make CFLAGS="-O3 -static" check install &>>compile_libaec_wcoss.log
+
+Build instructions on the Cray XC40:
+
+  - module load PrgEnv-intel craype-sandybridge
+  - module switch intel/15.0.6.233
+  - ./configure CC=cc --prefix=$(dirname $(dirname $PWD)) --disable-shared &>compile_libaec_wcoss.log
+  - make CFLAGS="-O3 -axCORE-AVX2 -static" check install &>>compile_libaec_wcoss.log
+

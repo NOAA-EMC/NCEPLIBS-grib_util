@@ -1,0 +1,25 @@
+echo "Purge"
+module purge -s
+module refresh
+module list
+
+echo "PrgEnv-intel module load"
+module use /opt/cray/modulefiles
+module load PrgEnv-intel
+
+echo "Listing of current loaded module"
+module list
+
+echo "Loading all wgrib2 build library"
+module load ../modulefiles/wgrib2/v2.0.2
+
+echo "Listing final modules before start the build process"
+module refresh
+module list
+
+cd wgrib2
+
+make clean
+
+make
+

@@ -1,0 +1,10 @@
+Intel ICC:
+
+preliminary testing using intel compiler 12.0.4
+
+The makefile doesn't compile Jasper "correctly".  Testing 
+fails with writing of jpeg2000 encoded files.  The portland
+C compiler fails with the exact same symptoms.  May be
+a Jasper source code problem rather than a compiler problem.
+
+Compiling by icc was turned off in the makefile

@@ -1,0 +1,30 @@
+wgrib2 v.2.0.2 installation guide:
+This project is compile using NCEP module.
+To compile project:
+Under sorc execute build_wcoss.sh
+Output:
+The executable wgrib2 will be located in exec directory 
+Follow Regression-test.txt to verify it works.
+
+Note:
+We found error in current /nwprod/lib/g2c/v1.4.0 with wrong 64 bits configuration:
+
+In /nwprod/lib/g2c/v1.4.0/sorc/grib2.h found wrong 64 bits configuration:
+=============================================
+#ifdef __64BIT__
+typedef int g2int;
+typedef unsigned int g2intu;
+#else
+typedef long g2int;
+typedef unsigned long g2intu;
+#endif
+typedef float g2float;
+=============================================
+
+This results "png size mismatch" error.
+
+To fix it: 
+  Modify the wgrib2 makefile using -D__64BIT__ for 4 (GDT.c, jpeg_pk.c, unpk.c, wgrib2) individual files.
+
+
+If this bug is fixed in /nwprod/lib/g2c/v1.4.0, then wgrib2 makefile will need to be changed by removing __64BIT__ flag.

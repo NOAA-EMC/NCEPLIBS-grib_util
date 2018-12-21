@@ -1,0 +1,11 @@
+prefix=/gpfs/hps/nco/ops/nwtest/grib_util.v1.0.4/sorc/wgrib2_v2.0.5
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: proj
+Description: Cartographic Projections Library.
+Requires:
+Version: 4.8.0
+Libs: -L${libdir} -lproj
+Cflags: -I${includedir}

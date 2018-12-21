@@ -1,0 +1,14 @@
+module unuse /gpfs/hps/nco/ops/nwprod/lib/modulefiles
+module use /gpfs/hps/nco/ops/nwtest/lib/modulefiles
+
+module load PrgEnv-intel
+module swap craype-haswell craype-sandybridge
+#
+module load w3nco-intel
+module load bacio-intel
+#
+module list
+make
+mv tocgrib ../../exec
+make clean
+

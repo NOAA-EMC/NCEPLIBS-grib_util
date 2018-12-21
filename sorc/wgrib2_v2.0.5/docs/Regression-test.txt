@@ -1,0 +1,73 @@
+Lin Gan 2015 09 10
+
+How to run verification:
+
+1. Copy canned data file into verification directory.
+
+2. Copy verify2.sh script into verification directory.
+
+3. Copy new wgrib2 executable into verification directory as wgrib2new.
+
+4. Generate canned RESULTS file for CHKSUM comparison with original wgrib2 (need to be newer version of wgrib2 then the one that is on nwprod as of 2015-09-10). Can just use the RESULTS file from current SVN tag.
+./verify2.sh SAVE        
+  Create a RESULTS file by running original wgrib2 file against canned data:
+    ds.td.bin
+    FR_land_cosmo_de.grib2
+    gep19.t00z.pgrb2af180
+    grid221.g2
+    NGAC2d.GrbF00
+    png.grb2
+
+5. Run test.
+./verify2.sh <RESULTS
+
+Below show the successful test output:
+
+=============================================
+wgrib2=wgrib2 wgrib2new=wgrib2new mode=
+version=201503
+Proj4 package not installed
+threading: test decode/-bin
+threading: test decode/-ieee
+threading: test encode c1
+threading: test encode c2
+threading: test encode c3
+threading: test encode s
+threading: test lat comp gctpc 0
+threading: test lon comp gctpc 0
+threading: test lat comp gctpc 1
+gctpc_get_lat used
+gctpc_get_lat used
+gctpc_get_lat used
+gctpc_get_lat used
+threading: test lon comp gctpc 1
+gctpc_get_lat used
+gctpc_get_lat used
+gctpc_get_lat used
+gctpc_get_lat used
+threading: test new_grid
+eqv: test s_out
+eqv: test match_fs
+eqv: test not_fs
+eqv: test if_fs
+eqv: test not_if_fs
+eqv: test -d
+eqv: test <grib
+regression: test -s
+regression: test -v
+regression: test -ieee
+regression: test -text
+regression: test -cvs
+regression: test -spread
+regression: test -grib_out
+regression: test -match 1
+regression: test -if 1
+regression: test -ijsmall
+regression: test -small_grib
+regression: test ncep_norm
+regression: test -stats
+regression: test -grib_out j
+regression: test -submsg_uv
+regression: test -wndspd/dir
+regression: test -new_grid 1
+=============================================

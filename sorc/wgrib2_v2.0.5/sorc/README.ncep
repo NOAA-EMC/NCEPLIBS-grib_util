@@ -1,0 +1,24 @@
+How do I compile on NCEP's WCOSS system
+
+export CC=gcc
+export FC=gfortran
+make 
+
+
+How do I compile on NCEP's workstations
+
+export CC=gcc
+export FC=gfortran
+make 
+
+
+
+For operational use I suggest these options
+
+NETCDF3 turned off (not needed by operations)
+NETCDF4 turned off (not needed by operations, big executable)
+OPENMP turned off on WCOSS
+OPENMP turned on or off on workstations
+IPOLATES turned on
+PROJ4 turned off   (PROJ4 is experimental)
+G2CLIB turned on   (in case you want to compare g2clib and internal decoders)
