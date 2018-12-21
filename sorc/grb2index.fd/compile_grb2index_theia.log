@@ -1,0 +1,13 @@
+
+Currently Loaded Modules:
+  1) intel/14.0.2      4) png/v1.2.44    7) w3emc/v2.2.0  10) sp/v2.0.2
+  2) hpss/hpss         5) z/v1.2.6       8) w3nco/v2.0.6  11) g2/v3.1.0
+  3) jasper/v1.900.1   6) bacio/v2.0.1   9) ip/v3.0.0     12) build_grib_util/theia/1.0.5
+
+ 
+
+ifort -c -g -O3 -convert big_endian grb2index.f
+ifort  grb2index.o /scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/libg2_v3.1.0_4.a /scratch3/NCEPDEV/nwprod/lib/w3nco/v2.0.6/libw3nco_v2.0.6_4.a /scratch3/NCEPDEV/nwprod/lib/bacio/v2.0.1/libbacio_v2.0.1_4.a -o grb2index
+mkdir -p ../../exec
+cp -p grb2index ../../exec
+rm -f grb2index.o

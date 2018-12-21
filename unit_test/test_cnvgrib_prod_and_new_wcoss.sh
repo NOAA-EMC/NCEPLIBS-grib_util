@@ -15,7 +15,8 @@
 #
 
 prod_grib_util_ver=1.0.3
-test_grib_util_ver=1.0.4
+test_grib_util_ver=1.0.5
+export cyc=00
 
 module load prod_util
 machine=$(getsystem.pl -t)
@@ -48,16 +49,10 @@ elif [ "$machine" = "Cray" ]; then
     module switch grib_util/${prod_grib_util_ver} grib_util/${test_grib_util_ver}
 fi
 
-#
-# These executable files (below) compiled with the G2 library V3.1.0
-#
-# cnvgrib_test=${CNVGRIB:?}
-cnvgrib_test=/gpfs/hps/emc/global/noscrub/Boi.Vuong/cnvgrib/cnvgrib
-# cnvgrib21gfs=${CNVGRIB21_GFS:?}
-cnvgrib21gfs=/gpfs/hps/emc/global/noscrub/Boi.Vuong/cnvgrib21gfs/cnvgrib21_gfs
+cnvgrib_test=${CNVGRIB:?}
+cnvgrib21gfs=${CNVGRIB21_GFS:?}
 copygb2_test=${COPYGB2:?}
-# degrib2_test=${DEGRIB2:?}
-degrib2_test=/gpfs/hps/emc/global/noscrub/Boi.Vuong/degrib2/degrib2
+degrib2_test=${DEGRIB2:?}
 grb2index_test=${GRB2INDEX:?}
 tocgrib2_test=${TOCGRIB2:?}
 
@@ -87,7 +82,7 @@ if [ "$(ls -A $output_g1)" ]; then
    echo "Cleaning $output_g1"
    rm $output_g1/*
 fi
-if [ "$(ls -A $output_g1)" ]; then
+if [ "$(ls -A $output_g2)" ]; then
    echo "Cleaning $output_g2"
    rm $output_g2/*
 fi
@@ -106,12 +101,12 @@ if [ ! -d  $data ] ; then
     exit 1
 fi
 
-if [ -f $input_file/gfs.t00z.pgrb2.0p25.f012 ] ; then
+if [ -f $input_file/gfs.t${cyc}z.pgrb2.0p25.f012 ] ; then
    cp $input_file/gfs*  $dir/data
 else
    echo " "
    echo " "
-   echo "GRB2 File $input_file/gfs.t00z.pgrb2.0p25.f012 Does Not Exist."
+   echo "GRIB2 File $input_file/gfs.t${cyc}z.pgrb2.0p25.f012 Does Not Exist."
    echo " "
    echo " No input GRIB2 file to continue "
    echo " "
@@ -215,7 +210,7 @@ diff $output_g2/$file.grib2.prod.inv $output_g2/$file.grib2.test.inv  > $output_
 if [ $? -eq 0 ]; then echo "PASS"; else echo "FAIL!"; err=1; fi
 diff $output_g2/$file.grib2.prod.wgrib2 $output_g2/$file.grib2.test.wgrib2  > $output_g2/$file.grib2.prod_test.wgrib2.o
 if [ $? -eq 0 ]; then echo "PASS"; else echo "FAIL!"; err=1; fi
-diff $output_g2/$file.grib2.org.inv  $output_g2/$file.grib2.test.inv > $output_g2/$file.grib2.org_test.inv 
+diff $output_g2/$file.grib2.org.inv  $output_g2/$file.grib2.test.inv > $output_g2/$file.grib2.org_test.o
 if [ $? -eq 0 ]; then echo "PASS"; else echo "FAIL!"; err=1; fi
 diff $output_g2/$file.grib2.org.wgrib2 $output_g2/$file.grib2.test.wgrib2 > $output_g2/$file.grib2.org_test.wgrib2.o 
 if [ $? -eq 0 ]; then echo "PASS"; else echo "FAIL!"; err=1; fi

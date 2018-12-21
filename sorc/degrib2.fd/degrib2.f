@@ -11,6 +11,7 @@ C PROGRAM HISTORY LOG:
 C 2010-09-06  Vuong
 C 2011-10-03  Vuong    Added to check for reference time for PDT 4.15
 C 2012-06-07  Vuong    Changed PRINT statement to WRITE with format specifier
+C 2017-01-21  Vuong    Added to check for undefine values 
 C
 C USAGE:
 C   INPUT FILES:
@@ -56,7 +57,7 @@ C
       character(len=30) :: labbrev
       character(len=90) :: tabbrev
       INTEGER(4) NARG,IARGC,temparg
-      integer :: currlen=0
+      integer :: currlen=0, numpts=0
       logical :: unpack,expand
       type(gribfield) :: gfld
       call start()
@@ -143,13 +144,18 @@ C  GET ARGUMENTS
              write(6,'(A,1x,150(1x,I0))')'  Section 3 Optional List:',
      &                (gfld%list_opt(j),j=1,gfld%num_opt)
            endif
-           write(6,'(A,1x,i0,a,80(1x,I0))')'  PRODUCT TEMPLATE 4.',
-     &           gfld%ipdtnum,' : ',
-     &          (gfld%ipdtmpl(j),j=1,gfld%ipdtlen)
+
            pabbrev=param_get_abbrev(gfld%discipline,gfld%ipdtmpl(1),
      &                              gfld%ipdtmpl(2))
            call prlevel(gfld%ipdtnum,gfld%ipdtmpl,labbrev)
            call prvtime(gfld%ipdtnum,gfld%ipdtmpl,listsec1,tabbrev)
+
+           write(6,'(A,1x,I0,A,A,3(1X,I0),A,80(1x,I0))')
+     &         '  PRODUCT TEMPLATE 4.', gfld%ipdtnum,
+     &         ': ( PARAMETER = ', pabbrev, gfld%discipline,
+     &         gfld%ipdtmpl(1),gfld%ipdtmpl(2),' ) ',
+     &         (gfld%ipdtmpl(j),j=1,gfld%ipdtlen)
+
            write(6,'(A,A,A,A,A)')'  FIELD: ',pabbrev,trim(labbrev),
      &           " ",trim(tabbrev)
            if ( gfld%num_coord .eq. 0 ) then
@@ -169,21 +175,35 @@ C  GET ARGUMENTS
            write(6,'(A,I0,A,20(1x,I0))')'  DRS TEMPLATE 5. '
      &           ,gfld%idrtnum,' : ',
      &          (gfld%idrtmpl(j),j=1,gfld%idrtlen)
-           fldmax=gfld%fld(1)
-           fldmin=gfld%fld(1)
-           sum=gfld%fld(1)
+           if (gfld%fld(1) .eq. 9.9990003E+20 ) then  ! checking undefined values
+             fldmax=0.0
+             fldmin=99999.99
+             sum=0.0
+             numpts=0
+           else
+             fldmax=gfld%fld(1)
+             fldmin=gfld%fld(1)
+             sum=gfld%fld(1)
+             numpts=1
+           end if
            do j=2,gfld%ndpts
+             if (gfld%fld(j) .eq. 9.9990003E+20 ) then ! checking undefined values
+                cycle
+             end if
              if (gfld%fld(j).gt.fldmax) fldmax=gfld%fld(j)
              if (gfld%fld(j).lt.fldmin) fldmin=gfld%fld(j)
              sum=sum+gfld%fld(j)
+             numpts=numpts + 1
            enddo
-           write(6,*)' Data Values:'
-           write(6,fmt='("  MIN=",f21.8,"  AVE=",f21.8,
-     &          "  MAX=",f21.8)') fldmin,sum/gfld%ndpts,fldmax
-          !do j=1,gfld%ndpts
-          !   write(22,*) gfld%fld(j)
-          !enddo
 
+           write(6,*)' Data Values:'
+           write(6,'(A,I0,A,I0)')'  Num. of Data Points =  ',
+     &          gfld%ndpts,'   Num. of Data Undefined = ',
+     &          gfld%ndpts-numpts
+           write(6,fmt='( "( PARM= ",A," ) : ",
+     &     " MIN=",f25.8," AVE=",f25.8,
+     &     " MAX=",f25.8)')trim(pabbrev),fldmin,
+     &     sum/numpts,fldmax
           call gf_free(gfld)
          enddo
 

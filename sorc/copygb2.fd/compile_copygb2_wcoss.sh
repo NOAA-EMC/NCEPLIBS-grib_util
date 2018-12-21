@@ -1,38 +1,30 @@
-#!/bin/bash
+#!/bin/sh
 
-export machine=$SITE
+module load prod_util
+machine=$(getsystem.pl -t)
 
-if [ $machine="TIDE" ] || [ $machine="GYRE" ] ; then
+if [ "$machine" = "IBM" ] || [ "$machine" = "Cray" ]; then
    echo " "
-   echo " "
-   echo " You are on WCOSS:  $machine "
-   echo " "
-   echo " "
+   echo " You are on WCOSS:  $(getsystem.pl -p)"
 else
-   echo " "
    echo " "
    echo " Your machine is $machine NOT found "
    echo " The script $0 can not continue.  Aborted ! "
    echo " "
    echo " Your machine must be (SURGE/LUNA) or (TIDE/GYRE)"
-   echo " "
-   echo " "
    exit
 fi
 echo " "
-echo " "
 
-module use  /nwprod2/lib/modulefiles
-module load g2/v3.0.0
-module load w3nco/v2.0.6
-module load bacio/v2.0.2
-module load png/v1.2.44
-module load jasper/v1.900.1
-module load z/v1.2.6
-module load ip/v3.0.0
-module load sp/v2.0.2
+machine_lc=${machine,,} # Get lower case
+makefile=makefile_wcoss_${machine_lc}
 
-make -f makefile_wcoss
-make -f makefile_wcoss clean
-mkdir -p ../../exec
-cp copygb2  ../../exec
+# Load required modules
+module use ../../modulefiles
+module load build_grib_util/${machine_lc}
+module list
+
+make -f $makefile
+make -f $makefile install
+make -f $makefile clean
+

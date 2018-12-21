@@ -1,5 +1,5 @@
 
-I. The grib_util version 1.0.4 needs to implement on CRAY (Surge or Luna) and WCOSS (Tide or Gyre)
+I. The grib_util version 1.0.5 needs to implement on CRAY (Surge or Luna) and WCOSS (Tide or Gyre)
 The G2 library must be installed first on WCOSS (Tide or Gyre) and CRAY (Surge or Luna)
 The following GRIB2 utilities require to recompile after the G2 compiled successfully on
     CRAY and WCOSS.
@@ -14,9 +14,9 @@ The following GRIB2 utilities require to recompile after the G2 compiled success
             GRBINDEX
             TOCGRIB
             GRIB2GRIB
-1. Check out grib_util v1.0.4 source code from EMC SVN
+1. Check out grib_util v1.0.5 source code from EMC SVN
 
-2. Change to grib_util.v1.0.4 directory 
+2. Change to grib_util.v1.0.5 directory 
 
 3. Then, cd to sorc directory
 
@@ -32,7 +32,7 @@ The following GRIB2 utilities require to recompile after the G2 compiled success
                              cnvgrib, cnvgrib21_gfs, copygb, copygb2, degrib2, grb2index, grbindex,
                              grib2grib, tocgrib, tocgrib2, tocgrib2super.
                      NOTE: 
-                         Install WGRIB and WGRIB2.   They do not compile with G2 library v3.0.0 
+                         Install WGRIB and WGRIB2.   They do not compile with G2 library v3.1.0 
 
             -  CRAY (CRAY (ftn) Fortran Compiler - craype-sandybridge)
                     -   cd to grib utility directory.  Example,   cd  cnvgrib.fd
@@ -42,16 +42,16 @@ The following GRIB2 utilities require to recompile after the G2 compiled success
                              cnvgrib, cnvgrib21_gfs, copygb, copygb2, degrib2, grb2index, grbindex,
                              grib2grib, tocgrib, tocgrib2, tocgrib2super. 
                         NOTE: 
-                             Install WGRIB and WGRIB2.   They do not compile with G2 library v3.0.0 
+                             Install WGRIB and WGRIB2.   They do not compile with G2 library v3.1.0 
 
-II. Building module file for GRIB UTIL v1.0.4 on the following machine:
+II. Building module file for GRIB UTIL v1.0.5 on the following machine:
          -WCOSS (Tide or Gyre)
-                ##   Module file grib_util v1.0.4 ##
-                cd  ./grib_util.v1.0.4/modulefiles/grib_util/wcoss
-                cp v1.0.4 to /nwprod2/modulefilesgrib_util
+                ##   Module file grib_util v1.0.5 ##
+                cd  ./grib_util.v1.0.5/modulefiles/grib_util/wcoss
+                cp v1.0.5 to /nwprod2/modulefilesgrib_util
 
                  -CRAY  (Surge or Luna)
-                ##   Module file grib_util v1.0.4 ##
-                        cd  ./grib_util.v1.0.4/modulefiles/grib_util/wcoss
-                cp 1.0.4 to /gpfs/hps/nco/nwprod/modulefiles/grib_util
+                ##   Module file grib_util v1.0.5 ##
+                        cd  ./grib_util.v1.0.5/modulefiles/grib_util/wcoss
+                cp 1.0.5 to /gpfs/hps/nco/nwprod/modulefiles/grib_util
 

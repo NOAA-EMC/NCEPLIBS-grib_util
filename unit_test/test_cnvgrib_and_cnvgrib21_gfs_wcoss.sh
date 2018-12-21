@@ -10,7 +10,8 @@
 #  The input are GRIB2 file.   The GRIB2 file can be in any model (i.e., GFS, NAM, HRRR, RTMA, ...)
 #
 
-grib_util_ver=1.0.4
+grib_util_ver=1.0.5
+export cyc=00
 
 module use /gpfs/hps/nco/ops/nwprod/modulefiles
 module load prod_util
@@ -38,21 +39,10 @@ elif [ "$machine" = "Cray" ]; then
     module load grib_util/${grib_util_ver}
 fi
 
-#
-# These executable files (below) compiled with G2 library V3.1.0
-#
-# cnvgrib=${CNVGRIB:?}
-cnvgrib=/gpfs/hps/emc/global/noscrub/Boi.Vuong/cnvgrib/cnvgrib
-
-# cnvgrib21gfs=${CNVGRIB21_GFS:?}
-cnvgrib21gfs=/gpfs/hps/emc/global/noscrub/Boi.Vuong/cnvgrib21gfs/cnvgrib21_gfs
-
-# copygb2_test=${COPYGB2:?}
-copygb2_test=/gpfs/hps/emc/global/noscrub/Boi.Vuong/copygb2/copygb2
-
-# degrib2_test=${DEGRIB2:?}
-degrib2_test=/gpfs/hps/emc/global/noscrub/Boi.Vuong/degrib2/degrib2
-
+cnvgrib=${CNVGRIB:?}
+cnvgrib21gfs=${CNVGRIB21_GFS:?}
+copygb2_test=${COPYGB2:?}
+degrib2_test=${DEGRIB2:?}
 grb2index_test=${GRB2INDEX:?}
 tocgrib2_test=${TOCGRIB2:?}
 
@@ -72,8 +62,7 @@ data=$dir/data
 #  All test data files are in  /gpfs/sss/emc/global/shared/nceplibs/fix on LUNA or SURGE
 #
 
-# input_file=/gpfs/sss/emc/global/shared/nceplibs/fix/gfs
-input_file=/gpfs/hps/emc/global/noscrub/Boi.Vuong/v3.1.0_1/unit_test/gfs
+input_file=/gpfs/sss/emc/global/shared/nceplibs/fix/gfs
 output_g1=$dir/output_g1
 output_g2=$dir/output_g2
 mkdir -p $data $output_g1 $output_g2
@@ -84,7 +73,7 @@ if [ "$(ls -A $output_g1)" ]; then
    echo "Cleaning $output_g1"
    rm $output_g1/*
 fi
-if [ "$(ls -A $output_g1)" ]; then
+if [ "$(ls -A $output_g2)" ]; then
    echo "Cleaning $output_g2"
    rm $output_g2/*
 fi
@@ -103,13 +92,12 @@ if [ ! -d  $data ] ; then
     exit 1
 fi
 
-# if [ -f $input_file/gfs.t00z.pgrb2.0p25.f012 ] ; then
-if [ -f $input_file/gfs.t00z.pgrb2.0p25.f264 ] ; then
+if [ -f $input_file/gfs.t${cyc}z.pgrb2.0p25.f012 ] ; then
    cp $input_file/gfs*  $dir/data
 else
    echo " " 
    echo " " 
-   echo "GRB2 File $input_file/gfs.t00z.pgrb2.0p25.f012 Does Not Exist." 
+   echo "GRB2 File $input_file/gfs.t${cyc}z.pgrb2.0p25.f012 Does Not Exist." 
    echo " " 
    echo " No input GRIB2 file to continue " 
    echo " " 

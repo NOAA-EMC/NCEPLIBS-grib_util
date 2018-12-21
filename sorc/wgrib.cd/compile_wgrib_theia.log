@@ -1,0 +1,233 @@
++ . /apps/lmod/lmod/init/sh
+++ LMOD_PKG=/apps/lmod/lmod
+++ LMOD_DIR=/apps/lmod/lmod/libexec/
+++ LMOD_CMD=/apps/lmod/lmod/libexec/lmod
+++ MODULESHOME=/apps/lmod/lmod
+++ export LMOD_CMD
+++ export LMOD_PKG
+++ export LMOD_DIR
+++ export MODULESHOME
+++ export LMOD_DIR
++ export machine_lc=theia
++ machine_lc=theia
++ module use /scratch3/NCEPDEV/nwprod/lib/modulefiles
+++ /apps/lmod/lmod/libexec/lmod sh use /scratch3/NCEPDEV/nwprod/lib/modulefiles
++ eval 'MODULEPATH="/scratch3/NCEPDEV/nwprod/lib/modulefiles:/apps/lmod/lmod/modulefiles/Core:/apps/modules/modulefiles/Linux:/apps/modules/modulefiles:/apps/modules/modulefamilies/intel";' export 'MODULEPATH;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09ImludGVsIix9LG1UPXtocHNzPXtbImZuIl09Ii9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvaHBzcy9ocHNzIixbImZ1bGxOYW1lIl09Imhwc3MvaHBzcyIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJocHNzIix9LGludGVsPXtbImZuIl09Ii9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4yIixbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMiIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic3RhdHVzIl09";' export '_ModuleTable001_;' '_ModuleTable002_="ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJpbnRlbCIsfSx9LG1wYXRoQT17Ii9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMiLCIvYXBwcy9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsIi9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvTGludXgiLCIvYXBwcy9tb2R1bGVzL21vZHVsZWZpbGVzIiwiL2FwcHMvbW9kdWxlcy9tb2R1bGVmYW1pbGllcy9pbnRlbCIsfSxbInN5c3RlbUJhc2VNUEFUSCJdPSIvYXBwcy9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZTovYXBwcy9tb2R1bGVzL21vZHVsZWZpbGVzL0xpbnV4Oi9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMiLH0=";' export '_ModuleTable002_;' '_ModuleTable_Sz_="2";' export '_ModuleTable_Sz_;'
+++ MODULEPATH=/scratch3/NCEPDEV/nwprod/lib/modulefiles:/apps/lmod/lmod/modulefiles/Core:/apps/modules/modulefiles/Linux:/apps/modules/modulefiles:/apps/modules/modulefamilies/intel
+++ export MODULEPATH
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09ImludGVsIix9LG1UPXtocHNzPXtbImZuIl09Ii9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvaHBzcy9ocHNzIixbImZ1bGxOYW1lIl09Imhwc3MvaHBzcyIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJocHNzIix9LGludGVsPXtbImZuIl09Ii9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4yIixbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMiIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic3RhdHVzIl09
+++ export _ModuleTable001_
+++ _ModuleTable002_=ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJpbnRlbCIsfSx9LG1wYXRoQT17Ii9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMiLCIvYXBwcy9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsIi9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvTGludXgiLCIvYXBwcy9tb2R1bGVzL21vZHVsZWZpbGVzIiwiL2FwcHMvbW9kdWxlcy9tb2R1bGVmYW1pbGllcy9pbnRlbCIsfSxbInN5c3RlbUJhc2VNUEFUSCJdPSIvYXBwcy9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZTovYXBwcy9tb2R1bGVzL21vZHVsZWZpbGVzL0xpbnV4Oi9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMiLH0=
+++ export _ModuleTable002_
+++ _ModuleTable_Sz_=2
+++ export _ModuleTable_Sz_
++ module use /apps/modules/modulefamilies/intel
+++ /apps/lmod/lmod/libexec/lmod sh use /apps/modules/modulefamilies/intel
++ eval 'MODULEPATH="/apps/modules/modulefamilies/intel:/scratch3/NCEPDEV/nwprod/lib/modulefiles:/apps/lmod/lmod/modulefiles/Core:/apps/modules/modulefiles/Linux:/apps/modules/modulefiles";' export 'MODULEPATH;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09ImludGVsIix9LG1UPXtocHNzPXtbImZuIl09Ii9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvaHBzcy9ocHNzIixbImZ1bGxOYW1lIl09Imhwc3MvaHBzcyIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJocHNzIix9LGludGVsPXtbImZuIl09Ii9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4yIixbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMiIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic3RhdHVzIl09";' export '_ModuleTable001_;' '_ModuleTable002_="ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJpbnRlbCIsfSx9LG1wYXRoQT17Ii9hcHBzL21vZHVsZXMvbW9kdWxlZmFtaWxpZXMvaW50ZWwiLCIvc2NyYXRjaDMvTkNFUERFVi9ud3Byb2QvbGliL21vZHVsZWZpbGVzIiwiL2FwcHMvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmUiLCIvYXBwcy9tb2R1bGVzL21vZHVsZWZpbGVzL0xpbnV4IiwiL2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcyIsfSxbInN5c3RlbUJhc2VNUEFUSCJdPSIvYXBwcy9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZTovYXBwcy9tb2R1bGVzL21vZHVsZWZpbGVzL0xpbnV4Oi9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMiLH0=";' export '_ModuleTable002_;' '_ModuleTable_Sz_="2";' export '_ModuleTable_Sz_;'
+++ MODULEPATH=/apps/modules/modulefamilies/intel:/scratch3/NCEPDEV/nwprod/lib/modulefiles:/apps/lmod/lmod/modulefiles/Core:/apps/modules/modulefiles/Linux:/apps/modules/modulefiles
+++ export MODULEPATH
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09ImludGVsIix9LG1UPXtocHNzPXtbImZuIl09Ii9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvaHBzcy9ocHNzIixbImZ1bGxOYW1lIl09Imhwc3MvaHBzcyIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJocHNzIix9LGludGVsPXtbImZuIl09Ii9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4yIixbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMiIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic3RhdHVzIl09
+++ export _ModuleTable001_
+++ _ModuleTable002_=ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJpbnRlbCIsfSx9LG1wYXRoQT17Ii9hcHBzL21vZHVsZXMvbW9kdWxlZmFtaWxpZXMvaW50ZWwiLCIvc2NyYXRjaDMvTkNFUERFVi9ud3Byb2QvbGliL21vZHVsZWZpbGVzIiwiL2FwcHMvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmUiLCIvYXBwcy9tb2R1bGVzL21vZHVsZWZpbGVzL0xpbnV4IiwiL2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcyIsfSxbInN5c3RlbUJhc2VNUEFUSCJdPSIvYXBwcy9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZTovYXBwcy9tb2R1bGVzL21vZHVsZWZpbGVzL0xpbnV4Oi9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMiLH0=
+++ export _ModuleTable002_
+++ _ModuleTable_Sz_=2
+++ export _ModuleTable_Sz_
++ makefile=makefile_theia
++ module use ../../modulefiles
+++ /apps/lmod/lmod/libexec/lmod sh use ../../modulefiles
++ eval 'MODULEPATH="../../modulefiles:/apps/modules/modulefamilies/intel:/scratch3/NCEPDEV/nwprod/lib/modulefiles:/apps/lmod/lmod/modulefiles/Core:/apps/modules/modulefiles/Linux:/apps/modules/modulefiles";' export 'MODULEPATH;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09ImludGVsIix9LG1UPXtocHNzPXtbImZuIl09Ii9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvaHBzcy9ocHNzIixbImZ1bGxOYW1lIl09Imhwc3MvaHBzcyIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJocHNzIix9LGludGVsPXtbImZuIl09Ii9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4yIixbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMiIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic3RhdHVzIl09";' export '_ModuleTable001_;' '_ModuleTable002_="ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJpbnRlbCIsfSx9LG1wYXRoQT17Ii4uLy4uL21vZHVsZWZpbGVzIiwiL2FwcHMvbW9kdWxlcy9tb2R1bGVmYW1pbGllcy9pbnRlbCIsIi9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMiLCIvYXBwcy9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsIi9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvTGludXgiLCIvYXBwcy9tb2R1bGVzL21vZHVsZWZpbGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9hcHBzL2xtb2QvbG1vZC9tb2R1bGVmaWxlcy9Db3JlOi9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvTGludXg6L2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcyIsfQ==";' export '_ModuleTable002_;' '_ModuleTable_Sz_="2";' export '_ModuleTable_Sz_;'
+++ MODULEPATH=../../modulefiles:/apps/modules/modulefamilies/intel:/scratch3/NCEPDEV/nwprod/lib/modulefiles:/apps/lmod/lmod/modulefiles/Core:/apps/modules/modulefiles/Linux:/apps/modules/modulefiles
+++ export MODULEPATH
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09ImludGVsIix9LG1UPXtocHNzPXtbImZuIl09Ii9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvaHBzcy9ocHNzIixbImZ1bGxOYW1lIl09Imhwc3MvaHBzcyIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJocHNzIix9LGludGVsPXtbImZuIl09Ii9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvaW50ZWwvMTQuMC4yIixbImZ1bGxOYW1lIl09ImludGVsLzE0LjAuMiIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic3RhdHVzIl09
+++ export _ModuleTable001_
+++ _ModuleTable002_=ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJpbnRlbCIsfSx9LG1wYXRoQT17Ii4uLy4uL21vZHVsZWZpbGVzIiwiL2FwcHMvbW9kdWxlcy9tb2R1bGVmYW1pbGllcy9pbnRlbCIsIi9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMiLCIvYXBwcy9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsIi9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvTGludXgiLCIvYXBwcy9tb2R1bGVzL21vZHVsZWZpbGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9hcHBzL2xtb2QvbG1vZC9tb2R1bGVmaWxlcy9Db3JlOi9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvTGludXg6L2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcyIsfQ==
+++ export _ModuleTable002_
+++ _ModuleTable_Sz_=2
+++ export _ModuleTable_Sz_
++ module load build_grib_util/theia
+++ /apps/lmod/lmod/libexec/lmod sh load build_grib_util/theia
++ eval 'BACIO_INC4="' '";' export 'BACIO_INC4;' 'BACIO_INC8="' '";' export 'BACIO_INC8;' 'BACIO_INCd="' '";' export 'BACIO_INCd;' 'BACIO_LIB4="/scratch3/NCEPDEV/nwprod/lib/bacio/v2.0.1/libbacio_v2.0.1_4.a";' export 'BACIO_LIB4;' 'BACIO_LIB8="/scratch3/NCEPDEV/nwprod/lib/bacio/v2.0.1/libbacio_v2.0.1_8.a";' export 'BACIO_LIB8;' 'BACIO_SRC="/scratch3/NCEPDEV/nwprod/lib/bacio/v2.0.1/sorc";' export 'BACIO_SRC;' 'BACIO_VER="v2.0.1";' export 'BACIO_VER;' 'G2_INC4="/scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_4";' export 'G2_INC4;' 'G2_INCd="/scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_d";' export 'G2_INCd;' 'G2_LIB4="/scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/libg2_v3.1.0_4.a";' export 'G2_LIB4;' 'G2_LIBd="/scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/libg2_v3.1.0_d.a";' export 'G2_LIBd;' 'G2_SRC="/scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/src";' export 'G2_SRC;' 'G2_VER="v3.1.0";' export 'G2_VER;' 'IP_INC4="/scratch3/NCEPDEV/nwprod/lib/ip/v3.0.0/include/ip_v3.0.0_4";' export 'IP_INC4;' 'IP_INC8="/scratch3/NCEPDEV/nwprod/lib/ip/v3.0.0/include/ip_v3.0.0_8";' export 'IP_INC8;' 'IP_INCd="/scratch3/NCEPDEV/nwprod/lib/ip/v3.0.0/include/ip_v3.0.0_d";' export 'IP_INCd;' 'IP_LIB4="/scratch3/NCEPDEV/nwprod/lib/ip/v3.0.0/libip_v3.0.0_4.a";' export 'IP_LIB4;' 'IP_LIB8="/scratch3/NCEPDEV/nwprod/lib/ip/v3.0.0/libip_v3.0.0_8.a";' export 'IP_LIB8;' 'IP_LIBd="/scratch3/NCEPDEV/nwprod/lib/ip/v3.0.0/libip_v3.0.0_d.a";' export 'IP_LIBd;' 'IP_SRC="/scratch3/NCEPDEV/nwprod/lib/sorc/ip_v3.0.0";' export 'IP_SRC;' 'IP_VER="v3.0.0";' export 'IP_VER;' 'JASPER_INC="/scratch3/NCEPDEV/nwprod/lib/jasper/v1.900.1/include";' export 'JASPER_INC;' 'JASPER_LIB="/scratch3/NCEPDEV/nwprod/lib/jasper/v1.900.1/libjasper_v1.900.1.a";' export 'JASPER_LIB;' 'JASPER_LIBDIR="/scratch3/NCEPDEV/nwprod/lib/jasper/v1.900.1";' export 'JASPER_LIBDIR;' 'JASPER_LIBl="/scratch3/NCEPDEV/nwprod/lib/jasper/v1.900.1/libjasper_v1.900.1.la";' export 'JASPER_LIBl;' 'JASPER_SRC="/scratch3/NCEPDEV/nwprod/lib/jasper/v1.900.1/src";' export 'JASPER_SRC;' 'JASPER_VER="v1.900.1";' export 'JASPER_VER;' 'LIB_NAME="G2";' export 'LIB_NAME;' 'LOADEDMODULES="intel/14.0.2:hpss/hpss:jasper/v1.900.1:png/v1.2.44:z/v1.2.6:bacio/v2.0.1:w3emc/v2.2.0:w3nco/v2.0.6:ip/v3.0.0:sp/v2.0.2:g2/v3.1.0:build_grib_util/theia/1.0.5";' export 'LOADEDMODULES;' 'MODULEPATH="../../modulefiles:/apps/modules/modulefamilies/intel:/scratch3/NCEPDEV/nwprod/lib/modulefiles:/apps/lmod/lmod/modulefiles/Core:/apps/modules/modulefiles/Linux:/apps/modules/modulefiles";' export 'MODULEPATH;' 'PNG_INC="/scratch3/NCEPDEV/nwprod/lib/png/v1.2.44/src/include";' export 'PNG_INC;' 'PNG_LIB="/scratch3/NCEPDEV/nwprod/lib/png/v1.2.44/libpng.a";' export 'PNG_LIB;' 'PNG_LIB12="/scratch3/NCEPDEV/nwprod/lib/png/v1.2.44/libpng12.a";' export 'PNG_LIB12;' 'PNG_LIBDIR="/scratch3/NCEPDEV/nwprod/lib/png/v1.2.44";' export 'PNG_LIBDIR;' 'PNG_LIBso="/scratch3/NCEPDEV/nwprod/lib/png/v1.2.44/libpng.so";' export 'PNG_LIBso;' 'PNG_SRC="/scratch3/NCEPDEV/nwprod/lib/png/v1.2.44/src";' export 'PNG_SRC;' 'PNG_VER="v1.2.44";' export 'PNG_VER;' 'SP_INC4="' '";' export 'SP_INC4;' 'SP_INC8="' '";' export 'SP_INC8;' 'SP_INCd="' '";' export 'SP_INCd;' 'SP_LIB4="/scratch3/NCEPDEV/nwprod/lib/sp/v2.0.2/libsp_v2.0.2_4.a";' export 'SP_LIB4;' 'SP_LIB8="/scratch3/NCEPDEV/nwprod/lib/sp/v2.0.2/libsp_v2.0.2_8.a";' export 'SP_LIB8;' 'SP_LIBd="/scratch3/NCEPDEV/nwprod/lib/sp/v2.0.2/libsp_v2.0.2_d.a";' export 'SP_LIBd;' 'SP_SRC="/scratch3/NCEPDEV/nwprod/lib/sp/v2.0.2/sorc";' export 'SP_SRC;' 'SP_VER="v2.0.2";' export 'SP_VER;' 'W3EMC_INC4="/scratch3/NCEPDEV/nwprod/lib/w3emc/v2.2.0/incmod/w3emc_v2.2.0_4";' export 'W3EMC_INC4;' 'W3EMC_INC8="/scratch3/NCEPDEV/nwprod/lib/w3emc/v2.2.0/incmod/w3emc_v2.2.0_8";' export 'W3EMC_INC8;' 'W3EMC_INCd="/scratch3/NCEPDEV/nwprod/lib/w3emc/v2.2.0/incmod/w3emc_v2.2.0_d";' export 'W3EMC_INCd;' 'W3EMC_LIB4="/scratch3/NCEPDEV/nwprod/lib/w3emc/v2.2.0/libw3emc_v2.2.0_4.a";' export 'W3EMC_LIB4;' 'W3EMC_LIB8="/scratch3/NCEPDEV/nwprod/lib/w3emc/v2.2.0/libw3emc_v2.2.0_8.a";' export 'W3EMC_LIB8;' 'W3EMC_LIBd="/scratch3/NCEPDEV/nwprod/lib/w3emc/v2.2.0/libw3emc_v2.2.0_d.a";' export 'W3EMC_LIBd;' 'W3EMC_SRC="/scratch3/NCEPDEV/nwprod/lib/w3emc/v2.2.0/sorc/w3emc_v2.2.0";' export 'W3EMC_SRC;' 'W3EMC_VER="v2.2.0";' export 'W3EMC_VER;' 'W3NCO_LIB4="/scratch3/NCEPDEV/nwprod/lib/w3nco/v2.0.6/libw3nco_v2.0.6_4.a";' export 'W3NCO_LIB4;' 'W3NCO_LIB8="/scratch3/NCEPDEV/nwprod/lib/w3nco/v2.0.6/libw3nco_v2.0.6_8.a";' export 'W3NCO_LIB8;' 'W3NCO_LIBd="/scratch3/NCEPDEV/nwprod/lib/w3nco/v2.0.6/libw3nco_v2.0.6_d.a";' export 'W3NCO_LIBd;' 'W3NCO_SRC="/scratch3/NCEPDEV/nwprod/lib/w3nco/v2.0.6/sorc/w3nco_v2.0.6";' export 'W3NCO_SRC;' 'W3NCO_VER="v2.0.6";' export 'W3NCO_VER;' 'Z_INC="/scratch3/NCEPDEV/nwprod/lib/z/v1.2.6/include";' export 'Z_INC;' 'Z_LIB="/scratch3/NCEPDEV/nwprod/lib/z/v1.2.6/libz_v1.2.6.a";' export 'Z_LIB;' 'Z_SRC="/scratch3/NCEPDEV/nwprod/lib/z/v1.2.6/sorc";' export 'Z_SRC;' 'Z_VER="v1.2.6";' export 'Z_VER;' '_LMFILES_="/apps/modules/modulefiles/intel/14.0.2:/apps/modules/modulefiles/hpss/hpss:/scratch3/NCEPDEV/nwprod/lib/modulefiles/jasper/v1.900.1:/scratch3/NCEPDEV/nwprod/lib/modulefiles/png/v1.2.44:/scratch3/NCEPDEV/nwprod/lib/modulefiles/z/v1.2.6:/scratch3/NCEPDEV/nwprod/lib/modulefiles/bacio/v2.0.1:/scratch3/NCEPDEV/nwprod/lib/modulefiles/w3emc/v2.2.0:/scratch3/NCEPDEV/nwprod/lib/modulefiles/w3nco/v2.0.6:/scratch3/NCEPDEV/nwprod/lib/modulefiles/ip/v3.0.0:/scratch3/NCEPDEV/nwprod/lib/modulefiles/sp/v2.0.2:/scratch3/NCEPDEV/nwprod/lib/modulefiles/g2/v3.1.0:../../modulefiles/build_grib_util/theia/1.0.5";' export '_LMFILES_;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09ImludGVsIix9LG1UPXtiYWNpbz17WyJmbiJdPSIvc2NyYXRjaDMvTkNFUERFVi9ud3Byb2QvbGliL21vZHVsZWZpbGVzL2JhY2lvL3YyLjAuMSIsWyJmdWxsTmFtZSJdPSJiYWNpby92Mi4wLjEiLFsibG9hZE9yZGVyIl09Nixwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYmFjaW8vdjIuMC4xIix9LFsiYnVpbGRfZ3JpYl91dGlsL3RoZWlhIl09e1siZm4iXT0iLi4vLi4vbW9kdWxlZmlsZXMvYnVpbGRfZ3JpYl91dGlsL3RoZWlhLzEuMC41IixbImZ1bGxO";' export '_ModuleTable001_;' '_ModuleTable002_="YW1lIl09ImJ1aWxkX2dyaWJfdXRpbC90aGVpYS8xLjAuNSIsWyJsb2FkT3JkZXIiXT0xMixwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYnVpbGRfZ3JpYl91dGlsL3RoZWlhIix9LGcyPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvZzIvdjMuMS4wIixbImZ1bGxOYW1lIl09ImcyL3YzLjEuMCIsWyJsb2FkT3JkZXIiXT0xMSxwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iZzIvdjMuMS4wIix9LGhwc3M9e1siZm4iXT0iL2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcy9ocHNzL2hwc3MiLFsiZnVsbE5hbWUiXT0iaHBzcy9ocHNzIixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30s";' export '_ModuleTable002_;' '_ModuleTable003_="WyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09Imhwc3MiLH0saW50ZWw9e1siZm4iXT0iL2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcy9pbnRlbC8xNC4wLjIiLFsiZnVsbE5hbWUiXT0iaW50ZWwvMTQuMC4yIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImludGVsIix9LGlwPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvaXAvdjMuMC4wIixbImZ1bGxOYW1lIl09ImlwL3YzLjAuMCIsWyJsb2FkT3JkZXIiXT05LHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJpcC92My4wLjAiLH0samFzcGVyPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQ";' export '_ModuleTable003_;' '_ModuleTable004_="REVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvamFzcGVyL3YxLjkwMC4xIixbImZ1bGxOYW1lIl09Imphc3Blci92MS45MDAuMSIsWyJsb2FkT3JkZXIiXT0zLHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJqYXNwZXIvdjEuOTAwLjEiLH0scG5nPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvcG5nL3YxLjIuNDQiLFsiZnVsbE5hbWUiXT0icG5nL3YxLjIuNDQiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0icG5nL3YxLjIuNDQiLH0sc3A9e1siZm4iXT0iL3NjcmF0Y2gzL05DRVBERVYvbndwcm9kL2xpYi9tb2R1bGVmaWxlcy9zcC92Mi4wLjIi";' export '_ModuleTable004_;' '_ModuleTable005_="LFsiZnVsbE5hbWUiXT0ic3AvdjIuMC4yIixbImxvYWRPcmRlciJdPTEwLHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJzcC92Mi4wLjIiLH0sdzNlbWM9e1siZm4iXT0iL3NjcmF0Y2gzL05DRVBERVYvbndwcm9kL2xpYi9tb2R1bGVmaWxlcy93M2VtYy92Mi4yLjAiLFsiZnVsbE5hbWUiXT0idzNlbWMvdjIuMi4wIixbImxvYWRPcmRlciJdPTcscHJvcFQ9e30sWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09InczZW1jL3YyLjIuMCIsfSx3M25jbz17WyJmbiJdPSIvc2NyYXRjaDMvTkNFUERFVi9ud3Byb2QvbGliL21vZHVsZWZpbGVzL3czbmNvL3YyLjAuNiIsWyJmdWxsTmFtZSJdPSJ3M25jby92Mi4wLjYiLFsibG9hZE9yZGVyIl09";' export '_ModuleTable005_;' '_ModuleTable006_="OCxwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0idzNuY28vdjIuMC42Iix9LHo9e1siZm4iXT0iL3NjcmF0Y2gzL05DRVBERVYvbndwcm9kL2xpYi9tb2R1bGVmaWxlcy96L3YxLjIuNiIsWyJmdWxsTmFtZSJdPSJ6L3YxLjIuNiIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJ6L3YxLjIuNiIsfSx9LG1wYXRoQT17Ii4uLy4uL21vZHVsZWZpbGVzIiwiL2FwcHMvbW9kdWxlcy9tb2R1bGVmYW1pbGllcy9pbnRlbCIsIi9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMiLCIvYXBwcy9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsIi9hcHBzL21vZHVsZXMvbW9kdWxl";' export '_ModuleTable006_;' '_ModuleTable007_="ZmlsZXMvTGludXgiLCIvYXBwcy9tb2R1bGVzL21vZHVsZWZpbGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9hcHBzL2xtb2QvbG1vZC9tb2R1bGVmaWxlcy9Db3JlOi9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvTGludXg6L2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcyIsfQ==";' export '_ModuleTable007_;' '_ModuleTable_Sz_="7";' export '_ModuleTable_Sz_;'
+++ BACIO_INC4=' '
+++ export BACIO_INC4
+++ BACIO_INC8=' '
+++ export BACIO_INC8
+++ BACIO_INCd=' '
+++ export BACIO_INCd
+++ BACIO_LIB4=/scratch3/NCEPDEV/nwprod/lib/bacio/v2.0.1/libbacio_v2.0.1_4.a
+++ export BACIO_LIB4
+++ BACIO_LIB8=/scratch3/NCEPDEV/nwprod/lib/bacio/v2.0.1/libbacio_v2.0.1_8.a
+++ export BACIO_LIB8
+++ BACIO_SRC=/scratch3/NCEPDEV/nwprod/lib/bacio/v2.0.1/sorc
+++ export BACIO_SRC
+++ BACIO_VER=v2.0.1
+++ export BACIO_VER
+++ G2_INC4=/scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_4
+++ export G2_INC4
+++ G2_INCd=/scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_d
+++ export G2_INCd
+++ G2_LIB4=/scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/libg2_v3.1.0_4.a
+++ export G2_LIB4
+++ G2_LIBd=/scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/libg2_v3.1.0_d.a
+++ export G2_LIBd
+++ G2_SRC=/scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/src
+++ export G2_SRC
+++ G2_VER=v3.1.0
+++ export G2_VER
+++ IP_INC4=/scratch3/NCEPDEV/nwprod/lib/ip/v3.0.0/include/ip_v3.0.0_4
+++ export IP_INC4
+++ IP_INC8=/scratch3/NCEPDEV/nwprod/lib/ip/v3.0.0/include/ip_v3.0.0_8
+++ export IP_INC8
+++ IP_INCd=/scratch3/NCEPDEV/nwprod/lib/ip/v3.0.0/include/ip_v3.0.0_d
+++ export IP_INCd
+++ IP_LIB4=/scratch3/NCEPDEV/nwprod/lib/ip/v3.0.0/libip_v3.0.0_4.a
+++ export IP_LIB4
+++ IP_LIB8=/scratch3/NCEPDEV/nwprod/lib/ip/v3.0.0/libip_v3.0.0_8.a
+++ export IP_LIB8
+++ IP_LIBd=/scratch3/NCEPDEV/nwprod/lib/ip/v3.0.0/libip_v3.0.0_d.a
+++ export IP_LIBd
+++ IP_SRC=/scratch3/NCEPDEV/nwprod/lib/sorc/ip_v3.0.0
+++ export IP_SRC
+++ IP_VER=v3.0.0
+++ export IP_VER
+++ JASPER_INC=/scratch3/NCEPDEV/nwprod/lib/jasper/v1.900.1/include
+++ export JASPER_INC
+++ JASPER_LIB=/scratch3/NCEPDEV/nwprod/lib/jasper/v1.900.1/libjasper_v1.900.1.a
+++ export JASPER_LIB
+++ JASPER_LIBDIR=/scratch3/NCEPDEV/nwprod/lib/jasper/v1.900.1
+++ export JASPER_LIBDIR
+++ JASPER_LIBl=/scratch3/NCEPDEV/nwprod/lib/jasper/v1.900.1/libjasper_v1.900.1.la
+++ export JASPER_LIBl
+++ JASPER_SRC=/scratch3/NCEPDEV/nwprod/lib/jasper/v1.900.1/src
+++ export JASPER_SRC
+++ JASPER_VER=v1.900.1
+++ export JASPER_VER
+++ LIB_NAME=G2
+++ export LIB_NAME
+++ LOADEDMODULES=intel/14.0.2:hpss/hpss:jasper/v1.900.1:png/v1.2.44:z/v1.2.6:bacio/v2.0.1:w3emc/v2.2.0:w3nco/v2.0.6:ip/v3.0.0:sp/v2.0.2:g2/v3.1.0:build_grib_util/theia/1.0.5
+++ export LOADEDMODULES
+++ MODULEPATH=../../modulefiles:/apps/modules/modulefamilies/intel:/scratch3/NCEPDEV/nwprod/lib/modulefiles:/apps/lmod/lmod/modulefiles/Core:/apps/modules/modulefiles/Linux:/apps/modules/modulefiles
+++ export MODULEPATH
+++ PNG_INC=/scratch3/NCEPDEV/nwprod/lib/png/v1.2.44/src/include
+++ export PNG_INC
+++ PNG_LIB=/scratch3/NCEPDEV/nwprod/lib/png/v1.2.44/libpng.a
+++ export PNG_LIB
+++ PNG_LIB12=/scratch3/NCEPDEV/nwprod/lib/png/v1.2.44/libpng12.a
+++ export PNG_LIB12
+++ PNG_LIBDIR=/scratch3/NCEPDEV/nwprod/lib/png/v1.2.44
+++ export PNG_LIBDIR
+++ PNG_LIBso=/scratch3/NCEPDEV/nwprod/lib/png/v1.2.44/libpng.so
+++ export PNG_LIBso
+++ PNG_SRC=/scratch3/NCEPDEV/nwprod/lib/png/v1.2.44/src
+++ export PNG_SRC
+++ PNG_VER=v1.2.44
+++ export PNG_VER
+++ SP_INC4=' '
+++ export SP_INC4
+++ SP_INC8=' '
+++ export SP_INC8
+++ SP_INCd=' '
+++ export SP_INCd
+++ SP_LIB4=/scratch3/NCEPDEV/nwprod/lib/sp/v2.0.2/libsp_v2.0.2_4.a
+++ export SP_LIB4
+++ SP_LIB8=/scratch3/NCEPDEV/nwprod/lib/sp/v2.0.2/libsp_v2.0.2_8.a
+++ export SP_LIB8
+++ SP_LIBd=/scratch3/NCEPDEV/nwprod/lib/sp/v2.0.2/libsp_v2.0.2_d.a
+++ export SP_LIBd
+++ SP_SRC=/scratch3/NCEPDEV/nwprod/lib/sp/v2.0.2/sorc
+++ export SP_SRC
+++ SP_VER=v2.0.2
+++ export SP_VER
+++ W3EMC_INC4=/scratch3/NCEPDEV/nwprod/lib/w3emc/v2.2.0/incmod/w3emc_v2.2.0_4
+++ export W3EMC_INC4
+++ W3EMC_INC8=/scratch3/NCEPDEV/nwprod/lib/w3emc/v2.2.0/incmod/w3emc_v2.2.0_8
+++ export W3EMC_INC8
+++ W3EMC_INCd=/scratch3/NCEPDEV/nwprod/lib/w3emc/v2.2.0/incmod/w3emc_v2.2.0_d
+++ export W3EMC_INCd
+++ W3EMC_LIB4=/scratch3/NCEPDEV/nwprod/lib/w3emc/v2.2.0/libw3emc_v2.2.0_4.a
+++ export W3EMC_LIB4
+++ W3EMC_LIB8=/scratch3/NCEPDEV/nwprod/lib/w3emc/v2.2.0/libw3emc_v2.2.0_8.a
+++ export W3EMC_LIB8
+++ W3EMC_LIBd=/scratch3/NCEPDEV/nwprod/lib/w3emc/v2.2.0/libw3emc_v2.2.0_d.a
+++ export W3EMC_LIBd
+++ W3EMC_SRC=/scratch3/NCEPDEV/nwprod/lib/w3emc/v2.2.0/sorc/w3emc_v2.2.0
+++ export W3EMC_SRC
+++ W3EMC_VER=v2.2.0
+++ export W3EMC_VER
+++ W3NCO_LIB4=/scratch3/NCEPDEV/nwprod/lib/w3nco/v2.0.6/libw3nco_v2.0.6_4.a
+++ export W3NCO_LIB4
+++ W3NCO_LIB8=/scratch3/NCEPDEV/nwprod/lib/w3nco/v2.0.6/libw3nco_v2.0.6_8.a
+++ export W3NCO_LIB8
+++ W3NCO_LIBd=/scratch3/NCEPDEV/nwprod/lib/w3nco/v2.0.6/libw3nco_v2.0.6_d.a
+++ export W3NCO_LIBd
+++ W3NCO_SRC=/scratch3/NCEPDEV/nwprod/lib/w3nco/v2.0.6/sorc/w3nco_v2.0.6
+++ export W3NCO_SRC
+++ W3NCO_VER=v2.0.6
+++ export W3NCO_VER
+++ Z_INC=/scratch3/NCEPDEV/nwprod/lib/z/v1.2.6/include
+++ export Z_INC
+++ Z_LIB=/scratch3/NCEPDEV/nwprod/lib/z/v1.2.6/libz_v1.2.6.a
+++ export Z_LIB
+++ Z_SRC=/scratch3/NCEPDEV/nwprod/lib/z/v1.2.6/sorc
+++ export Z_SRC
+++ Z_VER=v1.2.6
+++ export Z_VER
+++ _LMFILES_=/apps/modules/modulefiles/intel/14.0.2:/apps/modules/modulefiles/hpss/hpss:/scratch3/NCEPDEV/nwprod/lib/modulefiles/jasper/v1.900.1:/scratch3/NCEPDEV/nwprod/lib/modulefiles/png/v1.2.44:/scratch3/NCEPDEV/nwprod/lib/modulefiles/z/v1.2.6:/scratch3/NCEPDEV/nwprod/lib/modulefiles/bacio/v2.0.1:/scratch3/NCEPDEV/nwprod/lib/modulefiles/w3emc/v2.2.0:/scratch3/NCEPDEV/nwprod/lib/modulefiles/w3nco/v2.0.6:/scratch3/NCEPDEV/nwprod/lib/modulefiles/ip/v3.0.0:/scratch3/NCEPDEV/nwprod/lib/modulefiles/sp/v2.0.2:/scratch3/NCEPDEV/nwprod/lib/modulefiles/g2/v3.1.0:../../modulefiles/build_grib_util/theia/1.0.5
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09ImludGVsIix9LG1UPXtiYWNpbz17WyJmbiJdPSIvc2NyYXRjaDMvTkNFUERFVi9ud3Byb2QvbGliL21vZHVsZWZpbGVzL2JhY2lvL3YyLjAuMSIsWyJmdWxsTmFtZSJdPSJiYWNpby92Mi4wLjEiLFsibG9hZE9yZGVyIl09Nixwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYmFjaW8vdjIuMC4xIix9LFsiYnVpbGRfZ3JpYl91dGlsL3RoZWlhIl09e1siZm4iXT0iLi4vLi4vbW9kdWxlZmlsZXMvYnVpbGRfZ3JpYl91dGlsL3RoZWlhLzEuMC41IixbImZ1bGxO
+++ export _ModuleTable001_
+++ _ModuleTable002_=YW1lIl09ImJ1aWxkX2dyaWJfdXRpbC90aGVpYS8xLjAuNSIsWyJsb2FkT3JkZXIiXT0xMixwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYnVpbGRfZ3JpYl91dGlsL3RoZWlhIix9LGcyPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvZzIvdjMuMS4wIixbImZ1bGxOYW1lIl09ImcyL3YzLjEuMCIsWyJsb2FkT3JkZXIiXT0xMSxwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iZzIvdjMuMS4wIix9LGhwc3M9e1siZm4iXT0iL2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcy9ocHNzL2hwc3MiLFsiZnVsbE5hbWUiXT0iaHBzcy9ocHNzIixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30s
+++ export _ModuleTable002_
+++ _ModuleTable003_=WyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09Imhwc3MiLH0saW50ZWw9e1siZm4iXT0iL2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcy9pbnRlbC8xNC4wLjIiLFsiZnVsbE5hbWUiXT0iaW50ZWwvMTQuMC4yIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImludGVsIix9LGlwPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvaXAvdjMuMC4wIixbImZ1bGxOYW1lIl09ImlwL3YzLjAuMCIsWyJsb2FkT3JkZXIiXT05LHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJpcC92My4wLjAiLH0samFzcGVyPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQ
+++ export _ModuleTable003_
+++ _ModuleTable004_=REVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvamFzcGVyL3YxLjkwMC4xIixbImZ1bGxOYW1lIl09Imphc3Blci92MS45MDAuMSIsWyJsb2FkT3JkZXIiXT0zLHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJqYXNwZXIvdjEuOTAwLjEiLH0scG5nPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvcG5nL3YxLjIuNDQiLFsiZnVsbE5hbWUiXT0icG5nL3YxLjIuNDQiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0icG5nL3YxLjIuNDQiLH0sc3A9e1siZm4iXT0iL3NjcmF0Y2gzL05DRVBERVYvbndwcm9kL2xpYi9tb2R1bGVmaWxlcy9zcC92Mi4wLjIi
+++ export _ModuleTable004_
+++ _ModuleTable005_=LFsiZnVsbE5hbWUiXT0ic3AvdjIuMC4yIixbImxvYWRPcmRlciJdPTEwLHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJzcC92Mi4wLjIiLH0sdzNlbWM9e1siZm4iXT0iL3NjcmF0Y2gzL05DRVBERVYvbndwcm9kL2xpYi9tb2R1bGVmaWxlcy93M2VtYy92Mi4yLjAiLFsiZnVsbE5hbWUiXT0idzNlbWMvdjIuMi4wIixbImxvYWRPcmRlciJdPTcscHJvcFQ9e30sWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09InczZW1jL3YyLjIuMCIsfSx3M25jbz17WyJmbiJdPSIvc2NyYXRjaDMvTkNFUERFVi9ud3Byb2QvbGliL21vZHVsZWZpbGVzL3czbmNvL3YyLjAuNiIsWyJmdWxsTmFtZSJdPSJ3M25jby92Mi4wLjYiLFsibG9hZE9yZGVyIl09
+++ export _ModuleTable005_
+++ _ModuleTable006_=OCxwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0idzNuY28vdjIuMC42Iix9LHo9e1siZm4iXT0iL3NjcmF0Y2gzL05DRVBERVYvbndwcm9kL2xpYi9tb2R1bGVmaWxlcy96L3YxLjIuNiIsWyJmdWxsTmFtZSJdPSJ6L3YxLjIuNiIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJ6L3YxLjIuNiIsfSx9LG1wYXRoQT17Ii4uLy4uL21vZHVsZWZpbGVzIiwiL2FwcHMvbW9kdWxlcy9tb2R1bGVmYW1pbGllcy9pbnRlbCIsIi9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMiLCIvYXBwcy9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsIi9hcHBzL21vZHVsZXMvbW9kdWxl
+++ export _ModuleTable006_
+++ _ModuleTable007_=ZmlsZXMvTGludXgiLCIvYXBwcy9tb2R1bGVzL21vZHVsZWZpbGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9hcHBzL2xtb2QvbG1vZC9tb2R1bGVmaWxlcy9Db3JlOi9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvTGludXg6L2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcyIsfQ==
+++ export _ModuleTable007_
+++ _ModuleTable_Sz_=7
+++ export _ModuleTable_Sz_
++ module list
+++ /apps/lmod/lmod/libexec/lmod sh list
++ eval echo ''\'''\'';' echo ''\''Currently'\''' ''\''Loaded'\''' ''\''Modules:'\'';' echo ''\'''\''' ''\'''\''' ''\''1)'\''' ''\''intel/14.0.2'\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\''4)'\''' ''\''png/v1.2.44'\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\''7)'\''' ''\''w3emc/v2.2.0'\''' ''\'''\''' ''\''10)'\''' ''\''sp/v2.0.2'\'';' echo ''\'''\''' ''\'''\''' ''\''2)'\''' ''\''hpss/hpss'\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\''5)'\''' ''\''z/v1.2.6'\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\''8)'\''' ''\''w3nco/v2.0.6'\''' ''\'''\''' ''\''11)'\''' ''\''g2/v3.1.0'\'';' echo ''\'''\''' ''\'''\''' ''\''3)'\''' ''\''jasper/v1.900.1'\''' ''\'''\''' ''\'''\''' ''\''6)'\''' ''\''bacio/v2.0.1'\''' ''\'''\''' ''\'''\''' ''\''9)'\''' ''\''ip/v3.0.0'\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\'''\''' ''\''12)'\''' ''\''build_grib_util/theia/1.0.5'\'';' echo ''\'''\'';' echo ''\'''\''' ''\'''\'';' echo ''\'''\'';' 'MODULEPATH="../../modulefiles:/apps/modules/modulefamilies/intel:/scratch3/NCEPDEV/nwprod/lib/modulefiles:/apps/lmod/lmod/modulefiles/Core:/apps/modules/modulefiles/Linux:/apps/modules/modulefiles";' export 'MODULEPATH;' '_ModuleTable001_="X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09ImludGVsIix9LG1UPXtiYWNpbz17WyJmbiJdPSIvc2NyYXRjaDMvTkNFUERFVi9ud3Byb2QvbGliL21vZHVsZWZpbGVzL2JhY2lvL3YyLjAuMSIsWyJmdWxsTmFtZSJdPSJiYWNpby92Mi4wLjEiLFsibG9hZE9yZGVyIl09Nixwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYmFjaW8vdjIuMC4xIix9LFsiYnVpbGRfZ3JpYl91dGlsL3RoZWlhIl09e1siZm4iXT0iLi4vLi4vbW9kdWxlZmlsZXMvYnVpbGRfZ3JpYl91dGlsL3RoZWlhLzEuMC41IixbImZ1bGxO";' export '_ModuleTable001_;' '_ModuleTable002_="YW1lIl09ImJ1aWxkX2dyaWJfdXRpbC90aGVpYS8xLjAuNSIsWyJsb2FkT3JkZXIiXT0xMixwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYnVpbGRfZ3JpYl91dGlsL3RoZWlhIix9LGcyPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvZzIvdjMuMS4wIixbImZ1bGxOYW1lIl09ImcyL3YzLjEuMCIsWyJsb2FkT3JkZXIiXT0xMSxwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iZzIvdjMuMS4wIix9LGhwc3M9e1siZm4iXT0iL2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcy9ocHNzL2hwc3MiLFsiZnVsbE5hbWUiXT0iaHBzcy9ocHNzIixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30s";' export '_ModuleTable002_;' '_ModuleTable003_="WyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09Imhwc3MiLH0saW50ZWw9e1siZm4iXT0iL2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcy9pbnRlbC8xNC4wLjIiLFsiZnVsbE5hbWUiXT0iaW50ZWwvMTQuMC4yIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImludGVsIix9LGlwPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvaXAvdjMuMC4wIixbImZ1bGxOYW1lIl09ImlwL3YzLjAuMCIsWyJsb2FkT3JkZXIiXT05LHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJpcC92My4wLjAiLH0samFzcGVyPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQ";' export '_ModuleTable003_;' '_ModuleTable004_="REVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvamFzcGVyL3YxLjkwMC4xIixbImZ1bGxOYW1lIl09Imphc3Blci92MS45MDAuMSIsWyJsb2FkT3JkZXIiXT0zLHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJqYXNwZXIvdjEuOTAwLjEiLH0scG5nPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvcG5nL3YxLjIuNDQiLFsiZnVsbE5hbWUiXT0icG5nL3YxLjIuNDQiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0icG5nL3YxLjIuNDQiLH0sc3A9e1siZm4iXT0iL3NjcmF0Y2gzL05DRVBERVYvbndwcm9kL2xpYi9tb2R1bGVmaWxlcy9zcC92Mi4wLjIi";' export '_ModuleTable004_;' '_ModuleTable005_="LFsiZnVsbE5hbWUiXT0ic3AvdjIuMC4yIixbImxvYWRPcmRlciJdPTEwLHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJzcC92Mi4wLjIiLH0sdzNlbWM9e1siZm4iXT0iL3NjcmF0Y2gzL05DRVBERVYvbndwcm9kL2xpYi9tb2R1bGVmaWxlcy93M2VtYy92Mi4yLjAiLFsiZnVsbE5hbWUiXT0idzNlbWMvdjIuMi4wIixbImxvYWRPcmRlciJdPTcscHJvcFQ9e30sWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09InczZW1jL3YyLjIuMCIsfSx3M25jbz17WyJmbiJdPSIvc2NyYXRjaDMvTkNFUERFVi9ud3Byb2QvbGliL21vZHVsZWZpbGVzL3czbmNvL3YyLjAuNiIsWyJmdWxsTmFtZSJdPSJ3M25jby92Mi4wLjYiLFsibG9hZE9yZGVyIl09";' export '_ModuleTable005_;' '_ModuleTable006_="OCxwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0idzNuY28vdjIuMC42Iix9LHo9e1siZm4iXT0iL3NjcmF0Y2gzL05DRVBERVYvbndwcm9kL2xpYi9tb2R1bGVmaWxlcy96L3YxLjIuNiIsWyJmdWxsTmFtZSJdPSJ6L3YxLjIuNiIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJ6L3YxLjIuNiIsfSx9LG1wYXRoQT17Ii4uLy4uL21vZHVsZWZpbGVzIiwiL2FwcHMvbW9kdWxlcy9tb2R1bGVmYW1pbGllcy9pbnRlbCIsIi9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMiLCIvYXBwcy9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsIi9hcHBzL21vZHVsZXMvbW9kdWxl";' export '_ModuleTable006_;' '_ModuleTable007_="ZmlsZXMvTGludXgiLCIvYXBwcy9tb2R1bGVzL21vZHVsZWZpbGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9hcHBzL2xtb2QvbG1vZC9tb2R1bGVmaWxlcy9Db3JlOi9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvTGludXg6L2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcyIsfQ==";' export '_ModuleTable007_;' '_ModuleTable_Sz_="7";' export '_ModuleTable_Sz_;'
+++ echo ''
+
+++ echo Currently Loaded Modules:
+Currently Loaded Modules:
+++ echo '' '' '1)' intel/14.0.2 '' '' '' '' '' '4)' png/v1.2.44 '' '' '' '7)' w3emc/v2.2.0 '' '10)' sp/v2.0.2
+  1) intel/14.0.2      4) png/v1.2.44    7) w3emc/v2.2.0  10) sp/v2.0.2
+++ echo '' '' '2)' hpss/hpss '' '' '' '' '' '' '' '' '5)' z/v1.2.6 '' '' '' '' '' '' '8)' w3nco/v2.0.6 '' '11)' g2/v3.1.0
+  2) hpss/hpss         5) z/v1.2.6       8) w3nco/v2.0.6  11) g2/v3.1.0
+++ echo '' '' '3)' jasper/v1.900.1 '' '' '6)' bacio/v2.0.1 '' '' '9)' ip/v3.0.0 '' '' '' '' '12)' build_grib_util/theia/1.0.5
+  3) jasper/v1.900.1   6) bacio/v2.0.1   9) ip/v3.0.0     12) build_grib_util/theia/1.0.5
+++ echo ''
+
+++ echo '' ''
+ 
+++ echo ''
+
+++ MODULEPATH=../../modulefiles:/apps/modules/modulefamilies/intel:/scratch3/NCEPDEV/nwprod/lib/modulefiles:/apps/lmod/lmod/modulefiles/Core:/apps/modules/modulefiles/Linux:/apps/modules/modulefiles
+++ export MODULEPATH
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09ImludGVsIix9LG1UPXtiYWNpbz17WyJmbiJdPSIvc2NyYXRjaDMvTkNFUERFVi9ud3Byb2QvbGliL21vZHVsZWZpbGVzL2JhY2lvL3YyLjAuMSIsWyJmdWxsTmFtZSJdPSJiYWNpby92Mi4wLjEiLFsibG9hZE9yZGVyIl09Nixwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYmFjaW8vdjIuMC4xIix9LFsiYnVpbGRfZ3JpYl91dGlsL3RoZWlhIl09e1siZm4iXT0iLi4vLi4vbW9kdWxlZmlsZXMvYnVpbGRfZ3JpYl91dGlsL3RoZWlhLzEuMC41IixbImZ1bGxO
+++ export _ModuleTable001_
+++ _ModuleTable002_=YW1lIl09ImJ1aWxkX2dyaWJfdXRpbC90aGVpYS8xLjAuNSIsWyJsb2FkT3JkZXIiXT0xMixwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYnVpbGRfZ3JpYl91dGlsL3RoZWlhIix9LGcyPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvZzIvdjMuMS4wIixbImZ1bGxOYW1lIl09ImcyL3YzLjEuMCIsWyJsb2FkT3JkZXIiXT0xMSxwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iZzIvdjMuMS4wIix9LGhwc3M9e1siZm4iXT0iL2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcy9ocHNzL2hwc3MiLFsiZnVsbE5hbWUiXT0iaHBzcy9ocHNzIixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30s
+++ export _ModuleTable002_
+++ _ModuleTable003_=WyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09Imhwc3MiLH0saW50ZWw9e1siZm4iXT0iL2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcy9pbnRlbC8xNC4wLjIiLFsiZnVsbE5hbWUiXT0iaW50ZWwvMTQuMC4yIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImludGVsIix9LGlwPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvaXAvdjMuMC4wIixbImZ1bGxOYW1lIl09ImlwL3YzLjAuMCIsWyJsb2FkT3JkZXIiXT05LHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJpcC92My4wLjAiLH0samFzcGVyPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQ
+++ export _ModuleTable003_
+++ _ModuleTable004_=REVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvamFzcGVyL3YxLjkwMC4xIixbImZ1bGxOYW1lIl09Imphc3Blci92MS45MDAuMSIsWyJsb2FkT3JkZXIiXT0zLHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJqYXNwZXIvdjEuOTAwLjEiLH0scG5nPXtbImZuIl09Ii9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMvcG5nL3YxLjIuNDQiLFsiZnVsbE5hbWUiXT0icG5nL3YxLjIuNDQiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0icG5nL3YxLjIuNDQiLH0sc3A9e1siZm4iXT0iL3NjcmF0Y2gzL05DRVBERVYvbndwcm9kL2xpYi9tb2R1bGVmaWxlcy9zcC92Mi4wLjIi
+++ export _ModuleTable004_
+++ _ModuleTable005_=LFsiZnVsbE5hbWUiXT0ic3AvdjIuMC4yIixbImxvYWRPcmRlciJdPTEwLHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJzcC92Mi4wLjIiLH0sdzNlbWM9e1siZm4iXT0iL3NjcmF0Y2gzL05DRVBERVYvbndwcm9kL2xpYi9tb2R1bGVmaWxlcy93M2VtYy92Mi4yLjAiLFsiZnVsbE5hbWUiXT0idzNlbWMvdjIuMi4wIixbImxvYWRPcmRlciJdPTcscHJvcFQ9e30sWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09InczZW1jL3YyLjIuMCIsfSx3M25jbz17WyJmbiJdPSIvc2NyYXRjaDMvTkNFUERFVi9ud3Byb2QvbGliL21vZHVsZWZpbGVzL3czbmNvL3YyLjAuNiIsWyJmdWxsTmFtZSJdPSJ3M25jby92Mi4wLjYiLFsibG9hZE9yZGVyIl09
+++ export _ModuleTable005_
+++ _ModuleTable006_=OCxwcm9wVD17fSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0idzNuY28vdjIuMC42Iix9LHo9e1siZm4iXT0iL3NjcmF0Y2gzL05DRVBERVYvbndwcm9kL2xpYi9tb2R1bGVmaWxlcy96L3YxLjIuNiIsWyJmdWxsTmFtZSJdPSJ6L3YxLjIuNiIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9LFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJ6L3YxLjIuNiIsfSx9LG1wYXRoQT17Ii4uLy4uL21vZHVsZWZpbGVzIiwiL2FwcHMvbW9kdWxlcy9tb2R1bGVmYW1pbGllcy9pbnRlbCIsIi9zY3JhdGNoMy9OQ0VQREVWL253cHJvZC9saWIvbW9kdWxlZmlsZXMiLCIvYXBwcy9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsIi9hcHBzL21vZHVsZXMvbW9kdWxl
+++ export _ModuleTable006_
+++ _ModuleTable007_=ZmlsZXMvTGludXgiLCIvYXBwcy9tb2R1bGVzL21vZHVsZWZpbGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9hcHBzL2xtb2QvbG1vZC9tb2R1bGVmaWxlcy9Db3JlOi9hcHBzL21vZHVsZXMvbW9kdWxlZmlsZXMvTGludXg6L2FwcHMvbW9kdWxlcy9tb2R1bGVmaWxlcyIsfQ==
+++ export _ModuleTable007_
+++ _ModuleTable_Sz_=7
+++ export _ModuleTable_Sz_
++ make -f makefile_theia
+make: `wgrib' is up to date.
++ make -f makefile_theia install
+mkdir -p ../../exec
+cp -p wgrib ../../exec

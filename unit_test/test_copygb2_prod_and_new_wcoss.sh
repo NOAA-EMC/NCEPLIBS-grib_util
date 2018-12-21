@@ -15,7 +15,8 @@
 #
 
 prod_grib_util_ver=1.0.3
-test_grib_util_ver=1.0.4
+test_grib_util_ver=1.0.5
+export cyc=00
 
 module load prod_util
 machine=$(getsystem.pl -t)
@@ -48,21 +49,10 @@ elif [ "$machine" = "Cray" ]; then
     module switch grib_util/${prod_grib_util_ver} grib_util/${test_grib_util_ver}
 fi
 
-#
-# These executable files (below) compiled with the G2 library V3.1.0
-#
-# cnvgrib=${CNVGRIB:?}
-cnvgrib=/gpfs/hps/emc/global/noscrub/Boi.Vuong/cnvgrib/cnvgrib
-
-# cnvgrib21gfs=${CNVGRIB21_GFS:?}
-cnvgrib21gfs=/gpfs/hps/emc/global/noscrub/Boi.Vuong/cnvgrib21gfs/cnvgrib21_gfs
-
-# copygb2_test=${COPYGB2:?}
-copygb2_test=/gpfs/hps/emc/global/noscrub/Boi.Vuong/copygb2/copygb2
-
-# degrib2_test=${DEGRIB2:?}
-degrib2_test=/gpfs/hps/emc/global/noscrub/Boi.Vuong/degrib2/degrib2
-
+cnvgrib_test=${CNVGRIB:?}
+cnvgrib21gfs=${CNVGRIB21_GFS:?}
+copygb2_test=${COPYGB2:?}
+degrib2_test=${DEGRIB2:?}
 grb2index_test=${GRB2INDEX:?}
 tocgrib2_test=${TOCGRIB2:?}
 
@@ -85,18 +75,18 @@ input_file=/gpfs/sss/emc/global/shared/nceplibs/fix/gfs
 output_g1=$dir/output_g1
 output_g2=$dir/output_g2
 mkdir -p $data $output_g1 $output_g2
-#
+
 #  Clean up temp directory before test starts
 #
-if  [ -f $output_g1/gfs.t00z.pgrb2.0p25.f012.grib2.cnvgrib.g1.wgrib ]; then
+if [ "$(ls -A $output_g1)" ]; then
    echo "Cleaning $output_g1"
    rm $output_g1/*
 fi
-if  [ -f $output_g2/awps_f012_ak_copygb2_prod.wgrib2 ]; then
+if [ "$(ls -A $output_g2)" ]; then
    echo "Cleaning $output_g2"
    rm $output_g2/*
 fi
-if  [ -f $data/gfs.t00z.pgrb2.0p25.f012 ]; then
+if [ "$(ls -A $data)" ]; then
    echo "Cleaning $data"
    rm $data/*
 fi
@@ -111,12 +101,12 @@ if [ ! -d  $data ] ; then
     exit 1
 fi
 
-if [ -f $input_file/gfs.t00z.pgrb2.0p25.f012 ] ; then
+if [ -f $input_file/gfs.t${cyc}z.pgrb2.0p25.f012 ] ; then
    cp $input_file/gfs*  $dir/data
 else
    echo " "
    echo " "
-   echo "GRB2 File $input_file/gfs.t00z.pgrb2.0p25.f012 Does Not Exist."
+   echo "GRB2 File $input_file/gfs.t${cyc}z.pgrb2.0p25.f012 Does Not Exist."
    echo " "
    echo " No input GRIB2 file to continue "
    echo " "
@@ -142,9 +132,13 @@ do
      conus)
         #  Grid 20km_conus - CONUS - 20 km Quadruple Resolution (Lambert Conformal)
         export grid_20km_conus="30 6 0 0 0 0 0 0 369 257 12190000 226541000 8 25000000 265000000 20318000 20318000 0 64 25000000 25000000 0 0"
+        echo " "
+        echo "Run production copygb2 -  Grid 20km_conus"
+        echo " "
         $copygb2_prod -g "$grid_20km_conus" -i0 -x  $file  $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_prod
         if [ $? -ne 0 ]; then err=1; fi
         echo " "
+        echo "Run test copygb2 -  Grid 20km_conus"
         echo " "
         $copygb2_test -g "$grid_20km_conus" -i0 -x $file  $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_test
         if [ $? -ne 0 ]; then err=1; fi
@@ -156,9 +150,13 @@ do
         #  Redefined grid 217 for Alaska region
         export grid_20km_ak="20 6 0 0 0 0 0 0 277 225 35000000 170000000 8 60000000 210000000 22500000 22500000 0 64"
         #  export grid_20km_ak="20 6 0 0 0 0 0 0 277 213 30000000 187000000 8 60000000 225000000 22500000 22500000 0 64"
+        echo " "
+        echo "Run production copygb2 Grid 20km_ak"
+        echo " "
         $copygb2_prod -g "$grid_20km_ak" -i0 -x $file  $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_prod
         if [ $? -ne 0 ]; then err=1; fi
         echo " "
+        echo "Run test copygb2 Grid 20km_ak "
         echo " "
         $copygb2_test -g "$grid_20km_ak" -i0 -x $file  $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_test
         if [ $? -ne 0 ]; then err=1; fi
@@ -168,9 +166,13 @@ do
     prico)
         #  Grid 20km_prico - 0.25 degree Lat/Lon grid for Puerto Rico (20km)
         export grid_20km_prico="0 6 0 0 0 0 0 0 275 205 0 0 50750000 271750000 48 -250000 340250000 250000 250000 0"
+        echo " "
+        echo "Run production copygb2 Grid 20km_prico "
+        echo " "
         $copygb2_prod -g "$grid_20km_prico" -i0 -x $file  $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_prod
         if [ $? -ne 0 ]; then err=1; fi
         echo " "
+        echo "Run test copygb2 Grid 20km_prico "
         echo " "
         $copygb2_test -g "$grid_20km_prico" -i0 -x $file  $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_test
         if [ $? -ne 0 ]; then err=1; fi
@@ -180,19 +182,23 @@ do
      pac)
         #  Grid 20km_pac - 20 km Mercator grid for Pacific Region
         export grid_20km_pac="10 6 0 0 0 0 0 0 837 692 -45000000 110000000 48 20000000 65720000 270000000 64 0 20000000 20000000"
+        echo " "
+        echo "Run production copygb2 Grid 20km_pac "
+        echo " "
         $copygb2_prod -g "$grid_20km_pac" -i0 -x $file  $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_prod
         if [ $? -ne 0 ]; then err=1; fi
         echo " "
+        echo "Run test copygb2 Grid 20km_pac "
         echo " "
         $copygb2_test -g "$grid_20km_pac" -i0 -x $file  $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_test
         if [ $? -ne 0 ]; then err=1; fi
         echo " "
         echo " "
         ;;
-   esac
-   $WGRIB2 $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_prod  > $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_prod.wgrib2
+   sac
+   $WGRIB2 $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_prod | cut -d : -f 4-7 > $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_prod.wgrib2
    if [ $? -ne 0 ]; then err=1; fi
-   $WGRIB2 $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_test  > $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_test.wgrib2
+   $WGRIB2 $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_test | cut -d : -f 4-7 > $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_test.wgrib2
    if [ $? -ne 0 ]; then err=1; fi
    diff $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_prod.wgrib2 $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_test.wgrib2 > $output_g2/awps_f${fcsthrs}_${GRID}_copygb2_prod_test_wgrib2.o
    if [ $? -eq 0 ]; then echo "PASS"; else echo "FAIL!"; err=1; fi

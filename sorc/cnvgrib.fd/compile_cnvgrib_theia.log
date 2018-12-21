@@ -1,0 +1,32 @@
+
+Currently Loaded Modules:
+  1) intel/14.0.2      4) png/v1.2.44    7) w3emc/v2.2.0  10) sp/v2.0.2
+  2) hpss/hpss         5) z/v1.2.6       8) w3nco/v2.0.6  11) g2/v3.1.0
+  3) jasper/v1.900.1   6) bacio/v2.0.1   9) ip/v3.0.0     12) build_grib_util/theia/1.0.5
+
+ 
+
+ifort -O3 -g -I /scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_4  -c -o gds2gdt.o gds2gdt.f
+ifort -O3 -g -I /scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_4  -c -o pds2pdt.o pds2pdt.f
+pds2pdt.f(1): warning #6843: A dummy argument with an explicit INTENT(OUT) declaration is not given an explicit value.   [COORDLIST]
+        subroutine pds2pdt(kpds,ipdsnum,ipdstmpl,numcoord,coordlist,
+----------------------------------------------------------^
+ifort -O3 -g -I /scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_4  -c -o pds2pdtens.o pds2pdtens.f
+pds2pdtens.f(2): warning #6843: A dummy argument with an explicit INTENT(OUT) declaration is not given an explicit value.   [COORDLIST]
+     &                     ipdsnum,ipdstmpl,numcoord,coordlist,
+-----------------------------------------------------^
+ifort -O3 -g -I /scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_4  -c -o cnvgrib.o cnvgrib.f
+ifort -O3 -g -I /scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_4  -c -o cnv12.o cnv12.f
+ifort -O3 -g -I /scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_4  -c -o cnv22.o cnv22.f
+ifort -O3 -g -I /scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_4  -c -o cnv21.o cnv21.f
+ifort -O3 -g -I /scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_4  -c -o gdt2gds.o gdt2gds.f
+ifort -O3 -g -I /scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_4  -c -o makepds.o makepds.f
+ifort -O3 -g -I /scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_4  -c -o putgbexn.o putgbexn.f
+ifort -O3 -g -I /scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_4  -c -o makepdsens.o makepdsens.f
+ifort -O3 -g -I /scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/include/g2_v3.1.0_4  -c -o setbit.o setbit.f
+ifort  -o cnvgrib gds2gdt.o pds2pdt.o pds2pdtens.o cnvgrib.o cnv12.o cnv22.o cnv21.o gdt2gds.o makepds.o putgbexn.o makepdsens.o setbit.o /scratch3/NCEPDEV/nwprod/lib/g2/v3.1.0/libg2_v3.1.0_4.a /scratch3/NCEPDEV/nwprod/lib/w3nco/v2.0.6/libw3nco_v2.0.6_4.a /scratch3/NCEPDEV/nwprod/lib/bacio/v2.0.1/libbacio_v2.0.1_4.a /scratch3/NCEPDEV/nwprod/lib/jasper/v1.900.1/libjasper_v1.900.1.a /scratch3/NCEPDEV/nwprod/lib/png/v1.2.44/libpng.a /scratch3/NCEPDEV/nwprod/lib/z/v1.2.6/libz_v1.2.6.a
+/scratch3/NCEPDEV/nwprod/lib/jasper/v1.900.1/libjasper_v1.900.1.a(jas_stream.o): In function `jas_stream_tmpfile':
+/scratch3/NCEPDEV/nwprod/lib/sorc/jasper-1.900.1/src/libjasper/base/jas_stream.c:368: warning: the use of `tmpnam' is dangerous, better use `mkstemp'
+mkdir -p ../../exec
+cp -p cnvgrib ../../exec
+rm -f gds2gdt.o pds2pdt.o pds2pdtens.o cnvgrib.o cnv12.o cnv22.o cnv21.o gdt2gds.o makepds.o putgbexn.o makepdsens.o setbit.o

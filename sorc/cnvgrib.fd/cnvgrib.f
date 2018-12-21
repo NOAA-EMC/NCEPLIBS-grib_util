@@ -292,6 +292,7 @@ C 2010-12-02  Vuong   -  Changed the cnvgrib_ver
 C 2011-07-12  Vuong   -  Changed the cnvgrib_ver
 C 2013-07-24  Vuong   -  Changed the cnvgrib_ver
 C 2016-09-30  Vuong   -  Changed the cnvgrib_ver-3.0.0
+C 2017-01-21  Vuong   -  Changed the cnvgrib_ver-3.0.0
 C
 C USAGE:    CALL usage(iopt)
 C   INPUT ARGUMENT LIST:
@@ -306,7 +307,7 @@ C   LANGUAGE: Fortran 90
 C   MACHINE:  IBM SP
 C
 C$$$
-         character(len=15) :: cnvgrib_ver="cnvgrib-3.0.0"
+         character(len=15) :: cnvgrib_ver="cnvgrib-v3.1.0"
          integer,intent(in) :: iopt 
 
          if ( iopt.eq.0 ) then
