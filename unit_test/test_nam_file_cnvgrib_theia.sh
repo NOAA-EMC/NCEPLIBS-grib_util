@@ -10,8 +10,8 @@
 #      $cnvgrib_test is new cnvgrib which compiled with new G2 library.
 #
 
-grib_util_ver=1.1.0
-export cyc=18
+ver=1.1.1
+cyc=18
 
 module use /scratch4/NCEPDEV/nems/noscrub/emc.nemspara/soft/modulefiles
 module load prod_util
@@ -53,40 +53,41 @@ if [ "$machine" = "Dell" ]; then
     module load prod_util/1.1.0
     module load prod_envir/1.0.2
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
-    module load dev/grib_util/1.1.0
+    module use /usrx/local/nceplibs/dev/modulefiles/compiler_nceplibs/ips/18.0.1
+    module load dev/grib_util/${ver}
     input_file=/usrx/local/nceplibs/dev/lib/fv3gfs
 elif [ "$machine" = "IBM" ]; then
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
-    module use -a /usrx/local/nceplibs/grib_util.v1.1.0/modulefiles
-    module load grib_util/v1.1.0
+    module use -a /usrx/local/nceplibs/grib_util.v${ver}/modulefiles
+    module load grib_util/v${ver}
     input_file=/usrx/local/nceplibs/gfs_data
 elif [ "$machine" = "Cray" ]; then
     module unload grib_util
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
     module use /usrx/local/nceplibs/modulefiles
-    module load grib_util/1.1.0
+    module load grib_util/${ver}
     input_file=/usrx/local/nceplibs/gfs_data
 elif [ "$machine" = "Theia" ]; then
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
     module use /scratch3/NCEPDEV/nwprod/modulefiles
-    module load grib_util/v1.1.0
+    module load grib_util/v${ver}
     input_file=/scratch3/NCEPDEV/nwprod/gfs_data
 fi
 
 #
-# These executable files (below) is in GRIB_UTIL.v1.1.0
+# These executable files (below) is in GRIB_UTIL.v${ver}
 #
 cnvgrib_test=$CNVGRIB
 echo " "
@@ -146,7 +147,7 @@ echo " data $data/$file "
 # Step 1: CNVGRIB converts from GRIB2 to GRIB1
 #
 
-echo "Running cnvgrib_cnvgrib (grib2 -> grib1)"
+echo "Running cnvgrib (converts from grib2 -> grib1)"
 set -x
 $cnvgrib_test -g21 $data/$file $output_g1/$file.grib2.test.g1
 if [ $? -ne 0 ]; then err=1; fi

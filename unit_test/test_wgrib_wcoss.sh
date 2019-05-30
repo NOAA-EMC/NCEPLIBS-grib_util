@@ -1,17 +1,12 @@
 #!/bin/sh
 #
-#  This script uses to test the utility cnvgrib which compiled with new G2 library v3.1.0
-#  The conversion cnvgrib will convert (NAM file) from grib2 to grib1.
-#  Then, the WGRIB uses to display data values : min and max at  HGT 800mb field for comparison
-#
-#  The input are GRIB2 file. 
-#
-#  NOTE:  
-#      $cnvgrib_test is new cnvgrib which compiled with new G2 library.
-#
+#  This script uses to test the utility wgrib. The wgrib will display the inventory of GRIB1 file.
+#  The test uses wgrib to display content of ecmwf file.
+#  Note:
+#  The ecmwf file contains both GRIB2 and GRIB1.
 
 ver=1.1.1
-cyc=18
+cyc=00
 
 module load prod_util
 module load prod_util/1.1.0
@@ -81,7 +76,7 @@ fi
 #
 # These executable files (below) is in GRIB_UTIL.v${ver}
 #
-cnvgrib_test=$CNVGRIB
+wgrib=$WGRIB
 echo " "
 module list
 echo " "
@@ -101,7 +96,6 @@ if [ "$(ls -A $data)" ]; then
    echo "Cleaning $data"
    rm $data/*
 fi
-
 #
 #  Find out if working directory exists or not
 #
@@ -112,52 +106,47 @@ if [ ! -d  $data ] ; then
     exit 1
 fi
 
-if [ -f $input_file/nam.t${cyc}z.awp15178.tm00.grib2 ] ; then
-   cp $input_file/nam*  $dir/data
+if [ -f $input_file/U1D05081200050909001 ] ; then
+   cp $input_file/U1D05081200050909001   $dir/data
 else
    echo " "
    echo " "
-   echo "GRIB2 File $input_file/nam.t${cyc}z.awp15178.tm00.grib2 Does Not Exist."
+   echo "ECMWF File $input_file/U1D05081200050909001  Does Not Exist."
    echo " "
-   echo " No input GRIB2 file to continue "
+   echo " No input ECMWF file to continue "
    echo " "
    echo " "
    exit 1
 fi
+
+cd $data
 
 filelist=` ls -1  $dir/data `
 err=0
 
 for file in $filelist
 do
-
-echo " dir  $dir "
-echo " file  $dir/$file "
-echo " data $data/$file "
-
-#
-# Step 1: CNVGRIB converts from GRIB2 to GRIB1
-#
-
-echo "Running cnvgrib (converts from grib2 -> grib1)"
-set -x
-$cnvgrib_test -g21 $data/$file $output_g1/$file.grib2.test.g1
-if [ $? -ne 0 ]; then err=1; fi
-set +x
-echo
-
-export new_max=` ${WGRIB:?} -s $output_g1/$file.grib2.test.g1 |  grep ":HGT:800 mb:" |  $WGRIB -i -V $output_g1/$file.grib2.test.g1 \
-         -o /dev/null | grep max | awk '{print $4}' `
-export new_min=` ${WGRIB:?} -s $output_g1/$file.grib2.test.g1 |  grep ":HGT:800 mb:" |  $WGRIB -i -V $output_g1/$file.grib2.test.g1 \
-         -o /dev/null | grep max | awk '{print $3}' `
-
-echo " The new cnvgrib (cnvgrib v3.1.0) convert NAM file from GRIB2 to GRIB1."
-echo " The data value MAX and MIN at HGT 800mb are correct " 
-
-echo " "
-echo " Data value MAX = " $new_max
-echo " "
-echo " Data value MIN  = " $new_min
-echo " "
+    set +x
+    echo " "
+    echo "  Running WGRIB " 
+    echo " "
+    echo "  Please wait ..."
+    echo " "
+    $wgrib  $file > $output_g1/$file.txt 
+    echo " "
+    if [ $? -eq 0 ]; then echo "  PASS: wgrib successfully list all records in ecmwf file"; else echo "FAIL!"; err=1; fi
+    echo " "
+    echo " "
 done
+echo " "
+echo "The output file is following: "
+echo " "
+echo " "
+ls -l $output_g1/$file.txt
+echo " "
+echo " "
+echo "  PASS: wgrib successfully list all records in ecmwf file"
+echo " "
+echo " "
 exit
+

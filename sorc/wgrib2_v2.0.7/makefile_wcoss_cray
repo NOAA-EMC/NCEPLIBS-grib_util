@@ -126,6 +126,7 @@ USE_PNG=1
 USE_JASPER=1
 USE_AEC=1
 
+# JY temporarily turn off the following two lines to see if you can get from module load
 NETCDF_LIB= /gpfs/hps/usrx/local/prod/NetCDF/4.2/gnu/sandybridge/lib
 NETCDF_INC=/gpfs/hps/usrx/local/prod/NetCDF/4.2/gnu/sandybridge/include
 HDF5=/gpfs/hps/usrx/local/prod/HDF5/1.8.9/serial/gnu/sandybridge
@@ -486,7 +487,7 @@ ifeq ($(USE_NETCDF4),1)
 
 ###   wLDFLAGS+=-lnetcdf -lhdf5_hl -lhdf5 -ldl
    wLDFLAGS+=${netcdf4lib} ${HDF5}/lib/libhdf5_hl.a ${hdf5lib}
-
+   wCPPFLAGS+=-I${NETCDF_INC}
 #   wCPPFLAGS+=-I${netcdf4dir}/include -I${hdf5dir}/src -I${hdf5dir}/hl/src
    a:=$(shell echo "\#define USE_NETCDF4" >> ${CONFIG_H})
 else

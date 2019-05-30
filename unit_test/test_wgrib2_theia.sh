@@ -10,8 +10,8 @@
 #      $wgrib2_test is new wgrib2 which compiled with new G2 library.
 #
 
-grib_util_ver=1.1.0
-export cyc=00
+ver=1.1.1
+cyc=00
 
 machine=$(getsystem.pl -t)
 
@@ -53,39 +53,40 @@ if [ "$machine" = "Dell" ]; then
     module load prod_util/1.1.0
     module load prod_envir/1.0.2
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
-    module load dev/grib_util/1.1.0
+    module use /usrx/local/nceplibs/dev/modulefiles/compiler_nceplibs/ips/18.0.1
+    module load dev/grib_util/${ver}
     input_file=/usrx/local/nceplibs/dev/lib/fv3gfs
 elif [ "$machine" = "IBM" ]; then
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
-    module use -a /usrx/local/nceplibs/grib_util.v1.1.0/modulefiles
-    module load grib_util/v1.1.0
+    module use -a /usrx/local/nceplibs/modulefiles
+    module load grib_util/v${ver}
     input_file=/usrx/local/nceplibs/gfs_data
 elif [ "$machine" = "Cray" ]; then
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
     module use /usrx/local/nceplibs/modulefiles
-    module load grib_util/1.1.0
+    module load grib_util/${ver}
     input_file=/usrx/local/nceplibs/gfs_data
 elif [ "$machine" = "Theia" ]; then
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
     module use /scratch3/NCEPDEV/nwprod/modulefiles
-    module load grib_util/v1.1.0
+    module load grib_util/v${ver}
     input_file=/scratch3/NCEPDEV/nwprod/gfs_data
 fi
 
 #
-# These executable files (below) is in GRIB_UTIL.v1.1.0
+# These executable files (below) is in GRIB_UTIL.v${ver}
 #
 wgrib2_test=$WGRIB2
 echo " "
@@ -154,7 +155,8 @@ export opt26=' -set_grib_max_bits 25 -fi -if '
 export opt27=":(APCP|ACPCP|PRATE|CPRAT|DZDT):"
 export opt28=' -new_grid_interpolation budget -fi '
 
-for GRID in conus ak prico pac 003
+# for GRID in conus ak prico pac 003
+for GRID in conus
 do
    case $GRID in
      conus)

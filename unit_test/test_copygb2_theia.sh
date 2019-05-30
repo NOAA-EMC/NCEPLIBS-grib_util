@@ -10,8 +10,8 @@
 #      $copygb2_test is new copygb2 which compiled with new G2 library.
 #
 
-grib_util_ver=1.1.0
-export cyc=00
+ver=1.1.1
+cyc=00
 
 module use /scratch4/NCEPDEV/nems/noscrub/emc.nemspara/soft/modulefiles
 module load prod_util
@@ -51,40 +51,41 @@ if [ "$machine" = "Dell" ]; then
     module load prod_util/1.1.0
     module load prod_envir/1.0.2
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
-    module load dev/grib_util/1.1.0
+    module use /usrx/local/nceplibs/dev/modulefiles/compiler_nceplibs/ips/18.0.1
+    module load dev/grib_util/${ver}
     input_file=/usrx/local/nceplibs/dev/lib/fv3gfs
 elif [ "$machine" = "IBM" ]; then
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
-    module use -a /usrx/local/nceplibs/grib_util.v1.1.0/modulefiles
-    module load grib_util/v1.1.0
+    module use -a /usrx/local/nceplibs/modulefiles
+    module load grib_util/v${ver}
     input_file=/usrx/local/nceplibs/gfs_data
 elif [ "$machine" = "Cray" ]; then
     module unload grib_util
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
     module use /usrx/local/nceplibs/modulefiles
-    module load grib_util/1.1.0
+    module load grib_util/${ver}
     input_file=/usrx/local/nceplibs/gfs_data
 elif [ "$machine" = "Theia" ]; then
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
     module use /scratch3/NCEPDEV/nwprod/modulefiles
-    module load grib_util/v1.1.0
+    module load grib_util/v${ver}
     input_file=/scratch3/NCEPDEV/nwprod/gfs_data
 fi
 
 #
-# These executable files (below) is in GRIB_UTIL.v1.1.0
+# These executable files (below) is in GRIB_UTIL.v${ver}
 #
 copygb2_test=$COPYGB2
 echo " "
@@ -141,7 +142,8 @@ set +x
 export fcsthrs=`echo $file | cut -c 22-24`
 ########  COPYGB2  ##############
 
-for GRID in conus ak prico pac 003
+# for GRID in conus ak prico pac 003
+for GRID in conus
 do
    case $GRID in
      conus)
@@ -219,7 +221,7 @@ done
    ls -l $output_g2/awps_f*_*_copygb2_test
    echo " "
    echo " "
-   echo "  PASS: copygb2 successfully interpolates GFS PGRB2 file to AWIPS 20km Pacific grids."
+   echo "  PASS: copygb2 successfully interpolates GFS PGRB2 file to AWIPS 20km ${GRID} grids."
    echo " "
    echo " "
 exit

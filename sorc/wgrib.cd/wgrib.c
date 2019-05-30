@@ -39,18 +39,6 @@
 #define BDS_Harmonic_RefValue(bds) (ibm2flt(bds+11))
 
 #define BDS_DataStart(bds)      ((int) (11 + BDS_MoreFlags(bds)*3))
-
-/* breaks if BDS_NumBits(bds) == 0 */
-/*
-#define BDS_NValues(bds)        (((BDS_LEN(bds) - BDS_DataStart(bds))*8 - \
-				BDS_UnusedBits(bds)) / BDS_NumBits(bds))
-*/
-/*
-#define BDS_NValues(bds)        ((BDS_NumBits(bds) == 0) ? 0 : \
-				(((BDS_LEN(bds) - BDS_DataStart(bds))*8 - \
-				BDS_UnusedBits(bds)) / BDS_NumBits(bds)))
-*/
-
 #define BDS_P1(bds)		(bds[16] * 256 + bds[17])
 #define BDS_P2(bds)		(bds[18] * 256 + bds[19])
 
@@ -391,6 +379,7 @@ void ensemble(unsigned char *pds, int mode);
 
 /* various centers */
 #define NMC			7
+#define JMA			34
 #define ECMWF			98
 #define DWD			78
 #define CMC			54
@@ -408,7 +397,6 @@ void ensemble(unsigned char *pds, int mode);
 #define PDS_EcENS(pds)		(PDS_LEN(pds) >= 52 && pds[40] == 1 && \
 				pds[43] * 256 + pds[44] == 1035 && pds[50] != 0)
 #define PDS_EcFcstNo(pds)	(pds[49])
-#define PDS_EcNoFcst(pds)	(pds[50])
 
 #define PDS_Ec16Version(pds)	(pds + 45)
 #define PDS_Ec16Number(pds)	(PDS_EcLocalId(pds) == 16 ? UINT2(pds[49],pds[50]) : 0)
@@ -444,7 +432,7 @@ void ensemble(unsigned char *pds, int mode);
 
 
 
-#define VERSION "v1.8.1.2a (6-11) Wesley Ebisuzaki\n\t\tDWD-tables 2,201-205 (11-28-2005) Helmut P. Frank\n\t\tspectral: Luis Kornblueh (MPI)"
+#define VERSION "v1.8.2 (3-17) Wesley Ebisuzaki\n\t\tDWD-tables 2,201-205 (11-28-2005) Helmut P. Frank\n\t\tspectral: Luis Kornblueh (MPI)"
 
 #define CHECK_GRIB
 /* #define DEBUG */
@@ -500,7 +488,7 @@ int main(int argc, char **argv) {
     int i, nx, ny, file_arg;
     long int len_grib, nxny, buffer_size, n_dump, count = 1;
     long unsigned pos = 0;
-    unsigned char *msg, *pds, *gds, *bms, *bds, *pointer;
+    unsigned char *msg, *pds, *gds, *bms, *bds, *pointer, *end_msg;
     FILE *input, *dump_file = NULL;
     char line[2000];
     enum {BINARY, TEXT, IEEE, GRIB, NONE} output_type = NONE;
@@ -742,6 +730,7 @@ int main(int argc, char **argv) {
 	    }
 	}
 
+fail:
 	msg = seek_grib(input, &pos, &len_grib, buffer, MSEEK);
 	if (msg == NULL) {
 	    if (mode == INVENTORY || mode == DUMP_ALL) break;
@@ -766,44 +755,59 @@ int main(int argc, char **argv) {
 	/* parse grib message */
 
 	msg = buffer;
+	end_msg = msg + len_grib - 1;
+
+	/* check if last 4 bytes are '7777' */
+
+//	simple check is for last 4 bytes == '7777'
+//    	better check to see if pointers don't go past end_msg
+//      if (end_msg[0] != 0x37 || end_msg[-1] != 0x37 || end_msg[-2] != 0x37 || end_msg[-3] != 0x37) {
+//	    fprintf(stderr,"Skipping illegal grib1 message: error expected ending 7777\n");
+//	    pos++;
+//	    goto fail;
+//	}
+
+	if (msg + 8 + 27 > end_msg) {
+	    pos++;
+	    goto fail;
+	}
+
         pds = (msg + 8);
         pointer = pds + PDS_LEN(pds);
-#ifdef DEBUG
-	printf("LEN_GRIB= 0x%x\n", len_grib);
-	printf("PDS_LEN= 0x%x: at 0x%x\n", PDS_LEN(pds),pds-msg);
-#endif
+
+	if (pointer > end_msg) {
+	    pos++;
+	    goto fail;
+	}
+
         if (PDS_HAS_GDS(pds)) {
             gds = pointer;
             pointer += GDS_LEN(gds);
-#ifdef DEBUG
-	    printf("GDS_LEN= 0x%x: at 0x%x\n", GDS_LEN(gds), gds-msg);
-#endif
+	    if (pointer > end_msg) {
+	        pos++;
+	        goto fail;
+	    }
         }
         else {
             gds = NULL;
         }
-#ifdef DEBUG
-        printf("Has BMS=%d\n", PDS_HAS_BMS(pds));
-#endif
+
         if (PDS_HAS_BMS(pds)) {
             bms = pointer;
             pointer += BMS_LEN(bms);
-#ifdef DEBUG
-	    printf("BMS_LEN= 0x%x: at 0x%x\n", BMS_LEN(bms),bms-msg);
-#endif
         }
         else {
             bms = NULL;
         }
 
+	if (pointer+10 > end_msg) {
+	    pos++;
+	    goto fail;
+	}
+
         bds = pointer;
         pointer += BDS_LEN(bds);
 
-
-#ifdef DEBUG
-	printf("BDS_LEN= 0x%x\n", BDS_LEN(bds));
-	printf("END_LEN= 0x%x: at 0x%x\n", 4,pointer-msg);
-#endif
 	if (pointer-msg+4 != len_grib) {
 	    fprintf(stderr,"Len of grib message is inconsistent.\n");
 	}
@@ -1164,6 +1168,9 @@ int main(int argc, char **argv) {
 	    free(array);
 	    if (verbose > 0) printf("\n");
 	}
+
+	if (output_type != NONE) fflush(dump_file);
+	fflush(stdout);
 	    
         pos += len_grib;
         count++;
@@ -1513,6 +1520,7 @@ double int_power(double x, int y) {
  *                                      Thu Aug 23 09:28:34 GMT 2001
  * add DWD tables 204, 205              H. Frank, 10-19-2005
  * LAMI => DWD				11/2008 Davide Sacchetti 
+ * add JRA-55 table 200
  */
 
 
@@ -1557,6 +1565,7 @@ extern const  struct ParmTable parm_table_dwd_203[256];
 extern const  struct ParmTable parm_table_dwd_204[256];
 extern const  struct ParmTable parm_table_dwd_205[256];
 extern const  struct ParmTable parm_table_cptec_254[256];
+extern const  struct ParmTable parm_table_jra55_200[256];
 
 extern enum Def_NCEP_Table def_ncep_table;
 extern int cmc_eq_ncep;
@@ -1649,6 +1658,10 @@ static const struct ParmTable *Parm_Table(unsigned char *pds) {
     if (center == CPTEC) {
 	if (ptable == 254) return &parm_table_cptec_254[0];
     }
+    if (center == JMA) {
+	if (ptable == 200) return &parm_table_jra55_200[0];
+    }
+
 
 #ifndef P_TABLE_FIRST
     i = setup_user_table(center, subcenter, ptable);
@@ -1910,6 +1923,7 @@ int wrtieee(float *array, int n, int header, FILE *output) {
 	unsigned char h4[4];
 
 	nbuf = 0;
+	h4[0] = h4[1] =  h4[2] = h4[3] = 0;
 	if (header) {
 		l = n * 4;
 		for (i = 0; i < 4; i++) {
@@ -1989,7 +2003,7 @@ int wrtieee_header(unsigned int n, FILE *output) {
 void levels(int kpds6, int kpds7, int center, int verbose) {
 
 	int o11, o12;
-
+    
 	/* octets 11 and 12 */
 	o11 = kpds7 / 256;
 	o12 = kpds7 % 256;
@@ -2019,14 +2033,12 @@ void levels(int kpds6, int kpds7, int center, int verbose) {
 	case 10: printf("atmos col");
 		break;
 
-	case 12:
-	case 212: printf("low cld bot");
+	case 12: printf("low cld bot");
 		break;
-	case 13:
-	case 213: printf("low cld top");
+
+	case 13: printf("low cld top");
 		break;
-	case 14:
-	case 214: printf("low cld lay");
+	case 14: printf("low cld lay");
 		break;
 	case 20: 
 		if (verbose == 2) printf("temp=%fK", kpds7/100.0);
@@ -2065,7 +2077,19 @@ void levels(int kpds6, int kpds7, int center, int verbose) {
                 if (center == NMC) printf("bndary-layer cld top");
 		else printf("%.2f mb",kpds7*0.01);
 		break;
-	case 211: printf("bndary-layer cld layer");
+	case 211: 
+		if (center == JMA) printf("soil column");
+		else printf("bndary-layer cld layer");
+		break;
+        case 212:
+                if (center == JMA) printf("bot land sfc model");
+                else printf("low cld bot");
+                break;
+	case 213:
+                if (center == JMA) printf("soil layer %d",kpds7);
+		else printf("low cld top");
+		break;
+	case 214: printf("low cld lay");
 		break;
 	case 215: printf("cloud ceiling");
 		break;
@@ -3008,7 +3032,7 @@ const struct ParmTable parm_table_ncep_reanal[256] = {
 const struct ParmTable parm_table_nceptab_131[256] = {
       /* 0 */ {"var0", "undefined"},
       /* 1 */ {"PRES", "Pressure [Pa]"},
-      /* 2 */ {"PRMSL", "Mean sea level pressure (Shuell method) [Pa]"},
+      /* 2 */ {"PRMSL", "Pressure reduced to MSL [Pa]"},
       /* 3 */ {"PTEND", "Pressure tendency [Pa/s]"},
       /* 4 */ {"PVORT", "Pot. vorticity [km^2/kg/s]"},
       /* 5 */ {"ICAHT", "ICAO Standard Atmosphere Reference Height [M]"},
@@ -3087,7 +3111,7 @@ const struct ParmTable parm_table_nceptab_131[256] = {
       /* 78 */ {"SNOC", "Convective snow [kg/m^2]"},
       /* 79 */ {"SNOL", "Large scale snow [kg/m^2]"},
       /* 80 */ {"WTMP", "Water temp. [K]"},
-      /* 81 */ {"LAND", "Land cover (land=1;sea=0) [fraction]"},
+      /* 81 */ {"LAND", "Land-sea coverage (land=1;sea=0) [fraction]"},
       /* 82 */ {"DSLM", "Deviation of sea level from mean [m]"},
       /* 83 */ {"SFCR", "Surface roughness [m]"},
       /* 84 */ {"ALBDO", "Albedo [%]"},
@@ -3136,14 +3160,14 @@ const struct ParmTable parm_table_nceptab_131[256] = {
       /* 127 */ {"IMGD", "Image data []"},
       /* 128 */ {"MSLSA", "Mean sea level pressure (Std Atm) [Pa]"},
       /* 129 */ {"var129", "undefined"},
-      /* 130 */ {"MSLET", "Mean sea level pressure (Mesinger method) [Pa]"},
+      /* 130 */ {"MSLET", "Mean sea level pressure (ETA model) [Pa]"},
       /* 131 */ {"LFTX", "Surface lifted index [K]"},
       /* 132 */ {"4LFTX", "Best (4-layer) lifted index [K]"},
       /* 133 */ {"var133", "undefined"},
       /* 134 */ {"PRESN", "Pressure (nearest grid point) [Pa]"},
       /* 135 */ {"MCONV", "Horizontal moisture divergence [kg/kg/s]"},
       /* 136 */ {"VWSH", "Vertical speed shear [1/s]"},
-      /* 137 */ {"var137", "undefined"},
+      /* 137 */ {"LTNGSD", "Lightning strike density [1/m^2/s]"},
       /* 138 */ {"var138", "undefined"},
       /* 139 */ {"PVMW", "Potential vorticity (mass-weighted) [1/s/m]"},
       /* 140 */ {"CRAIN", "Categorical rain [yes=1;no=0]"},
@@ -3195,11 +3219,11 @@ const struct ParmTable parm_table_nceptab_131[256] = {
       /* 186 */ {"var186", "undefined"},
       /* 187 */ {"NDVI", "Normalized Difference Vegetation Index []"},
       /* 188 */ {"DRIP", "Rate of water dropping from canopy to gnd [kg/m^2]"},
-      /* 189 */ {"LANDN", "Land cover (nearest neighbor) [sea=0,land=1]"},
+      /* 189 */ {"LANDN", "Land-sea coverage (nearest neighbor) [land=1,sea=0]"},
       /* 190 */ {"HLCY", "Storm relative helicity [m^2/s^2]"},
       /* 191 */ {"NLATN", "Latitude (nearest neigbhbor) (-90 to +90) [deg]"},
       /* 192 */ {"ELONN", "East longitude (nearest neigbhbor) (0-360) [deg]"},
-      /* 193 */ {"var193", "undefined"},
+      /* 193 */ {"APTMP", "Apparent temperature [K]"},
       /* 194 */ {"CPOFP", "Prob. of frozen precipitation [%]"},
       /* 195 */ {"var195", "undefined"},
       /* 196 */ {"USTM", "u-component of storm motion [m/s]"},
@@ -3248,10 +3272,10 @@ const struct ParmTable parm_table_nceptab_131[256] = {
       /* 239 */ {"SNOT", "Snow temperature [K]"},
       /* 240 */ {"POROS", "Soil porosity [fraction]"},
       /* 241 */ {"WCCONV", "Water condensate flux convergence (vertical int) [kg/m^2]"},
-      /* 242 */ {"WVUFLX", "Water vapor zonal transport (vertical int)[kg/m]"},
-      /* 243 */ {"WVVFLX", "Water vapor meridional transport (vertical int) [kg/m]"},
-      /* 244 */ {"WCUFLX", "Water condensate zonal transport (vertical int) [kg/m]"},
-      /* 245 */ {"WCVFLX", "Water condensate meridional transport (vertical int) [kg/m]"},
+      /* 242 */ {"WVUFLX", "Water vapor zonal flux (vertical int)[kg/m]"},
+      /* 243 */ {"WVVFLX", "Water vapor meridional flux (vertical int) [kg/m]"},
+      /* 244 */ {"WCUFLX", "Water condensate zonal flux (vertical int) [kg/m]"},
+      /* 245 */ {"WCVFLX", "Water condensate meridional flux (vertical int) [kg/m]"},
       /* 246 */ {"RCS", "Solar parameter in canopy conductance [fraction]"},
       /* 247 */ {"RCT", "Temperature parameter in canopy conductance [fraction]"},
       /* 248 */ {"RCQ", "Humidity parameter in canopy conductance [fraction]"},
@@ -3408,7 +3432,7 @@ const struct ParmTable parm_table_nceptab_130[256] = {
       /* 140 */ {"var140", "undefined"},
       /* 141 */ {"var141", "undefined"},
       /* 142 */ {"var142", "undefined"},
-      /* 143 */ {"var143", "undefined 143"},
+      /* 143 */ {"var143", "undefined"},
       /* 144 */ {"SOILW", "Volumetric soil moisture (frozen + liquid) [fraction]"},
       /* 145 */ {"PEVPR", "Potential evaporation rate [W/m^2]"},
       /* 146 */ {"VEGT", "Vegetation canopy temperature [K]"},
@@ -3418,7 +3442,7 @@ const struct ParmTable parm_table_nceptab_130[256] = {
       /* 150 */ {"SSTOR", "Surface water storage [Kg/m^2]"},
       /* 151 */ {"LSOIL", "Liquid soil moisture content (non-frozen) [Kg/m^2]"},
       /* 152 */ {"EWATR", "Open water evaporation (standing water) [W/m^2]"},
-      /* 153 */ {"var153", "undefined"},
+      /* 153 */ {"NCRAIN", "Number concentration for rain particles [-]"},
       /* 154 */ {"LSPA", "Land Surface Precipitation Accumulation [kg/m^2]"},
       /* 155 */ {"GFLUX", "Ground Heat Flux [W/m^2]"},
       /* 156 */ {"CIN", "Convective inhibition [J/Kg]"},
@@ -3466,12 +3490,12 @@ const struct ParmTable parm_table_nceptab_130[256] = {
       /* 198 */ {"SBSNO", "Sublimation (evaporation from snow) [W/m^2]"},
       /* 199 */ {"EVBS", "Direct evaporation from bare soil [W/m^2]"},
       /* 200 */ {"EVCW", "Canopy water evaporation [W/m^2]"},
-      /* 201 */ {"var201", "undefined"},
-      /* 202 */ {"var202", "undefined"},
+      /* 201 */ {"VTCIN", "Virtual temperature based convective inhibition [J/kg]"},
+      /* 202 */ {"VTCAPE", "Virtual temperature based convective available pot. energy [J/Kg]"},
       /* 203 */ {"RSMIN", "Minimal stomatal resistance [s/m]"},
       /* 204 */ {"DSWRF", "Downward shortwave radiation flux [W/m^2]"},
       /* 205 */ {"DLWRF", "Downward longwave radiation flux [W/m^2]"},
-      /* 206 */ {"var206", "undefined"},
+      /* 206 */ {"VIL", "Vertically integrated liquid [Kg/m^2]"},
       /* 207 */ {"MSTAV", "Moisture availability [%]"},
       /* 208 */ {"SFEXC", "Exchange coefficient [(Kg/m^3)(m/s)]"},
       /* 209 */ {"var209", "undefined"},
@@ -10812,7 +10836,7 @@ void EC_ext(unsigned char *pds, char *prefix, char *suffix, int verbose) {
 	    case 6: strcpy(string, "DEMETER"); break;
 	    case 7: strcpy(string, "PROVOST"); break;
 	    case 8: strcpy(string, "ELDAS"); break;
-	     default: sprintf(string, "%d", ec_class); break;
+            default: sprintf(string, "%d", ec_class); break;
 	}
         printf("%sclass=%s%s",prefix,string,suffix);
     }
@@ -10832,7 +10856,7 @@ void EC_ext(unsigned char *pds, char *prefix, char *suffix, int verbose) {
             case 10: sprintf(string, "Control forecast %d",PDS_EcFcstNo(pds)); 
 		break;
             case 11: 
-		if (ec_stream == 1035) 
+		if (ec_stream == 1035 || ec_stream == 1033) 
               	   sprintf(string, "Perturbed forecast %d",
                    PDS_EcFcstNo(pds)); 
 		else
@@ -10852,6 +10876,7 @@ void EC_ext(unsigned char *pds, char *prefix, char *suffix, int verbose) {
 /*    }  */
     if (verbose == 2) {
         switch(ec_stream) {
+	    case 1033: strcpy(string, "ensemble hindcasts"); break;
 	    case 1035: strcpy(string, "ensemble forecasts"); break;
 	    case 1043: strcpy(string, "mon mean"); break;
 	    case 1070: strcpy(string, "mon (co)var"); break;
@@ -13362,6 +13387,265 @@ const struct ParmTable parm_table_cptec_254[256] = {
    /* 255 */ {"uvmt", "TIME MEAN ZONAL WIND (U) [m/s]"},
 };
 
+
+const struct ParmTable parm_table_jra55_200[256] = {
+      /* 0 */ {"var0", "undefined"},
+      /* 1 */ {"PRES", "Pressure [Pa]"},
+      /* 2 */ {"PRMSL", "Pressure reduced to MSL [Pa]"},
+      /* 3 */ {"var3", "undefined"},
+      /* 4 */ {"pVOR", "Potential vorticity [K*m^2/kg/s]"},
+      /* 5 */ {"var5", "undefined"},
+      /* 6 */ {"GP", "Geopotential [m^2/s^2]"},
+      /* 7 */ {"HGT", "Geopotential height [gpm]"},
+      /* 8 */ {"var8", "undefined"},
+      /* 9 */ {"var9", "undefined"},
+      /* 10 */ {"TOZNE", "Total ozone [Dobson]"},
+      /* 11 */ {"TMP", "Temperature [K]"},
+      /* 12 */ {"var12", "undefined"},
+      /* 13 */ {"POT", "Potential temperature [K]"},
+      /* 14 */ {"var14", "undefined"},
+      /* 15 */ {"TMAX", "Maximum temperature [K]"},
+      /* 16 */ {"TMIN", "Minimum temperature [K]"},
+      /* 17 */ {"var17", "undefined"},
+      /* 18 */ {"DEPR", "Dew-point depression [K]"},
+      /* 19 */ {"var19", "undefined"},
+      /* 20 */ {"var20", "undefined"},
+      /* 21 */ {"var21", "undefined"},
+      /* 22 */ {"var22", "undefined"},
+      /* 23 */ {"var23", "undefined"},
+      /* 24 */ {"var24", "undefined"},
+      /* 25 */ {"var25", "undefined"},
+      /* 26 */ {"var26", "undefined"},
+      /* 27 */ {"var27", "undefined"},
+      /* 28 */ {"var28", "undefined"},
+      /* 29 */ {"var29", "undefined"},
+      /* 30 */ {"var30", "undefined"},
+      /* 31 */ {"var31", "undefined"},
+      /* 32 */ {"var32", "undefined"},
+      /* 33 */ {"UGRD", "u-component of wind [m/s]"},
+      /* 34 */ {"VGRD", "v-component of wind [m/s]"},
+      /* 35 */ {"STRM", "Stream function [m^2/s]"},
+      /* 36 */ {"VPOT", "Velocity potential [m^2/s]"},
+      /* 37 */ {"MNTSF", "Montgomery stream function [m^2/s^2]"},
+      /* 38 */ {"var38", "undefined"},
+      /* 39 */ {"VVEL", "Vertical velocity [Pa/s]"},
+      /* 40 */ {"var40", "undefined"},
+      /* 41 */ {"var41", "undefined"},
+      /* 42 */ {"var42", "undefined"},
+      /* 43 */ {"RELV", "Relative vorticity [1/s]"},
+      /* 44 */ {"RELD", "Relative divergence [1/s]"},
+      /* 45 */ {"var45", "undefined"},
+      /* 46 */ {"var46", "undefined"},
+      /* 47 */ {"var47", "undefined"},
+      /* 48 */ {"var48", "undefined"},
+      /* 49 */ {"var49", "undefined"},
+      /* 50 */ {"var50", "undefined"},
+      /* 51 */ {"SPFH", "Specific humidity [kg/kg]"},
+      /* 52 */ {"RH", "Relative humidity [%]"},
+      /* 53 */ {"var53", "undefined"},
+      /* 54 */ {"PWAT", "Precipitable water [kg/m^2]"},
+      /* 55 */ {"var55", "undefined"},
+      /* 56 */ {"var56", "undefined"},
+      /* 57 */ {"EVP", "Evaporation [mm/day]"},
+      /* 58 */ {"CICE", "Cloud ice [kg/m^2]"},
+      /* 59 */ {"var59", "undefined"},
+      /* 60 */ {"var60", "undefined"},
+      /* 61 */ {"TPRAT", "Total precipitation [mm/day]"},
+      /* 62 */ {"LPRAT", "Large scale precipitation [mm/day]"},
+      /* 63 */ {"CPRAT", "Convective precipitation [mm/day]"},
+      /* 64 */ {"SRWEQ", "Snowfall rate water equivalent [mm/day]"},
+      /* 65 */ {"SnWe", "Water equivalent of accumulated snow depth [kg/m^2]"},
+      /* 66 */ {"SnowD", "Snow depth [m]"},
+      /* 67 */ {"var67", "undefined"},
+      /* 68 */ {"var68", "undefined"},
+      /* 69 */ {"var69", "undefined"},
+      /* 70 */ {"var70", "undefined"},
+      /* 71 */ {"TCDC", "Total cloud cover [%]"},
+      /* 72 */ {"var72", "undefined"},
+      /* 73 */ {"LCDC", "Low cloud cover [%]"},
+      /* 74 */ {"MCDC", "Medium cloud cover [%]"},
+      /* 75 */ {"HCDC", "High cloud cover [%]"},
+      /* 76 */ {"var76", "undefined"},
+      /* 77 */ {"var77", "undefined"},
+      /* 78 */ {"var78", "undefined"},
+      /* 79 */ {"var79", "undefined"},
+      /* 80 */ {"var80", "undefined"},
+      /* 81 */ {"LAND", "Land cover (1 = land, 0 = sea) [Proportion]"},
+      /* 82 */ {"var82", "undefined"},
+      /* 83 */ {"SFCR", "Surface roughness [m]"},
+      /* 84 */ {"var84", "undefined"},
+      /* 85 */ {"SoilT", "Soil temperature [K]"},
+      /* 86 */ {"var86", "undefined"},
+      /* 87 */ {"var87", "undefined"},
+      /* 88 */ {"var88", "undefined"},
+      /* 89 */ {"var89", "undefined"},
+      /* 90 */ {"ROF", "Water run-off [mm/day]"},
+      /* 91 */ {"ICEC", "Ice cover (1 = ice, 0 = no ice) [Proportion]"},
+      /* 92 */ {"var92", "undefined"},
+      /* 93 */ {"var93", "undefined"},
+      /* 94 */ {"var94", "undefined"},
+      /* 95 */ {"var95", "undefined"},
+      /* 96 */ {"var96", "undefined"},
+      /* 97 */ {"var97", "undefined"},
+      /* 98 */ {"var98", "undefined"},
+      /* 99 */ {"var99", "undefined"},
+      /* 100 */ {"var100", "undefined"},
+      /* 101 */ {"var101", "undefined"},
+      /* 102 */ {"var102", "undefined"},
+      /* 103 */ {"var103", "undefined"},
+      /* 104 */ {"var104", "undefined"},
+      /* 105 */ {"var105", "undefined"},
+      /* 106 */ {"var106", "undefined"},
+      /* 107 */ {"var107", "undefined"},
+      /* 108 */ {"var108", "undefined"},
+      /* 109 */ {"var109", "undefined"},
+      /* 110 */ {"var110", "undefined"},
+      /* 111 */ {"var111", "undefined"},
+      /* 112 */ {"var112", "undefined"},
+      /* 113 */ {"var113", "undefined"},
+      /* 114 */ {"var114", "undefined"},
+      /* 115 */ {"var115", "undefined"},
+      /* 116 */ {"var116", "undefined"},
+      /* 117 */ {"var117", "undefined"},
+      /* 118 */ {"BRTMP", "Brightness temperature [K]"},
+      /* 119 */ {"var119", "undefined"},
+      /* 120 */ {"var120", "undefined"},
+      /* 121 */ {"LHTFL", "Latent heat flux [W/m^2]"},
+      /* 122 */ {"SHTFL", "Sensible heat flux [W/m^2]"},
+      /* 123 */ {"var123", "undefined"},
+      /* 124 */ {"UFLX", "Momentum flux, u-component [N/m^2]"},
+      /* 125 */ {"VFLX", "Momentum flux, v-component [N/m^2]"},
+      /* 126 */ {"var126", "undefined"},
+      /* 127 */ {"var127", "undefined"},
+      /* 128 */ {"var128", "undefined"},
+      /* 129 */ {"var129", "undefined"},
+      /* 130 */ {"var130", "undefined"},
+      /* 131 */ {"var131", "undefined"},
+      /* 132 */ {"BVF2", "Square of Brunt-Vaisala frequency [1/s^2]"},
+      /* 133 */ {"var133", "undefined"},
+      /* 134 */ {"var134", "undefined"},
+      /* 135 */ {"var135", "undefined"},
+      /* 136 */ {"var136", "undefined"},
+      /* 137 */ {"var137", "undefined"},
+      /* 138 */ {"var138", "undefined"},
+      /* 139 */ {"var139", "undefined"},
+      /* 140 */ {"var140", "undefined"},
+      /* 141 */ {"var141", "undefined"},
+      /* 142 */ {"var142", "undefined"},
+      /* 143 */ {"var143", "undefined"},
+      /* 144 */ {"TSC", "Canopy temperature [K]"},
+      /* 145 */ {"TSG", "Ground temperature [K]"},
+      /* 146 */ {"CWORK", "Cloud work function [J/kg]"},
+      /* 147 */ {"FGLU", "Zonal momentum flux by long gravity wave [N/m^2]"},
+      /* 148 */ {"FGLV", "Meridional momentum flux by long gravity wave [N/m^2]"},
+      /* 149 */ {"var149", "undefined"},
+      /* 150 */ {"var150", "undefined"},
+      /* 151 */ {"ADUA", "Adiabatic zonal acceleration [m/s/day]"},
+      /* 152 */ {"VWV", "Meridional water vapour flux [Kg/m/s]"},
+      /* 153 */ {"var153", "undefined"},
+      /* 154 */ {"FGSV", "Meridional momentum flux by short gravity wave [N/m^2]"},
+      /* 155 */ {"GFLX", "Ground heat flux [W/m^2]"},
+      /* 156 */ {"var156", "undefined"},
+      /* 157 */ {"UWV", "Zonal water vapour flux [kg/m/s]"},
+      /* 158 */ {"var158", "undefined"},
+      /* 159 */ {"FGSU", "Zonal momentum flux by short gravity wave [N/m^2]"},
+      /* 160 */ {"CSUSF", "Clear sky upward solar radiation flux [W/m^2]"},
+      /* 161 */ {"CSDSF", "Clear sky downward solar radiation flux [W/m^2]"},
+      /* 162 */ {"CSULF", "Clear sky upward long wave radiation flux [W/m^2]"},
+      /* 163 */ {"CSDLF", "Clear sky downward long wave radiation flux [W/m^2]"},
+      /* 164 */ {"var164", "undefined"},
+      /* 165 */ {"ADVA", "Adiabatic meridional acceleration [m/s/day]"},
+      /* 166 */ {"var166", "undefined"},
+      /* 167 */ {"var167", "undefined"},
+      /* 168 */ {"var168", "undefined"},
+      /* 169 */ {"var169", "undefined"},
+      /* 170 */ {"FRCV", "Frequency of deep convection [%]"},
+      /* 171 */ {"FRCVS", "Frequency of shallow convection [%]"},
+      /* 172 */ {"FRSC", "Frequency of stratocumulus parameterisation [%]"},
+      /* 173 */ {"GWDUA", "Gravity wave zonal acceleration [m/s/day]"},
+      /* 174 */ {"GWDVA", "Gravity wave meridional acceleration [m/s/day]"},
+      /* 175 */ {"var175", "undefined"},
+      /* 176 */ {"var176", "undefined"},
+      /* 177 */ {"var177", "undefined"},
+      /* 178 */ {"var178", "undefined"},
+      /* 179 */ {"var179", "undefined"},
+      /* 180 */ {"var180", "undefined"},
+      /* 181 */ {"var181", "undefined"},
+      /* 182 */ {"var182", "undefined"},
+      /* 183 */ {"var183", "undefined"},
+      /* 184 */ {"var184", "undefined"},
+      /* 185 */ {"var185", "undefined"},
+      /* 186 */ {"var186", "undefined"},
+      /* 187 */ {"var187", "undefined"},
+      /* 188 */ {"var188", "undefined"},
+      /* 189 */ {"var189", "undefined"},
+      /* 190 */ {"UTHE", "Zonal thermal energy flux [W/m]"},
+      /* 191 */ {"VTHE", "Meridional thermal energy flux [W/m]"},
+      /* 192 */ {"var192", "undefined"},
+      /* 193 */ {"var193", "undefined"},
+      /* 194 */ {"var194", "undefined"},
+      /* 195 */ {"var195", "undefined"},
+      /* 196 */ {"var196", "undefined"},
+      /* 197 */ {"var197", "undefined"},
+      /* 198 */ {"var198", "undefined"},
+      /* 199 */ {"var199", "undefined"},
+      /* 200 */ {"var200", "undefined"},
+      /* 201 */ {"var201", "undefined"},
+      /* 202 */ {"LTRS", "Evapotranspiration [W/m^2]"},
+      /* 203 */ {"LINT", "Interception loss [W/m^2]"},
+      /* 204 */ {"DSWRF", "Downward solar radiation flux [W/m^2]"},
+      /* 205 */ {"DLWRF", "Downward long wave radiation flux [W/m^2]"},
+      /* 206 */ {"var206", "undefined"},
+      /* 207 */ {"var207", "undefined"},
+      /* 208 */ {"var208", "undefined"},
+      /* 209 */ {"var209", "undefined"},
+      /* 210 */ {"var210", "undefined"},
+      /* 211 */ {"USWRF", "Upward solar radiation flux [W/m^2]"},
+      /* 212 */ {"ULWRF", "Upward long wave radiation flux [W/m^2]"},
+      /* 213 */ {"var213", "undefined"},
+      /* 214 */ {"var214", "undefined"},
+      /* 215 */ {"var215", "undefined"},
+      /* 216 */ {"var216", "undefined"},
+      /* 217 */ {"var217", "undefined"},
+      /* 218 */ {"var218", "undefined"},
+      /* 219 */ {"WSMX", "Maximum wind speed [m/s]"},
+      /* 220 */ {"var220", "undefined"},
+      /* 221 */ {"CWAT", "Cloud water [kg/kg]"},
+      /* 222 */ {"ADHR", "Adiabatic heating rate [K/day]"},
+      /* 223 */ {"MSC", "Moisture storage on canopy [m]"},
+      /* 224 */ {"MSG", "Moisture storage on ground/cover [m]"},
+      /* 225 */ {"SoilW", "Soil wetness [Proportion]"},
+      /* 226 */ {"SMC", "Mass concentration of condensed water in soil [kg/m^3]"},
+      /* 227 */ {"CW", "Cloud liquid water [kg/m^2]"},
+      /* 228 */ {"CLWC", "Cloud liquid water [kg/kg]"},
+      /* 229 */ {"CIWC", "Cloud ice [kg/kg]"},
+      /* 230 */ {"MFLXB", "Upward mass flux at cloud base [kg/m^2/s]"},
+      /* 231 */ {"MFLUX", "Upward mass flux [kg/m^2/s]"},
+      /* 232 */ {"var232", "undefined"},
+      /* 233 */ {"var233", "undefined"},
+      /* 234 */ {"var234", "undefined"},
+      /* 235 */ {"var235", "undefined"},
+      /* 236 */ {"ADMR", "Adiabatic moistening rate [kg/kg/day]"},
+      /* 237 */ {"OZONE", "Ozone mixing ratio [mg/kg]"},
+      /* 238 */ {"var238", "undefined"},
+      /* 239 */ {"CNVUA", "Convective zonal acceleration [m/s/day]"},
+      /* 240 */ {"CNVVA", "Convective meridional acceleration [m/s/day]"},
+      /* 241 */ {"LRGHR", "Large scale condensation heating rate [K/day]"},
+      /* 242 */ {"CNVHR", "Convective heating rate [k/day]"},
+      /* 243 */ {"CNVMR", "Convective moistening rate [kg/kg/day]"},
+      /* 244 */ {"var244", "undefined"},
+      /* 245 */ {"var245", "undefined"},
+      /* 246 */ {"VDFHR", "Vertical diffusion heating rate [K/day]"},
+      /* 247 */ {"VDFUA", "Vertical diffusion zonal acceleration [m/s/day]"},
+      /* 248 */ {"VDFVA", "Vertical diffusion meridional acceleration [m/s/day]"},
+      /* 249 */ {"VDFMR", "Vertical diffusion moistening rate [kg/kg/day]"},
+      /* 250 */ {"SWHR", "Solar radiative heating rate [k/day]"},
+      /* 251 */ {"LWHR", "Long wave radiative heating rate [K/day]"},
+      /* 252 */ {"VTYPE", "Type of vegetation"},
+      /* 253 */ {"LRGMR", "Large scale moistening rate [kg/kg/day]"},
+      /* 254 */ {"var254", "undefined"},
+      /* 255 */ {"var255", "undefined"},
+};
 
 /*
  * support for complex packing

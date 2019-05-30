@@ -1,8 +1,8 @@
 #!/bin/sh
 #                            CNVGRIB 
 #  This script uses to test the utility cnvgrib.  The script will compare two output files:
-#  one is cnvgrib (PROD) and cnvgrib (in grib_util.v1.1.0)
-#  The cnvgrib in grib_util version 1.1.0 will correct the forecast hour > F252 when it converts
+#  one is cnvgrib (PROD) and cnvgrib (in grib_util.v1.1.1)
+#  The cnvgrib in grib_util version 1.1.1 will correct the forecast hour > F252 when it converts
 #  from GRIB2 to GRIB1 for contnuous accumulation precipitation (ACPCP) and APCP
 # 
 #  Then, the WGRIB use to display content (inventory) of grib1 file for comparison.
@@ -10,8 +10,8 @@
 #  The input are GRIB2 file.   The GRIB2 file can be in any model (i.e., GFS, NAM, HRRR, RTMA, ...)
 #
 
-grib_util_ver=v1.1.0
-export cyc=00
+ver=1.1.1
+cyc=00
 
 module use /scratch4/NCEPDEV/nems/noscrub/emc.nemspara/soft/modulefiles
 module load prod_util
@@ -53,38 +53,39 @@ if [ "$machine" = "Dell" ]; then
     module load prod_util/1.1.0
     module load prod_envir/1.0.2
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
-    module load dev/grib_util/1.1.0
+    module use /usrx/local/nceplibs/dev/modulefiles/compiler_nceplibs/ips/18.0.1
+    module load dev/grib_util/${ver}
     input_file=/usrx/local/nceplibs/dev/lib/fv3gfs
 elif [ "$machine" = "IBM" ]; then
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
-    module use -a /usrx/local/nceplibs/grib_util.v1.1.0/modulefiles
-    module load grib_util/v1.1.0
+    module use -a /usrx/local/nceplibs/modulefiles
+    module load grib_util/v${ver}
     input_file=/usrx/local/nceplibs/gfs_data
 elif [ "$machine" = "Cray" ]; then
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
     module use /usrx/local/nceplibs/modulefiles
-    module load grib_util/1.1.0
+    module load grib_util/${ver}
     input_file=/usrx/local/nceplibs/gfs_data
 elif [ "$machine" = "Theia" ]; then
 #
-#   This is a test version of GRIB_UTIL.v1.1.0 on $machine
+#   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
     module use /scratch3/NCEPDEV/nwprod/modulefiles
-    module load grib_util/v1.1.0
+    module load grib_util/v${ver}
     input_file=/scratch3/NCEPDEV/nwprod/gfs_data
 fi
 
-# These executable files (below) is in GRIB_UTIL.v1.1.0
+# These executable files (below) is in GRIB_UTIL.v${ver}
 #
 cnvgrib_test=$CNVGRIB
 echo " "
@@ -142,7 +143,7 @@ do
 echo ""
 echo ""
 echo ""
-echo "Testing NEW cnvgrib in grib_util.v1.1.0"
+echo "Testing NEW cnvgrib in grib_util.v${ver}"
 echo ""
 echo "Please wait ... CNVGRIB is converting from GRIB2 to GRIB1 "
 echo ""
@@ -163,7 +164,7 @@ cat $output_g1/$file.grib2.cnvgrib.g1.wgrib
 echo " "
 echo " NOTE: "
 echo " "
-echo " CNVGRIB (in PROD) coded incorrect froecast hour > F252 (Example: ACPCP at forecast 264)  See below: "
+echo " CNVGRIB (in PROD) coded incorrect forecast hour > F252 (Example: ACPCP at forecast 264)  See below: "
 echo " ACPCP:kpds5=63:kpds6=1:kpds7=0:TR=4:P1=0:P2=8:TimeU=1:sfc:0-8hr acc:NAve=0 --> coded at 0-8hr "
 echo " "
 echo " "

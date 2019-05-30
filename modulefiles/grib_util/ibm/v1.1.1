@@ -13,13 +13,15 @@ module-whatis "This module sets the environment variables for \
                tocgrib, tocgrib2, tocgrib2super, wgrib, wgrib2"
 
 conflict grib_util
-conflict grib_util/v1.1.0
 
-set ver v1.1.0
+set ver v1.1.1
 set envir prod
 
-set    HOMEgrib /scratch3/NCEPDEV/nw${envir}/grib_util.$ver
+set    HOMEgrib /nw${envir}2/grib_util.$ver
 set    EXECgrib ${HOMEgrib}/exec
+
+module load ics/15.0.6
+module load NetCDF/4.2/serial
 
 setenv CNVGRIB $EXECgrib/cnvgrib
 setenv COPYGB $EXECgrib/copygb

@@ -14,11 +14,10 @@ module-whatis "This module sets the environment variables for \
 
 conflict grib_util
 
-set ver v1.1.0
+set ver v1.1.1
 set envir prod
 
-# set    HOMEgrib /gpfs/hps/nco/ops/nw${envir}/grib_util.$ver
-set    HOMEgrib /usrx/local/nceplibs/grib_util.$ver
+set    HOMEgrib /gpfs/hps/nco/ops/nw${envir}/grib_util.$ver
 set    EXECgrib ${HOMEgrib}/exec
 
 setenv CNVGRIB $EXECgrib/cnvgrib

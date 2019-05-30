@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for test_name in cnvgrib copygb2 wgrib2 
+for test_name in cnvgrib copygb2 wgrib2 wgrib
 do
     export dir=` pwd `
     export data=$dir/data
@@ -9,18 +9,20 @@ do
     export output_dir=$dir/${test_name}_output
     mkdir -p $data $output_g1 $output_g2 $output_dir
     echo " "
-    echo -n "Running test ${test_name}..."
+    echo -n " Running test: ${test_name}  Please wait ... "
     echo " "
     ./test_${test_name}_wcoss.sh &>${output_dir}/${test_name}.log
     err=$?
     echo " "
-    echo " done"
+    echo " Finished. "
     echo " "
     if [ $err -ne 0 ]; then
         >&2 echo "WARNING: ONE OR MORE ERRORS WERE REPORTED!"
     fi
-    mv $data $output_g1 $output_g2 $output_dir/ 
+#    mv $data $output_g1 $output_g2 $output_dir/ 
     echo " "
     echo "  --> Please view $output_dir/$test_name.log"
+    echo " "
+    echo " "
 done
 
