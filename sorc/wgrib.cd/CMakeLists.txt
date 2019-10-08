@@ -15,7 +15,7 @@ set_target_properties( ${EXENAME} PROPERTIES COMPILE_FLAGS ${CMAKE_C_FLAGS} )
 set(CMAKE_INCLUDE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/include_4")
 set_target_properties(${EXENAME} PROPERTIES Fortran_MODULE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/include_4")
 target_include_directories(${EXENAME} PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/include_4")
-target_link_libraries(${EXENAME} ${W3NCO_4_LIBRARY} ${BACIO_LIBRARY} )
+target_link_libraries(${EXENAME} ${W3NCO_LIB4} ${BACIO_LIB4} )
 
 file(MAKE_DIRECTORY ${CMAKE_INCLUDE_OUTPUT_DIRECTORY})
 

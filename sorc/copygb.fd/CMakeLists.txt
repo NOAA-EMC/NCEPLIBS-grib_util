@@ -18,7 +18,8 @@ set_target_properties( ${EXENAME} PROPERTIES LINK_FLAGS ${CMAKE_Fortran_8_FLAGS}
 set(CMAKE_INCLUDE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/include_8")
 set_target_properties(${EXENAME} PROPERTIES Fortran_MODULE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/include_8")
 target_include_directories(${EXENAME} PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/include_8")
-target_link_libraries(${EXENAME} ${BACIO_LIBRARY} ${W3NCO_LIBRARY} ${IP_LIBRARY} ${SP_LIBRARY} ${OpenMP_Fortran_FLAGS})
+message("hey bacio is ${BACIO_LIB4} and w3nco is  ${W3NCO_LIB4} ")
+target_link_libraries(${EXENAME} ${BACIO_LIB4} ${W3NCO_LIB4} ${IP_LIB4} ${SP_LIB4} ${OpenMP_Fortran_FLAGS})
 
 file(MAKE_DIRECTORY ${CMAKE_INCLUDE_OUTPUT_DIRECTORY})
 

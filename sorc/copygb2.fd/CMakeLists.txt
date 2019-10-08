@@ -20,7 +20,7 @@ include_directories( ${G2_INCd} ${SP_INCd} ${IP_INCd} )
 set(CMAKE_INCLUDE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/include_8")
 set_target_properties(${EXENAME} PROPERTIES Fortran_MODULE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/include_8")
 target_include_directories(${EXENAME} PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/include_8")
-target_link_libraries(${EXENAME} ${G2_LIBRARY} ${PNG_LIBRARIES} ${JASPER_LIBRARIES} ${BACIO_LIBRARY} ${W3NCO_LIBRARY} ${IP_LIBRARY} ${SP_LIBRARY} ${OpenMP_Fortran_FLAGS} ${LAPACK_LINKER_FLAGS} -static-intel)
+target_link_libraries(${EXENAME} ${G2_LIBd} ${PNG_LIBRARIES} ${JASPER_LIBRARIES} ${BACIO_LIB4} ${W3NCO_LIBd} ${IP_LIBd} ${SP_LIBd} ${OpenMP_Fortran_FLAGS} ${LAPACK_LINKER_FLAGS} -static-intel)
 
 file(MAKE_DIRECTORY ${CMAKE_INCLUDE_OUTPUT_DIRECTORY})
 

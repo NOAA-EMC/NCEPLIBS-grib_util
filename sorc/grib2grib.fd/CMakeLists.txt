@@ -20,8 +20,8 @@ include_directories( ${G2_INCd} ${SP_INCd} ${IP_INCd} )
 set(CMAKE_INCLUDE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/include_8")
 set_target_properties(${EXENAME} PROPERTIES Fortran_MODULE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/include_8")
 target_include_directories(${EXENAME} PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/include_8")
-message("HEY ${BACIO_8_LIBRARY} ")
-target_link_libraries(${EXENAME} ${W3NCO_8_LIBRARY} ${BACIO_8_LIBRARY} )
+message("HEY ${BACIO_LIB8} ")
+target_link_libraries(${EXENAME} ${W3NCO_LIB8} ${BACIO_LIB8} )
 
 file(MAKE_DIRECTORY ${CMAKE_INCLUDE_OUTPUT_DIRECTORY})
 
