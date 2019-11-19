@@ -114,7 +114,9 @@ C   LANGUAGE: F90 FORTRAN
 C
 C$$$
 C
+#ifdef __INTEL__
       USE IFPORT
+#endif
       PARAMETER          (MXSIZE=300000)
       PARAMETER          (MSIZE=MXSIZE*3)
       PARAMETER          (IBUFSIZE=35000000)
@@ -134,7 +136,11 @@ C
       INTEGER            RCBYTE(900)
       INTEGER            ISTART(900)
       INTEGER            IUNPK(900)
+#ifdef __GFORTRAN__
+      INTEGER*8          JSTAT(13)
+#else
       INTEGER*4          JSTAT(12)
+#endif
       INTEGER            TYPEGRID
 C
       LOGICAL            IW3PDS
