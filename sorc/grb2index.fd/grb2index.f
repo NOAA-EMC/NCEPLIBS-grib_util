@@ -180,7 +180,12 @@ C   LANGUAGE: FORTRAN
 C
 C$$$
       CHARACTER CGB*(*)
+#ifdef __GFORTRAN__
+      CHARACTER CD8*8,CT10*10,HOSTNAME*15
+      INTEGER ISTAT
+#else
       CHARACTER CD8*8,CT10*10,HOSTNAM*15
+#endif
       CHARACTER CHEAD(2)*81
 C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 C  FILL FIRST 81-BYTE HEADER
@@ -197,7 +202,16 @@ C  FILL FIRST 81-BYTE HEADER
       CHEAD(1)(42:47)='GB2IX1'
       !CHEAD(1)(49:54)=CGB(NCGB2:NCGB1-2)
       CHEAD(1)(49:54)='      '
+#ifdef __GFORTRAN__
+      ISTAT=HOSTNM(HOSTNAME)
+      IF(ISTAT.eq.0) THEN
+        CHEAD(1)(56:70)='0000'
+      ELSE
+        CHEAD(1)(56:70)='0001'
+      ENDIF
+#else
       CHEAD(1)(56:70)=HOSTNAM(HOSTNAME)
+#endif
       CHEAD(1)(72:80)='grb2index'
       CHEAD(1)(81:81)=CHAR(10)
 C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

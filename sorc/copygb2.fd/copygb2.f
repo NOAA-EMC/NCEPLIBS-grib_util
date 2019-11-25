@@ -553,7 +553,11 @@ C  GO
         CALL W3TAGE('COPYGB2 ')
       ENDIF
 C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#ifdef __GFORTRAN__
+      CONTAINS
+#else
       END
+#endif
 C-----------------------------------------------------------------------
       SUBROUTINE EUSAGE
 C$$$  SUBPROGRAM DOCUMENTATION BLOCK
@@ -942,6 +946,7 @@ C$$$
       REAL,ALLOCATABLE,TARGET :: G1I(:)
       REAL,POINTER :: FBI(:),GBI(:)
       TYPE( GRIBFIELD ) :: GFLD1,GFLDV,GFLDM,GFLDMV
+      INTEGER ISDUMMY,IADUMMY(200)
 C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 C  GET FIELD FROM FILE 1
       JDISC=-1
@@ -1069,9 +1074,9 @@ C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 C  INTERPOLATE MAP FIELD
         IF(IRET.EQ.0) THEN
           IBB=MOD(KPDSB(4)/64,2)
-          CALL INTGRIB2(0,IP,IPOPT,d,nopt,opt,KGDSB,
-     &                  KB,IBB,LR,FR,GR,d,KGDTI,MI,
-     &                 IBBI,LBI,FBI,GBI,IRET)
+          CALL INTGRIB2(0,IP,IPOPT,ISDUMMY,IADUMMY,SIZE(KGDSB),KGDSB,
+     &                  KB,IBB,LR,FR,GR,ISDUMMY,KGDTI,MI,
+     &                  IBBI,LBI,FBI,GBI,IRET)
           IF(LXX.GT.0) THEN
             IF(IRET.EQ.0) THEN
               PRINT *,'       interpolated to grid template 3.',IGDTN
@@ -1681,3 +1686,6 @@ C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       END SELECT
 C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       END
+#ifdef __GFORTRAN__
+      END PROGRAM
+#endif

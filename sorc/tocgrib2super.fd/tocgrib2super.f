@@ -232,14 +232,14 @@ C
          write(6,'(11A)') ' WMOHEAD=',WMOHEAD(1:11)
          write(6,'(A,I0)') ' GRIB2 DISCIPLINE= ',DSCPL
          write(6,'(A,20(1x,I0))')' Section 1=',
-     &            (IDS(J),j=1,13)
+     &            (IDS(j2),j2=1,13)
          if ( GDTN .ne. -1 ) then
             write(6,'(A,I0,A,100(1x,I0))') ' GDT 3. ',GDTN,' =',
-     &            (GDT(j),j=1,getgdtlen(GDTN))
+     &            (GDT(j2),j2=1,getgdtlen(GDTN))
          endif
          if ( PDTN .ne. -1 ) then
             write(6,'(A,I0,A,100(1x,I0))') ' PDT 4. ',PDTN,' =',
-     &            (PDT(j),j=1,getpdtlen(PDTN))
+     &            (PDT(j2),j2=1,getpdtlen(PDTN))
          endif
 C
 C        Read and return packed GRIB field
