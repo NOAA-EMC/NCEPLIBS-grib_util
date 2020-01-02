@@ -5,8 +5,11 @@ file(GLOB EXE_SRC ${CMAKE_CURRENT_SOURCE_DIR}/*.f ${CMAKE_CURRENT_SOURCE_DIR}/*.
 if(IntelComp)
     message("setting intel flags")
     set(CMAKE_Fortran_4_FLAGS " -g -O3 -axCORE-AVX2" CACHE INTERNAL "" )
+elseif(GNUComp)
+    message("setting gnu flags")
+    set(CMAKE_Fortran_4_FLAGS " -g -O3" CACHE INTERNAL "" )
 else()
-    message("unkown compiler!")
+    message("unknown compiler!")
     exit()
 endif()
 
