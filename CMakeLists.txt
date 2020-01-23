@@ -1,7 +1,9 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.15)
 project(grib_util VERSION 1.1.1)
 set(${PROJECT_NAME}_VERSION ${PROJECT_VERSION} CACHE INTERNAL "${PROJECT_NAME} version number")
 enable_language (Fortran)
+
+set(CMAKE_FIND_PACKAGE_PREFER_CONFIG true)
 
 if (NOT CMAKE_BUILD_TYPE)
   set (CMAKE_BUILD_TYPE RELEASE CACHE STRING
@@ -38,24 +40,26 @@ find_package(Jasper REQUIRED)
 find_package(PNG REQUIRED)
 find_package(ZLIB REQUIRED)
 
+#Prefer config files, and if not available use the regular FindXXX file
+set(CMAKE_FIND_PACKAGE_PREFER_CONFIG true)
 if(NOT TARGET w3nco_4)
-  find_package(W3NCO REQUIRED CONFIG)
+  find_package(W3NCO REQUIRED)
 endif()
 
 if(NOT TARGET g2_4)
-  find_package(G2 REQUIRED CONFIG)
+  find_package(G2 REQUIRED)
 endif()
 
 if(NOT TARGET bacio_4)
-  find_package(BACIO REQUIRED CONFIG)
+  find_package(BACIO REQUIRED)
 endif()
 
 if(NOT TARGET ip_4)
-  find_package(IP REQUIRED CONFIG)
+  find_package(IP REQUIRED)
 endif()
 
 if (NOT TARGET sp_4)
-  find_package(SP REQUIRED CONFIG)
+  find_package(SP REQUIRED)
 endif()
 
 add_subdirectory(sorc/cnvgrib.fd)
