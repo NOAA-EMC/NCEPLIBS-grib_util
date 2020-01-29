@@ -1,8 +1,8 @@
 
 if(IntelComp)
-  set(CMAKE_Fortran_4_FLAGS " -g -O3 -axCORE-AVX2" CACHE INTERNAL "" )
+  set(fortran_flags "-g" "-O3" "-axCORE-AVX2")
 elseif(GNUComp)
-  set(CMAKE_Fortran_4_FLAGS " -g -O3" CACHE INTERNAL "" )
+  set(fortran_flags "-g" "-O3")
 else()
   message("unknown compiler!")
   exit()

@@ -1,6 +1,6 @@
 
 if(IntelComp)
-  set(fortran_flags "-g" "-O3" "-convert big_endian" "-axCORE-AVX2")
+  set(fortran_flags "-g" "-O3" "-convert" "big_endian" "-axCORE-AVX2")
 elseif(GNUComp)
   set(fortran_flags "-g" "-O3" "-fconvert=big-endian")
 else()

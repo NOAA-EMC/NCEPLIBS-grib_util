@@ -1,6 +1,6 @@
 
 if(IntelComp)
-  set(fortran_flags "-g" "-O3" "-r8" "-i8" "-assume noold_ldout_format" "-axCORE-AVX2" "-fpp")
+  set(fortran_flags "-g" "-O3" "-r8" "-i8" "-assume" "noold_ldout_format" "-axCORE-AVX2" "-fpp")
 elseif(GNUComp)
   set(fortran_flags "-g" "-O3" "-fdefault-real-8" "-fdefault-integer-8" "-cpp")
 else()

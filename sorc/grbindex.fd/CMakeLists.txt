@@ -1,7 +1,7 @@
 
 if(IntelComp)
-  set(fortran_flags "-g" "-O3" "-assume noold_ldout_format"
-    "-convert big_endian" "-axCORE-AVX2" "-fpp")
+  set(fortran_flags "-g" "-O3" "-assume" "noold_ldout_format"
+    "-convert" "big_endian" "-axCORE-AVX2" "-fpp")
 elseif(GNUComp)
   set(fortran_flags "-g" "-O3" "-fconvert=big-endian" "-cpp")
 else()

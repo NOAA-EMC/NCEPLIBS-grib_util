@@ -1,6 +1,6 @@
 
 if(IntelComp)
-  set(fortran_flags "-g" "-O3" "-r8" "-convert big_endian" "-auto" "-fpp" "${OpenMP_Fortran_FLAGS}")
+  set(fortran_flags "-g" "-O3" "-r8" "-convert" "big_endian" "-auto" "-fpp" "${OpenMP_Fortran_FLAGS}")
   set(link_flags "-static-intel")
 elseif(GNUComp)
   set(fortran_flags "-g" "-O3" "-fdefault-real-8" "-fconvert=big-endian" "-cpp" 
