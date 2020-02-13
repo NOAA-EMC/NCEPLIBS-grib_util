@@ -43,23 +43,23 @@ find_package(ZLIB REQUIRED)
 #Prefer config files, and if not available use the regular FindXXX file
 set(CMAKE_FIND_PACKAGE_PREFER_CONFIG true)
 if(NOT TARGET w3nco_4)
-  find_package(W3NCO REQUIRED)
+  find_package(w3nco REQUIRED)
 endif()
 
 if(NOT TARGET g2_4)
-  find_package(G2 REQUIRED)
+  find_package(g2 REQUIRED)
 endif()
 
 if(NOT TARGET bacio_4)
-  find_package(BACIO REQUIRED)
+  find_package(bacio REQUIRED)
 endif()
 
 if(NOT TARGET ip_4)
-  find_package(IP REQUIRED)
+  find_package(ip REQUIRED)
 endif()
 
 if (NOT TARGET sp_4)
-  find_package(SP REQUIRED)
+  find_package(sp REQUIRED)
 endif()
 
 add_subdirectory(sorc/cnvgrib.fd)
