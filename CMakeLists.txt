@@ -3,6 +3,8 @@ project(grib_util VERSION 1.1.1)
 set(${PROJECT_NAME}_VERSION ${PROJECT_VERSION} CACHE INTERNAL "${PROJECT_NAME} version number")
 enable_language (Fortran)
 
+option(OPENMP "use OpenMP threading" OFF)
+
 set(CMAKE_FIND_PACKAGE_PREFER_CONFIG true)
 
 if (NOT CMAKE_BUILD_TYPE)
@@ -34,7 +36,9 @@ if(POLICY CMP0012)
   cmake_policy(SET CMP0012 NEW)
 endif()
 
-find_package(OpenMP)
+if(OPENMP)
+  find_package(OpenMP)
+endif()
 find_package(LAPACK)
 find_package(Jasper REQUIRED)
 find_package(PNG REQUIRED)
