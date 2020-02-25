@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
 project(grib_util VERSION 1.1.1 LANGUAGES C Fortran)
 
+option(OPENMP "use OpenMP threading" OFF)
+
 set(CMAKE_FIND_PACKAGE_PREFER_CONFIG true)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
@@ -24,7 +26,9 @@ if(POLICY CMP0012)
   cmake_policy(SET CMP0012 NEW)
 endif()
 
-find_package(OpenMP)
+if(OPENMP)
+  find_package(OpenMP)
+endif()
 find_package(LAPACK)
 find_package(Jasper REQUIRED)
 find_package(PNG REQUIRED)
