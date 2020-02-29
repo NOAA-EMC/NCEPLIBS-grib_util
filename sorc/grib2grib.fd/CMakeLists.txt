@@ -1,33 +1,16 @@
-
-if(IntelComp)
-  set(fortran_flags "-g" "-O3" "-r8" "-i8" "-assume" "noold_ldout_format" "-axCORE-AVX2" "-fpp")
-elseif(GNUComp)
-  set(fortran_flags "-g" "-O3" "-fdefault-real-8" "-fdefault-integer-8" "-cpp")
-else()
-  message("unknown compiler!")
-  exit()
+if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel)$")
+  set(CMAKE_Fortran_FLAGS
+      "-g -i8 -r8 -assume noold_ldout_format -axCORE-AVX2 -fpp")
+  set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
+elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU|Clang|AppleClang)$")
+  set(CMAKE_Fortran_FLAGS "-g -fdefault-integer-8 -fdefault-real-8 -cpp")
+  set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
 endif()
 
-set(exe_name grib2grib )
+set(fortran_src grib2grib.f hexchar.f)
 
-file(GLOB fortran_src
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.f
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.f90
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.F)
-
+set(exe_name grib2grib)
 add_executable(${exe_name} ${fortran_src})
-
-target_compile_options(${exe_name} PRIVATE ${fortran_flags})
-
-set(module_dir "${CMAKE_CURRENT_BINARY_DIR}/include_4")
-set_target_properties(${exe_name} PROPERTIES Fortran_MODULE_DIRECTORY "${module_dir}")
-target_include_directories(${exe_name} PUBLIC "${module_dir}")
-
 target_link_libraries(${exe_name} w3nco_8 bacio_8)
 
-install(TARGETS ${exe_name}
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib) 
-install(DIRECTORY ${module_dir} DESTINATION include_8)
-
+install(TARGETS ${exe_name} RUNTIME DESTINATION bin)

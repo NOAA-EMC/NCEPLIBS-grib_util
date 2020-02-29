@@ -1,27 +1,17 @@
-
-if(IntelComp)
-  set(c_flags "-O3" "-m64")
-elseif(GNUComp)
-  set(c_flags "-O3" "-m64")
-else()
-  message("unknown compiler!")
-  exit()
+if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel)$")
+  set(CMAKE_Fortran_FLAGS "-g -m64")
+  set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
+elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU|Clang|AppleClang)$")
+  set(CMAKE_Fortran_FLAGS "-g -m64")
+  set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
 endif()
 
-set(c_definitions "DEF_T62_NCEP_TABLE=opn" "FAST_GRIBTAB" "P_TABLE_FIRST")
+add_compile_definitions("DEF_T62_NCEP_TABLE=opn" "FAST_GRIBTAB" "P_TABLE_FIRST")
+
+set(c_src wgrib.c)
 
 set(exe_name wgrib)
-file(GLOB c_src ${CMAKE_CURRENT_SOURCE_DIR}/*.c)
-
 add_executable(${exe_name} ${c_src})
-target_compile_definitions(${exe_name} PRIVATE ${c_definitions})
-target_compile_options(${exe_name} PRIVATE ${c_flags})
-
 target_link_libraries(${exe_name} w3nco_4 bacio_4)
 
-install(TARGETS ${exe_name}
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib) 
-install(DIRECTORY ${module_dir} DESTINATION include_4 )
-
+install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
