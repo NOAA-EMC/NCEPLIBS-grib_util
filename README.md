@@ -2,6 +2,7 @@
 
 A collection of NCEP grib related utilities
 
+Code Manager : Boi Vuong
 
 ### Prerequisites
 
@@ -20,9 +21,9 @@ make install
 
 
 ### Version
-1.1.1
+1.2.0
 
 
 ### Authors
 
-* **[NCEP/EMC](NCEP.List.EMC.nceplibs.Developers@noaa.gov)**
+* **[NCEP/EMC](mailto:NCEP.List.EMC.nceplibs.Developers@noaa.gov)**
