@@ -24,9 +24,9 @@ echo "ending wgrib"
 cd ..
 
 # Install wgrib2
-echo "starting wgrib2"
-cd $start_dir/wgrib2_v${wgrib2_ver}
-./compile_wgrib2_theia.sh ${wgrib2_ver} |& tee compile_wgrib2_theia.log
-echo "ending wgrib2"
-cd ../..
+# echo "starting wgrib2"		
+# cd $start_dir/wgrib2_v${wgrib2_ver}
+# ./compile_wgrib2_theia.sh ${wgrib2_ver} |& tee compile_wgrib2_theia.log
+# echo "ending wgrib2"
+# cd ../..
 
