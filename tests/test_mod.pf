@@ -1,0 +1,12 @@
+module test_mod
+  use funit
+  use iso_fortran_env, only: real32, real64
+    
+contains
+  
+    @test
+    subroutine test_something()
+      @assertTrue(.true., "true is true")
+    end subroutine test_something
+    
+end module test_mod
