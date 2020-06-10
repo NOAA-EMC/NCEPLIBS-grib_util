@@ -10,6 +10,7 @@ set(fortran_src copygb.F)
 
 set(exe_name copygb)
 add_executable(${exe_name} ${fortran_src})
-target_link_libraries(${exe_name} bacio_4 w3nco_4 ip_4 sp_4 ${OpenMP_Fortran_FLAGS})
+target_link_libraries(${exe_name} bacio::bacio_4 w3nco::w3nco_4 ip::ip_4 sp::sp_4
+  ${OpenMP_Fortran_FLAGS})
 
 install(TARGETS ${exe_name} RUNTIME DESTINATION bin)

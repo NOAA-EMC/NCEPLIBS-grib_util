@@ -12,10 +12,10 @@ set(exe_name tocgrib2)
 add_executable(${exe_name} ${fortran_src})
 target_link_libraries(
   ${exe_name}
-  g2_4
-  w3nco_4
-  bacio_4
-  ${PNG_LIBRARIES}
+  g2::g2_4
+  w3nco::w3nco_4
+  bacio::bacio_4
+  PNG::PNG
   ${JASPER_LIBRARIES}
   ${ZLIB_LIBRARY})
 

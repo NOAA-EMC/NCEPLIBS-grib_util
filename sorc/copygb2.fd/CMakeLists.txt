@@ -23,13 +23,13 @@ set(exe_name copygb2)
 add_executable(${exe_name} ${fortran_src})
 target_link_libraries(
   ${exe_name}
-  g2_d
-  ${PNG_LIBRARIES}
+  g2::g2_d
+  PNG::PNG
   ${JASPER_LIBRARIES}
-  bacio_4
-  w3nco_d
-  ip_d
-  sp_d
+  bacio::bacio_4
+  w3nco::w3nco_d
+  ip::ip_d
+  sp::sp_d
   ${OpenMP_Fortran_FLAGS})
 
 install(TARGETS ${exe_name} RUNTIME DESTINATION bin)

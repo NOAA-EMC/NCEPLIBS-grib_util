@@ -10,6 +10,6 @@ set(fortran_src grb2index.f)
 
 set(exe_name grb2index)
 add_executable(${exe_name} ${fortran_src})
-target_link_libraries(${exe_name} g2_4 w3nco_4 bacio_4)
+target_link_libraries(${exe_name} g2::g2_4 w3nco::w3nco_4 bacio::bacio_4)
 
 install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
