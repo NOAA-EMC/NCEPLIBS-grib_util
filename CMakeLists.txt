@@ -36,11 +36,10 @@ find_package(Jasper REQUIRED)
 find_package(PNG REQUIRED)
 find_package(ZLIB REQUIRED)
 
-find_package(w3nco REQUIRED)
-find_package(g2 REQUIRED)
-find_package(bacio REQUIRED)
-find_package(ip REQUIRED)
-find_package(sp REQUIRED)
-
+find_package(w3nco CONFIG REQUIRED)
+find_package(g2 CONFIG REQUIRED)
+find_package(bacio CONFIG REQUIRED)
+find_package(ip CONFIG REQUIRED)
+find_package(sp CONFIG REQUIRED)
 
 add_subdirectory(sorc)
