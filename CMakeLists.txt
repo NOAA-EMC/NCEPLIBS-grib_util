@@ -1,10 +1,12 @@
 cmake_minimum_required(VERSION 3.15)
-project(grib_util VERSION 1.1.1 LANGUAGES C Fortran)
+
+file(STRINGS "VERSION" pVersion)
+
+project(grib_util VERSION ${pVersion} LANGUAGES C Fortran)
 
 option(OPENMP "use OpenMP threading" OFF)
 
-set(CMAKE_FIND_PACKAGE_PREFER_CONFIG true)
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules")
 
 if(NOT CMAKE_BUILD_TYPE MATCHES "^(Debug|Release|RelWithDebInfo|MinSizeRel)$")
   message(STATUS "Setting build type to 'Release' as none was specified.")
@@ -27,7 +29,7 @@ if(POLICY CMP0012)
 endif()
 
 if(OPENMP)
-  find_package(OpenMP)
+  find_package(OpenMP REQUIRED COMPONENTS Fortran)
 endif()
 
 find_package(LAPACK)
