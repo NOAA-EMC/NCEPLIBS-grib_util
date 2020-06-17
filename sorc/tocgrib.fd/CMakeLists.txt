@@ -10,6 +10,6 @@ set(fortran_src makwmo.f mkfldsep.f tocgrib.f)
 
 set(exe_name tocgrib)
 add_executable(${exe_name} ${fortran_src})
-target_link_libraries(${exe_name} w3nco_4 bacio_4)
+target_link_libraries(${exe_name} w3nco::w3nco_4 bacio::bacio_4)
 
 install(TARGETS ${exe_name} RUNTIME DESTINATION bin)

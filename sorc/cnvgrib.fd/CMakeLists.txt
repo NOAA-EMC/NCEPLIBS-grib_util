@@ -22,13 +22,12 @@ set(fortran_src
 
 set(exe_name cnvgrib)
 add_executable(${exe_name} ${fortran_src})
-target_link_libraries(
-  ${exe_name}
-  g2_4
-  bacio_4
-  w3nco_4
+target_link_libraries(${exe_name} PRIVATE
+  g2::g2_4
+  bacio::bacio_4
+  w3nco::w3nco_4
   ${JASPER_LIBRARIES}
-  ${PNG_LIBRARIES}
+  PNG::PNG
   ${ZLIB_LIBRARY})
 
 install(TARGETS ${exe_name} RUNTIME DESTINATION bin)

@@ -7,29 +7,35 @@ elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU|Clang|AppleClang)$")
 endif()
 
 set(fortran_src
-    copygb2.f
-    polates1.f90
-    polates3.f90
-    polatev0.f90
-    polatev2.f90
-    polatev6.f90
-    polates0.f90
-    polates2.f90
-    polates6.f90
-    polatev1.f90
-    polatev3.f90)
+  copygb2.f
+  polates1.f90
+  polates3.f90
+  polatev0.f90
+  polatev2.f90
+  polatev6.f90
+  polates0.f90
+  polates2.f90
+  polates6.f90
+  polatev1.f90
+  polatev3.f90)
 
 set(exe_name copygb2)
+
 add_executable(${exe_name} ${fortran_src})
+
+if(OPENMP)
+  target_link_libraries(${exe_name} PRIVATE OpenMP::OpenMP_Fortran)
+endif()
+
+
 target_link_libraries(
   ${exe_name}
-  g2_d
-  ${PNG_LIBRARIES}
+  g2::g2_d
+  PNG::PNG
   ${JASPER_LIBRARIES}
-  bacio_4
-  w3nco_d
-  ip_d
-  sp_d
-  ${OpenMP_Fortran_FLAGS})
+  bacio::bacio_4
+  w3nco::w3nco_d
+  ip::ip_d
+  sp::sp_d)
 
 install(TARGETS ${exe_name} RUNTIME DESTINATION bin)

@@ -29,29 +29,17 @@ endif()
 if(OPENMP)
   find_package(OpenMP)
 endif()
+
 find_package(LAPACK)
 find_package(Jasper REQUIRED)
 find_package(PNG REQUIRED)
 find_package(ZLIB REQUIRED)
 
-if(NOT TARGET w3nco_4)
-  find_package(w3nco REQUIRED)
-endif()
+find_package(w3nco REQUIRED)
+find_package(g2 REQUIRED)
+find_package(bacio REQUIRED)
+find_package(ip REQUIRED)
+find_package(sp REQUIRED)
 
-if(NOT TARGET g2_4)
-  find_package(g2 REQUIRED)
-endif()
-
-if(NOT TARGET bacio_4)
-  find_package(bacio REQUIRED)
-endif()
-
-if(NOT TARGET ip_4)
-  find_package(ip REQUIRED)
-endif()
-
-if (NOT TARGET sp_4)
-  find_package(sp REQUIRED)
-endif()
 
 add_subdirectory(sorc)
