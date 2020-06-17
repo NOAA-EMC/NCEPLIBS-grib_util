@@ -32,7 +32,6 @@ if(OPENMP)
   find_package(OpenMP REQUIRED COMPONENTS Fortran)
 endif()
 
-find_package(LAPACK)
 find_package(Jasper REQUIRED)
 find_package(PNG REQUIRED)
 find_package(ZLIB REQUIRED)
