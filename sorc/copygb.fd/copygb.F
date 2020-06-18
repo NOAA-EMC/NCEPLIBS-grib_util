@@ -405,9 +405,9 @@ C  PARSE COMMAND LINE OPTIONS
 C
 C DEFAULT OMP_NUM_THREADS COUNT TO SINGLE THREAD.
 C
-#ifdef D_OPENMP
+#ifdef _OPENMP
       CALL OMP_SET_NUM_THREADS (NTHREADS)
-#endif  /* D_OPENMP */
+#endif
 C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 C  PARSE COMMAND LINE POSITIONAL ARGUMENTS
       NXARG=LX+2
