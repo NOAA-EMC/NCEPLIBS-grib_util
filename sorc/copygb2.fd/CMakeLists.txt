@@ -23,7 +23,7 @@ set(exe_name copygb2)
 
 add_executable(${exe_name} ${fortran_src})
 
-if(OPENMP)
+if(OpenMP_Fortran_FOUND)
   target_link_libraries(${exe_name} PRIVATE OpenMP::OpenMP_Fortran)
 endif()
 
