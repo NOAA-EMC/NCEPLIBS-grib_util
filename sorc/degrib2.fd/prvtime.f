@@ -1,14 +1,14 @@
       subroutine prvtime(ipdtn,ipdtmpl,listsec1,tabbrev)
       
       integer,intent(in) :: ipdtn
-      integer,intent(in) :: ipdtmpl(*),listsec1(*)
+      integer,intent(in) :: ipdtmpl(0:*),listsec1(*)
       character(len=100),intent(out) :: tabbrev
 
       character(len=16) :: reftime,endtime
       character(len=10) :: tmpval, tmpval2
       character(len=10) :: tunit, tunit2
 
-      integer,dimension(200) :: ipos, ipos2
+      integer,dimension(0:199) :: ipos, ipos2
       data ipos  /7*0,16,23,17,19,18,32,31,27*0,17,20,0,0,22,
      &            25,43*0,23,109*0/
 
