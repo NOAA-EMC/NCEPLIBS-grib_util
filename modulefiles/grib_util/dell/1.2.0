@@ -14,14 +14,13 @@ module-whatis "This module sets the environment variables for \
 
 conflict grib_util
 
-set ver v1.1.1
+set ver v1.2.0
 set envir prod
 
-set    HOMEgrib /nw${envir}2/grib_util.$ver
+set    HOMEgrib /gpfs/dell1/nco/ops/nw${envir}/grib_util.$ver
 set    EXECgrib ${HOMEgrib}/exec
 
-module load ics/15.0.6
-module load NetCDF/4.2/serial
+module prereq ips/18.0.1.163
 
 setenv CNVGRIB $EXECgrib/cnvgrib
 setenv COPYGB $EXECgrib/copygb

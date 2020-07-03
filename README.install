@@ -1,0 +1,54 @@
+
+I. The grib_util version 1.1.1 needs to implement on CRAY (Surge or Luna) and WCOSS (Tide or Gyre)
+   and DELL (Mars and Venus).
+   The following GRIB2 utilities must be compiled on WCOSS:
+           GRB2INDEX
+           TOCGRIB2
+           TOCGRIB2SUPER
+           CNVGRIB
+           COPYGB2
+           DEGRIB2
+           COPYGB
+           GRBINDEX
+           TOCGRIB
+           GRIB2GRIB
+
+   NOTE:
+           Removed CNVGRIB21_GFS in grib_util.v1.1.1
+
+1. Check out grib_util v1.1.1 source code from EMC VLAB
+
+2. Change to grib_util.v1.1.1/sorc directory.  If you are on Dell, load the ips/18.0.1.163 module to ensure
+   that the prod_util module is accessible.
+
+3. Do one of the following:
+   
+   A. To compile all grib utilities:
+
+      - run install_all_grib_util_wcoss.sh
+
+      NOTE:
+      DO NOT compile wgrib2 with module IOBUF on CRAY
+
+   B. To compile one or more grib utilities separately:
+
+      - cd to grib utility directory.  Example,  cd cnvgrib.fd
+      - run script  compile_xxxxx_wcoss.sh  where xxxx is name of grib utility.
+        they are following:
+            cnvgrib, copygb, copygb2, degrib2, grb2index, grbindex,
+            grib2grib, tocgrib, tocgrib2, tocgrib2super.
+      - install WGRIB and WGRIB2
+
+II. Building module file for grib_util v1.1.1 on the following machine:
+
+      * WCOSS (Tide or Gyre)
+            -  cd  ./grib_util.v1.1.1/modulefiles/grib_util/wcoss
+            -  cp v1.1.1 to /nwprod2/modulefiles/grib_util/
+
+      * CRAY (Surge or Luna)
+            -  cd  ./grib_util.v1.1.1/modulefiles/grib_util/cray
+            -  cp 1.1.1 to /gpfs/hps/nco/nwprod/modulefiles/grib_util/
+
+      * DELL (Mars or Venus)
+            -  cd  ./grib_util.v1.1.1/modulefiles/grib_util/dell
+            -  cp 1.1.1 to /gpfs/dell1/nco/ops/nwprod/modulefiles/compiler_prod/ips/18.0.1/grib_util

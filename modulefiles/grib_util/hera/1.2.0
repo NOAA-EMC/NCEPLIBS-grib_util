@@ -14,7 +14,7 @@ module-whatis "This module sets the environment variables for \
 
 conflict grib_util
 
-set ver v1.1.1
+set ver v1.2.0
 set envir prod
 
 set    HOMEgrib /gpfs/dell1/nco/ops/nw${envir}/grib_util.$ver
