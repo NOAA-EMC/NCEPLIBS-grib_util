@@ -3,6 +3,9 @@ project(grib_util VERSION 1.1.1 LANGUAGES C Fortran)
 
 option(OPENMP "use OpenMP threading" OFF)
 
+# search for static libraries first, and then fallback to shared
+set(CMAKE_FIND_LIBRARY_SUFFIXES .a .so .dylib)
+
 set(CMAKE_FIND_PACKAGE_PREFER_CONFIG true)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
