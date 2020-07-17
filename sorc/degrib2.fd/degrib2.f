@@ -12,7 +12,9 @@ C 2010-09-06  Vuong
 C 2011-10-03  Vuong    Added to check for reference time for PDT 4.15
 C 2012-06-07  Vuong    Changed PRINT statement to WRITE with format specifier
 C 2017-01-21  Vuong    Added to check for undefine values 
-C
+C 2020-07-16  Vuong    Changed array size for labbrev and tabbrev 
+C                      and checked for second unit of time range
+C                      from PDT 4.8; PDT 4.9 and up.
 C USAGE:
 C   INPUT FILES:
 C     UNIT 10  - Input GRIB file
@@ -54,8 +56,8 @@ C
 !      integer :: ideflist(500)
       character(len=250) :: gfile1
       character(len=8) :: pabbrev
-      character(len=30) :: labbrev
-      character(len=90) :: tabbrev
+      character(len=40) :: labbrev
+      character(len=100) :: tabbrev
       INTEGER(4) NARG,IARGC,temparg
       integer :: currlen=0, numpts=0
       logical :: unpack,expand

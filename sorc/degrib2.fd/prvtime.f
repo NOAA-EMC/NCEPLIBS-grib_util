@@ -65,7 +65,9 @@
       end select
 !
 !     Determine second unit of time range
+!     aplly only from PDT.4.8 and up
 !
+      if(ipdtn > 7) then
       iutpos2= ipos2(ipdtn)
       selectcase( ipdtmpl(iutpos2) )
          case (0)
@@ -93,6 +95,7 @@
             tunit2="hour"
             iunit2=1
       end select
+      endif
 !
       write(reftime,fmt='(i4,3i2.2,":",i2.2,":",i2.2)')
      &        (listsec1(j),j=6,11)
