@@ -1,6 +1,8 @@
 #!/bin/sh
+export ver=1.2.0
+
 #
-#  This script uses to test the utility cnvgrib which compiled with new G2 library v3.1.0
+#  This script uses to test the utility cnvgrib which compiled with new G2 library v3.2.0
 #  The conversion cnvgrib will convert (NAM file) from grib2 to grib1.
 #  Then, the WGRIB uses to display data values : min and max at  HGT 800mb field for comparison
 #
@@ -10,26 +12,32 @@
 #      $cnvgrib_test is new cnvgrib which compiled with new G2 library.
 #
 
-ver=1.1.1
-cyc=18
+export cyc=18
 
-module load prod_util
-module load prod_util/1.1.0
-machine=$(getsystem.pl -t)
-
-if [ "$machine" = "IBM" ] || [ "$machine" = "Cray" ] || [ "$machine" = "Dell" ] ; then
+mac=$(hostname | cut -c1-1)
+mac2=$(hostname | cut -c1-2)
+if [ $mac = v -o $mac = m  ] ; then   # For Dell
+   machine=dell
    echo " "
-   echo " You are on WCOSS:  $(getsystem.pl -p)"
+   echo " You are on WCOSS :  ${machine}"
+elif [ $mac = l -o $mac = s ] ; then   #    wcoss_c (i.e. luna and surge)
+   machine=cray
+   echo " "
+   echo " You are on WCOSS :  ${machine}"
+elif [ $mac2 = hf ] ; then
+   machine=hera
+   echo " You are on RDHPCS :  ${machine}"
 else
    echo " "
    echo " Your machine is $machine NOT found "
    echo " The script $0 can not continue.  Aborted ! "
    echo " "
-   echo " Your machine must be (SURGE/LUNA)"
-   echo " or (TIDE/GYRE) or (MARS/VENUS)"
+   echo " Your machine must be CRAY (SURGE/LUNA)"
+   echo " or DELL (MARS/VENUS) or HERA "
    echo " "
    exit
 fi
+
 echo " "
 
 #
@@ -47,33 +55,20 @@ output_g1=$dir/output_g1
 output_g2=$dir/output_g2
 mkdir -p $data $output_g1 $output_g2
 
-if [ "$machine" = "Dell" ]; then
-    module load EnvVars/1.0.2
-    module load ips/18.0.1.163
-    module load prod_util/1.1.0
-    module load prod_envir/1.0.2
+if [ "$machine" = "dell" ]; then
 #
-#   This is a test version of GRIB_UTIL.v${ver} on $machine
+#   This is a test of GRIB_UTIL.v${ver} on $machine
 #
+    module use -a /usrx/local/nceplibs/dev/NCEPLIBS/modulefiles
     module unload grib_util
-    module use /usrx/local/nceplibs/dev/modulefiles/compiler_nceplibs/ips/18.0.1
-    module load dev/grib_util/${ver}
+    module load grib_util/${ver}
     input_file=/usrx/local/nceplibs/dev/lib/fv3gfs
-elif [ "$machine" = "IBM" ]; then
+elif [ "$machine" = "cray" ]; then
 #
 #   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
     module use -a /usrx/local/nceplibs/modulefiles
-    module load grib_util/v${ver}
-    input_file=/usrx/local/nceplibs/gfs_data
-elif [ "$machine" = "Cray" ]; then
-    module unload grib_util
-#
-#   This is a test version of GRIB_UTIL.v${ver} on $machine
-#
-    module unload grib_util
-    module use /usrx/local/nceplibs/modulefiles
     module load grib_util/${ver}
     input_file=/usrx/local/nceplibs/gfs_data
 fi
@@ -86,22 +81,28 @@ echo " "
 module list
 echo " "
 
+set +x
+
 #
 #  Clean up temp directory before test starts
 #
+echo "Please wait ...  Cleaning up temp directory before test starts "
+echo " "
 if [ "$(ls -A $output_g1)" ]; then
+   echo " "
    echo "Cleaning $output_g1"
    rm $output_g1/*
 fi
 if [ "$(ls -A $output_g2)" ]; then
+   echo " "
    echo "Cleaning $output_g2"
    rm $output_g2/*
 fi
 if [ "$(ls -A $data)" ]; then
+   echo " "
    echo "Cleaning $data"
    rm $data/*
 fi
-
 #
 #  Find out if working directory exists or not
 #
@@ -131,15 +132,18 @@ err=0
 for file in $filelist
 do
 
-echo " dir  $dir "
-echo " file  $dir/$file "
-echo " data $data/$file "
+# echo " dir  $dir "
+# echo " file $dir/$file "
+# echo " data $data/$file "
 
 #
 # Step 1: CNVGRIB converts from GRIB2 to GRIB1
 #
 
-echo "Running cnvgrib (converts from grib2 -> grib1)"
+echo " "
+echo " "
+echo "Wait ...  Running cnvgrib (converts from grib2 -> grib1)"
+echo " "
 set -x
 $cnvgrib_test -g21 $data/$file $output_g1/$file.grib2.test.g1
 if [ $? -ne 0 ]; then err=1; fi
@@ -151,7 +155,7 @@ export new_max=` ${WGRIB:?} -s $output_g1/$file.grib2.test.g1 |  grep ":HGT:800 
 export new_min=` ${WGRIB:?} -s $output_g1/$file.grib2.test.g1 |  grep ":HGT:800 mb:" |  $WGRIB -i -V $output_g1/$file.grib2.test.g1 \
          -o /dev/null | grep max | awk '{print $3}' `
 
-echo " The new cnvgrib (cnvgrib v3.1.0) convert NAM file from GRIB2 to GRIB1."
+echo " The new cnvgrib (cnvgrib v3.2.0) convert NAM file from GRIB2 to GRIB1."
 echo " The data value MAX and MIN at HGT 800mb are correct " 
 
 echo " "

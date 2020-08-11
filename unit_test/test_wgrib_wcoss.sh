@@ -1,30 +1,38 @@
 #!/bin/sh
+export ver=1.2.0
+
 #
 #  This script uses to test the utility wgrib. The wgrib will display the inventory of GRIB1 file.
 #  The test uses wgrib to display content of ecmwf file.
 #  Note:
 #  The ecmwf file contains both GRIB2 and GRIB1.
 
-ver=1.1.1
-cyc=00
+export cyc=00
 
-module load prod_util
-module load prod_util/1.1.0
-machine=$(getsystem.pl -t)
-
-if [ "$machine" = "IBM" ] || [ "$machine" = "Cray" ] || [ "$machine" = "Dell" ] ; then
+mac=$(hostname | cut -c1-1)
+mac2=$(hostname | cut -c1-2)
+if [ $mac = v -o $mac = m  ] ; then   # For Dell
+   machine=dell
    echo " "
-   echo " You are on WCOSS:  $(getsystem.pl -p)"
+   echo " You are on WCOSS :  ${machine}"
+elif [ $mac = l -o $mac = s ] ; then   #    wcoss_c (i.e. luna and surge)
+   machine=cray
+   echo " "
+   echo " You are on WCOSS :  ${machine}"
+elif [ $mac2 = hf ] ; then
+   machine=hera
+   echo " You are on RDHPCS :  ${machine}"
 else
    echo " "
    echo " Your machine is $machine NOT found "
    echo " The script $0 can not continue.  Aborted ! "
    echo " "
-   echo " Your machine must be (SURGE/LUNA)"
-   echo " or (TIDE/GYRE) or (MARS/VENUS)"
+   echo " Your machine must be CRAY (SURGE/LUNA)"
+   echo " or DELL (MARS/VENUS) or HERA "
    echo " "
    exit
 fi
+
 echo " "
 
 #
@@ -42,33 +50,20 @@ output_g1=$dir/output_g1
 output_g2=$dir/output_g2
 mkdir -p $data $output_g1 $output_g2
 
-if [ "$machine" = "Dell" ]; then
-    module load EnvVars/1.0.2
-    module load ips/18.0.1.163
-    module load prod_util/1.1.0
-    module load prod_envir/1.0.2
+if [ "$machine" = "dell" ]; then
 #
-#   This is a test version of GRIB_UTIL.v${ver} on $machine
+#   This is a test of GRIB_UTIL.v${ver} on $machine
 #
+    module use -a /usrx/local/nceplibs/dev/NCEPLIBS/modulefiles
     module unload grib_util
-    module use /usrx/local/nceplibs/dev/modulefiles/compiler_nceplibs/ips/18.0.1
-    module load dev/grib_util/${ver}
+    module load grib_util/${ver}
     input_file=/usrx/local/nceplibs/dev/lib/fv3gfs
-elif [ "$machine" = "IBM" ]; then
+elif [ "$machine" = "cray" ]; then
 #
 #   This is a test version of GRIB_UTIL.v${ver} on $machine
 #
     module unload grib_util
     module use -a /usrx/local/nceplibs/modulefiles
-    module load grib_util/v${ver}
-    input_file=/usrx/local/nceplibs/gfs_data
-elif [ "$machine" = "Cray" ]; then
-    module unload grib_util
-#
-#   This is a test version of GRIB_UTIL.v${ver} on $machine
-#
-    module unload grib_util
-    module use /usrx/local/nceplibs/modulefiles
     module load grib_util/${ver}
     input_file=/usrx/local/nceplibs/gfs_data
 fi
