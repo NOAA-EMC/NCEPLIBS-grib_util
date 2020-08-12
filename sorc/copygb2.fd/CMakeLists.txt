@@ -6,6 +6,11 @@ elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU|Clang|AppleClang)$")
   set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
 endif()
 
+# For gfortran-10+ backward compatibility
+if(${CMAKE_Fortran_COMPILER_ID} STREQUAL "GNU" AND ${CMAKE_Fortran_COMPILER_VERSION} VERSION_GREATER 9.9)
+  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -w -fallow-argument-mismatch")
+endif()
+
 set(fortran_src
     copygb2.f
     polates1.f90
