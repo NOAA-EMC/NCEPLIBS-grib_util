@@ -2,7 +2,7 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel)$")
   set(CMAKE_Fortran_FLAGS
       "-g -i8 -r8 -assume noold_ldout_format -axCORE-AVX2 -fpp")
   set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
-elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU|Clang|AppleClang)$")
+elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU)$")
   set(CMAKE_Fortran_FLAGS "-g -fdefault-integer-8 -fdefault-real-8 -cpp")
   set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
 endif()
