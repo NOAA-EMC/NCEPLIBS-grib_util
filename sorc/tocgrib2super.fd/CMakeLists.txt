@@ -10,8 +10,7 @@ set(fortran_src makwmo.f tocgrib2super.f)
 
 set(exe_name tocgrib2super)
 add_executable(${exe_name} ${fortran_src})
-target_link_libraries(
-  ${exe_name}
+target_link_libraries(${exe_name} PRIVATE
   g2::g2_4
   w3nco::w3nco_4
   bacio::bacio_4
