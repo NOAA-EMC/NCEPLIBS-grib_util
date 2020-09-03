@@ -12,6 +12,6 @@ set(c_src wgrib.c)
 
 set(exe_name wgrib)
 add_executable(${exe_name} ${c_src})
-target_link_libraries(${exe_name} w3nco::w3nco_4 bacio::bacio_4)
+target_link_libraries(${exe_name} PRIVATE w3nco::w3nco_4 bacio::bacio_4)
 
 install(TARGETS ${exe_name} RUNTIME DESTINATION bin)

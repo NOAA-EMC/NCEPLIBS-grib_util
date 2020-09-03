@@ -21,8 +21,7 @@ set(fortran_src
 
 set(exe_name copygb2)
 add_executable(${exe_name} ${fortran_src})
-target_link_libraries(
-  ${exe_name}
+target_link_libraries(${exe_name} PRIVATE
   g2::g2_d
   PNG::PNG
   ${JASPER_LIBRARIES}
