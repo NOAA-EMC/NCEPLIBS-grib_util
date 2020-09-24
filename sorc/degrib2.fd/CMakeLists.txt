@@ -6,7 +6,7 @@ elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU|Clang|AppleClang)$")
   set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
 endif()
 
-set(fortran_src degrib2.f prlevel.f prvtime.f)
+set(fortran_src degrib2.f prlevel.f prvtime.f params.f)
 
 set(exe_name degrib2)
 add_executable(${exe_name} ${fortran_src})
