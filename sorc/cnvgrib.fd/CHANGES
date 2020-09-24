@@ -128,3 +128,6 @@ cnvgrib-3.1.0 - JAN 2017  - Re-compiled with G2LIB version 3.1.0
 
 cnvgrib-3.1.1 - July 2018 - Checked Time Range for continuous accumulated APCP
                             after F252 when convert from grib2 to grib1
+
+cnvgrib-3.2.0 - Sept 2020 - Added new parameters in conversion entries
+                          - Re-compiled with G2LIB version 3.2.0
