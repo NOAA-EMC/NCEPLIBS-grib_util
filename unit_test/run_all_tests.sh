@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for test_name in cnvgrib copygb2 wgrib2 wgrib
+for test_name in cnvgrib copygb2 wgrib
 do
     export dir=` pwd `
     export data=$dir/data

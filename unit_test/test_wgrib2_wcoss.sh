@@ -1,5 +1,5 @@
 #!/bin/sh
-export ver=1.2.0
+export ver=1.1.0
 
 #
 #  This script uses to test the utility wgrib2 which compiled with new G2 library v3.2.0
