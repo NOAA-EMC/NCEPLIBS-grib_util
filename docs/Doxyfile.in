@@ -741,7 +741,13 @@ WARN_LOGFILE           =
 # spaces.
 # Note: If this tag is empty the current directory is searched.
 
-INPUT = @abs_top_srcdir@/docs/user_guide.md @abs_top_srcdir@/sorc
+INPUT = @abs_top_srcdir@/docs/user_guide.md \
+@abs_top_srcdir@/sorc/cnvgrib.fd @abs_top_srcdir@/sorc/copygb2.fd \
+@abs_top_srcdir@/sorc/copygb.fd @abs_top_srcdir@/sorc/degrib2.fd \
+@abs_top_srcdir@/sorc/grb2index.fd @abs_top_srcdir@/sorc/grbindex.fd \
+@abs_top_srcdir@/sorc/grib2grib.fd @abs_top_srcdir@/sorc/tocgrib2.fd \
+@abs_top_srcdir@/sorc/tocgrib2super.fd \
+@abs_top_srcdir@/sorc/tocgrib.fd @abs_top_srcdir@/sorc/wgrib.cd
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
