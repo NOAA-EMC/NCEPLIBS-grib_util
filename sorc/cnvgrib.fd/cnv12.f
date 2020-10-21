@@ -1,68 +1,59 @@
+C> @file
+C> @author Gilbert @date 2003-06-11
+C
+C> This subroutine converts every GRIB1 field in a file to a GRIB2 field.
+C> U and V wind component fields are combined into a single GRIB2
+C> message.
+C>
+C> PROGRAM HISTORY LOG:
+C> - 2003-06-11  Gilbert
+C> - 2003-05-19  Gilbert  - Changed Master Table Version Number from 1 to 2.
+C>                      - Added check for grib1 table version with params 191
+C>                        and 192 for ensemble probs.
+C> - 2007-03-26  Gordon   - Added check for ECMWF data to reference ECMWF
+C>                        Conversion tables.
+C> - 2007-10-11  Vuong    - Added check for ensemble probs if the kpds > 28
+C> - 2008-01-28  Vuong    - Fixed the V-GRD BY SETTING THE LPDS(22)=-1 and
+C>                        increase the array size MAXPTS
+C> - 2008-05-14  Vuong    - Add option -m0 No explicit missing values included
+C>                        within data values
+C> - 2010-12-02  Vuong    - Changed Master Table Version Number from 2 to 6.
+C>                      - Add option -mastertable_ver_x where x is mater table
+C>                        version 2 to 10
+C> - 2011-07-22  Vuong    - Changed variable kprob(1) to kpds(5) in calling
+C>                        routine param_g1_to_g2
+C> - 2012-03-21  Vuong    - Set the Shape of Earth to 2 (oblate spheroid earth)
+C>                        for IMSSNOW (Polar Stereo graphic) Grid. 
+C>
+C> @param ifl1   - Fortran unit number of input GRIB1 file
+C> @param ifl2   - Fortran unit number of output GRIB2 file
+C> @param ipack  - GRIB2 packing option:
+C>             value | option
+C>             ------|-------      
+C>              0     | simple packing
+C>              2     | group packing
+C>              31    | group pack with 1st order differencing
+C>              32    | group pack with 2nd order differencing
+C>              40    | JPEG2000 encoding
+C>              40000 | JPEG2000 encoding (obsolete)
+C>              41    | PNG encoding
+C>              40010 | PNG encoding (obsolete)
+C>              if ipack .ne. one of the values above, 31 is used as a default.
+C> @param usemiss - uses missing value management (instead of bitmaps), for use
+C>              ipack options 2, 31, and 32.
+C> @param imiss   - Missing value management:
+C>              0     = No explicit missing values included within data values
+C>              1     = Primary missing values included within data values
+C> @param uvvect  - .true. = combine U and V wind components into one GRIB2 msg.
+C>              .flase. = does not combine U and V wind components
+C> @param  mastertable_ver_x  -  Master Table version
+C>                          where x is number from 2 to 10
+C>
+C>   INPUT FILES:   See ifl1
+C>
+C>   OUTPUT FILES:  See ifl2
       subroutine cnv12(ifl1,ifl2,ipack,usemiss,imiss,uvvect,table_ver)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C                .      .    .                                       .
-C SUBPROGRAM:    cnv12 
-C   PRGMMR: Gilbert        ORG: W/NP11    DATE: 2003-06-11
-C
-C ABSTRACT: This subroutine converts every GRIB1 field in a file
-C   to a GRIB2 field.  U and V wind component fields are combined
-C   into a single GRIB2 message.
-C
-C PROGRAM HISTORY LOG:
-C 2003-06-11  Gilbert
-C 2003-05-19  Gilbert  - Changed Master Table Version Number from 1 to 2.
-C                      - Added check for grib1 table version with params 191
-C                        and 192 for ensemble probs.
-C 2007-03-26  Gordon   - Added check for ECMWF data to reference ECMWF
-C                        Conversion tables.
-C 2007-10-11  Vuong    - Added check for ensemble probs if the kpds > 28
-C 2008-01-28  Vuong    - Fixed the V-GRD BY SETTING THE LPDS(22)=-1 and
-C                        increase the array size MAXPTS
-C 2008-05-14  Vuong    - Add option -m0 No explicit missing values included
-C                        within data values
-C 2010-12-02  Vuong    - Changed Master Table Version Number from 2 to 6.
-C                      - Add option -mastertable_ver_x where x is mater table
-C                        version 2 to 10
-C 2011-07-22  Vuong    - Changed variable kprob(1) to kpds(5) in calling
-C                        routine param_g1_to_g2
-C 2012-03-21  Vuong    - Set the Shape of Earth to 2 (oblate spheroid earth)
-C                        for IMSSNOW (Polar Stereo graphic) Grid. 
-C
-C USAGE:    CALL cnv12(ifl1,ifl2,ipack)
-C   INPUT ARGUMENT LIST:
-C     ifl1   - Fortran unit number of input GRIB1 file
-C     ifl2   - Fortran unit number of output GRIB2 file
-C     ipack  - GRIB2 packing option:
-C              0     = simple packing
-C              2     = group packing
-C              31    = group pack with 1st order differencing
-C              32    = group pack with 2nd order differencing
-C              40    = JPEG2000 encoding
-C              40000 = JPEG2000 encoding (obsolete)
-C              41    = PNG encoding
-C              40010 = PNG encoding (obsolete)
-C              if ipack .ne. one of the values above, 31 is used as a default.
-C    usemiss - uses missing value management (instead of bitmaps), for use
-C              ipack options 2, 31, and 32.
-C    imiss   - Missing value management:
-C              0     = No explicit missing values included within data values
-C              1     = Primary missing values included within data values
-C    uvvect  - .true. = combine U and V wind components into one GRIB2 msg.
-C              .flase. = does not combine U and V wind components
-C    mastertable_ver_x  -  Master Table version
-C                          where x is number from 2 to 10
-C
-C   INPUT FILES:   See ifl1
-C
-C   OUTPUT FILES:  See ifl2
-C
-C REMARKS: None
-C
-C ATTRIBUTES:
-C   LANGUAGE: Fortran 90
-C   MACHINE:  IBM SP
-C
-C$$$
+
 
       use params
       use params_ecmwf
