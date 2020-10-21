@@ -1,51 +1,51 @@
+C> @file
+C>                .      .    .                                       .
+C> @author Gilbert @date 2003-06-11
+C
+C>  This subroutine converts every GRIB2 field in a file
+C>  to another GRIB2 field, most likely one using a different
+C>   packing option.
+C>
+C> PROGRAM HISTORY LOG:
+C> 2003-06-11  Gilbert
+C> 2008-05-14  Vuong    - Add missing value management option 0
+C> 2009-05-20  Vuong    - Initialize variables idsect,local,list_opt 
+C>
+C> USAGE:    CALL cnv22(ifl1,ifl2,ipack,usemiss,imiss)
+C>   INPUT ARGUMENT LIST:
+C>     ifl1   - Fortran unit number of input GRIB2 file
+C>     ifl2   - Fortran unit number of output GRIB2 file
+C>     ipack  - GRIB2 packing option:
+C>              0     = simple packing
+C>              2     = group packing
+C>              31    = group pack with 1st order differencing
+C>              32    = group pack with 2nd order differencing
+C>              40    = JPEG2000 encoding
+C>              40000 = JPEG2000 encoding (obsolete)
+C>              41    = PNG encoding
+C>              40010 = PNG encoding (obsolete)
+C>              if ipack .ne. one of the values above, 31 is used as a default.
+C>    usemiss - uses missing value management (instead of bitmaps), for use
+C>              ipack options 2, 31, and 32.
+C>    imiss   - Missing value management:
+C>              0     = No explicit missing values included within data values
+C>              1     = Primary missing values included within data values
+C>    mastertable_ver_x  -  Master Table version
+C>                          where x is number from 2 to 10
+C>
+C>   INPUT FILES:   See ifl1
+C>
+C>   OUTPUT FILES:  See ifl2
+C>
+C> REMARKS: None
+C>
+C> ATTRIBUTES:
+C>   LANGUAGE: Fortran 90
+C>   MACHINE:  IBM SP
+C>
+C>
       subroutine cnv22(ifl1,ifl2,ipack,usemiss,imiss,table_ver)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C                .      .    .                                       .
-C SUBPROGRAM:    cnv22
-C   PRGMMR: Gilbert        ORG: W/NP11    DATE: 2003-06-11
-C
-C ABSTRACT: This subroutine converts every GRIB2 field in a file
-C   to another GRIB2 field, most likely one using a different
-C   packing option.
-C
-C PROGRAM HISTORY LOG:
-C 2003-06-11  Gilbert
-C 2008-05-14  Vuong    - Add missing value management option 0
-C 2009-05-20  Vuong    - Initialize variables idsect,local,list_opt 
-C
-C USAGE:    CALL cnv22(ifl1,ifl2,ipack,usemiss,imiss)
-C   INPUT ARGUMENT LIST:
-C     ifl1   - Fortran unit number of input GRIB2 file
-C     ifl2   - Fortran unit number of output GRIB2 file
-C     ipack  - GRIB2 packing option:
-C              0     = simple packing
-C              2     = group packing
-C              31    = group pack with 1st order differencing
-C              32    = group pack with 2nd order differencing
-C              40    = JPEG2000 encoding
-C              40000 = JPEG2000 encoding (obsolete)
-C              41    = PNG encoding
-C              40010 = PNG encoding (obsolete)
-C              if ipack .ne. one of the values above, 31 is used as a default.
-C    usemiss - uses missing value management (instead of bitmaps), for use
-C              ipack options 2, 31, and 32.
-C    imiss   - Missing value management:
-C              0     = No explicit missing values included within data values
-C              1     = Primary missing values included within data values
-C    mastertable_ver_x  -  Master Table version
-C                          where x is number from 2 to 10
-C
-C   INPUT FILES:   See ifl1
-C
-C   OUTPUT FILES:  See ifl2
-C
-C REMARKS: None
-C
-C ATTRIBUTES:
-C   LANGUAGE: Fortran 90
-C   MACHINE:  IBM SP
-C
-C$$$
+
 
       use grib_mod
       use params

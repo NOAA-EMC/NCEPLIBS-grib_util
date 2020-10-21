@@ -1,55 +1,50 @@
+C> @file
+C>  
+C> @author Gilbert @date 2003-06-06
+C
+C> This program converts every GRIB field in a file from
+C> - (1) GRIB1 to GRIB2
+C> - (2) GRIB2 to GRIB1
+C> - (3) GRIB2 to GRIB2.
+C>
+C> PROGRAM HISTORY LOG:
+C> - 2003-06-06  Gilbert
+C> - 2008-05-14  Vuong    Added the option -m0 (No explicit missing values 
+C>                      included within the datavalues, modified the options
+C>                      and help messages
+C> - 2010-12-02  Vuong    Changed Master Table Version Number from 2 to 6.
+C>                      Add option -mastertable_ver_x where x is mater table
+C>                      version 2 to 10 
+C> - 2012-03-29  Vuong    Changed Master Table Version Number from 2 to 8.
+C> - 2013-07-24  Vuong    Changed Master Table Version Number from 2 to 11
+C> - 2016-09-30  Vuong    Modified to correct forecast hour beyon F252 when 
+C>                      convert from grib2 to grib1.
+C>                      Fixed memory leak and complex packing
+C> - 2018-07-26  Vuong    Checked Time Range for continuous accumulated
+C>                      APCP after F252 when convert from grib2 to grib1
+C>
+C> USAGE:
+C>  - INPUT FILES:
+C>     UNIT 10  - Input GRIB file
+C>
+C>  - OUTPUT FILES: 
+C>     UNIT 50  - Output GRIB file
+C>
+C>  -   LIBRARY:
+C>       W3LIB    - errexit
+C>       BACIO    - baopenr, baopenw, baclose
+C>
+C>  - EXIT STATES:
+C>     COND =   0 - SUCCESSFUL RUN
+C>          =   2 - Problem processing command line arguments
+C>          =   3 - Problem opening input GRIB file
+C>          =   4 - Problem opening output GRIB file
+C>          =   5 - Unknown conversion option
+C>
+C> REMARKS: LIST CAVEATS, OTHER HELPFUL HINTS OR INFORMATION
+C>
       program cnvgrib
-C$$$  MAIN PROGRAM DOCUMENTATION BLOCK
-C  
-C MAIN PROGRAM:  cnvgrib
-C   PRGMMR: Gilbert        ORG: NP11        DATE: 2003-06-06
-C
-C ABSTRACT: This program converts every GRIB field in a file from
-C   (1) GRIB1 to GRIB2   (2) GRIB2 to GRIB1  or (3) GRIB2 to GRIB2.
-C
-C PROGRAM HISTORY LOG:
-C 2003-06-06  Gilbert
-C 2008-05-14  Vuong    Added the option -m0 (No explicit missing values 
-C                      included within the datavalues, modified the options
-C                      and help messages
-C 2010-12-02  Vuong    Changed Master Table Version Number from 2 to 6.
-C                      Add option -mastertable_ver_x where x is mater table
-C                      version 2 to 10 
-C 2012-03-29  Vuong    Changed Master Table Version Number from 2 to 8.
-C 2013-07-24  Vuong    Changed Master Table Version Number from 2 to 11
-C 2016-09-30  Vuong    Modified to correct forecast hour beyon F252 when 
-C                      convert from grib2 to grib1.
-C                      Fixed memory leak and complex packing
-C 2018-07-26  Vuong    Checked Time Range for continuous accumulated
-C                      APCP after F252 when convert from grib2 to grib1
-C
-C USAGE:
-C   INPUT FILES:
-C     UNIT 10  - Input GRIB file
-C
-C   OUTPUT FILES: 
-C     UNIT 50  - Output GRIB file
-C
-C   SUBPROGRAMS CALLED: (LIST ALL CALLED FROM ANYWHERE IN CODES)
-C     UNIQUE:    - cnv12, cnv21, cnv22, usage
-C     LIBRARY:
-C       W3LIB    - errexit
-C       BACIO    - baopenr, baopenw, baclose
-C
-C   EXIT STATES:
-C     COND =   0 - SUCCESSFUL RUN
-C          =   2 - Problem processing command line arguments
-C          =   3 - Problem opening input GRIB file
-C          =   4 - Problem opening output GRIB file
-C          =   5 - Unknown conversion option
-C
-C REMARKS: LIST CAVEATS, OTHER HELPFUL HINTS OR INFORMATION
-C
-C ATTRIBUTES:
-C   LANGUAGE: Fortran 90
-C   MACHINE:  IBM SP
-C
-C$$$
+
 
       integer :: inver=0,outver=0,ipack=-1
       character(len=500) :: gfilein,gfileout,copt

@@ -1,60 +1,60 @@
-        subroutine gdt2gds(igds,igdstmpl,idefnum,ideflist,kgds,
+C> @file
+C>                .      .    .                                       .
+C> @author Gilbert @date 2003-06-17
+C
+C>  This routine converts grid information from a GRIB2
+C>  Grid Description Section as well as its
+C>   Grid Definition Template to GRIB1 GDS info.  In addition,
+C>   a check is made to determine if the grid is an NCEP
+C>   predefined grid.
+C>
+C> PROGRAM HISTORY LOG:
+C> 2003-06-17  Gilbert
+C> 2004-04-27  Gilbert - Added support for gaussian grids.
+C> 2007-04-16  Vuong   - Added Curvilinear Orthogonal grids.
+C> 2007-05-29  Vuong   - Added Rotate Lat/Lon E-grid (203)
+C>
+C> USAGE:    CALL gdt2gds(igds,igdstmpl,idefnum,ideflist,kgds,igrid,iret)
+C>   INPUT ARGUMENT LIST:
+C>     igds()   - Contains information read from the appropriate GRIB Grid
+C>                Definition Section 3 for the field being returned.
+C>                Must be dimensioned >= 5.
+C>                igds(1)=Source of grid definition (see Code Table 3.0)
+C>                igds(2)=Number of grid points in the defined grid.
+C>                igds(3)=Number of octets needed for each
+C>                            additional grid points definition.
+C>                            Used to define number of
+C>                            points in each row ( or column ) for
+C>                            non-regular grids.
+C>                            = 0, if using regular grid.
+C>                igds(4)=Interpretation of list for optional points
+C>                            definition.  (Code Table 3.11)
+C>                igds(5)=Grid Definition Template Number (Code Table 3.1)
+C>     igdstmpl() - Grid Definition Template values for GDT 3.igds(5)
+C>     idefnum    - The number of entries in array ideflist.  
+C>                  i.e. number of rows ( or columns )
+C>                  for which optional grid points are defined.
+C>     ideflist() - Optional integer array containing
+C>                  the number of grid points contained in each row (or column).
+C>
+C>   OUTPUT ARGUMENT LIST:      (INCLUDING WORK ARRAYS)
+C>     kgds()   - GRIB1 GDS as described in w3fi63 format.
+C>     igrid    - NCEP predefined GRIB1 grid number
+C>                set to 255, if not NCEP grid
+C>     iret     - Error return value:
+C>                  0  = Successful
+C>                  1  = Unrecognized GRIB2 GDT number 3.igds(5)
+C>
+C> REMARKS: LIST CAVEATS, OTHER HELPFUL HINTS OR INFORMATION
+C>
+C> ATTRIBUTES:
+C>   LANGUAGE: INDICATE EXTENSIONS, COMPILER OPTIONS
+C>   MACHINE:  IBM SP
+C>
+C>
+      subroutine gdt2gds(igds,igdstmpl,idefnum,ideflist,kgds,
      &                     igrid,iret)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C                .      .    .                                       .
-C SUBPROGRAM:    gdt2gds
-C   PRGMMR: Gilbert        ORG: W/NP11    DATE: 2003-06-17
-C
-C ABSTRACT: This routine converts grid information from a GRIB2
-C   Grid Description Section as well as its
-C   Grid Definition Template to GRIB1 GDS info.  In addition,
-C   a check is made to determine if the grid is an NCEP
-C   predefined grid.
-C
-C PROGRAM HISTORY LOG:
-C 2003-06-17  Gilbert
-C 2004-04-27  Gilbert - Added support for gaussian grids.
-C 2007-04-16  Vuong   - Added Curvilinear Orthogonal grids.
-C 2007-05-29  Vuong   - Added Rotate Lat/Lon E-grid (203)
-C
-C USAGE:    CALL gdt2gds(igds,igdstmpl,idefnum,ideflist,kgds,igrid,iret)
-C   INPUT ARGUMENT LIST:
-C     igds()   - Contains information read from the appropriate GRIB Grid
-C                Definition Section 3 for the field being returned.
-C                Must be dimensioned >= 5.
-C                igds(1)=Source of grid definition (see Code Table 3.0)
-C                igds(2)=Number of grid points in the defined grid.
-C                igds(3)=Number of octets needed for each
-C                            additional grid points definition.
-C                            Used to define number of
-C                            points in each row ( or column ) for
-C                            non-regular grids.
-C                            = 0, if using regular grid.
-C                igds(4)=Interpretation of list for optional points
-C                            definition.  (Code Table 3.11)
-C                igds(5)=Grid Definition Template Number (Code Table 3.1)
-C     igdstmpl() - Grid Definition Template values for GDT 3.igds(5)
-C     idefnum    - The number of entries in array ideflist.  
-C                  i.e. number of rows ( or columns )
-C                  for which optional grid points are defined.
-C     ideflist() - Optional integer array containing
-C                  the number of grid points contained in each row (or column).
-C
-C   OUTPUT ARGUMENT LIST:      (INCLUDING WORK ARRAYS)
-C     kgds()   - GRIB1 GDS as described in w3fi63 format.
-C     igrid    - NCEP predefined GRIB1 grid number
-C                set to 255, if not NCEP grid
-C     iret     - Error return value:
-C                  0  = Successful
-C                  1  = Unrecognized GRIB2 GDT number 3.igds(5)
-C
-C REMARKS: LIST CAVEATS, OTHER HELPFUL HINTS OR INFORMATION
-C
-C ATTRIBUTES:
-C   LANGUAGE: INDICATE EXTENSIONS, COMPILER OPTIONS
-C   MACHINE:  IBM SP
-C
-C$$$
+
 ! 
         integer,intent(in) :: idefnum
         integer,intent(in) :: igds(*),igdstmpl(*),ideflist(*)
