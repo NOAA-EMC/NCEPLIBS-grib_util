@@ -1,186 +1,180 @@
-C-----------------------------------------------------------------------
+C> @file
+C> COMPARE GRIB FILES
+C> @author IREDELL @date 1998-10-22
+C
+C> The command copygb copies all or part of one GRIB file
+C>   to another GRIB file, interpolating if necessary.  Unless
+C>   otherwise directed (-x option), the GRIB index file is also used
+C>   to speed the reading. The fields are interpolated to an output grid
+C>   if specified (-g option). The interpolation type defaults to
+C>   bilinear but may be specified directly (-i option).  The copying
+C>   may be limited to specific fields (-k option). It may also be
+C>   limited to a specified subgrid of the output grid or to a subrange
+C>   of the input fields (-B and -b, -A, and -K options). Fields can be
+C>   identified as scalars or vectors (-v option), which are interpolated
+C>   differently.  The invalid data in the output field can be filled
+C>   with mask values or merged with a merge field (-M and -m options).
+C>   The output GRIB message can also be appended to a file (-a option).
+C>   Some defaults can be overridden in a namelist file (-N option).
+C>
+C> PROGRAM HISTORY LOG:
+C> -  96-07-19  IREDELL
+C> -  97-03-05  IREDELL  CORRECTED THE COPYING OF THE V-WIND FIELD
+C>                      WHEN NO INTERPOLATION IS DONE
+C> -  97-03-18  IREDELL  INCREASED VERBOSITY
+C> - 1998-09-03  IREDELL  INSTRUMENTED AND MADE PLATFORM-INDEPENDENT
+C> - 1999-10-05  IREDELL  ADDED APPEND OPTION AND WGRIB REQUEST OPTION
+C> - 1999-10-06  IREDELL  ADDED MERGE OPTION
+C> - 2000-01-19  IREDELL  ADDED NAMELIST OPTION
+C> - 2001-03-16  IREDELL  ADDED ENSEMBLE EXTENSION OPTION
+C> - 2002-01-10  IREDELL  CORRECTED V-WIND SEARCH TO INCLUDE SUBCENTER
+C> - 2006-02-07  GILBERT  CHANGED V-WIND SEARCH TO EXCLUDE DECIMAL SCALE FACTOR
+C> - 2007-06-22  IREDELL  CORRECTED PRE-INTERPOLATION MASK BITMAP SETTING
+C> - 2007-07-13  TROJAN   ALLOWED NEAREST NEIGHBOUR INTERPOLATION FOR WAF GRIDS
+C> - 2013-03-14  VUONG    ADDED CALL OMP_SET_NUM_THREADS TO SINGLE THREAD
+C>                      TO EXECUTE IN PARALLEL MODE 
+C>
+C> COMMAND LINE OPTIONS:
+C>   -a
+C>      Appends rather than overwrites the output GRIB file.
+C>
+C>   -A "<> mapthreshold"
+C>      Inequality and threshold used in determining
+C>      where on the map the data will be copied.
+C>      The data are copied only where the given 
+C>      map field is on the correct side of the threshold.
+C>      The mapthreshold defaults to '>-1.e30'; in this case,
+C>      only the map field's bitmap will limit the domain.
+C>
+C>   -b mapindex   
+C>      Optional index file used to get the map field.
+C>
+C>   -B mapgrib    
+C>      GRIB file used to get the map field.  The map field
+C>      is read from the GRIB file and compared to the
+C>      map threshold to determine for which region on the map
+C>      the data will be copied.  The mapgrib can be the name
+C>      of an actual GRIB file (in which case the index
+C>      file may be specified with the -b option) or it can
+C>      be '-1'.  If mapgrib is '-1', then the input GRIB file
+C>      (first positional argument) is used.
+C>      The -K option specifies which field to read from
+C>      the mapgrib GRIB file.  If mapgrib is an actual file,
+C>      then the first field is taken if -K is not specified.
+C>      On the other hand, if mapgrib is '-1', then if the
+C>      if -K is not specified, the current field is taken
+C>      as the map field.  A special exception is if -K '-1'
+C>      is specified, in which case the current field is
+C>      taken as the map field and it is applied before any
+C>      interpolation; otherwise the map field is always
+C>      applied after interpolation.
+C>
+C>   -g "grid [kgds]"
+C>      Output grid identification.  If grid=-1 (the default),
+C>      then the output grid is the same as the input grid.
+C>      If grid=-4, then the grid is that of the map field.
+C>      If grid=-5, then the grid is that of the merge field.
+C>      If 0<grid<255, then grid designates an NCEP grid.
+C>      If grid=255, then the grid must be specified by the
+C>      full set of kgds parameters determining a GRIB GDS
+C>      (grid description section) in the W3FI63 format.
+C>
+C>   -i "ip [ipopts]"
+C>      Interpolation options.  The default is bilinear
+C>      interpolation (ip=0).  Other interpolation options
+C>      are bicubic (ip=1), neighbor (ip=2), budget (ip=3),
+C>      and spectral (ip=4).  Spectral interpolation is forced
+C>      even if the input and output grids are the same.
+C>      See the documentation for iplib for further details.
+C>
+C>   -k "kpds"
+C>      Full set of kpds parameters determing a GRIB PDS
+C>      (product definition section) in the W3FI63 format
+C>      determining the field(s) to be copied.  Note that
+C>      kpds(5) is the parameter indicator (PDS octet 9).
+C>      A wildcard is specified by -1 (the defaults).
+C>      If "kpds" is equal to "w", then the requested record
+C>      numbers are read in from standard input instead,
+C>      one record per line and possibly delimited by a colon
+C>      (so that wgrib could pipe requests to copygb).
+C>      If the -k is not specified, then copygb will attempt
+C>      to copy every field in the input GRIB file.
+C>
+C>   -K "mapkpds"
+C>      Full set of kpds parameters determing a GRIB PDS
+C>      (product definition section) in the W3FI63 format
+C>      determining the map field to be used to determine
+C>      where on the map the data will be copied.  
+C>      A wildcard is specified by -1 (the defaults).
+C>
+C>   -m mergeindex   
+C>      Optional index file used to get the merge field.
+C>
+C>   -M "mask"/mergegrib
+C>      Mask used to fill out bitmapped areas of the map.
+C>      If specified, there will be no bitmap in the output.
+C>      The mask must be in the format '\#value' where value
+C>      is the real number used to fill out the field.
+C>      Otherwise, the argument is interpreted as a merge
+C>      GRIB file.  Then for each GRIB message copied,
+C>      a merge field is found in the merge GRIB file
+C>      with the same parameter and level indicators
+C>      as the copied field.  This merge field is interpolated
+C>      to the output grid and used to fill out the bitmapped
+C>      areas of the map, at least where the merge field
+C>      is not bitmapped.  No merging is done if no merge
+C>      field is found.
+C>
+C>   -N namelist
+C>      Namelist file to override default output options.
+C>      The namelist must start with " &NLCOPYGB" and end with "/".
+C>      Namelist variables are
+C>        IDS(255)      Output decimal scaling by parameter
+C>        IBS(255)      Output binary scaling by parameter
+C>        NBS(255)      Output number of bits by parameter
+C>      
+C>   -v "uparms"
+C>      Parameter indicator(s) for the u-component of vectors.
+C>      The parameter indicator for the v-component is assumed
+C>      to be one more than that of the u-component.
+C>      If the -v option is not specified, then the wind
+C>      components (parameters 33 and 34) are the only fields
+C>      assumed to be vector components in the GRIB file.
+C>
+C>   -x
+C>      Turns off the use of an index file.  The index records
+C>      are then extracted from the GRIB file, which
+C>      will increase the time taken by copygb.
+C>
+C>   -X
+C>      Turns on verbose printout.  This option is
+C>      incompatible with GRIB output to standard output.
+C>
+C> INPUT FILES:
+C> -  UNIT   11    INPUT GRIB FILE
+C> -  UNIT   14    MAP GRIB FILE
+C> -  UNIT   15    MERGE GRIB FILE
+C> -  UNIT   31    INPUT GRIB INDEX FILE
+C> -  UNIT   34    MAP GRIB INDEX FILE
+C> -  UNIT   35    MERGE GRIB INDEX FILE
+C>
+C> OUTPUT FILES:
+C> -  UNIT   51    OUTPUT GRIB FILE
+C>
+C> SUBPROGRAMS CALLED:
+C> -  IARGC
+C> -  GETARG
+C> -  ERRMSG
+C> -  EUSAGE
+C> -  ERREXIT
+C> -  FPARSEI
+C> -  FPARSER
+C> -  BAOPENR
+C> -  BAOPENWT
+C> -  BAOPENWA
+C> -  CPGB
+C>
       PROGRAM COPYGB
-C$$$  MAIN PROGRAM DOCUMENTATION BLOCK
-C
-C MAIN PROGRAM: COPYGB       COMPARE GRIB FILES
-C   PRGMMR: IREDELL          ORG: NP23        DATE: 1998-10-22
-C
-C ABSTRACT: The command copygb copies all or part of one GRIB file
-C   to another GRIB file, interpolating if necessary.  Unless
-C   otherwise directed (-x option), the GRIB index file is also used
-C   to speed the reading. The fields are interpolated to an output grid
-C   if specified (-g option). The interpolation type defaults to
-C   bilinear but may be specified directly (-i option).  The copying
-C   may be limited to specific fields (-k option). It may also be
-C   limited to a specified subgrid of the output grid or to a subrange
-C   of the input fields (-B and -b, -A, and -K options). Fields can be
-C   identified as scalars or vectors (-v option), which are interpolated
-C   differently.  The invalid data in the output field can be filled
-C   with mask values or merged with a merge field (-M and -m options).
-C   The output GRIB message can also be appended to a file (-a option).
-C   Some defaults can be overridden in a namelist file (-N option).
-C
-C PROGRAM HISTORY LOG:
-C   96-07-19  IREDELL
-C   97-03-05  IREDELL  CORRECTED THE COPYING OF THE V-WIND FIELD
-C                      WHEN NO INTERPOLATION IS DONE
-C   97-03-18  IREDELL  INCREASED VERBOSITY
-C 1998-09-03  IREDELL  INSTRUMENTED AND MADE PLATFORM-INDEPENDENT
-C 1999-10-05  IREDELL  ADDED APPEND OPTION AND WGRIB REQUEST OPTION
-C 1999-10-06  IREDELL  ADDED MERGE OPTION
-C 2000-01-19  IREDELL  ADDED NAMELIST OPTION
-C 2001-03-16  IREDELL  ADDED ENSEMBLE EXTENSION OPTION
-C 2002-01-10  IREDELL  CORRECTED V-WIND SEARCH TO INCLUDE SUBCENTER
-C 2006-02-07  GILBERT  CHANGED V-WIND SEARCH TO EXCLUDE DECIMAL SCALE FACTOR
-C 2007-06-22  IREDELL  CORRECTED PRE-INTERPOLATION MASK BITMAP SETTING
-C 2007-07-13  TROJAN   ALLOWED NEAREST NEIGHBOUR INTERPOLATION FOR WAF GRIDS
-C 2013-03-14  VUONG    ADDED CALL OMP_SET_NUM_THREADS TO SINGLE THREAD
-C                      TO EXECUTE IN PARALLEL MODE 
-C
-C COMMAND LINE OPTIONS:
-C   -a
-C      Appends rather than overwrites the output GRIB file.
-C
-C   -A "<> mapthreshold"
-C      Inequality and threshold used in determining
-C      where on the map the data will be copied.
-C      The data are copied only where the given 
-C      map field is on the correct side of the threshold.
-C      The mapthreshold defaults to '>-1.e30'; in this case,
-C      only the map field's bitmap will limit the domain.
-C
-C   -b mapindex   
-C      Optional index file used to get the map field.
-C
-C   -B mapgrib    
-C      GRIB file used to get the map field.  The map field
-C      is read from the GRIB file and compared to the
-C      map threshold to determine for which region on the map
-C      the data will be copied.  The mapgrib can be the name
-C      of an actual GRIB file (in which case the index
-C      file may be specified with the -b option) or it can
-C      be '-1'.  If mapgrib is '-1', then the input GRIB file
-C      (first positional argument) is used.
-C      The -K option specifies which field to read from
-C      the mapgrib GRIB file.  If mapgrib is an actual file,
-C      then the first field is taken if -K is not specified.
-C      On the other hand, if mapgrib is '-1', then if the
-C      if -K is not specified, the current field is taken
-C      as the map field.  A special exception is if -K '-1'
-C      is specified, in which case the current field is
-C      taken as the map field and it is applied before any
-C      interpolation; otherwise the map field is always
-C      applied after interpolation.
-C
-C   -g "grid [kgds]"
-C      Output grid identification.  If grid=-1 (the default),
-C      then the output grid is the same as the input grid.
-C      If grid=-4, then the grid is that of the map field.
-C      If grid=-5, then the grid is that of the merge field.
-C      If 0<grid<255, then grid designates an NCEP grid.
-C      If grid=255, then the grid must be specified by the
-C      full set of kgds parameters determining a GRIB GDS
-C      (grid description section) in the W3FI63 format.
-C
-C   -i "ip [ipopts]"
-C      Interpolation options.  The default is bilinear
-C      interpolation (ip=0).  Other interpolation options
-C      are bicubic (ip=1), neighbor (ip=2), budget (ip=3),
-C      and spectral (ip=4).  Spectral interpolation is forced
-C      even if the input and output grids are the same.
-C      See the documentation for iplib for further details.
-C
-C   -k "kpds"
-C      Full set of kpds parameters determing a GRIB PDS
-C      (product definition section) in the W3FI63 format
-C      determining the field(s) to be copied.  Note that
-C      kpds(5) is the parameter indicator (PDS octet 9).
-C      A wildcard is specified by -1 (the defaults).
-C      If "kpds" is equal to "w", then the requested record
-C      numbers are read in from standard input instead,
-C      one record per line and possibly delimited by a colon
-C      (so that wgrib could pipe requests to copygb).
-C      If the -k is not specified, then copygb will attempt
-C      to copy every field in the input GRIB file.
-C
-C   -K "mapkpds"
-C      Full set of kpds parameters determing a GRIB PDS
-C      (product definition section) in the W3FI63 format
-C      determining the map field to be used to determine
-C      where on the map the data will be copied.  
-C      A wildcard is specified by -1 (the defaults).
-C
-C   -m mergeindex   
-C      Optional index file used to get the merge field.
-C
-C   -M "mask"/mergegrib
-C      Mask used to fill out bitmapped areas of the map.
-C      If specified, there will be no bitmap in the output.
-C      The mask must be in the format '#value' where value
-C      is the real number used to fill out the field.
-C      Otherwise, the argument is interpreted as a merge
-C      GRIB file.  Then for each GRIB message copied,
-C      a merge field is found in the merge GRIB file
-C      with the same parameter and level indicators
-C      as the copied field.  This merge field is interpolated
-C      to the output grid and used to fill out the bitmapped
-C      areas of the map, at least where the merge field
-C      is not bitmapped.  No merging is done if no merge
-C      field is found.
-C
-C   -N namelist
-C      Namelist file to override default output options.
-C      The namelist must start with " &NLCOPYGB" and end with "/".
-C      Namelist variables are
-C        IDS(255)      Output decimal scaling by parameter
-C        IBS(255)      Output binary scaling by parameter
-C        NBS(255)      Output number of bits by parameter
-C      
-C   -v "uparms"
-C      Parameter indicator(s) for the u-component of vectors.
-C      The parameter indicator for the v-component is assumed
-C      to be one more than that of the u-component.
-C      If the -v option is not specified, then the wind
-C      components (parameters 33 and 34) are the only fields
-C      assumed to be vector components in the GRIB file.
-C
-C   -x
-C      Turns off the use of an index file.  The index records
-C      are then extracted from the GRIB file, which
-C      will increase the time taken by copygb.
-C
-C   -X
-C      Turns on verbose printout.  This option is
-C      incompatible with GRIB output to standard output.
-C
-C INPUT FILES:
-C   UNIT   11    INPUT GRIB FILE
-C   UNIT   14    MAP GRIB FILE
-C   UNIT   15    MERGE GRIB FILE
-C   UNIT   31    INPUT GRIB INDEX FILE
-C   UNIT   34    MAP GRIB INDEX FILE
-C   UNIT   35    MERGE GRIB INDEX FILE
-C
-C OUTPUT FILES:
-C   UNIT   51    OUTPUT GRIB FILE
-C
-C SUBPROGRAMS CALLED:
-C   IARGC
-C   GETARG
-C   ERRMSG
-C   EUSAGE
-C   ERREXIT
-C   FPARSEI
-C   FPARSER
-C   BAOPENR
-C   BAOPENWT
-C   BAOPENWA
-C   CPGB
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN
-C
-C$$$
       CHARACTER*256 CARG,CG1,CX1,CGB,CXB,CGM,CXM,CG2,CNL
       INTEGER KARG(100), NTHREADS
       INTEGER KGDSI(200),IPOPT(20),JPDS1(200),JPDSB(200),IUV(100)

@@ -1,13 +1,14 @@
+/** @file 
+ * version 1.2.1 of grib headers  w. ebisuzaki 
+ *         1.2.2 added access to spectral reference value l. kornblueh
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
 #include <math.h>
 #include <float.h>
-/* 
- * version 1.2.1 of grib headers  w. ebisuzaki 
- *         1.2.2 added access to spectral reference value l. kornblueh
- */
 
 #ifndef INT2
 #define INT2(a,b)   ((1-(int) ((unsigned) (a & 0x80) >> 6)) * (int) (((a & 0x7f) << 8) + b))

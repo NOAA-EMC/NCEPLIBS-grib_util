@@ -1,54 +1,44 @@
+C> @file                .      .    .                                       .
+C> @author GILBERT @date 2003-03-28
+C
+C> Program reads selected GRIB fields from a file, adds a TOC
+C>           Flag Field separator block and WMO Header in front of each GRIB 
+C>           field, and writes them out to a new file.  The output file
+C>           is in the format required for TOC's FTP Input Service, which
+C>           can be used to disseminate the GRIB bulletins.
+C>           This service is described at http://weather.gov/tg/ftpingest.html.
+C>
+C> PROGRAM HISTORY LOG:
+C> -2003-03-28  Gilbert
+C> -2012-10-22  VUONG   CHANGED VARIABLE ENVVAR TO CHARACTER*6
+C> -2016-10-15  VUONG   Increased length of file name to 200 Characters
+C>
+C> USAGE:
+C>   INPUT FILES:
+C>  -    5       - LIST OF GRIB FIELDS AND ASSOCIATED WMO HEADERS.
+C>  -   11       - INPUT GRIB FILE.
+C>  -   31       - CORRESPONDING INPUT GRIB INDEX FILE.
+C>  -   PARM     - PASS IN 4 CHARACTERS 'KWBX' WITH PARM FIELD
+C>
+C>   OUTPUT FILES:  (INCLUDING SCRATCH FILES)
+C>  -    6       - STANDARD FORTRAN PRINT FILE
+C>  -   51       - OUTPUT GRIB BULLETIN FILE IN TOC FORMAT
+C>
+C>   SUBPROGRAMS CALLED: (LIST ALL CALLED FROM ANYWHERE IN CODES)
+C>  -   UNIQUE:    - MAKWMO
+C>     LIBRARY:
+C>  -     W3LIB    - W3TAGB W3UTCDAT IW3PDS W3FP11
+C>                  W3TAGE W3AS00 GETGBP
+C>  -     BACIO    - BAREAD BAOPENR BAOPENW BACLOSE
+C>
+C>   EXIT STATES:
+C>   -  COND =   0 - SUCCESSFUL RUN
+C>   -          10 - Error opening input GRIB data file 
+C>   -          20 - Error opening output GRIB transmission file 
+C>   -          19 - ERROR READING CONTROL CARD FILE - All Bulletins missing
+C>   -          30 - Some BULLETINS ARE MISSING
+C>
       PROGRAM tocgrib
-C$$$  MAIN PROGRAM DOCUMENTATION BLOCK
-C                .      .    .                                       .
-C MAIN PROGRAM: tocgrib
-C   PRGMMR: GILBERT          ORG: NP11        DATE: 2003-03-28
-C
-C ABSTRACT: Program reads selected GRIB fields from a file, adds a TOC
-C           Flag Field separator block and WMO Header in front of each GRIB 
-C           field, and writes them out to a new file.  The output file
-C           is in the format required for TOC's FTP Input Service, which
-C           can be used to disseminate the GRIB bulletins.
-C           This service is described at http://weather.gov/tg/ftpingest.html.
-C
-C PROGRAM HISTORY LOG:
-C 2003-03-28  Gilbert
-C 2012-10-22  VUONG   CHANGED VARIABLE ENVVAR TO CHARACTER*6
-C 2016-10-15  VUONG   Increased length of file name to 200 Characters
-C
-C USAGE:
-C   INPUT FILES:
-C      5       - LIST OF GRIB FIELDS AND ASSOCIATED WMO HEADERS.
-C     11       - INPUT GRIB FILE.
-C     31       - CORRESPONDING INPUT GRIB INDEX FILE.
-C     PARM     - PASS IN 4 CHARACTERS 'KWBX' WITH PARM FIELD
-C
-C   OUTPUT FILES:  (INCLUDING SCRATCH FILES)
-C      6       - STANDARD FORTRAN PRINT FILE
-C     51       - OUTPUT GRIB BULLETIN FILE IN TOC FORMAT
-C
-C   SUBPROGRAMS CALLED: (LIST ALL CALLED FROM ANYWHERE IN CODES)
-C     UNIQUE:    - MAKWMO
-C     LIBRARY:
-C       W3LIB    - W3TAGB W3UTCDAT IW3PDS W3FP11
-C                  W3TAGE W3AS00 GETGBP
-C       BACIO    - BAREAD BAOPENR BAOPENW BACLOSE
-C
-C   EXIT STATES:
-C     COND =   0 - SUCCESSFUL RUN
-C             10 - Error opening input GRIB data file 
-C             20 - Error opening output GRIB transmission file 
-C             19 - ERROR READING CONTROL CARD FILE - All Bulletins missing
-C             30 - Some BULLETINS ARE MISSING
-C
-C REMARKS: None
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN 90
-C   MACHINE:  IBM SP
-C
-C$$$
-C
       PARAMETER (MXSIZ3=1000000)
 C
       INTEGER         DUM

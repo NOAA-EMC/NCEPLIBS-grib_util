@@ -1,49 +1,41 @@
+C> @file
+C> @author Vuong @date 2010-09-08
+C
+C> This program reads GRIB2 file and makes inventory
+C> of GRIB file 
+C>
+C> PROGRAM HISTORY LOG:
+C> - 2010-09-06  Vuong
+C> - 2011-10-03  Vuong    Added to check for reference time for PDT 4.15
+C> - 2012-06-07  Vuong    Changed PRINT statement to WRITE with format specifier
+C> - 2017-01-21  Vuong    Added to check for undefine values 
+C>
+C> USAGE:
+C>   - INPUT FILES:
+C>     UNIT 10  - Input GRIB file
+C>
+C>   - OUTPUT FILES:
+C>     UNIT 50  - Output GRIB file
+C>
+C> COMMAND LINE:
+C>     degrib2  grib2_file
+C>  - OUTPUT FILES:  (INCLUDING SCRATCH FILES)
+C>     6        - STANDARD FORTRAN PRINT FILE
+C>
+C>   SUBPROGRAMS CALLED: (LIST ALL CALLED FROM ANYWHERE IN CODES)
+C>    -   G2LIB    - GB_INFO, GT_GETFLD, PRLEVEL, PRVTIME
+C>    -   W3LIB    - GBYTE, SKGB
+C>    -   BACIO    - BAOPENR, BAREAD, BACLOSE
+C>    -   SYSTEM   - IARGC   FUNCTION RETURNS NUMBER OF ARGUMENT ON
+C>                          COMMAND LINE
+C>    - GETARG  ROUTINE RETURNS COMMAND LINE ARGUMENT
+C>
+C>   EXIT STATES:
+C>     COND =   0 - SUCCESSFUL RUN
+C>
+C> REMARKS: COMMAND LINE CAN HAVE ONE FILE NAME.
+C>
       program degrib2
-C$$$  MAIN PROGRAM DOCUMENTATION BLOCK
-C
-C MAIN PROGRAM:  degrib2
-C   PRGMMR: Vuong          ORG: SIB         DATE: 2010-09-08
-C
-C ABSTRACT: This program reads GRIB2 file and makes inventory
-C           of GRIB file 
-C
-C PROGRAM HISTORY LOG:
-C 2010-09-06  Vuong
-C 2011-10-03  Vuong    Added to check for reference time for PDT 4.15
-C 2012-06-07  Vuong    Changed PRINT statement to WRITE with format specifier
-C 2017-01-21  Vuong    Added to check for undefine values 
-C
-C USAGE:
-C   INPUT FILES:
-C     UNIT 10  - Input GRIB file
-C
-C   OUTPUT FILES:
-C     UNIT 50  - Output GRIB file
-C
-C USAGE:
-C COMMAND LINE:
-C     degrib2  grib2_file
-C   OUTPUT FILES:  (INCLUDING SCRATCH FILES)
-C     6        - STANDARD FORTRAN PRINT FILE
-C
-C   SUBPROGRAMS CALLED: (LIST ALL CALLED FROM ANYWHERE IN CODES)
-C     LIBRARY:
-C       G2LIB    - GB_INFO, GT_GETFLD, PRLEVEL, PRVTIME
-C       W3LIB    - GBYTE, SKGB
-C       BACIO    - BAOPENR, BAREAD, BACLOSE
-C       SYSTEM   - IARGC   FUNCTION RETURNS NUMBER OF ARGUMENT ON
-C                          COMMAND LINE
-C                - GETARG  ROUTINE RETURNS COMMAND LINE ARGUMENT
-C
-C   EXIT STATES:
-C     COND =   0 - SUCCESSFUL RUN
-C
-C REMARKS: COMMAND LINE CAN HAVE ONE FILE NAME.
-C     
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN 90
-C   MACHINE:  IBM RS/6000
-C
       use grib_mod
       use params
       parameter(msk1=32000,msk2=4000)
