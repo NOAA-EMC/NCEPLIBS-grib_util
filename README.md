@@ -3,6 +3,9 @@
 A collection of NCEP grib related utilities. This is related to the
 [NCEPLIBS](https://github.com/NOAA-EMC/NCEPLIBS) project.
 
+For complete documentation see
+https://noaa-emc.github.io/NCEPLIBS-grib_util/.
+
 ## Authors
 
 NCEP/EMC developers.
