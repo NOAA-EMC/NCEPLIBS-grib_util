@@ -1,5 +1,7 @@
-                                                          July 16, 2018
-                                                          W/EMC:VUONG
+<pre>
+
+July 16, 2018
+W/EMC:VUONG
 
 cnvgrib utility.
 
@@ -55,3 +57,4 @@ Other Optional options:
    -m0     No explicit missing values included within the data values
    -mastertable_ver_x     Master Table version where x is number from 2 to 21
 
+</pre>

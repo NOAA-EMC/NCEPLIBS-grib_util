@@ -1,35 +1,35 @@
+C> @file
+C>                .      .    .                                       .
+C> @author Gilbert @date 2003-06-11
+C
+C>  This subroutine converts every GRIB2 field in a file
+C>  to a GRIB1 field.  If a GRIB2 message contains more than one
+C>   data field, then each field is saved in individual GRIB1
+C>   messages.
+C>
+C> PROGRAM HISTORY LOG:
+C> 2003-06-11  Gilbert
+C> 2008-05-14  Vuong    - Add option -m0 No explicit missing values included
+C>                        within data values
+C>
+C> USAGE:    CALL cnv21(ifl1,ifl2)
+C>   INPUT ARGUMENT LIST:
+C>     ifl1   - Fortran unit number of input GRIB2 file
+C>     ifl2   - Fortran unit number of output GRIB1 file
+C>
+C>   INPUT FILES:   See ifl1
+C>
+C>   OUTPUT FILES:  See ifl2
+C>
+C> REMARKS: None
+C>
+C> ATTRIBUTES:
+C>   LANGUAGE: Fortran 90
+C>   MACHINE:  IBM SP
+C>
+C>
       subroutine cnv21(ifl1,ifl2)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C                .      .    .                                       .
-C SUBPROGRAM:    cnv21 
-C   PRGMMR: Gilbert        ORG: W/NP11    DATE: 2003-06-11
-C
-C ABSTRACT: This subroutine converts every GRIB2 field in a file
-C   to a GRIB1 field.  If a GRIB2 message contains more than one
-C   data field, then each field is saved in individual GRIB1
-C   messages.
-C
-C PROGRAM HISTORY LOG:
-C 2003-06-11  Gilbert
-C 2008-05-14  Vuong    - Add option -m0 No explicit missing values included
-C                        within data values
-C
-C USAGE:    CALL cnv21(ifl1,ifl2)
-C   INPUT ARGUMENT LIST:
-C     ifl1   - Fortran unit number of input GRIB2 file
-C     ifl2   - Fortran unit number of output GRIB1 file
-C
-C   INPUT FILES:   See ifl1
-C
-C   OUTPUT FILES:  See ifl2
-C
-C REMARKS: None
-C
-C ATTRIBUTES:
-C   LANGUAGE: Fortran 90
-C   MACHINE:  IBM SP
-C
-C$$$
+
 
       use grib_mod
       use params

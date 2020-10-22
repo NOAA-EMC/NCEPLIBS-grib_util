@@ -9,6 +9,20 @@ NCEP/EMC developers.
 
 Code Manager : Boi Vuong
 
+### Prerequisites
+
+This package requires the following third party libraries:
+- [Jasper](http://www.ece.uvic.ca/~mdadams/jasper/)
+- [libpng](http://www.libpng.org/pub/png/libpng.html)
+- [libz](http://www.gzip.org/zlib/)
+
+This package requires the folling NCEPLIBS libraries:
+- [NCEPLIBS-sp](https://github.com/NOAA-EMC/NCEPLIBS-sp)
+- [NCEPLIBS-ip](https://github.com/NOAA-EMC/NCEPLIBS-ip)
+- [NCEPLIBS-bacio](https://github.com/NOAA-EMC/NCEPLIBS-bacio)
+- [NCEPLIBS-g2](https://github.com/NOAA-EMC/NCEPLIBS-g2)
+- [NCEPLIBS-w3nco](https://github.com/NOAA-EMC/NCEPLIBS-w3nco)
+
 ## Installing
 
 ```

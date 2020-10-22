@@ -1,50 +1,50 @@
-        subroutine pds2pdtens(kpds,kens,kprob,xprob,kclust,kmember,
+C> @file
+C>                .      .    .                                       .
+C> @author Gilbert @date 2003-06-12
+C
+C>  This routine converts a GRIB1 PDS (Section 1) that includes
+C>  NCEP ensemble PDS extensions
+C>   to a GRIB2 PDS (Section 4) info with appropriate Product Definition
+C>   Template.
+C>
+C> PROGRAM HISTORY LOG:
+C> 2003-06-12  Gilbert
+C> 2007-02-07  Gilbert    - fixed end date calculation
+C> 2007-05-14  Boi Vuong  - Added Time Range Indicator 51 (Climatological 
+C>                          Mean Value)
+C>
+C> USAGE:    CALL pds2pdtens(kpds,kens,kprob,xprob,kclust,kmember,
+C>                           ipdsnum,ipdstmpl,numcoord,coordlist,iret)
+C>   INPUT ARGUMENT LIST:
+C>     kpds()   - GRIB1 PDS info as specified in W3FI63.
+C>     kens()   - Ensemble identification from PDS octets 41-45
+C>     kprob()  - Ensemble probability info from PDS octets 46 & 47
+C>     xprob()  - Ensemble probability info from PDS octets 48-55
+C>     kclust() - Ensemble cluster info from PDS octets 61-76
+C>     kmember()- Ensemble membership info from PDS octest 77-86
+C>
+C>   OUTPUT ARGUMENT LIST:
+C>     ipdsnum    - GRIB2 Product Definition Template Number
+C>     ipdstmpl() - GRIB2 Product Definition Template entries for PDT 4.ipdsnum
+C>     numcoord   - number of vertical discretisation values ( not implemented )
+C>     coordlist()- vertical discretisation values ( not implemented )
+C>     iret       - Error return value:
+C>                  0  = Successful
+C>                  1  = Unrecognized GRIB1 Time Range Indicator for ensembles
+C>                  2  = Unrecognized GRIB1 Ensemble type
+C>                  10 = Unrecognized GRIB1 Time Range Indicator for probabilities
+C>
+C> REMARKS:  Use routine pds2pdt for non ensemble related PDS.
+C>
+C> ATTRIBUTES:
+C>   LANGUAGE: Fortran 90
+C>   MACHINE:  IBM SP
+C>
+C>
+      subroutine pds2pdtens(kpds,kens,kprob,xprob,kclust,kmember,
      &                     ipdsnum,ipdstmpl,numcoord,coordlist,
      &                     iret)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C                .      .    .                                       .
-C SUBPROGRAM:    pds2pdtens
-C   PRGMMR: Gilbert        ORG: W/NP11     DATE: 2003-06-12
-C
-C ABSTRACT: This routine converts a GRIB1 PDS (Section 1) that includes
-C   NCEP ensemble PDS extensions
-C   to a GRIB2 PDS (Section 4) info with appropriate Product Definition
-C   Template.
-C
-C PROGRAM HISTORY LOG:
-C 2003-06-12  Gilbert
-C 2007-02-07  Gilbert    - fixed end date calculation
-C 2007-05-14  Boi Vuong  - Added Time Range Indicator 51 (Climatological 
-C                          Mean Value)
-C
-C USAGE:    CALL pds2pdtens(kpds,kens,kprob,xprob,kclust,kmember,
-C                           ipdsnum,ipdstmpl,numcoord,coordlist,iret)
-C   INPUT ARGUMENT LIST:
-C     kpds()   - GRIB1 PDS info as specified in W3FI63.
-C     kens()   - Ensemble identification from PDS octets 41-45
-C     kprob()  - Ensemble probability info from PDS octets 46 & 47
-C     xprob()  - Ensemble probability info from PDS octets 48-55
-C     kclust() - Ensemble cluster info from PDS octets 61-76
-C     kmember()- Ensemble membership info from PDS octest 77-86
-C
-C   OUTPUT ARGUMENT LIST:
-C     ipdsnum    - GRIB2 Product Definition Template Number
-C     ipdstmpl() - GRIB2 Product Definition Template entries for PDT 4.ipdsnum
-C     numcoord   - number of vertical discretisation values ( not implemented )
-C     coordlist()- vertical discretisation values ( not implemented )
-C     iret       - Error return value:
-C                  0  = Successful
-C                  1  = Unrecognized GRIB1 Time Range Indicator for ensembles
-C                  2  = Unrecognized GRIB1 Ensemble type
-C                  10 = Unrecognized GRIB1 Time Range Indicator for probabilities
-C
-C REMARKS:  Use routine pds2pdt for non ensemble related PDS.
-C
-C ATTRIBUTES:
-C   LANGUAGE: Fortran 90
-C   MACHINE:  IBM SP
-C
-C$$$
+
         
         use params
 
