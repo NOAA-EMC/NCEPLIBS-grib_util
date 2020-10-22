@@ -1,64 +1,57 @@
+C> @file
+C> @author GILBERT @date 2004-05-17
+C
+C> Program reads selected GRIB2 fields from a file, adds a 
+C>           flag Field separator block and the size in bytes of the grib file,
+C>           and the WMO super header and the time stamp, adds a TOC
+C>           Flag Field separator block and WMO Header in front of each GRIB2
+C>           field, and writes them out to a new file.  The output file
+C>           is in the format required for TOC's FTP Input Service, which
+C>           can be used to disseminate the GRIB2 bulletins.
+C>           This service is described at http://weather.gov/tg/ftpingest.html.
+C>
+C> PROGRAM HISTORY LOG:
+C> -2004-05-17  Gilbert
+C> -2008-02-25  VUONG   Modified the original tocgrib2 program to add super wmo
+C>                     header for NDFD grib file 
+C> -2010-09-02  VUONG   Rename program name aqm_smoke to tocgrib2super
+C> -2012-06-14  VUONG   Modifed write statement with format specifier
+C> -2012-10-22  VUONG   CHANGED VARIABLE ENVVAR TO CHARACTER*6
+C> -2016-10-15  VUONG   Increased length of file name to 200 Characters
+C>
+C> USAGE:
+C>   INPUT FILES:
+C>   -   5       - NAMELIST OF GRIB FIELDS AND ASSOCIATED WMO HEADERS.
+C>   -  11       - INPUT GRIB2 FILE.
+C>   -  12       - Get the file size of the grib file
+C>   -  31       - CORRESPONDING INPUT GRIB2 INDEX FILE.
+C>
+C>   OUTPUT FILES:  (INCLUDING SCRATCH FILES)
+C>   -   6       - STANDARD FORTRAN PRINT FILE
+C>   -  51       - OUTPUT GRIB BULLETIN FILE IN TOC FORMAT
+C>
+C>   SUBPROGRAMS CALLED: (LIST ALL CALLED FROM ANYWHERE IN CODES)
+C>   -  UNIQUE:    - MAKWMO
+C>     LIBRARY:
+C>   -    W3LIB    - W3TAGB W3TAGE mkfldsep makwmo
+C>   -    G2LIB    - GETGB2P
+C>   -    BACIO    - BAREAD BAOPENR BAOPENW BACLOSE WRYTE
+C>
+C>   EXIT STATES:
+C>    - COND =   0 - SUCCESSFUL RUN
+C>    -         10 - Error opening input GRIB2 data file 
+C>    -         20 - Error opening output GRIB transmission file 
+C>    -         19 - ERROR READING CONTROL CARD FILE - All Bulletins missing
+C>    -         30 - Some BULLETINS ARE MISSING
+C>
+C> REMARKS:  The "EXTRACT" variable in the namelist allows users to choose
+C>           whether they want the entire GRIB2 message containing the 
+C>           requested field (extract=.false.), OR a GRIB2 message containing
+C>           only the requested field (extract=.true.).  Both options return the
+C>           same message if the requested field is the only field in the GRIB2
+C>           message.
+C>
       PROGRAM tocgrib2super
-C$$$  MAIN PROGRAM DOCUMENTATION BLOCK
-C                .      .    .                                       .
-C MAIN PROGRAM: tocgrib2super
-C   PRGMMR: GILBERT          ORG: NP11        DATE: 2004-05-17
-C
-C ABSTRACT: Program reads selected GRIB2 fields from a file, adds a 
-C           flag Field separator block and the size in bytes of the grib file,
-C           and the WMO super header and the time stamp, adds a TOC
-C           Flag Field separator block and WMO Header in front of each GRIB2
-C           field, and writes them out to a new file.  The output file
-C           is in the format required for TOC's FTP Input Service, which
-C           can be used to disseminate the GRIB2 bulletins.
-C           This service is described at http://weather.gov/tg/ftpingest.html.
-C
-C PROGRAM HISTORY LOG:
-C 2004-05-17  Gilbert
-C 2008-02-25  VUONG   Modified the original tocgrib2 program to add super wmo
-C                     header for NDFD grib file 
-C 2010-09-02  VUONG   Rename program name aqm_smoke to tocgrib2super
-C 2012-06-14  VUONG   Modifed write statement with format specifier
-C 2012-10-22  VUONG   CHANGED VARIABLE ENVVAR TO CHARACTER*6
-C 2016-10-15  VUONG   Increased length of file name to 200 Characters
-C
-C USAGE:
-C   INPUT FILES:
-C      5       - NAMELIST OF GRIB FIELDS AND ASSOCIATED WMO HEADERS.
-C     11       - INPUT GRIB2 FILE.
-C     12       - Get the file size of the grib file
-C     31       - CORRESPONDING INPUT GRIB2 INDEX FILE.
-C
-C   OUTPUT FILES:  (INCLUDING SCRATCH FILES)
-C      6       - STANDARD FORTRAN PRINT FILE
-C     51       - OUTPUT GRIB BULLETIN FILE IN TOC FORMAT
-C
-C   SUBPROGRAMS CALLED: (LIST ALL CALLED FROM ANYWHERE IN CODES)
-C     UNIQUE:    - MAKWMO
-C     LIBRARY:
-C       W3LIB    - W3TAGB W3TAGE mkfldsep makwmo
-C       G2LIB    - GETGB2P
-C       BACIO    - BAREAD BAOPENR BAOPENW BACLOSE WRYTE
-C
-C   EXIT STATES:
-C     COND =   0 - SUCCESSFUL RUN
-C             10 - Error opening input GRIB2 data file 
-C             20 - Error opening output GRIB transmission file 
-C             19 - ERROR READING CONTROL CARD FILE - All Bulletins missing
-C             30 - Some BULLETINS ARE MISSING
-C
-C REMARKS:  The "EXTRACT" variable in the namelist allows users to choose
-C           whether they want the entire GRIB2 message containing the 
-C           requested field (extract=.false.), OR a GRIB2 message containing
-C           only the requested field (extract=.true.).  Both options return the
-C           same message if the requested field is the only field in the GRIB2
-C           message.
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN 90
-C   MACHINE:  IBM SP
-C
-C$$$
       use grib_mod
       use pdstemplates
       use gridtemplates

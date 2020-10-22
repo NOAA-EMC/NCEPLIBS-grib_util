@@ -46,8 +46,7 @@ C>              0     = No explicit missing values included within data values
 C>              1     = Primary missing values included within data values
 C> @param uvvect  - .true. = combine U and V wind components into one GRIB2 msg.
 C>              .flase. = does not combine U and V wind components
-C> @param  mastertable_ver_x  -  Master Table version
-C>                          where x is number from 2 to 10
+C> @param  table_ver  -  Master Table version where x is number from 2 to 10
 C>
 C>   INPUT FILES:   See ifl1
 C>

@@ -1,119 +1,115 @@
+C> @file
+C> @author VUONG @date 2001-05-18
+C
+C>  FINDS AND EXTRACTS GRIB RECORDS FROM A GRIB FILE MADE
+C>   BY GRIBAWP1 FOR FAMILY OF SERVICES.
+C>   CONTROL CARDS CAN BE USED TO READ AND EXTRACT ALL OR
+C>   SELECTED GRIB RECORDS FROM A GRIB FILE. TO EXTRACT ONLY A SELECTED
+C>   NUMBER OF GRIB RECORDS FROM A GRIB FILE, A CONTROL CARD WITH A PDS
+C>   CAN BE USED. IF THE PDS IN THE CONTROL CARD IS FOUND IN THE INPUT
+C>   GRIB FILE, THE ENTIRE GRIB MESSAGE 'GRIB' TO '7777' IS WRITTEN
+C>   TO THE DESIGNATED OUTPUT FILE. CONTROL CARDS CAN ALSO BE USED TO
+C>   EXTRACT GRIB RECORDS ACCORDING TO THEIR GRID TYPE. NOTE: THIS
+C>   PROGRAM WAS DERIVED FROM THE 'unpkgrb1.f' CODE BUT DOES NOT
+C>   UNPACK ANY DATA.
+C>
+C> PROGRAM HISTORY LOG:
+C> -  96-05-21  SOUTHALL
+C> -  98-05-07  JOHNSON
+C> -  98-07-01  VUONG      CONVERTED TO FORTRAN 90 AND Y2K COMPLIANT
+C>                        REMOVED CALLS TO W3LOG
+C> -  99-05-19  VUONG      CONVERTED TO IBM RS/6000 SP
+C> -  01-05-18  VUONG      INCREASING THE SIZE OF WORK ARRAY TO HANDLE THE
+C>                        LARGER GRIB FILE.
+C> - 2012-08-09  VUONG      MODIFIED TO USE MODULE IFPORT
+C>
+C> USAGE:
+C>   INPUT FILES:
+C>   -   5         - INPUT CONTROL CARDS (3 TYPES)
+C>                  FORMAT (I1,I3,A44)
+C>                  FORMAT (A44)
+C>                  FORMAT (6(2X,4Z2),2X,I1)
+C>   -  11         - INTERNAL UNIT NUMBER OF AWIP GRIB INPUT FILE
+C>
+C>   OUTPUT FILES:
+C>   -  6        -   PRINT OUTPUT (STANDARD OUTPUT - FORTRAN)
+C>                  PRINTS ON SCREEN OF PC/WORKSTATION.
+C>   -  51       -   1 WRITE FOR EACH GRIB RECORD
+C>                  ENTIRE GRIB MESSAGE, 'GRIB' TO '7777'
+C>
+C>   SUBPROGRAMS CALLED:
+C>      - W3LIB    - IW3PDS, XMOVEX, W3TAGB
+C>
+C>   EXIT STATES:
+C>    - COND = 0    SUCCESSFUL RUN
+C>    -      = 10   ERROR ON OPEN OF CONTROL CARD FILE
+C>    -      = 20   ERROR ON OPEN OF INPUT GRIB FILE
+C>    -      = 30   ERROR ON OPEN OF OUTPUT PACKED GRIB FILE
+C>    -      = 40   ERROR, INPUT GRIB FILE IS TOO BIG, CHANGE PROGRAM
+C>    -      = 60   ERROR READING GRIB FILE
+C>    -      = 99   I/O ERROR USING STAT FUNCTION
+C>    -      = 100  PROGRAMMER FORGOT CONTROL CARDS
+C>    -      = 110  NO CARD WITH FFFFFFFF SHOWING END OF PDS CARDS
+C>
+C>  WARNING:  On a CRAY you may have to use assign cards.  If your 
+C>            job prints the file name and file byte size O.K. but
+C>            quits with an OPEN INPUT FILE ERROR, use these assign
+C>            cards (at the prompt).
+C> 
+C>            $ assign -R
+C>            $ assign -a input-file-name -s sbin input-file-name
+C>            
+C>   EXAMPLE:  CONTROL CARDS IN 'grib2grib.dat' FILE
+C>
+C>  Example 1. To extract selected records (w/out unpacking them) from
+C>             file xtrn.eta24 and xtrn.mrf144 using cards read in with
+C>             the PDS of the record. After the last card with a PDS,
+C>             the next card must have FFFFFFFF starting in column 3.
+C>             Get the 500 mb HGT and 500 mb TMP (1st 2 PDS's) and the
+C>             850 mb RH and the MSL (2nd 2 PDS's) and write the packed
+C>             data into eta.packed.dat and mso.packed.dat respectively.
+C>             The PDS's of these fields and other can be obtained
+C>             by getting an inventory of the input grib files xtrn.eta24
+C>             and xtrn.mso30.  Column 63 is set to 2 so that only 11
+C>             of the 1st 12 bytes are used to find records. For more
+C>             info. concerning the number in Col. 63 refer to the
+C>             subroutine "iw3pds.f"
+C>
+C> <pre>      
+C>  col. 1
+C>       0000xtrn.eta24
+C>       eta.packed.dat
+C>         00001C02  0759D380  076401F4  00000000  00000000  00000000  2
+C>         00001C02  0759D380  0B6401F4  00000000  00000000  00000000  2
+C>         FFFFFFFF  00000000  00000000  00000000  00000000  00000000  0
+C>       0000xtrn.mso30
+C>       mso.packed.dat
+C>         00001C02  0755D4C0  34640352  00000000  00000000  00000000  2
+C>         00001C02  074EC980  02660000  00000000  00000000  00000000  2
+C>         FFFFFFFF  00000000  00000000  00000000  00000000  00000000  0
+C> </pre>      
+C>
+C>  Example 2. To extract only the grib messages from xtrn.mrf144 and
+C>             write them (without unpacking) into mrf.packed.dat.
+C>
+C> <pre>      
+C>  col. 1
+C>       1000xtrn.mrf144
+C>       mrf.packed.dat
+C> </pre>      
+C>
+C>  Example 3. To extract all grib records in the file xtrn.mrf144 by
+C>             grid type 201 and 203 placing them into mrf201.dat and
+C>             mrf203.dat respectively.
+C> <pre>      
+C>  col. 1
+C>       2201xtrn.mrf144
+C>       mrf201.dat
+C>       2203xtrn.mrf144
+C>       mrf203.dat
+C> </pre>      
+C>
       PROGRAM GRIB2GRIB
-C$$$  MAIN PROGRAM DOCUMENTATION BLOCK
-C
-C MAIN PROGRAM: GRIB2GRIB
-C   PRGMMR: VUONG            ORG: NP11        DATE: 2001-05-18
-C
-C ABSTRACT:  FINDS AND EXTRACTS GRIB RECORDS FROM A GRIB FILE MADE
-C   BY GRIBAWP1 FOR FAMILY OF SERVICES.
-C   CONTROL CARDS CAN BE USED TO READ AND EXTRACT ALL OR
-C   SELECTED GRIB RECORDS FROM A GRIB FILE. TO EXTRACT ONLY A SELECTED
-C   NUMBER OF GRIB RECORDS FROM A GRIB FILE, A CONTROL CARD WITH A PDS
-C   CAN BE USED. IF THE PDS IN THE CONTROL CARD IS FOUND IN THE INPUT
-C   GRIB FILE, THE ENTIRE GRIB MESSAGE 'GRIB' TO '7777' IS WRITTEN
-C   TO THE DESIGNATED OUTPUT FILE. CONTROL CARDS CAN ALSO BE USED TO
-C   EXTRACT GRIB RECORDS ACCORDING TO THEIR GRID TYPE. NOTE: THIS
-C   PROGRAM WAS DERIVED FROM THE 'unpkgrb1.f' CODE BUT DOES NOT
-C   UNPACK ANY DATA.
-C
-C PROGRAM HISTORY LOG:
-C   96-05-21  SOUTHALL
-C   98-05-07  JOHNSON
-C   98-07-01  VUONG      CONVERTED TO FORTRAN 90 AND Y2K COMPLIANT
-C                        REMOVED CALLS TO W3LOG
-C   99-05-19  VUONG      CONVERTED TO IBM RS/6000 SP
-C   01-05-18  VUONG      INCREASING THE SIZE OF WORK ARRAY TO HANDLE THE
-C                        LARGER GRIB FILE.
-C 2012-08-09  VUONG      MODIFIED TO USE MODULE IFPORT
-C
-C USAGE:
-C   INPUT FILES:
-C      5         - INPUT CONTROL CARDS (3 TYPES)
-C                  FORMAT (I1,I3,A44)
-C                  FORMAT (A44)
-C                  FORMAT (6(2X,4Z2),2X,I1)
-C     11         - INTERNAL UNIT NUMBER OF AWIP GRIB INPUT FILE
-C
-C   OUTPUT FILES:
-C     6        -   PRINT OUTPUT (STANDARD OUTPUT - FORTRAN)
-C                  PRINTS ON SCREEN OF PC/WORKSTATION.
-C     51       -   1 WRITE FOR EACH GRIB RECORD
-C                  ENTIRE GRIB MESSAGE, 'GRIB' TO '7777'
-C
-C   SUBPROGRAMS CALLED:
-C     UNIQUE:     NONE
-C
-C     LIBRARY:
-C       W3LIB    - IW3PDS, XMOVEX, W3TAGB
-C
-C   EXIT STATES:
-C     COND = 0    SUCCESSFUL RUN
-C          = 10   ERROR ON OPEN OF CONTROL CARD FILE
-C          = 20   ERROR ON OPEN OF INPUT GRIB FILE
-C          = 30   ERROR ON OPEN OF OUTPUT PACKED GRIB FILE
-C          = 40   ERROR, INPUT GRIB FILE IS TOO BIG, CHANGE PROGRAM
-C          = 60   ERROR READING GRIB FILE
-C          = 99   I/O ERROR USING STAT FUNCTION
-C          = 100  PROGRAMMER FORGOT CONTROL CARDS
-C          = 110  NO CARD WITH FFFFFFFF SHOWING END OF PDS CARDS
-C
-C  WARNING:  On a CRAY you may have to use assign cards.  If your 
-C            job prints the file name and file byte size O.K. but
-C            quits with an OPEN INPUT FILE ERROR, use these assign
-C            cards (at the prompt).
-C 
-C            $ assign -R
-C            $ assign -a input-file-name -s sbin input-file-name
-C            
-C   EXAMPLE:  CONTROL CARDS IN 'grib2grib.dat' FILE
-C
-C  Example 1. To extract selected records (w/out unpacking them) from
-C             file xtrn.eta24 and xtrn.mrf144 using cards read in with
-C             the PDS of the record. After the last card with a PDS,
-C             the next card must have FFFFFFFF starting in column 3.
-C             Get the 500 mb HGT and 500 mb TMP (1st 2 PDS's) and the
-C             850 mb RH and the MSL (2nd 2 PDS's) and write the packed
-C             data into eta.packed.dat and mso.packed.dat respectively.
-C             The PDS's of these fields and other can be obtained
-C             by getting an inventory of the input grib files xtrn.eta24
-C             and xtrn.mso30.  Column 63 is set to 2 so that only 11
-C             of the 1st 12 bytes are used to find records. For more
-C             info. concerning the number in Col. 63 refer to the
-C             subroutine "iw3pds.f"
-C
-C  col. 1
-C       0000xtrn.eta24
-C       eta.packed.dat
-C         00001C02  0759D380  076401F4  00000000  00000000  00000000  2
-C         00001C02  0759D380  0B6401F4  00000000  00000000  00000000  2
-C         FFFFFFFF  00000000  00000000  00000000  00000000  00000000  0
-C       0000xtrn.mso30
-C       mso.packed.dat
-C         00001C02  0755D4C0  34640352  00000000  00000000  00000000  2
-C         00001C02  074EC980  02660000  00000000  00000000  00000000  2
-C         FFFFFFFF  00000000  00000000  00000000  00000000  00000000  0
-C
-C  Example 2. To extract only the grib messages from xtrn.mrf144 and
-C             write them (without unpacking) into mrf.packed.dat.
-C
-C  col. 1
-C       1000xtrn.mrf144
-C       mrf.packed.dat
-C
-C  Example 3. To extract all grib records in the file xtrn.mrf144 by
-C             grid type 201 and 203 placing them into mrf201.dat and
-C             mrf203.dat respectively.
-C  col. 1
-C       2201xtrn.mrf144
-C       mrf201.dat
-C       2203xtrn.mrf144
-C       mrf203.dat
-C
-C ATTRIBUTES:
-C   LANGUAGE: F90 FORTRAN
-C
-C$$$
-C
 #ifdef __INTEL__
       USE IFPORT
 #endif

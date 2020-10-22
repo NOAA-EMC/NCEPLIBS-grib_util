@@ -1,34 +1,24 @@
+C> @file                .      .    .                                       .
+C> FORMAT THE WMO HEADER
+C> @author FARLEY @date 84-07-06
+C
+C> FORMS THE WMO HEADER FOR A GIVEN BULLETIN.
+C>
+C> PROGRAM HISTORY LOG:
+C> -  84-07-06  FARLEY      ORIGINAL AUTHOR
+C> -  94-10-10  R.E.JONES   CHANGES FOR CRAY
+C> -  95-10-18  R.E.JONES   ADD PARAMETER KWBX TO CALL 
+C> -  98-06-16  Gilbert     Changed argument list to pass in day and hour
+C>                         instead of the old O.N. 84 date word.
+C> - 2003-03-28  Gilbert     Removed equivalences.
+C>
+C>   @param[in]  BULHED   -  TTAAII BULLETIN HEADER                    FT10
+C>   @param[in]  IDAY     -  Day of Month
+C>   @param[in]  IHOUR    -  Hour of Day.
+C>   @param[in]  KWBX     -  4 CHARACTERS (KWBC TO KWBQ)
+C>   @param[out]  HEADER   -  COMPLETE WMO HEADER IN ASCII
+C>
       SUBROUTINE MAKWMO (BULHED,IDAY,IHOUR,KWBX,HEADER)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C                .      .    .                                       .
-C SUBPROGRAM: MAKWMO         FORMAT THE WMO HEADER
-C   PRGMMR: FARLEY           ORG: W/NMC42    DATE: 84-07-06
-C
-C ABSTRACT: FORMS THE WMO HEADER FOR A GIVEN BULLETIN.
-C
-C PROGRAM HISTORY LOG:
-C   84-07-06  FARLEY      ORIGINAL AUTHOR
-C   94-10-10  R.E.JONES   CHANGES FOR CRAY
-C   95-10-18  R.E.JONES   ADD PARAMETER KWBX TO CALL 
-C   98-06-16  Gilbert     Changed argument list to pass in day and hour
-C                         instead of the old O.N. 84 date word.
-C 2003-03-28  Gilbert     Removed equivalences.
-C
-C USAGE:    CALL MAKWMO(BULHED,IDAY,IHOUR,KWBX,HEADER)
-C   INPUT ARGUMENT LIST:
-C     BULHED   -  TTAAII BULLETIN HEADER                    FT10
-C     IDAY     -  Day of Month
-C     IHOUR    -  Hour of Day.
-C     KWBX     -  4 CHARACTERS (KWBC TO KWBQ)
-C
-C   OUTPUT ARGUMENT LIST:
-C     HEADER   -  COMPLETE WMO HEADER IN ASCII
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN 90
-C   MACHINE:  IBM SP
-C
-C$$$
 C
       CHARACTER * 6 BULHED
       CHARACTER * 1 HEADER (*)
