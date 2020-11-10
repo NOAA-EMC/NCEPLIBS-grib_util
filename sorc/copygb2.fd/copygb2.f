@@ -1343,6 +1343,8 @@ C$$$
       INTEGER IPOPT(20)
       INTEGER KGDT1(*),KGDT2(*),IGDS(5)
       INTEGER IDEF1(IDEFN1)
+      ! make idef an array to be compliant with gdt2gds. IDEFN = 0, so idef will not be used.
+      integer idef(1)
       INTEGER KGDS1(200),KGDS2(200)
       LOGICAL*1 L1(K1),L2(K2)
       REAL F1(K1),F2(K2)
