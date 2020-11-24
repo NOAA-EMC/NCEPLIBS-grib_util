@@ -1,10 +1,12 @@
-# NCEP Grib related utilities
+# NCEPLIBS-grib_util
 
-A collection of NCEP grib related utilities. This is related to the
-[NCEPLIBS](https://github.com/NOAA-EMC/NCEPLIBS) project.
+This is a collection of NCEP GRIB related utilities. This is related
+to the [NCEPLIBS](https://github.com/NOAA-EMC/NCEPLIBS) project.
 
 For complete documentation see
-https://noaa-emc.github.io/NCEPLIBS-grib_util/.
+https://noaa-emc.github.io/NCEPLIBS-grib_util/. For the NCEP WMO GRIB2
+Documentation see
+https://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_doc/.
 
 ## Authors
 
@@ -12,7 +14,7 @@ NCEP/EMC developers.
 
 Code Manager : Boi Vuong
 
-### Prerequisites
+## Prerequisites
 
 This package requires the following third party libraries:
 - [Jasper](http://www.ece.uvic.ca/~mdadams/jasper/)
