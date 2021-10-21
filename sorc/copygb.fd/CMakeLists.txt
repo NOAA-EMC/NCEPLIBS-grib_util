@@ -1,3 +1,8 @@
+# This is the CMake build file for the copygb utility in the
+# NCEPLIBS-grib_util project.
+#
+# George Gayno, Mark Potts
+
 if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel)$")
   set(CMAKE_Fortran_FLAGS "-g -r8 -auto")
   set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
@@ -10,7 +15,7 @@ set(fortran_src copygb.F)
 
 set(exe_name copygb)
 add_executable(${exe_name} ${fortran_src})
-target_link_libraries(${exe_name} PRIVATE bacio::bacio_4 w3nco::w3nco_d ip::ip_d sp::sp_d)
+target_link_libraries(${exe_name} PRIVATE bacio::${bacio_name} w3nco::w3nco_d ip::ip_d sp::sp_d)
 
 if(OpenMP_Fortran_FOUND)
   target_link_libraries(${exe_name} PRIVATE OpenMP::OpenMP_Fortran)

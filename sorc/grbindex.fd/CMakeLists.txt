@@ -1,3 +1,8 @@
+# This is the CMake build file for the grbindex utility in the
+# NCEPLIBS-grib_util project.
+#
+# George Gayno, Mark Potts
+
 if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel)$")
   set(CMAKE_Fortran_FLAGS
       "-g -assume noold_ldout_format -convert big_endian -axCORE-AVX2 -fpp")
@@ -11,6 +16,6 @@ set(fortran_src grbindex.f)
 
 set(exe_name grbindex)
 add_executable(${exe_name} ${fortran_src})
-target_link_libraries(${exe_name} PRIVATE w3nco::w3nco_4 bacio::bacio_4)
+target_link_libraries(${exe_name} PRIVATE w3nco::w3nco_4 bacio::${bacio_name})
 
 install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
