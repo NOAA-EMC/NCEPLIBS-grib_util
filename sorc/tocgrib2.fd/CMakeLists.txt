@@ -1,3 +1,8 @@
+# This is the CMake build file for the tocgrib2 utility in the
+# NCEPLIBS-grib_util project.
+#
+# Mark Potts, Kyle Gerheiser
+
 if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel)$")
   set(CMAKE_Fortran_FLAGS "-g -axCORE-AVX2")
   set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
@@ -14,7 +19,7 @@ target_link_libraries(
   ${exe_name}
   g2::g2_4
   w3nco::w3nco_4
-  bacio::bacio_4
+  bacio::${bacio_name}
   PNG::PNG
   ${JASPER_LIBRARIES}
   ${ZLIB_LIBRARY})

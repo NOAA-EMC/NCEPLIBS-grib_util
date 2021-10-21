@@ -12,7 +12,7 @@ https://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_doc/.
 
 NCEP/EMC developers.
 
-Code Manager : Boi Vuong
+Code Manager : Hang Lei, Edward Hartnett
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ This package requires the folling NCEPLIBS libraries:
 ```
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=/path/to/install /path/to/NCEPLIBS-grib_util
+cmake -DCMAKE_INSTALL_PREFIX=/path/to/install -DCMAKE_PREFIX_PATH=/path/to/dependencies ..
 make -j4
 make install
 ```

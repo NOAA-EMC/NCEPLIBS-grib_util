@@ -1,3 +1,8 @@
+# This is the CMake build file for the copygb2 utility in the
+# NCEPLIBS-grib_util project.
+#
+# Mark Potts, Kyle Gerheiser
+
 if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel)$")
   set(CMAKE_Fortran_FLAGS "-g -r8 -auto -convert big_endian -fpp")
   set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
@@ -25,7 +30,7 @@ target_link_libraries(${exe_name} PRIVATE
   g2::g2_d
   PNG::PNG
   ${JASPER_LIBRARIES}
-  bacio::bacio_4
+  bacio::${bacio_name}
   w3nco::w3nco_d
   ip::ip_d
   sp::sp_d)
