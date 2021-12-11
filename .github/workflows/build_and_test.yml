@@ -15,7 +15,7 @@ jobs:
         sudo apt-get install libmpich-dev
         sudo apt-get install libnetcdf-dev libnetcdff-dev netcdf-bin pkg-config
         sudo apt-get install libpng-dev
-        sudo apt-get install libjpeg-dev
+        sudo apt-get install libjpeg-dev doxygen
         python3 -m pip install gcovr
           
     - name: checkout-jasper
