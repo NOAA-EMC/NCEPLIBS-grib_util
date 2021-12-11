@@ -87,6 +87,30 @@ jobs:
         make -j2
         make install
           
+    - name: checkout-w3nco
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-w3nco
+        path: w3nco
+        ref: v2.3.3
+
+    - name: cache-w3nco
+      id: cache-w3nco
+      uses: actions/cache@v2
+      with:
+        path: ~/w3nco
+        key: w3nco-${{ runner.os }}-2.3.3-1
+
+    - name: build-w3nco
+      if: steps.cache-w3nco.outputs.cache-hit != 'true'
+      run: |
+        cd w3nco
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/w3nco
+        make -j2
+        make install
+          
     - name: checkout-ip
       uses: actions/checkout@v2
       with:
@@ -134,22 +158,7 @@ jobs:
         cmake .. -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper"
         make -j2
         make install
-          
-    - name: checkout-nceplibs
-      uses: actions/checkout@v2
-      with:
-        repository: NOAA-EMC/NCEPLIBS
-        path: nceplibs
-        ref: v1.2.0
-
-    - name: build-nceplibs
-      run: |
-        export ESMFMKFILE=~/lib/esmf.mk
-        cd nceplibs
-        mkdir build && cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=~ -DFLAT=ON -DBUILD_POST=OFF -DBUILD_CRTM=OFF
-        make -j2
-       
+                 
     - name: checkout-grib_utils
       uses: actions/checkout@v2
       with: 
