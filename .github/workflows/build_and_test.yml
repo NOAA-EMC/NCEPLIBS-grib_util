@@ -24,7 +24,15 @@ jobs:
         path: jasper
         ref: version-2.0.33
 
+    - name: cache-jasper
+      id: cache-jasper
+      uses: actions/cache@v2
+      with:
+        path: ~/Jasper
+        key: jasper-${{ runner.os }}-2.0.33
+
     - name: build-jasper
+      if: steps.cache-jasper.outputs.cache-hit != 'true'
       run: |
         cd jasper
         mkdir build-jasper && cd build-jasper
@@ -32,6 +40,53 @@ jobs:
         make -j2
         make install
 
+    - name: checkout-bacio
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-bacio
+        path: bacio
+        ref: v2.5.0
+    
+    - name: cache-bacio
+      id: cache-bacio
+      uses: actions/cache@v2
+      with:
+        path: ~/Bacio
+        key: bacio-${{ runner.os }}-2.5.0
+
+    - name: build-bacio
+      if: steps.cache-bacio.outputs.cache-hit != 'true'
+      run: |
+        cd bacio
+        mkdir build && cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/bacio
+        make -j2
+        make install
+
+    - name: checkout-sp
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-sp
+        path: sp
+        ref: v2.3.3
+
+    - name: cache-sp
+      id: cache-sp
+      uses: actions/cache@v2
+      with:
+        path: ~/Sp
+        key: sp-${{ runner.os }}-2.3.3
+
+    - name: build-sp
+      if: steps.cache-sp.outputs.cache-hit != 'true'
+      run: |
+        cd sp
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/sp
+        make -j2
+        make install
+          
     - name: checkout-nceplibs
       uses: actions/checkout@v2
       with:
