@@ -111,6 +111,30 @@ jobs:
         make -j2
         make install
           
+    - name: checkout-g2
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-g2
+        path: g2
+        ref: v3.4.5
+
+    - name: cache-g2
+      id: cache-g2
+      uses: actions/cache@v2
+      with:
+        path: ~/g2
+        key: g2-${{ runner.os }}-3.4.5
+
+    - name: build-g2
+      if: steps.cache-g2.outputs.cache-hit != 'true'
+      run: |
+        cd g2
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio"
+        make -j2
+        make install
+          
     - name: checkout-nceplibs
       uses: actions/checkout@v2
       with:
