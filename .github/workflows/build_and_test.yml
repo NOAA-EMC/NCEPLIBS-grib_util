@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: install-dependencies
       run: |
-        sudo apt-get update
+        sudo apt-get update &> /dev/null
         sudo apt-get install libmpich-dev
         sudo apt-get install libnetcdf-dev libnetcdff-dev netcdf-bin pkg-config
         sudo apt-get install libpng-dev
@@ -35,7 +35,7 @@ jobs:
       if: steps.cache-jasper.outputs.cache-hit != 'true'
       run: |
         cd jasper
-        mkdir build && cd build
+        mkdir b && cd b
         cmake .. -DCMAKE_INSTALL_PREFIX=~/jasper
         make -j2
         make install
