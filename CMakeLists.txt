@@ -50,7 +50,7 @@ else()
 endif()
 message(STATUS "Using bacio library ${bacio_name}")
 
-add_subdirectory(sorc)
+add_subdirectory(src)
 
 # Determine whether or not to generate documentation.
 if(ENABLE_DOCS)
