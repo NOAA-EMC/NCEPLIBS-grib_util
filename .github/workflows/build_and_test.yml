@@ -74,8 +74,8 @@ jobs:
       id: cache-sp
       uses: actions/cache@v2
       with:
-        path: ~/Sp
-        key: sp-${{ runner.os }}-2.3.3
+        path: ~/sp
+        key: sp-${{ runner.os }}-2.3.3-1
 
     - name: build-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
@@ -84,6 +84,30 @@ jobs:
         mkdir build
         cd build
         cmake .. -DCMAKE_INSTALL_PREFIX=~/sp
+        make -j2
+        make install
+          
+    - name: checkout-ip
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-ip
+        path: ip
+        ref: v3.3.3
+
+    - name: cache-ip
+      id: cache-ip
+      uses: actions/cache@v2
+      with:
+        path: ~/ip
+        key: ip-${{ runner.os }}-3.3.3
+
+    - name: build-ip
+      if: steps.cache-ip.outputs.cache-hit != 'true'
+      run: |
+        cd ip
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp
         make -j2
         make install
           
