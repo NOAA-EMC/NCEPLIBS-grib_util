@@ -155,7 +155,7 @@ jobs:
         cd g2
         mkdir build
         cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper"
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper" ..
         make -j2
         make install
                  
@@ -169,7 +169,7 @@ jobs:
         cd grib_utils
         mkdir build && cd build
         ls -l ~/jasper
-        cmake ..  -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3nco"
+        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3nco;~/g2" ..
         make -j2
 
 
