@@ -168,8 +168,6 @@ jobs:
       run: |
         cd grib_utils
         mkdir build && cd build
-        cmake ..  -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3nco"
-        make -j2
 
 
     
