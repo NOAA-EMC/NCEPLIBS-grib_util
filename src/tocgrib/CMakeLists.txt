@@ -18,3 +18,8 @@ add_executable(${exe_name} ${fortran_src})
 target_link_libraries(${exe_name} PRIVATE w3nco::w3nco_4 bacio::${bacio_name})
 
 install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
+
+# If doxygen documentation is enabled, build it.
+if(ENABLE_DOCS)
+  add_subdirectory(docs)  
+endif()

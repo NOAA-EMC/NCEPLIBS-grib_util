@@ -24,3 +24,8 @@ target_link_libraries(${exe_name} PRIVATE
   ${ZLIB_LIBRARY})
 
 install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
+
+# If doxygen documentation is enabled, build it.
+if(ENABLE_DOCS)
+  add_subdirectory(docs)  
+endif()
