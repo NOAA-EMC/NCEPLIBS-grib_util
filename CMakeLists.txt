@@ -52,6 +52,12 @@ message(STATUS "Using bacio library ${bacio_name}")
 
 add_subdirectory(src)
 
+# Turn on tests.
+include(CTest)
+if(BUILD_TESTING)
+  add_subdirectory(tests)
+endif()
+
 # Determine whether or not to generate documentation.
 if(ENABLE_DOCS)
   find_package(Doxygen REQUIRED)
