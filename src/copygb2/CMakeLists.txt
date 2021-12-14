@@ -40,3 +40,8 @@ if(OpenMP_Fortran_FOUND)
 endif()
 
 install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
+
+# If doxygen documentation is enabled, build it.
+if(ENABLE_DOCS)
+  add_subdirectory(docs)  
+endif()

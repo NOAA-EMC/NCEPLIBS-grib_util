@@ -33,11 +33,11 @@ find_package(PNG REQUIRED)
 find_package(ZLIB REQUIRED)
 
 # Find the NCEPLIBS libraries we need.
-find_package(w3nco 2.4.0 REQUIRED)
-find_package(g2 3.4.0 REQUIRED)
-find_package(bacio 2.4.0 REQUIRED)
-find_package(ip 3.3.3 REQUIRED)
 find_package(sp 2.3.3 REQUIRED)
+find_package(ip 3.3.3 REQUIRED)
+find_package(w3nco 2.4.0 REQUIRED)
+find_package(bacio 2.4.0 REQUIRED)
+find_package(g2 3.4.0 REQUIRED)
 
 # The name of the bacio library changed with the 2.5.0 release. The
 # "_4" was removed from the library and include directory name in the
@@ -50,6 +50,12 @@ else()
 endif()
 message(STATUS "Using bacio library ${bacio_name}")
 
+# Determine whether or not to generate documentation.
+if(ENABLE_DOCS)
+  find_package(Doxygen REQUIRED)
+  add_subdirectory(docs)  
+endif()
+
 add_subdirectory(src)
 
 # Turn on tests.
@@ -58,9 +64,4 @@ if(BUILD_TESTING)
   add_subdirectory(tests)
 endif()
 
-# Determine whether or not to generate documentation.
-if(ENABLE_DOCS)
-  find_package(Doxygen REQUIRED)
-endif()
-add_subdirectory(docs)  
 
