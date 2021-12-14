@@ -583,8 +583,8 @@
 !> @param[in] nuv integer number of vector parameter ids
 !> @param[in] iuv integer (100) vector parameter ids
 !> @param[in] jpdsb integer (100) kpds search options (map)
-!> @param[in] jb integer flag for map optiion
-!> @param[in] jbk integer flag for map optiion
+!> @param[in] jb integer flag for map option
+!> @param[in] jbk integer flag for map option
 !> @param[in] lab integer flag for map threshold inequality
 !> @param[in] ab real map threshold
 !> @param[in] lam integer flag for mask value
@@ -805,8 +805,8 @@
 !> @param[in] nuv integer number of vector parameter ids
 !> @param[in] iuv integer (100) vector parameter ids
 !> @param[in] jpdsb integer (100) kpds search options (map)
-!> @param[in] jb integer flag for map optiion
-!> @param[in] jbk integer flag for map optiion
+!> @param[in] jb integer flag for map option
+!> @param[in] jbk integer flag for map option
 !> @param[in] lab integer flag for map threshold inequality
 !> @param[in] ab real map threshold
 !> @param[in] lam integer flag for mask value
