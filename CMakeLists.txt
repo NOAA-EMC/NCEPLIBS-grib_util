@@ -50,6 +50,12 @@ else()
 endif()
 message(STATUS "Using bacio library ${bacio_name}")
 
+# Determine whether or not to generate documentation.
+if(ENABLE_DOCS)
+  find_package(Doxygen REQUIRED)
+  add_subdirectory(docs)  
+endif()
+
 add_subdirectory(src)
 
 # Turn on tests.
@@ -58,10 +64,4 @@ if(BUILD_TESTING)
   add_subdirectory(tests)
 endif()
 
-# Determine whether or not to generate documentation.
-set(abs_top_srcdir "${CMAKE_SOURCE_DIR}")
-if(ENABLE_DOCS)
-  find_package(Doxygen REQUIRED)
-  add_subdirectory(docs)  
-endif()
 
