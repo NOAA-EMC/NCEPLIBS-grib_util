@@ -3,16 +3,16 @@
 !> @author Iredell @date 1998-10-22
 !
 !> The command copygb2 copies all or part of one GRIB2 file
-!> to another GRIB2 file, interpolating if necessary.  Unless
+!> to another GRIB2 file, interpolating if necessary. Unless
 !> otherwise directed (-x option), the GRIB2 index file is also used
 !> to speed the reading. The fields are interpolated to an output grid
 !> if specified (-g option). The interpolation type defaults to
-!> bilinear but may be specified directly (-i option).  The copying
+!> bilinear but may be specified directly (-i option). The copying
 !> may be limited to specific fields (-k option). It may also be
 !> limited to a specified subgrid of the output grid or to a subrange
 !> of the input fields (-B and -b, -A, and -K options). Fields can be
 !> identified as scalars or vectors (-v option), which are interpolated
-!> differently.  The invalid data in the output field can be filled
+!> differently. The invalid data in the output field can be filled
 !> with mask values or merged with a merge field (-M and -m options).
 !> The output GRIB2 message can also be appended to a file (-a option).
 !> Some defaults can be overridden in a namelist file (-N option).
@@ -50,60 +50,60 @@
 !>      Optional index file used to get the map field.
 !>
 !>   -B mapgrib    
-!>      GRIB file used to get the map field.  The map field
+!>      GRIB file used to get the map field. The map field
 !>      is read from the GRIB file and compared to the
 !>      map threshold to determine for which region on the map
-!>      the data will be copied.  The mapgrib can be the name
+!>      the data will be copied. The mapgrib can be the name
 !>      of an actual GRIB file (in which case the index
 !>      file may be specified with the -b option) or it can
-!>      be '-1'.  If mapgrib is '-1', then the input GRIB file
+!>      be '-1'. If mapgrib is '-1', then the input GRIB file
 !>      (first positional argument) is used.
 !>      The -K option specifies which field to read from
-!>      the mapgrib GRIB file.  If mapgrib is an actual file,
+!>      the mapgrib GRIB file. If mapgrib is an actual file,
 !>      then the first field is taken if -K is not specified.
 !>      On the other hand, if mapgrib is '-1', then if the
 !>      if -K is not specified, the current field is taken
-!>      as the map field.  A special exception is if -K '-1'
+!>      as the map field. A special exception is if -K '-1'
 !>      is specified, in which case the current field is
 !>      taken as the map field and it is applied before any
 !>      interpolation; otherwise the map field is always
 !>      applied after interpolation.
 !>
 !>   -g "kgdtn [kgds]"
-!>      Output grid identification.  If kgdtn=-1 (the default),
+!>      Output grid identification. If kgdtn=-1 (the default),
 !>      then the output grid is the same as the input grid.
 !>      If kgdtn=-4, then the grid is that of the map field.
 !>      If kgdtn=-5, then the grid is that of the merge field.
 !>      If 0<=kgdtn<65535, then grid designates a specific
-!>      GRIB2 Grid Definition Template (GDT) Number.  In this
+!>      GRIB2 Grid Definition Template (GDT) Number. In this
 !>      case, kgdt is the list of the full set of Grid
 !>      Definition Template values for the GDT 3.kgdtn,
 !>      defining the output grid.
 !>
 !>   -i "ip [ipopts]"
-!>      Interpolation options.  The default is bilinear
-!>      interpolation (ip=0).  Other interpolation options
+!>      Interpolation options. The default is bilinear
+!>      interpolation (ip=0). Other interpolation options
 !>      are bicubic (ip=1), neighbor (ip=2), budget (ip=3),
-!>      and spectral (ip=4).  Spectral interpolation is forced
+!>      and spectral (ip=4). Spectral interpolation is forced
 !>      even if the input and output grids are the same.
 !>      See the documentation for iplib for further details.
 !>
 !>   -k "kpdtn kpdt"
 !>      Full set of Production Definition Template parameters
-!>      determining the field(s) to be copied.  kpdtn is
+!>      determining the field(s) to be copied. kpdtn is
 !>      Product Definition Template (PDT) number 4.kpdtn.
 !>      A wildcard, indicating search all template numbers,
-!>      is specified by -1 (the default).  The kpdt array
+!>      is specified by -1 (the default). The kpdt array
 !>      contains the values of each entry of PDT 4.kpdtn,
 !>      and a wildcard for any entry can be specified as
-!>      -9999.  If the -k is not specified, then copygb will 
+!>      -9999. If the -k is not specified, then copygb will 
 !>      attempt to copy every field in the input GRIB file.
 !>
 !>   -K "mapkpds"
 !>      Full set of kpds parameters determing a GRIB PDS
 !>      (product definition section) in the W3FI63 format
 !>      determining the map field to be used to determine
-!>      where on the map the data will be copied.  
+!>      where on the map the data will be copied. 
 !>      A wildcard is specified by -1 (the defaults).
 !>
 !>   -m mergeindex   
@@ -115,13 +115,13 @@
 !>      The mask must be in the format '\#value' where value
 !>      is the real number used to fill out the field.
 !>      Otherwise, the argument is interpreted as a merge
-!>      GRIB file.  Then for each GRIB message copied,
+!>      GRIB file. Then for each GRIB message copied,
 !>      a merge field is found in the merge GRIB file
 !>      with the same parameter and level indicators
-!>      as the copied field.  This merge field is interpolated
+!>      as the copied field. This merge field is interpolated
 !>      to the output grid and used to fill out the bitmapped
 !>      areas of the map, at least where the merge field
-!>      is not bitmapped.  No merging is done if no merge
+!>      is not bitmapped. No merging is done if no merge
 !>      field is found.
 !>
 !>   -N namelist
@@ -135,7 +135,7 @@
 !>   -v "uparms"
 !>      Parameter indicator(s) for the u-component of vectors.
 !>      A specific parameter is indicated by three numbers:
-!>      disc|cat|num.  Any parameter value in uparms is defined
+!>      disc|cat|num. Any parameter value in uparms is defined
 !>      as (65536*disc)+(256*cat)+num.
 !>      The parameter indicator for the v-component is assumed
 !>      to be one more than that of the u-component.
@@ -145,15 +145,16 @@
 !>      in the GRIB file.
 !>
 !>   -x
-!>      Turns off the use of an index file.  The index records
+!>      Turns off the use of an index file. The index records
 !>      are then extracted from the GRIB file, which
 !>      will increase the time taken by copygb2.
 !>
 !>   -X
-!>      Turns on verbose printout.  This option is
+!>      Turns on verbose printout. This option is
 !>      incompatible with GRIB output to standard output.
 !>
-!> ### Input Files
+!> ### Files      
+!> #### Input Files
 !>   - unit   11    input grib file
 !>   - unit   14    map grib file
 !>   - unit   15    merge grib file
@@ -161,7 +162,7 @@
 !>   - unit   34    map grib index file
 !>   - unit   35    merge grib index file
 !>
-!> ### Output Files
+!> #### Output Files
 !>   - unit   51    output grib file
 !>
 !> @author Iredell @date 1998-10-22
