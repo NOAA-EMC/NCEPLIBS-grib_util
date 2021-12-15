@@ -1,3 +1,15 @@
+!> @file
+!> @brief
+!> @author NOAA Programmer
+      
+!>    prvtime
+!>
+!>    @param[in] ipdtn
+!>    @param[in] ipdtmpl
+!>    @param[in] listsec1
+!>    @param[out] tabbrev
+!>      
+!>    @author NOAA Programmer      
       subroutine prvtime(ipdtn,ipdtmpl,listsec1,tabbrev)
       
       integer,intent(in) :: ipdtn
