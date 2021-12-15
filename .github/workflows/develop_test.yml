@@ -1,0 +1,141 @@
+name: Develop Branch Build and Test
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    env:
+      FC: gfortran-9
+      CC: gcc-9
+
+    steps:
+    - name: install-dependencies
+      run: |
+        sudo apt-get update &> /dev/null
+        sudo apt-get install libpng-dev
+        sudo apt-get install libjpeg-dev doxygen
+          
+    - name: checkout-jasper
+      uses: actions/checkout@v2
+      with:
+        repository: jasper-software/jasper
+        path: jasper
+        ref: version-2.0.33
+
+    - name: cache-jasper
+      id: cache-jasper
+      uses: actions/cache@v2
+      with:
+        path: ~/jasper
+        key: jasper-${{ runner.os }}-2.0.33-1
+
+    - name: build-jasper
+      if: steps.cache-jasper.outputs.cache-hit != 'true'
+      run: |
+        cd jasper
+        mkdir b && cd b
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/jasper
+        make -j2
+        make install
+
+    - name: checkout-bacio
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-bacio
+        path: bacio
+        ref: develop
+    
+    - name: build-bacio
+      run: |
+        cd bacio
+        mkdir build && cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/bacio
+        make -j2
+        make install
+
+    - name: checkout-sp
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-sp
+        path: sp
+        ref: develop
+
+    - name: build-sp
+      run: |
+        cd sp
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/sp
+        make -j2
+        make install
+          
+    - name: checkout-w3nco
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-w3nco
+        path: w3nco
+        ref: develop
+
+    - name: build-w3nco
+      run: |
+        cd w3nco
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/w3nco
+        make -j2
+        make install
+          
+    - name: checkout-ip
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-ip
+        path: ip
+        ref: develop
+
+    - name: build-ip
+      run: |
+        cd ip
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp
+        make -j2
+        make install
+          
+    - name: checkout-g2
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-g2
+        path: g2
+        ref: develop
+
+    - name: build-g2
+      run: |
+        cd g2
+        mkdir build
+        cd build
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper" ..
+        make -j2
+        make install
+                 
+    - name: checkout-grib_utils
+      uses: actions/checkout@v2
+      with: 
+        path: grib_utils
+
+    - name: build-grib_utils
+      run: |
+        cd grib_utils
+        mkdir build && cd build
+        ls -l ~/jasper
+        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3nco;~/g2" -DCMAKE_Fortran_FLAGS="-fsanitize=address -Wall" -DCMAKE_C_FLAGS="-fsanitize=address -Wall" ..
+        make -j2
+        ctest --verbose --output-on-failure
+          
+
+
+
+
+    
+        
+   
+
