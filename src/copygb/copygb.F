@@ -1393,39 +1393,24 @@ C  IRREG TO IRREG VECTOR
       ENDIF
 C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       END
-C-----------------------------------------------------------------------
+
+!> Return the length of a filled grid.
+!>
+!> Given a grid description section (in w3fi63 format), return the grid
+!> description section and size of its regularized counterpart. That is,
+!> if the input grid is regular, then itself is returned along with its
+!> grid size; however if the input grid is only quasi-regular (such as
+!> the wafs grids), then its filled regular version is returned along
+!> with its filled grid size.
+!>
+!> @param[in] kgds integer (200) gds parameters in w3fi63 format
+!> @param[out] kgdsf integer (200) regular gds parameters in w3fi63 format
+!> @param[out] lengdsf integer size of regularized grid
+!>
+!> @author Mark Iredell @date 96-07-19
       FUNCTION LENGDSF(KGDS,KGDSF)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C
-C SUBPROGRAM:    LENGDSF     RETURN THE LENGTH OF A FILLED GRID
-C   PRGMMR: IREDELL          ORG: W/NMC23     DATE: 96-07-19
-C
-C ABSTRACT: GIVEN A GRID DESCRIPTION SECTION (IN W3FI63 FORMAT),
-C   RETURN THE GRID DESCRIPTION SECTION AND SIZE OF ITS REGULARIZED
-C   COUNTERPART.  THAT IS, IF THE INPUT GRID IS REGULAR, THEN ITSELF
-C   IS RETURNED ALONG WITH ITS GRID SIZE; HOWEVER IF THE INPUT GRID IS
-C   ONLY QUASI-REGULAR (SUCH AS THE WAFS GRIDS), THEN ITS FILLED REGULAR
-C   VERSION IS RETURNED ALONG WITH ITS FILLED GRID SIZE.
-C
-C PROGRAM HISTORY LOG:
-C   96-07-19  IREDELL
-C
-C USAGE:    CALL LENGDSF(KGDS,KGDSF)
-C   INPUT ARGUMENTS:
-C     KGDS         INTEGER (200) GDS PARAMETERS IN W3FI63 FORMAT
-C   OUTPUT ARGUMENTS:
-C     KGDSF        INTEGER (200) REGULAR GDS PARAMETERS IN W3FI63 FORMAT
-C     LENGDSF      INTEGER SIZE OF REGULARIZED GRID
-C
-C SUBPROGRAMS CALLED:
-C   IPXWAFS
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN
-C
-C$$$
       INTEGER KGDS(200),KGDSF(200)
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       IF(KGDS(1).EQ.201) THEN
         KGDSF=KGDS
         LENGDSF=KGDS(7)*KGDS(8)-KGDS(8)/2
@@ -1443,5 +1428,5 @@ C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         KGDSF=KGDS
         LENGDSF=KGDS(2)*KGDS(3)
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       END
