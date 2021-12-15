@@ -1,0 +1,171 @@
+name: macOS Build
+on: [push, pull_request]
+
+jobs:
+  macOS-build:
+    runs-on: macos-latest
+    env:
+      FC: gfortran-9
+      CC: gcc-9
+
+    steps:
+    - name: install-dependencies
+      run: |
+        brew update
+        brew install libpng
+
+    - name: checkout-jasper
+      uses: actions/checkout@v2
+      with:
+        repository: jasper-software/jasper
+        path: jasper
+        ref: version-2.0.33
+
+    - name: cache-jasper
+      id: cache-jasper
+      uses: actions/cache@v2
+      with:
+        path: ~/Jasper
+        key: jasper-${{ runner.os }}-${{ hashFiles('jasper/VERSION') }}
+
+    - name: build-jasper
+      if: steps.cache-jasper.outputs.cache-hit != 'true'
+      run: |
+        cd jasper
+        mkdir build-jasper && cd build-jasper
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/Jasper
+        make -j2
+        make install
+
+    - name: checkout-bacio
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-bacio
+        path: bacio
+        ref: v2.4.0
+    
+    - name: cache-bacio
+      id: cache-bacio
+      uses: actions/cache@v2
+      with:
+        path: ~/bacio
+        key: bacio-${{ runner.os }}-2.4.0-1
+
+    - name: build-bacio
+      if: steps.cache-bacio.outputs.cache-hit != 'true'
+      run: |
+        cd bacio
+        mkdir build && cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/bacio
+        make -j2
+        make install
+
+    - name: checkout-sp
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-sp
+        path: sp
+        ref: v2.3.3
+
+    - name: cache-sp
+      id: cache-sp
+      uses: actions/cache@v2
+      with:
+        path: ~/sp
+        key: sp-${{ runner.os }}-2.3.3-1
+
+    - name: build-sp
+      if: steps.cache-sp.outputs.cache-hit != 'true'
+      run: |
+        cd sp
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/sp
+        make -j2
+        make install
+          
+    - name: checkout-w3nco
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-w3nco
+        path: w3nco
+        ref: v2.4.1
+
+    - name: cache-w3nco
+      id: cache-w3nco
+      uses: actions/cache@v2
+      with:
+        path: ~/w3nco
+        key: w3nco-${{ runner.os }}-2.4.1
+
+    - name: build-w3nco
+      if: steps.cache-w3nco.outputs.cache-hit != 'true'
+      run: |
+        cd w3nco
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/w3nco
+        make -j2
+        make install
+          
+    - name: checkout-ip
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-ip
+        path: ip
+        ref: v3.3.3
+
+    - name: cache-ip
+      id: cache-ip
+      uses: actions/cache@v2
+      with:
+        path: ~/ip
+        key: ip-${{ runner.os }}-3.3.3
+
+    - name: build-ip
+      if: steps.cache-ip.outputs.cache-hit != 'true'
+      run: |
+        cd ip
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp
+        make -j2
+        make install
+          
+    - name: checkout-g2
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-g2
+        path: g2
+        ref: v3.4.5
+
+    - name: cache-g2
+      id: cache-g2
+      uses: actions/cache@v2
+      with:
+        path: ~/g2
+        key: g2-${{ runner.os }}-3.4.5
+
+    - name: build-g2
+      if: steps.cache-g2.outputs.cache-hit != 'true'
+      run: |
+        cd g2
+        mkdir build
+        cd build
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper" ..
+        make -j2
+        make install
+                 
+    - name: checkout-grib_utils
+      uses: actions/checkout@v2
+      with: 
+        path: grib_utils
+
+    - name: build-grib_utils
+      run: |
+        cd grib_utils
+        mkdir build && cd build
+        ls -l ~/jasper
+        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3nco;~/g2" ..
+        make -j2
+        ctest --verbose --output-on-failure
