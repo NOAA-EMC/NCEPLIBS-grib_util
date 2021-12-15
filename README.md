@@ -10,7 +10,19 @@ https://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_doc/.
 
 ## Authors
 
-NCEP/EMC developers.
+Utility | Author(s)
+--------|----------
+cnvgrib | Stephen Gilbert, Gordon, Boi Vuong
+copygb | Mark Iredell, Stephen Gilbert, Trojan, Boi Vuong
+copygb2 | Mark Iredell, Stephen Gilbert, Boi Vuong
+degrib2 | Boi Vuong
+grb2index | Mark Iredell, Stephen Gilbert, Boi Vuong
+grbindex | Mark Iredell, Stephen Gilbert, Boi Vuong, W. Ebisuzaki
+grib2grib | Southall, Johnson, Boi Vuong
+tocgrib | Stephen Gilbert, Boi Vuong
+tocgrib2 | Stephen Gilbert, Boi Vuong
+tocgrib2super | Stephen Gilbert, Boi Vuong
+wgrib | W. Ebisuzaki
 
 Code Manager : Hang Lei, Edward Hartnett
 
