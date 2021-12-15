@@ -178,7 +178,7 @@
       INTEGER IDS(255),IBS(255),NBS(255)
       NAMELIST/NLCOPYGB/ IDS,IBS,NBS
       DATA IDS/255*-9999/,IBS/255*-9999/,NBS/255*-9999/
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  PARSE COMMAND LINE OPTIONS
       NARG=IARGC()
       IARG=1
@@ -390,7 +390,7 @@ C
 #ifdef _OPENMP
       CALL OMP_SET_NUM_THREADS (NTHREADS)
 #endif
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  PARSE COMMAND LINE POSITIONAL ARGUMENTS
       NXARG=LX+2
       IF(NARG-IARG+1.NE.NXARG) THEN
@@ -441,7 +441,7 @@ C  PARSE COMMAND LINE POSITIONAL ARGUMENTS
           CALL ERREXIT(8)
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  OPEN MAP FILE
       IF(CGB.NE.' ') THEN
         IF(CGB(1:2).EQ.'-1') THEN
@@ -472,7 +472,7 @@ C  OPEN MAP FILE
           ENDIF
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  OPEN MERGE FILE
       IF(CGM.NE.' ') THEN
         LAM=5
@@ -493,7 +493,7 @@ C  OPEN MERGE FILE
           LXM=0
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  OPEN AND READ NAMELIST FILE
       IF(CNL.NE.' ') THEN
         LNL=2
@@ -509,7 +509,7 @@ C  OPEN AND READ NAMELIST FILE
           CALL ERREXIT(8)
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  GO
       IF(LXX.GT.0) THEN
         CALL W3TAGB('COPYGB  ',1998,0295,0047,'NP23   ')
@@ -521,7 +521,7 @@ C  GO
       IF(LXX.GT.0) THEN
         CALL W3TAGE('COPYGB  ')
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       END
 
 !> Print proper usage to stderr.
@@ -580,56 +580,6 @@ C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
      &                IGI,KGDSI,IP,IPOPT,JPDS1,NUV,IUV,
      &                JPDSB,JB,JBK,LAB,AB,LAM,AM,LXX,LWG,
      &                IDS,IBS,NBS)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C
-C SUBPROGRAM:    CPGB        COPY GRIB FILES
-C   PRGMMR: IREDELL          ORG: W/NMC23     DATE: 96-07-19
-C
-C ABSTRACT: COPY GRIB FILES.
-C
-C PROGRAM HISTORY LOG:
-C   96-07-19  IREDELL
-C
-C USAGE:    CALL CPGB(LG1,LX1,LGB,LXB,LGM,LXM,LG2,
-C    &                IGI,KGDSI,IP,IPOPT,JPDS1,NUV,IUV,
-C    &                JPDSB,JB,JBK,LAB,AB,LAM,AM,LXX,LWG,
-C    &                IDS,IBS,NBS)
-C   INPUT ARGUMENTS:
-C     LG1          INTEGER UNIT NUMBER FOR GRIB FILE 1
-C     LX1          INTEGER UNIT NUMBER FOR GRIB INDEX FILE 1
-C     LGB          INTEGER UNIT NUMBER FOR GRIB FILE MAP
-C     LXB          INTEGER UNIT NUMBER FOR GRIB INDEX FILE MAP
-C     LGM          INTEGER UNIT NUMBER FOR GRIB FILE MERGE
-C     LXM          INTEGER UNIT NUMBER FOR GRIB INDEX FILE MERGE
-C     LG2          INTEGER UNIT NUMBER FOR GRIB FILE 2
-C     IGI          INTEGER OUTPUT GRID IDENTIFICATION
-C     KGDSI        INTEGER (200) OUTPUT GRID PARAMETERS
-C     IP           INTEGER INTERPOLATION TYPE
-C     IPOPT        INTEGER (20) INTERPOLATION OPTIONS
-C     JPDS1        INTEGER (100) KPDS SEARCH OPTIONS
-C     NUV          INTEGER NUMBER OF VECTOR PARAMETER IDS
-C     IUV          INTEGER (100) VECTOR PARAMETER IDS
-C     JPDSB        INTEGER (100) KPDS SEARCH OPTIONS (MAP)
-C     JB           INTEGER FLAG FOR MAP OPTIION
-C     JBK          INTEGER FLAG FOR MAP OPTIION
-C     LAB          INTEGER FLAG FOR MAP THRESHOLD INEQUALITY
-C     AB           REAL MAP THRESHOLD
-C     LAM          INTEGER FLAG FOR MASK VALUE
-C     AM           REAL MASK VALUE
-C     LXX          INTEGER FLAG FOR VERBOSE OUTPUT
-C     LWG          INTEGER FLAG FOR STDIN SELECTION
-C     IDS          INTEGER (255) DECIMAL SCALING (-9999 FOR NO CHANGE)
-C     IBS          INTEGER (255) BINARY SCALING (-9999 FOR NO CHANGE)
-C     NBS          INTEGER (255) NUMBER OF BITS (-9999 FOR NO CHANGE)
-C
-C SUBPROGRAMS CALLED:
-C   GETGBEMH
-C   CPGB1  
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN
-C
-C$$$
       PARAMETER(MBUF=256*1024)
       CHARACTER CBUF1(MBUF),CBUFB(MBUF),CBUFM(MBUF)
       INTEGER JPDS1(100),JPDSB(100),IUV(100)
@@ -641,7 +591,7 @@ C$$$
       INTEGER KPDSB(200),KGDSB(200),KENSB(5)
       INTEGER KPDSM(200),KGDSM(200),KENSM(5)
       CHARACTER*80 CIN
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  READ GRIB HEADERS
       IF(LXX.GT.0) CALL INSTRUMENT(6,KALL0,TTOT0,TMIN0,TMAX0)
       IF(JB.EQ.4) THEN
@@ -695,7 +645,7 @@ C  READ GRIB HEADERS
           ENDIF
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  LOOP UNTIL DONE
       NO=0
       DOWHILE(IRET.EQ.0)
@@ -771,7 +721,7 @@ C  LOOP UNTIL DONE
           ENDIF
         ENDIF
       ENDDO
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       IF(LXX.GT.0) THEN
         PRINT *,'copygb wrote ',NO,' total records'
         CALL INSTRUMENT(1,KALL1,TTOT1,TMIN1,TMAX1)
@@ -790,9 +740,9 @@ C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         TTOTT=TTOT1+TTOT2+TTOT3+TTOT4+TTOT5+TTOT6
         PRINT '(F10.3," total seconds spent in copygb")',TTOTT
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       END
-C-----------------------------------------------------------------------
+
 !> Copy one grib field.
 !>
 !> @param[in] lg1 integer unit number for grib file 1
@@ -870,7 +820,7 @@ C-----------------------------------------------------------------------
       LOGICAL*1 LR(MF),L1I(MI),LBI(MI)
       REAL FR(MF),F1I(MI),FBI(MI)
       REAL GR(MF),G1I(MI),GBI(MI)
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  GET FIELD FROM FILE 1
       JGDS=-1
       KPDS1=0
@@ -922,7 +872,7 @@ C  GET FIELD FROM FILE 1
         ENDIF
         CALL INSTRUMENT(2,KALL2,TTOT2,TMIN2,TMAX2)
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  INVOKE MAP MASK BEFORE INTERPOLATION
       IF(IRET.EQ.0.AND.JBK.EQ.1.AND.JB.EQ.1) THEN
         DO I=1,K1
@@ -939,7 +889,7 @@ C  INVOKE MAP MASK BEFORE INTERPOLATION
           CALL INSTRUMENT(3,KALL3,TTOT3,TMIN3,TMAX3)
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  INTERPOLATE FIELD
       IF(IRET.EQ.0) THEN
         CALL INTGRIB(IV,IP,IPOPT,KGDS1,K1,IB1,LR,FR,GR,KGDSI,MI,
@@ -954,7 +904,7 @@ C  INTERPOLATE FIELD
         ENDIF
         IF(IRET.EQ.-1) IRET=0
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  GET MAP FIELD
       IF(IRET.EQ.0.AND.JB.EQ.4) THEN
         KRB=0
@@ -973,7 +923,7 @@ C  GET MAP FIELD
             PRINT *,'       map field retrieval error code ',IRET
           ENDIF
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  INTERPOLATE MAP FIELD
         IF(IRET.EQ.0) THEN
           IBB=MOD(KPDSB(4)/64,2)
@@ -989,7 +939,7 @@ C  INTERPOLATE MAP FIELD
           IF(IRET.EQ.-1) IRET=0
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  INVOKE MAP MASK
       IF(IRET.EQ.0) THEN
         IF(JBK.EQ.0.AND.JB.EQ.1) THEN
@@ -1022,7 +972,7 @@ C  INVOKE MAP MASK
             PRINT *,'       applied fixed map mask'
           ENDIF
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  MASK VALUES
         IF(LAM.EQ.1.AND.IB1I.EQ.1) THEN
           IB1I=0
@@ -1038,7 +988,7 @@ C  MASK VALUES
           ENDIF
         ENDIF
         IF(LXX.GT.0) CALL INSTRUMENT(3,KALL3,TTOT3,TMIN3,TMAX3)
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  MERGE FIELD
         IF(LAM.EQ.5.AND.IB1I.EQ.1) THEN
           KRM=0
@@ -1102,7 +1052,7 @@ C  MERGE FIELD
         ENDIF
         IF(LXX.GT.0) CALL INSTRUMENT(5,KALL5,TTOT5,TMIN5,TMAX5)
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  WRITE OUTPUT FIELD
       IF(IRET.EQ.0) THEN
         KPDS1(3)=IGI
@@ -1146,21 +1096,21 @@ C  WRITE OUTPUT FIELD
 
 !> Interpolate field.
 !>
-!> @param[in] IV INTEGER VECTOR FLAG
-!> @param[in] IP INTEGER INTERPOLATION TYPE
-!> @param[in] IPOPT INTEGER (20) INTERPOLATION OPTIONS
-!> @param[in] KGDS1 INTEGER (200) INPUT GRID PARAMETERS
-!> @param[in] K1 INTEGER INPUT DIMENSION
-!> @param[in] IB1 INTEGER INPUT BITMAP FLAG
-!> @param[in] L1 LOGICAL*1 (K1) INPUT BITMAP IF IB1=1
-!> @param[in] F1 REAL (K1) INPUT FIELD
-!> @param[in] G1 REAL (K1) INPUT Y-COMPONENT IF IV=1
-!> @param[in] KGDS2 INTEGER (200) OUTPUT GRID PARAMETERS
-!> @param[in] K2 INTEGER OUTPUT DIMENSION
-!> @param[in] IB2 INTEGER OUTPUT BITMAP FLAG
-!> @param[in] L2 LOGICAL*1 (K2) OUTPUT BITMAP
-!> @param[in] F2 REAL (K2) OUTPUT FIELD
-!> @param[in] G2 REAL (K2) OUTPUT Y-COMPONENT IF IV=1
+!> @param[in] iv integer vector flag
+!> @param[in] ip integer interpolation type
+!> @param[in] ipopt integer (20) interpolation options
+!> @param[in] kgds1 integer (200) input grid parameters
+!> @param[in] k1 integer input dimension
+!> @param[in] ib1 integer input bitmap flag
+!> @param[in] l1 logical*1 (k1) input bitmap if ib1=1
+!> @param[in] f1 real (k1) input field
+!> @param[in] g1 real (k1) input y-component if iv=1
+!> @param[in] kgds2 integer (200) output grid parameters
+!> @param[in] k2 integer output dimension
+!> @param[in] ib2 integer output bitmap flag
+!> @param[in] l2 logical*1 (k2) output bitmap
+!> @param[in] f2 real (k2) output field
+!> @param[in] g2 real (k2) output y-component if iv=1
 !>
 !> @author Iredell @date 96-07-19
       SUBROUTINE INTGRIB(IV,IP,IPOPT,KGDS1,K1,IB1,L1,F1,G1,KGDS2,K2,
@@ -1171,7 +1121,7 @@ C  WRITE OUTPUT FIELD
       REAL F1(K1),F2(K2)
       REAL G1(K1),G2(K2)
       INTEGER KGDS1F(200),KGDS2F(200)
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  DETERMINE WHETHER INTERPOLATION IS NECESSARY
       IF(IP.EQ.4) THEN
         INT=1
@@ -1182,7 +1132,7 @@ C  DETERMINE WHETHER INTERPOLATION IS NECESSARY
         ENDDO
         INT=MIN(INT,1)
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  COPY FIELD
       IF(INT.EQ.0) THEN
         IB2=IB1
@@ -1192,7 +1142,7 @@ C  COPY FIELD
           IF(IV.NE.0) G2(I)=G1(I)
         ENDDO
         IRET=-1
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  COMPUTE REGULARIZED GRIDS AND INTERPOLATE FIELD
       ELSE
         K1F=LENGDSF(KGDS1,KGDS1F)
@@ -1213,7 +1163,7 @@ C  COMPUTE REGULARIZED GRIDS AND INTERPOLATE FIELD
           IRET=101
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       END
 
 !> Interpolate field.
@@ -1252,12 +1202,12 @@ C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       LOGICAL*1 L1F(K1F),L2F(K2F)
       REAL F1F(K1F),F2F(K2F),G1F(K1F),G2F(K2F)
       REAL RLAT(MRL),RLON(MRL),CROT(MRO),SROT(MRO)
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  REGLR TO REGLR SCALAR
       IF(K1F.EQ.1.AND.K2F.EQ.1.AND.IV.EQ.0) THEN
         CALL IPOLATES(IP,IPOPT,KGDS1,KGDS2,K1,K2,1,IB1,L1,F1,
      &                KI,RLAT,RLON,IB2,L2,F2,IRET)
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  IRREG TO REGLR SCALAR
       ELSEIF(K1F.NE.1.AND.K2F.EQ.1.AND.IV.EQ.0) THEN
         IF(IP.EQ.2) THEN
@@ -1271,7 +1221,7 @@ C  IRREG TO REGLR SCALAR
           CALL IPOLATES(IP,IPOPT,KGDS1F,KGDS2,K1F,K2,1,IB1F,L1F,F1F,
      &                  KI,RLAT,RLON,IB2,L2,F2,IRET)
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  REGLR TO IRREG SCALAR
       ELSEIF(K1F.EQ.1.AND.K2F.NE.1.AND.IV.EQ.0) THEN
         CALL IPOLATES(IP,IPOPT,KGDS1,KGDS2F,K1,K2F,1,IB1,L1,F1,
@@ -1285,7 +1235,7 @@ C  REGLR TO IRREG SCALAR
      &                    KGDS2,IB2,L2,F2,KGDS2F,IB2F,L2F,F2F,IRET)
           ENDIF
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  IRREG TO IRREG SCALAR
       ELSEIF(K1F.NE.1.AND.K2F.NE.1.AND.IV.EQ.0) THEN
         IF(IP.EQ.2) THEN
@@ -1308,7 +1258,7 @@ C  IRREG TO IRREG SCALAR
             ENDIF
           ENDIF
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  REGLR TO REGLR VECTOR
       ELSEIF(K1F.EQ.1.AND.K2F.EQ.1.AND.IV.NE.0) THEN
         CALL IPOLATEV(IP,IPOPT,KGDS1,KGDS2,K1,K2,1,IB1,L1,F1,G1,
@@ -1317,7 +1267,7 @@ C  REGLR TO REGLR VECTOR
           F2(K2)=0
           G2(K2)=0
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  IRREG TO REGLR VECTOR
       ELSEIF(K1F.NE.1.AND.K2F.EQ.1.AND.IV.NE.0) THEN
         IF(IP.EQ.2) THEN
@@ -1340,7 +1290,7 @@ C  IRREG TO REGLR VECTOR
             G2(K2)=0
           ENDIF
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  REGLR TO IRREG VECTOR
       ELSEIF(K1F.EQ.1.AND.K2F.NE.1.AND.IV.NE.0) THEN
         CALL IPOLATEV(IP,IPOPT,KGDS1,KGDS2F,K1,K2F,1,IB1,L1,F1,G1,
@@ -1358,7 +1308,7 @@ C  REGLR TO IRREG VECTOR
      &                    KGDS2,IB2,L2,G2,KGDS2F,IB2F,L2F,G2F,IRET)
           ENDIF
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 C  IRREG TO IRREG VECTOR
       ELSEIF(K1F.NE.1.AND.K2F.NE.1.AND.IV.NE.0) THEN
         IF(IP.EQ.2) THEN
@@ -1391,7 +1341,7 @@ C  IRREG TO IRREG VECTOR
           ENDIF
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       END
 
 !> Return the length of a filled grid.
