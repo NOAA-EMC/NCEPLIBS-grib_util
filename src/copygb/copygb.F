@@ -1,179 +1,167 @@
-C> @file
-C> COMPARE GRIB FILES
-C> @author IREDELL @date 1998-10-22
-C
-C> The command copygb copies all or part of one GRIB file
-C>   to another GRIB file, interpolating if necessary.  Unless
-C>   otherwise directed (-x option), the GRIB index file is also used
-C>   to speed the reading. The fields are interpolated to an output grid
-C>   if specified (-g option). The interpolation type defaults to
-C>   bilinear but may be specified directly (-i option).  The copying
-C>   may be limited to specific fields (-k option). It may also be
-C>   limited to a specified subgrid of the output grid or to a subrange
-C>   of the input fields (-B and -b, -A, and -K options). Fields can be
-C>   identified as scalars or vectors (-v option), which are interpolated
-C>   differently.  The invalid data in the output field can be filled
-C>   with mask values or merged with a merge field (-M and -m options).
-C>   The output GRIB message can also be appended to a file (-a option).
-C>   Some defaults can be overridden in a namelist file (-N option).
-C>
-C> PROGRAM HISTORY LOG:
-C> -  96-07-19  IREDELL
-C> -  97-03-05  IREDELL  CORRECTED THE COPYING OF THE V-WIND FIELD
-C>                      WHEN NO INTERPOLATION IS DONE
-C> -  97-03-18  IREDELL  INCREASED VERBOSITY
-C> - 1998-09-03  IREDELL  INSTRUMENTED AND MADE PLATFORM-INDEPENDENT
-C> - 1999-10-05  IREDELL  ADDED APPEND OPTION AND WGRIB REQUEST OPTION
-C> - 1999-10-06  IREDELL  ADDED MERGE OPTION
-C> - 2000-01-19  IREDELL  ADDED NAMELIST OPTION
-C> - 2001-03-16  IREDELL  ADDED ENSEMBLE EXTENSION OPTION
-C> - 2002-01-10  IREDELL  CORRECTED V-WIND SEARCH TO INCLUDE SUBCENTER
-C> - 2006-02-07  GILBERT  CHANGED V-WIND SEARCH TO EXCLUDE DECIMAL SCALE FACTOR
-C> - 2007-06-22  IREDELL  CORRECTED PRE-INTERPOLATION MASK BITMAP SETTING
-C> - 2007-07-13  TROJAN   ALLOWED NEAREST NEIGHBOUR INTERPOLATION FOR WAF GRIDS
-C> - 2013-03-14  VUONG    ADDED CALL OMP_SET_NUM_THREADS TO SINGLE THREAD
-C>                      TO EXECUTE IN PARALLEL MODE 
-C>
-C> COMMAND LINE OPTIONS:
-C>   -a
-C>      Appends rather than overwrites the output GRIB file.
-C>
-C>   -A "<> mapthreshold"
-C>      Inequality and threshold used in determining
-C>      where on the map the data will be copied.
-C>      The data are copied only where the given 
-C>      map field is on the correct side of the threshold.
-C>      The mapthreshold defaults to '>-1.e30'; in this case,
-C>      only the map field's bitmap will limit the domain.
-C>
-C>   -b mapindex   
-C>      Optional index file used to get the map field.
-C>
-C>   -B mapgrib    
-C>      GRIB file used to get the map field.  The map field
-C>      is read from the GRIB file and compared to the
-C>      map threshold to determine for which region on the map
-C>      the data will be copied.  The mapgrib can be the name
-C>      of an actual GRIB file (in which case the index
-C>      file may be specified with the -b option) or it can
-C>      be '-1'.  If mapgrib is '-1', then the input GRIB file
-C>      (first positional argument) is used.
-C>      The -K option specifies which field to read from
-C>      the mapgrib GRIB file.  If mapgrib is an actual file,
-C>      then the first field is taken if -K is not specified.
-C>      On the other hand, if mapgrib is '-1', then if the
-C>      if -K is not specified, the current field is taken
-C>      as the map field.  A special exception is if -K '-1'
-C>      is specified, in which case the current field is
-C>      taken as the map field and it is applied before any
-C>      interpolation; otherwise the map field is always
-C>      applied after interpolation.
-C>
-C>   -g "grid [kgds]"
-C>      Output grid identification.  If grid=-1 (the default),
-C>      then the output grid is the same as the input grid.
-C>      If grid=-4, then the grid is that of the map field.
-C>      If grid=-5, then the grid is that of the merge field.
-C>      If 0<grid<255, then grid designates an NCEP grid.
-C>      If grid=255, then the grid must be specified by the
-C>      full set of kgds parameters determining a GRIB GDS
-C>      (grid description section) in the W3FI63 format.
-C>
-C>   -i "ip [ipopts]"
-C>      Interpolation options.  The default is bilinear
-C>      interpolation (ip=0).  Other interpolation options
-C>      are bicubic (ip=1), neighbor (ip=2), budget (ip=3),
-C>      and spectral (ip=4).  Spectral interpolation is forced
-C>      even if the input and output grids are the same.
-C>      See the documentation for iplib for further details.
-C>
-C>   -k "kpds"
-C>      Full set of kpds parameters determing a GRIB PDS
-C>      (product definition section) in the W3FI63 format
-C>      determining the field(s) to be copied.  Note that
-C>      kpds(5) is the parameter indicator (PDS octet 9).
-C>      A wildcard is specified by -1 (the defaults).
-C>      If "kpds" is equal to "w", then the requested record
-C>      numbers are read in from standard input instead,
-C>      one record per line and possibly delimited by a colon
-C>      (so that wgrib could pipe requests to copygb).
-C>      If the -k is not specified, then copygb will attempt
-C>      to copy every field in the input GRIB file.
-C>
-C>   -K "mapkpds"
-C>      Full set of kpds parameters determing a GRIB PDS
-C>      (product definition section) in the W3FI63 format
-C>      determining the map field to be used to determine
-C>      where on the map the data will be copied.  
-C>      A wildcard is specified by -1 (the defaults).
-C>
-C>   -m mergeindex   
-C>      Optional index file used to get the merge field.
-C>
-C>   -M "mask"/mergegrib
-C>      Mask used to fill out bitmapped areas of the map.
-C>      If specified, there will be no bitmap in the output.
-C>      The mask must be in the format '\#value' where value
-C>      is the real number used to fill out the field.
-C>      Otherwise, the argument is interpreted as a merge
-C>      GRIB file.  Then for each GRIB message copied,
-C>      a merge field is found in the merge GRIB file
-C>      with the same parameter and level indicators
-C>      as the copied field.  This merge field is interpolated
-C>      to the output grid and used to fill out the bitmapped
-C>      areas of the map, at least where the merge field
-C>      is not bitmapped.  No merging is done if no merge
-C>      field is found.
-C>
-C>   -N namelist
-C>      Namelist file to override default output options.
-C>      The namelist must start with " &NLCOPYGB" and end with "/".
-C>      Namelist variables are
-C>        IDS(255)      Output decimal scaling by parameter
-C>        IBS(255)      Output binary scaling by parameter
-C>        NBS(255)      Output number of bits by parameter
-C>      
-C>   -v "uparms"
-C>      Parameter indicator(s) for the u-component of vectors.
-C>      The parameter indicator for the v-component is assumed
-C>      to be one more than that of the u-component.
-C>      If the -v option is not specified, then the wind
-C>      components (parameters 33 and 34) are the only fields
-C>      assumed to be vector components in the GRIB file.
-C>
-C>   -x
-C>      Turns off the use of an index file.  The index records
-C>      are then extracted from the GRIB file, which
-C>      will increase the time taken by copygb.
-C>
-C>   -X
-C>      Turns on verbose printout.  This option is
-C>      incompatible with GRIB output to standard output.
-C>
-C> INPUT FILES:
-C> -  UNIT   11    INPUT GRIB FILE
-C> -  UNIT   14    MAP GRIB FILE
-C> -  UNIT   15    MERGE GRIB FILE
-C> -  UNIT   31    INPUT GRIB INDEX FILE
-C> -  UNIT   34    MAP GRIB INDEX FILE
-C> -  UNIT   35    MERGE GRIB INDEX FILE
-C>
-C> OUTPUT FILES:
-C> -  UNIT   51    OUTPUT GRIB FILE
-C>
-C> SUBPROGRAMS CALLED:
-C> -  IARGC
-C> -  GETARG
-C> -  ERRMSG
-C> -  EUSAGE
-C> -  ERREXIT
-C> -  FPARSEI
-C> -  FPARSER
-C> -  BAOPENR
-C> -  BAOPENWT
-C> -  BAOPENWA
-C> -  CPGB
-C>
+!> @file
+!> @brief Compare grib files.
+!> @author Mark Iredell @date 1998-10-22
+
+!> The command copygb copies all or part of one GRIB file to another
+!> GRIB file, interpolating if necessary. Unless otherwise directed (-x
+!> option), the GRIB index file is also used to speed the reading. The
+!> fields are interpolated to an output grid if specified (-g
+!> option). The interpolation type defaults to bilinear but may be
+!> specified directly (-i option). The copying may be limited to
+!> specific fields (-k option). It may also be limited to a specified
+!> subgrid of the output grid or to a subrange of the input fields (-B
+!> and -b, -A, and -K options). Fields can be identified as scalars or
+!> vectors (-v option), which are interpolated differently. The invalid
+!> data in the output field can be filled with mask values or merged
+!> with a merge field (-M and -m options). The output GRIB message can
+!> also be appended to a file (-a option). Some defaults can be
+!> overridden in a namelist file (-N option).
+!>
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 96-07-19 | Iredell | Initial
+!> 97-03-05 | Iredell | corrected the copying of the v-wind field when no interpolation is done
+!> 97-03-18 | Iredell | increased verbosity
+!> 1998-09-03 | Iredell | instrumented and made platform-independent
+!> 1999-10-05 | Iredell | added append option and wgrib request option
+!> 1999-10-06 | Iredell | added merge option
+!> 2000-01-19 | Iredell | added namelist option
+!> 2001-03-16 | Iredell | added ensemble extension option
+!> 2002-01-10 | Iredell | corrected v-wind search to include subcenter
+!> 2006-02-07 | Gilbert | changed v-wind search to exclude decimal scale factor
+!> 2007-06-22 | Iredell | corrected pre-interpolation mask bitmap setting
+!> 2007-07-13 | Trojan  | allowed nearest neighbour interpolation for waf grids
+!> 2013-03-14 | Vuong   | added omp_set_num_threads to single thread to execute in parallel mode 
+!>
+!> ### Command Line Options
+!>   -a
+!>      Appends rather than overwrites the output GRIB file.
+!>
+!>   -A "<> mapthreshold"
+!>      Inequality and threshold used in determining
+!>      where on the map the data will be copied.
+!>      The data are copied only where the given 
+!>      map field is on the correct side of the threshold.
+!>      The mapthreshold defaults to '>-1.e30'; in this case,
+!>      only the map field's bitmap will limit the domain.
+!>
+!>   -b mapindex   
+!>      Optional index file used to get the map field.
+!>
+!>   -B mapgrib    
+!>      GRIB file used to get the map field. The map field
+!>      is read from the GRIB file and compared to the
+!>      map threshold to determine for which region on the map
+!>      the data will be copied. The mapgrib can be the name
+!>      of an actual GRIB file (in which case the index
+!>      file may be specified with the -b option) or it can
+!>      be '-1'. If mapgrib is '-1', then the input GRIB file
+!>      (first positional argument) is used.
+!>      The -K option specifies which field to read from
+!>      the mapgrib GRIB file. If mapgrib is an actual file,
+!>      then the first field is taken if -K is not specified.
+!>      On the other hand, if mapgrib is '-1', then if the
+!>      if -K is not specified, the current field is taken
+!>      as the map field. A special exception is if -K '-1'
+!>      is specified, in which case the current field is
+!>      taken as the map field and it is applied before any
+!>      interpolation; otherwise the map field is always
+!>      applied after interpolation.
+!>
+!>   -g "grid [kgds]"
+!>      Output grid identification. If grid=-1 (the default),
+!>      then the output grid is the same as the input grid.
+!>      If grid=-4, then the grid is that of the map field.
+!>      If grid=-5, then the grid is that of the merge field.
+!>      If 0<grid<255, then grid designates an NCEP grid.
+!>      If grid=255, then the grid must be specified by the
+!>      full set of kgds parameters determining a GRIB GDS
+!>      (grid description section) in the W3FI63 format.
+!>
+!>   -i "ip [ipopts]"
+!>      Interpolation options. The default is bilinear
+!>      interpolation (ip=0). Other interpolation options
+!>      are bicubic (ip=1), neighbor (ip=2), budget (ip=3),
+!>      and spectral (ip=4). Spectral interpolation is forced
+!>      even if the input and output grids are the same.
+!>      See the documentation for iplib for further details.
+!>
+!>   -k "kpds"
+!>      Full set of kpds parameters determing a GRIB PDS
+!>      (product definition section) in the W3FI63 format
+!>      determining the field(s) to be copied. Note that
+!>      kpds(5) is the parameter indicator (PDS octet 9).
+!>      A wildcard is specified by -1 (the defaults).
+!>      If "kpds" is equal to "w", then the requested record
+!>      numbers are read in from standard input instead,
+!>      one record per line and possibly delimited by a colon
+!>      (so that wgrib could pipe requests to copygb).
+!>      If the -k is not specified, then copygb will attempt
+!>      to copy every field in the input GRIB file.
+!>
+!>   -K "mapkpds"
+!>      Full set of kpds parameters determing a GRIB PDS
+!>      (product definition section) in the W3FI63 format
+!>      determining the map field to be used to determine
+!>      where on the map the data will be copied. 
+!>      A wildcard is specified by -1 (the defaults).
+!>
+!>   -m mergeindex   
+!>      Optional index file used to get the merge field.
+!>
+!>   -M "mask"/mergegrib
+!>      Mask used to fill out bitmapped areas of the map.
+!>      If specified, there will be no bitmap in the output.
+!>      The mask must be in the format '\#value' where value
+!>      is the real number used to fill out the field.
+!>      Otherwise, the argument is interpreted as a merge
+!>      GRIB file. Then for each GRIB message copied,
+!>      a merge field is found in the merge GRIB file
+!>      with the same parameter and level indicators
+!>      as the copied field. This merge field is interpolated
+!>      to the output grid and used to fill out the bitmapped
+!>      areas of the map, at least where the merge field
+!>      is not bitmapped. No merging is done if no merge
+!>      field is found.
+!>
+!>   -N namelist
+!>      Namelist file to override default output options.
+!>      The namelist must start with " &NLCOPYGB" and end with "/".
+!>      Namelist variables are
+!>        IDS(255)      Output decimal scaling by parameter
+!>        IBS(255)      Output binary scaling by parameter
+!>        NBS(255)      Output number of bits by parameter
+!>      
+!>   -v "uparms"
+!>      Parameter indicator(s) for the u-component of vectors.
+!>      The parameter indicator for the v-component is assumed
+!>      to be one more than that of the u-component.
+!>      If the -v option is not specified, then the wind
+!>      components (parameters 33 and 34) are the only fields
+!>      assumed to be vector components in the GRIB file.
+!>
+!>   -x
+!>      Turns off the use of an index file. The index records
+!>      are then extracted from the GRIB file, which
+!>      will increase the time taken by copygb.
+!>
+!>   -X
+!>      Turns on verbose printout. This option is
+!>      incompatible with GRIB output to standard output.
+!>
+!> ### Input Files
+!> -  unit   11    input grib file
+!> -  unit   14    map grib file
+!> -  unit   15    merge grib file
+!> -  unit   31    input grib index file
+!> -  unit   34    map grib index file
+!> -  unit   35    merge grib index file
+!>
+!> ### output files
+!> -  unit   51    output grib file
+!>
+!>    @author Stephen Gilbert @date 2000-05-02
       PROGRAM COPYGB
       CHARACTER*256 CARG,CG1,CX1,CGB,CXB,CGM,CXM,CG2,CNL
       INTEGER KARG(100), NTHREADS
@@ -535,28 +523,11 @@ C  GO
       ENDIF
 C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       END
-C-----------------------------------------------------------------------
+
+!> Print proper usage to stderr.
+!>
+!> @author Iredell @date 96-07-19
       SUBROUTINE EUSAGE
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C
-C SUBPROGRAM:    EUSAGE      PRINT PROPER USAGE TO STDERR
-C   PRGMMR: IREDELL          ORG: W/NMC23     DATE: 96-07-19
-C
-C ABSTRACT: PRINT PROPER USAGE TO STDERR.
-C
-C PROGRAM HISTORY LOG:
-C   96-07-19  IREDELL
-C
-C USAGE:    CALL EUSAGE
-C
-C SUBPROGRAMS CALLED:
-C   ERRMSG
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN
-C
-C$$$
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       CALL ERRMSG('Usage: copygb'//
      & ' [-g "grid [kgds]"] [-i "ip [ipopts]"]'//
      & ' [-k "kpds"] [-v "uparms"]')
@@ -572,9 +543,39 @@ C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       CALL ERRMSG('            or:')
       CALL ERRMSG('             '//
      & ' -x grib1 grib2')
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       END
-C-----------------------------------------------------------------------
+
+!> Copy grib files.
+!>
+!> @param[in] lg1 integer unit number for grib file 1
+!> @param[in] lx1 integer unit number for grib index file 1
+!> @param[in] lgb integer unit number for grib file map
+!> @param[in] lxb integer unit number for grib index file map
+!> @param[in] lgm integer unit number for grib file merge
+!> @param[in] lxm integer unit number for grib index file merge
+!> @param[in] lg2 integer unit number for grib file 2
+!> @param[in] igi integer output grid identification
+!> @param[in] kgdsi integer (200) output grid parameters
+!> @param[in] ip integer interpolation type
+!> @param[in] ipopt integer (20) interpolation options
+!> @param[in] jpds1 integer (100) kpds search options
+!> @param[in] nuv integer number of vector parameter ids
+!> @param[in] iuv integer (100) vector parameter ids
+!> @param[in] jpdsb integer (100) kpds search options (map)
+!> @param[in] jb integer flag for map optiion
+!> @param[in] jbk integer flag for map optiion
+!> @param[in] lab integer flag for map threshold inequality
+!> @param[in] ab real map threshold
+!> @param[in] lam integer flag for mask value
+!> @param[in] am real mask value
+!> @param[in] lxx integer flag for verbose output
+!> @param[in] lwg integer flag for stdin selection
+!> @param[in] ids integer (255) decimal scaling (-9999 for no change)
+!> @param[in] ibs integer (255) binary scaling (-9999 for no change)
+!> @param[in] nbs integer (255) number of bits (-9999 for no change)
+!>
+!> @author Iredell @date 96-07-19
       SUBROUTINE CPGB(LG1,LX1,LGB,LXB,LGM,LXM,LG2,
      &                IGI,KGDSI,IP,IPOPT,JPDS1,NUV,IUV,
      &                JPDSB,JB,JBK,LAB,AB,LAM,AM,LXX,LWG,
@@ -792,6 +793,63 @@ C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       END
 C-----------------------------------------------------------------------
+!> Copy one grib field.
+!>
+!> @param[in] lg1 integer unit number for grib file 1
+!> @param[in] lx1 integer unit number for grib index file 1
+!> @param[in] m1 integer dimension of grib field 1
+!> @param[in] cbuf1 character (mbuf) index buffer 1
+!> @param[in] nlen1 integer record length of index buffer 1
+!> @param[in] nnum1 integer number of records in index buffer 1
+!> @param[in] nlen1 integer length of each index record 1
+!> @param[in] nnum1 integer number of index records 1
+!> @param[in] mnum1 integer number of index records 1 skipped
+!> @param[in] mbuf integer dimension of index buffers
+!> @param[in] mf integer dimension of field
+!> @param[in] mi integer dimension of output grid
+!> @param[in] igi integer output grid identification
+!> @param[in] kgdsi integer (200) output grid parameters
+!> @param[in] ip integer interpolation type
+!> @param[in] ipopt integer (20) interpolation options
+!> @param[in] jpds1 integer (100) kpds search options
+!> @param[in] nuv integer number of vector parameter ids
+!> @param[in] iuv integer (100) vector parameter ids
+!> @param[in] jpdsb integer (100) kpds search options (map)
+!> @param[in] jb integer flag for map optiion
+!> @param[in] jbk integer flag for map optiion
+!> @param[in] lab integer flag for map threshold inequality
+!> @param[in] ab real map threshold
+!> @param[in] lam integer flag for mask value
+!> @param[in] am real mask value
+!> @param[in] ids integer (255) decimal scaling (-9999 for no change)
+!> @param[in] ibs integer (255) binary scaling (-9999 for no change)
+!> @param[in] nbs integer (255) number of bits (-9999 for no change)
+!> @param[in] lgb integer unit number for grib file map
+!> @param[in] lxb integer unit number for grib index file map
+!> @param[in] mb integer dimension of grib field map
+!> @param[in] cbufb character (mbuf) index buffer map
+!> @param[in] nlenb integer record length of index buffer map
+!> @param[in] nnumb integer number of records in index buffer map
+!> @param[in] nlenb integer length of each index record map
+!> @param[in] nnumb integer number of index records map
+!> @param[in] mnumb integer number of index records map skipped
+!> @param[in] lgm integer unit number for grib file merge
+!> @param[in] lxm integer unit number for grib index file merge
+!> @param[in] mm integer dimension of grib field merge
+!> @param[in] cbufm character (mbuf) index buffer merge
+!> @param[in] nlenm integer record length of index buffer merge
+!> @param[in] nnumm integer number of records in index buffer merge
+!> @param[in] nlenm integer length of each index record merge
+!> @param[in] nnumm integer number of index records merge
+!> @param[in] mnumm integer number of index records merge skipped
+!> @param[in] lg2 integer unit number for grib file 2
+!> @param[in] lxx integer flag for verbose output
+!> @param[in] ks1 integer input record counter
+!> @param[in] no integer output record counter
+!> @param[out] no integer output record counter
+!> @param[out] iret integer return code
+!>
+!> @author Iredell @date 96-07-19
       SUBROUTINE CPGB1(LG1,LX1,M1,CBUF1,NLEN1,NNUM1,MNUM1,
      &                 MBUF,MF,MI,
      &                 IGI,KGDSI,IP,IPOPT,JPDS1,NUV,IUV,
@@ -800,89 +858,6 @@ C-----------------------------------------------------------------------
      &                 LGB,LXB,MB,CBUFB,NLENB,NNUMB,MNUMB,
      &                 LGM,LXM,MM,CBUFM,NLENM,NNUMM,MNUMM,
      &                 LG2,LXX,KS1,NO,IRET)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C
-C SUBPROGRAM:    CPGB1       COPY ONE GRIB FIELD
-C   PRGMMR: IREDELL          ORG: W/NMC23     DATE: 96-07-19
-C
-C ABSTRACT: COPY ONE GRIB FIELD.
-C
-C PROGRAM HISTORY LOG:
-C   96-07-19  IREDELL
-C
-C USAGE:    CALL CPGB1(LG1,LX1,M1,CBUF1,NLEN1,NNUM1,MNUM1,
-C    &                 MBUF,MF,MI,
-C    &                 IGI,KGDSI,IP,IPOPT,JPDS1,NUV,IUV,
-C    &                 JPDSB,JB,JBK,LAB,AB,LAM,AM,
-C    &                 IDS,IBS,NBS,
-C    &                 LGB,LXB,MB,CBUFB,NLENB,NNUMB,MNUMB,
-C    &                 LGM,LXM,MM,CBUFM,NLENM,NNUMM,MNUMM,
-C    &                 LG2,LXX,KS1,NO,IRET)
-C   INPUT ARGUMENTS:
-C     LG1          INTEGER UNIT NUMBER FOR GRIB FILE 1
-C     LX1          INTEGER UNIT NUMBER FOR GRIB INDEX FILE 1
-C     M1           INTEGER DIMENSION OF GRIB FIELD 1
-C     CBUF1        CHARACTER (MBUF) INDEX BUFFER 1
-C     NLEN1        INTEGER RECORD LENGTH OF INDEX BUFFER 1
-C     NNUM1        INTEGER NUMBER OF RECORDS IN INDEX BUFFER 1
-C     NLEN1        INTEGER LENGTH OF EACH INDEX RECORD 1
-C     NNUM1        INTEGER NUMBER OF INDEX RECORDS 1
-C     MNUM1        INTEGER NUMBER OF INDEX RECORDS 1 SKIPPED
-C     MBUF         INTEGER DIMENSION OF INDEX BUFFERS
-C     MF           INTEGER DIMENSION OF FIELD
-C     MI           INTEGER DIMENSION OF OUTPUT GRID
-C     IGI          INTEGER OUTPUT GRID IDENTIFICATION
-C     KGDSI        INTEGER (200) OUTPUT GRID PARAMETERS
-C     IP           INTEGER INTERPOLATION TYPE
-C     IPOPT        INTEGER (20) INTERPOLATION OPTIONS
-C     JPDS1        INTEGER (100) KPDS SEARCH OPTIONS
-C     NUV          INTEGER NUMBER OF VECTOR PARAMETER IDS
-C     IUV          INTEGER (100) VECTOR PARAMETER IDS
-C     JPDSB        INTEGER (100) KPDS SEARCH OPTIONS (MAP)
-C     JB           INTEGER FLAG FOR MAP OPTIION
-C     JBK          INTEGER FLAG FOR MAP OPTIION
-C     LAB          INTEGER FLAG FOR MAP THRESHOLD INEQUALITY
-C     AB           REAL MAP THRESHOLD
-C     LAM          INTEGER FLAG FOR MASK VALUE
-C     AM           REAL MASK VALUE
-C     IDS          INTEGER (255) DECIMAL SCALING (-9999 FOR NO CHANGE)
-C     IBS          INTEGER (255) BINARY SCALING (-9999 FOR NO CHANGE)
-C     NBS          INTEGER (255) NUMBER OF BITS (-9999 FOR NO CHANGE)
-C     LGB          INTEGER UNIT NUMBER FOR GRIB FILE MAP
-C     LXB          INTEGER UNIT NUMBER FOR GRIB INDEX FILE MAP
-C     MB           INTEGER DIMENSION OF GRIB FIELD MAP
-C     CBUFB        CHARACTER (MBUF) INDEX BUFFER MAP
-C     NLENB        INTEGER RECORD LENGTH OF INDEX BUFFER MAP
-C     NNUMB        INTEGER NUMBER OF RECORDS IN INDEX BUFFER MAP
-C     NLENB        INTEGER LENGTH OF EACH INDEX RECORD MAP
-C     NNUMB        INTEGER NUMBER OF INDEX RECORDS MAP
-C     MNUMB        INTEGER NUMBER OF INDEX RECORDS MAP SKIPPED
-C     LGM          INTEGER UNIT NUMBER FOR GRIB FILE MERGE
-C     LXM          INTEGER UNIT NUMBER FOR GRIB INDEX FILE MERGE
-C     MM           INTEGER DIMENSION OF GRIB FIELD MERGE
-C     CBUFM        CHARACTER (MBUF) INDEX BUFFER MERGE
-C     NLENM        INTEGER RECORD LENGTH OF INDEX BUFFER MERGE
-C     NNUMM        INTEGER NUMBER OF RECORDS IN INDEX BUFFER MERGE
-C     NLENM        INTEGER LENGTH OF EACH INDEX RECORD MERGE
-C     NNUMM        INTEGER NUMBER OF INDEX RECORDS MERGE
-C     MNUMM        INTEGER NUMBER OF INDEX RECORDS MERGE SKIPPED
-C     LG2          INTEGER UNIT NUMBER FOR GRIB FILE 2
-C     LXX          INTEGER FLAG FOR VERBOSE OUTPUT
-C     KS1          INTEGER INPUT RECORD COUNTER
-C     NO           INTEGER OUTPUT RECORD COUNTER
-C   OUTPUT ARGUMENTS:
-C     NO           INTEGER OUTPUT RECORD COUNTER
-C     IRET         INTEGER RETURN CODE
-C
-C SUBPROGRAMS CALLED:
-C   GETGBEM
-C   INTGRIB
-C   PUTGBEN
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN
-C
-C$$$
       CHARACTER CBUF1(MBUF),CBUFB(MBUF),CBUFM(MBUF)
       INTEGER JPDS1(100),JPDSB(100),IUV(100)
       INTEGER KGDSI(200)
@@ -1166,48 +1141,30 @@ C  WRITE OUTPUT FIELD
           CALL INSTRUMENT(6,KALL6,TTOT6,TMIN6,TMAX6)
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       END
-C-----------------------------------------------------------------------
+
+!> Interpolate field.
+!>
+!> @param[in] IV INTEGER VECTOR FLAG
+!> @param[in] IP INTEGER INTERPOLATION TYPE
+!> @param[in] IPOPT INTEGER (20) INTERPOLATION OPTIONS
+!> @param[in] KGDS1 INTEGER (200) INPUT GRID PARAMETERS
+!> @param[in] K1 INTEGER INPUT DIMENSION
+!> @param[in] IB1 INTEGER INPUT BITMAP FLAG
+!> @param[in] L1 LOGICAL*1 (K1) INPUT BITMAP IF IB1=1
+!> @param[in] F1 REAL (K1) INPUT FIELD
+!> @param[in] G1 REAL (K1) INPUT Y-COMPONENT IF IV=1
+!> @param[in] KGDS2 INTEGER (200) OUTPUT GRID PARAMETERS
+!> @param[in] K2 INTEGER OUTPUT DIMENSION
+!> @param[in] IB2 INTEGER OUTPUT BITMAP FLAG
+!> @param[in] L2 LOGICAL*1 (K2) OUTPUT BITMAP
+!> @param[in] F2 REAL (K2) OUTPUT FIELD
+!> @param[in] G2 REAL (K2) OUTPUT Y-COMPONENT IF IV=1
+!>
+!> @author Iredell @date 96-07-19
       SUBROUTINE INTGRIB(IV,IP,IPOPT,KGDS1,K1,IB1,L1,F1,G1,KGDS2,K2,
      &                   IB2,L2,F2,G2,IRET)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C
-C SUBPROGRAM:    INTGRIB     INTERPOLATE FIELD
-C   PRGMMR: IREDELL          ORG: W/NMC23     DATE: 96-07-19
-C
-C ABSTRACT: INTERPOLATE FIELD.
-C
-C PROGRAM HISTORY LOG:
-C   96-07-19  IREDELL
-C
-C USAGE:    CALL INTGRIB(IV,IP,IPOPT,KGDS1,K1,IB1,L1,F1,G1,KGDS2,K2,
-C    &                   IB2,L2,F2,G2,IRET)
-C   INPUT ARGUMENTS:
-C     IV           INTEGER VECTOR FLAG
-C     IP           INTEGER INTERPOLATION TYPE
-C     IPOPT        INTEGER (20) INTERPOLATION OPTIONS
-C     KGDS1        INTEGER (200) INPUT GRID PARAMETERS
-C     K1           INTEGER INPUT DIMENSION
-C     IB1          INTEGER INPUT BITMAP FLAG
-C     L1           LOGICAL*1 (K1) INPUT BITMAP IF IB1=1
-C     F1           REAL (K1) INPUT FIELD
-C     G1           REAL (K1) INPUT Y-COMPONENT IF IV=1
-C     KGDS2        INTEGER (200) OUTPUT GRID PARAMETERS
-C     K2           INTEGER OUTPUT DIMENSION
-C     IB2          INTEGER OUTPUT BITMAP FLAG
-C     L2           LOGICAL*1 (K2) OUTPUT BITMAP
-C     F2           REAL (K2) OUTPUT FIELD
-C     G2           REAL (K2) OUTPUT Y-COMPONENT IF IV=1
-C
-C SUBPROGRAMS CALLED:
-C   LENGDSF
-C   INTGRIB1
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN
-C
-C$$$
       INTEGER IPOPT(20)
       INTEGER KGDS1(200),KGDS2(200)
       LOGICAL*1 L1(K1),L2(K2)
@@ -1258,56 +1215,35 @@ C  COMPUTE REGULARIZED GRIDS AND INTERPOLATE FIELD
       ENDIF
 C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       END
-C-----------------------------------------------------------------------
+
+!> Interpolate field.
+!>
+!> @param[in] k1f integer regularized input dimension
+!> @param[in] kgds1f integer (200) regularized input grid parameters
+!> @param[in] k2f integer regularized output dimension
+!> @param[in] kgds2f integer (200) regularized output grid parameters
+!> @param[in] mrl integer dimension of rlat and rlon
+!> @param[in] mro integer dimension of crot and srot
+!> @param[in] iv integer vector flag
+!> @param[in] ip integer interpolation type
+!> @param[in] ipopt integer (20) interpolation options
+!> @param[in] kgds1 integer (200) input grid parameters
+!> @param[in] k1 integer input dimension
+!> @param[in] ib1 integer input bitmap flag
+!> @param[in] l1 logical*1 (k1) input bitmap if ib1=1
+!> @param[in] f1 real (k1) input field
+!> @param[in] g1 real (k1) input y-component if iv=1
+!> @param[in] kgds2 integer (200) output grid parameters
+!> @param[in] k2 integer output dimension
+!> @param[in] ib2 integer output bitmap flag
+!> @param[in] l2 logical*1 (k2) output bitmap
+!> @param[in] f2 real (k2) output field
+!> @param[in] g2 real (k2) output y-component if iv=1
+!>
+!> @author Iredell @date 96-07-19
       SUBROUTINE INTGRIB1(K1F,KGDS1F,K2F,KGDS2F,MRL,MRO,
      &                    IV,IP,IPOPT,KGDS1,K1,IB1,L1,F1,G1,KGDS2,K2,
      &                    IB2,L2,F2,G2,IRET)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C
-C SUBPROGRAM:    INTGRIB1    INTERPOLATE FIELD
-C   PRGMMR: IREDELL          ORG: W/NMC23     DATE: 96-07-19
-C
-C ABSTRACT: INTERPOLATE FIELD.
-C
-C PROGRAM HISTORY LOG:
-C   96-07-19  IREDELL
-C
-C USAGE:    CALL INTGRIB1(K1F,KGDS1F,K2F,KGDS2F,MRL,MRO,
-C    &                    IV,IP,IPOPT,KGDS1,K1,IB1,L1,F1,G1,KGDS2,K2,
-C    &                    IB2,L2,F2,G2,IRET)
-C   INPUT ARGUMENTS:
-C     K1F          INTEGER REGULARIZED INPUT DIMENSION
-C     KGDS1F       INTEGER (200) REGULARIZED INPUT GRID PARAMETERS
-C     K2F          INTEGER REGULARIZED OUTPUT DIMENSION
-C     KGDS2F       INTEGER (200) REGULARIZED OUTPUT GRID PARAMETERS
-C     MRL          INTEGER DIMENSION OF RLAT AND RLON
-C     MRO          INTEGER DIMENSION OF CROT AND SROT
-C     IV           INTEGER VECTOR FLAG
-C     IP           INTEGER INTERPOLATION TYPE
-C     IPOPT        INTEGER (20) INTERPOLATION OPTIONS
-C     KGDS1        INTEGER (200) INPUT GRID PARAMETERS
-C     K1           INTEGER INPUT DIMENSION
-C     IB1          INTEGER INPUT BITMAP FLAG
-C     L1           LOGICAL*1 (K1) INPUT BITMAP IF IB1=1
-C     F1           REAL (K1) INPUT FIELD
-C     G1           REAL (K1) INPUT Y-COMPONENT IF IV=1
-C     KGDS2        INTEGER (200) OUTPUT GRID PARAMETERS
-C     K2           INTEGER OUTPUT DIMENSION
-C     IB2          INTEGER OUTPUT BITMAP FLAG
-C     L2           LOGICAL*1 (K2) OUTPUT BITMAP
-C     F2           REAL (K2) OUTPUT FIELD
-C     G2           REAL (K2) OUTPUT Y-COMPONENT IF IV=1
-C
-C SUBPROGRAMS CALLED:
-C   IPOLATES
-C   IPOLATEV
-C   IPXWAFS2
-C   IPXWAFS3
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN
-C
-C$$$
       INTEGER IPOPT(20)
       INTEGER KGDS1(200),KGDS2(200)
       LOGICAL*1 L1(K1),L2(K2)
