@@ -128,7 +128,7 @@ jobs:
         mkdir build && cd build
         ls -l ~/jasper
         cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3nco;~/g2" -DCMAKE_Fortran_FLAGS="-fsanitize=address -Wall" -DCMAKE_C_FLAGS="-fsanitize=address -Wall" ..
-        make -j2
+        make
         ctest --verbose --output-on-failure
           
 
