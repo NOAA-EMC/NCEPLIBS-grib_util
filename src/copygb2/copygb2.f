@@ -1,183 +1,171 @@
-C> @file
-C>
-C> @author IREDELL @date 1998-10-22
-C
-C> The command copygb2 copies all or part of one GRIB2 file
-C> to another GRIB2 file, interpolating if necessary.  Unless
-C> otherwise directed (-x option), the GRIB2 index file is also used
-C> to speed the reading. The fields are interpolated to an output grid
-C> if specified (-g option). The interpolation type defaults to
-C> bilinear but may be specified directly (-i option).  The copying
-C> may be limited to specific fields (-k option). It may also be
-C> limited to a specified subgrid of the output grid or to a subrange
-C> of the input fields (-B and -b, -A, and -K options). Fields can be
-C> identified as scalars or vectors (-v option), which are interpolated
-C> differently.  The invalid data in the output field can be filled
-C> with mask values or merged with a merge field (-M and -m options).
-C> The output GRIB2 message can also be appended to a file (-a option).
-C> Some defaults can be overridden in a namelist file (-N option).
-C>
-C> PROGRAM HISTORY LOG:
-C> -  96-07-19  IREDELL
-C> -  97-03-05  IREDELL  CORRECTED THE COPYING OF THE V-WIND FIELD
-C> -                     WHEN NO INTERPOLATION IS DONE
-C> -  97-03-18  IREDELL  INCREASED VERBOSITY
-C> - 1998-09-03  IREDELL  INSTRUMENTED AND MADE PLATFORM-INDEPENDENT
-C> - 1999-10-05  IREDELL  ADDED APPEND OPTION AND WGRIB REQUEST OPTION
-C> - 1999-10-06  IREDELL  ADDED MERGE OPTION
-C> - 2000-01-19  IREDELL  ADDED NAMELIST OPTION
-C> - 2001-03-16  IREDELL  ADDED ENSEMBLE EXTENSION OPTION
-C> - 2002-01-10  IREDELL  CORRECTED V-WIND SEARCH TO INCLUDE SUBCENTER
-C> - 2005-02-17  GILBERT  MODIFIED FROM COPYGB FOR USE WITH GRIB2 FILES.
-C> - 2012-10-03  VUONG    MODIFIED TO REMOVE DEALLOCATE L1I,F1I,G1I
-C> - 2013-05-08  VUONG    INITIALIZED VARIABLES MM AND ALLONES TO ZERO
-C> - 2016-10-03  VUONG    INITIALIZED POINTERS AND HOW THEY ARE ASSOCIATED
-C>                      CHANGED FROM ALLOCATE(L1I(MI),F1I(MI),G1I(MI)) TO
-C>                      ALLOCATE(L1I(MI)),ALLOCATE(F1I(MI)),ALLOCATE(G1I(MI))
-C>
-C> ## COMMAND LINE OPTIONS:
-C>   -a
-C>      Appends rather than overwrites the output GRIB file.
-C>
-C>   -A "<> mapthreshold"
-C>      Inequality and threshold used in determining
-C>      where on the map the data will be copied.
-C>      The data are copied only where the given 
-C>      map field is on the correct side of the threshold.
-C>      The mapthreshold defaults to '>-1.e30'; in this case,
-C>      only the map field's bitmap will limit the domain.
-C>
-C>   -b mapindex   
-C>      Optional index file used to get the map field.
-C>
-C>   -B mapgrib    
-C>      GRIB file used to get the map field.  The map field
-C>      is read from the GRIB file and compared to the
-C>      map threshold to determine for which region on the map
-C>      the data will be copied.  The mapgrib can be the name
-C>      of an actual GRIB file (in which case the index
-C>      file may be specified with the -b option) or it can
-C>      be '-1'.  If mapgrib is '-1', then the input GRIB file
-C>      (first positional argument) is used.
-C>      The -K option specifies which field to read from
-C>      the mapgrib GRIB file.  If mapgrib is an actual file,
-C>      then the first field is taken if -K is not specified.
-C>      On the other hand, if mapgrib is '-1', then if the
-C>      if -K is not specified, the current field is taken
-C>      as the map field.  A special exception is if -K '-1'
-C>      is specified, in which case the current field is
-C>      taken as the map field and it is applied before any
-C>      interpolation; otherwise the map field is always
-C>      applied after interpolation.
-C>
-C>   -g "kgdtn [kgds]"
-C>      Output grid identification.  If kgdtn=-1 (the default),
-C>      then the output grid is the same as the input grid.
-C>      If kgdtn=-4, then the grid is that of the map field.
-C>      If kgdtn=-5, then the grid is that of the merge field.
-C>      If 0<=kgdtn<65535, then grid designates a specific
-C>      GRIB2 Grid Definition Template (GDT) Number.  In this
-C>      case, kgdt is the list of the full set of Grid
-C>      Definition Template values for the GDT 3.kgdtn,
-C>      defining the output grid.
-C>
-C>   -i "ip [ipopts]"
-C>      Interpolation options.  The default is bilinear
-C>      interpolation (ip=0).  Other interpolation options
-C>      are bicubic (ip=1), neighbor (ip=2), budget (ip=3),
-C>      and spectral (ip=4).  Spectral interpolation is forced
-C>      even if the input and output grids are the same.
-C>      See the documentation for iplib for further details.
-C>
-C>   -k "kpdtn kpdt"
-C>      Full set of Production Definition Template parameters
-C>      determining the field(s) to be copied.  kpdtn is
-C>      Product Definition Template (PDT) number 4.kpdtn.
-C>      A wildcard, indicating search all template numbers,
-C>      is specified by -1 (the default).  The kpdt array
-C>      contains the values of each entry of PDT 4.kpdtn,
-C>      and a wildcard for any entry can be specified as
-C>      -9999.  If the -k is not specified, then copygb will 
-C>      attempt to copy every field in the input GRIB file.
-C>
-C>   -K "mapkpds"
-C>      Full set of kpds parameters determing a GRIB PDS
-C>      (product definition section) in the W3FI63 format
-C>      determining the map field to be used to determine
-C>      where on the map the data will be copied.  
-C>      A wildcard is specified by -1 (the defaults).
-C>
-C>   -m mergeindex   
-C>      Optional index file used to get the merge field.
-C>
-C>   -M "mask"/mergegrib
-C>      Mask used to fill out bitmapped areas of the map.
-C>      If specified, there will be no bitmap in the output.
-C>      The mask must be in the format '\#value' where value
-C>      is the real number used to fill out the field.
-C>      Otherwise, the argument is interpreted as a merge
-C>      GRIB file.  Then for each GRIB message copied,
-C>      a merge field is found in the merge GRIB file
-C>      with the same parameter and level indicators
-C>      as the copied field.  This merge field is interpolated
-C>      to the output grid and used to fill out the bitmapped
-C>      areas of the map, at least where the merge field
-C>      is not bitmapped.  No merging is done if no merge
-C>      field is found.
-C>
-C>   -N namelist
-C>      Namelist file to override default output options.
-C>      The namelist must start with " &NLCOPYGB" and end with "/".
-C>      Namelist variables are
-C>        IDS(255)      Output decimal scaling by parameter
-C>        IBS(255)      Output binary scaling by parameter
-C>        NBS(255)      Output number of bits by parameter
-C>      
-C>   -v "uparms"
-C>      Parameter indicator(s) for the u-component of vectors.
-C>      A specific parameter is indicated by three numbers:
-C>      disc|cat|num.  Any parameter value in uparms is defined
-C>      as (65536*disc)+(256*cat)+num.
-C>      The parameter indicator for the v-component is assumed
-C>      to be one more than that of the u-component.
-C>      If the -v option is not specified, then the wind
-C>      components (parameters 0|2|2 = 514 and 0|2|3 = 515)
-C>      are the only fields assumed to be vector components
-C>      in the GRIB file.
-C>
-C>   -x
-C>      Turns off the use of an index file.  The index records
-C>      are then extracted from the GRIB file, which
-C>      will increase the time taken by copygb2.
-C>
-C>   -X
-C>      Turns on verbose printout.  This option is
-C>      incompatible with GRIB output to standard output.
-C>
-C> INPUT FILES:
-C>   - UNIT   11    INPUT GRIB FILE
-C>   - UNIT   14    MAP GRIB FILE
-C>   - UNIT   15    MERGE GRIB FILE
-C>   - UNIT   31    INPUT GRIB INDEX FILE
-C>   - UNIT   34    MAP GRIB INDEX FILE
-C>   - UNIT   35    MERGE GRIB INDEX FILE
-C>
-C> OUTPUT FILES:
-C>   - UNIT   51    OUTPUT GRIB FILE
-C>
-C> SUBPROGRAMS CALLED:
-C>   - IARGC
-C>   - GETARG
-C>   - ERRMSG
-C>   - EUSAGE
-C>   - ERREXIT
-C>   - FPARSEI
-C>   - FPARSER
-C>   - BAOPENR
-C>   - BAOPENWT
-C>   - BAOPENWA
-C>   - CPGB
-C>      
+!> @file
+!> @brief Copy all or part of one GRIB2 file to another GRIB2 file.
+!> @author Iredell @date 1998-10-22
+!
+!> The command copygb2 copies all or part of one GRIB2 file
+!> to another GRIB2 file, interpolating if necessary. Unless
+!> otherwise directed (-x option), the GRIB2 index file is also used
+!> to speed the reading. The fields are interpolated to an output grid
+!> if specified (-g option). The interpolation type defaults to
+!> bilinear but may be specified directly (-i option). The copying
+!> may be limited to specific fields (-k option). It may also be
+!> limited to a specified subgrid of the output grid or to a subrange
+!> of the input fields (-B and -b, -A, and -K options). Fields can be
+!> identified as scalars or vectors (-v option), which are interpolated
+!> differently. The invalid data in the output field can be filled
+!> with mask values or merged with a merge field (-M and -m options).
+!> The output GRIB2 message can also be appended to a file (-a option).
+!> Some defaults can be overridden in a namelist file (-N option).
+!>
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!>  96-07-19 | Iredell | Initial
+!>  97-03-05 | Iredell | corrected the copying of the v-wind field when no interpolation is done
+!>  97-03-18 | Iredell | increased verbosity
+!> 1998-09-03 | Iredell | instrumented and made platform-independent
+!> 1999-10-05 | Iredell | added append option and wgrib request option
+!> 1999-10-06 | Iredell | added merge option
+!> 2000-01-19 | Iredell | added namelist option
+!> 2001-03-16 | Iredell | added ensemble extension option
+!> 2002-01-10 | Iredell | corrected v-wind search to include subcenter
+!> 2005-02-17 | Gilbert | modified from copygb for use with grib2 files.
+!> 2012-10-03 | Vuong | modified to remove deallocate l1i,f1i,g1i
+!> 2013-05-08 | Vuong | initialized variables mm and allones to zero
+!> 2016-10-03 | vuong | initialized pointers, changed allocations
+!>
+!> ## COMMAND LINE OPTIONS:
+!>   -a
+!>      Appends rather than overwrites the output GRIB file.
+!>
+!>   -A "<> mapthreshold"
+!>      Inequality and threshold used in determining
+!>      where on the map the data will be copied.
+!>      The data are copied only where the given 
+!>      map field is on the correct side of the threshold.
+!>      The mapthreshold defaults to '>-1.e30'; in this case,
+!>      only the map field's bitmap will limit the domain.
+!>
+!>   -b mapindex   
+!>      Optional index file used to get the map field.
+!>
+!>   -B mapgrib    
+!>      GRIB file used to get the map field. The map field
+!>      is read from the GRIB file and compared to the
+!>      map threshold to determine for which region on the map
+!>      the data will be copied. The mapgrib can be the name
+!>      of an actual GRIB file (in which case the index
+!>      file may be specified with the -b option) or it can
+!>      be '-1'. If mapgrib is '-1', then the input GRIB file
+!>      (first positional argument) is used.
+!>      The -K option specifies which field to read from
+!>      the mapgrib GRIB file. If mapgrib is an actual file,
+!>      then the first field is taken if -K is not specified.
+!>      On the other hand, if mapgrib is '-1', then if the
+!>      if -K is not specified, the current field is taken
+!>      as the map field. A special exception is if -K '-1'
+!>      is specified, in which case the current field is
+!>      taken as the map field and it is applied before any
+!>      interpolation; otherwise the map field is always
+!>      applied after interpolation.
+!>
+!>   -g "kgdtn [kgds]"
+!>      Output grid identification. If kgdtn=-1 (the default),
+!>      then the output grid is the same as the input grid.
+!>      If kgdtn=-4, then the grid is that of the map field.
+!>      If kgdtn=-5, then the grid is that of the merge field.
+!>      If 0<=kgdtn<65535, then grid designates a specific
+!>      GRIB2 Grid Definition Template (GDT) Number. In this
+!>      case, kgdt is the list of the full set of Grid
+!>      Definition Template values for the GDT 3.kgdtn,
+!>      defining the output grid.
+!>
+!>   -i "ip [ipopts]"
+!>      Interpolation options. The default is bilinear
+!>      interpolation (ip=0). Other interpolation options
+!>      are bicubic (ip=1), neighbor (ip=2), budget (ip=3),
+!>      and spectral (ip=4). Spectral interpolation is forced
+!>      even if the input and output grids are the same.
+!>      See the documentation for iplib for further details.
+!>
+!>   -k "kpdtn kpdt"
+!>      Full set of Production Definition Template parameters
+!>      determining the field(s) to be copied. kpdtn is
+!>      Product Definition Template (PDT) number 4.kpdtn.
+!>      A wildcard, indicating search all template numbers,
+!>      is specified by -1 (the default). The kpdt array
+!>      contains the values of each entry of PDT 4.kpdtn,
+!>      and a wildcard for any entry can be specified as
+!>      -9999. If the -k is not specified, then copygb will 
+!>      attempt to copy every field in the input GRIB file.
+!>
+!>   -K "mapkpds"
+!>      Full set of kpds parameters determing a GRIB PDS
+!>      (product definition section) in the W3FI63 format
+!>      determining the map field to be used to determine
+!>      where on the map the data will be copied. 
+!>      A wildcard is specified by -1 (the defaults).
+!>
+!>   -m mergeindex   
+!>      Optional index file used to get the merge field.
+!>
+!>   -M "mask"/mergegrib
+!>      Mask used to fill out bitmapped areas of the map.
+!>      If specified, there will be no bitmap in the output.
+!>      The mask must be in the format '\#value' where value
+!>      is the real number used to fill out the field.
+!>      Otherwise, the argument is interpreted as a merge
+!>      GRIB file. Then for each GRIB message copied,
+!>      a merge field is found in the merge GRIB file
+!>      with the same parameter and level indicators
+!>      as the copied field. This merge field is interpolated
+!>      to the output grid and used to fill out the bitmapped
+!>      areas of the map, at least where the merge field
+!>      is not bitmapped. No merging is done if no merge
+!>      field is found.
+!>
+!>   -N namelist
+!>      Namelist file to override default output options.
+!>      The namelist must start with " &NLCOPYGB" and end with "/".
+!>      Namelist variables are
+!>        IDS(255)      Output decimal scaling by parameter
+!>        IBS(255)      Output binary scaling by parameter
+!>        NBS(255)      Output number of bits by parameter
+!>      
+!>   -v "uparms"
+!>      Parameter indicator(s) for the u-component of vectors.
+!>      A specific parameter is indicated by three numbers:
+!>      disc|cat|num. Any parameter value in uparms is defined
+!>      as (65536*disc)+(256*cat)+num.
+!>      The parameter indicator for the v-component is assumed
+!>      to be one more than that of the u-component.
+!>      If the -v option is not specified, then the wind
+!>      components (parameters 0|2|2 = 514 and 0|2|3 = 515)
+!>      are the only fields assumed to be vector components
+!>      in the GRIB file.
+!>
+!>   -x
+!>      Turns off the use of an index file. The index records
+!>      are then extracted from the GRIB file, which
+!>      will increase the time taken by copygb2.
+!>
+!>   -X
+!>      Turns on verbose printout. This option is
+!>      incompatible with GRIB output to standard output.
+!>
+!> ### Files      
+!> #### Input Files
+!>   - unit   11    input grib file
+!>   - unit   14    map grib file
+!>   - unit   15    merge grib file
+!>   - unit   31    input grib index file
+!>   - unit   34    map grib index file
+!>   - unit   35    merge grib index file
+!>
+!> #### Output Files
+!>   - unit   51    output grib file
+!>
+!> @author Iredell @date 1998-10-22
       PROGRAM COPYGB2
       CHARACTER*256 CARG,CG1,CX1,CGB,CXB,CGM,CXM,CG2,CNL
       INTEGER KARG(100)
@@ -194,8 +182,8 @@ C>
       INTEGER IDS(255),IBS(255),NBS(255)
       NAMELIST/NLCOPYGB/ IDS,IBS,NBS
       DATA IDS/255*-9999/,IBS/255*-9999/,NBS/255*-9999/
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  PARSE COMMAND LINE OPTIONS
+
+!  PARSE COMMAND LINE OPTIONS
       NARG=IARGC()
       IARG=1
       LSTOPT=0
@@ -415,8 +403,8 @@ C  PARSE COMMAND LINE OPTIONS
           ENDDO
         ENDIF
       ENDDO
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  PARSE COMMAND LINE POSITIONAL ARGUMENTS
+
+!  PARSE COMMAND LINE POSITIONAL ARGUMENTS
       NXARG=LX+2
       IF(NARG-IARG+1.NE.NXARG) THEN
         CALL ERRMSG('copygb2: incorrect number of arguments')
@@ -466,8 +454,8 @@ C  PARSE COMMAND LINE POSITIONAL ARGUMENTS
           CALL ERREXIT(8)
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  OPEN MAP FILE
+
+!  OPEN MAP FILE
       IF(CGB.NE.' ') THEN
         IF(CGB(1:2).EQ.'-1') THEN
           IF(JPDSB(5).EQ.-1) THEN
@@ -497,8 +485,8 @@ C  OPEN MAP FILE
           ENDIF
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  OPEN MERGE FILE
+
+!  OPEN MERGE FILE
       IF(CGM.NE.' ') THEN
         LAM=5
         LGM=15
@@ -518,8 +506,8 @@ C  OPEN MERGE FILE
           LXM=0
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  OPEN AND READ NAMELIST FILE
+
+!  OPEN AND READ NAMELIST FILE
       IF(CNL.NE.' ') THEN
         LNL=2
         OPEN(LNL,FILE=CNL(1:LCNL),STATUS='OLD',IOSTAT=IRET)
@@ -534,8 +522,8 @@ C  OPEN AND READ NAMELIST FILE
           CALL ERREXIT(8)
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  GO
+
+!  GO
       IF(LXX.GT.0) THEN
         CALL W3TAGB('COPYGB2 ',1998,0295,0047,'NP23   ')
       ENDIF
@@ -546,34 +534,18 @@ C  GO
       IF(LXX.GT.0) THEN
         CALL W3TAGE('COPYGB2 ')
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 #ifdef __GFORTRAN__
       CONTAINS
 #else
       END
 #endif
-C-----------------------------------------------------------------------
+
+
+!> Print proper usage to stderr.
+!>
+!> @author Iredell @date 1996-07-19
       SUBROUTINE EUSAGE
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C
-C SUBPROGRAM:    EUSAGE      PRINT PROPER USAGE TO STDERR
-C   PRGMMR: IREDELL          ORG: W/NMC23     DATE: 96-07-19
-C
-C ABSTRACT: PRINT PROPER USAGE TO STDERR.
-C
-C PROGRAM HISTORY LOG:
-C   96-07-19  IREDELL
-C
-C USAGE:    CALL EUSAGE
-C
-C SUBPROGRAMS CALLED:
-C   ERRMSG
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN
-C
-C$$$
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       CALL ERRMSG('Usage: copygb2'//
      & ' [-g "kgdtn [kgdt]"] [-i "ip [ipopts]"]')
       CALL ERRMSG('              '//
@@ -590,64 +562,44 @@ C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       CALL ERRMSG('            or:')
       CALL ERRMSG('              '//
      & ' -x grib2in grib2out')
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       END
-C-----------------------------------------------------------------------
+
+!> Copy grib files.
+!>
+!> @param[in] lg1 integer unit number for grib file 1
+!> @param[in] lx1 integer unit number for grib index file 1
+!> @param[in] lgb integer unit number for grib file map
+!> @param[in] lxb integer unit number for grib index file map
+!> @param[in] lgm integer unit number for grib file merge
+!> @param[in] lxm integer unit number for grib index file merge
+!> @param[in] lg2 integer unit number for grib file 2
+!> @param[in] igdtn integer output grid identification
+!> @param[in] kgdti integer (200) output grid definition template values
+!> @param[in] ip integer interpolation type
+!> @param[in] ipopt integer (20) interpolation options
+!> @param[in] jpdtn integer product definition template number search options
+!> @param[in] jpdt integer (100) product definition template values search options
+!> @param[in] nuv integer number of vector parameter ids
+!> @param[in] iuv integer (100) vector parameter ids
+!> @param[in] jpdsb integer (100) kpds search options (map)
+!> @param[in] jb integer flag for map option
+!> @param[in] jbk integer flag for map option
+!> @param[in] lab integer flag for map threshold inequality
+!> @param[in] ab real map threshold
+!> @param[in] lam integer flag for mask value
+!> @param[in] am real mask value
+!> @param[in] lxx integer flag for verbose output
+!> @param[in] lwg integer flag for stdin selection
+!> @param[in] ids integer (255) decimal scaling (-9999 for no change)
+!> @param[in] ibs integer (255) binary scaling (-9999 for no change)
+!> @param[in] nbs integer (255) number of bits (-9999 for no change)
+!>
+!> @author Iredell @date 96-07-19
       SUBROUTINE CPGB(LG1,LX1,LGB,LXB,LGM,LXM,LG2,
      &                IGDTN,KGDTI,IP,IPOPT,JPDTN,JPDT,NUV,IUV,
      &                JPDSB,JB,JBK,LAB,AB,LAM,AM,LXX,LWG,
      &                IDS,IBS,NBS)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C
-C SUBPROGRAM:    CPGB        COPY GRIB FILES
-C   PRGMMR: IREDELL          ORG: W/NMC23     DATE: 96-07-19
-C
-C ABSTRACT: COPY GRIB FILES.
-C
-C PROGRAM HISTORY LOG:
-C   96-07-19  IREDELL
-C
-C USAGE:    CALL CPGB(LG1,LX1,LGB,LXB,LGM,LXM,LG2,
-C    &                IGDTN,KGDTI,IP,IPOPT,JPDTN,JPDT,NUV,IUV,
-C    &                JPDSB,JB,JBK,LAB,AB,LAM,AM,LXX,LWG,
-C    &                IDS,IBS,NBS)
-C   INPUT ARGUMENTS:
-C     LG1          INTEGER UNIT NUMBER FOR GRIB FILE 1
-C     LX1          INTEGER UNIT NUMBER FOR GRIB INDEX FILE 1
-C     LGB          INTEGER UNIT NUMBER FOR GRIB FILE MAP
-C     LXB          INTEGER UNIT NUMBER FOR GRIB INDEX FILE MAP
-C     LGM          INTEGER UNIT NUMBER FOR GRIB FILE MERGE
-C     LXM          INTEGER UNIT NUMBER FOR GRIB INDEX FILE MERGE
-C     LG2          INTEGER UNIT NUMBER FOR GRIB FILE 2
-C     IGDTN        INTEGER OUTPUT GRID IDENTIFICATION
-C     KGDTI        INTEGER (200) OUTPUT GRID DEFINITION TEMPLATE VALUES
-C     IP           INTEGER INTERPOLATION TYPE
-C     IPOPT        INTEGER (20) INTERPOLATION OPTIONS
-C     JPDTN        INTEGER PRODUCT DEFINITION TEMPLATE NUMBER SEARCH OPTIONS
-C     JPDT         INTEGER (100) PRODUCT DEFINITION TEMPLATE VALUES SEARCH OPTIONS
-C     NUV          INTEGER NUMBER OF VECTOR PARAMETER IDS
-C     IUV          INTEGER (100) VECTOR PARAMETER IDS
-C     JPDSB        INTEGER (100) KPDS SEARCH OPTIONS (MAP)
-C     JB           INTEGER FLAG FOR MAP OPTIION
-C     JBK          INTEGER FLAG FOR MAP OPTIION
-C     LAB          INTEGER FLAG FOR MAP THRESHOLD INEQUALITY
-C     AB           REAL MAP THRESHOLD
-C     LAM          INTEGER FLAG FOR MASK VALUE
-C     AM           REAL MASK VALUE
-C     LXX          INTEGER FLAG FOR VERBOSE OUTPUT
-C     LWG          INTEGER FLAG FOR STDIN SELECTION
-C     IDS          INTEGER (255) DECIMAL SCALING (-9999 FOR NO CHANGE)
-C     IBS          INTEGER (255) BINARY SCALING (-9999 FOR NO CHANGE)
-C     NBS          INTEGER (255) NUMBER OF BITS (-9999 FOR NO CHANGE)
-C
-C SUBPROGRAMS CALLED:
-C   GETGBEMH
-C   CPGB1  
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN
-C
-C$$$
       USE GRIB_MOD
 
       PARAMETER(MBUF=256*1024)
@@ -664,9 +616,9 @@ C$$$
       CHARACTER*80 CIN
       LOGICAL UNPACK
       TYPE( GRIBFIELD ) :: GFLD1,GFLDM
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       MM = 0
-C  READ GRIB HEADERS
+!  READ GRIB HEADERS
       IF(LXX.GT.0) CALL INSTRUMENT(6,KALL0,TTOT0,TMIN0,TMAX0)
       IF(JB.EQ.4) THEN
         JGDS=-1
@@ -723,8 +675,8 @@ C  READ GRIB HEADERS
           ENDIF
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  LOOP UNTIL DONE
+
+!  LOOP UNTIL DONE
       NO=0
       DOWHILE(IRET.EQ.0)
         IF(LAM.EQ.5) THEN
@@ -814,7 +766,7 @@ C  LOOP UNTIL DONE
           ENDIF
         ENDIF
       ENDDO
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       IF(LXX.GT.0) THEN
         PRINT *,'copygb2 wrote ',NO,' total records'
         CALL INSTRUMENT(1,KALL1,TTOT1,TMIN1,TMAX1)
@@ -833,9 +785,55 @@ C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         TTOTT=TTOT1+TTOT2+TTOT3+TTOT4+TTOT5+TTOT6
         PRINT '(F10.3," total seconds spent in copygb2")',TTOTT
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       END
-C-----------------------------------------------------------------------
+
+!> Copy one grib field.
+!>
+!> @param[in] lg1 integer unit number for grib file 1
+!> @param[in] lx1 integer unit number for grib index file 1
+!> @param[in] m1 integer dimension of grib field 1
+!> @param[in] mbuf integer dimension of index buffers
+!> @param[in] mf integer dimension of field
+!> @param[in] mi integer dimension of output grid
+!> @param[in] igdtn integer output grid definition template number
+!> @param[in] kgdti integer (200) output grid definition template values
+!> @param[in] ip integer interpolation type
+!> @param[in] ipopt integer (20) interpolation options
+!> @param[in] jpdtn integer product definition template number search options
+!> @param[in] jpdt integer (100) product definition template values search options
+!> @param[in] nuv integer number of vector parameter ids
+!> @param[in] iuv integer (100) vector parameter ids
+!> @param[in] jpdsb integer (100) kpds search options (map)
+!> @param[in] jb integer flag for map option
+!> @param[in] jbk integer flag for map option
+!> @param[in] lab integer flag for map threshold inequality
+!> @param[in] ab real map threshold
+!> @param[in] lam integer flag for mask value
+!> @param[in] am real mask value
+!> @param[in] ids integer (255) decimal scaling (-9999 for no change)
+!> @param[in] ibs integer (255) binary scaling (-9999 for no change)
+!> @param[in] nbs integer (255) number of bits (-9999 for no change)
+!> @param[in] lgb integer unit number for grib file map
+!> @param[in] lxb integer unit number for grib index file map
+!> @param[in] mb integer dimension of grib field map
+!> @param[in] cbufb character (mbuf) index buffer map
+!> @param[in] nlenb integer record length of index buffer map
+!> @param[in] nnumb integer number of records in index buffer map
+!> @param[in] nlenb integer length of each index record map
+!> @param[in] nnumb integer number of index records map
+!> @param[in] mnumb integer number of index records map skipped
+!> @param[in] lgm integer unit number for grib file merge
+!> @param[in] lxm integer unit number for grib index file merge
+!> @param[in] mm integer dimension of grib field merge
+!> @param[in] lg2 integer unit number for grib file 2
+!> @param[in] lxx integer flag for verbose output
+!> @param[in] ks1 integer input record counter
+!> @param[in] no integer output record counter
+!> @param[out] no integer output record counter
+!> @param[out] iret integer return code
+!>
+!> @author Iredell @date 96-07-19
       SUBROUTINE CPGB1(LG1,LX1,M1,
      &                 MBUF,MF,MI,
      &                 IGDTN,KGDTI,IP,IPOPT,JPDTN,JPDT,NUV,IUV,
@@ -844,78 +842,6 @@ C-----------------------------------------------------------------------
      &                 LGB,LXB,MB,CBUFB,NLENB,NNUMB,MNUMB,
      &                 LGM,LXM,MM,
      &                 LG2,LXX,KS1,NO,IRET)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C
-C SUBPROGRAM:    CPGB1       COPY ONE GRIB FIELD
-C   PRGMMR: IREDELL          ORG: W/NMC23     DATE: 96-07-19
-C
-C ABSTRACT: COPY ONE GRIB FIELD.
-C
-C PROGRAM HISTORY LOG:
-C   96-07-19  IREDELL
-C
-C USAGE:    CALL CPGB1(LG1,LX1,M1,
-C    &                 MBUF,MF,MI,
-C    &                 IGDTN,KGDTI,IP,IPOPT,JPDTN,JPDT,NUV,IUV,
-C    &                 JPDSB,JB,JBK,LAB,AB,LAM,AM,
-C    &                 IDS,IBS,NBS,
-C    &                 LGB,LXB,MB,CBUFB,NLENB,NNUMB,MNUMB,
-C    &                 LGM,LXM,MM,
-C    &                 LG2,LXX,KS1,NO,IRET)
-C   INPUT ARGUMENTS:
-C     LG1          INTEGER UNIT NUMBER FOR GRIB FILE 1
-C     LX1          INTEGER UNIT NUMBER FOR GRIB INDEX FILE 1
-C     M1           INTEGER DIMENSION OF GRIB FIELD 1
-C     MBUF         INTEGER DIMENSION OF INDEX BUFFERS
-C     MF           INTEGER DIMENSION OF FIELD
-C     MI           INTEGER DIMENSION OF OUTPUT GRID
-C     IGDTN        INTEGER OUTPUT GRID DEFINITION TEMPLATE NUMBER
-C     KGDTI        INTEGER (200) OUTPUT GRID DEFINITION TEMPLATE VALUES
-C     IP           INTEGER INTERPOLATION TYPE
-C     IPOPT        INTEGER (20) INTERPOLATION OPTIONS
-C     JPDTN        INTEGER PRODUCT DEFINITION TEMPLATE NUMBER SEARCH OPTIONS
-C     JPDT         INTEGER (100) PRODUCT DEFINITION TEMPLATE VALUES SEARCH OPTIONS
-C     NUV          INTEGER NUMBER OF VECTOR PARAMETER IDS
-C     IUV          INTEGER (100) VECTOR PARAMETER IDS
-C     JPDSB        INTEGER (100) KPDS SEARCH OPTIONS (MAP)
-C     JB           INTEGER FLAG FOR MAP OPTIION
-C     JBK          INTEGER FLAG FOR MAP OPTIION
-C     LAB          INTEGER FLAG FOR MAP THRESHOLD INEQUALITY
-C     AB           REAL MAP THRESHOLD
-C     LAM          INTEGER FLAG FOR MASK VALUE
-C     AM           REAL MASK VALUE
-C     IDS          INTEGER (255) DECIMAL SCALING (-9999 FOR NO CHANGE)
-C     IBS          INTEGER (255) BINARY SCALING (-9999 FOR NO CHANGE)
-C     NBS          INTEGER (255) NUMBER OF BITS (-9999 FOR NO CHANGE)
-C     LGB          INTEGER UNIT NUMBER FOR GRIB FILE MAP
-C     LXB          INTEGER UNIT NUMBER FOR GRIB INDEX FILE MAP
-C     MB           INTEGER DIMENSION OF GRIB FIELD MAP
-C     CBUFB        CHARACTER (MBUF) INDEX BUFFER MAP
-C     NLENB        INTEGER RECORD LENGTH OF INDEX BUFFER MAP
-C     NNUMB        INTEGER NUMBER OF RECORDS IN INDEX BUFFER MAP
-C     NLENB        INTEGER LENGTH OF EACH INDEX RECORD MAP
-C     NNUMB        INTEGER NUMBER OF INDEX RECORDS MAP
-C     MNUMB        INTEGER NUMBER OF INDEX RECORDS MAP SKIPPED
-C     LGM          INTEGER UNIT NUMBER FOR GRIB FILE MERGE
-C     LXM          INTEGER UNIT NUMBER FOR GRIB INDEX FILE MERGE
-C     MM           INTEGER DIMENSION OF GRIB FIELD MERGE
-C     LG2          INTEGER UNIT NUMBER FOR GRIB FILE 2
-C     LXX          INTEGER FLAG FOR VERBOSE OUTPUT
-C     KS1          INTEGER INPUT RECORD COUNTER
-C     NO           INTEGER OUTPUT RECORD COUNTER
-C   OUTPUT ARGUMENTS:
-C     NO           INTEGER OUTPUT RECORD COUNTER
-C     IRET         INTEGER RETURN CODE
-C
-C SUBPROGRAMS CALLED:
-C   GETGBEM
-C   INTGRIB2
-C   PUTGBEN
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN
-C
-C$$$
       USE GRIB_MOD
       USE GRIDTEMPLATES
 
@@ -941,8 +867,8 @@ C$$$
       REAL,POINTER :: FBI(:),GBI(:)
       TYPE( GRIBFIELD ) :: GFLD1,GFLDV,GFLDM,GFLDMV
       INTEGER ISDUMMY,IADUMMY(200)
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  GET FIELD FROM FILE 1
+
+!  GET FIELD FROM FILE 1
       JDISC=-1
       JIDS=-9999
       JGDTN=-1
@@ -997,8 +923,8 @@ C  GET FIELD FROM FILE 1
         ENDIF
         CALL INSTRUMENT(2,KALL2,TTOT2,TMIN2,TMAX2)
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  INVOKE MAP MASK BEFORE INTERPOLATION
+
+!  INVOKE MAP MASK BEFORE INTERPOLATION
       IF(IRET.EQ.0.AND.JBK.EQ.1.AND.JB.EQ.1) THEN
         DO I=1,K1
           IF(LR(I)) THEN
@@ -1014,8 +940,8 @@ C  INVOKE MAP MASK BEFORE INTERPOLATION
           CALL INSTRUMENT(3,KALL3,TTOT3,TMIN3,TMAX3)
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  INTERPOLATE FIELD
+
+!  INTERPOLATE FIELD
       IF(IRET.EQ.0) THEN
         ALLOCATE(L1I(MI))
         ALLOCATE(F1I(MI))
@@ -1045,8 +971,8 @@ C  INTERPOLATE FIELD
         ENDIF
         IF(IRET.EQ.-1) IRET=0
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  GET MAP FIELD
+
+!  GET MAP FIELD
       IF(IRET.EQ.0.AND.JB.EQ.4) THEN
         KRB=0
         JGDS=-1
@@ -1064,8 +990,8 @@ C  GET MAP FIELD
             PRINT *,'       map field retrieval error code ',IRET
           ENDIF
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  INTERPOLATE MAP FIELD
+
+!  INTERPOLATE MAP FIELD
         IF(IRET.EQ.0) THEN
           IBB=MOD(KPDSB(4)/64,2)
           CALL INTGRIB2(0,IP,IPOPT,ISDUMMY,IADUMMY,SIZE(KGDSB),KGDSB,
@@ -1081,8 +1007,8 @@ C  INTERPOLATE MAP FIELD
           IF(IRET.EQ.-1) IRET=0
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  INVOKE MAP MASK
+
+!  INVOKE MAP MASK
       IF(IRET.EQ.0) THEN
         IF(JBK.EQ.0.AND.JB.EQ.1) THEN
           DO I=1,MI
@@ -1114,8 +1040,8 @@ C  INVOKE MAP MASK
             PRINT *,'       applied fixed map mask'
           ENDIF
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  MASK VALUES
+
+!  MASK VALUES
         IF(LAM.EQ.1.AND.IB1I.EQ.1) THEN
           IB1I=0
           DO I=1,MI
@@ -1130,8 +1056,8 @@ C  MASK VALUES
           ENDIF
         ENDIF
         IF(LXX.GT.0) CALL INSTRUMENT(3,KALL3,TTOT3,TMIN3,TMAX3)
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  MERGE FIELD
+
+!  MERGE FIELD
         IF(LAM.EQ.5.AND.IB1I.EQ.1) THEN
           JDISC=GFLD1%DISCIPLINE
           JIDS=-9999
@@ -1217,8 +1143,8 @@ C  MERGE FIELD
         ENDIF
         IF(LXX.GT.0) CALL INSTRUMENT(5,KALL5,TTOT5,TMIN5,TMAX5)
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  WRITE OUTPUT FIELD
+
+!  WRITE OUTPUT FIELD
       IF(IRET.EQ.0) THEN
         GFLD1%IBMAP=255
         IF ( IB1I .EQ. 1 ) GFLD1%IBMAP=0
@@ -1277,8 +1203,8 @@ C  WRITE OUTPUT FIELD
           CALL INSTRUMENT(6,KALL6,TTOT6,TMIN6,TMAX6)
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  CLEAN UP - FREE MEMORY
+
+!  CLEAN UP - FREE MEMORY
       IF (IRET.EQ.0) NULLIFY(GFLD1%IGDTMPL)
       IF (ASSOCIATED(GFLD1%FLD,G1I)) then
              DEALLOCATE(G1I)
@@ -1290,54 +1216,36 @@ C  CLEAN UP - FREE MEMORY
       CALL GF_FREE(GFLDV)
       CALL GF_FREE(GFLDM)
       CALL GF_FREE(GFLD1)
-c     IF (ASSOCIATED(L1I)) DEALLOCATE(L1I)
-c     IF (ASSOCIATED(F1I)) DEALLOCATE(F1I)
-c     IF (ASSOCIATED(G1I)) DEALLOCATE(G1I)
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+!     IF (ASSOCIATED(L1I)) DEALLOCATE(L1I)
+!     IF (ASSOCIATED(F1I)) DEALLOCATE(F1I)
+!     IF (ASSOCIATED(G1I)) DEALLOCATE(G1I)
+
       END
-C-----------------------------------------------------------------------
+
+!> Interpolate field.
+!>
+!> @param[in] iv integer vector flag
+!> @param[in] ip integer interpolation type
+!> @param[in] ipopt integer (20) interpolation options
+!> @param[in] ngdt1 integer (200) input grid definition template number
+!> @param[in] kgdt1 integer (200) input grid definition template values
+!> @param[in] k1 integer input dimension
+!> @param[in] ib1 integer input bitmap flag
+!> @param[in] l1 logical*1 (k1) input bitmap if ib1=1
+!> @param[in] f1 real (k1) input field
+!> @param[in] g1 real (k1) input y-component if iv=1
+!> @param[in] ngdt2 integer (200) output grid definition template number
+!> @param[in] kgdt2 integer (200) output grid definition template values
+!> @param[in] k2 integer output dimension
+!> @param[in] ib2 integer output bitmap flag
+!> @param[in] l2 logical*1 (k2) output bitmap
+!> @param[in] f2 real (k2) output field
+!> @param[in] g2 real (k2) output y-component if iv=1
+!>
+!> @author Iredell @date 96-07-19
       SUBROUTINE INTGRIB2(IV,IP,IPOPT,NGDT1,KGDT1,IDEFN1,IDEF1,
      &                    K1,IB1,L1,F1,G1,
      &                    NGDT2,KGDT2,K2,IB2,L2,F2,G2,IRET)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C
-C SUBPROGRAM:    INTGRIB2     INTERPOLATE FIELD
-C   PRGMMR: IREDELL          ORG: W/NMC23     DATE: 96-07-19
-C
-C ABSTRACT: INTERPOLATE FIELD.
-C
-C PROGRAM HISTORY LOG:
-C   96-07-19  IREDELL
-C
-C USAGE:    CALL INTGRIB2(IV,IP,IPOPT,NGDT1,KGDT1,K1,IB1,L1,F1,G1,NGDT2,
-C                         KGDT2,K2,IB2,L2,F2,G2,IRET)
-C   INPUT ARGUMENTS:
-C     IV           INTEGER VECTOR FLAG
-C     IP           INTEGER INTERPOLATION TYPE
-C     IPOPT        INTEGER (20) INTERPOLATION OPTIONS
-C     NGDT1        INTEGER (200) INPUT GRID DEFINITION TEMPLATE NUMBER
-C     KGDT1        INTEGER (200) INPUT GRID DEFINITION TEMPLATE VALUES
-C     K1           INTEGER INPUT DIMENSION
-C     IB1          INTEGER INPUT BITMAP FLAG
-C     L1           LOGICAL*1 (K1) INPUT BITMAP IF IB1=1
-C     F1           REAL (K1) INPUT FIELD
-C     G1           REAL (K1) INPUT Y-COMPONENT IF IV=1
-C     NGDT2        INTEGER (200) OUTPUT GRID DEFINITION TEMPLATE NUMBER
-C     KGDT2        INTEGER (200) OUTPUT GRID DEFINITION TEMPLATE VALUES
-C     K2           INTEGER OUTPUT DIMENSION
-C     IB2          INTEGER OUTPUT BITMAP FLAG
-C     L2           LOGICAL*1 (K2) OUTPUT BITMAP
-C     F2           REAL (K2) OUTPUT FIELD
-C     G2           REAL (K2) OUTPUT Y-COMPONENT IF IV=1
-C
-C SUBPROGRAMS CALLED:
-C   LENGDSF
-C   INTGRIB1
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN
-C
-C$$$
       USE GRIDTEMPLATES
 
       INTEGER IPOPT(20)
@@ -1350,8 +1258,8 @@ C$$$
       REAL F1(K1),F2(K2)
       REAL G1(K1),G2(K2)
       INTEGER KGDS1F(200),KGDS2F(200)
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  DETERMINE WHETHER INTERPOLATION IS NECESSARY
+
+!  DETERMINE WHETHER INTERPOLATION IS NECESSARY
       IF(IP.EQ.4) THEN
         INT=1
       ELSE
@@ -1365,8 +1273,8 @@ C  DETERMINE WHETHER INTERPOLATION IS NECESSARY
         ENDIF
         INT=MIN(INT,1)
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  COPY FIELD
+
+!  COPY FIELD
       IF(INT.EQ.0) THEN
         IB2=IB1
         DO I=1,K1
@@ -1375,9 +1283,9 @@ C  COPY FIELD
           IF(IV.NE.0) G2(I)=G1(I)
         ENDDO
         IRET=-1
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  CONVERT GRIB2 GRID DEFINITION TEMPLATE TO GRIB1 GDS
-C  COMPUTE REGULARIZED GRIDS AND INTERPOLATE FIELD
+
+!  CONVERT GRIB2 GRID DEFINITION TEMPLATE TO GRIB1 GDS
+!  COMPUTE REGULARIZED GRIDS AND INTERPOLATE FIELD
       ELSE
         IDEFN=0
         IGDS=0
@@ -1405,57 +1313,37 @@ C  COMPUTE REGULARIZED GRIDS AND INTERPOLATE FIELD
           IRET=101
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       END
-C-----------------------------------------------------------------------
+
+! Interpolate field.
+!
+! @param[in] k1f integer regularized input dimension
+! @param[in] kgds1f integer (200) regularized input grid parameters
+! @param[in] k2f integer regularized output dimension
+! @param[in] kgds2f integer (200) regularized output grid parameters
+! @param[in] mrl integer dimension of rlat and rlon
+! @param[in] mro integer dimension of crot and srot
+! @param[in] iv integer vector flag
+! @param[in] ip integer interpolation type
+! @param[in] ipopt integer (20) interpolation options
+! @param[in] kgds1 integer (200) input grid parameters
+! @param[in] k1 integer input dimension
+! @param[in] ib1 integer input bitmap flag
+! @param[in] l1 logical*1 (k1) input bitmap if ib1=1
+! @param[in] f1 real (k1) input field
+! @param[in] g1 real (k1) input y-component if iv=1
+! @param[in] kgds2 integer (200) output grid parameters
+! @param[in] k2 integer output dimension
+! @param[in] ib2 integer output bitmap flag
+! @param[in] l2 logical*1 (k2) output bitmap
+! @param[in] f2 real (k2) output field
+! @param[in] g2 real (k2) output y-component if iv=1
+!
+! @author Iredell @date 96-07-19
       SUBROUTINE INTGRIB1(K1F,KGDS1F,K2F,KGDS2F,MRL,MRO,
      &                    IV,IP,IPOPT,KGDS1,K1,IB1,L1,F1,G1,KGDS2,K2,
      &                    IB2,L2,F2,G2,IRET)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C
-C SUBPROGRAM:    INTGRIB1    INTERPOLATE FIELD
-C   PRGMMR: IREDELL          ORG: W/NMC23     DATE: 96-07-19
-C
-C ABSTRACT: INTERPOLATE FIELD.
-C
-C PROGRAM HISTORY LOG:
-C   96-07-19  IREDELL
-C
-C USAGE:    CALL INTGRIB1(K1F,KGDS1F,K2F,KGDS2F,MRL,MRO,
-C    &                    IV,IP,IPOPT,KGDS1,K1,IB1,L1,F1,G1,KGDS2,K2,
-C    &                    IB2,L2,F2,G2,IRET)
-C   INPUT ARGUMENTS:
-C     K1F          INTEGER REGULARIZED INPUT DIMENSION
-C     KGDS1F       INTEGER (200) REGULARIZED INPUT GRID PARAMETERS
-C     K2F          INTEGER REGULARIZED OUTPUT DIMENSION
-C     KGDS2F       INTEGER (200) REGULARIZED OUTPUT GRID PARAMETERS
-C     MRL          INTEGER DIMENSION OF RLAT AND RLON
-C     MRO          INTEGER DIMENSION OF CROT AND SROT
-C     IV           INTEGER VECTOR FLAG
-C     IP           INTEGER INTERPOLATION TYPE
-C     IPOPT        INTEGER (20) INTERPOLATION OPTIONS
-C     KGDS1        INTEGER (200) INPUT GRID PARAMETERS
-C     K1           INTEGER INPUT DIMENSION
-C     IB1          INTEGER INPUT BITMAP FLAG
-C     L1           LOGICAL*1 (K1) INPUT BITMAP IF IB1=1
-C     F1           REAL (K1) INPUT FIELD
-C     G1           REAL (K1) INPUT Y-COMPONENT IF IV=1
-C     KGDS2        INTEGER (200) OUTPUT GRID PARAMETERS
-C     K2           INTEGER OUTPUT DIMENSION
-C     IB2          INTEGER OUTPUT BITMAP FLAG
-C     L2           LOGICAL*1 (K2) OUTPUT BITMAP
-C     F2           REAL (K2) OUTPUT FIELD
-C     G2           REAL (K2) OUTPUT Y-COMPONENT IF IV=1
-C
-C SUBPROGRAMS CALLED:
-C   IPOLATES
-C   IPOLATEV
-C   IPXWAFS2
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN
-C
-C$$$
       INTEGER IPOPT(20)
       INTEGER KGDS1(200),KGDS2(200)
       LOGICAL*1 L1(K1),L2(K2)
@@ -1464,13 +1352,13 @@ C$$$
       LOGICAL*1 L1F(K1F),L2F(K2F)
       REAL F1F(K1F),F2F(K2F),G1F(K1F),G2F(K2F)
       REAL RLAT(MRL),RLON(MRL),CROT(MRO),SROT(MRO)
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  REGLR TO REGLR SCALAR
+
+!  REGLR TO REGLR SCALAR
       IF(K1F.EQ.1.AND.K2F.EQ.1.AND.IV.EQ.0) THEN
         CALL IPOLATES(IP,IPOPT,KGDS1,KGDS2,K1,K2,1,IB1,L1,F1,
      &                KI,RLAT,RLON,IB2,L2,F2,IRET)
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  IRREG TO REGLR SCALAR
+
+!  IRREG TO REGLR SCALAR
       ELSEIF(K1F.NE.1.AND.K2F.EQ.1.AND.IV.EQ.0) THEN
         CALL IPXWAFS2(1,K1,K1F,1,
      &                KGDS1,IB1,L1,F1,KGDS1F,IB1F,L1F,F1F,IRET)
@@ -1478,8 +1366,8 @@ C  IRREG TO REGLR SCALAR
           CALL IPOLATES(IP,IPOPT,KGDS1F,KGDS2,K1F,K2,1,IB1F,L1F,F1F,
      &                  KI,RLAT,RLON,IB2,L2,F2,IRET)
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  REGLR TO IRREG SCALAR
+
+!  REGLR TO IRREG SCALAR
       ELSEIF(K1F.EQ.1.AND.K2F.NE.1.AND.IV.EQ.0) THEN
         CALL IPOLATES(IP,IPOPT,KGDS1,KGDS2F,K1,K2F,1,IB1,L1,F1,
      &                KI,RLAT,RLON,IB2F,L2F,F2F,IRET)
@@ -1487,8 +1375,8 @@ C  REGLR TO IRREG SCALAR
           CALL IPXWAFS2(-1,K2,K2F,1,
      &                  KGDS2,IB2,L2,F2,KGDS2F,IB2F,L2F,F2F,IRET)
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  IRREG TO IRREG SCALAR
+
+!  IRREG TO IRREG SCALAR
       ELSEIF(K1F.NE.1.AND.K2F.NE.1.AND.IV.EQ.0) THEN
         CALL IPXWAFS2(1,K1,K1F,1,
      &                KGDS1,IB1,L1,F1,KGDS1F,IB1F,L1F,F1F,IRET)
@@ -1500,8 +1388,8 @@ C  IRREG TO IRREG SCALAR
      &                    KGDS2,IB2,L2,F2,KGDS2F,IB2F,L2F,F2F,IRET)
           ENDIF
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  REGLR TO REGLR VECTOR
+
+!  REGLR TO REGLR VECTOR
       ELSEIF(K1F.EQ.1.AND.K2F.EQ.1.AND.IV.NE.0) THEN
         CALL IPOLATEV(IP,IPOPT,KGDS1,KGDS2,K1,K2,1,IB1,L1,F1,G1,
      &                KI,RLAT,RLON,CROT,SROT,IB2,L2,F2,G2,IRET)
@@ -1509,8 +1397,8 @@ C  REGLR TO REGLR VECTOR
           F2(K2)=0
           G2(K2)=0
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  IRREG TO REGLR VECTOR
+
+!  IRREG TO REGLR VECTOR
       ELSEIF(K1F.NE.1.AND.K2F.EQ.1.AND.IV.NE.0) THEN
         CALL IPXWAFS2(1,K1,K1F,1,
      &                KGDS1,IB1,L1,F1,KGDS1F,IB1F,L1F,F1F,IRET)
@@ -1525,8 +1413,8 @@ C  IRREG TO REGLR VECTOR
             G2(K2)=0
           ENDIF
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  REGLR TO IRREG VECTOR
+
+!  REGLR TO IRREG VECTOR
       ELSEIF(K1F.EQ.1.AND.K2F.NE.1.AND.IV.NE.0) THEN
         CALL IPOLATEV(IP,IPOPT,KGDS1,KGDS2F,K1,K2F,1,IB1,L1,F1,G1,
      &                KI,RLAT,RLON,CROT,SROT,IB2F,L2F,F2F,G2F,IRET)
@@ -1536,8 +1424,8 @@ C  REGLR TO IRREG VECTOR
           CALL IPXWAFS2(-1,K2,K2F,1,
      &                  KGDS2,IB2,L2,G2,KGDS2F,IB2F,L2F,G2F,IRET)
         ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  IRREG TO IRREG VECTOR
+
+!  IRREG TO IRREG VECTOR
       ELSEIF(K1F.NE.1.AND.K2F.NE.1.AND.IV.NE.0) THEN
         CALL IPXWAFS2(1,K1,K1F,1,
      &                KGDS1,IB1,L1,F1,KGDS1F,IB1F,L1F,F1F,IRET)
@@ -1555,41 +1443,26 @@ C  IRREG TO IRREG VECTOR
           ENDIF
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       END
-C-----------------------------------------------------------------------
+
+!> Return the length of a filled grid.
+!>
+!> Given a grid description section (in w3fi63 format), return the grid
+!> description section and size of its regularized counterpart. That is,
+!> if the input grid is regular, then itself is returned along with its
+!> grid size; however if the input grid is only quasi-regular (such as
+!> the wafs grids), then its filled regular version is returned along
+!> with its filled grid size.
+!>
+!> @param[in] kgds integer (200) gds parameters in w3fi63 format
+!> @param[out] kgdsf integer (200) regular gds parameters in w3fi63 format
+!> @param[out] lengdsf integer size of regularized grid
+!>
+!> @author Iredell @date 96-07-19
       FUNCTION LENGDSF(KGDS,KGDSF)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C
-C SUBPROGRAM:    LENGDSF     RETURN THE LENGTH OF A FILLED GRID
-C   PRGMMR: IREDELL          ORG: W/NMC23     DATE: 96-07-19
-C
-C ABSTRACT: GIVEN A GRID DESCRIPTION SECTION (IN W3FI63 FORMAT),
-C   RETURN THE GRID DESCRIPTION SECTION AND SIZE OF ITS REGULARIZED
-C   COUNTERPART.  THAT IS, IF THE INPUT GRID IS REGULAR, THEN ITSELF
-C   IS RETURNED ALONG WITH ITS GRID SIZE; HOWEVER IF THE INPUT GRID IS
-C   ONLY QUASI-REGULAR (SUCH AS THE WAFS GRIDS), THEN ITS FILLED REGULAR
-C   VERSION IS RETURNED ALONG WITH ITS FILLED GRID SIZE.
-C
-C PROGRAM HISTORY LOG:
-C   96-07-19  IREDELL
-C
-C USAGE:    CALL LENGDSF(KGDS,KGDSF)
-C   INPUT ARGUMENTS:
-C     KGDS         INTEGER (200) GDS PARAMETERS IN W3FI63 FORMAT
-C   OUTPUT ARGUMENTS:
-C     KGDSF        INTEGER (200) REGULAR GDS PARAMETERS IN W3FI63 FORMAT
-C     LENGDSF      INTEGER SIZE OF REGULARIZED GRID
-C
-C SUBPROGRAMS CALLED:
-C   IPXWAFS
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN
-C
-C$$$
       INTEGER KGDS(200),KGDSF(200)
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       IF(KGDS(1).EQ.201) THEN
         KGDSF=KGDS
         LENGDSF=KGDS(7)*KGDS(8)-KGDS(8)/2
@@ -1607,40 +1480,25 @@ C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         KGDSF=KGDS
         LENGDSF=KGDS(2)*KGDS(3)
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       END
-C-----------------------------------------------------------------------
+
+!> Return the number of points in a grid.
+!>
+!> Given a grid definition template number and the grid definition
+!> template values, this function will return the number of grid points
+!> defined by the specified grid. If the grid template is not
+!> recognized, a negative value is returned.
+!>
+!> @param[in] igdtn integer grid definition template number
+!> @param[in] kgdt integer (200) grid definition template values
+!> @param[out] numpts integer number of grid points in grid
+!>
+!> @author Gilbert @date 2005-01-10
       FUNCTION NUMPTS(IGDTN,KGDT)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C
-C SUBPROGRAM:    NUMPTS      RETURN THE NUMBER OF POINTS IN A GRID
-C   PRGMMR: GILBERT          ORG: W/NP11     DATE: 2005-01-10
-C
-C ABSTRACT: GIVEN A GRID DEFINITION TEMPLATE NUMBER AND THE GRID 
-C   DEFINITION TEMPLATE VALUES, THIS FUNCTION WILL
-C   RETURN THE NUMBER OF GRID POINTS DEFINED BY THE SPECIFIED GRID.
-C   IF THE GRID TEMPLATE IS NOT RECOGNIZED, A NEGATIVE VALUE IS RETURNED.
-C
-C PROGRAM HISTORY LOG:
-C 2005-02-10  GILBERT
-C
-C USAGE:    CALL NUMPTS(IGDTN,KGDT)
-C   INPUT ARGUMENTS:
-C     IGDTN        INTEGER GRID DEFINITION TEMPLATE NUMBER
-C     KGDT         INTEGER (200) GRID DEFINITION TEMPLATE VALUES
-C   OUTPUT ARGUMENTS:
-C     NUMPTS       INTEGER NUMBER OF GRID POINTS IN GRID
-C
-C SUBPROGRAMS CALLED:
-C   NONE
-C
-C ATTRIBUTES:
-C   LANGUAGE: FORTRAN 90
-C
-C$$$
       INTEGER,INTENT(IN) :: IGDTN,KGDT(*)
       INTEGER :: ALLONES
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       ALLONES = 0
       DO J=1,31
          ALLONES=IBSET(ALLONES,J)
@@ -1680,7 +1538,7 @@ C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
           CASE DEFAULT
               NUMPTS = -1
       END SELECT
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       END
 #ifdef __GFORTRAN__
       END PROGRAM
