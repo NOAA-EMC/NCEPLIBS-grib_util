@@ -1,72 +1,67 @@
 !> @file
-!> Write an index file.
-!> @author IREDELL @date 1998-09-15
-!
-!> PROGRAM CREATES AN INDEX FILE FROM A GRIB FILE.
-!>   THE INDEX FILE SERVES AS A TABLE OF CONTENTS FOR THE GRIB FILE,
-!>   ENABLING QUICK ACCESS TO THE DATA.  THE GRIB FILE MUST BE UNBLOCKED,
-!>   BUT THERE CAN BE A GAP BEFORE THE FIRST GRIB MESSAGE OF AT MOST
-!>   32000 BYTES AND GAPS BETWEEN MESSAGES OF AT MOST 4000 BYTES.
-!>   THE TWO FILE NAMES ARE RETRIEVED FROM THE COMMAND LINE ARGUMENTS.
-!>   THE FIRST ARGUMENT IS THE NAME OF THE INPUT GRIB FILE.
-!>   THE SECOND ARGUMENT IS THE NAME OF THE OUTPUT INDEX FILE.
-!>   CURRENTLY, ONLY VERSION 1 OF GRIB CAN BE READ.
-!>   VERSION 1 OF THE INDEX FILE HAS THE FOLLOWING FORMAT:
-!>     81-BYTE S.LORD HEADER WITH 'GB1IX1' IN COLUMNS 42-47 FOLLOWED BY
-!>     81-BYTE HEADER WITH NUMBER OF BYTES TO SKIP BEFORE INDEX RECORDS,
-!>     NUMBER OF BYTES IN EACH INDEX RECORD, NUMBER OF INDEX RECORDS,
-!>     AND GRIB FILE BASENAME WRITTEN IN FORMAT ('IX1FORM:',3I10,2X,A40).
-!>     EACH FOLLOWING INDEX RECORD CORRESPONDS TO A GRIB MESSAGE
-!>     AND HAS THE INTERNAL FORMAT:
-!>     -  BYTE 001-004: BYTES TO SKIP IN DATA FILE BEFORE GRIB MESSAGE
-!>     -  BYTE 005-008: BYTES TO SKIP IN MESSAGE BEFORE PDS
-!>     -  BYTE 009-012: BYTES TO SKIP IN MESSAGE BEFORE GDS (0 IF NO GDS)
-!>     -  BYTE 013-016: BYTES TO SKIP IN MESSAGE BEFORE BMS (0 IF NO BMS)
-!>     -  BYTE 017-020: BYTES TO SKIP IN MESSAGE BEFORE BDS
-!>     -  BYTE 021-024: BYTES TOTAL IN THE MESSAGE
-!>     -  BYTE 025-025: GRIB VERSION NUMBER
-!>     -  BYTE 026-053: PRODUCT DEFINITION SECTION (PDS)
-!>     -  BYTE 054-095: GRID DEFINITION SECTION (GDS) (OR NULLS)
-!>     -  BYTE 096-101: FIRST PART OF THE BIT MAP SECTION (BMS) (OR NULLS)
-!>     -  BYTE 102-112: FIRST PART OF THE BINARY DATA SECTION (BDS)
-!>     -  BYTE 113-172: (OPTIONAL) BYTES 41-100 OF THE PDS
-!>     -  BYTE 173-184: (OPTIONAL) BYTES 29-40 OF THE PDS
-!>     -  BYTE 185-320: (OPTIONAL) BYTES 43-178 OF THE GDS
+!> Create an index file from a grib file.
+!> @author Iredell @date 1998-09-15
+
+!> Create an index file from a grib file.
+!>      
+!> The index file serves as a table of contents for the grib file,
+!> enabling quick access to the data. The grib file must be unblocked,
+!> but there can be a gap before the first grib message of at most 32000
+!> bytes and gaps between messages of at most 4000 bytes. The two file
+!> names are retrieved from the command line arguments. The first
+!> argument is the name of the input grib file. The second argument is
+!> the name of the output index file.
 !>
-!> PROGRAM HISTORY LOG:
-!> -  92-11-22  IREDELL
-!> -  94-06-08  EBISUZAKI - ELIMINATE ISHELL CALLS
-!> -  94-08-26  IREDELL   - 40 BYTE PDS EXTENSION
-!> -  95-10-31  IREDELL   - CONSIDERABLY REDUCE I/O
-!> -  96-10-31  IREDELL   - AUGMENTED OPTIONAL DEFINITIONS TO BYTE 320
-!> - 1999-04-27  GILBERT   - Changed CALL EXIT(N) to CALL ERREXIT(N) so that
-!>                         the proper error return value is passed back to
-!>                         the shell.
-!> - 2012-07-31  VUONG     - CHANGED HOSTNAME TO HOSTNAM
+!> Currently, only version 1 of grib can be read.
 !>
-!> USAGE: grbindex gribfile indexfile
+!> Version 1 of the index file has the following format:
+!>      
+!> 81-byte s.lord header with 'gb1ix1' in columns 42-47 followed by
+!> 81-byte header with number of bytes to skip before index records,
+!> number of bytes in each index record, number of index records, and
+!> grib file basename written in format ('ix1form:',3i10,2x,a40).
+!>      
+!> Each following index record corresponds to a grib message
+!> and has the internal format:
+!> -  byte 001-004: bytes to skip in data file before grib message
+!> -  byte 005-008: bytes to skip in message before pds
+!> -  byte 009-012: bytes to skip in message before gds (0 if no gds)
+!> -  byte 013-016: bytes to skip in message before bms (0 if no bms)
+!> -  byte 017-020: bytes to skip in message before bds
+!> -  byte 021-024: bytes total in the message
+!> -  byte 025-025: grib version number
+!> -  byte 026-053: product definition section (pds)
+!> -  byte 054-095: grid definition section (gds) (or nulls)
+!> -  byte 096-101: first part of the bit map section (bms) (or nulls)
+!> -  byte 102-112: first part of the binary data section (bds)
+!> -  byte 113-172: (optional) bytes 41-100 of the pds
+!> -  byte 173-184: (optional) bytes 29-40 of the pds
+!> -  byte 185-320: (optional) bytes 43-178 of the gds
 !>
-!> INPUT FILE:
-!> -  gribfile     UNBLOCKED GRIB FILE
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 92-11-22 | Iredell | Initial
+!> 94-06-08 | Ebisuzaki | eliminate ishell calls
+!> 94-08-26 | Iredell | 40 byte pds extension
+!> 95-10-31 | Iredell | considerably reduce i/o
+!> 96-10-31 | Iredell | augmented optional definitions to byte 320
+!> 1999-04-27 | Gilbert | Changed CALL EXIT(N) to CALL ERREXIT(N) to pass proper error code
+!> 2012-07-31 | Vuong | changed hostname to hostnam
 !>
-!> OUTPUT FILE:
-!> -  indexfile    UNBLOCKED INDEX FILE
+!> ### Input File
+!> - gribfile unblocked grib file
 !>
-!> SUBPROGRAMS CALLED:
-!>  - IARGC        COUNT THE COMMAND LINE ARGUMENTS
-!>  - GETARG       GET COMMAND LINE ARGUMENT
-!>  - WRGI1H       WRITE INDEX HEADERS
-!>  - GETGIR       GET INDEX BUFFER
-!>  - BAWRITE      BYTE-ADDRESSABLE WRITE
-!>  - ERRMSG       WRITE A MESSAGE TO STDERR
-!>  - ERREXIT      EXIT WITH RETURN CODE
+!> ### Output File
+!> -  indexfile    unblocked index file
 !>
-!> EXIT STATES:
-!>  - COND =   0 - SUCCESSFUL RUN
-!>  - COND =   1 - GRIB MESSAGE NOT FOUND
-!>  - COND =   2 - INCORRECT ARGUMENTS
-!>  - COND =   8 - ERROR ACCESSING FILE
+!> @return
+!> - 0 - successful run
+!> - 1 - grib message not found
+!> - 2 - incorrect arguments
+!> - 8 - error accessing file
 !>
+!> @author Iredell @date 1998-09-15      
       PROGRAM GRBINDEX
       PARAMETER(MSK1=32000,MSK2=4000)
       CHARACTER CGB*256,CGI*256
@@ -74,7 +69,7 @@
       CHARACTER CBUF(MBUF)
       CHARACTER CARG*300
       INTEGER NARG,IARGC
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 !  GET ARGUMENTS
       NARG=IARGC()
       IF(NARG.NE.2) THEN
@@ -101,7 +96,7 @@
         CALL ERRMSG(CARG(1:LCARG))
         CALL ERREXIT(8)
       ENDIF
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 !  WRITE INDEX FILE
       MNUM=0
       CALL GETGIR(11,MSK1,MSK2,MNUM,MBUF,CBUF,NLEN,NNUM,IRGI)
@@ -117,7 +112,7 @@
       IW=162
       CALL BAWRITE(31,IW,NLEN*NNUM,KW,CBUF)
       IW=IW+NLEN*NNUM
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 !  EXTEND INDEX FILE IF INDEX BUFFER LENGTH GREATER THAN MBUF
       IF(IRGI.EQ.1) THEN
         DOWHILE(IRGI.EQ.1.AND.NNUM.GT.0)
@@ -132,39 +127,28 @@
       ENDIF
       CALL BACLOSE(11,IRET)
       CALL BACLOSE(31,IRET)
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       END
-!-----------------------------------------------------------------------
+
+!> Write index headers.
+!>
+!> This subprogram writes two index headers. Currently, the length of
+!> each index record is 152.
+!>
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 93-11-22 | Iredell | Initial
+!> 95-10-31 | Iredell | Modularize system calls
+!> 2012-07-31 | Vuong | Changed hostname to hostnam
+!>
+!> @param[in] lugi integer logical unit of output index file
+!> @param[in] nlen integer length of index records
+!> @param[in] nnum integer number of index records
+!> @param[in] cgb character name of grib file
+!>
+!> @author Iredell @date 93-11-22
       SUBROUTINE WRGI1H(LUGI,NLEN,NNUM,CGB)
-!$$$  SUBPROGRAM DOCUMENTATION BLOCK
-!
-! SUBPROGRAM: WRGI1H         WRITE INDEX HEADERS
-!   PRGMMR: IREDELL          ORG: W/NMC23     DATE: 93-11-22
-!
-! ABSTRACT: THIS SUBPROGRAM WRITES TWO INDEX HEADERS.
-!   CURRENTLY, THE LENGTH OF EACH INDEX RECORD IS 152.
-!
-! PROGRAM HISTORY LOG:
-!   93-11-22  IREDELL
-!   95-10-31  IREDELL   - MODULARIZE SYSTEM CALLS
-! 2012-07-31  VUONG     - CHANGED HOSTNAME TO HOSTNAM
-!
-! USAGE:    CALL WRGI1H(LUGI,NLEN,NNUM,CGB)
-!   INPUT ARGUMENTS:
-!     LUGI         INTEGER LOGICAL UNIT OF OUTPUT INDEX FILE
-!     NLEN         INTEGER LENGTH OF INDEX RECORDS
-!     NNUM         INTEGER NUMBER OF INDEX RECORDS
-!     CGB          CHARACTER NAME OF GRIB FILE
-!
-! SUBPROGRAMS CALLED:
-!   NCBASE       GET BASENAME OF FILE
-!   HOSTNAM      GET SYSTEM NAME
-!   BAWRITE      BYTE-ADDRESSABLE WRITE
-!
-! ATTRIBUTES:
-!   LANGUAGE: FORTRAN
-!
-!$$$
       CHARACTER CGB*(*)
 #ifdef __GFORTRAN__
       CHARACTER CD8*8,CT10*10,HOSTNAME*15
@@ -173,7 +157,7 @@
       CHARACTER CD8*8,CT10*10,HOSTNAM*15
 #endif
       CHARACTER CHEAD(2)*81
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 !  FILL FIRST 81-BYTE HEADER
       NCGB=LEN(CGB)
       NCGB1=NCBASE(CGB,NCGB)
@@ -200,48 +184,37 @@
 !     print*,' CHEAD(1)(56:70) = ', CHEAD(1)(56:70)
       CHEAD(1)(72:80)='grbindex '
       CHEAD(1)(81:81)=CHAR(10)
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 !  FILL SECOND 81-BYTE HEADER
       CHEAD(2)='IX1FORM:'
       WRITE(CHEAD(2)(9:38),'(3I10)') 162,NLEN,NNUM
       CHEAD(2)(41:80)=CGB(NCGB1:NCGB)
       CHEAD(2)(81:81)=CHAR(10)
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 !  WRITE HEADERS AT BEGINNING OF INDEX FILE
       CALL BAWRITE(LUGI,0,162,KW,CHEAD)
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       RETURN
       END
-!-----------------------------------------------------------------------
+
+!> Locate basename of a file.
+!>
+!> This subprogram locates the character number after the last in a
+!> character string. For unix filenames, the character number returned
+!> marks the beginning of the basename of the file.
+!>
+!> @param[in] C CHARACTER STRING TO SEARCH
+!> @param[in] N INTEGER LENGTH OF STRING
+!>
+!> @author Iredell @date 93-11-22
       FUNCTION NCBASE(C,N)
-!$$$  SUBPROGRAM DOCUMENTATION BLOCK
-!
-! SUBPROGRAM: NCBASE         LOCATE BASENAME OF A FILE
-!   PRGMMR: IREDELL          ORG: W/NMC23     DATE: 93-11-22
-!
-! ABSTRACT: THIS SUBPROGRAM LOCATES THE CHARACTER NUMBER AFTER THE LAST 
-!   IN A CHARACTER STRING.  FOR UNIX FILENAMES, THE CHARACTER NUMBER
-!   RETURNED MARKS THE BEGINNING OF THE BASENAME OF THE FILE.
-!
-! PROGRAM HISTORY LOG:
-!   93-11-22  IREDELL
-!
-! USAGE:     ...=NCBASE(C,N)
-!   INPUT ARGUMENTS:
-!     C            CHARACTER STRING TO SEARCH
-!     N            INTEGER LENGTH OF STRING
-!
-! ATTRIBUTES:
-!   LANGUAGE: CRAY FORTRAN
-!
-!$$$
       CHARACTER C*(*)
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       K=N
       DOWHILE(K.GE.1.AND.C(K:K).NE.'/')
         K=K-1
       ENDDO
       NCBASE=K+1
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       RETURN
       END

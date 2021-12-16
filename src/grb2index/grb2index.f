@@ -11,7 +11,7 @@
 !> name of the input grib file. The second argument is the name of the
 !> output index file. For this program, only grib version 2 can be
 !> read.
-!>      
+!>
 !> Version 1 of the index file has the following format: 81-byte s.lord
 !> header with 'gb2ix1' in columns 42-47 followed by 81-byte header with
 !> number of bytes to skip before index records, total length in bytes
@@ -138,8 +138,6 @@
       END
 
 !> Write index headers.
-!>
-!> THIS SUBPROGRAM WRITES TWO INDEX HEADERS.
 !>
 !> ### Program History Log
 !> Date | Programmer | Comments
