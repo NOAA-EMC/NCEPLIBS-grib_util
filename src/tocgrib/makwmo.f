@@ -1,4 +1,4 @@
-C> @file                .      .    .                                       .
+C> @file
 C> FORMAT THE WMO HEADER
 C> @author FARLEY @date 84-07-06
 C
