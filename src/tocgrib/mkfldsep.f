@@ -1,66 +1,66 @@
-C> @file
-C> Makes TOC Flag Field Separator Block
-C> @author Gilbert @date 2002-09-16
-C
-C> Generates a TOC Flag Field Separator Block used to separate
-C>   WMO Bulletins within a transmission file to be ingested in TOC's
-C>   FTP Input Service, which can be used to disseminate WMO buletins.  
-C>   ( see http://weather.gov/tg/ftpingest.html )
-C>
-C>   This routine can generate different flag field separator blocks
-C>   depending on the value of variable iopt.
-C>
-C>   Bulletin "Flag Field Separator" block - OPTION 1 (old)
-C>      bytes  1 - 4          marker string (####)
-C>             5 - 7          block length [018 fixed value]
-C>             8 - 13         total length of bulletin in bytes [octets]
-C>                            (not including the flag field block)
-C>             14 - 17        marker string (####)
-C>             18             line Feed (ASCII "0A")
-C>   
-C>   Bulletin "Flag Field Separator" block - OPTION 1a (new)
-C>      bytes  1 - 4          marker string (####)
-C>             5 - 7          block length (nnn) - value always greater than 018
-C>             8 - 18         total length of bulletin in bytes [octets]
-C>                            (not including the flag field block)
-C>             19 - nnn-5     reserved for future use
-C>             nnn-4 - nnn-1  marker string (####)
-C>             nnn            line Feed (ASCII "0A")
-C>
-C>   Bulletin "Flag Field Separator" block - OPTION 2 (limited)
-C>      bytes  1 - 4          marker string (****)
-C>             5 - 14         total length of bulletin in bytes [octets]
-C>                            (not including the flag field block)
-C>             15 - 18        marker string (****)
-C>             19             line Feed (ASCII "0A")
-C>
-C>
-C> PROGRAM HISTORY LOG:
-C> 2002-09-16  Gilbert      ORIGINAL AUTHOR
-C>
-C> USAGE:    call mkfldsep(csep,iopt,lenin,lenbull,lenout)
-C>   @param[out]  csep*(*)    Character array containing the flag field separator.
-C>   @param[in]  iopt        Flag Field Separator block option:
-C>                 = 1: Separator block for use with alphanumeric bulletins.
-C>                      if lenin <= 18 and lenbull <= 999999, 
-C>                          OPTION 1 block will be generated.
-C>                      if lenin > 18 or lenbull > 999999, 
-C>                          OPTION 1a block will be generated.
-C>                 = 2: Separator block for use with GRIB/BUFR bulletins.
-C>   @param[in]  lenin       Desired length of the flag field separator block.
-C>                 ignored, if iopt=2.
-C>   @param[in]  lenbull     Integer length of the bulletin (in bytes) that will follow
-C>                 this separator block.
-C>   @param[out]  lenout      Integer length of the flag field separator block.
-C>
+!> @file
+!> @brief Makes TOC Flag Field Separator Block.
+!> @author Gilbert @date 2002-09-16
+
+!> Generates a TOC Flag Field Separator Block used to separate WMO
+!> Bulletins within a transmission file to be ingested in TOC's FTP
+!> Input Service, which can be used to disseminate WMO buletins (see
+!> http://weather.gov/tg/ftpingest.html).
+!>
+!> This routine can generate different flag field separator blocks
+!> depending on the value of variable iopt.
+!>
+!> Bulletin "Flag Field Separator" block - OPTION 1 (old)
+!>
+!> Bytes | Description
+!> ------|------------      
+!> 1 - 4 | marker string (####)
+!> 5 - 7 | block length [018 fixed value]
+!> 8 - 13 | total length of bulletin in bytes [octets] (not including the flag field block)
+!> 14 - 17 | marker string (####)
+!> 18 | line Feed (ASCII "0A")
+!>   
+!> Bulletin "Flag Field Separator" block - OPTION 1a (new)
+!>
+!> Bytes | Description
+!> ------|------------      
+!> 1 - 4 | marker string (####)
+!> 5 - 7 | block length (nnn) - value always greater than 018
+!> 8 - 18 | total length of bulletin in bytes [octets] (not including the flag field block)
+!> 19 - nnn-5 | reserved for future use
+!> nnn-4 - nnn-1 | marker string (####)
+!> nnn | line Feed (ASCII "0A")
+!>
+!>   Bulletin "Flag Field Separator" block - OPTION 2 (limited)
+!>
+!> Bytes | Description
+!> ------|------------      
+!> 1 - 4 | marker string (****)
+!> 5 - 14 | total length of bulletin in bytes [octets] (not including the flag field block)
+!> 15 - 18 | marker string (****)
+!> 19 | line Feed (ASCII "0A")
+!>
+!> @param[out] csep*(*) Character array containing the flag field separator.
+!> @param[in] iopt Flag Field Separator block option:
+!> - 1 Separator block for use with alphanumeric bulletins.
+!>   - if lenin <= 18 and lenbull <= 999999, OPTION 1 block will be generated.
+!>   - if lenin > 18 or lenbull > 999999, OPTION 1a block will be generated.
+!> - 2 Separator block for use with GRIB/BUFR bulletins.
+!> @param[in] lenin Desired length of the flag field separator
+!> block. ignored, if iopt=2.
+!> @param[in] lenbull Integer length of the bulletin (in bytes) that
+!> will follow this separator block.
+!> @param[out] lenout Integer length of the flag field separator block.
+!>
+!> @author Gilbert @date 2002-09-16      
       subroutine mkfldsep(csep,iopt,lenin,lenbull,lenout)
-C
+!
       character*(*),intent(out) :: csep
       integer,intent(in) :: iopt,lenin,lenbull
       integer,intent(out) :: lenout
-C
+!
       character(len=4),parameter :: cstar='****',clb='####'
-C
+!
       if (iopt.eq.1) then
          if ( lenin .le. 18 .and. lenbull .le. 999999 ) then 
                                       ! Create OPTION 1 separator block
@@ -91,6 +91,6 @@ C
          print *,"mkfldsep: Option ",iopt," not recognized."
          csep(1:lenin)=' '
       endif
-C
+!
       return
       end
