@@ -1,57 +1,46 @@
 !> @file
-!>                .     .   .                                      .
-!> @author Gilbert @date 2003-06-17
-!
-!>  This routine converts a GRIB1 GDS ( in format specfied in
-!>  w3fi63.f) to necessary info for a GRIB2 Grid Definition Section.
+!> @brief Convert a GRIB1 GDS to necessary info for a GRIB2 Grid
+!> Definition Section.
+!> @author Stephen Gilbert @date 2003-06-17
+
+!> This routine converts a GRIB1 GDS (in format specfied in
+!> w3fi63.f) to necessary info for a GRIB2 Grid Definition Section.
 !>
-!> PROGRAM HISTORY LOG:
-!> 2003-06-17  Gilbert
-!> 2004-04-27  Gilbert - Added support for Gaussian grids.
-!> 2007-04-16  Vuong   - Added Curvilinear Orthogonal grids.
-!> 2007-05-29  Vuong   - Added Rotate Lat/Lon E-grid (203)
-!> 2010-05-10  Vuong   - Added Rotate Lat/Lon for Non-E Stagger grid (205)
-!> 2011-05-04  Vuong   - Corrected Arakawa Lat/Lon of grid points for Non-E Stagger grid (205)
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 2003-06-17 | Gilbert | Initial.
+!> 2004-04-27 | Gilbert | Added support for Gaussian grids.
+!> 2007-04-16 | Vuong | Added Curvilinear Orthogonal grids.
+!> 2007-05-29 | Vuong | Added Rotate Lat/Lon E-grid (203)
+!> 2010-05-10 | Vuong | Added Rotate Lat/Lon for Non-E Stagger grid (205)
+!> 2011-05-04 | Vuong | Corrected Arakawa Lat/Lon of grid points for Non-E Stagger grid (205)
 !>
-!> USAGE:    CALL gds2gdt(kgds,igds,igdstmpl,idefnum,ideflist,iret)
-!>   INPUT ARGUMENT LIST:
-!>     kgds()   - GRIB1 GDS info as returned by w3fi63.f
+!> @param[in] kgds GRIB1 GDS info as returned by w3fi63.f.
+!> @param[out] igds Contains information read from the appropriate GRIB
+!> Grid Definition Section 3 for the field being returned. Must be
+!> dimensioned >= 5.
+!> - igds(1) Source of grid definition (see Code Table 3.0)
+!> - igds(2) Number of grid points in the defined grid.
+!> - igds(3) Number of octets needed for each additional grid points
+!>   definition. Used to define number of points in each row (or column)
+!>   for non-regular grids. = 0, if using regular grid.
+!> - igds(4) Interpretation of list for optional points definition. (Code Table 3.11)
+!> - igds(5) Grid Definition Template Number (Code Table 3.1)
+!> @param[out] igdstmpl Grid Definition Template values for GDT 3.igds(5)
+!> @param[out] idefnum The number of entries in array
+!> ideflist. i.e. number of rows (or columns) for which optional grid
+!> points are defined.
+!> @param[out] ideflist Optional integer array containing the number of
+!> grid points contained in each row (or column).
+!> @param[out] iret Error return value:
+!> - 0 Successful
+!> - 1 Unrecognized GRIB1 grid data representation type
 !>
-!>   OUTPUT ARGUMENT LIST:      (INCLUDING WORK ARRAYS)
-!>     igds()   - Contains information read from the appropriate GRIB Grid
-!>                Definition Section 3 for the field being returned.
-!>                Must be dimensioned >= 5.
-!>                igds(1)=Source of grid definition (see Code Table 3.0)
-!>                igds(2)=Number of grid points in the defined grid.
-!>                igds(3)=Number of octets needed for each
-!>                            additional grid points definition.
-!>                            Used to define number of
-!>                            points in each row ( or column ) for
-!>                            non-regular grids.
-!>                            = 0, if using regular grid.
-!>                igds(4)=Interpretation of list for optional points
-!>                            definition. (Code Table 3.11)
-!>                igds(5)=Grid Definition Template Number (Code Table 3.1)
-!>     igdstmpl() - Grid Definition Template values for GDT 3.igds(5)
-!>     idefnum    - The number of entries in array ideflist. 
-!>                  i.e. number of rows ( or columns )
-!>                  for which optional grid points are defined.
-!>     ideflist() - Optional integer array containing
-!>                  the number of grid points contained in each row (or column).
-!>     iret     - Error return value:
-!>                  0  = Successful
-!>                  1  = Unrecognized GRIB1 grid data representation type
-!>
-!> REMARKS: LIST CAVEATS, OTHER HELPFUL HINTS OR INFORMATION
-!>
-!> ATTRIBUTES:
-!>   LANGUAGE: INDICATE EXTENSIONS, COMPILER OPTIONS
-!>   MACHINE:  IBM SP
-!>
-!>
+!> @author Stephen Gilbert @date 2003-06-17
       subroutine gds2gdt(kgds,igds,igdstmpl,idefnum,ideflist,iret)
 
-! 
+!
         integer,intent(in) :: kgds(*)
         integer,intent(out) :: igds(*),igdstmpl(*),ideflist(*)
         integer,intent(out) :: idefnum,iret

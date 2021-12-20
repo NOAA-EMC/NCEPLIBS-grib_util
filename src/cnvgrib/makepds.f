@@ -1,107 +1,83 @@
 !> @file
-!>                .     .   .                                      .
-!> @author Gilbert @date 2003-06-12
-!
-!>  This routine creates a GRIB1 PDS (Section 1)
-!>  from appropriate information from a GRIB2 Product Definition Template.
+!> @brief Create a GRIB1 PDS (Section 1).
+!> @author Stephen Gilbert @date 2003-06-12
+
+!> This routine creates a GRIB1 PDS (Section 1) from appropriate
+!> information from a GRIB2 Product Definition Template.
 !>
-!> PROGRAM HISTORY LOG:
-!> 2003-06-12  Gilbert
-!> 2005-04-19  Gilbert    - Changed scaling factor used with potential
-!>                          vorticity surfaces.
-!> 2007-05-08  VUONG      - Add Product Definition Template entries
-!>                          120 - Ice Concentration Analysis
-!>                          121 - Western North Atlantic Regional Wave Model
-!>                          122 - Alaska Waters Regional Wave Model
-!>                          123 - North Atlantic Hurricane Wave Model
-!>                          124 - Eastern North Pacific Regional Wave Model
-!>                          131 - Great Lake Wave Model
-!>                           88 - NOAA Wave Watch III (NWW3)
-!>                           45 - Coastal Ocean Circulation
-!>                           47 - HYCOM - North Pacific basin
-!> 2007-05-14  Boi Vuong  - Added Time Range Indicator 51 (Climatological
-!>                          Mean Value)
-!> 2007-10-24  Boi Vuong  - Added level 8 (Nominal top of atmosphere)
-!> 2009-05-19  Boi Vuong  - Added levels 10(Entire Atmosphere), 11(Cumulonimbus
-!>                          Base),12(Cumulonimbus Top) and level 126(Isobaric Pa)
-!> 2009-12-14  Boi Vuong  - Added check for WAFS to use PDT 4.15 for Icing,
-!>                          Turbulence and Cumulonimbus
-!> 2010-08-10  Boi Vuong  - Added check for FNMOC to use TMP as TMAX and TMIN
-!>                        - Removed check WAFS MAX wind level
-!> 2011-10-24  Boi Vuong  - Added check for NAM (NMM-B) parameters to set 
-!>                          statistical processing as MAX and MIN
-!> 2012-03-29  Boi Vuong  - Added check Time Range for APCP in FNMOC 
-!> 2014-05-20  Boi Vuong  - Added check Time Range after F252 
-!> 2014-11-14  Boi Vuong  - Added check Time Range for 15-hr or 18-hr or 21-hr or
-!>                          24-hr Accumulation for APCP after F240 
-!> 2018-07-26  Boi Vuong  - Added check Time Range for continuous accumulated APCP 
-!>                          after F252 when convert from grib2 to grib1
+!> @note Use pds2pdtens for ensemble related PDS.
 !>
-!> USAGE:    CALL makepds(idisc,idsect,ipdsnum,ipdstmpl,ibmap,
-!>                        idrsnum,idrstmpl,kpds,iret)
-!>   INPUT ARGUMENT LIST:
-!>     idisc      - GRIB2 discipline from Section 0.
-!>     idsect()   - GRIB2 Section 1 info.
-!>                idsect(1)=Id of orginating centre (Common Code Table C-1)
-!>                idsect(2)=Id of orginating sub-centre (local table)
-!>                idsect(3)=GRIB Master Tables Version Number (Code Table 1.0)
-!>                idsect(4)=GRIB Local Tables Version Number (Code Table 1.1)
-!>                idsect(5)=Significance of Reference Time (Code Table 1.2)
-!>                idsect(6)=Reference Time - Year (4 digits)
-!>                idsect(7)=Reference Time - Month
-!>                idsect(8)=Reference Time - Day
-!>                idsect(9)=Reference Time - Hour
-!>                idsect(10)=Reference Time - Minute
-!>                idsect(11)=Reference Time - Second
-!>                idsect(12)=Production status of data (Code Table 1.3)
-!>                idsect(13)=Type of processed data (Code Table 1.4)
-!>     ipdsnum    - GRIB2 Product Definition Template Number
-!>     ipdstmpl() - GRIB2 Product Definition Template entries for PDT 4.ipdsnum
-!>     ibmap      - GRIB2 bitmap indicator from octet 6, Section 6.
-!>     idrsnum    - GRIB2 Data Representation Template Number
-!>     idrstmpl() - GRIB2 Data Representation Template entries
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 2003-06-12 | Gilbert | Initial.
+!> 2005-04-19 | Gilbert | Changed scaling factor used with potential vorticity surfaces.
+!> 2007-05-08 | VUONG | Add Product Definition Template entries 120-124, 131, 88, 45, 47.
+!> 2007-05-14 | Boi Vuong | Added Time Range Indicator 51 (Climatological Mean Value)
+!> 2007-10-24 | Boi Vuong | Added level 8 (Nominal top of atmosphere)
+!> 2009-05-19 | Boi Vuong | Added levels 10(Entire Atmosphere), 11(Cumulonimbus Base),12(Cumulonimbus Top) and level 126(Isobaric Pa)
+!> 2009-12-14 | Boi Vuong | Added check for WAFS to use PDT 4.15 for Icing, Turbulence and Cumulonimbus
+!> 2010-08-10 | Boi Vuong | Added check for FNMOC to use TMP as TMAX and TMIN - Removed check WAFS MAX wind level
+!> 2011-10-24 | Boi Vuong | Added check for NAM (NMM-B) parameters to set statistical processing as MAX and MIN
+!> 2012-03-29 | Boi Vuong | Added check Time Range for APCP in FNMOC
+!> 2014-05-20 | Boi Vuong | Added check Time Range after F252
+!> 2014-11-14 | Boi Vuong | Added check Time Range for 15-hr or 18-hr or 21-hr or 24-hr Accumulation for APCP after F240 
+!> 2018-07-26 | Boi Vuong | Added check Time Range for continuous accumulated APCP after F252 when convert from grib2 to grib1
 !>
-!>   OUTPUT ARGUMENT LIST:
-!>     kpds()     - GRIB1 PDS info as specified in W3FI63.
-!>          (1)   - ID OF CENTER
-!>          (2)   - GENERATING PROCESS ID NUMBER
-!>          (3)   - GRID DEFINITION
-!>          (4)   - GDS/BMS FLAG (RIGHT ADJ COPY OF OCTET 8)
-!>          (5)   - INDICATOR OF PARAMETER
-!>          (6)   - TYPE OF LEVEL
-!>          (7)   - HEIGHT/PRESSURE , ETC OF LEVEL
-!>          (8)   - YEAR INCLUDING (CENTURY-1)
-!>          (9)   - MONTH OF YEAR
-!>          (10)  - DAY OF MONTH
-!>          (11)  - HOUR OF DAY
-!>          (12)  - MINUTE OF HOUR
-!>          (13)  - INDICATOR OF FORECAST TIME UNIT
-!>          (14)  - TIME RANGE 1
-!>          (15)  - TIME RANGE 2
-!>          (16)  - TIME RANGE FLAG
-!>          (17)  - NUMBER INCLUDED IN AVERAGE
-!>          (18)  - VERSION NR OF GRIB SPECIFICATION
-!>          (19)  - VERSION NR OF PARAMETER TABLE
-!>          (20)  - NR MISSING FROM AVERAGE/ACCUMULATION
-!>          (21)  - CENTURY OF REFERENCE TIME OF DATA
-!>          (22)  - UNITS DECIMAL SCALE FACTOR
-!>          (23)  - SUBCENTER NUMBER
-!>     iret       - Error return value:
-!>                  0  = Successful
-!>                  1  = Don't know what to do with pre-defined bitmap.
-!>                  2  = Unrecognized GRIB2 PDT 4.ipdsnum
+!> @param[in] idisc GRIB2 discipline from Section 0.
+!> @param[in] idsect GRIB2 Section 1 info.
+!> - idsect(1) Id of orginating centre (Common Code Table C-1)
+!> - idsect(2) Id of orginating sub-centre (local table)
+!> - idsect(3) GRIB Master Tables Version Number (Code Table 1.0)
+!> - idsect(4) GRIB Local Tables Version Number (Code Table 1.1)
+!> - idsect(5) Significance of Reference Time (Code Table 1.2)
+!> - idsect(6) Reference Time - Year (4 digits)
+!> - idsect(7) Reference Time - Month
+!> - idsect(8) Reference Time - Day
+!> - idsect(9) Reference Time - Hour
+!> - idsect(10) Reference Time - Minute
+!> - idsect(11) Reference Time - Second
+!> - idsect(12) Production status of data (Code Table 1.3)
+!> - idsect(13) Type of processed data (Code Table 1.4)
+!> @param[in] ipdsnum GRIB2 Product Definition Template Number
+!> @param[in] ipdstmpl GRIB2 Product Definition Template entries for PDT 4.ipdsnum
+!> @param[in] ibmap GRIB2 bitmap indicator from octet 6, Section 6.
+!> @param[in] idrsnum GRIB2 Data Representation Template Number
+!> @param[in] idrstmpl GRIB2 Data Representation Template entries
+!> @param[out] kpds GRIB1 PDS info as specified in W3FI63.
+!> - 1 id of center
+!> - 2 generating process id number
+!> - 3 grid definition
+!> - 4 gds/bms flag (right adj copy of octet 8)
+!> - 5 indicator of parameter
+!> - 6 type of level
+!> - 7 height/pressure , etc of level
+!> - 8 year including (century-1)
+!> - 9 month of year
+!> - 10 day of month
+!> - 11 hour of day
+!> - 12 minute of hour
+!> - 13 indicator of forecast time unit
+!> - 14 time range 1
+!> - 15 time range 2
+!> - 16 time range flag
+!> - 17 number included in average
+!> - 18 version nr of grib specification
+!> - 19 version nr of parameter table
+!> - 20 nr missing from average/accumulation
+!> - 21 century of reference time of data
+!> - 22 units decimal scale factor
+!> - 23 subcenter number
+!> @param[out] iret Error return value:
+!> - 0 Successful
+!> - 1 Don't know what to do with pre-defined bitmap.
+!> - 2 Unrecognized GRIB2 PDT 4.ipdsnum
 !>
-!> REMARKS:  Use pds2pdtens for ensemble related PDS
-!>
-!> ATTRIBUTES:
-!>   LANGUAGE: Fortran 90
-!>   MACHINE:  IBM SP
-!>
-!>
+!> @author Stephen Gilbert @date 2003-06-12
       subroutine makepds(idisc,idsect,ipdsnum,ipdstmpl,ibmap,
      &                     idrsnum,idrstmpl,kpds,iret)
 
-        
+
         use params
 
         integer,intent(in) :: idsect(*),ipdstmpl(*),idrstmpl(*)
@@ -209,7 +185,7 @@
            if ( ipdstmpl(5).eq.77.OR.ipdstmpl(5).eq.81.OR.
      &          ipdstmpl(5).eq.96.OR.ipdstmpl(5).eq.80.OR.
      &          ipdstmpl(5).eq.82.OR.ipdstmpl(5).eq.120.OR.
-     &          ipdstmpl(5).eq.47.OR.ipdstmpl(5).eq.11 ) then 
+     &          ipdstmpl(5).eq.47.OR.ipdstmpl(5).eq.11 ) then
               kpds(16)=10
            end if
            if (ipdstmpl(5).eq.84.AND.kpds(5).eq.154)kpds(16) = 10
@@ -299,7 +275,7 @@
 !
         if (ipdstmpl(9) .ge. 240 )then
             if ( ipdstmpl(ipos+3).eq.15 .OR. ipdstmpl(ipos+3).eq.18
-     &     .OR. ipdstmpl(ipos+3).eq.21 .OR. 
+     &     .OR. ipdstmpl(ipos+3).eq.21 .OR.
      &     ipdstmpl(ipos+3).eq.24 ) then
                kpds(13)= 10                          ! Forecast time unit is 3-hour
                kpds(14)=ipdstmpl(9)/3                ! Time range P1
@@ -316,7 +292,7 @@
               kpds(13)= 11      !  Forecast time unit is 6-hour
               kpds(14)=ipdstmpl(9)/6      ! Time range P1
               kpds(15)=ipdstmpl(ipos+3)/6+kpds(14)  ! Time range P2
-           else 
+           else
               kpds(13)= 1       !  Forecast time unit is 1-hour
               kpds(14)=ipdstmpl(9)  ! Time range P1
            end if
@@ -354,37 +330,22 @@
         end
 
 
+!> This routine converts Level/layer information from a GRIB2 Product
+!> Definition Template to GRIB1 Level type and Level value.
+!>
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 2003-06-12 | Gilbert | Initial
+!> 2007-10-24 | Boi Vuong | Added level 8 (Nominal top of atmosphere)
+!> 2011-01-13 | Boi Vuong | Added level/layer values from 235 to 239
+!>
+!> @param[in] ipdstmpl GRIB2 Product Definition Template values
+!> @param[out] ltype GRIB1 level type (PDS octet 10)
+!> @param[out] lval GRIB1 level/layer value(s) (PDS octets 11 and 12)
+!>
+!> @author Stephen Gilbert @date 2003-06-12
         subroutine levelcnv(ipdstmpl,ltype,lval)
-!$$$  SUBPROGRAM DOCUMENTATION BLOCK
-!                .     .   .                                      .
-! SUBPROGRAM:    levelcnv
-!   PRGMMR: Gilbert        ORG: W/NP11     DATE: 2003-06-12
-!
-! ABSTRACT: this routine converts Level/layer information
-!   from a GRIB2 Product Definition Template to GRIB1 
-!   Level type and Level value.
-!
-! PROGRAM HISTORY LOG:
-! 2003-06-12  Gilbert
-! 2007-10-24  Boi Vuong  - Added level 8 (Nominal top of atmosphere)
-! 2011-01-13  Boi Vuong  - Added level/layer values from 235 to 239
-!
-! USAGE:    CALL levelcnv(ipdstmpl,ltype,lval)
-!   INPUT ARGUMENT LIST:
-!     ipdstmpl() - GRIB2 Product Definition Template values
-!
-!   OUTPUT ARGUMENT LIST:      (INCLUDING WORK ARRAYS)
-!     ltype    - GRIB1 level type (PDS octet 10)
-!     lval     - GRIB1 level/layer value(s) (PDS octets 11 and 12)
-!
-! REMARKS: LIST CAVEATS, OTHER HELPFUL HINTS OR INFORMATION
-!
-! ATTRIBUTES:
-!   LANGUAGE: Fortran 90
-!   MACHINE:  IBM SP
-!
-!$$$
-
         integer,intent(in) :: ipdstmpl(*)
         integer,intent(out) :: ltype,lval
 

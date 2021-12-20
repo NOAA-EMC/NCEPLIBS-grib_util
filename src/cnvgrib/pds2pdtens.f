@@ -1,51 +1,43 @@
 !> @file
-!>                .     .   .                                      .
-!> @author Gilbert @date 2003-06-12
-!
-!>  This routine converts a GRIB1 PDS (Section 1) that includes
-!>  NCEP ensemble PDS extensions
-!>   to a GRIB2 PDS (Section 4) info with appropriate Product Definition
-!>   Template.
+!> @brief Convert a GRIB1 PDS (Section 1) that includes NCEP
+!> ensemble PDS extensions to a GRIB2 PDS (Section 4) info.
+!> @author Stephen Gilbert @date 2003-06-12
+
+!> This routine converts a GRIB1 PDS (Section 1) that includes NCEP
+!> ensemble PDS extensions to a GRIB2 PDS (Section 4) info with
+!> appropriate Product Definition Template.
 !>
-!> PROGRAM HISTORY LOG:
-!> 2003-06-12  Gilbert
-!> 2007-02-07  Gilbert    - fixed end date calculation
-!> 2007-05-14  Boi Vuong  - Added Time Range Indicator 51 (Climatological 
-!>                          Mean Value)
+!> @note Use routine pds2pdt for non ensemble related PDS.
 !>
-!> USAGE:    CALL pds2pdtens(kpds,kens,kprob,xprob,kclust,kmember,
-!>                           ipdsnum,ipdstmpl,numcoord,coordlist,iret)
-!>   INPUT ARGUMENT LIST:
-!>     kpds()   - GRIB1 PDS info as specified in W3FI63.
-!>     kens()   - Ensemble identification from PDS octets 41-45
-!>     kprob()  - Ensemble probability info from PDS octets 46 & 47
-!>     xprob()  - Ensemble probability info from PDS octets 48-55
-!>     kclust() - Ensemble cluster info from PDS octets 61-76
-!>     kmember()- Ensemble membership info from PDS octest 77-86
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 2003-06-12 | Gilbert | Initial.
+!> 2007-02-07 | Gilbert | fixed end date calculation
+!> 2007-05-14 | Boi Vuong | Added Time Range Indicator 51 (Climatological Mean Value)
 !>
-!>   OUTPUT ARGUMENT LIST:
-!>     ipdsnum    - GRIB2 Product Definition Template Number
-!>     ipdstmpl() - GRIB2 Product Definition Template entries for PDT 4.ipdsnum
-!>     numcoord   - number of vertical discretisation values ( not implemented )
-!>     coordlist()- vertical discretisation values ( not implemented )
-!>     iret       - Error return value:
-!>                  0  = Successful
-!>                  1  = Unrecognized GRIB1 Time Range Indicator for ensembles
-!>                  2  = Unrecognized GRIB1 Ensemble type
-!>                  10 = Unrecognized GRIB1 Time Range Indicator for probabilities
+!> @param[in] kpds GRIB1 PDS info as specified in W3FI63.
+!> @param[in] kens Ensemble identification from PDS octets 41-45.
+!> @param[in] kprob Ensemble probability info from PDS octets 46 & 47.
+!> @param[in] xprob Ensemble probability info from PDS octets 48-55.
+!> @param[in] kclust Ensemble cluster info from PDS octets 61-76.
+!> @param[in] kmember- semble membership info from PDS octest 77-86.
+!> @param[out] ipdsnum GRIB2 Product Definition Template Number.
+!> @param[out] ipdstmpl GRIB2 Product Definition Template entries for PDT 4.ipdsnum.
+!> @param[out] numcoord number of vertical discretisation values (not implemented).
+!> @param[out] coordlist- rtical discretisation values (not implemented).
+!> @param[out] iret Error return value:
+!> - 0  = Successful
+!> - 1  = Unrecognized GRIB1 Time Range Indicator for ensembles
+!> - 2  = Unrecognized GRIB1 Ensemble type
+!> - 10 = Unrecognized GRIB1 Time Range Indicator for probabilities
 !>
-!> REMARKS:  Use routine pds2pdt for non ensemble related PDS.
-!>
-!> ATTRIBUTES:
-!>   LANGUAGE: Fortran 90
-!>   MACHINE:  IBM SP
-!>
-!>
+!> @author Stephen Gilbert @date 2003-06-12
       subroutine pds2pdtens(kpds,kens,kprob,xprob,kclust,kmember,
      &                     ipdsnum,ipdstmpl,numcoord,coordlist,
      &                     iret)
 
-        
+
         use params
 
         integer,intent(in) :: kpds(*),kens(*),kprob(*),kclust(*)
@@ -65,7 +57,7 @@
            if (kpds(16).eq.0.or.kpds(16).eq.1.or.kpds(16).eq.10) then
              !   At specific point in time...
              ipdsnum=1
-             !  get GRIB2 parameter category and number from GRIB1 
+             !  get GRIB2 parameter category and number from GRIB1
              !  parameter number
              call param_g1_to_g2(kpds(5),kpds(19),idum,ipdstmpl(1),
      &                           ipdstmpl(2))
@@ -98,7 +90,7 @@
            elseif (kpds(16).ge.2.AND.kpds(16).le.5) then
               !    over time range...
               ipdsnum=11
-             !  get GRIB2 parameter category and number from GRIB1 
+             !  get GRIB2 parameter category and number from GRIB1
              !  parameter number
               call param_g1_to_g2(kpds(5),kpds(19),idum,ipdstmpl(1),
      &                           ipdstmpl(2))
@@ -259,7 +251,7 @@
               if (kpds(16).eq.0.or.kpds(16).eq.1.or.kpds(16).eq.10) then
                  !   At specific point in time...
                  ipdsnum=5
-                 !  get GRIB2 parameter category and number from GRIB1 
+                 !  get GRIB2 parameter category and number from GRIB1
                  !  parameter number
                  call param_g1_to_g2(kprob(1),kpds(19),idum,ipdstmpl(1),
      &                               ipdstmpl(2))
@@ -296,7 +288,7 @@
               elseif (kpds(16).ge.2.AND.kpds(16).le.5) then
                  !    over time range...
                  ipdsnum=9
-                 !  get GRIB2 parameter category and number from GRIB1 
+                 !  get GRIB2 parameter category and number from GRIB1
                  !  parameter number
                  call param_g1_to_g2(kprob(1),kpds(19),idum,ipdstmpl(1),
      &                               ipdstmpl(2))
@@ -463,7 +455,7 @@
               if (kpds(16).eq.0.or.kpds(16).eq.1.or.kpds(16).eq.10) then
                 !   At specific point in time...
                 ipdsnum=2
-                !  get GRIB2 parameter category and number from GRIB1 
+                !  get GRIB2 parameter category and number from GRIB1
                 !  parameter number
                 call param_g1_to_g2(kpds(5),kpds(19),idum,ipdstmpl(1),
      &                              ipdstmpl(2))
@@ -493,7 +485,7 @@
               elseif (kpds(16).ge.2.AND.kpds(16).le.5) then
                  !    over time range...
                  ipdsnum=12
-                !  get GRIB2 parameter category and number from GRIB1 
+                !  get GRIB2 parameter category and number from GRIB1
                 !  parameter number
                  call param_g1_to_g2(kpds(5),kpds(19),idum,ipdstmpl(1),
      &                               ipdstmpl(2))

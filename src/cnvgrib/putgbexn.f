@@ -1,170 +1,146 @@
-!!> @file
+!> @file
+!> @brief Pack and write a grib message.
+!> @author Mark Iredell @date 94-04-01
+
+!> Pack and write a grib message. This subprogram is nearly the inverse
+!> of getgbe.
 !>
-!> @author IREDELL @date 94-04-01
-!
-!>  PACK AND WRITE A GRIB MESSAGE.
-!>  THIS SUBPROGRAM IS NEARLY THE INVERSE OF GETGBE.
+!> @note Subprogram can be called from a multiprocessing environment.
+!> Do not engage the same logical unit from more than one processor.
 !>
-!> PROGRAM HISTORY LOG:
-!>   94-04-01  IREDELL
-!>   95-10-31  IREDELL     REMOVED SAVES AND PRINTS
-!>   97-02-11  Y.ZHU       INCLUDED PROBABILITY AND CLUSTER ARGUMENTS
-!> 2002-03-18  GILBERT     MODIFIED FROM PUTGBEX TO ACCOUNT FOR
-!>                         BINARY SCALE FACTORS.
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 94-04-01 | Iredell | Initial.
+!> 95-10-31 | Iredell | Removed saves and prints
+!> 97-02-11 | Y. Zhu | Included probability and cluster arguments
+!> 2002-03-18 | Gilbert | Modified from putgbex to account for binary scale factors.
 !>
-!> USAGE:    CALL PUTGBEXN(LUGB,KF,KPDS,KGDS,KENS,
-!>    &                   KPROB,XPROB,KCLUST,KMEMBR,IBS,NBITS,LB,F,IRET)
-!>   INPUT ARGUMENTS:
-!>     LUGB         INTEGER UNIT OF THE UNBLOCKED GRIB DATA FILE
-!>     KF           INTEGER NUMBER OF DATA POINTS
-!>     KPDS         INTEGER (200) PDS PARAMETERS
-!>          (1)   - ID OF CENTER
-!>          (2)   - GENERATING PROCESS ID NUMBER
-!>          (3)   - GRID DEFINITION
-!>          (4)   - GDS/BMS FLAG (RIGHT ADJ COPY OF OCTET 8)
-!>          (5)   - INDICATOR OF PARAMETER
-!>          (6)   - TYPE OF LEVEL
-!>          (7)   - HEIGHT/PRESSURE , ETC OF LEVEL
-!>          (8)   - YEAR INCLUDING (CENTURY-1)
-!>          (9)   - MONTH OF YEAR
-!>          (10)  - DAY OF MONTH
-!>          (11)  - HOUR OF DAY
-!>          (12)  - MINUTE OF HOUR
-!>          (13)  - INDICATOR OF FORECAST TIME UNIT
-!>          (14)  - TIME RANGE 1
-!>          (15)  - TIME RANGE 2
-!>          (16)  - TIME RANGE FLAG
-!>          (17)  - NUMBER INCLUDED IN AVERAGE
-!>          (18)  - VERSION NR OF GRIB SPECIFICATION
-!>          (19)  - VERSION NR OF PARAMETER TABLE
-!>          (20)  - NR MISSING FROM AVERAGE/ACCUMULATION
-!>          (21)  - CENTURY OF REFERENCE TIME OF DATA
-!>          (22)  - UNITS DECIMAL SCALE FACTOR
-!>          (23)  - SUBCENTER NUMBER
-!>          (24)  - PDS BYTE 29, FOR NMC ENSEMBLE PRODUCTS
-!>                  128 IF FORECAST FIELD ERROR
-!>                   64 IF BIAS CORRECTED FCST FIELD
-!>                   32 IF SMOOTHED FIELD
-!>                  WARNING: CAN BE COMBINATION OF MORE THAN 1
-!>          (25)  - PDS BYTE 30, NOT USED
-!>     KGDS         INTEGER (200) GDS PARAMETERS
-!>          (1)   - DATA REPRESENTATION TYPE
-!>          (19)  - NUMBER OF VERTICAL COORDINATE PARAMETERS
-!>          (20)  - OCTET NUMBER OF THE LIST OF VERTICAL COORDINATE
-!>                  PARAMETERS
-!>                  OR
-!>                  OCTET NUMBER OF THE LIST OF NUMBERS OF POINTS
-!>                  IN EACH ROW
-!>                  OR
-!>                  255 IF NEITHER ARE PRESENT
-!>          (21)  - FOR GRIDS WITH PL, NUMBER OF POINTS IN GRID
-!>          (22)  - NUMBER OF WORDS IN EACH ROW
-!>       LATITUDE/LONGITUDE GRIDS
-!>          (2)   - N(I) NR POINTS ON LATITUDE CIRCLE
-!>          (3)   - N(J) NR POINTS ON LONGITUDE MERIDIAN
-!>          (4)   - LA(1) LATITUDE OF ORIGIN
-!>          (5)   - LO(1) LONGITUDE OF ORIGIN
-!>          (6)   - RESOLUTION FLAG (RIGHT ADJ COPY OF OCTET 17)
-!>          (7)   - LA(2) LATITUDE OF EXTREME POINT
-!>          (8)   - LO(2) LONGITUDE OF EXTREME POINT
-!>          (9)   - DI LONGITUDINAL DIRECTION OF INCREMENT
-!>          (10)  - DJ LATITUDINAL DIRECTION INCREMENT
-!>          (11)  - SCANNING MODE FLAG (RIGHT ADJ COPY OF OCTET 28)
-!>       GAUSSIAN  GRIDS
-!>          (2)   - N(I) NR POINTS ON LATITUDE CIRCLE
-!>          (3)   - N(J) NR POINTS ON LONGITUDE MERIDIAN
-!>          (4)   - LA(1) LATITUDE OF ORIGIN
-!>          (5)   - LO(1) LONGITUDE OF ORIGIN
-!>          (6)   - RESOLUTION FLAG  (RIGHT ADJ COPY OF OCTET 17)
-!>          (7)   - LA(2) LATITUDE OF EXTREME POINT
-!>          (8)   - LO(2) LONGITUDE OF EXTREME POINT
-!>          (9)   - DI LONGITUDINAL DIRECTION OF INCREMENT
-!>          (10)  - N - NR OF CIRCLES POLE TO EQUATOR
-!>          (11)  - SCANNING MODE FLAG (RIGHT ADJ COPY OF OCTET 28)
-!>          (12)  - NV - NR OF VERT COORD PARAMETERS
-!>          (13)  - PV - OCTET NR OF LIST OF VERT COORD PARAMETERS
-!>                             OR
-!>                  PL - LOCATION OF THE LIST OF NUMBERS OF POINTS IN
-!>                       EACH ROW (IF NO VERT COORD PARAMETERS
-!>                       ARE PRESENT
-!>                             OR
-!>                  255 IF NEITHER ARE PRESENT
-!>       POLAR STEREOGRAPHIC GRIDS
-!>          (2)   - N(I) NR POINTS ALONG LAT CIRCLE
-!>          (3)   - N(J) NR POINTS ALONG LON CIRCLE
-!>          (4)   - LA(1) LATITUDE OF ORIGIN
-!>          (5)   - LO(1) LONGITUDE OF ORIGIN
-!>          (6)   - RESOLUTION FLAG  (RIGHT ADJ COPY OF OCTET 17)
-!>          (7)   - LOV GRID ORIENTATION
-!>          (8)   - DX - X DIRECTION INCREMENT
-!>          (9)   - DY - Y DIRECTION INCREMENT
-!>          (10)  - PROJECTION CENTER FLAG
-!>          (11)  - SCANNING MODE (RIGHT ADJ COPY OF OCTET 28)
-!>       SPHERICAL HARMONIC COEFFICIENTS
-!>          (2)   - J PENTAGONAL RESOLUTION PARAMETER
-!>          (3)   - K      "          "         "
-!>          (4)   - M      "          "         "
-!>          (5)   - REPRESENTATION TYPE
-!>          (6)   - COEFFICIENT STORAGE MODE
-!>       MERCATOR GRIDS
-!>          (2)   - N(I) NR POINTS ON LATITUDE CIRCLE
-!>          (3)   - N(J) NR POINTS ON LONGITUDE MERIDIAN
-!>          (4)   - LA(1) LATITUDE OF ORIGIN
-!>          (5)   - LO(1) LONGITUDE OF ORIGIN
-!>          (6)   - RESOLUTION FLAG (RIGHT ADJ COPY OF OCTET 17)
-!>          (7)   - LA(2) LATITUDE OF LAST GRID POINT
-!>          (8)   - LO(2) LONGITUDE OF LAST GRID POINT
-!>          (9)   - LATIT - LATITUDE OF PROJECTION INTERSECTION
-!>          (10)  - RESERVED
-!>          (11)  - SCANNING MODE FLAG (RIGHT ADJ COPY OF OCTET 28)
-!>          (12)  - LONGITUDINAL DIR GRID LENGTH
-!>          (13)  - LATITUDINAL DIR GRID LENGTH
-!>       LAMBERT CONFORMAL GRIDS
-!>          (2)   - NX NR POINTS ALONG X-AXIS
-!>          (3)   - NY NR POINTS ALONG Y-AXIS
-!>          (4)   - LA1 LAT OF ORIGIN (LOWER LEFT)
-!>          (5)   - LO1 LON OF ORIGIN (LOWER LEFT)
-!>          (6)   - RESOLUTION (RIGHT ADJ COPY OF OCTET 17)
-!>          (7)   - LOV - ORIENTATION OF GRID
-!>          (8)   - DX - X-DIR INCREMENT
-!>          (9)   - DY - Y-DIR INCREMENT
-!>          (10)  - PROJECTION CENTER FLAG
-!>          (11)  - SCANNING MODE FLAG (RIGHT ADJ COPY OF OCTET 28)
-!>          (12)  - LATIN 1 - FIRST LAT FROM POLE OF SECANT CONE INTER
-!>          (13)  - LATIN 2 - SECOND LAT FROM POLE OF SECANT CONE INTER
-!>     KENS         INTEGER (200) ENSEMBLE PDS PARMS
-!>          (1)   - APPLICATION IDENTIFIER
-!>          (2)   - ENSEMBLE TYPE
-!>          (3)   - ENSEMBLE IDENTIFIER
-!>          (4)   - PRODUCT IDENTIFIER
-!>          (5)   - SMOOTHING FLAG
-!>     KPROB        INTEGER (2) PROBABILITY ENSEMBLE PARMS
-!>     XPROB        REAL    (2) PROBABILITY ENSEMBLE PARMS
-!>     KCLUST       INTEGER (16) CLUSTER ENSEMBLE PARMS
-!>     KMEMBR       INTEGER (8) CLUSTER ENSEMBLE PARMS
-!>     IBS          INTEGER BINARY SCALE FACTOR (0 TO IGNORE)
-!>     NBITS        INTEGER NUMBER OF BITS IN WHICH TO PACK (0 TO IGNORE)
-!>     LB           LOGICAL*1 (KF) BITMAP IF PRESENT
-!>     F            REAL (KF) DATA
-!>   OUTPUT ARGUMENTS:
-!>     IRET         INTEGER RETURN CODE
-!>                    0      ALL OK
-!>                    OTHER  W3FI72 GRIB PACKER RETURN CODE
+!> @param[in] lugb teger unit of the unblocked grib data file
+!> @param[in] kf teger number of data points
+!> @param[in] kpds teger (200) pds parameters
+!> - 1 id of center
+!> - 2 generating process id number
+!> - 3 grid definition
+!> - 4 gds/bms flag (right adj copy of octet 8)
+!> - 5 indicator of parameter
+!> - 6 type of level
+!> - 7 height/pressure , etc of level
+!> - 8 year including (century-1)
+!> - 9 month of year
+!> - 10 day of month
+!> - 11 hour of day
+!> - 12 minute of hour
+!> - 13 indicator of forecast time unit
+!> - 14 time range 1
+!> - 15 time range 2
+!> - 16 time range flag
+!> - 17 number included in average
+!> - 18 version nr of grib specification
+!> - 19 version nr of parameter table
+!> - 20 nr missing from average/accumulation
+!> - 21 century of reference time of data
+!> - 22 units decimal scale factor
+!> - 23 subcenter number
+!> - 24 pds byte 29, for nmc ensemble products, 128 if forecast field
+!> error, 64 if bias corrected fcst field, 32 if smoothed field,
+!> warning: can be combination of more than 1.
+!> - 25 pds byte 30, not used
+!> @param[in] kgds teger (200) gds parameters
+!> - 1 data representation type
+!> - 19 number of vertical coordinate parameters
+!> - 20 octet number of the list of vertical coordinate parameters or
+!> octet number of the list of numbers of points in each row or 255 if
+!> neither are present.
+!> - 21 for grids with pl, number of points in grid
+!> - 22 number of words in each row latitude/longitude grids
+!> - 2 n(i) nr points on latitude circle
+!> - 3 n(j) nr points on longitude meridian
+!> - 4 la(1) latitude of origin
+!> - 5 lo(1) longitude of origin
+!> - 6 resolution flag (right adj copy of octet 17)
+!> - 7 la(2) latitude of extreme point
+!> - 8 lo(2) longitude of extreme point
+!> - 9 di longitudinal direction of increment
+!> - 10 dj latitudinal direction increment
+!> - 11 scanning mode flag (right adj copy of octet 28)
+!> Gaussian  grids:
+!> - 2 n(i) nr points on latitude circle
+!> - 3 n(j) nr points on longitude meridian
+!> - 4 la(1) latitude of origin
+!> - 5 lo(1) longitude of origin
+!> - 6 resolution flag  (right adj copy of octet 17)
+!> - 7 la(2) latitude of extreme point
+!> - 8 lo(2) longitude of extreme point
+!> - 9 di longitudinal direction of increment
+!> - 10 n - nr of circles pole to equator
+!> - 11 scanning mode flag (right adj copy of octet 28)
+!> - 12 nv - nr of vert coord parameters
+!> - 13 pv - octet nr of list of vert coord parameters or pl - location
+!> of the list of numbers of points in each row (if no vert coord
+!> parameters are present or 255 if neither are present
+!> Polar Stereographic grids:
+!> - 2 n(i) nr points along lat circle
+!> - 3 n(j) nr points along lon circle
+!> - 4 la(1) latitude of origin
+!> - 5 lo(1) longitude of origin
+!> - 6 resolution flag  (right adj copy of octet 17)
+!> - 7 lov grid orientation
+!> - 8 dx - x direction increment
+!> - 9 dy - y direction increment
+!> - 10 projection center flag
+!> - 11 scanning mode (right adj copy of octet 28)
+!> Spherical Harmonic Coefficients:
+!> - 2 j pentagonal resolution parameter
+!> - 3 k      "          "         "
+!> - 4 m      "          "         "
+!> - 5 representation type
+!> - 6 coefficient storage mode
+!> Mercator grids:
+!> - 2 n(i) nr points on latitude circle
+!> - 3 n(j) nr points on longitude meridian
+!> - 4 la(1) latitude of origin
+!> - 5 lo(1) longitude of origin
+!> - 6 resolution flag (right adj copy of octet 17)
+!> - 7 la(2) latitude of last grid point
+!> - 8 lo(2) longitude of last grid point
+!> - 9 latit - latitude of projection intersection
+!> - 10 reserved
+!> - 11 scanning mode flag (right adj copy of octet 28)
+!> - 12 longitudinal dir grid length
+!> - 13 latitudinal dir grid length
+!> Lambert Conformal Grids:
+!> - 2 nx nr points along x-axis
+!> - 3 ny nr points along y-axis
+!> - 4 la1 lat of origin (lower left)
+!> - 5 lo1 lon of origin (lower left)
+!> - 6 resolution (right adj copy of octet 17)
+!> - 7 lov - orientation of grid
+!> - 8 dx - x-dir increment
+!> - 9 dy - y-dir increment
+!> - 10 projection center flag
+!> - 11 scanning mode flag (right adj copy of octet 28)
+!> - 12 latin 1 - first lat from pole of secant cone inter
+!> - 13 latin 2 - second lat from pole of secant cone inter
+!> @param[in] kens teger (200) ensemble pds parms
+!> - 1 application identifier
+!> - 2 ensemble type
+!> - 3 ensemble identifier
+!> - 4 product identifier
+!> - 5 smoothing flag
+!> @param[in] kprob teger (2) probability ensemble parms
+!> @param[in] xprob al    (2) probability ensemble parms
+!> @param[in] kclust teger (16) cluster ensemble parms
+!> @param[in] kmembr teger (8) cluster ensemble parms
+!> @param[in] ibs teger binary scale factor (0 to ignore)
+!> @param[in] nbits teger number of bits in which to pack (0 to ignore)
+!> @param[in] lb gical*1 (kf) bitmap if present
+!> @param[in] f al (kf) data
+!> @param[out] iret teger return code
+!> - 0 Success
+!> - Other W3FI72 GRIB packer return code
 !>
-!> SUBPROGRAMS CALLED:
-!>   R63W72         MAP W3FI63 PARAMETERS ONTO W3FI72 PARAMETERS
-!>   GETBIT         GET NUMBER OF BITS AND ROUND DATA
-!>   W3FI72         PACK GRIB
-!>   WRYTE          WRITE DATA
-!>
-!> REMARKS: SUBPROGRAM CAN BE CALLED FROM A MULTIPROCESSING ENVIRONMENT.
-!>   DO NOT ENGAGE THE SAME LOGICAL UNIT FROM MORE THAN ONE PROCESSOR.
-!>
-!> ATTRIBUTES:
-!>   LANGUAGE: FORTRAN 77
-!>   MACHINE:  CRAY, WORKSTATIONS
-!>
-!>
+!> @author Mark Iredell @date 94-04-01
       SUBROUTINE PUTGBEXN(LUGB,KF,KPDS,KGDS,KENS,
      &                   KPROB,XPROB,KCLUST,KMEMBR,IBS,NBITS,LB,F,IRET)
 
@@ -177,12 +153,12 @@
       PARAMETER(MAXBIT=24)
       INTEGER IBM(KF),IPDS(200),IGDS(200),IBDS(200)
       CHARACTER PDS(400),GRIB(1000+KF*(MAXBIT+1)/8)
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 !  GET W3FI72 PARAMETERS
       !print *,'SAGT: start putgbexn'
       CALL R63W72(KPDS,KGDS,IPDS,IGDS)
       IBDS=0
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 !  COUNT VALID DATA
       KBM=KF
       IF(IPDS(7).NE.0) THEN
@@ -197,7 +173,7 @@
         ENDDO
         IF(KBM.EQ.KF) IPDS(7)=0
       ENDIF
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 !  GET NUMBER OF BITS AND ROUND DATA
       IF(NBITS.GT.0) THEN
         NBIT=NBITS
@@ -214,7 +190,7 @@
           NBIT=MIN(NBIT,MAXBIT)
         ENDIF
       ENDIF
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 !  CREATE PRODUCT DEFINITION SECTION
       CALL W3FI68(IPDS,PDS)
       IF(IPDS(24).EQ.2) THEN
@@ -225,7 +201,7 @@
         IF ( KENS(2).EQ.4) ILAST=86
         CALL PDSENS(KENS,KPROB,XPROB,KCLUST,KMEMBR,ILAST,PDS)
       ENDIF
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 !  PACK AND WRITE GRIB DATA
       igflag=1
       igrid=kpds(3)
@@ -241,8 +217,7 @@
      &            igflag,igrid,IGDS,ICOMP,0,IBM,KF,IBDS,
      &            KFO,GRIB,LGRIB,IRET)
       IF(IRET.EQ.0) CALL WRYTE(LUGB,LGRIB,GRIB)
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       RETURN
       END
-
 

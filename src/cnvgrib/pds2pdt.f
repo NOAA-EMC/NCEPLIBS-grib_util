@@ -1,52 +1,40 @@
 !> @file
-!>                .     .   .                                      .
-!> @author Gilbert @date 2003-06-12
-!
-!>  This routine converts a GRIB1 PDS (Section 1) info
-!>  to a GRIB2 PDS (Section 4) info with appropriate Product Definition
-!>   Template.
+!> @brief Convert a GRIB1 PDS (Section 1) info to a GRIB2 PDS (Section
+!> 4) info.
+!> @author Stephen Gilbert @date 2003-06-12
+
+!> This routine converts a GRIB1 PDS (Section 1) info to a GRIB2 PDS
+!> (Section 4) info with appropriate Product Definition Template.
 !>
-!> PROGRAM HISTORY LOG:
-!> 2003-06-12  Gilbert
-!> 2005-04-19  Gilbert    - Changed scaling factor used with potential
-!>                          vorticity surfaces.
-!> 2007-02-07  Gilbert    - fixed end date calculation
-!> 2007-03-26  Gordon     - Added check for ECMWF data to reference ECMWF
-!>                          Conversion tables.
-!> 2007-05-14  Boi Vuong  - Added Time Range Indicator 51 (Climatological 
-!>                          Mean Value)
-!> 2009-05-20  Boi Vuong  - Added check for WAFS to use PDT 4.8 for Max Wind
-!> 2009-12-14  Boi Vuong  - Added check for WAFS to use PDT 4.15 for Icing,
-!>                          Turbulence and Cumulonimbus
-!> 2010-02-18  Boi Vuong  - Added Time Range Indicator 7
-!> 2010-08-10  Boi Vuong  - Removed check for WAFS to use PDT 4.8 for Max Wind
-!> 2011-10-24  Boi Vuong  - Added check for parameters (MAXUW, MAXVW,
-!>                        - to set type of statistical processing (MIN and MAX)
+!> @note Use pds2pdtens for ensemble related PDS.
 !>
-!> USAGE:    CALL pds2pdt(kpds,ipdsnum,ipdstmpl,numcoord,coordlist,iret)
-!>   INPUT ARGUMENT LIST:
-!>     kpds() - GRIB1 PDS info as specified in W3FI63.
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 2003-06-12 | Gilbert | Initial.
+!> 2005-04-19 | Gilbert | Changed scaling factor used with potential vorticity surfaces.
+!> 2007-02-07 | Gilbert | fixed end date calculation
+!> 2007-03-26 | Gordon | Added check for ECMWF data to reference ECMWF Conversion tables.
+!> 2007-05-14 | Boi Vuong | Added Time Range Indicator 51 (Climatological Mean Value)
+!> 2009-05-20 | Boi Vuong | Added check for WAFS to use PDT 4.8 for Max Wind
+!> 2009-12-14 | Boi Vuong | Added check for WAFS to use PDT 4.15 for Icing, Turbulence and Cumulonimbus
+!> 2010-02-18 | Boi Vuong | Added Time Range Indicator 7
+!> 2010-08-10 | Boi Vuong | Removed check for WAFS to use PDT 4.8 for Max Wind
+!> 2011-10-24 | Boi Vuong | Added check for parameters (MAXUW, MAXVW, to set type of statistical processing (MIN and MAX)
 !>
-!>   OUTPUT ARGUMENT LIST:
-!>     ipdsnum    - GRIB2 Product Definition Template Number
-!>     ipdstmpl() - GRIB2 Product Definition Template entries for PDT 4.ipdsnum
-!>     numcoord   - number of vertical discretisation values ( not implemented )
-!>     coordlist()- vertical discretisation values ( not implemented )
-!>     iret       - Error return value:
-!>                  0  = Successful
-!>                  1  = Unrecognized GRIB1 Time Range Indicator
+!> @param[in] kpds GRIB1 PDS info as specified in W3FI63.
+!> @param[out] ipdsnum GRIB2 Product Definition Template Number
+!> @param[out] ipdstmpl GRIB2 Product Definition Template entries for PDT 4.ipdsnum
+!> @param[out] numcoord number of vertical discretisation values (not implemented)
+!> @param[out] coordlist rtical discretisation values (not implemented)
+!> @param[out] iret Error return value:
+!> - 0  Successful
+!> - 1  Unrecognized GRIB1 Time Range Indicator
 !>
-!> REMARKS:  Use pds2pdtens for ensemble related PDS
-!>
-!> ATTRIBUTES:
-!>   LANGUAGE: Fortran 90
-!>   MACHINE:  IBM SP
-!>
-!>
+!> @author Stephen Gilbert @date 2003-06-12
       subroutine pds2pdt(kpds,ipdsnum,ipdstmpl,numcoord,coordlist,
      &                     iret)
 
-        
         use params
         use params_ecmwf
 
@@ -100,7 +88,7 @@
           ipdstmpl(18)=1                             ! Number of data point (grid 45)
         elseif (kpds(16).eq.0.or.kpds(16).eq.1.or.kpds(16).eq.10) then
           ipdsnum=0
-          !  get GRIB2 parameter category and number from GRIB1 
+          !  get GRIB2 parameter category and number from GRIB1
           !  parameter number
           if (ecmwf) then       ! treat ecmwf data conversion seperately
              call param_ecmwf_g1_to_g2(kpds(5),kpds(19),idum,
@@ -134,7 +122,7 @@
           end if
         elseif (kpds(16).ge.2.AND.kpds(16).le.5) then
           ipdsnum=8
-          !  get GRIB2 parameter category and number from GRIB1 
+          !  get GRIB2 parameter category and number from GRIB1
           !  parameter number
           if (ecmwf) then       ! treat ecmwf data conversion seperately
              call param_ecmwf_g1_to_g2(kpds(5),kpds(19),idum,
@@ -196,7 +184,7 @@
              ipdstmpl(24)=4
           endif
           ipdstmpl(25)=2
-          if (kpds(19).eq.129 .AND. 
+          if (kpds(19).eq.129 .AND.
      &        (kpds(5).eq.235 .or. kpds(5).eq.236 .or.
      &         kpds(5).eq.237 .or. kpds(5).eq.238 .or.
      &         kpds(5).eq.239 .or. kpds(5).eq.253 .or.
@@ -339,36 +327,22 @@
         return
         end
 
-
-        subroutine cnvlevel(ltype,lval,ipdstmpl)
-!$$$  SUBPROGRAM DOCUMENTATION BLOCK
-!                .     .   .                                      .
-! SUBPROGRAM:    cnvlevel
-!   PRGMMR: Gilbert        ORG: W/NP11     DATE: 2003-06-12
+!> This routine converts a GRIB1 Level type and Level value to GRIB2
+!> values and fills in the appropriate PDT values for the level/layer
+!> information.
+!>
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 2003-06-12 | Gilbert | Initial.
+!> 2011-01-13 | Boi Vuong | Added level/layer values from 235 to 239
 !
-! ABSTRACT: this routine converts a GRIB1 Level type and Level value
-!   to GRIB2 values and fills in the appropriate PDT values for the 
-!   level/layer information.
+! @param[in] ltype GRIB1 level type (PDS octet 10)
+! @param[in] lval GRIB1 level/layer value(s) (PDS octets 11 and 12)
+! @param[out] ipdstmpl GRIB2 Product Definition Template values.
 !
-! PROGRAM HISTORY LOG:
-! 2003-06-12  Gilbert
-! 2011-01-13  Boi Vuong  - Added level/layer values from 235 to 239
-!
-! USAGE:    CALL cnvlevel(ltype,lval,ipdstmpl)
-!   INPUT ARGUMENT LIST:
-!     ltype    - GRIB1 level type (PDS octet 10)
-!     lval     - GRIB1 level/layer value(s) (PDS octets 11 and 12)
-!
-!   OUTPUT ARGUMENT LIST:      (INCLUDING WORK ARRAYS)
-!     ipdstmpl() - GRIB2 Product Definition Template values
-!
-! REMARKS: LIST CAVEATS, OTHER HELPFUL HINTS OR INFORMATION
-!
-! ATTRIBUTES:
-!   LANGUAGE: Fortran 90
-!   MACHINE:  IBM SP
-!
-!$$$
+!> @author Stephen Gilbert @date 2003-06-12
+      subroutine cnvlevel(ltype,lval,ipdstmpl)
 
         integer,intent(in) :: ltype,lval
         integer,intent(inout) :: ipdstmpl(*)
