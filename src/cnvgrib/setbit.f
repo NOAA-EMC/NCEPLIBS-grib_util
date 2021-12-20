@@ -1,42 +1,31 @@
-C> @file
-C>
-C> @author IREDELL @date 92-10-31
-C
-C>  THE NUMBER OF BITS REQUIRED TO PACK A GIVEN FIELD
-C>  FOR PARTICULAR BINARY AND DECIMAL SCALINGS IS COMPUTED.
-C>   THE MINIMUM AND MAXIMUM ROUNDED FIELD VALUES ARE ALSO RETURNED.
-C>   GRIB BITMAP MASKING FOR VALID DATA IS OPTIONALLY USED.
-C>
-C> PROGRAM HISTORY LOG:
-C>   96-09-16  IREDELL
-C>
-C> USAGE:    CALL SETBIT(IBM,IBS,IDS,LEN,MG,G,GMIN,GMAX,NBIT)
-C>   INPUT ARGUMENT LIST:
-C>     IBM      - INTEGER BITMAP FLAG (=0 FOR NO BITMAP)
-C>     IBS      - INTEGER BINARY SCALING
-C>                (E.G. IBS=3 TO ROUND FIELD TO NEAREST EIGHTH VALUE)
-C>     IDS      - INTEGER DECIMAL SCALING
-C>                (E.G. IDS=3 TO ROUND FIELD TO NEAREST MILLI-VALUE)
-C>                (NOTE THAT IDS AND IBS CAN BOTH BE NONZERO,
-C>                 E.G. IDS=1 AND IBS=1 ROUNDS TO THE NEAREST TWENTIETH)
-C>     LEN      - INTEGER LENGTH OF THE FIELD AND BITMAP
-C>     MG       - INTEGER (LEN) BITMAP IF IBM=1 (0 TO SKIP, 1 TO KEEP)
-C>     G        - REAL (LEN) FIELD
-C>
-C>   OUTPUT ARGUMENT LIST:
-C>     GMIN     - REAL MINIMUM VALID ROUNDED FIELD VALUE
-C>     GMAX     - REAL MAXIMUM VALID ROUNDED FIELD VALUE
-C>     NBIT     - INTEGER NUMBER OF BITS TO PACK
-C>
-C> ATTRIBUTES:
-C>   LANGUAGE: FORTRAN 90
-C>
-C>
+!> @file
+!> Compute bits required to pack a given field.
+!> @author Mark Iredell @date 92-10-31
+
+!> The number of bits required to pack a given field for particular
+!> binary and decimal scalings is computed. The minimum and maximum
+!> rounded field values are also returned. GRIB bitmap masking for
+!> valid data is optionally used.
+!>
+!> @param[in] ibm integer bitmap flag (=0 for no bitmap).
+!> @param[in] ibs integer binary scaling (e.g. ibs=3 to round field to
+!> nearest eighth value).
+!> @param[in] ids integer decimal scaling (e.g. ids=3 to round field to
+!> nearest milli-value) (note that ids and ibs can both be nonzero,
+!> e.g. ids=1 and ibs=1 rounds to the nearest twentieth).
+!> @param[in] len integer length of the field and bitmap.
+!> @param[in] mg integer (len) bitmap if ibm=1 (0 to skip, 1 to keep).
+!> @param[in] g real (len) field.
+!> @param[out] gmin real minimum valid rounded field value.
+!> @param[out] gmax real maximum valid rounded field value.
+!> @param[out] nbit integer number of bits to pack.
+!>
+!> @author Mark Iredell @date 92-10-31      
       SUBROUTINE SETBIT(IBM,IBS,IDS,LEN,MG,G,GMIN,GMAX,NBIT)
 
       DIMENSION MG(LEN),G(LEN)
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  ROUND FIELD AND DETERMINE EXTREMES WHERE BITMAP IS ON
+
+!  ROUND FIELD AND DETERMINE EXTREMES WHERE BITMAP IS ON
       S=2.**IBS*10.**IDS
       IF(IBM.EQ.0) THEN
         GMAX=G(1)
@@ -72,9 +61,9 @@ C  ROUND FIELD AND DETERMINE EXTREMES WHERE BITMAP IS ON
           GMIN=0.
         ENDIF
       ENDIF
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  COMPUTE NUMBER OF BITS
+
+!  COMPUTE NUMBER OF BITS
       NBIT=LOG((GMAX-GMIN)*S+0.9)/LOG(2.)+1.
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
       RETURN
       END

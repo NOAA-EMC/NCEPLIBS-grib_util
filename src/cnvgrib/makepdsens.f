@@ -1,87 +1,82 @@
-C> @file
-C>                .      .    .                                       .
-C> @author Gilbert @date 2003-06-12
-C
-C>  This routine creates the GRIB1 NCEP Ensemble PDS
-C>  extension information from appropriate information from a GRIB2 
-C>   Product Definition Template.
-C>
-C> PROGRAM HISTORY LOG:
-C> 2003-06-12  Gilbert
-C> 2007-05-14  Boi Vuong  -Corrected scale factor probabilities 
-C> 2010-07-26  Boi Vuong  -Added two type of ensemblers (4 and 192)
-C>
-C> USAGE:    CALL makepdsens(ipdsnum,ipdstmpl,kpds,kens,kprob,
-C>                        xprob,kclust,kmembr,iret)
-C>   INPUT ARGUMENT LIST:
-C>     ipdsnum    - GRIB2 Product Definition Template Number
-C>     ipdstmpl() - GRIB2 Product Definition Template entries for PDT 4.ipdsnum
-C>     kpds()     - GRIB1 PDS info as specified in W3FI63.
-C>          (1)   - ID OF CENTER
-C>          (2)   - GENERATING PROCESS ID NUMBER
-C>          (3)   - GRID DEFINITION
-C>          (4)   - GDS/BMS FLAG (RIGHT ADJ COPY OF OCTET 8)
-C>          (5)   - INDICATOR OF PARAMETER
-C>          (6)   - TYPE OF LEVEL
-C>          (7)   - HEIGHT/PRESSURE , ETC OF LEVEL
-C>          (8)   - YEAR INCLUDING (CENTURY-1)
-C>          (9)   - MONTH OF YEAR
-C>          (10)  - DAY OF MONTH
-C>          (11)  - HOUR OF DAY
-C>          (12)  - MINUTE OF HOUR
-C>          (13)  - INDICATOR OF FORECAST TIME UNIT
-C>          (14)  - TIME RANGE 1
-C>          (15)  - TIME RANGE 2
-C>          (16)  - TIME RANGE FLAG
-C>          (17)  - NUMBER INCLUDED IN AVERAGE
-C>          (18)  - VERSION NR OF GRIB SPECIFICATION
-C>          (19)  - VERSION NR OF PARAMETER TABLE
-C>          (20)  - NR MISSING FROM AVERAGE/ACCUMULATION
-C>          (21)  - CENTURY OF REFERENCE TIME OF DATA
-C>          (22)  - UNITS DECIMAL SCALE FACTOR
-C>          (23)  - SUBCENTER NUMBER
-C>
-C>   OUTPUT ARGUMENT LIST:
-C>     kpds()     - GRIB1 PDS info as specified in W3FI63.
-C>          (1)   - ID OF CENTER
-C>          (2)   - GENERATING PROCESS ID NUMBER
-C>          (3)   - GRID DEFINITION
-C>          (4)   - GDS/BMS FLAG (RIGHT ADJ COPY OF OCTET 8)
-C>          (5)   - INDICATOR OF PARAMETER
-C>          (6)   - TYPE OF LEVEL
-C>          (7)   - HEIGHT/PRESSURE , ETC OF LEVEL
-C>          (8)   - YEAR INCLUDING (CENTURY-1)
-C>          (9)   - MONTH OF YEAR
-C>          (10)  - DAY OF MONTH
-C>          (11)  - HOUR OF DAY
-C>          (12)  - MINUTE OF HOUR
-C>          (13)  - INDICATOR OF FORECAST TIME UNIT
-C>          (14)  - TIME RANGE 1
-C>          (15)  - TIME RANGE 2
-C>          (16)  - TIME RANGE FLAG
-C>          (17)  - NUMBER INCLUDED IN AVERAGE
-C>          (18)  - VERSION NR OF GRIB SPECIFICATION
-C>          (19)  - VERSION NR OF PARAMETER TABLE
-C>          (20)  - NR MISSING FROM AVERAGE/ACCUMULATION
-C>          (21)  - CENTURY OF REFERENCE TIME OF DATA
-C>          (22)  - UNITS DECIMAL SCALE FACTOR
-C>          (23)  - SUBCENTER NUMBER
-C>     kens()     - Ensemble identification for PDS octets 41-45
-C>     kprob()    - Ensemble probability info for PDS octets 46 & 47
-C>     xprob()    - Ensemble probability info for PDS octets 48-55
-C>     kclust()   - Ensemble cluster info for PDS octets 61-76
-C>     kmembr()   - Ensemble membership info for PDS octest 77-86
-C>     iret       - Error return value:
-C>                  0  = Successful
-C>                  2  = Unrecognized GRIB2 PDT 4.ipdsnum
-C>
-C> REMARKS:  Use pds2pdtens for ensemble related PDS
-C>
-C> ATTRIBUTES:
-C>   LANGUAGE: Fortran 90
-C>   MACHINE:  IBM SP
-C>
-C>
+!> @file
+!> @brief Create GRIB1 NCEP Ensemble PDS extension information from a
+!> GRIB2 Product Definition Template.
+!> @author Stephen Gilbert @date 2003-06-12
+
+!> This routine creates the GRIB1 NCEP Ensemble PDS extension
+!> information from appropriate information from a GRIB2 Product
+!> Definition Template.
+!>
+!> @note  Use pds2pdtens for ensemble related PDS.
+!>
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 2003-06-12 | Gilbert | Initial
+!> 2007-05-14 | Boi Vuong | Corrected scale factor probabilities 
+!> 2010-07-26 | Boi Vuong | Added two type of ensemblers (4 and 192)
+!>
+!> @param[in] ipdsnum GRIB2 Product Definition Template Number
+!> @param[in] ipdstmpl GRIB2 Product Definition Template entries for
+!> PDT 4.ipdsnum
+!> @param[in] kpds GRIB1 PDS info as specified in W3FI63.
+!> - 1 id of center
+!> - 2 generating process id number
+!> - 3 grid definition
+!> - 4 gds/bms flag (right adj copy of octet 8)
+!> - 5 indicator of parameter
+!> - 6 type of level
+!> - 7 height/pressure , etc of level
+!> - 8 year including (century-1)
+!> - 9 month of year
+!> - 10 day of month
+!> - 11 hour of day
+!> - 12 minute of hour
+!> - 13 indicator of forecast time unit
+!> - 14 time range 1
+!> - 15 time range 2
+!> - 16 time range flag
+!> - 17 number included in average
+!> - 18 version nr of grib specification
+!> - 19 version nr of parameter table
+!> - 20 nr missing from average/accumulation
+!> - 21 century of reference time of data
+!> - 22 units decimal scale factor
+!> - 23 subcenter number
+!> @param[out] kpds GRIB1 PDS info as specified in W3FI63.
+!> - 1 id of center
+!> - 2 generating process id number
+!> - 3 grid definition
+!> - 4 gds/bms flag (right adj copy of octet 8)
+!> - 5 indicator of parameter
+!> - 6 type of level
+!> - 7 height/pressure , etc of level
+!> - 8 year including (century-1)
+!> - 9 month of year
+!> - 10 day of month
+!> - 11 hour of day
+!> - 12 minute of hour
+!> - 13 indicator of forecast time unit
+!> - 14 time range 1
+!> - 15 time range 2
+!> - 16 time range flag
+!> - 17 number included in average
+!> - 18 version nr of grib specification
+!> - 19 version nr of parameter table
+!> - 20 nr missing from average/accumulation
+!> - 21 century of reference time of data
+!> - 22 units decimal scale factor
+!> - 23 subcenter number
+!> @param[out] kens Ensemble identification for PDS octets 41-45
+!> @param[out] kprob Ensemble probability info for PDS octets 46 & 47
+!> @param[out] xprob Ensemble probability info for PDS octets 48-55
+!> @param[out] kclust Ensemble cluster info for PDS octets 61-76
+!> @param[out] kmembr Ensemble membership info for PDS octest 77-86
+!> @param[out] iret Error return value:
+!> - 0 Successful
+!> - 2 Unrecognized GRIB2 PDT 4.ipdsnum
+!>
+!> @author Stephen Gilbert @date 2003-06-12
       subroutine makepdsens(ipdsnum,ipdstmpl,kpds,kens,kprob,
      &                     xprob,kclust,kmembr,iret)
 

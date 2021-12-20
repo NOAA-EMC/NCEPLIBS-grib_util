@@ -1,107 +1,83 @@
-C> @file
-C>                .      .    .                                       .
-C> @author Gilbert @date 2003-06-12
-C
-C>  This routine creates a GRIB1 PDS (Section 1)
-C>  from appropriate information from a GRIB2 Product Definition Template.
-C>
-C> PROGRAM HISTORY LOG:
-C> 2003-06-12  Gilbert
-C> 2005-04-19  Gilbert    - Changed scaling factor used with potential
-C>                          vorticity surfaces.
-C> 2007-05-08  VUONG      - Add Product Definition Template entries
-C>                          120 - Ice Concentration Analysis
-C>                          121 - Western North Atlantic Regional Wave Model
-C>                          122 - Alaska Waters Regional Wave Model
-C>                          123 - North Atlantic Hurricane Wave Model
-C>                          124 - Eastern North Pacific Regional Wave Model
-C>                          131 - Great Lake Wave Model
-C>                           88 - NOAA Wave Watch III (NWW3)
-C>                           45 - Coastal Ocean Circulation
-C>                           47 - HYCOM - North Pacific basin
-C> 2007-05-14  Boi Vuong  - Added Time Range Indicator 51 (Climatological
-C>                          Mean Value)
-C> 2007-10-24  Boi Vuong  - Added level 8 (Nominal top of atmosphere)
-C> 2009-05-19  Boi Vuong  - Added levels 10(Entire Atmosphere), 11(Cumulonimbus
-C>                          Base),12(Cumulonimbus Top) and level 126(Isobaric Pa)
-C> 2009-12-14  Boi Vuong  - Added check for WAFS to use PDT 4.15 for Icing,
-C>                          Turbulence and Cumulonimbus
-C> 2010-08-10  Boi Vuong  - Added check for FNMOC to use TMP as TMAX and TMIN
-C>                        - Removed check WAFS MAX wind level
-C> 2011-10-24  Boi Vuong  - Added check for NAM (NMM-B) parameters to set 
-C>                          statistical processing as MAX and MIN
-C> 2012-03-29  Boi Vuong  - Added check Time Range for APCP in FNMOC 
-C> 2014-05-20  Boi Vuong  - Added check Time Range after F252 
-C> 2014-11-14  Boi Vuong  - Added check Time Range for 15-hr or 18-hr or 21-hr or
-C>                          24-hr Accumulation for APCP after F240 
-C> 2018-07-26  Boi Vuong  - Added check Time Range for continuous accumulated APCP 
-C>                          after F252 when convert from grib2 to grib1
-C>
-C> USAGE:    CALL makepds(idisc,idsect,ipdsnum,ipdstmpl,ibmap,
-C>                        idrsnum,idrstmpl,kpds,iret)
-C>   INPUT ARGUMENT LIST:
-C>     idisc      - GRIB2 discipline from Section 0.
-C>     idsect()   - GRIB2 Section 1 info.
-C>                idsect(1)=Id of orginating centre (Common Code Table C-1)
-C>                idsect(2)=Id of orginating sub-centre (local table)
-C>                idsect(3)=GRIB Master Tables Version Number (Code Table 1.0)
-C>                idsect(4)=GRIB Local Tables Version Number (Code Table 1.1)
-C>                idsect(5)=Significance of Reference Time (Code Table 1.2)
-C>                idsect(6)=Reference Time - Year (4 digits)
-C>                idsect(7)=Reference Time - Month
-C>                idsect(8)=Reference Time - Day
-C>                idsect(9)=Reference Time - Hour
-C>                idsect(10)=Reference Time - Minute
-C>                idsect(11)=Reference Time - Second
-C>                idsect(12)=Production status of data (Code Table 1.3)
-C>                idsect(13)=Type of processed data (Code Table 1.4)
-C>     ipdsnum    - GRIB2 Product Definition Template Number
-C>     ipdstmpl() - GRIB2 Product Definition Template entries for PDT 4.ipdsnum
-C>     ibmap      - GRIB2 bitmap indicator from octet 6, Section 6.
-C>     idrsnum    - GRIB2 Data Representation Template Number
-C>     idrstmpl() - GRIB2 Data Representation Template entries
-C>
-C>   OUTPUT ARGUMENT LIST:
-C>     kpds()     - GRIB1 PDS info as specified in W3FI63.
-C>          (1)   - ID OF CENTER
-C>          (2)   - GENERATING PROCESS ID NUMBER
-C>          (3)   - GRID DEFINITION
-C>          (4)   - GDS/BMS FLAG (RIGHT ADJ COPY OF OCTET 8)
-C>          (5)   - INDICATOR OF PARAMETER
-C>          (6)   - TYPE OF LEVEL
-C>          (7)   - HEIGHT/PRESSURE , ETC OF LEVEL
-C>          (8)   - YEAR INCLUDING (CENTURY-1)
-C>          (9)   - MONTH OF YEAR
-C>          (10)  - DAY OF MONTH
-C>          (11)  - HOUR OF DAY
-C>          (12)  - MINUTE OF HOUR
-C>          (13)  - INDICATOR OF FORECAST TIME UNIT
-C>          (14)  - TIME RANGE 1
-C>          (15)  - TIME RANGE 2
-C>          (16)  - TIME RANGE FLAG
-C>          (17)  - NUMBER INCLUDED IN AVERAGE
-C>          (18)  - VERSION NR OF GRIB SPECIFICATION
-C>          (19)  - VERSION NR OF PARAMETER TABLE
-C>          (20)  - NR MISSING FROM AVERAGE/ACCUMULATION
-C>          (21)  - CENTURY OF REFERENCE TIME OF DATA
-C>          (22)  - UNITS DECIMAL SCALE FACTOR
-C>          (23)  - SUBCENTER NUMBER
-C>     iret       - Error return value:
-C>                  0  = Successful
-C>                  1  = Don't know what to do with pre-defined bitmap.
-C>                  2  = Unrecognized GRIB2 PDT 4.ipdsnum
-C>
-C> REMARKS:  Use pds2pdtens for ensemble related PDS
-C>
-C> ATTRIBUTES:
-C>   LANGUAGE: Fortran 90
-C>   MACHINE:  IBM SP
-C>
-C>
+!> @file
+!> @brief Create a GRIB1 PDS (Section 1).
+!> @author Stephen Gilbert @date 2003-06-12
+
+!> This routine creates a GRIB1 PDS (Section 1) from appropriate
+!> information from a GRIB2 Product Definition Template.
+!>
+!> @note Use pds2pdtens for ensemble related PDS.
+!>
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 2003-06-12 | Gilbert | Initial.
+!> 2005-04-19 | Gilbert | Changed scaling factor used with potential vorticity surfaces.
+!> 2007-05-08 | VUONG | Add Product Definition Template entries 120-124, 131, 88, 45, 47.
+!> 2007-05-14 | Boi Vuong | Added Time Range Indicator 51 (Climatological Mean Value)
+!> 2007-10-24 | Boi Vuong | Added level 8 (Nominal top of atmosphere)
+!> 2009-05-19 | Boi Vuong | Added levels 10(Entire Atmosphere), 11(Cumulonimbus Base),12(Cumulonimbus Top) and level 126(Isobaric Pa)
+!> 2009-12-14 | Boi Vuong | Added check for WAFS to use PDT 4.15 for Icing, Turbulence and Cumulonimbus
+!> 2010-08-10 | Boi Vuong | Added check for FNMOC to use TMP as TMAX and TMIN - Removed check WAFS MAX wind level
+!> 2011-10-24 | Boi Vuong | Added check for NAM (NMM-B) parameters to set statistical processing as MAX and MIN
+!> 2012-03-29 | Boi Vuong | Added check Time Range for APCP in FNMOC
+!> 2014-05-20 | Boi Vuong | Added check Time Range after F252
+!> 2014-11-14 | Boi Vuong | Added check Time Range for 15-hr or 18-hr or 21-hr or 24-hr Accumulation for APCP after F240 
+!> 2018-07-26 | Boi Vuong | Added check Time Range for continuous accumulated APCP after F252 when convert from grib2 to grib1
+!>
+!> @param[in] idisc GRIB2 discipline from Section 0.
+!> @param[in] idsect GRIB2 Section 1 info.
+!> - idsect(1) Id of orginating centre (Common Code Table C-1)
+!> - idsect(2) Id of orginating sub-centre (local table)
+!> - idsect(3) GRIB Master Tables Version Number (Code Table 1.0)
+!> - idsect(4) GRIB Local Tables Version Number (Code Table 1.1)
+!> - idsect(5) Significance of Reference Time (Code Table 1.2)
+!> - idsect(6) Reference Time - Year (4 digits)
+!> - idsect(7) Reference Time - Month
+!> - idsect(8) Reference Time - Day
+!> - idsect(9) Reference Time - Hour
+!> - idsect(10) Reference Time - Minute
+!> - idsect(11) Reference Time - Second
+!> - idsect(12) Production status of data (Code Table 1.3)
+!> - idsect(13) Type of processed data (Code Table 1.4)
+!> @param[in] ipdsnum GRIB2 Product Definition Template Number
+!> @param[in] ipdstmpl GRIB2 Product Definition Template entries for PDT 4.ipdsnum
+!> @param[in] ibmap GRIB2 bitmap indicator from octet 6, Section 6.
+!> @param[in] idrsnum GRIB2 Data Representation Template Number
+!> @param[in] idrstmpl GRIB2 Data Representation Template entries
+!> @param[out] kpds GRIB1 PDS info as specified in W3FI63.
+!> - 1 id of center
+!> - 2 generating process id number
+!> - 3 grid definition
+!> - 4 gds/bms flag (right adj copy of octet 8)
+!> - 5 indicator of parameter
+!> - 6 type of level
+!> - 7 height/pressure , etc of level
+!> - 8 year including (century-1)
+!> - 9 month of year
+!> - 10 day of month
+!> - 11 hour of day
+!> - 12 minute of hour
+!> - 13 indicator of forecast time unit
+!> - 14 time range 1
+!> - 15 time range 2
+!> - 16 time range flag
+!> - 17 number included in average
+!> - 18 version nr of grib specification
+!> - 19 version nr of parameter table
+!> - 20 nr missing from average/accumulation
+!> - 21 century of reference time of data
+!> - 22 units decimal scale factor
+!> - 23 subcenter number
+!> @param[out] iret Error return value:
+!> - 0 Successful
+!> - 1 Don't know what to do with pre-defined bitmap.
+!> - 2 Unrecognized GRIB2 PDT 4.ipdsnum
+!>
+!> @author Stephen Gilbert @date 2003-06-12
       subroutine makepds(idisc,idsect,ipdsnum,ipdstmpl,ibmap,
      &                     idrsnum,idrstmpl,kpds,iret)
 
-        
+
         use params
 
         integer,intent(in) :: idsect(*),ipdstmpl(*),idrstmpl(*)
@@ -130,18 +106,18 @@ C>
         endif
         call param_g2_to_g1(idisc,ipdstmpl(1),ipdstmpl(2),kpds(5),
      &                      kpds(19))
-C
-C  Special parameters for ICAO WAFS (Max Icing, TP and CAT)
-C
+!
+!  Special parameters for ICAO WAFS (Max Icing, TP and CAT)
+!
         If (ipdstmpl(16).eq.2.and.ipdstmpl(1).eq.19.and.
      &      ipdstmpl(2).eq.20) kpds(5) = 169
         If (ipdstmpl(16).eq.2.and.ipdstmpl(1).eq.19.and.
      &      ipdstmpl(2).eq.21) kpds(5) = 171
         If (ipdstmpl(16).eq.2.and.ipdstmpl(1).eq.19.and.
      &      ipdstmpl(2).eq.22) kpds(5) = 173
-C
-C  Special parameters for NAM (NMMB)
-C
+!
+!  Special parameters for NAM (NMMB)
+!
         If (idisc.eq.0.and.ipdstmpl(1).eq.2) then
            if (ipdstmpl(2).eq.220) then
                kpds(5) = 237
@@ -160,22 +136,22 @@ C
                kpds(19) = 129
            end if
         endif
-C
+!
         If (idisc.eq.0.and.ipdstmpl(2).eq.16
      &     .and.ipdstmpl(3).eq.198) then
            kpds(5) = 235
            kpds(19) = 129
         endif
-C
+!
         If (idisc.eq.0.and.ipdstmpl(2).eq.7
      &     .and.ipdstmpl(3).eq.199) then
            kpds(5) = 236
            kpds(19) = 129
         endif
-C
-C  Special parameters for ICAO Height at CB Base and Top
-C  in GRIB1 Table 140
-C
+!
+!  Special parameters for ICAO Height at CB Base and Top
+!  in GRIB1 Table 140
+!
         If (ipdstmpl(1).eq.3.and.ipdstmpl(2).eq.3) then
            If (ipdstmpl(10).eq.11) then
               kpds(19) = 140
@@ -186,7 +162,7 @@ C
              kpds(5)  = 180
            end if
         end if
-C
+!
         call levelcnv(ipdstmpl,kpds(6),kpds(7))      ! level
         kpds(8)=mod(idsect(6),100)
         if ( kpds(8).eq.0 ) kpds(8)=100
@@ -209,23 +185,23 @@ C
            if ( ipdstmpl(5).eq.77.OR.ipdstmpl(5).eq.81.OR.
      &          ipdstmpl(5).eq.96.OR.ipdstmpl(5).eq.80.OR.
      &          ipdstmpl(5).eq.82.OR.ipdstmpl(5).eq.120.OR.
-     &          ipdstmpl(5).eq.47.OR.ipdstmpl(5).eq.11 ) then 
+     &          ipdstmpl(5).eq.47.OR.ipdstmpl(5).eq.11 ) then
               kpds(16)=10
            end if
            if (ipdstmpl(5).eq.84.AND.kpds(5).eq.154)kpds(16) = 10
-C
-C          NOAA Wave Watch III and Coastal Ocean Circulation
-C          and Alaska Waters Regional Wave Model
-C
+!
+!          NOAA Wave Watch III and Coastal Ocean Circulation
+!          and Alaska Waters Regional Wave Model
+!
            if ( ipdstmpl(5).eq.88.OR.ipdstmpl(5).eq.121
      &          .OR.ipdstmpl(5).eq.122.OR.ipdstmpl(5).eq.123
      &          .OR.ipdstmpl(5).eq.124.OR.ipdstmpl(5).eq.125
      &          .OR.ipdstmpl(5).eq.131.OR.ipdstmpl(5).eq.45
      &          .OR.ipdstmpl(5).eq.11 ) then
               kpds(16) = 0
-C
-C Level Surface set to 1
-C
+!
+! Level Surface set to 1
+!
               if (kpds(5).eq.80.OR.kpds(5).eq.82.OR.
      &             kpds(5).eq.88.OR.kpds(5).eq.49.OR.
      &             kpds(5).eq.50) kpds(7)=1  ! Level Surface
@@ -293,22 +269,22 @@ C
                kpds(15)=ipdstmpl(ipos+3)/3+kpds(14)  ! Time range P2
            end if
         end if
-C
-C  Checking total preciptation for 15-hr or 18-hr or 21-hr or 24-hr accumulation
-C  after forecast hour F240
-C
+!
+!  Checking total preciptation for 15-hr or 18-hr or 21-hr or 24-hr accumulation
+!  after forecast hour F240
+!
         if (ipdstmpl(9) .ge. 240 )then
             if ( ipdstmpl(ipos+3).eq.15 .OR. ipdstmpl(ipos+3).eq.18
-     &     .OR. ipdstmpl(ipos+3).eq.21 .OR. 
+     &     .OR. ipdstmpl(ipos+3).eq.21 .OR.
      &     ipdstmpl(ipos+3).eq.24 ) then
                kpds(13)= 10                          ! Forecast time unit is 3-hour
                kpds(14)=ipdstmpl(9)/3                ! Time range P1
                kpds(15)=ipdstmpl(ipos+3)/3+kpds(14)  ! Time range P2
            end if
         end if
-C
-C   Checking Unit of Time Range for FNMOC (APCP)
-C
+!
+!   Checking Unit of Time Range for FNMOC (APCP)
+!
         if (ipdstmpl(4).eq.58 .AND. ipdsnum.eq.11 .AND.
      &     (ipdstmpl(1).eq.1 .AND.ipdstmpl(2).eq.8)
      &     .AND. (ipdstmpl(10).eq.1)) then
@@ -316,34 +292,34 @@ C
               kpds(13)= 11      !  Forecast time unit is 6-hour
               kpds(14)=ipdstmpl(9)/6      ! Time range P1
               kpds(15)=ipdstmpl(ipos+3)/6+kpds(14)  ! Time range P2
-           else 
+           else
               kpds(13)= 1       !  Forecast time unit is 1-hour
               kpds(14)=ipdstmpl(9)  ! Time range P1
            end if
          end if
-C
-C   Special case for FNMOC (TMAX and TMIN)
-C
+!
+!   Special case for FNMOC (TMAX and TMIN)
+!
         if (ipdstmpl(4).eq.58 .AND. ipdsnum.eq.11 .AND.
      &     (ipdstmpl(1).eq.0
      &     .AND.ipdstmpl(2).eq.0).AND.(ipdstmpl(10).eq.103)) then
            kpds(16) = 2
-C   For Maximum Temperature
+!   For Maximum Temperature
         If (ipdstmpl(27).eq.2 .AND. ipdstmpl(1).eq.0 .AND.
      &      ipdstmpl(2).eq.0) kpds(5) = 15
-C   For Minimum Temperature
+!   For Minimum Temperature
         If (ipdstmpl(27).eq.3 .AND. ipdstmpl(1).eq.0 .AND.
      &      ipdstmpl(2).eq.0) kpds(5) = 16
         end if
-C
-C   Special case for WAFS (Mean/MAx IP,CTP and CAT)
-C
+!
+!   Special case for WAFS (Mean/MAx IP,CTP and CAT)
+!
         if (ipdstmpl(5).eq.96.AND.((ipdstmpl(1).eq.19)
      &     .AND.(ipdstmpl(2).eq.20.or.ipdstmpl(2).eq.21.or.
      &     ipdstmpl(2).eq.22)).AND.(ipdstmpl(10).eq.100)) then
            kpds(16) = 10
         end if
-C
+!
         kpds(17)=0
         kpds(18)=1                                   ! GRIB edition
         kpds(21)=(idsect(6)/100)+1                   ! Century
@@ -354,37 +330,22 @@ C
         end
 
 
+!> This routine converts Level/layer information from a GRIB2 Product
+!> Definition Template to GRIB1 Level type and Level value.
+!>
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 2003-06-12 | Gilbert | Initial
+!> 2007-10-24 | Boi Vuong | Added level 8 (Nominal top of atmosphere)
+!> 2011-01-13 | Boi Vuong | Added level/layer values from 235 to 239
+!>
+!> @param[in] ipdstmpl GRIB2 Product Definition Template values
+!> @param[out] ltype GRIB1 level type (PDS octet 10)
+!> @param[out] lval GRIB1 level/layer value(s) (PDS octets 11 and 12)
+!>
+!> @author Stephen Gilbert @date 2003-06-12
         subroutine levelcnv(ipdstmpl,ltype,lval)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C                .      .    .                                       .
-C SUBPROGRAM:    levelcnv
-C   PRGMMR: Gilbert        ORG: W/NP11     DATE: 2003-06-12
-C
-C ABSTRACT: this routine converts Level/layer information
-C   from a GRIB2 Product Definition Template to GRIB1 
-C   Level type and Level value.
-C
-C PROGRAM HISTORY LOG:
-C 2003-06-12  Gilbert
-C 2007-10-24  Boi Vuong  - Added level 8 (Nominal top of atmosphere)
-C 2011-01-13  Boi Vuong  - Added level/layer values from 235 to 239
-C
-C USAGE:    CALL levelcnv(ipdstmpl,ltype,lval)
-C   INPUT ARGUMENT LIST:
-C     ipdstmpl() - GRIB2 Product Definition Template values
-C
-C   OUTPUT ARGUMENT LIST:      (INCLUDING WORK ARRAYS)
-C     ltype    - GRIB1 level type (PDS octet 10)
-C     lval     - GRIB1 level/layer value(s) (PDS octets 11 and 12)
-C
-C REMARKS: LIST CAVEATS, OTHER HELPFUL HINTS OR INFORMATION
-C
-C ATTRIBUTES:
-C   LANGUAGE: Fortran 90
-C   MACHINE:  IBM SP
-C
-C$$$
-
         integer,intent(in) :: ipdstmpl(*)
         integer,intent(out) :: ltype,lval
 
