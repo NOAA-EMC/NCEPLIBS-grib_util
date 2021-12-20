@@ -92,8 +92,8 @@
 !> - 11 scanning mode (right adj copy of octet 28)
 !> Spherical Harmonic Coefficients:
 !> - 2 j pentagonal resolution parameter
-!> - 3 k      "          "         "
-!> - 4 m      "          "         "
+!> - 3 k pentagonal resolution parameter
+!> - 4 m pentagonal resolution parameter
 !> - 5 representation type
 !> - 6 coefficient storage mode
 !> Mercator grids:
