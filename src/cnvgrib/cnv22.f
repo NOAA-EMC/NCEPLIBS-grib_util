@@ -1,51 +1,40 @@
-C> @file
-C>                .      .    .                                       .
-C> @author Gilbert @date 2003-06-11
-C
-C>  This subroutine converts every GRIB2 field in a file
-C>  to another GRIB2 field, most likely one using a different
-C>   packing option.
-C>
-C> PROGRAM HISTORY LOG:
-C> 2003-06-11  Gilbert
-C> 2008-05-14  Vuong    - Add missing value management option 0
-C> 2009-05-20  Vuong    - Initialize variables idsect,local,list_opt 
-C>
-C> USAGE:    CALL cnv22(ifl1,ifl2,ipack,usemiss,imiss)
-C>   INPUT ARGUMENT LIST:
-C>     ifl1   - Fortran unit number of input GRIB2 file
-C>     ifl2   - Fortran unit number of output GRIB2 file
-C>     ipack  - GRIB2 packing option:
-C>              0     = simple packing
-C>              2     = group packing
-C>              31    = group pack with 1st order differencing
-C>              32    = group pack with 2nd order differencing
-C>              40    = JPEG2000 encoding
-C>              40000 = JPEG2000 encoding (obsolete)
-C>              41    = PNG encoding
-C>              40010 = PNG encoding (obsolete)
-C>              if ipack .ne. one of the values above, 31 is used as a default.
-C>    usemiss - uses missing value management (instead of bitmaps), for use
-C>              ipack options 2, 31, and 32.
-C>    imiss   - Missing value management:
-C>              0     = No explicit missing values included within data values
-C>              1     = Primary missing values included within data values
-C>    mastertable_ver_x  -  Master Table version
-C>                          where x is number from 2 to 10
-C>
-C>   INPUT FILES:   See ifl1
-C>
-C>   OUTPUT FILES:  See ifl2
-C>
-C> REMARKS: None
-C>
-C> ATTRIBUTES:
-C>   LANGUAGE: Fortran 90
-C>   MACHINE:  IBM SP
-C>
-C>
-      subroutine cnv22(ifl1,ifl2,ipack,usemiss,imiss,table_ver)
+!> @file
+!> @brief Converts every GRIB2 field to another GRIB2 field, with
+!> different packing options.
+!> @author Stephen Gilbert @date 2003-06-11
 
+!> This subroutine converts every GRIB2 field in a file to another GRIB2
+!> field, most likely one using a different packing option.
+!>
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 2003-06-11 | Gilbert | Initial
+!> 2008-05-14 | Vuong | Add missing value management option 0
+!> 2009-05-20 | Vuong | Initialize variables idsect,local,list_opt
+!>
+!> param[in] ifl1 Fortran unit number of input GRIB2 file.
+!> param[in] ifl2 Fortran unit number of output GRIB2 file.
+!> param[in] ipack GRIB2 packing option:
+!> - 0 simple packing
+!> - 2 group packing
+!> - 31 group pack with 1st order differencing
+!> - 32 group pack with 2nd order differencing
+!> - 40 JPEG2000 encoding
+!> - 40000 JPEG2000 encoding (obsolete)
+!> - 41 PNG encoding
+!> - 40010 PNG encoding (obsolete)
+!> if ipack .ne. one of the values above, 31 is used as a default.
+!> param[in] usemiss uses missing value management (instead of bitmaps),
+!> for use with ipack options 2, 31, and 32.
+!> param[in] imiss Missing value management:
+!> - 0 No explicit missing values included within data values
+!> - 1 Primary missing values included within data values
+!> param[in] table_ver Master Table version, where x is number from 2 to
+!> 10.
+!>
+!> @author Stephen Gilbert @date 2003-06-11
+      subroutine cnv22(ifl1,ifl2,ipack,usemiss,imiss,table_ver)
 
       use grib_mod
       use params
@@ -87,11 +76,11 @@ C>
       jgdt=-9999
       jpdtn=-1
       jgdtn=-1
-!      
+!
       npoints=0
       icount=0
       jskp=0
-      do 
+      do
          prevfld=gfld
          call getgb2(ifl1,ifli1,jskp,jdisc,jids,jpdtn,jpdt,jgdtn,jgdt,
      &               unpack,jskp,gfld,iret)
@@ -154,7 +143,7 @@ C>
          igds(3)=gfld%numoct_opt
          igds(4)=gfld%interp_opt
          igds(5)=gfld%igdtnum
-         if ( .NOT. associated(gfld%list_opt) ) 
+         if ( .NOT. associated(gfld%list_opt) )
      &                          allocate(gfld%list_opt(1))
          if (gfld%ifldnum == 1 ) then         ! add grid to GRIB2 message
             call addgrid(cgrib,lcgrib,igds,gfld%igdtmpl,gfld%igdtlen,
@@ -178,7 +167,7 @@ C>
          call gf_free(prevfld)
          idrstmpl=0
          !
-         !   if usemiss is specified, change any bitmaps to 
+         !   if usemiss is specified, change any bitmaps to
          !   missing value management for DRTs 5.2 and 5.3.
          !   OR carry on missing value management for fields
          !   already using it.
@@ -219,17 +208,17 @@ C>
             call rdieee(gfld%idrtmpl(8),rmissp,1)
             if ( gfld%idrtmpl(7) .EQ. 2) then
                  call rdieee(gfld%idrtmpl(9),rmisss,1)
-            else 
+            else
                  rmisss=rmissp
             endif
             allocate(gfld%bmap(gfld%ngrdpts))
             do j=1,gfld%ngrdpts
-               if ( gfld%fld(j).EQ.rmissp .OR. 
+               if ( gfld%fld(j).EQ.rmissp .OR.
      &              gfld%fld(j).EQ.rmisss ) then
                   gfld%bmap(j)=.false.
-               else  
+               else
                   gfld%bmap(j)=.true.
-               endif  
+               endif
             enddo
             gfld%ibmap=0
             idrstmpl(7)=0
@@ -264,7 +253,7 @@ C>
          endif
          idrstmpl(2)=gfld%idrtmpl(2)
          idrstmpl(3)=gfld%idrtmpl(3)
-         if ( .NOT. associated(gfld%coord_list) ) 
+         if ( .NOT. associated(gfld%coord_list) )
      &                        allocate(gfld%coord_list(1))
          if ( gfld%ibmap.ne.0 .AND. gfld%ibmap.ne.254) then
             if ( .NOT. associated(gfld%bmap) ) allocate(gfld%bmap(1))

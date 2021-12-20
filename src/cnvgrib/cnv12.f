@@ -1,58 +1,50 @@
-C> @file
-C> @author Gilbert @date 2003-06-11
-C
-C> This subroutine converts every GRIB1 field in a file to a GRIB2 field.
-C> U and V wind component fields are combined into a single GRIB2
-C> message.
-C>
-C> PROGRAM HISTORY LOG:
-C> - 2003-06-11  Gilbert
-C> - 2003-05-19  Gilbert  - Changed Master Table Version Number from 1 to 2.
-C>                      - Added check for grib1 table version with params 191
-C>                        and 192 for ensemble probs.
-C> - 2007-03-26  Gordon   - Added check for ECMWF data to reference ECMWF
-C>                        Conversion tables.
-C> - 2007-10-11  Vuong    - Added check for ensemble probs if the kpds > 28
-C> - 2008-01-28  Vuong    - Fixed the V-GRD BY SETTING THE LPDS(22)=-1 and
-C>                        increase the array size MAXPTS
-C> - 2008-05-14  Vuong    - Add option -m0 No explicit missing values included
-C>                        within data values
-C> - 2010-12-02  Vuong    - Changed Master Table Version Number from 2 to 6.
-C>                      - Add option -mastertable_ver_x where x is mater table
-C>                        version 2 to 10
-C> - 2011-07-22  Vuong    - Changed variable kprob(1) to kpds(5) in calling
-C>                        routine param_g1_to_g2
-C> - 2012-03-21  Vuong    - Set the Shape of Earth to 2 (oblate spheroid earth)
-C>                        for IMSSNOW (Polar Stereo graphic) Grid. 
-C>
-C> @param ifl1   - Fortran unit number of input GRIB1 file
-C> @param ifl2   - Fortran unit number of output GRIB2 file
-C> @param ipack  - GRIB2 packing option:
-C>             value | option
-C>             ------|-------      
-C>              0     | simple packing
-C>              2     | group packing
-C>              31    | group pack with 1st order differencing
-C>              32    | group pack with 2nd order differencing
-C>              40    | JPEG2000 encoding
-C>              40000 | JPEG2000 encoding (obsolete)
-C>              41    | PNG encoding
-C>              40010 | PNG encoding (obsolete)
-C>              if ipack .ne. one of the values above, 31 is used as a default.
-C> @param usemiss - uses missing value management (instead of bitmaps), for use
-C>              ipack options 2, 31, and 32.
-C> @param imiss   - Missing value management:
-C>              0     = No explicit missing values included within data values
-C>              1     = Primary missing values included within data values
-C> @param uvvect  - .true. = combine U and V wind components into one GRIB2 msg.
-C>              .flase. = does not combine U and V wind components
-C> @param  table_ver  -  Master Table version where x is number from 2 to 10
-C>
-C>   INPUT FILES:   See ifl1
-C>
-C>   OUTPUT FILES:  See ifl2
-      subroutine cnv12(ifl1,ifl2,ipack,usemiss,imiss,uvvect,table_ver)
+!> @file
+!> @brief Convert every GRIB1 field in a file to a GRIB2 field.
+!> @author Stephen Gilbert @date 2003-06-11
 
+!> This subroutine converts every GRIB1 field in a file to a GRIB2 field.
+!> U and V wind component fields are combined into a single GRIB2
+!> message.
+!>
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 2003-06-11 | Gilbert | Initial
+!> 2003-05-19 | Gilbert | Changed Master Table Version Number from 1 to 2. Added check for grib1 table version with params 191 and 192 for ensemble probs.
+!> 2007-03-26 | Gordon | Added check for ECMWF data to reference ECMWF Conversion tables.
+!> 2007-10-11 | Vuong | Added check for ensemble probs if the kpds > 28
+!> 2008-01-28 | Vuong | Fixed the V-GRD BY SETTING THE LPDS(22)=-1 and increase the array size MAXPTS
+!> 2008-05-14 | Vuong | Add option -m0 No explicit missing values included within data values
+!> 2010-12-02 | Vuong | Changed Master Table Version Number from 2 to 6. - Add option -mastertable_ver_x where x is mater table version 2 to 10
+!> 2011-07-22 | Vuong | Changed variable kprob(1) to kpds(5) in calling routine param_g1_to_g2
+!> 2012-03-21 | Vuong | Set the Shape of Earth to 2 (oblate spheroid earth) for IMSSNOW (Polar Stereo graphic) Grid. 
+!>
+!> @param[in] ifl1 Fortran unit number of input GRIB1 file.
+!> @param[in] ifl2 Fortran unit number of output GRIB2 file.
+!> @param[in] ipack GRIB2 packing option:
+!> value | option
+!> ------|-------
+!> 0     | simple packing
+!> 2     | group packing
+!> 31    | group pack with 1st order differencing
+!> 32    | group pack with 2nd order differencing
+!> 40    | JPEG2000 encoding
+!> 40000 | JPEG2000 encoding (obsolete)
+!> 41    | PNG encoding
+!> 40010 | PNG encoding (obsolete)
+!> If ipack .ne. one of the values above, 31 is used as a default.
+!> @param[in] usemiss uses missing value management (instead of
+!> bitmaps), for use ipack options 2, 31, and 32.
+!> @param[in] imiss Missing value management:
+!> - 0 No explicit missing values included within data values
+!> - 1 Primary missing values included within data values
+!> @param[in] uvvect U/V vector control:
+!> - .true. combine U and V wind components into one GRIB2 msg.
+!> - .flase. does not combine U and V wind components
+!> @param table_ver Master Table version where x is number from 2 to 10.
+!>
+!> @author Stephen Gilbert @date 2003-06-11
+      subroutine cnv12(ifl1,ifl2,ipack,usemiss,imiss,uvvect,table_ver)
 
       use params
       use params_ecmwf
@@ -79,17 +71,15 @@ C>   OUTPUT FILES:  See ifl2
       logical :: ensemble,ecmwf
       Logical*1,allocatable,dimension(:) :: bmp,bmpv
 !
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-!
       ICND=0
       IFLI1=0
       allocate(fld(maxpts))
       allocate(coordlist(maxpts))
       allocate(bmp(maxpts))
       listsec1(3) = table_ver
-!      
+!
       iseek=0
-      do 
+      do
         call skgb(ifl1,iseek,msk1,lskip,lgrib)
         if (lgrib.eq.0) exit                ! end loop at EOF or problem
          if (lgrib.gt.currlen) then
@@ -131,7 +121,7 @@ C>   OUTPUT FILES:  See ifl2
         if (kpds(16).eq.1) listsec1(13)=0
         ensemble=.false.
         if ( (kpds(23).eq.2) .or.
-     &       (kptr(3).gt.28 .and. kpds(19).eq.2 .and. 
+     &       (kptr(3).gt.28 .and. kpds(19).eq.2 .and.
      &       (kpds(5).eq.191.or.kpds(5).eq.192) ) ) then        ! ensemble forecast
            ensemble=.true.
         endif
@@ -163,8 +153,7 @@ C>   OUTPUT FILES:  See ifl2
           write(6,*) ' ERROR creating new GRIB2 field = ',ierr
           cycle
         endif
-! 
-!-----------------------------------------------------------------------
+!
 ! convert grid info
         call gds2gdt(kgds,igds,igdstmpl,idefnum,ideflist,ierr)
         if (ierr.ne.0) then
@@ -172,17 +161,17 @@ C>   OUTPUT FILES:  See ifl2
         endif
         if (listsec1(1) .eq. 7 ) igdstmpl(1)=6    ! FOR NWS/NCEP
         if ((listsec1(1) .eq. 7 .and. igds(5).eq.20   ! For Snow Cover Analysis 
-     &     .and. kpds(2).eq.25 ) .and.               ! Polar Stereographic Grid
-     &     (kpds(5).eq.91 .or. kpds(5).eq.238)) then 
+     &     .and. kpds(2).eq.25 ) .and.              ! Polar Stereographic Grid
+     &     (kpds(5).eq.91 .or. kpds(5).eq.238)) then
               igdstmpl(1)=2
-        end if 
+        end if
         call addgrid(cgrib,lcgrib,igds,igdstmpl,200,ideflist,
      &               idefnum,ierr)
         if (ierr.ne.0) then
           write(6,*) ' ERROR adding GRIB2 grid = ',ierr
           cycle
         endif
-!-----------------------------------------------------------------------
+
 ! set PDS Template
         if (ensemble) then    ! ensemble forecast
            call pds2pdtens(kpds,kens,kprob,xprob,kclust,kmembr,
@@ -193,7 +182,7 @@ C>   OUTPUT FILES:  See ifl2
         if (ierr.ne.0) then
           cycle
         endif
-!-----------------------------------------------------------------------
+
 ! set bitmap flag
         idrstmpl=0
         if (btest(kpds(4),6)) then
@@ -227,7 +216,6 @@ C>   OUTPUT FILES:  See ifl2
           idrstmpl(7)=0                   ! No missing values
         endif
 
-!-----------------------------------------------------------------------
 !   Set DRT info  ( packing info )
         if ( ipack.eq.0 ) then
            idrsnum=0
@@ -258,7 +246,7 @@ C>   OUTPUT FILES:  See ifl2
         call addfield(cgrib,lcgrib,ipdsnum,ipdstmpl,200,
      &                coordlist,numcoord,idrsnum,idrstmpl,200,
      &                fld,numpts,ibmap,bmp,ierr)
-c       print *,'done with addfield'
+!       print *,'done with addfield'
         if (ierr.ne.0) then
           write(6,*) ' ERROR adding GRIB2 field = ',ierr
           cycle
@@ -281,10 +269,10 @@ c       print *,'done with addfield'
           endif
           ipdstmplv=ipdstmpl
           if (ecmwf) then       ! treat ecmwf data conversion seperately
-c            print *,' param_ecmwf call 2'
+!            print *,' param_ecmwf call 2'
              call param_ecmwf_g1_to_g2(kpds(5),kpds(19),idum,
      &            ipdstmplv(1),ipdstmplv(2))
-c            print *,' done with call 2'
+!            print *,' done with call 2'
           else
              call param_g1_to_g2(kpds(5),kpds(19),idum,ipdstmplv(1),
      &            ipdstmplv(2))

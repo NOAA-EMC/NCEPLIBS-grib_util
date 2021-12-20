@@ -1,66 +1,46 @@
-C> @file
-C>  
-C> @author Gilbert @date 2003-06-06
-C
-C> This program converts every GRIB field in a file from
-C> - (1) GRIB1 to GRIB2
-C> - (2) GRIB2 to GRIB1
-C> - (3) GRIB2 to GRIB2.
-C>
-C> PROGRAM HISTORY LOG:
-C> - 2003-06-06  Gilbert
-C> - 2008-05-14  Vuong    Added the option -m0 (No explicit missing values 
-C>                      included within the datavalues, modified the options
-C>                      and help messages
-C> - 2010-12-02  Vuong    Changed Master Table Version Number from 2 to 6.
-C>                      Add option -mastertable_ver_x where x is mater table
-C>                      version 2 to 10 
-C> - 2012-03-29  Vuong    Changed Master Table Version Number from 2 to 8.
-C> - 2013-07-24  Vuong    Changed Master Table Version Number from 2 to 11
-C> - 2016-09-30  Vuong    Modified to correct forecast hour beyon F252 when 
-C>                      convert from grib2 to grib1.
-C>                      Fixed memory leak and complex packing
-C> - 2018-07-26  Vuong    Checked Time Range for continuous accumulated
-C>                      APCP after F252 when convert from grib2 to grib1
-C>
-C> USAGE:
-C>  - INPUT FILES:
-C>     UNIT 10  - Input GRIB file
-C>
-C>  - OUTPUT FILES: 
-C>     UNIT 50  - Output GRIB file
-C>
-C>  -   LIBRARY:
-C>       W3LIB    - errexit
-C>       BACIO    - baopenr, baopenw, baclose
-C>
-C>  - EXIT STATES:
-C>     COND =   0 - SUCCESSFUL RUN
-C>          =   2 - Problem processing command line arguments
-C>          =   3 - Problem opening input GRIB file
-C>          =   4 - Problem opening output GRIB file
-C>          =   5 - Unknown conversion option
-C>
-C> REMARKS: LIST CAVEATS, OTHER HELPFUL HINTS OR INFORMATION
-C>
-      program cnvgrib
+!> @file
+!> @brief Convert files between GRIB1 and GRIB2.
+!> @author Stephen Gilbert @date 2003-06-06
 
+!> This program converts every GRIB field in a file from
+!> - (1) GRIB1 to GRIB2
+!> - (2) GRIB2 to GRIB1
+!> - (3) GRIB2 to GRIB2.
+!>
+!> ### Program History Log
+!> Date | Programmer | Comments
+!> -----|------------|---------
+!> 2003-06-06 | Gilbert | Initial
+!> 2008-05-14 | Vuong | Added the option -m0 (No explicit missing values included within the datavalues, modified the options and help messages
+!> 2010-12-02 | Vuong | Changed Master Table Version Number from 2 to 6. Add option -mastertable_ver_x where x is mater table version 2 to 10 
+!> 2012-03-29 | Vuong | Changed Master Table Version Number from 2 to 8.
+!> 2013-07-24 | Vuong | Changed Master Table Version Number from 2 to 11
+!> 2016-09-30 | Vuong | Modified to correct forecast hour beyon F252 when convert from grib2 to grib1. Fixed memory leak and complex packing
+!> 2018-07-26 | Vuong | Checked Time Range for continuous accumulated APCP after F252 when convert from grib2 to grib1
+!>
+!> @return
+!> - 0 SUCCESSFUL RUN
+!> - 2 Problem processing command line arguments
+!> - 3 Problem opening input GRIB file
+!> - 4 Problem opening output GRIB file
+!> - 5 Unknown conversion option
+!>
+!> @author Stephen Gilbert @date 2003-06-06
+      program cnvgrib
 
       integer :: inver=0,outver=0,ipack=-1
       character(len=500) :: gfilein,gfileout,copt
       character(len=2) :: master_table_ver,curmastertab_ver
       INTEGER(4) NARG,IARGC, table_ver, mastertab
       logical :: usemiss=.false., uvvect=.true.
-C
-C     Set current Master table version 2
-C
+!
+!     Set current Master table version 2
+!
       curmastertab_ver='2'
       table_ver=2
       mastertab=21    ! WMO GRIB2 version 21 (released in May 2, 2018)
-C - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-C  GET ARGUMENTS
 
-
+!  GET ARGUMENTS
       NARG=IARGC()
       IF(NARG.lt.3) THEN       ! may be a problem with args
          IF(NARG.eq.0) THEN
@@ -78,7 +58,7 @@ C  GET ARGUMENTS
             call usage(0)
             CALL ERREXIT(2)
          ENDIF
-      ELSE           
+      ELSE
          j=1
          dowhile (j.le.NARG-2)        ! parse first narg-2 args
             call getarg(j,copt)
@@ -105,9 +85,9 @@ C  GET ARGUMENTS
                 ipack=40
              case('-p41')
                 ipack=41
-             case('-p40000')       ! Obsolete 
+             case('-p40000')       ! Obsolete
                 ipack=40000
-             case('-p40010')       ! Obsolete 
+             case('-p40010')       ! Obsolete
                 ipack=40010
              case('-m')
                 usemiss=.true.
@@ -189,11 +169,11 @@ C  GET ARGUMENTS
             end select
          ENDDO
 
-         if ( table_ver .le. 1 .OR. 
+         if ( table_ver .le. 1 .OR.
      &      table_ver .gt. mastertab ) then
             call usage(0)
             call errmsg ('  ')
-            call errmsg('cnvgrib: cannot change to master table '// 
+            call errmsg('cnvgrib: cannot change to master table '//
      &                   'version ' // master_table_ver)
             call errmsg ('  ')
             call errmsg('Current GRIB master table version is '//
@@ -232,7 +212,6 @@ C  GET ARGUMENTS
          endif
       ENDIF
 !
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 !  Open input and output grib files
 !
       IFL1=10
@@ -252,7 +231,6 @@ C  GET ARGUMENTS
          call errexit(4)
       endif
 !
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 !  convert grib file
 !
       if ((inver.eq.1).AND.(outver.eq.2)) then
@@ -266,7 +244,6 @@ C  GET ARGUMENTS
          call errexit(5)
       endif
 !
-! - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 !  close grib files
 !
       CALL BACLOSE(ifl1,IOS)
@@ -275,44 +252,15 @@ C  GET ARGUMENTS
       stop
       end
 
+!> This routine prints a brief description of the command line options.
+!>
+!> @param[in] iopt ouput option: 1 = print description of arguments,
+!> otherwise, print command usage summary.
+!>
+!> @author Stephen Gilbert @date 2003-06-06
       subroutine usage(iopt)
-C$$$  SUBPROGRAM DOCUMENTATION BLOCK
-C                .      .    .                                       .
-C SUBPROGRAM:    usage
-C   PRGMMR: Gilbert     ORG: W/NP11    DATE: 2003-06-06
-C
-C ABSTRACT: This routine prints out the command "usage" 
-C   or a brief description of the command line options.
-C
-C PROGRAM HISTORY LOG:
-C 2003-06-06  Gilbert
-C 2007-04-25  Vuong   -  Changed the cnvgrib_ver
-C 2008-08-12  Vuong   -  Changed the cnvgrib_ver
-C 2009-06-01  Vuong   -  Changed the cnvgrib_ver
-C 2010-01-28  Vuong   -  Changed the cnvgrib_ver
-C 2010-08-05  Vuong   -  Changed the cnvgrib_ver
-C 2010-12-02  Vuong   -  Changed the cnvgrib_ver
-C 2011-07-12  Vuong   -  Changed the cnvgrib_ver
-C 2013-07-24  Vuong   -  Changed the cnvgrib_ver
-C 2016-09-30  Vuong   -  Changed the cnvgrib_ver-3.0.0
-C 2017-01-21  Vuong   -  Changed the cnvgrib_ver-3.1.0
-C 2018-07-26  Vuong   -  Changed the cnvgrib_ver-3.1.1
-C
-C USAGE:    CALL usage(iopt)
-C   INPUT ARGUMENT LIST:
-C     iopt   - ouput option:
-C                   1 = print description of arguments
-C                   otherwise, print command usage summary
-C
-C REMARKS: None
-C
-C ATTRIBUTES:
-C   LANGUAGE: Fortran 90
-C   MACHINE:  IBM SP
-C
-C$$$
          character(len=15) :: cnvgrib_ver="cnvgrib-v3.1.1"
-         integer,intent(in) :: iopt 
+         integer,intent(in) :: iopt
 
          if ( iopt.eq.0 ) then
          call errmsg ('  ')
@@ -322,7 +270,7 @@ C$$$
      &               '|-p41}]  ingribfile   outgribfile')
          call errmsg ('  ')
          call errmsg('Usage: cnvgrib  -h  For helps and shows all'//
-     &                                  ' options') 
+     &                                  ' options')
          call errmsg ('  ')
          endif
 
