@@ -7,7 +7,7 @@ set -e
 echo ""
 
 
-echo "*** Running group_rename test"
+echo "*** Running cnvgrib test"
 
 FAIL=0
 
@@ -20,4 +20,5 @@ FAIL=0
 # Check against expected output.
 cmp gdaswave.t00z.wcoast.0p16.f000.grib1.inventory.txt gdaswave_grib1_inventory.txt 
 
+echo "*** SUCCESS!"
 exit $FAIL
