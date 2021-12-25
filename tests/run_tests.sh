@@ -9,8 +9,6 @@ echo ""
 
 echo "*** Running cnvgrib test"
 
-FAIL=0
-
 # Convert test file to GRIB1.
 ../src/cnvgrib/cnvgrib -g21 gdaswave.t00z.wcoast.0p16.f000.grib2 gdaswave.t00z.wcoast.0p16.f000.grib1
 
@@ -21,4 +19,4 @@ FAIL=0
 cmp gdaswave.t00z.wcoast.0p16.f000.grib1.inventory.txt gdaswave_grib1_inventory.txt 
 
 echo "*** SUCCESS!"
-exit $FAIL
+exit 0
