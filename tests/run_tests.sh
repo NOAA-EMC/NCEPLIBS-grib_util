@@ -5,8 +5,6 @@
 
 set -e
 echo ""
-
-
 echo "*** Running cnvgrib test"
 
 # Convert test file to GRIB1.
