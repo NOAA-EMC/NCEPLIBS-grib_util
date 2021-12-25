@@ -15,7 +15,7 @@ FAIL=0
 ../src/cnvgrib/cnvgrib -g21 gdaswave.t00z.wcoast.0p16.f000.grib2 gdaswave.t00z.wcoast.0p16.f000.grib1
 
 # Generate an inventory of the GRIB1 file.
-#../src/wgrib/wgrib gdaswave.t00z.wcoast.0p16.f000.grib1 &> gdaswave.t00z.wcoast.0p16.f000.grib1.inventory.txt
+../src/wgrib/wgrib gdaswave.t00z.wcoast.0p16.f000.grib1 &> gdaswave.t00z.wcoast.0p16.f000.grib1.inventory.txt
 
 # Check against expected output.
 #cmp gdaswave.t00z.wcoast.0p16.f000.grib1.inventory.txt gdaswave_grib1_inventory.txt 
