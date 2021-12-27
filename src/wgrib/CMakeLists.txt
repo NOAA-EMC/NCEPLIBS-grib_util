@@ -2,13 +2,6 @@
 # NCEPLIBS-grib_util project.
 #
 # Mark Potts, Kyle Gerheiser
-if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel)$")
-  set(CMAKE_Fortran_FLAGS "-g -m64")
-  set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
-elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU|Clang|AppleClang)$")
-  set(CMAKE_Fortran_FLAGS "-g -m64")
-  set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
-endif()
 
 add_compile_definitions("DEF_T62_NCEP_TABLE=opn" "FAST_GRIBTAB" "P_TABLE_FIRST")
 
