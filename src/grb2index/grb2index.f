@@ -43,12 +43,6 @@
 !> 2005-02-25 | Gilbert | removed buffering option (see baseto).
 !> 2012-08-01 | Vuong | changed hostname to hostnam
 !>
-!> ### Input File
-!>   - gribfile     grib2 file
-!>
-!> ### Output File
-!>   - indexfile    unblocked index file
-!>
 !> @return
 !> - 0 successful run
 !> - 1 grib message not found

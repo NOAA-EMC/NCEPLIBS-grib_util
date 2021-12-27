@@ -1,21 +1,21 @@
 !> @file
 !> @brief Copy all or part of one GRIB2 file to another GRIB2 file.
 !> @author Iredell @date 1998-10-22
-!
-!> The command copygb2 copies all or part of one GRIB2 file
-!> to another GRIB2 file, interpolating if necessary. Unless
-!> otherwise directed (-x option), the GRIB2 index file is also used
-!> to speed the reading. The fields are interpolated to an output grid
-!> if specified (-g option). The interpolation type defaults to
-!> bilinear but may be specified directly (-i option). The copying
-!> may be limited to specific fields (-k option). It may also be
-!> limited to a specified subgrid of the output grid or to a subrange
-!> of the input fields (-B and -b, -A, and -K options). Fields can be
-!> identified as scalars or vectors (-v option), which are interpolated
-!> differently. The invalid data in the output field can be filled
-!> with mask values or merged with a merge field (-M and -m options).
-!> The output GRIB2 message can also be appended to a file (-a option).
-!> Some defaults can be overridden in a namelist file (-N option).
+
+!> The command copygb2 copies all or part of one GRIB2 file to another
+!> GRIB2 file, interpolating if necessary. Unless otherwise directed (-x
+!> option), the GRIB2 index file is also used to speed the reading. The
+!> fields are interpolated to an output grid if specified (-g
+!> option). The interpolation type defaults to bilinear but may be
+!> specified directly (-i option). The copying may be limited to
+!> specific fields (-k option). It may also be limited to a specified
+!> subgrid of the output grid or to a subrange of the input fields (-B
+!> and -b, -A, and -K options). Fields can be identified as scalars or
+!> vectors (-v option), which are interpolated differently. The invalid
+!> data in the output field can be filled with mask values or merged
+!> with a merge field (-M and -m options). The output GRIB2 message can
+!> also be appended to a file (-a option). Some defaults can be
+!> overridden in a namelist file (-N option).
 !>
 !> ### Program History Log
 !> Date | Programmer | Comments
