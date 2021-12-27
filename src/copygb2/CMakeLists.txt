@@ -4,11 +4,11 @@
 # Mark Potts, Kyle Gerheiser
 
 if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel)$")
-  set(CMAKE_Fortran_FLAGS "-g -r8 -auto -convert big_endian -fpp")
-  set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
+  set(CMAKE_Fortran_FLAGS "-g -r8 -auto -convert big_endian -fpp ${CMAKE_Fortran_FLAGS}")
+  set(CMAKE_Fortran_FLAGS_RELEASE "-O3 ${CMAKE_Fortran_FLAGS}")
 elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU)$")
-  set(CMAKE_Fortran_FLAGS "-g -fdefault-real-8 -fconvert=big-endian -cpp")
-  set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
+  set(CMAKE_Fortran_FLAGS "-g -fdefault-real-8 -fconvert=big-endian -cpp ${CMAKE_Fortran_FLAGS}")
+  set(CMAKE_Fortran_FLAGS_RELEASE "-O3 ${CMAKE_Fortran_FLAGS}")
 endif()
 
 set(fortran_src

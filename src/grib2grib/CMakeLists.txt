@@ -5,11 +5,11 @@
 
 if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel)$")
   set(CMAKE_Fortran_FLAGS
-      "-g -i8 -r8 -assume noold_ldout_format -axCORE-AVX2 -fpp")
-  set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
+      "-g -i8 -r8 -assume noold_ldout_format -axCORE-AVX2 -fpp ${CMAKE_Fortran_FLAGS}")
+  set(CMAKE_Fortran_FLAGS_RELEASE "-O3 ${CMAKE_Fortran_FLAGS}")
 elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU)$")
-  set(CMAKE_Fortran_FLAGS "-g -fdefault-integer-8 -fdefault-real-8 -cpp")
-  set(CMAKE_Fortran_FLAGS_RELEASE "-O3")
+  set(CMAKE_Fortran_FLAGS "-g -fdefault-integer-8 -fdefault-real-8 -cpp ${CMAKE_Fortran_FLAGS}")
+  set(CMAKE_Fortran_FLAGS_RELEASE "-O3 ${CMAKE_Fortran_FLAGS}")
 endif()
 
 set(fortran_src grib2grib.f hexchar.f)
