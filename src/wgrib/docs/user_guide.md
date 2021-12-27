@@ -3,13 +3,13 @@
 # Introduction
 
 The command wgrib both inventories and decodes GRIB-1
-files.  There are three types of inventories (regular, short,
+files. There are three types of inventories (regular, short,
 and verbose) which can be viewed as a human-readable index file.
 The inventories can be manipulated to select the records to
-decode.  The output formats of wgrib include: text, binary
-(system dependent), big endian IEEE and GRIB.  In addition
+decode. The output formats of wgrib include: text, binary
+(system dependent), big endian IEEE and GRIB. In addition
 the program can produce a non-inventory description of the GRIB
-records.  Information includes range of values, grid type, etc.
+records. Information includes range of values, grid type, etc.
 
 The program can be compiled to either use the NCEP operational
 GRIB tables or the NCEP/NCAR Reanalysis GRIB table as the default
@@ -17,10 +17,6 @@ table in cases of ambiguity.
 
 The program does not handle spectral files nor files with complex
 packing.
-
-The program is written in standard C and has been compiled on
-the CRAY, Alpha, SGI, SUN, HP, Amiga, MS-DOS (gcc) with using 
-the standard source code.
 
 ### Program History Log
 - 1997-08-19  EBISUZAKI  OPERATIONAL VERSION 1.6.0
