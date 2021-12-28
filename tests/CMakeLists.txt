@@ -25,9 +25,11 @@ gu_copy_test_data(gdaswave.t00z.wcoast.0p16.f000.grib2)
 gu_copy_test_data(ref_gdaswave_2.idx)
 gu_copy_test_data(ref_gdaswave.degrib2.txt)
 gu_copy_test_data(gdaswave_grib1_inventory.txt)
+gu_copy_test_data(ref_gdaswave.grb2index.idx)
 
 # Run these shell tests.
 gu_test(run_cnvgrib_tests)
 gu_test(run_copygb2_tests)
 gu_test(run_degrib2_tests)
+gu_test(run_grb2index_tests)
 
