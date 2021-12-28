@@ -29,6 +29,6 @@ file(COPY "${CMAKE_SOURCE_DIR}/tests/gdaswave_grib1_inventory.txt"
   FILE_PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
 
 # Run these shell tests.
-gu_test(run_tests)
-gu_test(run_tests_2)
+gu_test(run_cnvgrib_tests)
+gu_test(run_copygb2_tests)
 
