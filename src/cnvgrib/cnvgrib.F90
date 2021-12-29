@@ -60,7 +60,7 @@ program cnvgrib
      ENDIF
   ELSE
      j=1
-     dowhile (j.le.NARG-2)        ! parse first narg-2 args
+     do while (j.le.NARG-2)        ! parse first narg-2 args
      call getarg(j,copt)
      j=j+1
      selectcase(copt)
