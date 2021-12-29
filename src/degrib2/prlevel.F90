@@ -2,11 +2,11 @@
 !> @brief
 !> @author Vuong @date 2010-09-08
 
-!>    prlevel
+!> Print.
 !>
-!>    @param[in] ipdtn
-!>    @param[in] ipdtmpl
-!>    @param[out] labbrev
+!> @param[in] ipdtn
+!> @param[in] ipdtmpl
+!> @param[out] labbrev
 !>
 !> @author Vuong @date 2010-09-08
 subroutine prlevel(ipdtn,ipdtmpl,labbrev)
@@ -269,6 +269,13 @@ subroutine prlevel(ipdtn,ipdtmpl,labbrev)
   return
 end subroutine prlevel
 
+!> Format.
+!>
+!> @param[in] ipdtn
+!> @param[in] ipdtmpl
+!> @param[out] labbrev
+!>
+!> @author Vuong @date 2010-09-08
 subroutine frmt(cval,ival,iscal)
 
   character(len=10),intent(out) :: cval
