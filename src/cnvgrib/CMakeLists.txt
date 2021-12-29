@@ -13,7 +13,7 @@ elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU)$")
 endif()
 
 # These are the source files for cnvgrib.
-set(fortran_src cnv12.f cnv22.f gds2gdt.f makepdsens.f pds2pdtens.f
+set(fortran_src cnv12.F90 cnv22.f gds2gdt.f makepdsens.f pds2pdtens.f
     putgbexn.f cnv21.f cnvgrib.F90 gdt2gds.f makepds.f pds2pdt.f
     setbit.f)
 
