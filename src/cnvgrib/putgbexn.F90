@@ -141,83 +141,82 @@
 !> - Other W3FI72 GRIB packer return code
 !>
 !> @author Mark Iredell @date 94-04-01
-      SUBROUTINE PUTGBEXN(LUGB,KF,KPDS,KGDS,KENS,
-     &                   KPROB,XPROB,KCLUST,KMEMBR,IBS,NBITS,LB,F,IRET)
+SUBROUTINE PUTGBEXN(LUGB,KF,KPDS,KGDS,KENS, &
+     KPROB,XPROB,KCLUST,KMEMBR,IBS,NBITS,LB,F,IRET)
 
-      INTEGER KPDS(200),KGDS(200),KENS(200)
-      INTEGER KPROB(2),KCLUST(16),KMEMBR(80)
-      REAL XPROB(2)
-      LOGICAL*1 LB(KF)
-      REAL F(KF)
-!      PARAMETER(MAXBIT=16)
-      PARAMETER(MAXBIT=24)
-      INTEGER IBM(KF),IPDS(200),IGDS(200),IBDS(200)
-      CHARACTER PDS(400),GRIB(1000+KF*(MAXBIT+1)/8)
+  INTEGER KPDS(200),KGDS(200),KENS(200)
+  INTEGER KPROB(2),KCLUST(16),KMEMBR(80)
+  REAL XPROB(2)
+  LOGICAL*1 LB(KF)
+  REAL F(KF)
+  !      PARAMETER(MAXBIT=16)
+  PARAMETER(MAXBIT=24)
+  INTEGER IBM(KF),IPDS(200),IGDS(200),IBDS(200)
+  CHARACTER PDS(400),GRIB(1000+KF*(MAXBIT+1)/8)
 
-!  GET W3FI72 PARAMETERS
-      !print *,'SAGT: start putgbexn'
-      CALL R63W72(KPDS,KGDS,IPDS,IGDS)
-      IBDS=0
+  !  GET W3FI72 PARAMETERS
+  !print *,'SAGT: start putgbexn'
+  CALL R63W72(KPDS,KGDS,IPDS,IGDS)
+  IBDS=0
 
-!  COUNT VALID DATA
-      KBM=KF
-      IF(IPDS(7).NE.0) THEN
-        KBM=0
-        DO I=1,KF
-          IF(LB(I)) THEN
-            IBM(I)=1
-            KBM=KBM+1
-          ELSE
-            IBM(I)=0
-          ENDIF
-        ENDDO
-        IF(KBM.EQ.KF) IPDS(7)=0
-      ENDIF
-
-!  GET NUMBER OF BITS AND ROUND DATA
-      IF(NBITS.GT.0) THEN
-        NBIT=NBITS
-      ELSE
-        IF(KBM.EQ.0) THEN
-          DO I=1,KF
-            F(I)=0.
-          ENDDO
-          NBIT=0
+  !  COUNT VALID DATA
+  KBM=KF
+  IF(IPDS(7).NE.0) THEN
+     KBM=0
+     DO I=1,KF
+        IF(LB(I)) THEN
+           IBM(I)=1
+           KBM=KBM+1
         ELSE
-          !print *,'SAGT:',IPDS(7),IBS,IPDS(25),KF
-          !print *,'SAGT:',count(ibm.eq.0),count(ibm.eq.1)
-          CALL SETBIT(IPDS(7),-IBS,IPDS(25),KF,IBM,F,FMIN,FMAX,NBIT)
-          NBIT=MIN(NBIT,MAXBIT)
+           IBM(I)=0
         ENDIF
-      ENDIF
+     ENDDO
+     IF(KBM.EQ.KF) IPDS(7)=0
+  ENDIF
 
-!  CREATE PRODUCT DEFINITION SECTION
-      CALL W3FI68(IPDS,PDS)
-      IF(IPDS(24).EQ.2) THEN
-        ILAST=45
-        IF ( IPDS(8).EQ.191.OR.IPDS(8).EQ.192 ) ILAST=55
-        IF ( KENS(2).EQ.5) ILAST=76
-        IF ( KENS(2).EQ.5) ILAST=86
-        IF ( KENS(2).EQ.4) ILAST=86
-        CALL PDSENS(KENS,KPROB,XPROB,KCLUST,KMEMBR,ILAST,PDS)
-      ENDIF
+  !  GET NUMBER OF BITS AND ROUND DATA
+  IF(NBITS.GT.0) THEN
+     NBIT=NBITS
+  ELSE
+     IF(KBM.EQ.0) THEN
+        DO I=1,KF
+           F(I)=0.
+        ENDDO
+        NBIT=0
+     ELSE
+        !print *,'SAGT:',IPDS(7),IBS,IPDS(25),KF
+        !print *,'SAGT:',count(ibm.eq.0),count(ibm.eq.1)
+        CALL SETBIT(IPDS(7),-IBS,IPDS(25),KF,IBM,F,FMIN,FMAX,NBIT)
+        NBIT=MIN(NBIT,MAXBIT)
+     ENDIF
+  ENDIF
 
-!  PACK AND WRITE GRIB DATA
-      igflag=1
-      igrid=kpds(3)
-      if ( igrid.ne.255 ) igflag=0
-      !print *,minval(f(1:kf)),maxval(f(1:kf))
-      !print *,nbit,kf
-      !print *,(ipds(j),j=1,28)
-      !write(6,fmt='(28z2)') (pds(j),j=1,28)
-      !print *,(kgds(j),j=1,28)
-      !print *,(igds(j),j=1,28)
-      icomp=0
-      CALL W3FI72(0,F,0,NBIT,1,IPDS,PDS,
-     &            igflag,igrid,IGDS,ICOMP,0,IBM,KF,IBDS,
-     &            KFO,GRIB,LGRIB,IRET)
-      IF(IRET.EQ.0) CALL WRYTE(LUGB,LGRIB,GRIB)
+  !  CREATE PRODUCT DEFINITION SECTION
+  CALL W3FI68(IPDS,PDS)
+  IF(IPDS(24).EQ.2) THEN
+     ILAST=45
+     IF (IPDS(8).EQ.191.OR.IPDS(8).EQ.192) ILAST=55
+     IF (KENS(2).EQ.5) ILAST=76
+     IF (KENS(2).EQ.5) ILAST=86
+     IF (KENS(2).EQ.4) ILAST=86
+     CALL PDSENS(KENS,KPROB,XPROB,KCLUST,KMEMBR,ILAST,PDS)
+  ENDIF
 
-      RETURN
-      END
+  !  PACK AND WRITE GRIB DATA
+  igflag=1
+  igrid=kpds(3)
+  if (igrid.ne.255) igflag=0
+  !print *,minval(f(1:kf)),maxval(f(1:kf))
+  !print *,nbit,kf
+  !print *,(ipds(j),j=1,28)
+  !write(6,fmt='(28z2)') (pds(j),j=1,28)
+  !print *,(kgds(j),j=1,28)
+  !print *,(igds(j),j=1,28)
+  icomp=0
+  CALL W3FI72(0,F,0,NBIT,1,IPDS,PDS, &
+       igflag,igrid,IGDS,ICOMP,0,IBM,KF,IBDS, &
+       KFO,GRIB,LGRIB,IRET)
+  IF(IRET.EQ.0) CALL WRYTE(LUGB,LGRIB,GRIB)
 
+  RETURN
+END SUBROUTINE PUTGBEXN
