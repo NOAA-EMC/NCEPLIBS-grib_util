@@ -3,6 +3,7 @@
 #
 # George Gayno, Mark Potts
 
+# Set compiler flags.
 if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel)$")
   set(CMAKE_Fortran_FLAGS "-g -convert big_endian -axCORE-AVX2 -fpp ${CMAKE_Fortran_FLAGS}")
   set(CMAKE_Fortran_FLAGS_RELEASE "-O3 ${CMAKE_Fortran_FLAGS}")
@@ -11,8 +12,10 @@ elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU)$")
   set(CMAKE_Fortran_FLAGS_RELEASE "-O3 ${CMAKE_Fortran_FLAGS}")
 endif()
 
-set(fortran_src degrib2.f prlevel.f prvtime.f)
+# These are the fortran source files.
+set(fortran_src degrib2.F90 prlevel.F90 prvtime.F90)
 
+# Build the executable.
 set(exe_name degrib2)
 add_executable(${exe_name} ${fortran_src})
 target_link_libraries(${exe_name} PRIVATE
@@ -23,6 +26,7 @@ target_link_libraries(${exe_name} PRIVATE
   ${JASPER_LIBRARIES}
   ${ZLIB_LIBRARY})
 
+# Install the degrib2 utility.
 install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
 
 # If doxygen documentation is enabled, build it.
