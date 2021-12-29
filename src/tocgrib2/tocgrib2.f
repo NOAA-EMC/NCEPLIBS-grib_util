@@ -12,7 +12,7 @@
 !> @note The "EXTRACT" variable in the namelist allows users to choose
 !> whether they want the entire GRIB2 message containing the requested
 !> field (extract=.false.), OR a GRIB2 message containing only the
-!> requested field (extract=.true.).  Both options return the same
+!> requested field (extract=.true.). Both options return the same
 !> message if the requested field is the only field in the GRIB2
 !> message.
 !>
@@ -98,7 +98,7 @@
          stop 10
       endif
 !
-!         Open GRIB2 index file.  If doesn't open, use just the data
+!         Open GRIB2 index file. If doesn't open, use just the data
 !         file.
 !
       call baopenr(lugi,filei,iret2)
