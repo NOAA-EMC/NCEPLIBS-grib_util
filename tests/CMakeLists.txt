@@ -22,10 +22,12 @@ endfunction()
  
 # Copy necessary test data files.
 gu_copy_test_data(ref_gdaswave.t00z.wcoast.0p16.f000.grib2)
+gu_copy_test_data(ref_gdaswave.t00z.wcoast.0p16.f000.grib1)
 gu_copy_test_data(ref_gdaswave_2.idx)
 gu_copy_test_data(ref_gdaswave.degrib2.txt)
 gu_copy_test_data(ref_gdaswave_grib1_inventory.txt)
 gu_copy_test_data(ref_gdaswave.grb2index.idx)
+gu_copy_test_data(ref_gdaswave_2.grib1.idx)
 
 # Run these shell tests.
 gu_test(run_cnvgrib_tests)
