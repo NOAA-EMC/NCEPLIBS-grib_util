@@ -1,6 +1,6 @@
 !> @file
 !> @brief
-!> @author Vuong @date 2010-09-08
+!> @author Stephen Gilbert @date 2010-09-08
 
 !>    prvtime
 !>
@@ -9,7 +9,7 @@
 !>    @param[in] listsec1
 !>    @param[out] tabbrev
 !>
-!> @author Vuong @date 2010-09-08
+!> @author Stephen Gilbert @date 2010-09-08
 subroutine prvtime(ipdtn,ipdtmpl,listsec1,tabbrev)
 
   integer,intent(in) :: ipdtn
