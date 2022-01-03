@@ -1,6 +1,6 @@
 !> @file
 !> @brief Make an inventory of a GRIB2 file.
-!> @author Vuong @date 2010-09-08
+!> @author Stephen Gilbert @date 2010-09-08
 
 !> This program reads a GRIB2 file and makes an inventory.
 !>
@@ -14,7 +14,7 @@
 !> 2012-06-07 | Vuong | Changed PRINT statement to WRITE with format specifier
 !> 2017-01-21 | Vuong | Added to check for undefine values
 !>
-!> @author Vuong @date 2010-09-08
+!> @author Stephen Gilbert @date 2010-09-08
 program degrib2
   use grib_mod
   use params

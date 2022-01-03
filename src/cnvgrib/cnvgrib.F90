@@ -42,8 +42,8 @@ program cnvgrib
 
   !  GET ARGUMENTS
   NARG = IARGC()
-  IF(NARG.lt.3) THEN       ! may be a problem with args
-     IF(NARG .eq. 0) THEN
+  IF (NARG .lt. 3) THEN       ! may be a problem with args
+     IF (NARG .eq. 0) THEN
         !CALL ERRMSG('cnvgrib:  Incorrect usage')
         call usage(0)
         CALL ERREXIT(2)

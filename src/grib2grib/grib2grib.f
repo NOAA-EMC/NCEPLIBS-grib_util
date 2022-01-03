@@ -1,6 +1,6 @@
 !> @file
 !> @brief Finds and extracts grib records from a grib file made
-!> by gribawp1 for family of services.
+!> by gribawp1 for WFO (AWIPS).
 !> @author Southall @date 96-05-21
 
 !> Finds and extracts grib records from a grib file made
