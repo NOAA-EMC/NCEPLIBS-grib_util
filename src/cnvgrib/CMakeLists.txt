@@ -24,7 +24,7 @@ message(STATUS "In cnvgrib ${ZLIB_LIBRARIES}")
 set(exe_name cnvgrib)
 add_executable(${exe_name} ${fortran_src})
 target_link_libraries(${exe_name} g2::g2_4
-  bacio::bacio_4 w3emc::w3emc_4 ${JASPER_LIBRARIES} PNG::PNG
+  bacio::${bacio_name} w3emc::w3emc_4 ${JASPER_LIBRARIES} PNG::PNG
   ${ZLIB_LIBRARY})
 
 # Install cnvgrib.
