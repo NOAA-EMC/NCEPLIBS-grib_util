@@ -1,6 +1,6 @@
 !> @file
 !> @brief
-!> @author Vuong @date 2010-09-08
+!> @author Stephen Gilbert @date 2010-09-08
 
 !> Print.
 !>
@@ -8,7 +8,7 @@
 !> @param[in] ipdtmpl
 !> @param[out] labbrev
 !>
-!> @author Vuong @date 2010-09-08
+!> @author Stephen Gilbert @date 2010-09-08
 subroutine prlevel(ipdtn,ipdtmpl,labbrev)
 
   integer,intent(in) :: ipdtn

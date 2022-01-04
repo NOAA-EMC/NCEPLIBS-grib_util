@@ -18,7 +18,6 @@ copygb2 | Mark Iredell, Stephen Gilbert, Boi Vuong
 degrib2 | Boi Vuong
 grb2index | Mark Iredell, Stephen Gilbert, Boi Vuong
 grbindex | Mark Iredell, Stephen Gilbert, Boi Vuong, W. Ebisuzaki
-grib2grib | Southall, Johnson, Boi Vuong
 tocgrib | Stephen Gilbert, Boi Vuong, Farley, R. E. Jones
 tocgrib2 | Stephen Gilbert, Boi Vuong
 tocgrib2super | Stephen Gilbert, Boi Vuong
