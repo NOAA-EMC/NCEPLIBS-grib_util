@@ -13,7 +13,6 @@ The utilities:
 - <a href="degrib2/index.html">degrib2</a> - Inventory a GRIB2 file.
 - <a href="grbindex/index.html">grbindex</a> - Create an index from a GRIB1 file.
 - <a href="grb2index/index.html">grb2index</a> - Create an index from a GRIB2 file.
-- <a href="grib2grib/index.html">grib2grib</a> - Finds and extracts grib records from a grib file made by gribawp1.
 - <a href="tocgrib/index.html">tocgrib</a> - Copy some GRIB2 fields to a new GRIB1 file.
 - <a href="tocgrib2/index.html">tocgrib2</a> - Copy some GRIB2 fields to a new GRIB2 file.
 - <a href="tocgrib2super/index.html">tocgrib2super</a> - Copy some GRIB2 fields to a new GRIB2 file with super WMO header.
