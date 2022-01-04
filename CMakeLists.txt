@@ -33,10 +33,10 @@ find_package(PNG REQUIRED)
 find_package(ZLIB REQUIRED)
 
 # Find the NCEPLIBS libraries we need.
+find_package(bacio 2.4.0 REQUIRED)
 find_package(sp 2.3.3 REQUIRED)
 find_package(ip 3.3.3 REQUIRED)
-find_package(w3nco 2.4.0 REQUIRED)
-find_package(bacio 2.4.0 REQUIRED)
+find_package(w3emc 2.9.2 REQUIRED)
 find_package(g2 3.4.0 REQUIRED)
 
 # The name of the bacio library changed with the 2.5.0 release. The

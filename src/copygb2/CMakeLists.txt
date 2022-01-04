@@ -23,7 +23,7 @@ target_link_libraries(${exe_name} PRIVATE
   PNG::PNG
   ${JASPER_LIBRARIES}
   bacio::${bacio_name}
-  w3nco::w3nco_d
+  w3emc::w3emc_d
   ip::ip_d
   sp::sp_d)
 

@@ -38,7 +38,8 @@ This package requires the folling NCEPLIBS libraries:
 - [NCEPLIBS-ip](https://github.com/NOAA-EMC/NCEPLIBS-ip)
 - [NCEPLIBS-bacio](https://github.com/NOAA-EMC/NCEPLIBS-bacio)
 - [NCEPLIBS-g2](https://github.com/NOAA-EMC/NCEPLIBS-g2)
-- [NCEPLIBS-w3nco](https://github.com/NOAA-EMC/NCEPLIBS-w3nco)
+- [NCEPLIBS-w3nco](https://github.com/NOAA-EMC/NCEPLIBS-w3nco) (before version 1.3.0)
+- [NCEPLIBS-w3emc](https://github.com/NOAA-EMC/NCEPLIBS-w3emc) (starting version 1.3.0)
 
 ## Installing
 

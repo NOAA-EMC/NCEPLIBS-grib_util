@@ -15,7 +15,7 @@ set(fortran_src copygb.F)
 
 set(exe_name copygb)
 add_executable(${exe_name} ${fortran_src})
-target_link_libraries(${exe_name} PRIVATE bacio::${bacio_name} w3nco::w3nco_d ip::ip_d sp::sp_d)
+target_link_libraries(${exe_name} PRIVATE bacio::${bacio_name} w3emc::w3emc_d ip::ip_d sp::sp_d)
 
 if(OpenMP_Fortran_FOUND)
   target_link_libraries(${exe_name} PRIVATE OpenMP::OpenMP_Fortran)

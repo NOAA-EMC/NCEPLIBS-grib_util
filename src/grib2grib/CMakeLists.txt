@@ -16,7 +16,7 @@ set(fortran_src grib2grib.f hexchar.f)
 
 set(exe_name grib2grib)
 add_executable(${exe_name} ${fortran_src})
-target_link_libraries(${exe_name} PRIVATE w3nco::w3nco_8 bacio::${bacio_name})
+target_link_libraries(${exe_name} PRIVATE w3emc::w3emc_8 bacio::${bacio_name})
 
 install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
 
