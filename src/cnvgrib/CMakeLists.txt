@@ -17,11 +17,14 @@ set(fortran_src cnv12.F90 cnv22.F90 gds2gdt.F90 makepdsens.F90
 pds2pdtens.F90 putgbexn.F90 cnv21.F90 cnvgrib.F90 gdt2gds.F90
 makepds.F90 pds2pdt.F90 setbit.F90)
 
-# Build the executable.  
+# Build the executable.
+message(STATUS "In cnvgrib using bacio library ${bacio_name}")
+message(STATUS "In cnvgrib ${JASPER_LIBRARIES}")
+message(STATUS "In cnvgrib ${ZLIB_LIBRARIES}")
 set(exe_name cnvgrib)
 add_executable(${exe_name} ${fortran_src})
-target_link_libraries(${exe_name} PRIVATE g2::g2_4
-  bacio::${bacio_name} w3nco::w3nco_4 ${JASPER_LIBRARIES} PNG::PNG
+target_link_libraries(${exe_name} g2::g2_4
+  bacio::${bacio_name} w3emc::w3emc_4 ${JASPER_LIBRARIES} PNG::PNG
   ${ZLIB_LIBRARY})
 
 # Install cnvgrib.

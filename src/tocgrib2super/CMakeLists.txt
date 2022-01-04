@@ -17,7 +17,7 @@ set(exe_name tocgrib2super)
 add_executable(${exe_name} ${fortran_src})
 target_link_libraries(${exe_name} PRIVATE
   g2::g2_4
-  w3nco::w3nco_4
+  w3emc::w3emc_4
   bacio::${bacio_name}
   PNG::PNG
   ${JASPER_LIBRARIES}

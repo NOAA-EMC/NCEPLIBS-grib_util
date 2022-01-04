@@ -44,14 +44,14 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-bacio
         path: bacio
-        ref: v2.4.0
+        ref: v2.4.1
     
     - name: cache-bacio
       id: cache-bacio
       uses: actions/cache@v2
       with:
         path: ~/bacio
-        key: bacio-${{ runner.os }}-2.4.0-1
+        key: bacio-${{ runner.os }}-2.4.1-1
 
     - name: build-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
@@ -86,27 +86,27 @@ jobs:
         make -j2
         make install
           
-    - name: checkout-w3nco
+    - name: checkout-w3emc
       uses: actions/checkout@v2
       with:
-        repository: NOAA-EMC/NCEPLIBS-w3nco
-        path: w3nco
-        ref: v2.4.1
+        repository: NOAA-EMC/NCEPLIBS-w3emc
+        path: w3emc
+        ref: v2.9.2
 
-    - name: cache-w3nco
-      id: cache-w3nco
+    - name: cache-w3emc
+      id: cache-w3emc
       uses: actions/cache@v2
       with:
-        path: ~/w3nco
-        key: w3nco-${{ runner.os }}-2.4.1
+        path: ~/w3emc
+        key: w3emc-${{ runner.os }}-2.9.2
 
-    - name: build-w3nco
-      if: steps.cache-w3nco.outputs.cache-hit != 'true'
+    - name: build-w3emc
+      if: steps.cache-w3emc.outputs.cache-hit != 'true'
       run: |
-        cd w3nco
+        cd w3emc
         mkdir build
         cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/w3nco
+        cmake .. -DCMAKE_PREFIX_PATH=~/bacio -DCMAKE_INSTALL_PREFIX=~/w3emc
         make -j2
         make install
           
@@ -168,7 +168,7 @@ jobs:
         cd grib_utils
         mkdir build && cd build
         ls -l ~/jasper
-        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3nco;~/g2" -DENABLE_DOCS=ON -DCMAKE_Fortran_FLAGS="-g -fprofile-abs-path -fprofile-arcs -ftest-coverage -O0 -Wall" -DCMAKE_C_FLAGS="-g -fprofile-abs-path -fprofile-arcs -ftest-coverage -O0 -Wall" ..
+        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" -DENABLE_DOCS=ON -DCMAKE_Fortran_FLAGS="-g -fprofile-abs-path -fprofile-arcs -ftest-coverage -O0 -Wall" -DCMAKE_C_FLAGS="-g -fprofile-abs-path -fprofile-arcs -ftest-coverage -O0 -Wall" ..
         make -j2
         ctest --verbose --output-on-failure
         gcovr --root .. -v  --html-details --exclude ../tests --exclude CMakeFiles --print-summary -o test-coverage.html
