@@ -50,6 +50,15 @@ else()
 endif()
 message(STATUS "Using bacio library ${bacio_name}")
 
+# For NCEPLIBS-ip-4.0.0 and later, we need to add a "use" statement to
+# the code. Check for this...
+if(ip_VERSION GREATER_EQUAL 4.0.0)
+  add_compile_definitions(USE_IP_MOD)
+  message(STATUS "ip library > 4.0.0, USE_IP_MOD set")
+else()
+  message(STATUS "ip library < 4.0.0, USE_IP_MOD not set")
+endif()
+
 # Determine whether or not to generate documentation.
 if(ENABLE_DOCS)
   find_package(Doxygen REQUIRED)

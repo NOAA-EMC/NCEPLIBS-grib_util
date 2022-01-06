@@ -163,6 +163,9 @@
 !>
 !>    @author Stephen Gilbert @date 2000-05-02
       PROGRAM COPYGB
+#ifdef USE_IP_MOD
+      use ip_mod
+#endif
       CHARACTER*256 CARG,CG1,CX1,CGB,CXB,CGM,CXM,CG2,CNL
       INTEGER KARG(100), NTHREADS
       INTEGER KGDSI(200),IPOPT(20),JPDS1(200),JPDSB(200),IUV(100)
