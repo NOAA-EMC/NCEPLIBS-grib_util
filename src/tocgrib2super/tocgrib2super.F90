@@ -139,8 +139,7 @@ PROGRAM tocgrib2super
   call getenv(envvar,fileo)
   call baopenw(lugo,fileo,iret1)
   if (iret1  .ne. 0) then
-     write(6,fmt='(" Error opening output transmission file: ", &
-          A200)') fileo
+     write(6,fmt='(" Error opening output transmission file: ", A200)') fileo
      write(6,fmt='(" baopenw error = ",I5)') iret1
      stop 20
   endif

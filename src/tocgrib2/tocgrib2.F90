@@ -49,11 +49,9 @@ PROGRAM tocgrib2
   integer :: nbul, nrec, mbul, dayofmonth, hourofday
   integer, parameter :: lenhead = 21, jrew = 0
 
-  CHARACTER * 6 BULHED
   CHARACTER * 80 DESC, WMOHEAD
   CHARACTER * 200 fileb, filei, fileo
   CHARACTER * 6 envvar
-  CHARACTER * 4 KWBX
   CHARACTER * 1 CSEP(80)
   CHARACTER * 1 WMOHDR(lenhead)
   character(len = 1), pointer, dimension(:) :: gribm
@@ -106,8 +104,7 @@ PROGRAM tocgrib2
   call getenv(envvar, fileo)
   call baopenw(lugo, fileo, iret1)
   if (iret1  .ne. 0) then
-     write(6, fmt = '(" Error opening output transmission file: ", &
-          A200)') fileo
+     write(6, fmt = '(" Error opening output transmission file: ", A200)') fileo
      write(6, fmt = '(" baopenw error = ", I5)') iret1
      stop 20
   endif
@@ -131,14 +128,12 @@ PROGRAM tocgrib2
      READ (*, GRIBIDS, iostat = ios, end = 999)
      nrec = nrec + 1
      if (ios .ne. 0) then
-        write(6, fmt = '(" Error reading PDS from input file. iostat = " &
-             , i5)') ios
+        write(6, fmt = '(" Error reading PDS from input file. iostat = ", i5)') ios
         cycle
      endif
 
      !  Echo input record
-     WRITE(6, FMT = '(/, ''***********************************'', &
-          ''********************************************'')')
+     WRITE(6, FMT = '(/, ''***********************************'', ''********************************************'')')
      write(6, '(A, I0)') ' Start new record no. =  ', nrec
      write(6, '(73A)') ' DESC = ', DESC(1:73)
      write(6, '(11A)') ' WMOHEAD = ', WMOHEAD(1:11)
@@ -197,17 +192,14 @@ PROGRAM tocgrib2
 
   ! CLOSING SECTION
 999 if (nbul .EQ. 0) then
-     WRITE (6, FMT = '('' SOMETHING WRONG WITH DATA CARDS...'', &
-          ''NOTHING WAS PROCESSED'')')
+     WRITE (6, FMT = '('' SOMETHING WRONG WITH DATA CARDS...'', ''NOTHING WAS PROCESSED'')')
      stop 19
   else
      call baclose (LUGB, iret)
      call baclose (LUGI, iret)
      call baclose (LUGO, iret)
-     WRITE (6, FMT = '(//, '' ******** RECAP OF THIS EXECUTION '', &
-          ''********'', /, 5X, ''READ  '', I6, '' INDIVIDUAL IDS'', &
-          /, 5X, ''WROTE '', I6, '' BULLETINS OUT FOR TRANSMISSION'', &
-          //)') nrec, NBUL
+     WRITE (6, FMT = '(//, '' ******** RECAP OF THIS EXECUTION '', ''********'', /, 5X, ''READ  '', I6, '' INDIVIDUAL IDS'', ' // &
+          '/, 5X, ''WROTE '', I6, '' BULLETINS OUT FOR TRANSMISSION'', //)') nrec, NBUL
   endif
 
   ! TEST TO SEE IF ANY BULLETINS MISSING
