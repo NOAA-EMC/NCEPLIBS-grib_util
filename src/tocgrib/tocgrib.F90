@@ -40,7 +40,6 @@ PROGRAM tocgrib
   INTEGER DUM
   INTEGER JGDS(200)
   INTEGER MPDS(200)
-  INTEGER,dimension(8):: ITIME=(/0,0,0,-500,0,0,0,0/)
   INTEGER KGDS(200)
   INTEGER KPDS(200)
   INTEGER MAPNUM
@@ -107,7 +106,7 @@ PROGRAM tocgrib
 
   call baopenr(lugb,fileb,iret1)
   if ( iret1  .ne. 0 ) then
-     write(6,fmt='(" Error opening GRIB file: ",A200)') fileb
+     write(6,fmt='(" Error opening GRIB file: ", A200)') fileb
      write(6,fmt='(" baopenr error = ",I5)') iret1
      stop 10
   endif
@@ -143,8 +142,7 @@ PROGRAM tocgrib
           (HEXPDS(J),J=17,20), PUNUM, DESC
 66   FORMAT(3(2X,4Z2.2),3X,4Z2.2,6X,I3,1X,A20)
      if ( ios .ne. 0 ) then
-        write(6,fmt='(" Error reading PDS from input file. iostat = " &
-             ,i5)') ios
+        write(6,fmt='(" Error reading PDS from input file. iostat = ", i5)') ios
         exit
      endif
      PDS=char(HEXPDS)
@@ -153,15 +151,11 @@ PROGRAM tocgrib
      IF ( mova2i(pds(1)) .EQ. 255) exit
 
      nrec = nrec + 1
-     WRITE(6,FMT='(/,''***********************************'', &
-          ''********************************************'')')
+     WRITE(6,FMT='(/,''***********************************'', ''********************************************'')')
      print *,'Start new record no. = ',nrec
-     WRITE (6,FMT='('' INPUT PDS, PUNUM'', &
-          '' & DESC...DESIRED GRIB MAPS LISTED ON FOLLOWING '', &
-          ''LINES...'',/,4X,3(2X,4z2.2),3X,4z2.2,6X,I3,1X, &
-          A20)') (HEXPDS(J),J=1,12), &
+     WRITE (6,FMT='('' INPUT PDS, PUNUM'', '' & DESC...DESIRED GRIB MAPS LISTED ON FOLLOWING '', ' // &
+          ' ''LINES...'',/,4X,3(2X,4z2.2),3X,4z2.2,6X,I3,1X, A20)') (HEXPDS(J),J=1,12), &
           (HEXPDS(J),J=17,20), PUNUM, DESC
-
 
      ! Read WNO Header associated with this element
      READ (*,iostat=ios,FMT='(4X,I3,2X,I2,2X,A6,1X,I3,24X,A3)') &
@@ -169,8 +163,7 @@ PROGRAM tocgrib
      WRITE (6,FMT='(4X,I3,2X,I2,2X,A6,1X,I3,24X,A3)') &
           MAPNUM,NBITS, BULHED, DUM, EOML
      if ( ios .ne. 0 ) then
-        write(6,fmt='(" Error reading PDS from input file. iostat =" &
-             ,i6)') ios
+        write(6,fmt='(" Error reading PDS from input file. iostat =", i6)') ios
      endif
 
      ! Set up 25 word PDS array of GRIB field to read
@@ -206,8 +199,7 @@ PROGRAM tocgrib
      IF (.NOT.IW3PDS(PDSL,PDS,KEY)) THEN
         PRINT 2900, nrec,(mova2i(PDSL(j)),j=1,28), &
              (mova2i(PDS(j)),j=1,28)
-2900    FORMAT ( 1X,I4,' (PDS) IN RECORD DOES NOT MATCH (PDS) IN ', &
-             'CONTROL CARD ',/,7(1X,4Z2.2), /,7(1X,4Z2.2))
+2900    FORMAT ( 1X,I4,' (PDS) IN RECORD DOES NOT MATCH (PDS) IN ', 'CONTROL CARD ',/,7(1X,4Z2.2), /,7(1X,4Z2.2))
         cycle
      END IF
 
@@ -227,7 +219,6 @@ PROGRAM tocgrib
 
      ! MAKE WMO HEADER
      ! Get system date and time
-     ! call w3utcdat(itime)
      CALL MAKWMO (BULHED,KPDS(10),KPDS(11),KWBX,WMOHDR)
 
      ! write out Separator block, Abbreviated WMO Heading,
@@ -241,18 +232,14 @@ PROGRAM tocgrib
 
   ! CLOSING SECTION
   IF (NBUL .EQ. 0 ) THEN
-     WRITE (6,FMT='('' SOMETHING WRONG WITH DATA CARDS...'', &
-          ''NOTHING WAS PROCESSED'')')
-     !       CALL W3TAGE('tocgrib')
+     WRITE (6,FMT='('' SOMETHING WRONG WITH DATA CARDS...'', ''NOTHING WAS PROCESSED'')')
      stop 19
   ELSE
      CALL BACLOSE (LUGB,iret)
      CALL BACLOSE (LUGI,iret)
      CALL BACLOSE (LUGO,iret)
-     WRITE (6,FMT='(//,'' ******** RECAP OF THIS EXECUTION '', &
-          ''********'',/,5X,''READ  '',I6,'' INDIVIDUAL IDS'', &
-          /,5X,''WROTE '',I6,'' BULLETINS OUT FOR TRANSMISSION'', &
-          //)') nrec, NBUL
+     WRITE (6,FMT='(//,'' ******** RECAP OF THIS EXECUTION '', ''********'',/,5X,''READ  '',I6,'' INDIVIDUAL IDS'', ' // &
+          ' /,5X,''WROTE '',I6,'' BULLETINS OUT FOR TRANSMISSION'', //)') nrec, NBUL
   ENDIF
 
   ! TEST TO SEE IF ANY BULLETINS MISSING
