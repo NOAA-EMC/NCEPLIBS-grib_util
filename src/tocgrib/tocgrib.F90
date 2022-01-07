@@ -48,7 +48,6 @@ PROGRAM tocgrib
   INTEGER NPARM
   INTEGER PUNUM
   INTEGER,dimension(28) :: HEXPDS
-  !     INTEGER    ::   HEXPDS(28)/28*0/
 
   CHARACTER * 6 BULHED
   CHARACTER * 100 CPARM
@@ -68,7 +67,6 @@ PROGRAM tocgrib
   LOGICAL IW3PDS
 
   HEXPDS=0
-  !     CALL W3TAGB('tocgrib',2002,0916,0083,'NP11')
   LUGB=11
   LUGI=31
   LUGO=51
@@ -129,10 +127,10 @@ PROGRAM tocgrib
      stop 20
   endif
 
-  IRET   = 0
+  IRET = 0
   iopt=2
   insize=19
-  NBUL   = 0
+  NBUL = 0
 
   ! loop through input control records.
   nrec = 0
@@ -227,7 +225,6 @@ PROGRAM tocgrib
      call wryte(lugo,lenhead,WMOHDR)
      call wryte(lugo,itot,grib)
      nbul=nbul+1
-     !
   enddo foreachelement
 
   ! CLOSING SECTION
@@ -246,10 +243,8 @@ PROGRAM tocgrib
   MBUL = nrec - NBUL
   IF (MBUL.NE.0) THEN
      PRINT *,'BULLETINS MISSING = ',MBUL
-     !       CALL W3TAGE('tocgrib')
      stop 30
   END IF
 
-  !     CALL W3TAGE('tocgrib')
   STOP
 END PROGRAM tocgrib
