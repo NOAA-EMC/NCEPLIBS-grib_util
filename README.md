@@ -10,18 +10,18 @@ https://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_doc/.
 
 ## Authors
 
-Utility | Author(s)
---------|----------
-cnvgrib | Stephen Gilbert, Gordon, Boi Vuong
-copygb | Mark Iredell, Stephen Gilbert, Trojan, Boi Vuong
-copygb2 | Mark Iredell, Stephen Gilbert, Boi Vuong
-degrib2 | Boi Vuong
-grb2index | Mark Iredell, Stephen Gilbert, Boi Vuong
-grbindex | Mark Iredell, Stephen Gilbert, Boi Vuong, W. Ebisuzaki
-tocgrib | Stephen Gilbert, Boi Vuong, Farley, R. E. Jones
-tocgrib2 | Stephen Gilbert, Boi Vuong
-tocgrib2super | Stephen Gilbert, Boi Vuong
-wgrib | W. Ebisuzaki
+Utility | Author(s) | User(s)
+--------|-----------|--------
+cnvgrib | Stephen Gilbert, Gordon, Boi Vuong | ???
+copygb | Mark Iredell, Stephen Gilbert, Trojan, Boi Vuong | UFS_UTILS
+copygb2 | Mark Iredell, Stephen Gilbert, Boi Vuong | ???
+degrib2 | Boi Vuong | ???
+grb2index | Mark Iredell, Stephen Gilbert, Boi Vuong | ???
+grbindex | Mark Iredell, Stephen Gilbert, Boi Vuong, W. Ebisuzaki | FAA and AWIPS (CONUS grid id 211)
+tocgrib | Stephen Gilbert, Boi Vuong, Farley, R. E. Jones | RAP for FAA
+tocgrib2 | Stephen Gilbert, Boi Vuong | (GFS, NAM, SMOKE, RAP, HRRR, NWPS, etc.) in production for AWIPS  and NDFD
+tocgrib2super | Stephen Gilbert, Boi Vuong | (GFS, NAM, SMOKE, RAP, HRRR, NWPS, etc.) in production for AWIPS  and NDFD
+wgrib | W. Ebisuzaki | FAA and AWIPS (CONUS grid id 211)
 
 Code Manager : Hang Lei, Edward Hartnett
 
