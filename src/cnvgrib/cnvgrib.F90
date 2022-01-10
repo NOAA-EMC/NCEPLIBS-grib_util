@@ -2,10 +2,13 @@
 !> @brief Convert files between GRIB1 and GRIB2.
 !> @author Stephen Gilbert @date 2003-06-06
 
-!> This program converts every GRIB field in a file from
-!> - (1) GRIB1 to GRIB2
-!> - (2) GRIB2 to GRIB1
-!> - (3) GRIB2 to GRIB2.
+!> This program converts every GRIB field in a file between GRIB1 and
+!> GRIB2.
+!>
+!> The following conversions are supported:
+!> 1. GRIB1 to GRIB2
+!> 2. GRIB2 to GRIB1
+!> 3. GRIB2 to GRIB2.
 !>
 !> ### Program History Log
 !> Date | Programmer | Comments
