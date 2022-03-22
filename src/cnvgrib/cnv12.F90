@@ -126,7 +126,7 @@ subroutine cnv12(ifl1, ifl2, ipack, usemiss, imiss, uvvect, table_ver)
         ensemble = .true.
      endif
      if (ensemble) then    ! ensemble forecast
-        call gbyte(cgribin(9), ilast, 0, 24)
+        call g2_gbytec(cgribin(9), ilast, 0, 24)
         call pdseup(kens, kprob, xprob, kclust, kmembr, ilast, cgribin(9))
         if (kens(2) .eq. 1) listsec1(13) = 3
         if (kens(2) .eq. 2 .OR. kens(2) .eq. 3) listsec1(13) = 4
