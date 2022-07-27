@@ -10,6 +10,7 @@ project(gributil VERSION ${pVersion} LANGUAGES C Fortran)
 # Handle user options.
 option(OPENMP "use OpenMP threading" OFF)
 option(ENABLE_DOCS "Enable generation of doxygen-based documentation." OFF)
+option(FTP_TEST_FILES "Fetch and test with files on FTP site." OFF)
 
 if(NOT CMAKE_BUILD_TYPE MATCHES "^(Debug|Release|RelWithDebInfo|MinSizeRel)$")
   message(STATUS "Setting build type to 'Release' as none was specified.")
