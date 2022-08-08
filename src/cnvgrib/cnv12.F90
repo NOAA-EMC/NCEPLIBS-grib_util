@@ -160,8 +160,8 @@ subroutine cnv12(ifl1, ifl2, ipack, usemiss, imiss, uvvect, table_ver)
         cycle
      endif
      if (listsec1(1)  .eq.  7) igdstmpl(1) = 6    ! FOR NWS/NCEP
-     if ((listsec1(1)  .eq.  7 .and. igds(5) .eq. 20   & ! For Snow Cover Analysis  
-          .and. kpds(2) .eq. 25) .and. & ! Polar Stereographic Grid 
+     if ((listsec1(1)  .eq.  7 .and. igds(5) .eq. 20   & ! For Snow Cover Analysis
+          .and. kpds(2) .eq. 25) .and. & ! Polar Stereographic Grid
           (kpds(5) .eq. 91  .or.  kpds(5) .eq. 238)) then
         igdstmpl(1) = 2
      end if

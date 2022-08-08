@@ -37,33 +37,33 @@ SUBROUTINE SETBIT(IBM,IBS,IDS,LEN,MG,G,GMIN,GMAX,NBIT)
   ELSE
      I1=1
      DO WHILE(I1.LE.LEN.AND.MG(I1).EQ.0)
-     I1=I1+1
-  ENDDO
-  IF(I1.LE.LEN) THEN
-     DO I=1,I1-1
-        G(I)=0.
+        I1=I1+1
      ENDDO
-     GMAX=G(I1)
-     GMIN=G(I1)
-     DO I=I1+1,LEN
-        IF(MG(I).NE.0) THEN
-           GMAX=MAX(GMAX,G(I))
-           GMIN=MIN(GMIN,G(I))
-        ELSE
+     IF(I1.LE.LEN) THEN
+        DO I=1,I1-1
            G(I)=0.
-        ENDIF
-     ENDDO
-  ELSE
-     DO I=1,LEN
-        G(I)=0.
-     ENDDO
-     GMAX=0.
-     GMIN=0.
+        ENDDO
+        GMAX=G(I1)
+        GMIN=G(I1)
+        DO I=I1+1,LEN
+           IF(MG(I).NE.0) THEN
+              GMAX=MAX(GMAX,G(I))
+              GMIN=MIN(GMIN,G(I))
+           ELSE
+              G(I)=0.
+           ENDIF
+        ENDDO
+     ELSE
+        DO I=1,LEN
+           G(I)=0.
+        ENDDO
+        GMAX=0.
+        GMIN=0.
+     ENDIF
   ENDIF
-ENDIF
 
-!  COMPUTE NUMBER OF BITS
-NBIT=LOG((GMAX-GMIN)*S+0.9)/LOG(2.)+1.
+  !  COMPUTE NUMBER OF BITS
+  NBIT=LOG((GMAX-GMIN)*S+0.9)/LOG(2.)+1.
 
-RETURN
+  RETURN
 END SUBROUTINE SETBIT

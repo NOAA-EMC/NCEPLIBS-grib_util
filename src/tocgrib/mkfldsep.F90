@@ -13,17 +13,17 @@
 !> Bulletin "Flag Field Separator" block - OPTION 1 (old)
 !>
 !> Bytes | Description
-!> ------|------------      
+!> ------|------------
 !> 1 - 4 | marker string (####)
 !> 5 - 7 | block length [018 fixed value]
 !> 8 - 13 | total length of bulletin in bytes [octets] (not including the flag field block)
 !> 14 - 17 | marker string (####)
 !> 18 | line Feed (ASCII "0A")
-!>   
+!>
 !> Bulletin "Flag Field Separator" block - OPTION 1a (new)
 !>
 !> Bytes | Description
-!> ------|------------      
+!> ------|------------
 !> 1 - 4 | marker string (####)
 !> 5 - 7 | block length (nnn) - value always greater than 018
 !> 8 - 18 | total length of bulletin in bytes [octets] (not including the flag field block)
@@ -34,7 +34,7 @@
 !>   Bulletin "Flag Field Separator" block - OPTION 2 (limited)
 !>
 !> Bytes | Description
-!> ------|------------      
+!> ------|------------
 !> 1 - 4 | marker string (****)
 !> 5 - 14 | total length of bulletin in bytes [octets] (not including the flag field block)
 !> 15 - 18 | marker string (****)
@@ -52,7 +52,7 @@
 !> will follow this separator block.
 !> @param[out] lenout Integer length of the flag field separator block.
 !>
-!> @author Gilbert @date 2002-09-16      
+!> @author Gilbert @date 2002-09-16
 subroutine mkfldsep(csep,iopt,lenin,lenbull,lenout)
   !
   character*(*),intent(out) :: csep
@@ -62,7 +62,7 @@ subroutine mkfldsep(csep,iopt,lenin,lenbull,lenout)
   character(len=4),parameter :: cstar='****',clb='####'
   !
   if (iopt.eq.1) then
-     if ( lenin .le. 18 .and. lenbull .le. 999999 ) then 
+     if ( lenin .le. 18 .and. lenbull .le. 999999 ) then
         ! Create OPTION 1 separator block
         csep(1:4)=clb
         csep(5:7)='018'
