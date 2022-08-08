@@ -1,0 +1,688 @@
+1:0:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+2:14184:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+3:35792:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+4:55614:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:ordered sequence of data:anl:NAve=0
+5:75436:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+6:95258:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+7:112320:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:ordered sequence of data:anl:NAve=0
+8:126620:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:ordered sequence of data:anl:NAve=0
+9:151958:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+10:171780:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+11:198502:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:ordered sequence of data:anl:NAve=0
+12:223844:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:ordered sequence of data:anl:NAve=0
+13:245042:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:ordered sequence of data:anl:NAve=0
+14:260722:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+15:287444:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+16:302688:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+17:323890:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:sfc:3hr fcst:NAve=0
+18:338632:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:sfc:3hr fcst:NAve=0
+19:354496:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:sfc:3hr fcst:NAve=0
+20:377096:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:sfc:3hr fcst:NAve=0
+21:398298:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:sfc:3hr fcst:NAve=0
+22:418120:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:sfc:3hr fcst:NAve=0
+23:437942:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:sfc:3hr fcst:NAve=0
+24:464664:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:sfc:3hr fcst:NAve=0
+25:481726:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:ordered sequence of data:3hr fcst:NAve=0
+26:507068:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:ordered sequence of data:3hr fcst:NAve=0
+27:522748:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:sfc:3hr fcst:NAve=0
+28:549470:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:ordered sequence of data:3hr fcst:NAve=0
+29:576190:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:ordered sequence of data:3hr fcst:NAve=0
+30:590490:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:ordered sequence of data:3hr fcst:NAve=0
+31:610312:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:ordered sequence of data:3hr fcst:NAve=0
+32:630132:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=3:P2=0:TimeU=1:sfc:3hr fcst:NAve=0
+33:649954:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:sfc:6hr fcst:NAve=0
+34:669776:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:sfc:6hr fcst:NAve=0
+35:684290:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:sfc:6hr fcst:NAve=0
+36:706484:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:ordered sequence of data:6hr fcst:NAve=0
+37:733204:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:sfc:6hr fcst:NAve=0
+38:759926:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:ordered sequence of data:6hr fcst:NAve=0
+39:774226:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:ordered sequence of data:6hr fcst:NAve=0
+40:789906:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:sfc:6hr fcst:NAve=0
+41:811108:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:sfc:6hr fcst:NAve=0
+42:830930:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:sfc:6hr fcst:NAve=0
+43:850752:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:sfc:6hr fcst:NAve=0
+44:867814:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:sfc:6hr fcst:NAve=0
+45:883426:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:ordered sequence of data:6hr fcst:NAve=0
+46:903248:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:ordered sequence of data:6hr fcst:NAve=0
+47:923068:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:ordered sequence of data:6hr fcst:NAve=0
+48:949790:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=6:P2=0:TimeU=1:sfc:6hr fcst:NAve=0
+49:976512:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:sfc:9hr fcst:NAve=0
+50:996334:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:ordered sequence of data:9hr fcst:NAve=0
+51:1012014:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:sfc:9hr fcst:NAve=0
+52:1031836:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:ordered sequence of data:9hr fcst:NAve=0
+53:1058558:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:sfc:9hr fcst:NAve=0
+54:1085280:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:sfc:9hr fcst:NAve=0
+55:1105102:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:sfc:9hr fcst:NAve=0
+56:1131824:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:sfc:9hr fcst:NAve=0
+57:1146170:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:sfc:9hr fcst:NAve=0
+58:1163232:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:sfc:9hr fcst:NAve=0
+59:1185128:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:ordered sequence of data:9hr fcst:NAve=0
+60:1211850:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:ordered sequence of data:9hr fcst:NAve=0
+61:1231672:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:ordered sequence of data:9hr fcst:NAve=0
+62:1247352:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:ordered sequence of data:9hr fcst:NAve=0
+63:1267174:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:sfc:9hr fcst:NAve=0
+64:1282598:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=9:P2=0:TimeU=1:sfc:9hr fcst:NAve=0
+65:1302420:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:ordered sequence of data:12hr fcst:NAve=0
+66:1329142:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:ordered sequence of data:12hr fcst:NAve=0
+67:1355864:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:sfc:12hr fcst:NAve=0
+68:1375686:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:sfc:12hr fcst:NAve=0
+69:1395508:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:sfc:12hr fcst:NAve=0
+70:1422230:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:sfc:12hr fcst:NAve=0
+71:1442052:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:ordered sequence of data:12hr fcst:NAve=0
+72:1457732:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:ordered sequence of data:12hr fcst:NAve=0
+73:1472032:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:sfc:12hr fcst:NAve=0
+74:1487630:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:sfc:12hr fcst:NAve=0
+75:1507452:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:sfc:12hr fcst:NAve=0
+76:1534174:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:ordered sequence of data:12hr fcst:NAve=0
+77:1553996:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:sfc:12hr fcst:NAve=0
+78:1568498:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:sfc:12hr fcst:NAve=0
+79:1590670:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:sfc:12hr fcst:NAve=0
+80:1607732:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=12:P2=0:TimeU=1:ordered sequence of data:12hr fcst:NAve=0
+81:1627554:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:sfc:15hr fcst:NAve=0
+82:1647376:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:ordered sequence of data:15hr fcst:NAve=0
+83:1661676:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:ordered sequence of data:15hr fcst:NAve=0
+84:1681498:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:ordered sequence of data:15hr fcst:NAve=0
+85:1708220:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:ordered sequence of data:15hr fcst:NAve=0
+86:1723900:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:sfc:15hr fcst:NAve=0
+87:1745102:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:ordered sequence of data:15hr fcst:NAve=0
+88:1771824:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:sfc:15hr fcst:NAve=0
+89:1785056:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:sfc:15hr fcst:NAve=0
+90:1804878:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:sfc:15hr fcst:NAve=0
+91:1820260:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:sfc:15hr fcst:NAve=0
+92:1846982:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:sfc:15hr fcst:NAve=0
+93:1866804:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:ordered sequence of data:15hr fcst:NAve=0
+94:1886626:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:sfc:15hr fcst:NAve=0
+95:1913348:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:sfc:15hr fcst:NAve=0
+96:1929028:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=15:P2=0:TimeU=1:sfc:15hr fcst:NAve=0
+97:1950854:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:ordered sequence of data:18hr fcst:NAve=0
+98:1970676:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:sfc:18hr fcst:NAve=0
+99:1997398:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:ordered sequence of data:18hr fcst:NAve=0
+100:2011698:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:sfc:18hr fcst:NAve=0
+101:2027378:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:sfc:18hr fcst:NAve=0
+102:2047842:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:sfc:18hr fcst:NAve=0
+103:2062372:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:sfc:18hr fcst:NAve=0
+104:2082194:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:ordered sequence of data:18hr fcst:NAve=0
+105:2108916:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:sfc:18hr fcst:NAve=0
+106:2135638:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:sfc:18hr fcst:NAve=0
+107:2156840:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:ordered sequence of data:18hr fcst:NAve=0
+108:2176662:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:ordered sequence of data:18hr fcst:NAve=0
+109:2203384:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:ordered sequence of data:18hr fcst:NAve=0
+110:2219064:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:sfc:18hr fcst:NAve=0
+111:2232604:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:sfc:18hr fcst:NAve=0
+112:2252426:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=18:P2=0:TimeU=1:sfc:18hr fcst:NAve=0
+113:2272248:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:sfc:21hr fcst:NAve=0
+114:2298970:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:ordered sequence of data:21hr fcst:NAve=0
+115:2318792:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:sfc:21hr fcst:NAve=0
+116:2338614:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:sfc:21hr fcst:NAve=0
+117:2358436:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:ordered sequence of data:21hr fcst:NAve=0
+118:2378258:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:sfc:21hr fcst:NAve=0
+119:2393938:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:ordered sequence of data:21hr fcst:NAve=0
+120:2420660:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:sfc:21hr fcst:NAve=0
+121:2440482:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:ordered sequence of data:21hr fcst:NAve=0
+122:2456162:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:sfc:21hr fcst:NAve=0
+123:2477364:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:sfc:21hr fcst:NAve=0
+124:2491656:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:ordered sequence of data:21hr fcst:NAve=0
+125:2518378:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:sfc:21hr fcst:NAve=0
+126:2545100:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:sfc:21hr fcst:NAve=0
+127:2557462:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:sfc:21hr fcst:NAve=0
+128:2577546:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=21:P2=0:TimeU=1:ordered sequence of data:21hr fcst:NAve=0
+129:2591846:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:ordered sequence of data:24hr fcst:NAve=0
+130:2606146:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:ordered sequence of data:24hr fcst:NAve=0
+131:2625968:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:sfc:24hr fcst:NAve=0
+132:2645790:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:sfc:24hr fcst:NAve=0
+133:2662852:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:ordered sequence of data:24hr fcst:NAve=0
+134:2682674:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:sfc:24hr fcst:NAve=0
+135:2698182:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:sfc:24hr fcst:NAve=0
+136:2712604:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:sfc:24hr fcst:NAve=0
+137:2732426:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:sfc:24hr fcst:NAve=0
+138:2752248:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:sfc:24hr fcst:NAve=0
+139:2773450:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:ordered sequence of data:24hr fcst:NAve=0
+140:2789130:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:sfc:24hr fcst:NAve=0
+141:2815852:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:ordered sequence of data:24hr fcst:NAve=0
+142:2842574:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:sfc:24hr fcst:NAve=0
+143:2869296:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:sfc:24hr fcst:NAve=0
+144:2891326:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=24:P2=0:TimeU=1:ordered sequence of data:24hr fcst:NAve=0
+145:2918048:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:ordered sequence of data:27hr fcst:NAve=0
+146:2933728:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:sfc:27hr fcst:NAve=0
+147:2953550:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:ordered sequence of data:27hr fcst:NAve=0
+148:2980272:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:sfc:27hr fcst:NAve=0
+149:3000094:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:sfc:27hr fcst:NAve=0
+150:3026816:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:sfc:27hr fcst:NAve=0
+151:3043878:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:sfc:27hr fcst:NAve=0
+152:3065080:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:ordered sequence of data:27hr fcst:NAve=0
+153:3079380:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:sfc:27hr fcst:NAve=0
+154:3099202:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:ordered sequence of data:27hr fcst:NAve=0
+155:3125924:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:ordered sequence of data:27hr fcst:NAve=0
+156:3145746:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:sfc:27hr fcst:NAve=0
+157:3168382:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:sfc:27hr fcst:NAve=0
+158:3183144:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:ordered sequence of data:27hr fcst:NAve=0
+159:3202966:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:sfc:27hr fcst:NAve=0
+160:3218854:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=27:P2=0:TimeU=1:sfc:27hr fcst:NAve=0
+161:3245576:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:ordered sequence of data:30hr fcst:NAve=0
+162:3272298:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:sfc:30hr fcst:NAve=0
+163:3285346:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:sfc:30hr fcst:NAve=0
+164:3300496:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:sfc:30hr fcst:NAve=0
+165:3320318:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:ordered sequence of data:30hr fcst:NAve=0
+166:3340140:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:sfc:30hr fcst:NAve=0
+167:3359962:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:sfc:30hr fcst:NAve=0
+168:3381418:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:ordered sequence of data:30hr fcst:NAve=0
+169:3395718:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:ordered sequence of data:30hr fcst:NAve=0
+170:3421060:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:ordered sequence of data:30hr fcst:NAve=0
+171:3440882:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:sfc:30hr fcst:NAve=0
+172:3460704:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:sfc:30hr fcst:NAve=0
+173:3487426:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:ordered sequence of data:30hr fcst:NAve=0
+174:3503106:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:sfc:30hr fcst:NAve=0
+175:3529828:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:sfc:30hr fcst:NAve=0
+176:3551030:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=30:P2=0:TimeU=1:sfc:30hr fcst:NAve=0
+177:3566710:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:sfc:33hr fcst:NAve=0
+178:3593432:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:ordered sequence of data:33hr fcst:NAve=0
+179:3613254:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:sfc:33hr fcst:NAve=0
+180:3638596:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:ordered sequence of data:33hr fcst:NAve=0
+181:3665318:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:sfc:33hr fcst:NAve=0
+182:3685140:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:sfc:33hr fcst:NAve=0
+183:3697152:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:ordered sequence of data:33hr fcst:NAve=0
+184:3716974:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:ordered sequence of data:33hr fcst:NAve=0
+185:3732654:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:sfc:33hr fcst:NAve=0
+186:3748334:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:sfc:33hr fcst:NAve=0
+187:3768156:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:sfc:33hr fcst:NAve=0
+188:3787542:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:sfc:33hr fcst:NAve=0
+189:3808744:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:ordered sequence of data:33hr fcst:NAve=0
+190:3835466:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:ordered sequence of data:33hr fcst:NAve=0
+191:3849766:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:sfc:33hr fcst:NAve=0
+192:3863622:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=33:P2=0:TimeU=1:sfc:33hr fcst:NAve=0
+193:3883444:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:sfc:36hr fcst:NAve=0
+194:3903266:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:sfc:36hr fcst:NAve=0
+195:3929988:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:sfc:36hr fcst:NAve=0
+196:3943464:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:ordered sequence of data:36hr fcst:NAve=0
+197:3963284:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:ordered sequence of data:36hr fcst:NAve=0
+198:3983106:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:sfc:36hr fcst:NAve=0
+199:4002928:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:sfc:36hr fcst:NAve=0
+200:4018608:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:sfc:36hr fcst:NAve=0
+201:4037386:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:ordered sequence of data:36hr fcst:NAve=0
+202:4064108:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:ordered sequence of data:36hr fcst:NAve=0
+203:4079788:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:sfc:36hr fcst:NAve=0
+204:4099610:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:ordered sequence of data:36hr fcst:NAve=0
+205:4113910:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:sfc:36hr fcst:NAve=0
+206:4125618:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:sfc:36hr fcst:NAve=0
+207:4150960:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:sfc:36hr fcst:NAve=0
+208:4170782:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=36:P2=0:TimeU=1:ordered sequence of data:36hr fcst:NAve=0
+209:4197502:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:ordered sequence of data:39hr fcst:NAve=0
+210:4213182:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:sfc:39hr fcst:NAve=0
+211:4233004:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:ordered sequence of data:39hr fcst:NAve=0
+212:4259726:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:sfc:39hr fcst:NAve=0
+213:4271176:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:sfc:39hr fcst:NAve=0
+214:4290998:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:sfc:39hr fcst:NAve=0
+215:4317720:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:ordered sequence of data:39hr fcst:NAve=0
+216:4332020:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:ordered sequence of data:39hr fcst:NAve=0
+217:4358742:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:sfc:39hr fcst:NAve=0
+218:4374422:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:sfc:39hr fcst:NAve=0
+219:4394244:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:sfc:39hr fcst:NAve=0
+220:4419586:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:sfc:39hr fcst:NAve=0
+221:4432740:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:sfc:39hr fcst:NAve=0
+222:4451002:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:ordered sequence of data:39hr fcst:NAve=0
+223:4470824:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:sfc:39hr fcst:NAve=0
+224:4490646:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=39:P2=0:TimeU=1:ordered sequence of data:39hr fcst:NAve=0
+225:4510468:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:ordered sequence of data:42hr fcst:NAve=0
+226:4537190:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:ordered sequence of data:42hr fcst:NAve=0
+227:4563912:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:sfc:42hr fcst:NAve=0
+228:4574898:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:ordered sequence of data:42hr fcst:NAve=0
+229:4594720:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:sfc:42hr fcst:NAve=0
+230:4612052:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:sfc:42hr fcst:NAve=0
+231:4631874:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:sfc:42hr fcst:NAve=0
+232:4647554:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:ordered sequence of data:42hr fcst:NAve=0
+233:4663234:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:ordered sequence of data:42hr fcst:NAve=0
+234:4683056:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:sfc:42hr fcst:NAve=0
+235:4702878:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:sfc:42hr fcst:NAve=0
+236:4729600:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:sfc:42hr fcst:NAve=0
+237:4749422:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:sfc:42hr fcst:NAve=0
+238:4769244:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:sfc:42hr fcst:NAve=0
+239:4794586:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:sfc:42hr fcst:NAve=0
+240:4807158:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=42:P2=0:TimeU=1:ordered sequence of data:42hr fcst:NAve=0
+241:4821458:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:sfc:45hr fcst:NAve=0
+242:4841280:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:sfc:45hr fcst:NAve=0
+243:4857560:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:sfc:45hr fcst:NAve=0
+244:4877382:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:ordered sequence of data:45hr fcst:NAve=0
+245:4897188:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:ordered sequence of data:45hr fcst:NAve=0
+246:4911480:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:sfc:45hr fcst:NAve=0
+247:4927160:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:sfc:45hr fcst:NAve=0
+248:4946982:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:sfc:45hr fcst:NAve=0
+249:4958896:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:ordered sequence of data:45hr fcst:NAve=0
+250:4984218:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:ordered sequence of data:45hr fcst:NAve=0
+251:5004040:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:sfc:45hr fcst:NAve=0
+252:5030762:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:ordered sequence of data:45hr fcst:NAve=0
+253:5057484:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:sfc:45hr fcst:NAve=0
+254:5067944:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:sfc:45hr fcst:NAve=0
+255:5091906:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:sfc:45hr fcst:NAve=0
+256:5111728:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=45:P2=0:TimeU=1:ordered sequence of data:45hr fcst:NAve=0
+257:5127408:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:ordered sequence of data:48hr fcst:NAve=0
+258:5143088:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:ordered sequence of data:48hr fcst:NAve=0
+259:5162874:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:sfc:48hr fcst:NAve=0
+260:5189596:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:ordered sequence of data:48hr fcst:NAve=0
+261:5216318:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:sfc:48hr fcst:NAve=0
+262:5240280:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:ordered sequence of data:48hr fcst:NAve=0
+263:5266952:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:sfc:48hr fcst:NAve=0
+264:5286774:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:sfc:48hr fcst:NAve=0
+265:5306596:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:sfc:48hr fcst:NAve=0
+266:5326418:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:ordered sequence of data:48hr fcst:NAve=0
+267:5340696:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:sfc:48hr fcst:NAve=0
+268:5352974:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:ordered sequence of data:48hr fcst:NAve=0
+269:5372796:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:sfc:48hr fcst:NAve=0
+270:5392618:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:sfc:48hr fcst:NAve=0
+271:5403368:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:sfc:48hr fcst:NAve=0
+272:5420228:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=48:P2=0:TimeU=1:sfc:48hr fcst:NAve=0
+273:5435908:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:ordered sequence of data:51hr fcst:NAve=0
+274:5455704:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:sfc:51hr fcst:NAve=0
+275:5468148:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:sfc:51hr fcst:NAve=0
+276:5487970:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:ordered sequence of data:51hr fcst:NAve=0
+277:5514656:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:sfc:51hr fcst:NAve=0
+278:5534478:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:sfc:51hr fcst:NAve=0
+279:5554300:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:sfc:51hr fcst:NAve=0
+280:5571426:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:sfc:51hr fcst:NAve=0
+281:5591248:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:ordered sequence of data:51hr fcst:NAve=0
+282:5611070:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:ordered sequence of data:51hr fcst:NAve=0
+283:5637792:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:ordered sequence of data:51hr fcst:NAve=0
+284:5653472:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:sfc:51hr fcst:NAve=0
+285:5678814:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:sfc:51hr fcst:NAve=0
+286:5694494:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:sfc:51hr fcst:NAve=0
+287:5721216:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:ordered sequence of data:51hr fcst:NAve=0
+288:5735502:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=51:P2=0:TimeU=1:sfc:51hr fcst:NAve=0
+289:5746384:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:sfc:54hr fcst:NAve=0
+290:5766206:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:sfc:54hr fcst:NAve=0
+291:5791548:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:sfc:54hr fcst:NAve=0
+292:5811370:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:sfc:54hr fcst:NAve=0
+293:5831192:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:sfc:54hr fcst:NAve=0
+294:5847090:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:ordered sequence of data:54hr fcst:NAve=0
+295:5862770:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:ordered sequence of data:54hr fcst:NAve=0
+296:5889464:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:sfc:54hr fcst:NAve=0
+297:5905144:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:ordered sequence of data:54hr fcst:NAve=0
+298:5931866:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:sfc:54hr fcst:NAve=0
+299:5951688:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:ordered sequence of data:54hr fcst:NAve=0
+300:5971510:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:sfc:54hr fcst:NAve=0
+301:5983186:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:sfc:54hr fcst:NAve=0
+302:5993454:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:ordered sequence of data:54hr fcst:NAve=0
+303:6013256:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:sfc:54hr fcst:NAve=0
+304:6039978:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=54:P2=0:TimeU=1:ordered sequence of data:54hr fcst:NAve=0
+305:6054266:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:sfc:57hr fcst:NAve=0
+306:6074088:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:ordered sequence of data:57hr fcst:NAve=0
+307:6093910:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:ordered sequence of data:57hr fcst:NAve=0
+308:6113726:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:sfc:57hr fcst:NAve=0
+309:6124946:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:ordered sequence of data:57hr fcst:NAve=0
+310:6151668:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:sfc:57hr fcst:NAve=0
+311:6167348:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:sfc:57hr fcst:NAve=0
+312:6182516:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:ordered sequence of data:57hr fcst:NAve=0
+313:6198196:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:sfc:57hr fcst:NAve=0
+314:6218018:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:sfc:57hr fcst:NAve=0
+315:6237840:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:sfc:57hr fcst:NAve=0
+316:6263182:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:sfc:57hr fcst:NAve=0
+317:6273086:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:ordered sequence of data:57hr fcst:NAve=0
+318:6287384:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:ordered sequence of data:57hr fcst:NAve=0
+319:6314098:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:sfc:57hr fcst:NAve=0
+320:6340820:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=57:P2=0:TimeU=1:sfc:57hr fcst:NAve=0
+321:6360642:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:sfc:60hr fcst:NAve=0
+322:6380464:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:ordered sequence of data:60hr fcst:NAve=0
+323:6400286:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:sfc:60hr fcst:NAve=0
+324:6411534:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:sfc:60hr fcst:NAve=0
+325:6421460:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:sfc:60hr fcst:NAve=0
+326:6441282:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:ordered sequence of data:60hr fcst:NAve=0
+327:6455582:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:ordered sequence of data:60hr fcst:NAve=0
+328:6471262:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:sfc:60hr fcst:NAve=0
+329:6486474:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:ordered sequence of data:60hr fcst:NAve=0
+330:6513194:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:ordered sequence of data:60hr fcst:NAve=0
+331:6533014:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:sfc:60hr fcst:NAve=0
+332:6558356:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:sfc:60hr fcst:NAve=0
+333:6585078:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:sfc:60hr fcst:NAve=0
+334:6600758:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:sfc:60hr fcst:NAve=0
+335:6620580:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:ordered sequence of data:60hr fcst:NAve=0
+336:6647302:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=60:P2=0:TimeU=1:sfc:60hr fcst:NAve=0
+337:6667124:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:sfc:63hr fcst:NAve=0
+338:6686946:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:sfc:63hr fcst:NAve=0
+339:6712288:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:sfc:63hr fcst:NAve=0
+340:6722532:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:sfc:63hr fcst:NAve=0
+341:6742354:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:sfc:63hr fcst:NAve=0
+342:6769076:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:sfc:63hr fcst:NAve=0
+343:6788898:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:ordered sequence of data:63hr fcst:NAve=0
+344:6804578:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:ordered sequence of data:63hr fcst:NAve=0
+345:6818876:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:sfc:63hr fcst:NAve=0
+346:6838698:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:sfc:63hr fcst:NAve=0
+347:6850342:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:ordered sequence of data:63hr fcst:NAve=0
+348:6870160:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:ordered sequence of data:63hr fcst:NAve=0
+349:6896876:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:ordered sequence of data:63hr fcst:NAve=0
+350:6923598:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:sfc:63hr fcst:NAve=0
+351:6939278:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:ordered sequence of data:69hr fcst:NAve=0
+352:6965932:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:sfc:63hr fcst:NAve=0
+353:6981780:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=63:P2=0:TimeU=1:ordered sequence of data:63hr fcst:NAve=0
+354:7001602:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:sfc:69hr fcst:NAve=0
+355:7021424:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:ordered sequence of data:69hr fcst:NAve=0
+356:7035696:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:sfc:69hr fcst:NAve=0
+357:7045678:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:sfc:69hr fcst:NAve=0
+358:7065500:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:sfc:69hr fcst:NAve=0
+359:7092222:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:sfc:69hr fcst:NAve=0
+360:7110664:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:sfc:69hr fcst:NAve=0
+361:7121982:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:ordered sequence of data:69hr fcst:NAve=0
+362:7148704:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:sfc:69hr fcst:NAve=0
+363:7168526:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:sfc:69hr fcst:NAve=0
+364:7184206:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:ordered sequence of data:69hr fcst:NAve=0
+365:7203980:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:ordered sequence of data:69hr fcst:NAve=0
+366:7219660:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:sfc:69hr fcst:NAve=0
+367:7245002:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:sfc:69hr fcst:NAve=0
+368:7260326:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=69:P2=0:TimeU=1:ordered sequence of data:69hr fcst:NAve=0
+369:7280148:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:sfc:66hr fcst:NAve=0
+370:7290310:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:ordered sequence of data:66hr fcst:NAve=0
+371:7317026:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:ordered sequence of data:66hr fcst:NAve=0
+372:7332706:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:sfc:66hr fcst:NAve=0
+373:7352528:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:sfc:66hr fcst:NAve=0
+374:7368214:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:ordered sequence of data:66hr fcst:NAve=0
+375:7388036:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:ordered sequence of data:66hr fcst:NAve=0
+376:7414758:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:sfc:66hr fcst:NAve=0
+377:7441480:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:sfc:66hr fcst:NAve=0
+378:7466822:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:sfc:66hr fcst:NAve=0
+379:7486644:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:sfc:66hr fcst:NAve=0
+380:7502324:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:ordered sequence of data:66hr fcst:NAve=0
+381:7516622:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:ordered sequence of data:66hr fcst:NAve=0
+382:7536440:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:sfc:66hr fcst:NAve=0
+383:7556262:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:sfc:66hr fcst:NAve=0
+384:7567806:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=66:P2=0:TimeU=1:sfc:66hr fcst:NAve=0
+385:7587628:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:ordered sequence of data:72hr fcst:NAve=0
+386:7607374:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:sfc:72hr fcst:NAve=0
+387:7627196:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:ordered sequence of data:72hr fcst:NAve=0
+388:7647018:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:ordered sequence of data:72hr fcst:NAve=0
+389:7661270:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:ordered sequence of data:72hr fcst:NAve=0
+390:7676950:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:sfc:72hr fcst:NAve=0
+391:7687542:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:ordered sequence of data:72hr fcst:NAve=0
+392:7714154:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:sfc:72hr fcst:NAve=0
+393:7733976:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:sfc:78hr fcst:NAve=0
+394:7759318:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:sfc:78hr fcst:NAve=0
+395:7786040:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:ordered sequence of data:78hr fcst:NAve=0
+396:7805862:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:ordered sequence of data:78hr fcst:NAve=0
+397:7821542:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:ordered sequence of data:78hr fcst:NAve=0
+398:7841228:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:sfc:78hr fcst:NAve=0
+399:7861050:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:ordered sequence of data:78hr fcst:NAve=0
+400:7887772:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:ordered sequence of data:84hr fcst:NAve=0
+401:7907594:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:sfc:84hr fcst:NAve=0
+402:7927416:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:sfc:84hr fcst:NAve=0
+403:7947238:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:ordered sequence of data:84hr fcst:NAve=0
+404:7966942:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:sfc:84hr fcst:NAve=0
+405:7993664:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:ordered sequence of data:84hr fcst:NAve=0
+406:8009344:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:sfc:84hr fcst:NAve=0
+407:8029166:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:sfc:84hr fcst:NAve=0
+408:8054508:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:sfc:84hr fcst:NAve=0
+409:8074330:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:sfc:84hr fcst:NAve=0
+410:8094646:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:sfc:90hr fcst:NAve=0
+411:8121368:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:ordered sequence of data:90hr fcst:NAve=0
+412:8137048:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:ordered sequence of data:90hr fcst:NAve=0
+413:8163406:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:sfc:90hr fcst:NAve=0
+414:8178220:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:sfc:90hr fcst:NAve=0
+415:8193900:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:ordered sequence of data:96hr fcst:NAve=0
+416:8213720:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:ordered sequence of data:96hr fcst:NAve=0
+417:8239140:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:ordered sequence of data:96hr fcst:NAve=0
+418:8252872:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:sfc:96hr fcst:NAve=0
+419:8276370:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:sfc:96hr fcst:NAve=0
+420:8296192:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:sfc:96hr fcst:NAve=0
+421:8311872:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:ordered sequence of data:96hr fcst:NAve=0
+422:8337212:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:sfc:102hr fcst:NAve=0
+423:8357034:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:sfc:102hr fcst:NAve=0
+424:8381098:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:sfc:102hr fcst:NAve=0
+425:8400920:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:sfc:102hr fcst:NAve=0
+426:8420742:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:sfc:102hr fcst:NAve=0
+427:8447464:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:sfc:102hr fcst:NAve=0
+428:8472806:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:ordered sequence of data:102hr fcst:NAve=0
+429:8498466:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:ordered sequence of data:102hr fcst:NAve=0
+430:8517558:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:ordered sequence of data:102hr fcst:NAve=0
+431:8542900:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:sfc:102hr fcst:NAve=0
+432:8559680:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:sfc:96hr fcst:NAve=0
+433:8579502:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:sfc:90hr fcst:NAve=0
+434:8597944:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:sfc:108hr fcst:NAve=0
+435:8617766:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:ordered sequence of data:108hr fcst:NAve=0
+436:8637588:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:ordered sequence of data:108hr fcst:NAve=0
+437:8663494:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:sfc:108hr fcst:NAve=0
+438:8680030:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:ordered sequence of data:108hr fcst:NAve=0
+439:8705372:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:sfc:108hr fcst:NAve=0
+440:8721052:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:sfc:108hr fcst:NAve=0
+441:8735208:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:ordered sequence of data:108hr fcst:NAve=0
+442:8749152:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:sfc:108hr fcst:NAve=0
+443:8775874:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:sfc:108hr fcst:NAve=0
+444:8799548:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:ordered sequence of data:108hr fcst:NAve=0
+445:8815228:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:sfc:102hr fcst:NAve=0
+446:8830908:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:sfc:114hr fcst:NAve=0
+447:8857630:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:ordered sequence of data:114hr fcst:NAve=0
+448:8882926:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:sfc:114hr fcst:NAve=0
+449:8907338:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:ordered sequence of data:114hr fcst:NAve=0
+450:8923018:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:ordered sequence of data:114hr fcst:NAve=0
+451:8948360:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:sfc:114hr fcst:NAve=0
+452:8973702:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:sfc:114hr fcst:NAve=0
+453:8993524:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:ordered sequence of data:114hr fcst:NAve=0
+454:9007200:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:sfc:114hr fcst:NAve=0
+455:9021726:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:ordered sequence of data:102hr fcst:NAve=0
+456:9041548:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:ordered sequence of data:90hr fcst:NAve=0
+457:9061370:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:ordered sequence of data:84hr fcst:NAve=0
+458:9086712:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:sfc:78hr fcst:NAve=0
+459:9105528:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:ordered sequence of data:108hr fcst:NAve=0
+460:9124788:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:ordered sequence of data:90hr fcst:NAve=0
+461:9138930:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:ordered sequence of data:114hr fcst:NAve=0
+462:9157770:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:sfc:96hr fcst:NAve=0
+463:9177592:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:sfc:120hr fcst:NAve=0
+464:9194654:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:sfc:120hr fcst:NAve=0
+465:9214476:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:sfc:120hr fcst:NAve=0
+466:9235678:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:ordered sequence of data:120hr fcst:NAve=0
+467:9251358:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:ordered sequence of data:120hr fcst:NAve=0
+468:9276314:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:sfc:120hr fcst:NAve=0
+469:9300858:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:ordered sequence of data:120hr fcst:NAve=0
+470:9319466:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:ordered sequence of data:120hr fcst:NAve=0
+471:9344808:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:ordered sequence of data:120hr fcst:NAve=0
+472:9358336:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:sfc:120hr fcst:NAve=0
+473:9378158:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:sfc:78hr fcst:NAve=0
+474:9397980:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:sfc:108hr fcst:NAve=0
+475:9417802:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:ordered sequence of data:102hr fcst:NAve=0
+476:9433482:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:sfc:120hr fcst:NAve=0
+477:9449318:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:sfc:72hr fcst:NAve=0
+478:9461400:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:sfc:114hr fcst:NAve=0
+479:9477080:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:sfc:72hr fcst:NAve=0
+480:9502422:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:sfc:78hr fcst:NAve=0
+481:9522244:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:sfc:120hr fcst:NAve=0
+482:9542066:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:sfc:126hr fcst:NAve=0
+483:9559344:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:sfc:126hr fcst:NAve=0
+484:9579166:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:sfc:126hr fcst:NAve=0
+485:9598988:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:sfc:126hr fcst:NAve=0
+486:9623850:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:ordered sequence of data:126hr fcst:NAve=0
+487:9649192:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:sfc:126hr fcst:NAve=0
+488:9675914:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:sfc:114hr fcst:NAve=0
+489:9695736:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:sfc:90hr fcst:NAve=0
+490:9708516:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:ordered sequence of data:132hr fcst:NAve=0
+491:9728338:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:ordered sequence of data:132hr fcst:NAve=0
+492:9742426:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:sfc:132hr fcst:NAve=0
+493:9769148:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:sfc:132hr fcst:NAve=0
+494:9790350:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:sfc:132hr fcst:NAve=0
+495:9810172:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:sfc:132hr fcst:NAve=0
+496:9826136:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:ordered sequence of data:132hr fcst:NAve=0
+497:9845624:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:sfc:132hr fcst:NAve=0
+498:9862846:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:sfc:132hr fcst:NAve=0
+499:9882668:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:ordered sequence of data:132hr fcst:NAve=0
+500:9908904:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:sfc:132hr fcst:NAve=0
+501:9928726:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:sfc:96hr fcst:NAve=0
+502:9948548:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:sfc:78hr fcst:NAve=0
+503:9960276:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:ordered sequence of data:138hr fcst:NAve=0
+504:9986358:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:sfc:138hr fcst:NAve=0
+505:10010310:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:sfc:138hr fcst:NAve=0
+506:10025812:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:sfc:138hr fcst:NAve=0
+507:10044254:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:ordered sequence of data:138hr fcst:NAve=0
+508:10063636:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:ordered sequence of data:138hr fcst:NAve=0
+509:10090358:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:sfc:138hr fcst:NAve=0
+510:10111560:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:sfc:138hr fcst:NAve=0
+511:10138282:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:sfc:138hr fcst:NAve=0
+512:10158104:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:sfc:138hr fcst:NAve=0
+513:10177926:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:sfc:144hr fcst:NAve=0
+514:10194396:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:ordered sequence of data:144hr fcst:NAve=0
+515:10218702:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:ordered sequence of data:144hr fcst:NAve=0
+516:10245424:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:sfc:144hr fcst:NAve=0
+517:10266626:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:sfc:144hr fcst:NAve=0
+518:10292298:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:ordered sequence of data:144hr fcst:NAve=0
+519:10306116:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:ordered sequence of data:144hr fcst:NAve=0
+520:10325938:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:sfc:144hr fcst:NAve=0
+521:10343000:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:sfc:144hr fcst:NAve=0
+522:10369722:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:sfc:144hr fcst:NAve=0
+523:10389544:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:ordered sequence of data:150hr fcst:NAve=0
+524:10408416:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:ordered sequence of data:150hr fcst:NAve=0
+525:10435138:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:sfc:150hr fcst:NAve=0
+526:10461860:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:sfc:150hr fcst:NAve=0
+527:10479656:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:sfc:150hr fcst:NAve=0
+528:10496136:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:sfc:150hr fcst:NAve=0
+529:10521826:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:ordered sequence of data:150hr fcst:NAve=0
+530:10538888:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:ordered sequence of data:150hr fcst:NAve=0
+531:10562936:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:ordered sequence of data:150hr fcst:NAve=0
+532:10576634:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:ordered sequence of data:156hr fcst:NAve=0
+533:10595076:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:sfc:156hr fcst:NAve=0
+534:10616278:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:ordered sequence of data:156hr fcst:NAve=0
+535:10643000:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:sfc:156hr fcst:NAve=0
+536:10662822:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:ordered sequence of data:156hr fcst:NAve=0
+537:10681716:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:sfc:156hr fcst:NAve=0
+538:10698778:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:sfc:156hr fcst:NAve=0
+539:10715360:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:sfc:156hr fcst:NAve=0
+540:10733802:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:ordered sequence of data:156hr fcst:NAve=0
+541:10757878:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:ordered sequence of data:156hr fcst:NAve=0
+542:10771588:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:sfc:162hr fcst:NAve=0
+543:10790030:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:ordered sequence of data:162hr fcst:NAve=0
+544:10816752:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:ordered sequence of data:162hr fcst:NAve=0
+545:10835944:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:sfc:162hr fcst:NAve=0
+546:10853652:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:ordered sequence of data:162hr fcst:NAve=0
+547:10870714:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:sfc:162hr fcst:NAve=0
+548:10887116:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:sfc:162hr fcst:NAve=0
+549:10913838:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:ordered sequence of data:162hr fcst:NAve=0
+550:10932280:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:sfc:162hr fcst:NAve=0
+551:10953482:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:sfc:144hr fcst:NAve=0
+552:10974684:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:sfc:162hr fcst:NAve=0
+553:10994506:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:sfc:162hr fcst:NAve=0
+554:11020056:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:ordered sequence of data:162hr fcst:NAve=0
+555:11045864:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:sfc:150hr fcst:NAve=0
+556:11072586:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:sfc:156hr fcst:NAve=0
+557:11099308:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:sfc:168hr fcst:NAve=0
+558:11120510:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:sfc:168hr fcst:NAve=0
+559:11147232:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:ordered sequence of data:168hr fcst:NAve=0
+560:11161210:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:sfc:168hr fcst:NAve=0
+561:11182412:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:ordered sequence of data:168hr fcst:NAve=0
+562:11209134:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:sfc:168hr fcst:NAve=0
+563:11226956:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:ordered sequence of data:168hr fcst:NAve=0
+564:11244018:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:ordered sequence of data:168hr fcst:NAve=0
+565:11268668:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:sfc:150hr fcst:NAve=0
+566:11288490:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:sfc:144hr fcst:NAve=0
+567:11315212:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:sfc:156hr fcst:NAve=0
+568:11341084:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:ordered sequence of data:138hr fcst:NAve=0
+569:11355104:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:sfc:162hr fcst:NAve=0
+570:11372166:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:sfc:138hr fcst:NAve=0
+571:11389228:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:sfc:138hr fcst:NAve=0
+572:11405938:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:ordered sequence of data:126hr fcst:NAve=0
+573:11425760:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:sfc:168hr fcst:NAve=0
+574:11452482:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:sfc:174hr fcst:NAve=0
+575:11473684:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:ordered sequence of data:174hr fcst:NAve=0
+576:11490744:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:sfc:174hr fcst:NAve=0
+577:11507806:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:sfc:174hr fcst:NAve=0
+578:11534528:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:sfc:174hr fcst:NAve=0
+579:11552970:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:ordered sequence of data:174hr fcst:NAve=0
+580:11579366:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:sfc:174hr fcst:NAve=0
+581:11599188:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:sfc:174hr fcst:NAve=0
+582:11614676:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:ordered sequence of data:174hr fcst:NAve=0
+583:11641396:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:ordered sequence of data:174hr fcst:NAve=0
+584:11660994:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:sfc:174hr fcst:NAve=0
+585:11687716:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:sfc:174hr fcst:NAve=0
+586:11711640:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:sfc:174hr fcst:NAve=0
+587:11728332:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:ordered sequence of data:120hr fcst:NAve=0
+588:11748154:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:ordered sequence of data:180hr fcst:NAve=0
+589:11774848:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:sfc:180hr fcst:NAve=0
+590:11790230:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:sfc:180hr fcst:NAve=0
+591:11816952:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:ordered sequence of data:180hr fcst:NAve=0
+592:11834014:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:sfc:180hr fcst:NAve=0
+593:11855842:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:sfc:180hr fcst:NAve=0
+594:11877044:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:sfc:180hr fcst:NAve=0
+595:11903766:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:sfc:180hr fcst:NAve=0
+596:11923588:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:sfc:180hr fcst:NAve=0
+597:11940650:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:ordered sequence of data:180hr fcst:NAve=0
+598:11954938:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:sfc:180hr fcst:NAve=0
+599:11973380:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:ordered sequence of data:180hr fcst:NAve=0
+600:11991822:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:ordered sequence of data:162hr fcst:NAve=0
+601:12005722:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:sfc:96hr fcst:NAve=0
+602:12022148:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:ordered sequence of data:138hr fcst:NAve=0
+603:12040590:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:sfc:168hr fcst:NAve=0
+604:12060412:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:ordered sequence of data:84hr fcst:NAve=0
+605:12086964:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:sfc:114hr fcst:NAve=0
+606:12106786:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:ordered sequence of data:168hr fcst:NAve=0
+607:12126100:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:ordered sequence of data:168hr fcst:NAve=0
+608:12144542:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:sfc:132hr fcst:NAve=0
+609:12161604:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:sfc:156hr fcst:NAve=0
+610:12181426:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:sfc:162hr fcst:NAve=0
+611:12208148:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:sfc:126hr fcst:NAve=0
+612:12224162:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:sfc:168hr fcst:NAve=0
+613:12242604:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:sfc:168hr fcst:NAve=0
+614:12259666:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:sfc:120hr fcst:NAve=0
+615:12276746:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:sfc:78hr fcst:NAve=0
+616:12296568:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:sfc:138hr fcst:NAve=0
+617:12323290:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:sfc:108hr fcst:NAve=0
+618:12343112:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:sfc:90hr fcst:NAve=0
+619:12362934:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:sfc:102hr fcst:NAve=0
+620:12382756:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:sfc:114hr fcst:NAve=0
+621:12402578:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:sfc:120hr fcst:NAve=0
+622:12427920:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:sfc:168hr fcst:NAve=0
+623:12453652:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=168:P2=0:TimeU=1:sfc:168hr fcst:NAve=0
+624:12470156:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:sfc:150hr fcst:NAve=0
+625:12489978:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:sfc:96hr fcst:NAve=0
+626:12516700:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:sfc:96hr fcst:NAve=0
+627:12542042:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:sfc:150hr fcst:NAve=0
+628:12559104:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:sfc:180hr fcst:NAve=0
+629:12573412:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:sfc:90hr fcst:NAve=0
+630:12593234:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:ordered sequence of data:156hr fcst:NAve=0
+631:12610296:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=162:P2=0:TimeU=1:sfc:162hr fcst:NAve=0
+632:12630118:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:sfc:72hr fcst:NAve=0
+633:12649940:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:sfc:126hr fcst:NAve=0
+634:12671142:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:sfc:144hr fcst:NAve=0
+635:12688926:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:sfc:174hr fcst:NAve=0
+636:12710128:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:sfc:78hr fcst:NAve=0
+637:12723628:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:sfc:96hr fcst:NAve=0
+638:12737696:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:ordered sequence of data:84hr fcst:NAve=0
+639:12751922:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:ordered sequence of data:96hr fcst:NAve=0
+640:12770848:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:ordered sequence of data:180hr fcst:NAve=0
+641:12790650:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:sfc:84hr fcst:NAve=0
+642:12805088:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=96:P2=0:TimeU=1:ordered sequence of data:96hr fcst:NAve=0
+643:12820768:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:sfc:108hr fcst:NAve=0
+644:12846110:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:sfc:132hr fcst:NAve=0
+645:12872832:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:sfc:72hr fcst:NAve=0
+646:12889378:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:sfc:90hr fcst:NAve=0
+647:12909200:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:ordered sequence of data:126hr fcst:NAve=0
+648:12928136:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:sfc:180hr fcst:NAve=0
+649:12947958:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:ordered sequence of data:144hr fcst:NAve=0
+650:12967020:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:ordered sequence of data:90hr fcst:NAve=0
+651:12986592:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:ordered sequence of data:126hr fcst:NAve=0
+652:13012026:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:sfc:126hr fcst:NAve=0
+653:13029088:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:ordered sequence of data:126hr fcst:NAve=0
+654:13044124:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=180:P2=0:TimeU=1:ordered sequence of data:180hr fcst:NAve=0
+655:13070846:d=22071800:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:sfc:150hr fcst:NAve=0
+656:13090668:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:ordered sequence of data:126hr fcst:NAve=0
+657:13106348:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:sfc:72hr fcst:NAve=0
+658:13126170:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:sfc:78hr fcst:NAve=0
+659:13141850:d=22071800:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:sfc:144hr fcst:NAve=0
+660:13161672:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:sfc:126hr fcst:NAve=0
+661:13188394:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:ordered sequence of data:102hr fcst:NAve=0
+662:13202230:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:ordered sequence of data:150hr fcst:NAve=0
+663:13222052:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=138:P2=0:TimeU=1:ordered sequence of data:138hr fcst:NAve=0
+664:13237732:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:ordered sequence of data:72hr fcst:NAve=0
+665:13264454:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:sfc:84hr fcst:NAve=0
+666:13280134:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:sfc:72hr fcst:NAve=0
+667:13306856:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=120:P2=0:TimeU=1:sfc:120hr fcst:NAve=0
+668:13333578:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=102:P2=0:TimeU=1:sfc:102hr fcst:NAve=0
+669:13347930:d=22071800:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=72:P2=0:TimeU=1:sfc:72hr fcst:NAve=0
+670:13363610:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:ordered sequence of data:114hr fcst:NAve=0
+671:13383432:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=144:P2=0:TimeU=1:ordered sequence of data:144hr fcst:NAve=0
+672:13400494:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=108:P2=0:TimeU=1:sfc:108hr fcst:NAve=0
+673:13420316:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:ordered sequence of data:174hr fcst:NAve=0
+674:13434474:d=22071800:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=84:P2=0:TimeU=1:sfc:84hr fcst:NAve=0
+675:13446952:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:sfc:132hr fcst:NAve=0
+676:13471722:d=22071800:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=126:P2=0:TimeU=1:sfc:126hr fcst:NAve=0
+677:13491544:d=22071800:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=174:P2=0:TimeU=1:ordered sequence of data:174hr fcst:NAve=0
+678:13509984:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:ordered sequence of data:132hr fcst:NAve=0
+679:13536706:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:ordered sequence of data:78hr fcst:NAve=0
+680:13563232:d=22071800:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=150:P2=0:TimeU=1:sfc:150hr fcst:NAve=0
+681:13584434:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=78:P2=0:TimeU=1:ordered sequence of data:78hr fcst:NAve=0
+682:13598650:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=114:P2=0:TimeU=1:sfc:114hr fcst:NAve=0
+683:13615648:d=22071800:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:sfc:90hr fcst:NAve=0
+684:13636568:d=22071800:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:sfc:156hr fcst:NAve=0
+685:13663290:d=22071800:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=156:P2=0:TimeU=1:sfc:156hr fcst:NAve=0
+686:13681200:d=22071800:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:ordered sequence of data:90hr fcst:NAve=0
+687:13706542:d=22071800:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=90:P2=0:TimeU=1:sfc:90hr fcst:NAve=0
+688:13731884:d=22071800:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=132:P2=0:TimeU=1:ordered sequence of data:132hr fcst:NAve=0

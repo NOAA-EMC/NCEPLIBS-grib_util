@@ -62,15 +62,21 @@ gu_test(run_grb2index_tests)
 # Does the user want to get extra test files from the FTP site, and
 # run extra tests on them?
 if(FTP_TEST_FILES)
-  # Get the files from the FTP site.
   set(G2_FTP_URL "https://ftp.emc.ncep.noaa.gov/static_files/public/NCEPLIBS-g2")
   set(WW3_WEST_FILE "WW3_Regional_US_West_Coast_20220718_0000.grib2")
   set(WW3_EAST_FILE "WW3_Regional_US_East_Coast_20220717_0600.grib2")
+
+  # Get the files from the FTP site.
   # Not using the East Coast file yet.
   # foreach(THE_FILE IN LISTS WW3_WEST_FILE WW3_EAST_FILE) 
   foreach(THE_FILE IN LISTS WW3_WEST_FILE) 
     PULL_DATA(${G2_FTP_URL} ${THE_FILE})
   endforeach()
+
+  # Copy this inventory from the test directory. It's the expected
+  # inventory for one of the FTP files, after conversion to GRIB1.
+  gu_copy_test_data(ref_test_WW3_West.grib1.inventory.txt)
+  gu_copy_test_data(ref_test_WW3_West.grib2.idx)
 
   # Run these shell tests which use the FTP files.  
   gu_test(run_ftp_tests)
