@@ -73,5 +73,5 @@ if(FTP_TEST_FILES)
   endforeach()
 
   # Run these shell tests which use the FTP files.  
-
+  gu_test(run_ftp_tests)
 endif()
