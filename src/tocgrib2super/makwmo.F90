@@ -57,11 +57,11 @@ SUBROUTINE MAKWMO (BULHED,IDAY,IHOUR,IMIN,KWBX,HEADER)
   write(ctemp,fmt='(I2.2)') IHOUR
   WMOHDR(15)=ctemp(1:1)
   WMOHDR(16)=ctemp(2:2)
-  
+
   write(ctemp,fmt='(I2.2)') IMIN
   WMOHDR(17)=ctemp(1:1)
   WMOHDR(18)=ctemp(2:2)
-  
+
   !
   !             1.4    FIL IN REST OF HEADER
   !
