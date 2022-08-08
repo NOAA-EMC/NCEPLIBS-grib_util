@@ -28,15 +28,5 @@ cmp test_gdaswave.t00z.wcoast.0p16.f000.grib1.inventory.txt ref_gdaswave_grib1_i
 # so ignore them.
 cmp -i 120 test_WW3_West.grib2.idx ref_test_WW3_West.grib2.idx
 
-# Convert test file to another GRIB2 file.
-#../src/cnvgrib/cnvgrib -g22 ref_gdaswave.t00z.wcoast.0p16.f000.grib2 test_gdaswave.t00z.wcoast.0p16.f000_2.grib2
-
-# Create an index of the new GRIB2 file.
-#../src/grb2index/grb2index test_gdaswave.t00z.wcoast.0p16.f000_2.grib2 test_gdaswave.t00z.wcoast.0p16.f000_2.grib2.idx
-
-# Check against expected output. First 120 bytes contain differences,
-# so ignore them.
-#cmp -i 120 test_gdaswave.t00z.wcoast.0p16.f000_2.grib2.idx ref_gdaswave.t00z.wcoast.0p16.f000_2.grib2.idx
-
 echo "*** SUCCESS!"
 exit 0
