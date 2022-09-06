@@ -11,6 +11,7 @@
 !>
 !> @author Stephen Gilbert @date 2010-09-08
 subroutine prvtime(ipdtn, ipdtmpl, listsec1, tabbrev)
+  implicit none
 
   integer, intent(in) :: ipdtn
   integer, intent(in) :: ipdtmpl(*), listsec1(*)
@@ -19,8 +20,9 @@ subroutine prvtime(ipdtn, ipdtmpl, listsec1, tabbrev)
   character(len = 16) :: reftime, endtime
   character(len = 10) :: tmpval, tmpval2
   character(len = 10) :: tunit, tunit2
-
   integer, dimension(200) :: ipos, ipos2
+  integer :: is, itemp, itemp2, iunit, iuni2t2, iunit2, iutpos, iutpos2, j
+  
   data ipos  /7*0, 16, 23, 17, 19, 18, 32, 31, 27*0, 17, 20, 0, 0, 22,  &
        25, 43*0, 23, 109*0/
 

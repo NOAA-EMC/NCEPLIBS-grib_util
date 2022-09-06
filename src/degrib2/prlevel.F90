@@ -277,6 +277,7 @@ end subroutine prlevel
 !>
 !> @author Vuong @date 2010-09-08
 subroutine frmt(cval, ival, iscal)
+  implicit none
 
   character(len = 10), intent(out) :: cval
   integer, intent(in) :: ival, iscal
