@@ -23,9 +23,13 @@ message(STATUS "In cnvgrib ${JASPER_LIBRARIES}")
 message(STATUS "In cnvgrib ${ZLIB_LIBRARIES}")
 set(exe_name cnvgrib)
 add_executable(${exe_name} ${fortran_src})
-target_link_libraries(${exe_name} g2::g2_4
+set(link_libs g2::g2_4 
   bacio::${bacio_name} w3emc::w3emc_4 ${JASPER_LIBRARIES} PNG::PNG
   ${ZLIB_LIBRARY})
+if(g2_VERSION GREATER_EQUAL 3.5.0)
+  set(link_libs g2c::g2c ${link_libs})
+endif()
+target_link_libraries(${exe_name} ${link_libs})
 
 # Install cnvgrib.
 install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
