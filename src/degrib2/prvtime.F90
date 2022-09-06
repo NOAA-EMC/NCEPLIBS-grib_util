@@ -1,13 +1,18 @@
 !> @file
-!> @brief
+!> @brief Convert date and time from GRIB2 info to string output.
 !> @author Stephen Gilbert @date 2010-09-08
 
-!>    prvtime
+!> Convert date and time from GRIB2 info to string output.
 !>
-!>    @param[in] ipdtn
-!>    @param[in] ipdtmpl
-!>    @param[in] listsec1
-!>    @param[out] tabbrev
+!> @param[in] ipdtn Product Definition Template Number ([Code Table
+!> 4.0]
+!> (https://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_doc/grib2_table4-0.shtml)).
+!> @param[in] ipdtmpl Array of data values for the Product Definition
+!> Template specified by ipdtn.
+!> @param[in] listsec1 Contains information read from GRIB
+!> Identification Section 1. Must be dimensioned >= 13.
+!> @param[out] tabbrev Character array that will get the date and time
+!> string. Must be of length 100.
 !>
 !> @author Stephen Gilbert @date 2010-09-08
 subroutine prvtime(ipdtn, ipdtmpl, listsec1, tabbrev)

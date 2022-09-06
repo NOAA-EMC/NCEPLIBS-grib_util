@@ -1,12 +1,18 @@
 !> @file
-!> @brief
+!> @brief Print level information to a character array, given the
+!> GRIB2 Product Definition Template information.
 !> @author Stephen Gilbert @date 2010-09-08
 
-!> Print.
+!> Print level information to a character array, given the GRIB2
+!> Product Definition Template information.
 !>
-!> @param[in] ipdtn
-!> @param[in] ipdtmpl
-!> @param[out] labbrev
+!> @param[in] ipdtn Product Definition Template Number ([Code Table
+!> 4.0]
+!> (https://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_doc/grib2_table4-0.shtml)).
+!> @param[in] ipdtmpl Array of data values for the Product Definition
+!> Template specified by ipdtn.
+!> @param[out] labbrev Character array which gets the string
+!> describing the level. Must be of length 40.
 !>
 !> @author Stephen Gilbert @date 2010-09-08
 subroutine prlevel(ipdtn, ipdtmpl, labbrev)
