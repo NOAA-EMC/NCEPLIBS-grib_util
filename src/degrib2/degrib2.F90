@@ -18,7 +18,11 @@
 program degrib2
   use grib_mod
   use params
-  
+  implicit none
+
+  integer :: msk1, msk2, icount, ifl1, iseek, itot, j, lengrib, lgrib, lskip
+  integer :: maxlocal, n, ncgb, numfields, numlocal
+  real :: fldmax, fldmin, sum
   parameter(msk1 = 32000, msk2 = 4000)
   CHARACTER(len = 1), allocatable, dimension(:) :: cgrib
   integer :: listsec0(3)
@@ -31,6 +35,8 @@ program degrib2
   integer :: currlen = 0,  numpts = 0
   logical :: unpack, expand
   type(gribfield) :: gfld
+  integer :: ierr, ios, is
+  
   call start()
   unpack = .true.
   expand = .false.
