@@ -124,8 +124,7 @@ program degrib2
         write(6, '(A,1x,I0,A,100(1x,I0))')'  GRID TEMPLATE 3.',  &
              gfld%igdtnum, ' : ',  (gfld%igdtmpl(j), j = 1, gfld%igdtlen)
         if (gfld%num_opt .eq. 0) then
-           write(6, *)' NO Optional List Defining Number of Data '  &
-                //'Points.'
+           write(6, *)' NO Optional List Defining Number of Data Points.'
         else
            write(6, '(A,1x,150(1x,I0))')'  Section 3 Optional List:',  &
                 (gfld%list_opt(j), j = 1, gfld%num_opt)
@@ -144,24 +143,23 @@ program degrib2
 
         write(6, '(A,A,A,A,A)')'  FIELD: ', pabbrev, trim(labbrev), &
              " ", trim(tabbrev)
-        if ( gfld%num_coord .eq. 0 ) then
+        if (gfld%num_coord .eq. 0) then
            write(6, *)' NO Optional Vertical Coordinate List.'
         else
            write(6, '(A,1X,150(1x,I0))') &
                 '  Section 4 Optional & Coordinates: ', &
                 (gfld%coord_list(j), j = 1, gfld%num_coord)
         endif
-        if ( gfld%ibmap .ne. 255 ) then
+        if (gfld%ibmap .ne. 255) then
            write(6, '(A,I0,A,I0)')'  Num. of Data Points =  ', &
                 gfld%ndpts, '    with BIT-MAP  ', gfld%ibmap
         else
            write(6, '(A,I0,A)')'  Num. of Data Points =  ',  &
                 gfld%ndpts, '     NO BIT-MAP '
         endif
-        write(6, '(A,I0,A,20(1x,I0))')'  DRS TEMPLATE 5. ' &
-             , gfld%idrtnum, ' : ', &
+        write(6, '(A,I0,A,20(1x,I0))')'  DRS TEMPLATE 5. ', gfld%idrtnum, ' : ', &
              (gfld%idrtmpl(j), j = 1, gfld%idrtlen)
-        if (gfld%fld(1) .eq. 9.9990003E+20 ) then  ! checking undefined values
+        if (gfld%fld(1) .eq. 9.9990003E+20) then  ! checking undefined values
            fldmax = 0.0
            fldmin = 99999.99
            sum = 0.0
@@ -173,26 +171,24 @@ program degrib2
            numpts = 1
         end if
         do j = 2, gfld%ndpts
-           if (gfld%fld(j) .eq. 9.9990003E+20 ) then ! checking undefined values
+           if (gfld%fld(j) .eq. 9.9990003E+20) then ! checking undefined values
               cycle
            end if
-           if (gfld%fld(j).gt.fldmax) fldmax = gfld%fld(j)
-           if (gfld%fld(j).lt.fldmin) fldmin = gfld%fld(j)
-           sum = sum+gfld%fld(j)
+           if (gfld%fld(j) .gt. fldmax) fldmax = gfld%fld(j)
+           if (gfld%fld(j) .lt. fldmin) fldmin = gfld%fld(j)
+           sum = sum + gfld%fld(j)
            numpts = numpts + 1
         enddo
 
         write(6, *)' Data Values:'
         write(6, '(A,I0,A,I0)')'  Num. of Data Points =  ', &
-             gfld%ndpts, '   Num. of Data Undefined = ', &
-             gfld%ndpts-numpts
-        write(6, fmt = '( "( PARM= ",A," ) : ",  &
-             " MIN=",f25.8," AVE=",f25.8, &
-             " MAX=",f25.8)')trim(pabbrev), fldmin, &
-             sum/numpts, fldmax
+             gfld%ndpts, '   Num. of Data Undefined = ', gfld%ndpts-numpts
+        write(6, fmt = '( "( PARM= ",A," ) : ", " MIN=",f25.8," AVE=",f25.8, &
+             " MAX=",f25.8)')trim(pabbrev), fldmin, sum/numpts, fldmax
+
+        ! Free memory allocated to hold field.
         call gf_free(gfld)
      enddo
-
   enddo
   write(6, *)" "
   write(6, '(A,I0)')'  Total Number of Fields Found =  ', itot
