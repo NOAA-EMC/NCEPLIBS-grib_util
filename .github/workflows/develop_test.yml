@@ -118,7 +118,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: ${{ matrix.g2_branch.branch }}
+        ref: v3.4.5
 
     - name: build-g2
       run: |
