@@ -6,6 +6,12 @@
 !> Print level information to a character array, given the GRIB2
 !> Product Definition Template information.
 !>
+!> This subroutine finds the "Type of first fixed surface" (see [Code
+!> table
+!> 4.5](https://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_doc/grib2_temp4-0.shtml))
+!> using the product definition template value. The location in the
+!> template array varies depending on the template number.
+!>
 !> @param[in] ipdtn Product Definition Template Number ([Code Table
 !> 4.0]
 !> (https://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_doc/grib2_table4-0.shtml)).
@@ -25,6 +31,9 @@ subroutine prlevel(ipdtn, ipdtmpl, labbrev)
 
   labbrev(1:40) = " "
 
+  ! Use the template number to determine which element of the product
+  ! template array holds the "Type of first fixed surface" value
+  ! (which will be stored in ipos).
   selectcase (ipdtn)
   case(0:15)
      ipos = 10
@@ -295,13 +304,12 @@ subroutine frmt(cval, ival, iscal)
   if  (iscal .eq. 0) then
      write(cval, '(I0)') ival
   else
-     newscal = -1*iscal
-     rval = real(ival)*(10.0**newscal)
+     newscal = -1 * iscal
+     rval = real(ival) * (10.0**newscal)
      if (rval .eq. real(nint(rval))) then
         write(cval, '(1X,I0)') nint(rval)
      else
         write(cformat, fmt = '("(f0.",I1,")")') iabs(iscal)
-        !write(6, '(A)') "DEGRIB2:", cformat
         write(cval, fmt = cformat) rval
      endif
   endif
