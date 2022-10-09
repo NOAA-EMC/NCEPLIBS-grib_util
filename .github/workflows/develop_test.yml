@@ -113,11 +113,28 @@ jobs:
         make -j2
         make install
           
+    - name: checkout-g2c
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-g2c
+        path: g2c
+        ref: develop
+
+    - name: build-g2c
+      run: |
+        cd g2c
+        mkdir build
+        cd build
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2c -DCMAKE_PREFIX_PATH="~/jasper" ..
+        make -j2
+        make install
+                 
     - name: checkout-g2
       uses: actions/checkout@v2
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
+        ref: develop
         ref: v3.4.5
 
     - name: build-g2
@@ -125,7 +142,7 @@ jobs:
         cd g2
         mkdir build
         cd build
-        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/w3emc" ..
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/w3emc;~/g2c" ..
         make -j2
         make install
                  
@@ -139,7 +156,7 @@ jobs:
         cd grib_utils
         mkdir build && cd build
         ls -l ~/jasper
-        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" -DCMAKE_Fortran_FLAGS="-Wall" -DCMAKE_C_FLAGS="-Wall" -DFTP_TEST_FILES=ON ..
+        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2;~/g2c" -DCMAKE_Fortran_FLAGS="-Wall" -DCMAKE_C_FLAGS="-Wall" ..
         make
         ctest --verbose --output-on-failure
           
