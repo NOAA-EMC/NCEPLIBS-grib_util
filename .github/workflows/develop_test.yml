@@ -135,7 +135,6 @@ jobs:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
         ref: develop
-        ref: v3.4.5
 
     - name: build-g2
       run: |
