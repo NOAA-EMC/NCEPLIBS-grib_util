@@ -39,7 +39,7 @@ find_package(sp 2.3.3 REQUIRED)
 find_package(ip 3.3.3 REQUIRED)
 find_package(w3emc 2.9.2 REQUIRED)
 find_package(g2 3.4.0 REQUIRED)
-if (g2_VERSION GREATER_EQUAL 3.6.0)
+if (g2_VERSION GREATER_EQUAL 3.5.0)
   find_package(g2c 1.7.0 REQUIRED)
 endif()
 
