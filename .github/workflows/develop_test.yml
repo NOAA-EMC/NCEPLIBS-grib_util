@@ -7,6 +7,7 @@ jobs:
     env:
       FC: gfortran-9
       CC: gcc-9
+      LD_LIBRARY_PATH: ~/jasper/lib
 
     strategy:
       fail-fast: false
