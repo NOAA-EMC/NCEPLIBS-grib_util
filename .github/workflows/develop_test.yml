@@ -15,7 +15,7 @@ jobs:
       CC: gcc-9
 
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         g2-branch: ["v3.4.5", "develop"]
     steps:
