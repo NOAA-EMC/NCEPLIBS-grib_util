@@ -23,10 +23,10 @@ jobs:
             name: "v3.4.5",
             branch: "v3.4.5"
           }
-        - {
-            name: "develop",
-            branch: "develop"
-          }
+        # - {
+        #     name: "develop",
+        #     branch: "develop"
+        #   }
     steps:
     - name: install-dependencies
       run: |
