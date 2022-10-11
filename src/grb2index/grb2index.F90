@@ -1,34 +1,34 @@
 !> @file
-!> Write a grib2 index file.
+!> Write a GRIB2 index file.
 !> @author Iredell @date 1992-11-22
 
-!> This program creates an index file from a grib2 file. The index file
-!> serves as a table of contents for the grib file, enabling quick
-!> access to the data. The grib file must be unblocked, but there can
-!> be a gap before the first grib message of at most 32000 bytes and
+!> This program creates an index file from a GRIB2 file. The index file
+!> serves as a table of contents for the GRIB file, enabling quick
+!> access to the data. The GRIB file must be unblocked, but there can
+!> be a gap before the first GRIB message of at most 32000 bytes and
 !> gaps between messages of at most 4000 bytes. The two file names are
 !> retrieved from the command line arguments. The first argument is the
-!> name of the input grib file. The second argument is the name of the
-!> output index file. For this program, only grib version 2 can be
+!> name of the input GRIB file. The second argument is the name of the
+!> output index file. For this program, only GRIB version 2 can be
 !> read.
 !>
 !> Version 1 of the index file has the following format: 81-byte s.lord
 !> header with 'gb2ix1' in columns 42-47 followed by 81-byte header with
 !> number of bytes to skip before index records, total length in bytes
-!> of the index records, number of index records, and grib file basename
+!> of the index records, number of index records, and GRIB file basename
 !> written in format ('ix1form:',3i10,2x,a40). Each following index
-!> record corresponds to a field in a grib2 message and has the internal
+!> record corresponds to a field in a GRIB2 message and has the internal
 !> format:
 !> -  byte 001 - 004: length of index record
-!> -  byte 005 - 008: bytes to skip in data file before grib message
+!> -  byte 005 - 008: bytes to skip in data file before GRIB message
 !> -  byte 009 - 012: bytes to skip in message before gds
 !> -  byte 013 - 016: bytes to skip in message before pds
 !> -  byte 017 - 020: bytes to skip in message before drs
 !> -  byte 021 - 024: bytes to skip in message before bms
 !> -  byte 025 - 032: bytes total in the message
-!> -  byte 033 - 033: grib version number ( currently 2 )
+!> -  byte 033 - 033: GRIB version number ( currently 2 )
 !> -  byte 034 - 034: message discipline
-!> -  byte 035 - 036: field number within grib2 message
+!> -  byte 035 - 036: field number within GRIB2 message
 !> -  byte 037 -  ii: identification section (ids)
 !> -  byte ii+1-  jj: grid definition section (gds)
 !> -  byte jj+1-  kk: product definition section (pds)
@@ -39,13 +39,13 @@
 !> Date | Programmer | Comments
 !> -----|------------|---------
 !> 92-11-22 | Iredell | Initial
-!> 2002-01-03 | Gilbert | modified from program grbindex to work with grib2
+!> 2002-01-03 | Gilbert | modified from program grbindex to work with GRIB2
 !> 2005-02-25 | Gilbert | removed buffering option (see baseto).
 !> 2012-08-01 | Vuong | changed hostname to hostnam
 !>
 !> @return
 !> - 0 successful run
-!> - 1 grib message not found
+!> - 1 GRIB message not found
 !> - 2 incorrect arguments
 !> - 8 error accessing file
 !>
@@ -143,7 +143,7 @@ END PROGRAM GRB2INDEX
 !> @param[in] lugi integer logical unit of output index file
 !> @param[in] nlen integer total length of index records
 !> @param[in] nnum integer number of index records
-!> @param[in] cgb character name of grib file
+!> @param[in] cgb character name of GRIB file
 !>
 !> @author Iredell @date 93-11-22
 SUBROUTINE WRGI1H(LUGI,NLEN,NNUM,CGB)
