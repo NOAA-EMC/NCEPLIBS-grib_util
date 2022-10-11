@@ -15,17 +15,9 @@ jobs:
       CC: gcc-9
 
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
-        g2-branch:
-        - {
-            name: "v3.4.5",
-            branch: "v3.4.5"
-          }
-        # - {
-        #     name: "develop",
-        #     branch: "develop"
-        #   }
+        g2-branch: ["v3.4.5", "develop"]
     steps:
     - name: install-dependencies
       run: |
@@ -140,7 +132,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: develop
+        ref: ${{ matrix.g2-branch }}
 
     - name: build-g2
       run: |
@@ -167,12 +159,3 @@ jobs:
         cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2;~/g2c" -DCMAKE_Fortran_FLAGS="-Wall" -DCMAKE_C_FLAGS="-Wall" ..
         make
         ctest --verbose --output-on-failure
-          
-
-
-
-
-    
-        
-   
-
