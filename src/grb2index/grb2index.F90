@@ -12,13 +12,16 @@
 !> output index file. For this program, only GRIB version 2 can be
 !> read.
 !>
-!> The index file has the following format: 81-byte s.lord
-!> header with 'GB2IX1' in columns 42-47 followed by 81-byte header with
-!> number of bytes to skip before index records, total length in bytes
-!> of the index records, number of index records, and GRIB file basename
-!> written in format ('IX1FORM:',3i10,2x,a40). Each following index
-!> record corresponds to a field in a GRIB2 message and has the internal
-!> format:
+!> The index file has two header records:
+!> 1. an 81-byte header with 'GB2IX1' in columns 42-47
+!> 2. an 81-byte header with number of bytes to skip before index
+!> records, total length in bytes of the index records, number of
+!> index records, and GRIB file basename written in format
+!> ('IX1FORM:',3i10,2x,a40).
+!>
+!> Each record in the index table contains the following fields. All
+!> integers are in big-endian format in the file.
+!>
 !> -  byte 001 - 004: length of index record
 !> -  byte 005 - 008: bytes to skip in data file before GRIB message
 !> -  byte 009 - 012: bytes to skip in message before gds
