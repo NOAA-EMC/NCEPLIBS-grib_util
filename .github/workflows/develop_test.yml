@@ -18,10 +18,6 @@ jobs:
       FC: gfortran-11
       CC: gcc-11
 
-    strategy:
-      fail-fast: false
-      matrix:
-        g2-branch: ["v3.4.5", "develop"]
     steps:
     - name: install-dependencies
       run: |
@@ -136,7 +132,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: ${{ matrix.g2-branch }}
+        ref: develop
 
     - name: build-g2
       run: |
