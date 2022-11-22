@@ -1,4 +1,4 @@
-name: Develop Branch Build and Test
+name: dependencies_develop_branch
 on:
   push:
     branches:
