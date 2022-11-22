@@ -12,11 +12,11 @@ on:
     - README.md
 
 jobs:
-  macOS-build:
+  macOS-build: 
     runs-on: macos-latest
     env:
-      FC: gfortran-9
-      CC: gcc-9
+      FC: gfortran-11
+      CC: gcc-11
 
     steps:
     - name: install-dependencies
