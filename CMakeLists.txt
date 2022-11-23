@@ -1,6 +1,6 @@
 # This is the main CMake file for NCEPLIBS-grib_util.
 #
-# Mark Potts, Kyle Gerheiser
+# Mark Potts, Kyle Gerheiser, Ed Hartnett
 cmake_minimum_required(VERSION 3.15)
 
 file(STRINGS "VERSION" pVersion)
