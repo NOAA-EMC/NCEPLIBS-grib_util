@@ -1,4 +1,4 @@
-name: Develop Branch Build and Test
+name: dependencies_develop_branch
 on:
   push:
     branches:
@@ -13,15 +13,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
-      FC: gfortran-9
-      CC: gcc-9
+      FC: gfortran-11
+      CC: gcc-11
 
-    strategy:
-      fail-fast: false
-      matrix:
-        g2-branch: ["v3.4.5", "develop"]
     steps:
     - name: install-dependencies
       run: |
@@ -136,7 +132,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: ${{ matrix.g2-branch }}
+        ref: develop
 
     - name: build-g2
       run: |

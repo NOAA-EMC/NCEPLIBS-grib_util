@@ -12,7 +12,7 @@ on:
     - README.md
 
 jobs:
-  macOS-build:
+  macOS-build: 
     runs-on: macos-latest
     env:
       FC: gfortran-11
