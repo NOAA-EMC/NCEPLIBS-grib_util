@@ -15,8 +15,8 @@ endfunction()
 
 # Copy each necessary test data file to the binary build directory.
 function(gu_copy_test_data name)
-  file(COPY "${CMAKE_SOURCE_DIR}/tests/${name}"
-    DESTINATION ${CMAKE_BINARY_DIR}/tests
+  file(COPY "${CMAKE_SOURCE_DIR}/tests/data/${name}"
+    DESTINATION ${CMAKE_BINARY_DIR}/tests/data
     FILE_PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
 endfunction()
  
@@ -24,16 +24,27 @@ endfunction()
 # site. This function is used to download such test data. It takes two
 # arguments, the URL and the file to be downloaded.
 function(PULL_DATA THE_URL THE_FILE)
-  if(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/${THE_FILE}")
+  # If the TEST_FILE_DIR was specified, look for our test data files
+  # there before FTPing them. Developers can keep all test files on
+  # their machines, and save the time of downloading them every time.
+  if(NOT ${TEST_FILE_DIR} STREQUAL ".")
+    if (EXISTS ${TEST_FILE_DIR}/${THE_FILE})
+      message(STATUS "Copying file ${TEST_FILE_DIR}/${THE_FILE} to test data directory.")
+      FILE(COPY ${TEST_FILE_DIR}/${THE_FILE}
+        DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/data)
+    endif()
+  endif()
+  if(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/data/${THE_FILE}")
+    message(STATUS "Downloading file ${CMAKE_CURRENT_BINARY_DIR}/data/${THE_FILE}.")
     file(DOWNLOAD
       ${THE_URL}/${THE_FILE}
-      ${CMAKE_CURRENT_BINARY_DIR}/${THE_FILE}
+      ${CMAKE_CURRENT_BINARY_DIR}/data/${THE_FILE}
       SHOW_PROGRESS
       STATUS status
       INACTIVITY_TIMEOUT 30
-      )
+    )
     list(GET status 0 status_num)
-    if(NOT status_num EQUAL 0 OR NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/${THE_FILE}")
+    if(NOT status_num EQUAL 0 OR NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/data/${THE_FILE}")
       message(FATAL_ERROR "Could not download ${THE_FILE}")
     endif()
   endif()
@@ -65,11 +76,12 @@ if(FTP_TEST_FILES)
   set(G2_FTP_URL "https://ftp.emc.ncep.noaa.gov/static_files/public/NCEPLIBS-g2")
   set(WW3_WEST_FILE "WW3_Regional_US_West_Coast_20220718_0000.grib2")
   set(WW3_EAST_FILE "WW3_Regional_US_East_Coast_20220717_0600.grib2")
-
+  set(GDAS_FILE "gdas.t12z.pgrb2.1p00.anl.grib2")
+  
   # Get the files from the FTP site.
   # Not using the East Coast file yet.
   # foreach(THE_FILE IN LISTS WW3_WEST_FILE WW3_EAST_FILE) 
-  foreach(THE_FILE IN LISTS WW3_WEST_FILE) 
+  foreach(THE_FILE IN LISTS WW3_WEST_FILE GDAS_FILE) 
     PULL_DATA(${G2_FTP_URL} ${THE_FILE})
   endforeach()
 
