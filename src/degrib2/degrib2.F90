@@ -28,14 +28,14 @@ program degrib2
   integer :: maxlocal, n, ncgb, numfields, numlocal
   real :: fldmax, fldmin, sum
   parameter(msk1 = 32000, msk2 = 4000)
-  CHARACTER(len = 1), allocatable, dimension(:) :: cgrib
+  character(len = 1), allocatable, dimension(:) :: cgrib
   integer :: listsec0(3)
   integer :: listsec1(13)
   character(len = 250) :: gfile1
   character(len = 8) :: pabbrev
   character(len = 30) :: labbrev
   character(len = 90) :: tabbrev
-  INTEGER(4) NARG, IARGC, temparg
+  integer(4) narg, iargc, temparg
   integer :: currlen = 0,  numpts = 0
   logical :: unpack, expand
   type(gribfield) :: gfld
