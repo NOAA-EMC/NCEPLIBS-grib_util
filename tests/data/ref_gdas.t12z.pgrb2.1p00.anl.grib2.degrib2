@@ -1,0 +1,44 @@
+ 
+ GRIB MESSAGE  1  starts at 1
+ 
+  SECTION 0:  0 2 71095
+  SECTION 1:  7 0 2 1 0 2022 11 6 12 0 0 0 0
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 0 2 1 0 2022 11 6 12 0 0 0 0
+  SECTION 3:  0 65160 0 0 0
+  GRID TEMPLATE 3. 0 :  6 0 0 0 0 0 0 360 181 0 -1 90000000 0 48 -90000000 359000000 1000000 1000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = ABSV     0 2 10 )  2 10 0 0 81 0 0 1 0 100 0 80000 255 0 0
+  FIELD: ABSV     800 mb valid  0 hour after 2022110612:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  65160     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  -1000579487 0 6 12 0 1 0 1649987994 -1 2178 0 4 1 1 104 8 2 2
+  Data Values:
+  Num. of Data Points =  65160   Num. of Data Undefined = 0
+( PARM= ABSV ) :  MIN=              -0.00088147 AVE=              -0.00000063 MAX=               0.00105553
+ 
+ GRIB MESSAGE  2  starts at 71096
+ 
+  SECTION 0:  0 2 71846
+  SECTION 1:  7 0 2 1 0 2022 11 6 12 0 0 0 0
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 0 2 1 0 2022 11 6 12 0 0 0 0
+  SECTION 3:  0 65160 0 0 0
+  GRID TEMPLATE 3. 0 :  6 0 0 0 0 0 0 360 181 0 -1 90000000 0 48 -90000000 359000000 1000000 1000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = ABSV     0 2 10 )  2 10 0 0 81 0 0 1 0 100 0 85000 255 0 0
+  FIELD: ABSV     850 mb valid  0 hour after 2022110612:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  65160     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  -997588251 0 6 12 0 1 0 1649987994 -1 2159 0 4 1 1 104 7 2 2
+  Data Values:
+  Num. of Data Points =  65160   Num. of Data Undefined = 0
+( PARM= ABSV ) :  MIN=              -0.00110409 AVE=              -0.00000060 MAX=               0.00104891
+  
+  Total Number of Fields Found =  2
