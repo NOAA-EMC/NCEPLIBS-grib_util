@@ -1,0 +1,19 @@
+1:0:d=21113000:WIND:kpds5=32:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+2:19822:d=21113000:WDIR:kpds5=31:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+3:46544:d=21113000:UGRD:kpds5=33:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+4:66366:d=21113000:VGRD:kpds5=34:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+5:87568:d=21113000:HTSGW:kpds5=100:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+6:104630:d=21113000:PERPW:kpds5=108:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+7:123072:d=21113000:DIRPW:kpds5=107:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+8:147034:d=21113000:WVHGT:kpds5=102:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+9:157432:d=21113000:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:ordered sequence of data:anl:NAve=0
+10:174494:d=21113000:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:ordered sequence of data:anl:NAve=0
+11:190088:d=21113000:SWELL:kpds5=105:kpds6=241:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:ordered sequence of data:anl:NAve=0
+12:203782:d=21113000:WVPER:kpds5=103:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+13:215460:d=21113000:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:ordered sequence of data:anl:NAve=0
+14:235282:d=21113000:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:ordered sequence of data:anl:NAve=0
+15:254986:d=21113000:SWPER:kpds5=106:kpds6=241:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:ordered sequence of data:anl:NAve=0
+16:273854:d=21113000:WVDIR:kpds5=101:kpds6=1:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:sfc:anl:NAve=0
+17:288730:d=21113000:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:ordered sequence of data:anl:NAve=0
+18:312692:d=21113000:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:ordered sequence of data:anl:NAve=0
+19:339242:d=21113000:SWDIR:kpds5=104:kpds6=241:kpds7=0:TR=0:P1=0:P2=0:TimeU=1:ordered sequence of data:anl:NAve=0
