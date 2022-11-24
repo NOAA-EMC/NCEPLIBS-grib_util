@@ -15,6 +15,7 @@ for f in $ftp_files
 do
     echo "Testing with file $f"
     ls -l data/$f
+    ../src/degrib2/degrib2 data/$f > ${f}.degrib2
 done
 
 echo "*** SUCCESS!"
