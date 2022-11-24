@@ -77,11 +77,13 @@ if(FTP_TEST_FILES)
   set(WW3_WEST_FILE "WW3_Regional_US_West_Coast_20220718_0000.grib2")
   set(WW3_EAST_FILE "WW3_Regional_US_East_Coast_20220717_0600.grib2")
   set(GDAS_FILE "gdas.t12z.pgrb2.1p00.anl.grib2")
+  set(BLEND_FILE "blend.t19z.core.f001.co.grib2")
+  set(CMC_FILE "cmc_geavg.t12z.pgrb2a.0p50.f000")
   
   # Get the files from the FTP site.
   # Not using the East Coast file yet.
   # foreach(THE_FILE IN LISTS WW3_WEST_FILE WW3_EAST_FILE) 
-  foreach(THE_FILE IN LISTS WW3_WEST_FILE GDAS_FILE) 
+  foreach(THE_FILE IN LISTS WW3_WEST_FILE GDAS_FILE BLEND_FILE CMC_FILE) 
     PULL_DATA(${G2_FTP_URL} ${THE_FILE})
   endforeach()
 
@@ -92,4 +94,5 @@ if(FTP_TEST_FILES)
 
   # Run these shell tests which use the FTP files.  
   gu_test(run_ftp_tests)
+  gu_test(run_all_ftp_tests)
 endif()

@@ -3,30 +3,19 @@
 #
 # This script tests with GRIB2 data files downloaded from the NOAA EMC FTP site.
 #
-# Ed Hartnett, 8/8/22
+# Ed Hartnett, 11/24/22
 
 set -e
 echo ""
-echo "*** Running FTP file tests"
+echo "*** Running all FTP file tests"
 
-# Convert test file to GRIB1.
-../src/cnvgrib/cnvgrib -g21 data/WW3_Regional_US_West_Coast_20220718_0000.grib2 test_WW3_West.grib1
+ftp_files="blend.t19z.core.f001.co.grib2 cmc_geavg.t12z.pgrb2a.0p50.f000"
 
-# Generate an inventory of the GRIB1 file.
-../src/wgrib/wgrib test_WW3_West.grib1 &> test_WW3_West.grib1.inventory.txt
-
-# Check against expected output.
-cmp test_gdaswave.t00z.wcoast.0p16.f000.grib1.inventory.txt data/ref_gdaswave_grib1_inventory.txt
-
-# Convert GRIB1 output back to GRIB2.
-../src/cnvgrib/cnvgrib -g12 test_WW3_West.grib1 test_WW3_West.grib2
-
-# Create an index of a GRIB2 file.
-../src/grb2index/grb2index test_WW3_West.grib2 test_WW3_West.grib2.idx
-
-# Check against expected output. First 120 bytes contain differences,
-# so ignore them.
-cmp -i 120 test_WW3_West.grib2.idx data/ref_test_WW3_West.grib2.idx
+for f in $ftp_files
+do
+    echo "Testing with file $f"
+    ls -l data/$f
+done
 
 echo "*** SUCCESS!"
 exit 0
