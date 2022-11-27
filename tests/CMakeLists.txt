@@ -3,7 +3,8 @@
 #
 # Ed Hartnett
 
-add_executable(test_degrib2_int test_degrib2_int.F90 ${CMAKE_SOURCE_DIR}/src/degrib2/prlevel.F90)
+# This fortran test is for the internals of degrib2.
+add_executable(test_degrib2_int test_degrib2_int.F90 ${CMAKE_SOURCE_DIR}/src/degrib2/prlevel.F90 ${CMAKE_SOURCE_DIR}/src/degrib2/prvtime.F90)
 target_link_libraries(test_degrib2_int PRIVATE g2::g2_4)
 add_test(NAME test_degrib2_int COMMAND test_degrib2_int)
 
