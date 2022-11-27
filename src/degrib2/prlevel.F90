@@ -22,11 +22,12 @@
 !>
 !> @author Stephen Gilbert @date 2010-09-08
 subroutine prlevel(ipdtn, ipdtmpl, labbrev)
-
+  implicit none
+  
   integer, intent(in) :: ipdtn
   integer, intent(in) :: ipdtmpl(*)
   character(len = 40), intent(out) :: labbrev
-
+  integer :: ipos
   character(len = 10) :: tmpval1, tmpval2
 
   labbrev(1:40) = " "
@@ -247,11 +248,11 @@ subroutine prlevel(ipdtn, ipdtmpl, labbrev)
 
 end subroutine prlevel
 
-!> Format.
+!> Format the level description.
 !>
-!> @param[in] ipdtn
-!> @param[in] ipdtmpl
-!> @param[out] labbrev
+!> @param[in] cval char array that gets the level description.
+!> @param[in] ival value to be used in level description.
+!> @param[out] iscal scaling factor (if any) for ival.
 !>
 !> @author Vuong @date 2010-09-08
 subroutine frmt(cval, ival, iscal)
