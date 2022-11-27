@@ -4,7 +4,7 @@
 # Ed Hartnett
 
 add_executable(test_degrib2_level test_degrib2_level.F90 ${CMAKE_SOURCE_DIR}/src/degrib2/prlevel.F90)
-target_link_libraries(test_degrib2_level PRIVATE g2::g2_4 PNG::PNG  g2c::g2c)
+target_link_libraries(test_degrib2_level PRIVATE g2::g2_4)
 add_test(NAME test_degrib2_level COMMAND test_degrib2_level)
 
 # Run each shell test.
