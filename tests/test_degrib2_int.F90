@@ -8,6 +8,7 @@ program test_degrib2_int
   integer :: pt_0_0(15) = (/ 2, 1, 2, 0, 11, 0, 0, 1, 0, 1, 0, 1, 255, 0, 0 /)
   integer :: pt_0_1(15) = (/ 2, 10, 0, 0, 81, 0, 0, 1, 0, 100, 0, 80000, 255, 0, 0 /)
   integer :: pt_0_2(15) = (/ 0, 21, 2, 255, 104, 65535, 255, 1, 1, 103, 0, 2, 255, 0, 0 /)
+  integer :: pt_0_3(15) = (/ 19, 238, 2, 255, 104, 65535, 255, 1, 1, 100, 0, 40000, 100, 0, 30000 /)
   integer :: s1_0(13) = (/ 7, 14, 1, 1, 1, 2022, 11, 17, 19, 0, 0, 0, 1 /)
   character(len = 40) :: la
   character(len = 100) :: ta
@@ -29,6 +30,11 @@ program test_degrib2_int
   if (trim(la) .ne. "2 m above ground") stop 31
   call prvtime(0, pt_0_2, s1_0, ta)
   if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 32
+
+  call prlevel(0, pt_0_3, la)
+  if (trim(la) .ne. " 400 -  300 mb") stop 41
+  call prvtime(0, pt_0_3, s1_0, ta)
+  if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 42
 
   print *, 'SUCCESS!'
   
