@@ -22,19 +22,19 @@ program test_degrib2_int
   if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 11
 
   call prlevel(0, pt_0_1, la)
-  if (la .ne. " 800 mb") stop 21
+  if (la .ne. " 800 mb") stop 20
   call prvtime(0, pt_0_1, s1_0, ta)
-  if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 22
+  if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 21
   
   call prlevel(0, pt_0_2, la)
-  if (trim(la) .ne. "2 m above ground") stop 31
+  if (trim(la) .ne. "2 m above ground") stop 30
   call prvtime(0, pt_0_2, s1_0, ta)
-  if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 32
+  if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 31
 
   call prlevel(0, pt_0_3, la)
-  if (trim(la) .ne. " 400 -  300 mb") stop 41
+  if (trim(la) .ne. " 400 -  300 mb") stop 40
   call prvtime(0, pt_0_3, s1_0, ta)
-  if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 42
+  if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 41
 
   print *, 'SUCCESS!'
   
