@@ -9,6 +9,8 @@ program test_degrib2_int
   integer :: pt_0_1(15) = (/ 2, 10, 0, 0, 81, 0, 0, 1, 0, 100, 0, 80000, 255, 0, 0 /)
   integer :: pt_0_2(15) = (/ 0, 21, 2, 255, 104, 65535, 255, 1, 1, 103, 0, 2, 255, 0, 0 /)
   integer :: pt_0_3(15) = (/ 19, 238, 2, 255, 104, 65535, 255, 1, 1, 100, 0, 40000, 100, 0, 30000 /)
+  integer :: pt_8_0(29) = (/ 1, 228, 2, 255, 104, 65535, 255, 1, 0, 1, 0, 0, 255, 0, 0, 2022, 11, 17, &
+       20, 0, 0, 1, 0, 1, 2, 1, 1, 1, 0 /)
   integer :: s1_0(13) = (/ 7, 14, 1, 1, 1, 2022, 11, 17, 19, 0, 0, 0, 1 /)
   character(len = 40) :: la
   character(len = 100) :: ta
@@ -35,6 +37,12 @@ program test_degrib2_int
   if (trim(la) .ne. " 400 -  300 mb") stop 40
   call prvtime(0, pt_0_3, s1_0, ta)
   if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 41
+
+  ! Template 8 with various options.
+  call prlevel(8, pt_8_0, la)
+  if (trim(la) .ne. " Surface") stop 40
+  call prvtime(8, pt_8_0, s1_0, ta)
+  if (trim(ta) .ne.  "(0 -1 hr) valid  0 hour after 2022111719:00:00 to 2022111720:00:00") stop 41
 
   print *, 'SUCCESS!'
   
