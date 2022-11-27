@@ -47,7 +47,7 @@ program degrib2
 
   ! Get arguments.
   narg = iargc()
-  if(narg .ne. 1) then
+  if (narg .ne. 1) then
      call errmsg('degrib2:  incorrect usage')
      call errmsg('usage: degrib2 grib2file')
      call errexit(2)
@@ -110,16 +110,13 @@ program degrib2
         write (6, *)
         write(6, '(A,1x,I0)')'  FIELD ', n
         if (n .eq. 1) then
-           write(6, '(A,2(1x,I0))')'  SECTION 0: ', gfld%discipline,  &
-                gfld%version
-           write(6, '(A,20(1x,I0))')'  SECTION 1: ',  &
-                (gfld%idsect(j), j = 1, gfld%idsectlen)
+           write(6, '(A,2(1x,I0))')'  SECTION 0: ', gfld%discipline, gfld%version
+           write(6, '(A,20(1x,I0))')'  SECTION 1: ', (gfld%idsect(j), j = 1, gfld%idsectlen)
         endif
         if ( associated(gfld%local).AND.gfld%locallen.gt.0 ) then
            write(6, '(A,I0,A)')'  SECTION 2: ', gfld%locallen, ' bytes'
         endif
-        write(6, '(A,5(1x,I0))')'  SECTION 3: ', gfld%griddef,  &
-             gfld%ngrdpts,  gfld%numoct_opt, &
+        write(6, '(A,5(1x,I0))')'  SECTION 3: ', gfld%griddef, gfld%ngrdpts,  gfld%numoct_opt, &
              gfld%interp_opt, gfld%igdtnum
         write(6, '(A,1x,I0,A,100(1x,I0))')'  GRID TEMPLATE 3.',  &
              gfld%igdtnum, ' : ',  (gfld%igdtmpl(j), j = 1, gfld%igdtlen)
@@ -130,32 +127,26 @@ program degrib2
                 (gfld%list_opt(j), j = 1, gfld%num_opt)
         endif
 
-        pabbrev = param_get_abbrev(gfld%discipline, gfld%ipdtmpl(1),  &
-             gfld%ipdtmpl(2))
+        pabbrev = param_get_abbrev(gfld%discipline, gfld%ipdtmpl(1), gfld%ipdtmpl(2))
         call prlevel(gfld%ipdtnum, gfld%ipdtmpl, labbrev)
         call prvtime(gfld%ipdtnum, gfld%ipdtmpl, listsec1, tabbrev)
 
-        write(6,'(A,1x,I0,A,A,3(1X,I0),A,80(1x,I0))') &
-             '  PRODUCT TEMPLATE 4.',  gfld%ipdtnum, &
-             ': ( PARAMETER = ', pabbrev, gfld%discipline, &
-             gfld%ipdtmpl(1), gfld%ipdtmpl(2), ' ) ', &
+        write(6,'(A,1x,I0,A,A,3(1X,I0),A,80(1x,I0))') '  PRODUCT TEMPLATE 4.',  gfld%ipdtnum, &
+             ': ( PARAMETER = ', pabbrev, gfld%discipline, gfld%ipdtmpl(1), gfld%ipdtmpl(2), ' ) ', &
              (gfld%ipdtmpl(j), j = 1, gfld%ipdtlen)
 
-        write(6, '(A,A,A,A,A)')'  FIELD: ', pabbrev, trim(labbrev), &
-             " ", trim(tabbrev)
+        write(6, '(A,A,A,A,A)')'  FIELD: ', pabbrev, trim(labbrev), " ", trim(tabbrev)
         if (gfld%num_coord .eq. 0) then
            write(6, *)' NO Optional Vertical Coordinate List.'
         else
-           write(6, '(A,1X,150(1x,I0))') &
-                '  Section 4 Optional & Coordinates: ', &
+           write(6, '(A,1X,150(1x,I0))') '  Section 4 Optional & Coordinates: ', &
                 (gfld%coord_list(j), j = 1, gfld%num_coord)
         endif
         if (gfld%ibmap .ne. 255) then
            write(6, '(A,I0,A,I0)')'  Num. of Data Points =  ', &
                 gfld%ndpts, '    with BIT-MAP  ', gfld%ibmap
         else
-           write(6, '(A,I0,A)')'  Num. of Data Points =  ',  &
-                gfld%ndpts, '     NO BIT-MAP '
+           write(6, '(A,I0,A)')'  Num. of Data Points =  ', gfld%ndpts, '     NO BIT-MAP '
         endif
         write(6, '(A,I0,A,20(1x,I0))')'  DRS TEMPLATE 5. ', gfld%idrtnum, ' : ', &
              (gfld%idrtmpl(j), j = 1, gfld%idrtlen)
@@ -184,7 +175,7 @@ program degrib2
         write(6, '(A,I0,A,I0)')'  Num. of Data Points =  ', &
              gfld%ndpts, '   Num. of Data Undefined = ', gfld%ndpts-numpts
         write(6, fmt = '( "( PARM= ",A," ) : ", " MIN=",f25.8," AVE=",f25.8, &
-             " MAX=",f25.8)')trim(pabbrev), fldmin, sum/numpts, fldmax
+             " MAX=",f25.8)') trim(pabbrev), fldmin, sum / numpts, fldmax
 
         ! Free memory allocated to hold field.
         call gf_free(gfld)
