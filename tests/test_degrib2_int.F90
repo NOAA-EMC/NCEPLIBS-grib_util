@@ -3,7 +3,7 @@
 ! This program tests the level description in the degrib2 utility.
 !
 ! Ed Hartnett 11/27/22
-program test_degrib2_level
+program test_degrib2_int
   implicit none
   integer :: pt_0_0(15) = (/ 2, 1, 2, 0, 11, 0, 0, 1, 0, 1, 0, 1, 255, 0, 0 /)
   integer :: pt_0_1(15) = (/ 2, 10, 0, 0, 81, 0, 0, 1, 0, 100, 0, 80000, 255, 0, 0 /)
@@ -25,4 +25,4 @@ program test_degrib2_level
 
   print *, 'SUCCESS!'
   
-end program test_degrib2_level
+end program test_degrib2_int
