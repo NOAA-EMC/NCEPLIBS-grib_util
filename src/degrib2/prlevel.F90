@@ -22,11 +22,12 @@
 !>
 !> @author Stephen Gilbert @date 2010-09-08
 subroutine prlevel(ipdtn, ipdtmpl, labbrev)
-
+  implicit none
+  
   integer, intent(in) :: ipdtn
   integer, intent(in) :: ipdtmpl(*)
   character(len = 40), intent(out) :: labbrev
-
+  integer :: ipos
   character(len = 10) :: tmpval1, tmpval2
 
   labbrev(1:40) = " "
@@ -53,91 +54,72 @@ subroutine prlevel(ipdtn, ipdtmpl, labbrev)
      ipos = 10
   end select
 
+  ! Construct level description based on "Type of first fixed surface"
+  ! value and some other values from the template.
   if (ipdtmpl(ipos) .eq. 100 .and.          & ! Pressure Level
        ipdtmpl(ipos + 3) .eq. 255) then
-     !write(tmpval1, *) ipdtmpl(ipos + 2)/100
      call frmt(tmpval1, ipdtmpl(ipos + 2), ipdtmpl(ipos + 1) + 2)
      labbrev = trim(tmpval1)//" mb"
-
   elseif (ipdtmpl(ipos) .eq. 100 .and.          & ! Pressure Layer
        ipdtmpl(ipos + 3) .eq. 100) then
      call frmt(tmpval1, ipdtmpl(ipos + 2), ipdtmpl(ipos + 1) + 2)
      call frmt(tmpval2, ipdtmpl(ipos + 5), ipdtmpl(ipos + 4) + 2)
      labbrev = trim(tmpval1)//" - "//trim(tmpval2)//" mb"
-
   elseif (ipdtmpl(ipos) .eq. 101) then       ! Mean Sea Level
      labbrev(1:30) = " Mean Sea Level "
-
   elseif (ipdtmpl(ipos) .eq. 102 .and.       & ! Altitude above MSL
        ipdtmpl(ipos + 3) .eq. 255) then
      call frmt(tmpval1, ipdtmpl(ipos + 2), ipdtmpl(ipos + 1))
      labbrev = trim(tmpval1)//" m above MSL"
-
   elseif (ipdtmpl(ipos) .eq. 103 .and.       & ! Height above Ground
        ipdtmpl(ipos + 3) .eq. 255) then
      call frmt(tmpval1, ipdtmpl(ipos + 2), ipdtmpl(ipos + 1))
      labbrev = trim(tmpval1)//" m above ground"
-
   elseif (ipdtmpl(ipos) .eq. 103 .and.       & ! Height above Ground
        ipdtmpl(ipos + 3) .eq. 103) then
      call frmt(tmpval1, ipdtmpl(ipos + 2), ipdtmpl(ipos + 1))
      call frmt(tmpval2, ipdtmpl(ipos + 5), ipdtmpl(ipos + 4))
      labbrev = trim(tmpval1)//" - "//trim(tmpval2)//" m AGL"
-
   elseif (ipdtmpl(ipos) .eq. 104 .and.       & ! Sigma Level
        ipdtmpl(ipos + 3) .eq. 255) then
      call frmt(tmpval1, ipdtmpl(ipos + 2), ipdtmpl(ipos + 1))
      labbrev = trim(tmpval1)//" sigma"
-
   elseif (ipdtmpl(ipos) .eq. 104 .and.       & ! Sigma Layer
        ipdtmpl(ipos + 3) .eq. 104) then
      call frmt(tmpval1, ipdtmpl(ipos + 2), ipdtmpl(ipos + 1))
      call frmt(tmpval2, ipdtmpl(ipos + 5), ipdtmpl(ipos + 4))
      labbrev = trim(tmpval1)//" - "//trim(tmpval2)//" sigma"
-
   elseif (ipdtmpl(ipos) .eq. 105 .and.       & ! Hybrid Level
        ipdtmpl(ipos + 3) .eq. 255) then
      call frmt(tmpval1, ipdtmpl(ipos + 2), ipdtmpl(ipos + 1))
      labbrev = trim(tmpval1)//" hybrid lvl"
-
   elseif (ipdtmpl(ipos).eq.105 .and.         & ! Hybrid Level
        ipdtmpl(ipos + 3).eq.105) then
      call frmt(tmpval1, ipdtmpl(ipos + 2), ipdtmpl(ipos + 1))
      call frmt(tmpval2, ipdtmpl(ipos + 5), ipdtmpl(ipos + 4))
      labbrev = trim(tmpval1)//" - "//trim(tmpval2)//" hybrid lvl"
-
-
   elseif (ipdtmpl(ipos) .eq. 106 .and.       & ! Depth Below Land Sfc
        ipdtmpl(ipos + 3) .eq. 255) then
      call frmt(tmpval1, ipdtmpl(ipos + 2), ipdtmpl(ipos + 1))
      labbrev = trim(tmpval1)//" m below land"
-
   elseif (ipdtmpl(ipos).eq.106 .and.         & ! Depth Below Land Sfc Layer
        ipdtmpl(ipos + 3).eq.106) then
      call frmt(tmpval1, ipdtmpl(ipos + 2), ipdtmpl(ipos + 1))
      call frmt(tmpval2, ipdtmpl(ipos + 5), ipdtmpl(ipos + 4))
      labbrev = trim(tmpval1)//" - "//trim(tmpval2)//" m DBLY"
-
   elseif (ipdtmpl(ipos) .eq. 107) then       ! Isentrophic (theta) level (THEL)
      labbrev(1:30) = " Isentropic level"
-
   elseif (ipdtmpl(ipos).eq.108 .and.         & ! Press Diff from Ground Layer
        ipdtmpl(ipos + 3).eq.108) then
-     !write(tmpval1, *) ipdtmpl(ipos + 2)/100
-     !write(tmpval2, *) ipdtmpl(ipos + 5)/100
      call frmt(tmpval1, ipdtmpl(ipos + 2), ipdtmpl(ipos + 1) + 2)
      call frmt(tmpval2, ipdtmpl(ipos + 5), ipdtmpl(ipos + 4) + 2)
      labbrev = trim(tmpval1)//" - "//trim(tmpval2)//" mb SPDY"
-
   elseif (ipdtmpl(ipos) .eq. 110) then       ! Layer between two hybrid levels (HYBY)
      labbrev(1:30) = " Layer bet 2-hyb lvl"
-
   elseif (ipdtmpl(ipos).eq.109 .and.         & ! Potential Vorticity Sfc
        ipdtmpl(ipos + 3).eq.255) then
-     !write(tmpval1, *) ipdtmpl(ipos + 2)
      call frmt(tmpval1, ipdtmpl(ipos + 2), ipdtmpl(ipos + 1)-6)
      labbrev = trim(tmpval1)//" pv surface"
-
   elseif (ipdtmpl(ipos) .eq. 111) then       ! Eta Level (EtaL)
      labbrev(1:30) = " Eta level"
   elseif (ipdtmpl(ipos) .eq. 114) then       ! Layer between two isentropic levels (THEY)
@@ -152,51 +134,36 @@ subroutine prlevel(ipdtn, ipdtmpl, labbrev)
      labbrev(1:30) = " Specified height lvl"
   elseif (ipdtmpl(ipos) .eq. 126) then       ! Isobaric Level (ISBP)
      labbrev(1:30) = " Isobaric level"
-
   elseif (ipdtmpl(ipos) .eq. 160) then       ! Depth below sea level
      labbrev(1:30) = " Depth below sea lvl"
-
   elseif (ipdtmpl(ipos) .eq. 170) then       ! Ionospheric D-region
      labbrev(1:30) = " Ionospheric D-region lvl"
-
   elseif (ipdtmpl(ipos) .eq. 1) then         ! Ground/Water Surface
      labbrev(1:30) = " Surface "
-
   elseif (ipdtmpl(ipos) .eq. 2) then         ! Cloud base level (CBL)
      labbrev(1:30) = " Cloud base lvl"
   elseif (ipdtmpl(ipos) .eq. 3) then         ! Cloud top level (CTL)
      labbrev(1:30) = " Cloud top lvl"
-
   elseif (ipdtmpl(ipos) .eq. 4) then         ! Freezing Level
      labbrev(1:30) = " 0 Deg Isotherm"
-
   elseif (ipdtmpl(ipos) .eq. 5) then         ! Level of adiabatic condensation lifted
      labbrev(1:30) = " Level of adiabatic"     ! from the surface
-
   elseif (ipdtmpl(ipos) .eq. 6) then         ! Max Wind Level
      labbrev(1:30) = " Max wind lvl"
-
   elseif (ipdtmpl(ipos) .eq. 7) then         ! Tropopause
      labbrev(1:30) = " Tropopause"
-
   elseif (ipdtmpl(ipos) .eq. 8) then         ! Nominal top of Atmosphere
      labbrev(1:30) = " Nom. top"
-
   elseif (ipdtmpl(ipos) .eq. 9) then         !  Sea bottom
      labbrev(1:30) = " Sea Bottom"
-
   elseif (ipdtmpl(ipos) .eq. 10) then        ! Entire Atmosphere (EATM)
      labbrev(1:30) = " Entire Atmosphere"
-
   elseif (ipdtmpl(ipos) .eq. 11) then        ! Cumulonimbus Base
      labbrev(1:30) = " Cumulonimbus Base"
-
   elseif (ipdtmpl(ipos) .eq. 12) then        ! Cumulonimbus Top
      labbrev(1:30) = " Cumulonimbus Top"
-
   elseif (ipdtmpl(ipos) .eq. 20) then        ! Isothermal level
      labbrev(1:30) = " Isothermal level"
-
   elseif (ipdtmpl(ipos) .eq. 200) then       ! Entire Atmosphere (EATM)
      labbrev(1:30) = " Entire Atmosphere"
   elseif (ipdtmpl(ipos) .eq. 201) then       ! Entire ocean (EOCN)
@@ -275,20 +242,17 @@ subroutine prlevel(ipdtn, ipdtmpl, labbrev)
      labbrev(1:30) = " Lowest bot. lvl sup"    ! liquid water layer (LBLSW)
   elseif (ipdtmpl(ipos) .eq. 254) then       ! Highest top level of supercooled
      labbrev(1:30) = " highest top lvl sup"    ! liquid water layer (HBLSW)
-
   else
-     write(labbrev, fmt = '(1x,I4," (Unknown Lvl)")') &
-          ipdtmpl(ipos)
+     write(labbrev, fmt = '(1x,I4," (Unknown Lvl)")') ipdtmpl(ipos)
   endif
 
-  return
 end subroutine prlevel
 
-!> Format.
+!> Format the level description.
 !>
-!> @param[in] ipdtn
-!> @param[in] ipdtmpl
-!> @param[out] labbrev
+!> @param[in] cval char array that gets the level description.
+!> @param[in] ival value to be used in level description.
+!> @param[out] iscal scaling factor (if any) for ival.
 !>
 !> @author Vuong @date 2010-09-08
 subroutine frmt(cval, ival, iscal)
