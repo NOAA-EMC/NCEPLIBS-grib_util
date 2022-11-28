@@ -1,0 +1,1515 @@
+ 
+ GRIB MESSAGE  1  starts at 1
+ 
+  SECTION 0:  0 2 1584506
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = APTMP    0 0 21 )  0 21 2 255 104 65535 255 1 1 103 0 2 255 0 0
+  FIELD: APTMP   2 m above ground valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1158800588 2 1 7 0 1 1 1176255488 255 213326 1 3 1 1 6 6 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= APTMP ) :  MIN=             233.42997742 AVE=             273.15451050 MAX=             306.62997437
+ 
+ GRIB MESSAGE  2  starts at 1584507
+ 
+  SECTION 0:  0 2 1393396
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = CAPE     0 7 6 )  7 6 2 255 104 65535 255 1 1 1 0 0 255 0 0
+  FIELD: CAPE     Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 0 10 0 1 1 1176255488 255 141359 1 4 1 1 15 7 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= CAPE ) :  MIN=               0.00000000 AVE=              85.23280334 MAX=            2349.00000000
+ 
+ GRIB MESSAGE  3  starts at 2977903
+ 
+  SECTION 0:  0 2 3006581
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 2: ( PARAMETER = CAPE     0 7 6 )  7 6 2 255 104 65535 255 1 1 1 0 0 255 0 0 2 255
+  FIELD: CAPE     Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 2 16 0 1 1 1176255488 255 166241 1 4 1 1 15 7 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= CAPE ) :  MIN=               0.00000000 AVE=              39.91746521 MAX=            1079.00000000
+ 
+ GRIB MESSAGE  4  starts at 5984484
+ 
+  SECTION 0:  0 2 1266536
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = CEIL     0 6 13 )  6 13 2 255 104 65535 255 1 1 215 0 0 255 0 0
+  FIELD: CEIL     Cloud ceiling valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 3 0 16 0 1 1 1176255488 255 95027 1 4 1 1 33 9 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= CEIL ) :  MIN=               0.00000000 AVE=           51139.89843750 MAX=           88888.00000000
+ 
+ GRIB MESSAGE  5  starts at 7251020
+ 
+  SECTION 0:  0 2 3277046
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = CEIL     0 6 13 )  6 13 5 255 108 65535 255 1 1 215 0 0 255 0 0 3 7 0 2 30480 -127 255
+  FIELD: CEIL     Cloud ceiling valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 0 :  0 0 0 7 0
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= CEIL ) :  MIN=               0.00000000 AVE=               5.29055834 MAX=             100.00000000
+ 
+ GRIB MESSAGE  6  starts at 10528066
+ 
+  SECTION 0:  0 2 3277046
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = CEIL     0 6 13 )  6 13 5 255 108 65535 255 1 1 215 0 0 255 0 0 2 7 0 2 15240 -127 255
+  FIELD: CEIL     Cloud ceiling valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 0 :  0 0 0 7 0
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= CEIL ) :  MIN=               0.00000000 AVE=               1.66704118 MAX=              98.00000000
+ 
+ GRIB MESSAGE  7  starts at 13805112
+ 
+  SECTION 0:  0 2 3277046
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = CEIL     0 6 13 )  6 13 5 255 108 65535 255 1 1 215 0 0 255 0 0 5 7 0 2 91450 -127 255
+  FIELD: CEIL     Cloud ceiling valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 0 :  0 0 0 7 0
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= CEIL ) :  MIN=               0.00000000 AVE=              25.74556541 MAX=             100.00000000
+ 
+ GRIB MESSAGE  8  starts at 17082158
+ 
+  SECTION 0:  0 2 3168603
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = CEIL     0 6 13 )  6 13 2 255 104 65535 255 1 1 2 0 0 255 0 0
+  FIELD: CEIL     Cloud base lvl valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 3 0 16 0 1 1 1176255488 255 247449 1 4 1 1 22 6 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= CEIL ) :  MIN=               0.00000000 AVE=           10177.73925781 MAX=           88888.00000000
+ 
+ GRIB MESSAGE  9  starts at 20250761
+ 
+  SECTION 0:  0 2 877411
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 6: ( PARAMETER = UNKNOWN  0 19 239 )  19 239 2 255 104 65535 255 1 1 1 0 0 255 0 0 5
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1073741824 0 0 3 0 1 1 1176255488 255 179022 1 2 1 1 6 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               2.00000000 AVE=              20.15841484 MAX=              66.00000000
+ 
+ GRIB MESSAGE  10  starts at 21128172
+ 
+  SECTION 0:  0 2 870231
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 6: ( PARAMETER = UNKNOWN  0 19 239 )  19 239 2 255 104 65535 255 1 1 1 0 0 255 0 0 10
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1073741824 0 0 3 0 1 1 1176255488 255 178655 1 2 1 1 9 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               2.00000000 AVE=              20.94079971 MAX=              66.00000000
+ 
+ GRIB MESSAGE  11  starts at 21998403
+ 
+  SECTION 0:  0 2 870820
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 6: ( PARAMETER = UNKNOWN  0 19 239 )  19 239 2 255 104 65535 255 1 1 1 0 0 255 0 0 25
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1082130432 0 0 3 0 1 1 1176255488 255 179559 1 2 1 1 6 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               4.00000000 AVE=              22.23358917 MAX=              67.00000000
+ 
+ GRIB MESSAGE  12  starts at 22869223
+ 
+  SECTION 0:  0 2 871676
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 6: ( PARAMETER = UNKNOWN  0 19 239 )  19 239 2 255 104 65535 255 1 1 1 0 0 255 0 0 50
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1082130432 0 0 3 0 1 1 1176255488 255 179162 1 2 1 1 7 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               4.00000000 AVE=              23.42191696 MAX=              69.00000000
+ 
+ GRIB MESSAGE  13  starts at 23740899
+ 
+  SECTION 0:  0 2 878200
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 6: ( PARAMETER = UNKNOWN  0 19 239 )  19 239 2 255 104 65535 255 1 1 1 0 0 255 0 0 75
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1082130432 0 0 3 0 1 1 1176255488 255 178488 1 2 1 1 6 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               4.00000000 AVE=              24.54932594 MAX=              73.00000000
+ 
+ GRIB MESSAGE  14  starts at 24619099
+ 
+  SECTION 0:  0 2 902288
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 6: ( PARAMETER = UNKNOWN  0 19 239 )  19 239 2 255 104 65535 255 1 1 1 0 0 255 0 0 90
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1084227584 0 0 3 0 1 1 1176255488 255 180055 1 2 1 1 19 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               5.00000000 AVE=              25.59346390 MAX=              76.00000000
+ 
+ GRIB MESSAGE  15  starts at 25521387
+ 
+  SECTION 0:  0 2 921407
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 6: ( PARAMETER = UNKNOWN  0 19 239 )  19 239 2 255 104 65535 255 1 1 1 0 0 255 0 0 95
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1084227584 0 0 3 0 1 1 1176255488 255 180552 1 2 1 1 10 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               5.00000000 AVE=              26.32633781 MAX=              78.00000000
+ 
+ GRIB MESSAGE  16  starts at 26442794
+ 
+  SECTION 0:  0 2 1333064
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 2: ( PARAMETER = UNKNOWN  0 19 239 )  19 239 2 255 104 65535 255 1 1 1 0 0 255 0 0 241 241
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1108869120 0 1 6 0 1 1 1176255488 255 155874 1 3 1 1 22 7 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               3.79999995 AVE=              23.53380203 MAX=              71.00000000
+ 
+ GRIB MESSAGE  17  starts at 27775858
+ 
+  SECTION 0:  0 2 490180
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = UNKNOWN  0 19 239 )  19 239 2 255 104 65535 255 1 1 1 0 0 255 0 0 255 255 1 -127 255 0 50
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 0 4 0 1 1 1176255488 255 4850 1 2 1 1 8192 13 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               1.38170183 MAX=             100.00000000
+ 
+ GRIB MESSAGE  18  starts at 28266038
+ 
+  SECTION 0:  0 2 474244
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = UNKNOWN  0 19 239 )  19 239 2 255 104 65535 255 1 1 1 0 0 255 0 0 255 255 1 -127 255 0 65
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 0 4 0 1 1 1176255488 255 1137 1 2 1 1 32768 15 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.11327849 MAX=              89.00000000
+ 
+ GRIB MESSAGE  19  starts at 28740282
+ 
+  SECTION 0:  0 2 471541
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = UNKNOWN  0 19 239 )  19 239 2 255 104 65535 255 1 1 1 0 0 255 0 0 255 255 1 -127 255 0 70
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 0 4 0 1 1 1176255488 255 694 1 2 1 1 65536 16 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.01746078 MAX=              43.00000000
+ 
+ GRIB MESSAGE  20  starts at 29211823
+ 
+  SECTION 0:  0 2 469385
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = UNKNOWN  0 19 239 )  19 239 2 255 104 65535 255 1 1 1 0 0 255 0 0 255 255 1 -127 255 0 75
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 0 2 0 1 1 1176255488 255 299 1 1 1 1 131072 17 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.00135008 MAX=               7.00000000
+ 
+ GRIB MESSAGE  21  starts at 29681208
+ 
+  SECTION 0:  0 2 468355
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = UNKNOWN  0 19 239 )  19 239 2 255 104 65535 255 1 1 1 0 0 255 0 0 255 255 1 -127 255 0 85
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 0 1 0 1 1 1176255488 255 1 1 0 2147483647 1 3744965 1 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
+ 
+ GRIB MESSAGE  22  starts at 30149563
+ 
+  SECTION 0:  0 2 1534454
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = DPT      0 0 6 )  0 6 2 255 104 65535 255 1 1 103 0 2 255 0 0
+  FIELD: DPT     2 m above ground valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1159038566 2 1 7 0 1 1 1176255488 255 199993 1 3 1 1 9 6 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= DPT ) :  MIN=             239.23999023 AVE=             266.95053101 MAX=             298.04000854
+ 
+ GRIB MESSAGE  23  starts at 31684017
+ 
+  SECTION 0:  0 2 1725699
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 2: ( PARAMETER = DPT      0 0 6 )  0 6 2 255 104 65535 255 1 1 103 0 2 255 0 0 2 255
+  FIELD: DPT     2 m above ground valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1095761920 2 2 9 0 1 1 1176255488 255 218254 1 4 1 1 16 6 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= DPT ) :  MIN=               0.13000000 AVE=               1.07618666 MAX=               9.80999947
+ 
+ GRIB MESSAGE  24  starts at 33409716
+ 
+  SECTION 0:  0 2 2201600
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = UNKNOWN  0 4 7 )  4 7 2 255 104 65535 255 1 1 1 0 0 255 0 0
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1088421888 0 0 9 0 1 1 1176255488 255 223613 1 4 1 1 64 6 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               7.00000000 AVE=             329.83956909 MAX=             797.00000000
+ 
+ GRIB MESSAGE  25  starts at 35611316
+ 
+  SECTION 0:  0 2 1522734
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = RETOP    0 16 3 )  16 3 2 255 104 65535 255 1 1 3 0 0 255 0 0
+  FIELD: RETOP    Cloud top lvl valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 2 1 20 0 1 1 1176255488 255 49678 1 5 1 1 1024 10 2 3
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= RETOP ) :  MIN=               0.00000000 AVE=           80910.53125000 MAX=           88888.00000000
+ 
+ GRIB MESSAGE  26  starts at 37134050
+ 
+  SECTION 0:  0 2 1029230
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = ELLINX   0 19 238 )  19 238 2 255 104 65535 255 1 1 100 0 40000 100 0 30000
+  FIELD: ELLINX   400 -  300 mb valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 0 3 0 1 1 1176255488 255 188353 1 2 1 1 6 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= ELLINX ) :  MIN=               0.00000000 AVE=               1.11909831 MAX=               3.00000000
+ 
+ GRIB MESSAGE  27  starts at 38163280
+ 
+  SECTION 0:  0 2 482644
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 8: ( PARAMETER = UNKNOWN  0 1 228 )  1 228 2 255 104 65535 255 1 0 1 0 0 255 0 0 2022 11 17 20 0 0 1 0 1 2 1 1 1 0
+  FIELD: UNKNOWN  Surface (0 -1 hr) valid  0 hour after 2022111719:00:00 to 2022111720:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 3 8 0 1 1 1176255488 255 2277 1 3 1 1 16384 14 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.00003830 MAX=               0.07600001
+ 
+ GRIB MESSAGE  28  starts at 38645924
+ 
+  SECTION 0:  0 2 629338
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = UNKNOWN  0 19 10 )  19 10 2 255 104 65535 255 1 1 1 0 0 103 0 1372
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 0 3 0 1 1 1176255488 255 67084 1 2 1 1 13 8 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.52323693 MAX=               4.00000000
+ 
+ GRIB MESSAGE  29  starts at 39275262
+ 
+  SECTION 0:  0 2 471031
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = WDIR     0 2 0 )  2 0 2 255 104 65535 255 1 1 1 0 0 103 0 610
+  FIELD: WDIR     Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 -1 6 0 1 1 1176255488 255 536 1 3 1 1 2061 17 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= WDIR ) :  MIN=               0.00000000 AVE=               0.03495360 MAX=             120.00000000
+ 
+ GRIB MESSAGE  30  starts at 39746293
+ 
+  SECTION 0:  0 2 471941
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = DIST     0 3 6 )  3 6 2 255 104 65535 255 1 1 1 0 0 103 0 610
+  FIELD: DIST     Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 3 0 8 0 1 1 1176255488 255 536 1 4 1 1 2061 17 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= DIST ) :  MIN=               0.00000000 AVE=               0.21481857 MAX=             608.00000000
+ 
+ GRIB MESSAGE  31  starts at 40218234
+ 
+  SECTION 0:  0 2 471703
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = WIND     0 2 1 )  2 1 2 255 104 65535 255 1 1 1 0 0 103 0 610
+  FIELD: WIND     Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 2 1 8 0 1 1 1176255488 255 537 1 3 1 1 2061 17 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= WIND ) :  MIN=               0.00000000 AVE=               0.00672284 MAX=              29.60000038
+ 
+ GRIB MESSAGE  32  starts at 40689937
+ 
+  SECTION 0:  0 2 1537873
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 8: ( PARAMETER = MAXREF   0 16 198 )  16 198 2 255 104 65535 255 1 0 103 0 1000 255 0 0 2022 11 17 20 0 0 1 0 2 2 1 1 1 0
+  FIELD: MAXREF  1000 m above ground (0 -1 hr) valid  0 hour after 2022111719:00:00 to 2022111720:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 2 1 7 0 1 1 1176255488 255 175499 0 3 1 1 63 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= MAXREF ) :  MIN=               0.00000000 AVE=            1822.56848145 MAX=            9999.00000000
+ 
+ GRIB MESSAGE  33  starts at 42227810
+ 
+  SECTION 0:  0 2 2003201
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = MIXHT    0 19 3 )  19 3 2 255 104 65535 255 1 1 200 0 0 255 0 0
+  FIELD: MIXHT    Entire Atmosphere valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1116864512 3 0 8 0 1 1 1176255488 255 237664 1 3 1 1 64 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= MIXHT ) :  MIN=              73.00000000 AVE=             790.57733154 MAX=            2681.00000000
+ 
+ GRIB MESSAGE  34  starts at 44231011
+ 
+  SECTION 0:  0 2 1371114
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 15: ( PARAMETER = UNKNOWN  0 0 27 )  0 27 2 255 104 65535 255 1 1 103 0 610 100 0 40000 241 241 241
+  FIELD: UNKNOWN   103 (Unknown Lvl) valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1159272448 2 1 7 0 1 1 1176255488 255 209539 1 3 1 1 11 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=             244.94999695 AVE=             267.56930542 MAX=             294.55001831
+ 
+ GRIB MESSAGE  35  starts at 45602125
+ 
+  SECTION 0:  0 2 527780
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = UNKNOWN  0 7 201 )  7 201 2 255 104 65535 255 1 1 1 0 0 4 0 0
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  -1030094848 0 0 7 0 1 1 1176255488 255 12378 1 3 1 1 2113 12 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=             -77.00000000 AVE=              -0.32889840 MAX=               0.00000000
+ 
+ GRIB MESSAGE  36  starts at 46129905
+ 
+  SECTION 0:  0 2 775840
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 9: ( PARAMETER = APCP     0 1 8 )  1 8 2 255 104 65535 255 1 0 1 0 0 255 0 0 255 255 1 -127 255 3 254 2022 11 17 20 0 0 1 0 1 2 1 1 1 0
+  FIELD: APCP     Surface (0 -1 hr) valid  0 hour after 2022111719:00:00 to 2022111720:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 0 6 0 1 1 1176255488 255 82673 1 3 1 1 59 8 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= APCP ) :  MIN=               0.00000000 AVE=               3.45403767 MAX=              94.00000000
+ 
+ GRIB MESSAGE  37  starts at 46905745
+ 
+  SECTION 0:  0 2 1235266
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = UNKNOWN  0 7 202 )  7 202 2 255 104 65535 255 1 1 103 0 610 100 0 40000
+  FIELD: UNKNOWN   103 (Unknown Lvl) valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 0 11 0 1 1 1176255488 255 105390 1 4 1 1 256 8 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=             156.12994385 MAX=            1351.00000000
+ 
+ GRIB MESSAGE  38  starts at 48141011
+ 
+  SECTION 0:  0 2 548842
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  1  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 2: 2471 bytes
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = UNKNOWN  0 1 226 )  1 226 2 255 104 65535 255 1 1 1 0 0 0 0 0
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 2 :  0 0 0 7 0 1 1 1176255488 255 21120 1 3 1 1 34 11
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               1.55102897 MAX=              83.00000000
+ 
+ GRIB MESSAGE  39  starts at 48689853
+ 
+  SECTION 0:  0 2 566012
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = UNKNOWN  0 1 19 )  1 19 2 255 104 65535 255 1 1 1 0 0 255 0 0 1 1 2 0 3 0 4
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 1 12 0 1 1 1176255488 255 10522 1 4 1 1 180 12 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.24494703 MAX=             100.00000000
+ 
+ GRIB MESSAGE  40  starts at 49255865
+ 
+  SECTION 0:  0 2 1574108
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = PROBCIP  0 1 232 )  1 232 2 255 104 65535 255 1 1 10 0 0 255 0 0 1 1 3 0 0 -127 255
+  FIELD: PROBCIP  Entire Atmosphere valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 1 10 0 1 1 1176255488 255 136240 1 4 1 1 13 8 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= PROBCIP ) :  MIN=               0.00000000 AVE=              84.70196533 MAX=             100.00000000
+ 
+ GRIB MESSAGE  41  starts at 50829973
+ 
+  SECTION 0:  0 2 468355
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = UNKNOWN  0 1 19 )  1 19 2 255 104 65535 255 1 1 10 0 0 255 0 0 1 1 2 0 8 0 9
+  FIELD: UNKNOWN  Entire Atmosphere valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 1 1 0 1 1 1176255488 255 1 1 0 2147483647 1 3744965 1 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
+ 
+ GRIB MESSAGE  42  starts at 51298328
+ 
+  SECTION 0:  0 2 937395
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = UNKNOWN  0 1 19 )  1 19 2 255 104 65535 255 1 1 1 0 0 255 0 0 1 1 2 0 1 0 2
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 1 12 0 1 1 1176255488 255 38450 1 4 1 1 1024 10 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=              58.07430267 MAX=             100.00000000
+ 
+ GRIB MESSAGE  43  starts at 52235723
+ 
+  SECTION 0:  0 2 468432
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = UNKNOWN  0 1 19 )  1 19 2 255 104 65535 255 1 1 1 0 0 255 0 0 1 1 2 0 8 0 9
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 1 7 0 1 1 1176255488 255 16 1 3 2 1 1095473 22 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.00000537 MAX=               5.70000029
+ 
+ GRIB MESSAGE  44  starts at 52704155
+ 
+  SECTION 0:  0 2 992087
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = UNKNOWN  0 1 19 )  1 19 2 255 104 65535 255 1 1 1 0 0 255 0 0 1 1 2 0 5 0 7
+  FIELD: UNKNOWN  Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 1 12 0 1 1 1176255488 255 43260 1 4 1 1 180 10 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=              39.31498718 MAX=             100.00000000
+ 
+ GRIB MESSAGE  45  starts at 53696242
+ 
+  SECTION 0:  0 2 542211
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 8: ( PARAMETER = TSTM     0 19 2 )  19 2 5 255 104 65535 255 1 0 1 0 0 255 0 0 2022 11 17 20 0 0 1 0 1 2 1 1 1 0
+  FIELD: TSTM     Surface (0 -1 hr) valid  0 hour after 2022111719:00:00 to 2022111720:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 0 3 0 1 1 1176255488 255 28543 1 2 1 1 672 10 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= TSTM ) :  MIN=               0.00000000 AVE=               0.46820518 MAX=              28.00000000
+ 
+ GRIB MESSAGE  46  starts at 54238453
+ 
+  SECTION 0:  0 2 897350
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 8: ( PARAMETER = APCP     0 1 8 )  1 8 2 255 104 65535 255 1 0 1 0 0 255 0 0 2022 11 17 20 0 0 1 0 1 2 1 1 1 0
+  FIELD: APCP     Surface (0 -1 hr) valid  0 hour after 2022111719:00:00 to 2022111720:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 3 15 0 1 1 1176255488 255 41639 1 4 1 1 23 10 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= APCP ) :  MIN=               0.00000000 AVE=               0.03448506 MAX=              29.21000099
+ 
+ GRIB MESSAGE  47  starts at 55135803
+ 
+  SECTION 0:  0 2 1580751
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = RH       0 1 1 )  1 1 2 255 104 65535 255 1 1 103 0 2 255 0 0
+  FIELD: RH      2 m above ground valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1088421888 0 0 7 0 1 1 1176255488 255 210145 1 3 1 1 10 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= RH ) :  MIN=               7.00000000 AVE=              64.11512756 MAX=             100.00000000
+ 
+ GRIB MESSAGE  48  starts at 56716554
+ 
+  SECTION 0:  0 2 1625010
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = TCDC     0 6 1 )  6 1 2 255 104 65535 255 1 1 1 0 0 255 0 0
+  FIELD: TCDC     Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 0 7 0 1 1 1176255488 255 205847 1 3 1 1 6 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= TCDC ) :  MIN=               0.00000000 AVE=              51.73511124 MAX=             100.00000000
+ 
+ GRIB MESSAGE  49  starts at 58341564
+ 
+  SECTION 0:  0 2 1615818
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 2: ( PARAMETER = TCDC     0 6 1 )  6 1 2 255 104 65535 255 1 1 1 0 0 255 0 0 2 255
+  FIELD: TCDC     Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 0 7 0 1 1 1176255488 255 216366 1 3 1 1 7 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= TCDC ) :  MIN=               0.00000000 AVE=              16.31468964 MAX=              49.00000000
+ 
+ GRIB MESSAGE  50  starts at 59957382
+ 
+  SECTION 0:  0 2 1664843
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = SNOWLR   0 1 233 )  1 233 2 255 104 65535 255 1 1 1 0 0 255 0 0
+  FIELD: SNOWLR   Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1065353216 0 1 8 0 1 1 1176255488 255 197264 1 3 1 1 24 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= SNOWLR ) :  MIN=               0.10000000 AVE=               7.61183023 MAX=              20.00000000
+ 
+ GRIB MESSAGE  51  starts at 61622225
+ 
+  SECTION 0:  0 2 563309
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 8: ( PARAMETER = ASNOW    0 1 29 )  1 29 2 255 104 65535 255 1 0 1 0 0 255 0 0 2022 11 17 20 0 0 1 0 1 2 1 1 1 0
+  FIELD: ASNOW    Surface (0 -1 hr) valid  0 hour after 2022111719:00:00 to 2022111720:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 3 6 0 1 1 1176255488 255 22548 1 3 1 1 6 11 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= ASNOW ) :  MIN=               0.00000000 AVE=               0.00020020 MAX=               0.05600000
+ 
+ GRIB MESSAGE  52  starts at 62185534
+ 
+  SECTION 0:  0 2 987256
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = UNKNOWN  0 19 236 )  19 236 2 255 104 65535 255 1 1 102 0 0 255 0 0
+  FIELD: UNKNOWN 0 m above MSL valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 3 0 7 0 1 1 1176255488 255 91497 1 3 1 1 256 8 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=            1427.00317383 MAX=            4080.00000000
+ 
+ GRIB MESSAGE  53  starts at 63172790
+ 
+  SECTION 0:  0 2 407213
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = TMP      0 0 0 )  0 0 2 255 104 65535 255 1 1 1 0 0 255 0 0
+  FIELD: TMP      Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1160150221 2 1 7 0 1 1 1176255488 255 69508 0 3 1 1 512 9 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= TMP ) :  MIN=             266.38000488 AVE=            6429.49755859 MAX=            9999.00000000
+ 
+ GRIB MESSAGE  54  starts at 63580003
+ 
+  SECTION 0:  0 2 1482889
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = TMP      0 0 0 )  0 0 2 255 104 65535 255 1 1 103 0 2 255 0 0
+  FIELD: TMP     2 m above ground valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1159424000 2 1 7 0 1 1 1176255488 255 208458 1 3 1 1 25 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= TMP ) :  MIN=             248.65000916 AVE=             273.70458984 MAX=             305.45001221
+ 
+ GRIB MESSAGE  55  starts at 65062892
+ 
+  SECTION 0:  0 2 1735085
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 2: ( PARAMETER = TMP      0 0 0 )  0 0 2 255 104 65535 255 1 1 103 0 2 255 0 0 2 255
+  FIELD: TMP     2 m above ground valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1098907648 2 2 9 0 1 1 1176255488 255 221262 1 4 1 1 16 6 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= TMP ) :  MIN=               0.16000000 AVE=               1.12902367 MAX=               9.80000019
+ 
+ GRIB MESSAGE  56  starts at 66797977
+ 
+  SECTION 0:  0 2 1213872
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = UNKNOWN  0 2 226 )  2 226 2 255 104 65535 255 1 1 200 0 0 255 0 0
+  FIELD: UNKNOWN  Entire Atmosphere valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 -1 8 0 1 1 1176255488 255 176542 1 3 1 1 15 7 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=             213.40359497 MAX=             360.00000000
+ 
+ GRIB MESSAGE  57  starts at 68011849
+ 
+  SECTION 0:  0 2 1379926
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = UNKNOWN  0 2 225 )  2 225 2 255 104 65535 255 1 1 200 0 0 255 0 0
+  FIELD: UNKNOWN  Entire Atmosphere valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 2 1 6 0 1 1 1176255488 255 229026 1 3 1 1 8 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               6.48880816 MAX=              22.00000000
+ 
+ GRIB MESSAGE  58  starts at 69391775
+ 
+  SECTION 0:  0 2 2955684
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = VIL      0 15 3 )  15 3 2 255 104 65535 255 1 1 10 0 0 255 0 0
+  FIELD: VIL      Entire Atmosphere valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 3 15 0 1 1 1176255488 255 229132 1 4 1 1 16 6 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= VIL ) :  MIN=               0.00000000 AVE=               0.05890851 MAX=              13.30200100
+ 
+ GRIB MESSAGE  59  starts at 72347459
+ 
+  SECTION 0:  0 2 831190
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = VIS      0 19 0 )  19 0 2 255 104 65535 255 1 1 1 0 0 255 0 0
+  FIELD: VIS      Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1129381888 7 0 9 0 1 1 1176255488 255 63313 1 4 1 1 32 9 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= VIS ) :  MIN=             209.00000000 AVE=           14315.67382812 MAX=           16209.00000000
+ 
+ GRIB MESSAGE  60  starts at 73178649
+ 
+  SECTION 0:  0 2 3277046
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = VIS      0 19 0 )  19 0 5 255 108 65535 255 1 1 1 0 0 255 0 0 2 6 0 2 160934 -127 255
+  FIELD: VIS      Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 0 :  0 0 0 7 0
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= VIS ) :  MIN=               0.00000000 AVE=               1.66826952 MAX=              91.00000000
+ 
+ GRIB MESSAGE  61  starts at 76455695
+ 
+  SECTION 0:  0 2 3277046
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = VIS      0 19 0 )  19 0 5 255 108 65535 255 1 1 1 0 0 255 0 0 4 6 0 2 482803 -127 255
+  FIELD: VIS      Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 0 :  0 0 0 7 0
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= VIS ) :  MIN=               0.00000000 AVE=               6.43171072 MAX=             100.00000000
+ 
+ GRIB MESSAGE  62  starts at 79732741
+ 
+  SECTION 0:  0 2 3277046
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 5: ( PARAMETER = VIS      0 19 0 )  19 0 5 255 108 65535 255 1 1 1 0 0 255 0 0 5 6 0 2 804673 -127 255
+  FIELD: VIS      Surface valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 0 :  0 0 0 7 0
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= VIS ) :  MIN=               0.00000000 AVE=              11.25689888 MAX=             100.00000000
+ 
+ GRIB MESSAGE  63  starts at 83009787
+ 
+  SECTION 0:  0 2 3244775
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = VRATE    0 2 224 )  2 224 2 255 104 65535 255 1 1 200 0 0 255 0 0
+  FIELD: VRATE    Entire Atmosphere valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1112801280 3 0 11 0 1 1 1176255488 255 271589 1 4 1 1 8 5 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= VRATE ) :  MIN=              53.00000000 AVE=            5636.26123047 MAX=           39093.00000000
+ 
+ GRIB MESSAGE  64  starts at 86254562
+ 
+  SECTION 0:  0 2 1168546
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = WDIR     0 2 0 )  2 0 2 255 104 65535 255 1 1 103 0 30 255 -127 -2147483647
+  FIELD: WDIR    30 m above ground valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 -1 8 0 1 1 1176255488 255 168830 1 3 1 1 14 7 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= WDIR ) :  MIN=               0.00000000 AVE=             211.51536560 MAX=             360.00000000
+ 
+ GRIB MESSAGE  65  starts at 87423108
+ 
+  SECTION 0:  0 2 1168546
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = WDIR     0 2 0 )  2 0 2 255 104 65535 255 1 1 103 0 80 255 -127 -2147483647
+  FIELD: WDIR    80 m above ground valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 -1 8 0 1 1 1176255488 255 168830 1 3 1 1 14 7 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= WDIR ) :  MIN=               0.00000000 AVE=             211.51536560 MAX=             360.00000000
+ 
+ GRIB MESSAGE  66  starts at 88591654
+ 
+  SECTION 0:  0 2 1168546
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = WDIR     0 2 0 )  2 0 2 255 104 65535 255 1 1 103 0 10 255 0 0
+  FIELD: WDIR    10 m above ground valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 0 -1 8 0 1 1 1176255488 255 168830 1 3 1 1 14 7 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= WDIR ) :  MIN=               0.00000000 AVE=             211.51536560 MAX=             360.00000000
+ 
+ GRIB MESSAGE  67  starts at 89760200
+ 
+  SECTION 0:  0 2 1193691
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = GUST     0 2 22 )  2 22 2 255 104 65535 255 1 1 103 0 10 255 0 0
+  FIELD: GUST    10 m above ground valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1084227584 2 1 6 0 1 1 1176255488 255 193954 1 3 1 1 51 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= GUST ) :  MIN=               0.50000000 AVE=               7.50347662 MAX=              25.70000076
+ 
+ GRIB MESSAGE  68  starts at 90953891
+ 
+  SECTION 0:  0 2 2026969
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 2: ( PARAMETER = GUST     0 2 22 )  2 22 2 255 104 65535 255 1 1 103 0 10 255 0 0 2 255
+  FIELD: GUST    10 m above ground valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1092616192 2 2 9 0 1 1 1176255488 255 232724 1 4 1 1 18 6 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= GUST ) :  MIN=               0.09999999 AVE=               1.00997162 MAX=               8.42000008
+ 
+ GRIB MESSAGE  69  starts at 92980860
+ 
+  SECTION 0:  0 2 1345684
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = WIND     0 2 1 )  2 1 2 255 104 65535 255 1 1 103 0 30 255 0 0
+  FIELD: WIND    30 m above ground valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 2 1 7 0 1 1 1176255488 255 201465 1 3 1 1 8 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= WIND ) :  MIN=               0.00000000 AVE=               6.03512335 MAX=              23.60000038
+ 
+ GRIB MESSAGE  70  starts at 94326544
+ 
+  SECTION 0:  0 2 1358216
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = WIND     0 2 1 )  2 1 2 255 104 65535 255 1 1 103 0 80 255 0 0
+  FIELD: WIND    80 m above ground valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1065353216 2 1 7 0 1 1 1176255488 255 200991 1 3 1 1 7 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= WIND ) :  MIN=               0.10000000 AVE=               7.25272036 MAX=              25.70000076
+ 
+ GRIB MESSAGE  71  starts at 95684760
+ 
+  SECTION 0:  0 2 1316840
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 0: ( PARAMETER = WIND     0 2 1 )  2 1 2 255 104 65535 255 1 1 103 0 10 255 0 0
+  FIELD: WIND    10 m above ground valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  0 2 1 7 0 1 1 1176255488 255 201675 1 3 1 1 6 6 2 1
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= WIND ) :  MIN=               0.00000000 AVE=               5.35368061 MAX=              20.80000114
+ 
+ GRIB MESSAGE  72  starts at 97001600
+ 
+  SECTION 0:  0 2 1991020
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+ 
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  SECTION 3:  0 3744965 0 0 30
+  GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 2: ( PARAMETER = WIND     0 2 1 )  2 1 2 255 104 65535 255 1 1 103 0 10 255 0 0 2 255
+  FIELD: WIND    10 m above ground valid  1 hour after 2022111719:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  3744965     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1092616192 2 2 9 0 1 1 1176255488 255 239194 1 4 1 1 11 6 2 2
+  Data Values:
+  Num. of Data Points =  3744965   Num. of Data Undefined = 0
+( PARM= WIND ) :  MIN=               0.09999999 AVE=               0.77197307 MAX=               8.69999981
+  
+  Total Number of Fields Found =  72

@@ -8,10 +8,10 @@ echo ""
 echo "*** Running degrib2 test"
 
 # Degrib2 a GRIB2 file.
-../src/degrib2/degrib2 ref_gdaswave.t00z.wcoast.0p16.f000.grib2 &> test_gdaswave.degrib2.txt
+../src/degrib2/degrib2 data/ref_gdaswave.t00z.wcoast.0p16.f000.grib2 &> test_gdaswave.degrib2.txt
 
 # Check against expected output.
-cmp test_gdaswave.degrib2.txt ref_gdaswave.degrib2.txt
+cmp test_gdaswave.degrib2.txt data/ref_gdaswave.degrib2.txt
 
 echo "*** SUCCESS!"
 exit 0
