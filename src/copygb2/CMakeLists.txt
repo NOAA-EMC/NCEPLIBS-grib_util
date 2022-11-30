@@ -33,7 +33,7 @@ if(OpenMP_Fortran_FOUND)
 endif()
 
 # Install the copygb2 executable.
-install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
+install(TARGETS ${exe_name} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # If doxygen documentation is enabled, build it.
 if(ENABLE_DOCS)

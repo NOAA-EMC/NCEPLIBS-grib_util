@@ -10,23 +10,9 @@ set(c_src wgrib.c)
 set(exe_name wgrib)
 add_executable(${exe_name} ${c_src})
 
-install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
+install(TARGETS ${exe_name} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # If doxygen documentation is enabled, build it.
 if(ENABLE_DOCS)
   add_subdirectory(docs)  
 endif()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

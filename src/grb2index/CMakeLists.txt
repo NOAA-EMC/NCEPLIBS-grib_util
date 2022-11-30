@@ -21,7 +21,7 @@ add_executable(${exe_name} ${fortran_src})
 target_link_libraries(${exe_name} PRIVATE g2::g2_4 w3emc::w3emc_4 bacio::${bacio_name})
 
 # Install the utility.
-install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
+install(TARGETS ${exe_name} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # If doxygen documentation is enabled, build it.
 if(ENABLE_DOCS)
