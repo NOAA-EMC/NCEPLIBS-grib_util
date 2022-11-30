@@ -28,7 +28,7 @@ target_link_libraries(${exe_name} g2::g2_4
   ${ZLIB_LIBRARY})
 
 # Install cnvgrib.
-install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
+install(TARGETS ${exe_name} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # If doxygen documentation is enabled, build it.
 if(ENABLE_DOCS)

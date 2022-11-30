@@ -27,7 +27,7 @@ target_link_libraries(${exe_name} PRIVATE
   ${ZLIB_LIBRARY})
 
 # Install the executable.
-install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
+install(TARGETS ${exe_name} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # If doxygen documentation is enabled, build it.
 if(ENABLE_DOCS)

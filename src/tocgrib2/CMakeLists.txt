@@ -28,7 +28,7 @@ target_link_libraries(
   ${ZLIB_LIBRARY})
 
 # Install the tocgrib2 utility.
-install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
+install(TARGETS ${exe_name} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # If doxygen documentation is enabled, build it.
 if(ENABLE_DOCS)

@@ -18,7 +18,7 @@ set(exe_name grbindex)
 add_executable(${exe_name} ${fortran_src})
 target_link_libraries(${exe_name} PRIVATE w3emc::w3emc_4 bacio::${bacio_name})
 
-install(TARGETS ${exe_name} RUNTIME DESTINATION bin)
+install(TARGETS ${exe_name} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # If doxygen documentation is enabled, build it.
 if(ENABLE_DOCS)
