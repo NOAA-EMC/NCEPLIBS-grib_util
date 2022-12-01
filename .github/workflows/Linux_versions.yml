@@ -17,14 +17,16 @@ jobs:
     env:
       FC: gfortran-11
       CC: gcc-11
+    strategy:
+      matrix:
+        bacio-version: [2.4.1, 2.5.0]
 
     steps:
     - name: install-dependencies
       run: |
         sudo apt-get update &> /dev/null
         sudo apt-get install libpng-dev
-        sudo apt-get install libjpeg-dev doxygen
-        python3 -m pip install gcovr
+        sudo apt-get install libjpeg-dev 
           
     - name: checkout-jasper
       uses: actions/checkout@v2
@@ -54,7 +56,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-bacio
         path: bacio
-        ref: v2.4.1
+        ref: v${{ matrix.bacio-version }}
     
     - name: cache-bacio
       id: cache-bacio
@@ -177,24 +179,6 @@ jobs:
       run: |
         cd grib_utils
         mkdir build && cd build
-        ls -l ~/jasper
-        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" -DENABLE_DOCS=ON -DCMAKE_Fortran_FLAGS="-g -fprofile-abs-path -fprofile-arcs -ftest-coverage -O0 -Wall" -DCMAKE_C_FLAGS="-g -fprofile-abs-path -fprofile-arcs -ftest-coverage -O0 -Wall" ..
+        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" ..
         make -j2
-        ctest --verbose --output-on-failure
-        gcovr --root .. -v  --html-details --exclude ../tests --exclude CMakeFiles --print-summary -o test-coverage.html
-          
-    - name: upload-test-coverage
-      uses: actions/upload-artifact@v2
-      with:
-        name: grib_util-test-coverage
-        path: |
-          grib_utils/build/*.html
-          grib_utils/build/*.css
-
-
-
-
-    
-        
-   
-
+        ctest --output-on-failure --rerun-failed --verbose
