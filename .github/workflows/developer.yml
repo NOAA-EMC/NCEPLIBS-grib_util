@@ -1,4 +1,4 @@
-name: dependencies_develop_branch
+name: developer
 on:
   push:
     branches:
@@ -12,7 +12,7 @@ on:
     - README.md
 
 jobs:
-  build:
+  developer:
     runs-on: ubuntu-latest
     env:
       FC: gfortran-11
@@ -24,6 +24,7 @@ jobs:
         sudo apt-get update &> /dev/null
         sudo apt-get install libpng-dev
         sudo apt-get install libjpeg-dev doxygen
+        python3 -m pip install gcovr        
           
     - name: checkout-jasper
       uses: actions/checkout@v2
@@ -156,6 +157,19 @@ jobs:
         mkdir build && cd build
         ls -l ~/jasper/lib
         export LD_LIBRARY_PATH=/home/runner/jasper/lib
-        cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2;~/g2c" -DCMAKE_Fortran_FLAGS="-Wall" -DCMAKE_C_FLAGS="-Wall" ..
+        cmake -DENABLE_DOCS=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2;~/g2c" -DCMAKE_Fortran_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" -DCMAKE_C_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" ..
         make
-        ctest --verbose --output-on-failure
+        ctest --output-on-failure --rerun-failed --verbose
+
+    - name: generate-test-coverage
+      run: |
+        cd grib_utils/build
+        gcovr -r .. --html-details -o test-coverage.html
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: grib_utils-test-coverage
+        path: |
+          grib_utils/build/*.html
+          grib_utils/build/*.css
+

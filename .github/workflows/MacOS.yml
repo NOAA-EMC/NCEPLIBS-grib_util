@@ -1,4 +1,4 @@
-name: macOS Build
+name: MacOS
 on:
   push:
     branches:
@@ -12,7 +12,7 @@ on:
     - README.md
 
 jobs:
-  macOS-build: 
+  MacOS: 
     runs-on: macos-latest
     env:
       FC: gfortran-11
@@ -28,7 +28,7 @@ jobs:
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-2.0.33
+        ref: version-3.0.5
 
     - name: cache-jasper
       id: cache-jasper
@@ -51,14 +51,14 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-bacio
         path: bacio
-        ref: v2.4.1
+        ref: v2.5.0
     
     - name: cache-bacio
       id: cache-bacio
       uses: actions/cache@v2
       with:
         path: ~/bacio
-        key: bacio-${{ runner.os }}-2.4.1-1
+        key: bacio-${{ runner.os }}-2.5.0
 
     - name: build-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
@@ -98,14 +98,14 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-w3emc
         path: w3emc
-        ref: v2.9.2
+        ref: v2.9.3
 
     - name: cache-w3emc
       id: cache-w3emc
       uses: actions/cache@v2
       with:
         path: ~/w3emc
-        key: w3emc-${{ runner.os }}-2.9.2
+        key: w3emc-${{ runner.os }}-2.9.3
 
     - name: build-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -174,7 +174,6 @@ jobs:
       run: |
         cd grib_utils
         mkdir build && cd build
-        ls -l ~/jasper
         cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" ..
         make -j2
         ctest --verbose --output-on-failure
