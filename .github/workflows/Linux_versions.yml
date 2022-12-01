@@ -12,7 +12,7 @@ on:
     - README.md
 
 jobs:
-  build:
+  Linux_versions:
     runs-on: ubuntu-latest
     env:
       FC: gfortran-11
@@ -25,8 +25,7 @@ jobs:
     - name: install-dependencies
       run: |
         sudo apt-get update &> /dev/null
-        sudo apt-get install libpng-dev
-        sudo apt-get install libjpeg-dev 
+        sudo apt-get install libpng-dev libjpeg-dev 
           
     - name: checkout-jasper
       uses: actions/checkout@v2
@@ -63,7 +62,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/bacio
-        key: bacio-${{ runner.os }}-2.4.1-1
+        key: bacio-${{ runner.os }}-v${{ matrix.bacio-version }}
 
     - name: build-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
