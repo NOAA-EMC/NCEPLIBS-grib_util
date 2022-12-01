@@ -1,4 +1,4 @@
-name: dependencies_released_versions
+name: developer
 on:
   push:
     branches:
@@ -24,21 +24,21 @@ jobs:
         sudo apt-get update &> /dev/null
         sudo apt-get install libpng-dev
         sudo apt-get install libjpeg-dev doxygen
-        python3 -m pip install gcovr
+        python3 -m pip install gcovr        
           
     - name: checkout-jasper
       uses: actions/checkout@v2
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-2.0.33
+        ref: version-3.0.5
 
     - name: cache-jasper
       id: cache-jasper
       uses: actions/cache@v2
       with:
         path: ~/jasper
-        key: jasper-${{ runner.os }}-2.0.33-1
+        key: jasper-${{ runner.os }}-3.0.5
 
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -54,17 +54,9 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-bacio
         path: bacio
-        ref: v2.4.1
+        ref: develop
     
-    - name: cache-bacio
-      id: cache-bacio
-      uses: actions/cache@v2
-      with:
-        path: ~/bacio
-        key: bacio-${{ runner.os }}-2.4.1-1
-
     - name: build-bacio
-      if: steps.cache-bacio.outputs.cache-hit != 'true'
       run: |
         cd bacio
         mkdir build && cd build
@@ -77,17 +69,9 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-sp
         path: sp
-        ref: v2.3.3
-
-    - name: cache-sp
-      id: cache-sp
-      uses: actions/cache@v2
-      with:
-        path: ~/sp
-        key: sp-${{ runner.os }}-2.3.3-1
+        ref: develop
 
     - name: build-sp
-      if: steps.cache-sp.outputs.cache-hit != 'true'
       run: |
         cd sp
         mkdir build
@@ -101,17 +85,9 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-w3emc
         path: w3emc
-        ref: v2.9.2
-
-    - name: cache-w3emc
-      id: cache-w3emc
-      uses: actions/cache@v2
-      with:
-        path: ~/w3emc
-        key: w3emc-${{ runner.os }}-2.9.2
+        ref: develop
 
     - name: build-w3emc
-      if: steps.cache-w3emc.outputs.cache-hit != 'true'
       run: |
         cd w3emc
         mkdir build
@@ -127,15 +103,7 @@ jobs:
         path: ip
         ref: v3.3.3
 
-    - name: cache-ip
-      id: cache-ip
-      uses: actions/cache@v2
-      with:
-        path: ~/ip
-        key: ip-${{ runner.os }}-3.3.3
-
     - name: build-ip
-      if: steps.cache-ip.outputs.cache-hit != 'true'
       run: |
         cd ip
         mkdir build
@@ -144,27 +112,37 @@ jobs:
         make -j2
         make install
           
+    - name: checkout-g2c
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-g2c
+        path: g2c
+        ref: develop
+
+    - name: build-g2c
+      run: |
+        cd g2c
+        mkdir build
+        cd build
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2c -DCMAKE_PREFIX_PATH="~/jasper" ..
+        make -j2
+        make install
+                 
     - name: checkout-g2
       uses: actions/checkout@v2
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: v3.4.5
-
-    - name: cache-g2
-      id: cache-g2
-      uses: actions/cache@v2
-      with:
-        path: ~/g2
-        key: g2-${{ runner.os }}-3.4.5
+        ref: develop
 
     - name: build-g2
-      if: steps.cache-g2.outputs.cache-hit != 'true'
       run: |
         cd g2
         mkdir build
         cd build
-        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper" ..
+        echo $LD_LIBRARY_PATH
+        pwd
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/w3emc;~/g2c" ..
         make -j2
         make install
                  
@@ -177,24 +155,21 @@ jobs:
       run: |
         cd grib_utils
         mkdir build && cd build
-        ls -l ~/jasper
-        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" -DENABLE_DOCS=ON -DCMAKE_Fortran_FLAGS="-g -fprofile-abs-path -fprofile-arcs -ftest-coverage -O0 -Wall" -DCMAKE_C_FLAGS="-g -fprofile-abs-path -fprofile-arcs -ftest-coverage -O0 -Wall" ..
-        make -j2
-        ctest --verbose --output-on-failure
-        gcovr --root .. -v  --html-details --exclude ../tests --exclude CMakeFiles --print-summary -o test-coverage.html
-          
-    - name: upload-test-coverage
-      uses: actions/upload-artifact@v2
+        ls -l ~/jasper/lib
+        export LD_LIBRARY_PATH=/home/runner/jasper/lib
+        cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2;~/g2c" -DCMAKE_Fortran_FLAGS="-fprofile-arcs -ftest-coverage -O0 -fsanitize=address -Wall" -DCMAKE_C_FLAGS="-fprofile-arcs -ftest-coverage -O0 -fsanitize=address -Wall" ..
+        make
+        ctest --output-on-failure --rerun-failed --verbose
+
+    - name: generate-test-coverage
+      run: |
+        cd grib_utils/build
+        gcovr -r .. --html-details -o test-coverage.html
+
+    - uses: actions/upload-artifact@v2
       with:
-        name: grib_util-test-coverage
+        name: grib_utils-test-coverage
         path: |
           grib_utils/build/*.html
           grib_utils/build/*.css
-
-
-
-
-    
-        
-   
 
