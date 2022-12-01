@@ -109,7 +109,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/w3emc
-        key: w3emc-${{ runner.os }}-2.9.2
+        key: w3emc-${{ runner.os }}-2.9.2-bacio-${{ matrix.bacio-version }}
 
     - name: build-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'

@@ -12,7 +12,7 @@ on:
     - README.md
 
 jobs:
-  build:
+  developer:
     runs-on: ubuntu-latest
     env:
       FC: gfortran-11
