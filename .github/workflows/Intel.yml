@@ -11,6 +11,7 @@ on:
     paths-ignore:
     - README.md
 
+
 # Use custom shell with -l so .bash_profile is sourced which loads intel/oneapi/setvars.sh
 # without having to do it in manually every step
 defaults:
