@@ -23,36 +23,30 @@ jobs:
       run: |
         brew install libpng
 
+    - name: cache-jasper
+      id: cache-jasper
+      uses: actions/cache@v2
+      with:
+        path: ~/jasper
+        key: jasper-MacOS-${{ runner.os }}-3.0.5
+
     - name: checkout-jasper
+      if: steps.cache-jasper.outputs.cache-hit != 'true'
       uses: actions/checkout@v2
       with:
         repository: jasper-software/jasper
         path: jasper
         ref: version-3.0.5
 
-    - name: cache-jasper
-      id: cache-jasper
-      uses: actions/cache@v2
-      with:
-        path: ~/Jasper
-        key: jasper-${{ runner.os }}-${{ hashFiles('jasper/VERSION') }}
-
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
       run: |
         cd jasper
         mkdir build-jasper && cd build-jasper
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/Jasper
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/jasper
         make -j2
         make install
 
-    - name: checkout-bacio
-      uses: actions/checkout@v2
-      with:
-        repository: NOAA-EMC/NCEPLIBS-bacio
-        path: bacio
-        ref: v2.5.0
-    
     - name: cache-bacio
       id: cache-bacio
       uses: actions/cache@v2
@@ -60,6 +54,14 @@ jobs:
         path: ~/bacio
         key: bacio-${{ runner.os }}-2.5.0
 
+    - name: checkout-bacio
+      if: steps.cache-bacio.outputs.cache-hit != 'true'
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-bacio
+        path: bacio
+        ref: v2.5.0
+    
     - name: build-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
       run: |
@@ -69,19 +71,20 @@ jobs:
         make -j2
         make install
 
-    - name: checkout-sp
-      uses: actions/checkout@v2
-      with:
-        repository: NOAA-EMC/NCEPLIBS-sp
-        path: sp
-        ref: v2.3.3
-
     - name: cache-sp
       id: cache-sp
       uses: actions/cache@v2
       with:
         path: ~/sp
         key: sp-${{ runner.os }}-2.3.3-1
+
+    - name: checkout-sp
+      if: steps.cache-sp.outputs.cache-hit != 'true'
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-sp
+        path: sp
+        ref: v2.3.3
 
     - name: build-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
@@ -93,19 +96,20 @@ jobs:
         make -j2
         make install
           
-    - name: checkout-w3emc
-      uses: actions/checkout@v2
-      with:
-        repository: NOAA-EMC/NCEPLIBS-w3emc
-        path: w3emc
-        ref: v2.9.3
-
     - name: cache-w3emc
       id: cache-w3emc
       uses: actions/cache@v2
       with:
         path: ~/w3emc
         key: w3emc-${{ runner.os }}-2.9.3
+
+    - name: checkout-w3emc
+      if: steps.cache-w3emc.outputs.cache-hit != 'true'
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-w3emc
+        path: w3emc
+        ref: v2.9.3
 
     - name: build-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -117,19 +121,20 @@ jobs:
         make -j2
         make install
           
-    - name: checkout-ip
-      uses: actions/checkout@v2
-      with:
-        repository: NOAA-EMC/NCEPLIBS-ip
-        path: ip
-        ref: v3.3.3
-
     - name: cache-ip
       id: cache-ip
       uses: actions/cache@v2
       with:
         path: ~/ip
         key: ip-${{ runner.os }}-3.3.3
+
+    - name: checkout-ip
+      if: steps.cache-ip.outputs.cache-hit != 'true'
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-ip
+        path: ip
+        ref: v3.3.3
 
     - name: build-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -141,19 +146,20 @@ jobs:
         make -j2
         make install
           
-    - name: checkout-g2
-      uses: actions/checkout@v2
-      with:
-        repository: NOAA-EMC/NCEPLIBS-g2
-        path: g2
-        ref: v3.4.5
-
     - name: cache-g2
       id: cache-g2
       uses: actions/cache@v2
       with:
         path: ~/g2
         key: g2-${{ runner.os }}-3.4.5
+
+    - name: checkout-g2
+      if: steps.cache-g2.outputs.cache-hit != 'true'
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-g2
+        path: g2
+        ref: v3.4.5
 
     - name: build-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
@@ -176,4 +182,4 @@ jobs:
         mkdir build && cd build
         cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" ..
         make -j2
-        ctest --verbose --output-on-failure
+        ctest --output-on-failure --rerun-failed --verbose

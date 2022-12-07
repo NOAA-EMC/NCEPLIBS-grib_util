@@ -1,4 +1,4 @@
-name: Linux_versions
+name: Intel
 on:
   push:
     branches:
@@ -11,22 +11,33 @@ on:
     paths-ignore:
     - README.md
 
+# Use custom shell with -l so .bash_profile is sourced which loads intel/oneapi/setvars.sh
+# without having to do it in manually every step
+defaults:
+  run:
+    shell: bash -leo pipefail {0}
+
 jobs:
-  Linux_versions:
+  Intel:
     runs-on: ubuntu-latest
     env:
-      FC: gfortran-11
-      CC: gcc-11
-    strategy:
-      matrix:
-        bacio-version: [2.4.1, 2.5.0]
+      CC: icc
+      FC: ifort
 
     steps:
-    - name: install-dependencies
+
+    # See https://software.intel.com/content/www/us/en/develop/articles/oneapi-repo-instructions.html
+    - name: install-intel
       run: |
-        sudo apt-get update &> /dev/null
-        sudo apt-get install libpng-dev libjpeg-dev 
-          
+        cd /tmp
+        wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+        sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+        rm GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+        echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
+        sudo apt-get update
+        sudo apt-get install intel-oneapi-dev-utilities intel-oneapi-mpi-devel intel-oneapi-openmp intel-oneapi-compiler-fortran intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
+        echo "source /opt/intel/oneapi/setvars.sh" >> ~/.bash_profile
+      
     - name: cache-jasper
       id: cache-jasper
       uses: actions/cache@v2
@@ -187,3 +198,4 @@ jobs:
         cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" ..
         make -j2
         ctest --output-on-failure --rerun-failed --verbose
+
