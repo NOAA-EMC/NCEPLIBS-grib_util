@@ -20,6 +20,7 @@ jobs:
     strategy:
       matrix:
         bacio-version: [2.4.1, 2.5.0]
+        jasper-version: [2.0.33, 3.0.5]
 
     steps:
     - name: install-dependencies
@@ -32,7 +33,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/jasper
-        key: jasper-Linux_versions-3.0.5
+        key: jasper-Linux_versions-${{ matrix.jasper-version }}
 
     - name: checkout-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -40,7 +41,7 @@ jobs:
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-3.0.5
+        ref: version-${{ matrix.jasper-version }}
 
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -155,7 +156,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/g2
-        key: g2-${{ runner.os }}-3.4.5
+        key: g2-${{ runner.os }}-${{ matrix.bacio-version }}-${{ matrix.jasper-version }}-3.4.5
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
