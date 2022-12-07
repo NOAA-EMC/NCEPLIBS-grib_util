@@ -16,7 +16,7 @@ echo "expected:"
 cat data/ref_gdaswave.degrib2.txt
 
 # Check against expected output.
-cmp test_gdaswave.degrib2.txt data/ref_gdaswave.degrib2.txt
+diff -w test_gdaswave.degrib2.txt data/ref_gdaswave.degrib2.txt
 
 echo "*** SUCCESS!"
 exit 0
