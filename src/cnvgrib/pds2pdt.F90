@@ -336,11 +336,11 @@ end subroutine pds2pdt
 !> -----|------------|---------
 !> 2003-06-12 | Gilbert | Initial.
 !> 2011-01-13 | Boi Vuong | Added level/layer values from 235 to 239
-!
-! @param[in] ltype GRIB1 level type (PDS octet 10)
-! @param[in] lval GRIB1 level/layer value(s) (PDS octets 11 and 12)
-! @param[out] ipdstmpl GRIB2 Product Definition Template values.
-!
+!>
+!> @param[in] ltype GRIB1 level type (PDS octet 10)
+!> @param[in] lval GRIB1 level/layer value(s) (PDS octets 11 and 12)
+!> @param[out] ipdstmpl GRIB2 Product Definition Template values.
+!>
 !> @author Stephen Gilbert @date 2003-06-12
 subroutine cnvlevel(ltype,lval,ipdstmpl)
 

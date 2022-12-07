@@ -19,31 +19,7 @@
 !> @param[in] ipdsnum GRIB2 Product Definition Template Number
 !> @param[in] ipdstmpl GRIB2 Product Definition Template entries for
 !> PDT 4.ipdsnum
-!> @param[in] kpds GRIB1 PDS info as specified in W3FI63.
-!> - 1 id of center
-!> - 2 generating process id number
-!> - 3 grid definition
-!> - 4 gds/bms flag (right adj copy of octet 8)
-!> - 5 indicator of parameter
-!> - 6 type of level
-!> - 7 height/pressure , etc of level
-!> - 8 year including (century-1)
-!> - 9 month of year
-!> - 10 day of month
-!> - 11 hour of day
-!> - 12 minute of hour
-!> - 13 indicator of forecast time unit
-!> - 14 time range 1
-!> - 15 time range 2
-!> - 16 time range flag
-!> - 17 number included in average
-!> - 18 version nr of grib specification
-!> - 19 version nr of parameter table
-!> - 20 nr missing from average/accumulation
-!> - 21 century of reference time of data
-!> - 22 units decimal scale factor
-!> - 23 subcenter number
-!> @param[out] kpds GRIB1 PDS info as specified in W3FI63.
+!> @param[inout] kpds GRIB1 PDS info as specified in W3FI63.
 !> - 1 id of center
 !> - 2 generating process id number
 !> - 3 grid definition
