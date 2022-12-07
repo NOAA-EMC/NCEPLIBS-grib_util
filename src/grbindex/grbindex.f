@@ -206,6 +206,8 @@
 !> @param[in] C CHARACTER STRING TO SEARCH
 !> @param[in] N INTEGER LENGTH OF STRING
 !>
+!> @return The index of the basename within the string.
+!>
 !> @author Iredell @date 93-11-22
       FUNCTION NCBASE(C,N)
       CHARACTER C*(*)
