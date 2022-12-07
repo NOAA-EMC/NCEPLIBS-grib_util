@@ -1,4 +1,4 @@
-name: MacOS
+name: Intel
 on:
   push:
     branches:
@@ -11,24 +11,40 @@ on:
     paths-ignore:
     - README.md
 
+
+# Use custom shell with -l so .bash_profile is sourced which loads intel/oneapi/setvars.sh
+# without having to do it in manually every step
+defaults:
+  run:
+    shell: bash -leo pipefail {0}
+
 jobs:
-  MacOS: 
-    runs-on: macos-latest
+  Intel:
+    runs-on: ubuntu-latest
     env:
-      FC: gfortran-11
-      CC: gcc-11
+      CC: icc
+      FC: ifort
 
     steps:
-    - name: install-dependencies
-      run: |
-        brew install libpng
 
+    # See https://software.intel.com/content/www/us/en/develop/articles/oneapi-repo-instructions.html
+    - name: install-intel
+      run: |
+        cd /tmp
+        wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+        sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+        rm GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+        echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
+        sudo apt-get update
+        sudo apt-get install intel-oneapi-dev-utilities intel-oneapi-mpi-devel intel-oneapi-openmp intel-oneapi-compiler-fortran intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
+        echo "source /opt/intel/oneapi/setvars.sh" >> ~/.bash_profile
+      
     - name: cache-jasper
       id: cache-jasper
       uses: actions/cache@v2
       with:
         path: ~/jasper
-        key: jasper-MacOS-${{ runner.os }}-2.0.33
+        key: jasper-Intel-2.0.33
 
     - name: checkout-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -42,7 +58,7 @@ jobs:
       if: steps.cache-jasper.outputs.cache-hit != 'true'
       run: |
         cd jasper
-        mkdir build-jasper && cd build-jasper
+        mkdir b && cd b
         cmake .. -DCMAKE_INSTALL_PREFIX=~/jasper
         make -j2
         make install
@@ -52,7 +68,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/bacio
-        key: bacio-MacOS-${{ runner.os }}-2.5.0
+        key: bacio-Intel-${{ runner.os }}-v2.5.0
 
     - name: checkout-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
@@ -76,7 +92,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/sp
-        key: sp-${{ runner.os }}-2.3.3-1
+        key: sp-Intel-${{ runner.os }}-2.3.3-1
 
     - name: checkout-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
@@ -101,7 +117,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/w3emc
-        key: w3emc-MacOS-${{ runner.os }}-2.9.3
+        key: w3emc-Intel-${{ runner.os }}-2.9.2-bacio-2.5.0
 
     - name: checkout-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -109,7 +125,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-w3emc
         path: w3emc
-        ref: v2.9.3
+        ref: v2.9.2
 
     - name: build-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -126,7 +142,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/ip
-        key: ip-MacOS-${{ runner.os }}-3.3.3
+        key: ip-Intel-${{ runner.os }}-3.3.3
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -151,7 +167,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/g2
-        key: g2-MacOS-${{ runner.os }}-2.0.33-2.5.0-3.4.5
+        key: g2-Intel-${{ runner.os }}-2.0.33-2.5.0-3.4.5
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
@@ -183,3 +199,4 @@ jobs:
         cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" ..
         make -j2
         ctest --output-on-failure --rerun-failed --verbose
+

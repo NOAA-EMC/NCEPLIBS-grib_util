@@ -202,12 +202,14 @@ END SUBROUTINE WRGI1H
 
 !> Locate basename of a file.
 !>
-!> This subprogram locates the character number after the last in a
+!> This subprogram locates the character number after the last '/' in a
 !> character string. For unix filenames, the character number returned
 !> marks the beginning of the basename of the file.
 !>
 !> @param[in] c character string to search
 !> @param[in] n integer length of string
+!>
+!> @return The index of the basename within the string.
 !>
 !> @author Iredell @date 93-11-22
 FUNCTION NCBASE(C,N)
