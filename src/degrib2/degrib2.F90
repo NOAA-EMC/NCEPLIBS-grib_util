@@ -18,6 +18,7 @@
 !> 2017-01-21 | Vuong | Added to check for undefine values
 !> 2022-09-06 | Hartnett | Added implicit none
 !>
+!> @return 0 for success.
 !> @author Stephen Gilbert @date 2010-09-08
 program degrib2
   use grib_mod

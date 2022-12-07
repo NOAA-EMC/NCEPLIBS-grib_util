@@ -173,6 +173,7 @@
 !> #### Output Files
 !>   - unit   51    output grib file
 !>
+!> @return 0 for success.
 !> @author Iredell @date 1998-10-22
 PROGRAM COPYGB2
   CHARACTER*256 CARG,CG1,CX1,CGB,CXB,CGM,CXM,CG2,CNL
@@ -821,8 +822,6 @@ CONTAINS
   !> @param[in] lxb integer unit number for grib index file map
   !> @param[in] mb integer dimension of grib field map
   !> @param[in] cbufb character (mbuf) index buffer map
-  !> @param[in] nlenb integer record length of index buffer map
-  !> @param[in] nnumb integer number of records in index buffer map
   !> @param[in] nlenb integer length of each index record map
   !> @param[in] nnumb integer number of index records map
   !> @param[in] mnumb integer number of index records map skipped
@@ -832,7 +831,6 @@ CONTAINS
   !> @param[in] lg2 integer unit number for grib file 2
   !> @param[in] lxx integer flag for verbose output
   !> @param[in] ks1 integer input record counter
-  !> @param[in] no integer output record counter
   !> @param[out] no integer output record counter
   !> @param[out] iret integer return code
   !>
@@ -1232,6 +1230,8 @@ CONTAINS
   !> @param[in] ipopt integer (20) interpolation options
   !> @param[in] ngdt1 integer (200) input grid definition template number
   !> @param[in] kgdt1 integer (200) input grid definition template values
+  !> @param[in] idefn1 ???
+  !> @param[in] idef1 ???
   !> @param[in] k1 integer input dimension
   !> @param[in] ib1 integer input bitmap flag
   !> @param[in] l1 logical*1 (k1) input bitmap if ib1=1
@@ -1244,6 +1244,7 @@ CONTAINS
   !> @param[in] l2 logical*1 (k2) output bitmap
   !> @param[in] f2 real (k2) output field
   !> @param[in] g2 real (k2) output y-component if iv=1
+  !> @param[out] iret integer return code
   !>
   !> @author Iredell @date 96-07-19
   SUBROUTINE INTGRIB2(IV,IP,IPOPT,NGDT1,KGDT1,IDEFN1,IDEF1, &
@@ -1319,31 +1320,32 @@ CONTAINS
 
   END SUBROUTINE INTGRIB2
 
-  ! Interpolate field.
-  !
-  ! @param[in] k1f integer regularized input dimension
-  ! @param[in] kgds1f integer (200) regularized input grid parameters
-  ! @param[in] k2f integer regularized output dimension
-  ! @param[in] kgds2f integer (200) regularized output grid parameters
-  ! @param[in] mrl integer dimension of rlat and rlon
-  ! @param[in] mro integer dimension of crot and srot
-  ! @param[in] iv integer vector flag
-  ! @param[in] ip integer interpolation type
-  ! @param[in] ipopt integer (20) interpolation options
-  ! @param[in] kgds1 integer (200) input grid parameters
-  ! @param[in] k1 integer input dimension
-  ! @param[in] ib1 integer input bitmap flag
-  ! @param[in] l1 logical*1 (k1) input bitmap if ib1=1
-  ! @param[in] f1 real (k1) input field
-  ! @param[in] g1 real (k1) input y-component if iv=1
-  ! @param[in] kgds2 integer (200) output grid parameters
-  ! @param[in] k2 integer output dimension
-  ! @param[in] ib2 integer output bitmap flag
-  ! @param[in] l2 logical*1 (k2) output bitmap
-  ! @param[in] f2 real (k2) output field
-  ! @param[in] g2 real (k2) output y-component if iv=1
-  !
-  ! @author Iredell @date 96-07-19
+  !> Interpolate field.
+  !>
+  !> @param[in] k1f integer regularized input dimension
+  !> @param[in] kgds1f integer (200) regularized input grid parameters
+  !> @param[in] k2f integer regularized output dimension
+  !> @param[in] kgds2f integer (200) regularized output grid parameters
+  !> @param[in] mrl integer dimension of rlat and rlon
+  !> @param[in] mro integer dimension of crot and srot
+  !> @param[in] iv integer vector flag
+  !> @param[in] ip integer interpolation type
+  !> @param[in] ipopt integer (20) interpolation options
+  !> @param[in] kgds1 integer (200) input grid parameters
+  !> @param[in] k1 integer input dimension
+  !> @param[in] ib1 integer input bitmap flag
+  !> @param[in] l1 logical*1 (k1) input bitmap if ib1=1
+  !> @param[in] f1 real (k1) input field
+  !> @param[in] g1 real (k1) input y-component if iv=1
+  !> @param[in] kgds2 integer (200) output grid parameters
+  !> @param[in] k2 integer output dimension
+  !> @param[in] ib2 integer output bitmap flag
+  !> @param[in] l2 logical*1 (k2) output bitmap
+  !> @param[in] f2 real (k2) output field
+  !> @param[in] g2 real (k2) output y-component if iv=1
+  !> @param[out] iret integer return code
+  !>
+  !> @author Iredell @date 96-07-19
   SUBROUTINE INTGRIB1(K1F,KGDS1F,K2F,KGDS2F,MRL,MRO, &
        IV,IP,IPOPT,KGDS1,K1,IB1,L1,F1,G1,KGDS2,K2, &
        IB2,L2,F2,G2,IRET)
@@ -1460,7 +1462,8 @@ CONTAINS
   !>
   !> @param[in] kgds integer (200) gds parameters in w3fi63 format
   !> @param[out] kgdsf integer (200) regular gds parameters in w3fi63 format
-  !> @param[out] lengdsf integer size of regularized grid
+  !>
+  !> @return integer size of regularized grid
   !>
   !> @author Iredell @date 96-07-19
   FUNCTION LENGDSF(KGDS,KGDSF)
@@ -1495,7 +1498,8 @@ CONTAINS
   !>
   !> @param[in] igdtn integer grid definition template number
   !> @param[in] kgdt integer (200) grid definition template values
-  !> @param[out] numpts integer number of grid points in grid
+  !>
+  !> @return integer number of grid points in grid
   !>
   !> @author Gilbert @date 2005-01-10
   FUNCTION NUMPTS(IGDTN,KGDT)

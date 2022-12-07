@@ -13,20 +13,20 @@ We have added support for PNG and JPEG2000 image compression
 algorithms within the GRIB2 standard. If you would like
 this converter to be able to utilize these new GRIB2 Templates,
 then NCEPLIBS-g2 must be compiled with this support enabled.
-The README file included with the NCEPLIBS-g2 library 
+The README file included with the NCEPLIBS-g2 library
 describes how to compile that library to support PNG and
 JPEG2000, and it also lists the external libraries that
 are required.
 
 Usage: cnvgrib [-h] {-g12|-g21|-g22} [-m|-m0] [-nv]
                [{-p0|-p2|-p31|-p32|-p40|-p41}]  ingribfile   outgribfile
-  
+
 
 Must use one of the following options:
    -g12     converts GRIB1 to GRIB2
    -g21     converts GRIB2 to GRIB1
    -g22     converts GRIB2 to GRIB2  (used to change packing option)
-  
+
 Optional packing options: (for use with  -g12 and -g22 only)
    -p0      simple packing
    -p2      complex packing
@@ -34,20 +34,19 @@ Optional packing options: (for use with  -g12 and -g22 only)
    -p32     complex pack with 2nd order diffs
    -p40     JPEG2000 encoding
    -p41     PNG encoding
-  
-Other Optional options: 
+
+Other Optional options:
    -nv      Do not combine U, V wind components
-  
+
    Use missing value management instead of bitmap
    (ONLY valid with Complex Packing options: -p2, -p31 or -p32 )
-  
+
    -m      Primary missing values included within the data values
    -m0     No explicit missing values included within the data values
    -mastertable_ver_x     Master Table version where x is number from 2 to 21
 
 ## History
 
-<pre>
 cnvgrib-1.0   - August 2003 - Original version
 
 cnvgrib-1.0.1 - October 2003 - Corrected error converting level info for
@@ -55,26 +54,25 @@ cnvgrib-1.0.1 - October 2003 - Corrected error converting level info for
                              - Removed statement that set GRIB1 local table
                                version to "2".
 
-cnvgrib-1.0.2 - May 2004 - Changed Master Table Version Number from 1 to the
-                           current "operational" value of 2, when converting
-                           from GRIB1 to GRIB2. 
-                         - Added support for Gaussian grids.
-                         - Few minor bug fixes relating to:
-                            1) ensemble params 191 and 192 (grib1 table ver 2)
-                            2) negative pv surface values
-                            3) radius of earth
-                            4) # of missing values in PDS/PDT
+cnvgrib-1.0.2 - May 2004
+                             - Added support for Gaussian grids.
+                             - Changed Master Table Version Number from 1 to the current "operational" value of 2, when converting from GRIB1 to GRIB2.
+                             - Few minor bug fixes relating to:
+                              1) ensemble params 191 and 192 (grib1 table ver 2)
+                              2) negative pv surface values
+                              3) radius of earth
+                              4) # of missing values in PDS/PDT
 
-cnvgrib-1.1.0 - January 2005 - WMO approved the JPEG2000 and PNG Data 
+cnvgrib-1.1.0 - January 2005 - WMO approved the JPEG2000 and PNG Data
                                Representation Templates ( 5.40000 and 5.40010,
-                               respectively ) for operational use. The 
-                               templates were assigned WMO values of 5.40 and 
-                               5.41, respectively. Changes were made to the 
-                               source and to acceptable program options to 
+                               respectively ) for operational use. The
+                               templates were assigned WMO values of 5.40 and
+                               5.41, respectively. Changes were made to the
+                               source and to acceptable program options to
                                recognize either template number.
-                             - Added new option "-m" to support encoding of 
+                             - Added new option "-m" to support encoding of
                                "Missing" data values within the data field when
-                               using Data Representation Templates 5.2 
+                               using Data Representation Templates 5.2
                                (option -p2) and 5.3 (options -p31 and -p32 ).
                                Missing value management is an alternative to
                                encoding a bitmap when using DRTs 5.2 and 5.3.
@@ -82,21 +80,21 @@ cnvgrib-1.1.0 - January 2005 - WMO approved the JPEG2000 and PNG Data
                                expecting a valid target. Thanks to Jaakko
                                Hyvatti and Portland Group.
                              - Added fix for bug that caused seg faults on some
-                               systems when generating GRIB1 messages. Thanks 
+                               systems when generating GRIB1 messages. Thanks
                                to Robert Shectman for this one.
 
 cnvgrib-1.1.1 - April 2005 - Corrected the scaling factor used when converting
                              potential vorticity surface values.
 
 cnvgrib-1.1.2 - January 2006
-			- Added a new option "-nv" to cause vector quantities 
-			  to be stored in individual GRIB messages versus
-       			  being bundled together which is the default.
+                        - Added a new option "-nv" to cause vector quantities
+                          to be stored in individual GRIB messages versus
+                          being bundled together which is the default.
 
 cnvgrib-1.1.4 - May 2007
-			- Added a new Grid Definition Template number 204
+                        - Added a new Grid Definition Template number 204
                         - Corrected the sale factor for probabilities
-                        - Added more parameters 
+                        - Added more parameters
                         - Added the Time Range indicator 51
 
 cnvgrib-1.1.5 - Dec 2007
@@ -141,13 +139,13 @@ cnvgrib-1.2.1 - Aug 2010  - Added new local parameters conversion entries
                           - Added a new Grid Definition Template number
                             3.32769 (Added Rotate Lat/Lon None E-grid)
                           - Added Type of Ensemble forecast 4 and 192
-                          - Corrected parameters U/V  Max Wind level to use PDT 4.0 
+                          - Corrected parameters U/V  Max Wind level to use PDT 4.0
                             for WAFS product
 
 cnvgrib-1.2.2 - Mar 2011  - Added new local parameters conversion entries
                           - Added an option "masterable_ver_x to change
                             Master Table Version when converts from GRIB1 to GRIB2.
-                          - Added new option -mastertable_ver_x to allow 
+                          - Added new option -mastertable_ver_x to allow
                             user to change the grib master table version from 2 to 6
                           - Added level/layer values from 235 to 239
 
@@ -177,4 +175,3 @@ cnvgrib-3.1.0 - JAN 2017  - Re-compiled with G2LIB version 3.1.0
 
 cnvgrib-3.1.1 - July 2018 - Checked Time Range for continuous accumulated APCP
                             after F252 when convert from grib2 to grib1
-</pre>

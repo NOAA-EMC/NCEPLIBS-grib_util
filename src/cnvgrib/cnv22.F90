@@ -13,9 +13,9 @@
 !> 2008-05-14 | Vuong | Add missing value management option 0
 !> 2009-05-20 | Vuong | Initialize variables idsect,local,list_opt
 !>
-!> param[in] ifl1 Fortran unit number of input GRIB2 file.
-!> param[in] ifl2 Fortran unit number of output GRIB2 file.
-!> param[in] ipack GRIB2 packing option:
+!> @param[in] ifl1 Fortran unit number of input GRIB2 file.
+!> @param[in] ifl2 Fortran unit number of output GRIB2 file.
+!> @param[in] ipack GRIB2 packing option:
 !> - 0 simple packing
 !> - 2 group packing
 !> - 31 group pack with 1st order differencing
@@ -25,12 +25,12 @@
 !> - 41 PNG encoding
 !> - 40010 PNG encoding (obsolete)
 !> if ipack .ne. one of the values above, 31 is used as a default.
-!> param[in] usemiss uses missing value management (instead of bitmaps),
+!> @param[in] usemiss uses missing value management (instead of bitmaps),
 !> for use with ipack options 2, 31, and 32.
-!> param[in] imiss Missing value management:
+!> @param[in] imiss Missing value management:
 !> - 0 No explicit missing values included within data values
 !> - 1 Primary missing values included within data values
-!> param[in] table_ver Master Table version, where x is number from 2 to
+!> @param[in] table_ver Master Table version, where x is number from 2 to
 !> 10.
 !>
 !> @author Stephen Gilbert @date 2003-06-11

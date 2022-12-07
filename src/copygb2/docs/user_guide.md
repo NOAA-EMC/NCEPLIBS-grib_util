@@ -111,7 +111,7 @@ the output GRIB file is written to standard output.
 -M "mask"/mergegrib
                Mask used to fill out bitmapped areas of the map.
                If specified, there will be no bitmap in the output.
-               The mask must be in the format '#value' where value
+               The mask must be in the format '\#value' where value
                is the real number used to fill out the field.
                Otherwise, the argument is interpreted as a merge
                GRIB file.  Then for each GRIB message copied,

@@ -161,7 +161,8 @@
 !> ### output files
 !> -  unit   51    output grib file
 !>
-!>    @author Stephen Gilbert @date 2000-05-02
+!> @return 0 for success.
+!> @author Stephen Gilbert @date 2000-05-02
 PROGRAM COPYGB
   CHARACTER*256 CARG,CG1,CX1,CGB,CXB,CGM,CXM,CG2,CNL
   INTEGER KARG(100), NTHREADS
@@ -750,8 +751,6 @@ END SUBROUTINE CPGB
 !> @param[in] m1 integer dimension of grib field 1
 !> @param[in] cbuf1 character (mbuf) index buffer 1
 !> @param[in] nlen1 integer record length of index buffer 1
-!> @param[in] nnum1 integer number of records in index buffer 1
-!> @param[in] nlen1 integer length of each index record 1
 !> @param[in] nnum1 integer number of index records 1
 !> @param[in] mnum1 integer number of index records 1 skipped
 !> @param[in] mbuf integer dimension of index buffers
@@ -780,8 +779,6 @@ END SUBROUTINE CPGB
 !> @param[in] cbufb character (mbuf) index buffer map
 !> @param[in] nlenb integer record length of index buffer map
 !> @param[in] nnumb integer number of records in index buffer map
-!> @param[in] nlenb integer length of each index record map
-!> @param[in] nnumb integer number of index records map
 !> @param[in] mnumb integer number of index records map skipped
 !> @param[in] lgm integer unit number for grib file merge
 !> @param[in] lxm integer unit number for grib index file merge
@@ -789,13 +786,10 @@ END SUBROUTINE CPGB
 !> @param[in] cbufm character (mbuf) index buffer merge
 !> @param[in] nlenm integer record length of index buffer merge
 !> @param[in] nnumm integer number of records in index buffer merge
-!> @param[in] nlenm integer length of each index record merge
-!> @param[in] nnumm integer number of index records merge
 !> @param[in] mnumm integer number of index records merge skipped
 !> @param[in] lg2 integer unit number for grib file 2
 !> @param[in] lxx integer flag for verbose output
 !> @param[in] ks1 integer input record counter
-!> @param[in] no integer output record counter
 !> @param[out] no integer output record counter
 !> @param[out] iret integer return code
 !>
@@ -1111,6 +1105,7 @@ END SUBROUTINE CPGB1
 !> @param[in] l2 logical*1 (k2) output bitmap
 !> @param[in] f2 real (k2) output field
 !> @param[in] g2 real (k2) output y-component if iv=1
+!> @param[out] iret integer return code
 !>
 !> @author Iredell @date 96-07-19
 SUBROUTINE INTGRIB(IV,IP,IPOPT,KGDS1,K1,IB1,L1,F1,G1,KGDS2,K2, &
@@ -1189,6 +1184,7 @@ END SUBROUTINE INTGRIB
 !> @param[in] l2 logical*1 (k2) output bitmap
 !> @param[in] f2 real (k2) output field
 !> @param[in] g2 real (k2) output y-component if iv=1
+!> @param[out] iret integer return code
 !>
 !> @author Iredell @date 96-07-19
 SUBROUTINE INTGRIB1(K1F,KGDS1F,K2F,KGDS2F,MRL,MRO, &
@@ -1355,7 +1351,8 @@ END SUBROUTINE INTGRIB1
 !>
 !> @param[in] kgds integer (200) gds parameters in w3fi63 format
 !> @param[out] kgdsf integer (200) regular gds parameters in w3fi63 format
-!> @param[out] lengdsf integer size of regularized grid
+!>
+!> @return integer size of regularized grid
 !>
 !> @author Mark Iredell @date 96-07-19
 FUNCTION LENGDSF(KGDS,KGDSF)
