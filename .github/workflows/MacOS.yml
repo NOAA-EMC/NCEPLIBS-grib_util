@@ -52,7 +52,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/bacio
-        key: bacio-${{ runner.os }}-2.5.0
+        key: bacio-MacOS-${{ runner.os }}-2.5.0
 
     - name: checkout-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
@@ -101,7 +101,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/w3emc
-        key: w3emc-${{ runner.os }}-2.9.3
+        key: w3emc-MacOS-${{ runner.os }}-2.9.3
 
     - name: checkout-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -126,7 +126,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/ip
-        key: ip-${{ runner.os }}-3.3.3
+        key: ip-MacOS-${{ runner.os }}-3.3.3
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -151,7 +151,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/g2
-        key: g2-${{ runner.os }}-3.4.5
+        key: g2-MacOS-${{ runner.os }}-3.0.5-2.5.0-3.4.5
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'

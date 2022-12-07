@@ -43,7 +43,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/jasper
-        key: jasper-Linux_versions-3.0.5
+        key: jasper-Intel-3.0.5
 
     - name: checkout-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -67,7 +67,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/bacio
-        key: bacio-${{ runner.os }}-v${{ matrix.bacio-version }}
+        key: bacio-Intel-${{ runner.os }}-v${{ matrix.bacio-version }}
 
     - name: checkout-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
@@ -116,7 +116,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/w3emc
-        key: w3emc-${{ runner.os }}-2.9.2-bacio-${{ matrix.bacio-version }}
+        key: w3emc-Intel-${{ runner.os }}-2.9.2-bacio-${{ matrix.bacio-version }}
 
     - name: checkout-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -141,7 +141,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/ip
-        key: ip-${{ runner.os }}-3.3.3
+        key: ip-Intel-${{ runner.os }}-3.3.3
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -166,7 +166,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/g2
-        key: g2-${{ runner.os }}-3.4.5
+        key: g2-Intel-${{ runner.os }}-3.4.5
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
