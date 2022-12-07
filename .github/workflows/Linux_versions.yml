@@ -21,6 +21,7 @@ jobs:
       matrix:
         bacio-version: [2.4.1, 2.5.0]
         jasper-version: [2.0.33]
+        w3emc-version: [2.9.2, 2.9.3]
 
     steps:
     - name: install-dependencies
@@ -106,7 +107,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/w3emc
-        key: w3emc-${{ runner.os }}-2.9.2-bacio-${{ matrix.bacio-version }}
+        key: w3emc-${{ runner.os }}-${{ matrix.w3emc-version }}-bacio-${{ matrix.bacio-version }}
 
     - name: checkout-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -114,7 +115,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-w3emc
         path: w3emc
-        ref: v2.9.2
+        ref: v${{ matrix.w3emc-version }}
 
     - name: build-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -156,7 +157,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/g2
-        key: g2-${{ runner.os }}-${{ matrix.bacio-version }}-${{ matrix.jasper-version }}-3.4.5
+        key: g2-${{ runner.os }}-${{ matrix.bacio-version }}-${{ matrix.jasper-version }}-${{ matrix.w3emc-version }}-3.4.5
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
@@ -172,7 +173,7 @@ jobs:
         cd g2
         mkdir build
         cd build
-        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper" ..
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/w3emc" ..
         make -j2
         make install
                  
@@ -186,5 +187,5 @@ jobs:
         cd grib_utils
         mkdir build && cd build
         cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" ..
-        make -j2
+        make -j2 VERBOSE=1
         ctest --output-on-failure --rerun-failed --verbose
