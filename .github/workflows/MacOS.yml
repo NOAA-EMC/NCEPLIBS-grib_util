@@ -28,7 +28,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/jasper
-        key: jasper-MacOS-${{ runner.os }}-3.0.5
+        key: jasper-MacOS-${{ runner.os }}-2.0.33
 
     - name: checkout-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -36,7 +36,7 @@ jobs:
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-3.0.5
+        ref: version-2.0.33
 
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -151,7 +151,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/g2
-        key: g2-MacOS-${{ runner.os }}-3.0.5-2.5.0-3.4.5
+        key: g2-MacOS-${{ runner.os }}-2.0.33-2.5.0-3.4.5
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
