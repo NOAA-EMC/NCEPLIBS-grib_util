@@ -1,4 +1,4 @@
-# This is the GitHub actions workflow for building GRIB_UTILS with GNU using
+# This is the GitHub actions workflow for building grib_utils with GNU using
 # spack for dependencies.
 #
 # Ed Hartnett, 12/19/22
