@@ -1,0 +1,19 @@
+# Spack environment file to build NCEPLIBS-grib_util dependencies.
+#
+# Ed Hartnett 12/20/22
+spack:
+  packages:
+    all:
+      compiler:
+      - intel
+      - gcc@10:10
+  specs:
+  - bacio@2.4.1
+  - w3emc@2.9.2
+  - g2@3.4.5
+  - sp@2.3.3
+  - ip@3.3.3
+  view: true
+  concretizer:
+    unify: true
+
