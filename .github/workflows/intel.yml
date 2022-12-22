@@ -3,7 +3,17 @@
 #
 # Ed Hartnett, 12/20/22
 name: Intel Linux Build
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches:
+    - develop
+    paths-ignore:
+    - README.md
+  pull_request:
+    branches:
+    - develop
+    paths-ignore:
+    - README.md
 
 # Use custom shell with -l so .bash_profile is sourced which loads intel/oneapi/setvars.sh
 # without having to do it in manually every step
@@ -13,7 +23,7 @@ defaults:
 
 # Set I_MPI_CC/F90 so Intel MPI wrapper uses icc/ifort instead of gcc/gfortran
 env:
-  cache_key: intel2  # The number (#) following the cache_key "intel" is to flush Action cache.
+  cache_key: intel0  # The number (#) following the cache_key "intel" is to flush Action cache.
   CC: icc
   FC: ifort
   CXX: icpc
@@ -71,7 +81,7 @@ jobs:
         if: steps.cache-env.outputs.cache-hit != 'true'
         run: |
           sudo mv /usr/local/ /usr_local_mv
-          git clone -c feature.manyFiles=true https://github.com/NOAA-EMC/spack.git
+          git clone -c feature.manyFiles=true https://github.com/spack/spack.git
           source spack/share/spack/setup-env.sh
           spack env create grib_util-env grib_util/ci/spack.yaml
           spack env activate grib_util-env
