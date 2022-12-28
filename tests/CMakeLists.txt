@@ -4,7 +4,8 @@
 # Ed Hartnett
 
 # This fortran test is for the internals of degrib2.
-add_executable(test_degrib2_int test_degrib2_int.F90 ${CMAKE_SOURCE_DIR}/src/degrib2/prlevel.F90 ${CMAKE_SOURCE_DIR}/src/degrib2/prvtime.F90)
+add_executable(test_degrib2_int test_degrib2_int.F90 ${CMAKE_SOURCE_DIR}/src/degrib2/prlevel.F90
+  ${CMAKE_SOURCE_DIR}/src/degrib2/prvtime.F90)
 target_link_libraries(test_degrib2_int PRIVATE g2::g2_4)
 add_test(NAME test_degrib2_int COMMAND test_degrib2_int)
 
@@ -91,6 +92,15 @@ if(FTP_TEST_FILES)
   foreach(THE_FILE IN LISTS WW3_WEST_FILE GDAS_FILE BLEND_FILE CMC_FILE) 
     PULL_DATA(${G2_FTP_URL} ${THE_FILE})
   endforeach()
+
+  # Fetch the large test file(s) from FTP if desired.
+  set(LARGE_FTP_FILES "fv3lam.t00z.namerica.f00.grib2")
+  if(LARGE_FTP_TESTS)
+    foreach(THE_FILE IN LISTS LARGE_FTP_FILES) 
+      PULL_DATA(${G2_FTP_URL} ${THE_FILE})
+    endforeach()
+    add_definitions(-DLARGE_FTP_TESTS)
+  endif()
 
   # Copy this inventory from the test directory. It's the expected
   # inventory for one of the FTP files, after conversion to GRIB1.
