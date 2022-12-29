@@ -19,6 +19,7 @@ jobs:
       CC: gcc-11
     strategy:
       matrix:
+        g2-version: [3.4.5, 3.4.x]
         bacio-version: [2.4.1, 2.5.0]
         jasper-version: [2.0.33]
         w3emc-version: [2.9.2, 2.9.3]
@@ -157,7 +158,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/g2
-        key: g2-${{ runner.os }}-${{ matrix.bacio-version }}-${{ matrix.jasper-version }}-${{ matrix.w3emc-version }}-3.4.5
+        key: g2-${{ runner.os }}-${{ matrix.bacio-version }}-${{ matrix.jasper-version }}-${{ matrix.w3emc-version }}-${{ matrix.g2-version }}
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
@@ -165,7 +166,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: v3.4.5
+        ref: v${{ matrix.g2-version }}
 
     - name: build-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
