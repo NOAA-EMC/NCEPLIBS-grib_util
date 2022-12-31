@@ -160,6 +160,7 @@ jobs:
         mkdir build && cd build
         ls -l ~/jasper/lib
         export LD_LIBRARY_PATH=/home/runner/jasper/lib
+        export PATH="/home/runner/g2c/bin/g2c_compare:$PATH"
         cmake -DENABLE_DOCS=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2;~/g2c" -DCMAKE_Fortran_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" -DCMAKE_C_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" ..
         make -j2 VERBOSE=1
         ctest --output-on-failure --rerun-failed --verbose
