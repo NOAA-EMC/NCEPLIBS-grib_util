@@ -1,15 +1,18 @@
+# This is a GitHub actions CI workflow for the NCEPLIBS-grib_util
+# project.
+#
+# This workflow tests the build as a developer would do it, with
+# address sanitizer and documentation build.
+#
+# Ed Hartnett 1/9/23
 name: developer
 on:
   push:
     branches:
     - develop
-    paths-ignore:
-    - README.md
   pull_request:
     branches:
     - develop
-    paths-ignore:
-    - README.md
 
 jobs:
   developer:
@@ -67,14 +70,23 @@ jobs:
         make -j2
         make install
 
+    - name: cache-sp
+      id: cache-sp
+      uses: actions/cache@v2
+      with:
+        path: ~/sp
+        key: sp-developer-${{ runner.os }}-2.3.3
+
     - name: checkout-sp
+      if: steps.cache-sp.outputs.cache-hit != 'true'
       uses: actions/checkout@v2
       with:
         repository: NOAA-EMC/NCEPLIBS-sp
         path: sp
-        ref: develop
+        ref: v2.3.3
 
     - name: build-sp
+      if: steps.cache-sp.outputs.cache-hit != 'true'
       run: |
         cd sp
         mkdir build
