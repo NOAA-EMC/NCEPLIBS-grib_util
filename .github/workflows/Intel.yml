@@ -1,16 +1,16 @@
+# This is a GitHub actions workflow for the NCEPLIBS-grib_util project.
+#
+# This workflow builds with the intel compiler.
+#
+# Ed Hartnett 1/19/23
 name: Intel
 on:
   push:
     branches:
     - develop
-    paths-ignore:
-    - README.md
   pull_request:
     branches:
     - develop
-    paths-ignore:
-    - README.md
-
 
 # Use custom shell with -l so .bash_profile is sourced which loads intel/oneapi/setvars.sh
 # without having to do it in manually every step
