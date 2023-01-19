@@ -1,15 +1,17 @@
+# This is a GitHub actions workflow for the NCEPLIBS-grib_util project.
+#
+# This workflow does the developer run, with documentation build and
+# code coverage.
+#
+# Ed Hartnett 1/19/23
 name: developer
 on:
   push:
     branches:
     - develop
-    paths-ignore:
-    - README.md
   pull_request:
     branches:
     - develop
-    paths-ignore:
-    - README.md
 
 jobs:
   developer:
