@@ -1,0 +1,194 @@
+# This is a GitHub actions workflow for the NCEPLIBS-grib_util project.
+#
+# This workflow builds on Linux with latest versions of NCEPLIBS and
+# different versions jasper.
+#
+# Ed Hartnett 1/19/23
+name: Linux_versions
+on:
+  push:
+    branches:
+    - develop
+  pull_request:
+    branches:
+    - develop
+
+jobs:
+  Linux_versions:
+    runs-on: ubuntu-latest
+    env:
+      FC: gfortran-11
+      CC: gcc-11
+    strategy:
+      matrix:
+        g2-version: [develop, 3.4.x]
+        bacio-version: [2.5.0]
+        jasper-version: [2.0.33, 3.0.5]
+        w3emc-version: [2.9.3]
+
+    steps:
+    - name: install-dependencies
+      run: |
+        sudo apt-get update &> /dev/null
+        sudo apt-get install libpng-dev libjpeg-dev 
+          
+    - name: cache-jasper
+      id: cache-jasper
+      uses: actions/cache@v2
+      with:
+        path: ~/jasper
+        key: jasper-Linux_versions-${{ matrix.jasper-version }}
+
+    - name: checkout-jasper
+      if: steps.cache-jasper.outputs.cache-hit != 'true'
+      uses: actions/checkout@v2
+      with:
+        repository: jasper-software/jasper
+        path: jasper
+        ref: version-${{ matrix.jasper-version }}
+
+    - name: build-jasper
+      if: steps.cache-jasper.outputs.cache-hit != 'true'
+      run: |
+        cd jasper
+        mkdir b && cd b
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/jasper
+        make -j2
+        make install
+
+    - name: cache-bacio
+      id: cache-bacio
+      uses: actions/cache@v2
+      with:
+        path: ~/bacio
+        key: bacio-${{ runner.os }}-v${{ matrix.bacio-version }}
+
+    - name: checkout-bacio
+      if: steps.cache-bacio.outputs.cache-hit != 'true'
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-bacio
+        path: bacio
+        ref: v${{ matrix.bacio-version }}
+    
+    - name: build-bacio
+      if: steps.cache-bacio.outputs.cache-hit != 'true'
+      run: |
+        cd bacio
+        mkdir build && cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/bacio
+        make -j2
+        make install
+
+    - name: cache-sp
+      id: cache-sp
+      uses: actions/cache@v2
+      with:
+        path: ~/sp
+        key: sp-${{ runner.os }}-2.3.3-1
+
+    - name: checkout-sp
+      if: steps.cache-sp.outputs.cache-hit != 'true'
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-sp
+        path: sp
+        ref: v2.3.3
+
+    - name: build-sp
+      if: steps.cache-sp.outputs.cache-hit != 'true'
+      run: |
+        cd sp
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/sp
+        make -j2
+        make install
+          
+    - name: cache-w3emc
+      id: cache-w3emc
+      uses: actions/cache@v2
+      with:
+        path: ~/w3emc
+        key: w3emc-${{ runner.os }}-${{ matrix.w3emc-version }}-bacio-${{ matrix.bacio-version }}
+
+    - name: checkout-w3emc
+      if: steps.cache-w3emc.outputs.cache-hit != 'true'
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-w3emc
+        path: w3emc
+        ref: v${{ matrix.w3emc-version }}
+
+    - name: build-w3emc
+      if: steps.cache-w3emc.outputs.cache-hit != 'true'
+      run: |
+        cd w3emc
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_PREFIX_PATH=~/bacio -DCMAKE_INSTALL_PREFIX=~/w3emc
+        make -j2
+        make install
+          
+    - name: cache-ip
+      id: cache-ip
+      uses: actions/cache@v2
+      with:
+        path: ~/ip
+        key: ip-${{ runner.os }}-3.3.3
+
+    - name: checkout-ip
+      if: steps.cache-ip.outputs.cache-hit != 'true'
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-ip
+        path: ip
+        ref: v3.3.3
+
+    - name: build-ip
+      if: steps.cache-ip.outputs.cache-hit != 'true'
+      run: |
+        cd ip
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp
+        make -j2
+        make install
+          
+    - name: cache-g2
+      id: cache-g2
+      uses: actions/cache@v2
+      with:
+        path: ~/g2
+        key: g2-${{ runner.os }}-${{ matrix.bacio-version }}-${{ matrix.jasper-version }}-${{ matrix.w3emc-version }}-${{ matrix.g2-version }}
+
+    - name: checkout-g2
+      if: steps.cache-g2.outputs.cache-hit != 'true'
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-g2
+        path: g2
+        ref: v${{ matrix.g2-version }}
+
+    - name: build-g2
+      if: steps.cache-g2.outputs.cache-hit != 'true'
+      run: |
+        cd g2
+        mkdir build
+        cd build
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/w3emc" ..
+        make -j2
+        make install
+                 
+    - name: checkout-grib_utils
+      uses: actions/checkout@v2
+      with: 
+        path: grib_utils
+
+    - name: build-grib_utils
+      run: |
+        cd grib_utils
+        mkdir build && cd build
+        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" ..
+        make -j2 VERBOSE=1
+        ctest --output-on-failure --rerun-failed --verbose
