@@ -156,6 +156,7 @@ jobs:
         mkdir build
         cd build
         echo $LD_LIBRARY_PATH
+        export PATH="~/g2c/bin:$PATH"
         pwd
         cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/w3emc;~/g2c" ..
         make -j2
