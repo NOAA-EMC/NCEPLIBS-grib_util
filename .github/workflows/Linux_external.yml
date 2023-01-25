@@ -21,7 +21,7 @@ jobs:
       CC: gcc-11
     strategy:
       matrix:
-        g2-version: [develop, 3.4.x]
+        g2-version: [develop, v3.4.x]
         bacio-version: [2.5.0]
         jasper-version: [2.0.33, 3.0.5]
         w3emc-version: [2.9.3]
@@ -155,23 +155,15 @@ jobs:
         make -j2
         make install
           
-    - name: cache-g2
-      id: cache-g2
-      uses: actions/cache@v2
-      with:
-        path: ~/g2
-        key: g2-${{ runner.os }}-${{ matrix.bacio-version }}-${{ matrix.jasper-version }}-${{ matrix.w3emc-version }}-${{ matrix.g2-version }}
-
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
       uses: actions/checkout@v2
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: v${{ matrix.g2-version }}
+        ref: ${{ matrix.g2-version }}
 
     - name: build-g2
-      if: steps.cache-g2.outputs.cache-hit != 'true'
       run: |
         cd g2
         mkdir build
