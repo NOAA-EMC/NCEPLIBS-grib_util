@@ -4,7 +4,7 @@
 # different versions jasper.
 #
 # Ed Hartnett 1/19/23
-name: Linux_versions
+name: Linux_external
 on:
   push:
     branches:
@@ -14,7 +14,7 @@ on:
     - develop
 
 jobs:
-  Linux_versions:
+  Linux_external:
     runs-on: ubuntu-latest
     env:
       FC: gfortran-11
@@ -155,6 +155,22 @@ jobs:
         make -j2
         make install
           
+    - name: checkout-g2c
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-g2c
+        path: g2c
+        ref: develop
+
+    - name: build-g2c
+      run: |
+        cd g2c
+        mkdir build
+        cd build
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2c -DCMAKE_PREFIX_PATH="~/jasper" ..
+        make -j2
+        make install
+                 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
       uses: actions/checkout@v2
@@ -168,7 +184,7 @@ jobs:
         cd g2
         mkdir build
         cd build
-        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/w3emc" ..
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/w3emc;~/g2c" ..
         make -j2
         make install
                  
