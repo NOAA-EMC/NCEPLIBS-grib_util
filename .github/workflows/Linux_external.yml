@@ -197,6 +197,6 @@ jobs:
       run: |
         cd grib_utils
         mkdir build && cd build
-        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" ..
+        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2;~/g2c" ..
         make -j2 VERBOSE=1
         ctest --output-on-failure --rerun-failed --verbose
