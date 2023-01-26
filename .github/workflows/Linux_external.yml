@@ -197,6 +197,8 @@ jobs:
       run: |
         cd grib_utils
         mkdir build && cd build
+        export LD_LIBRARY_PATH=/home/runner/jasper/lib
+        export PATH="~/g2c/bin:$PATH"
         cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2;~/g2c" ..
         make -j2 VERBOSE=1
         ctest --output-on-failure --rerun-failed --verbose
