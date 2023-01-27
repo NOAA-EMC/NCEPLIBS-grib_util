@@ -1,9 +1,10 @@
 # This is a GitHub actions workflow for the NCEPLIBS-grib_util project.
 #
-# This workflow builds with the intel compiler.
+# This workflow builds on Linux with latest versions of NCEPLIBS and
+# different versions jasper.
 #
 # Ed Hartnett 1/19/23
-name: Intel
+name: Linux_external
 on:
   push:
     branches:
@@ -12,39 +13,31 @@ on:
     branches:
     - develop
 
-# Use custom shell with -l so .bash_profile is sourced which loads intel/oneapi/setvars.sh
-# without having to do it in manually every step
-defaults:
-  run:
-    shell: bash -leo pipefail {0}
-
 jobs:
-  Intel:
+  Linux_external:
     runs-on: ubuntu-latest
     env:
-      CC: icc
-      FC: ifort
+      FC: gfortran-11
+      CC: gcc-11
+    strategy:
+      matrix:
+        g2-version: [develop, v3.4.x]
+        bacio-version: [2.5.0]
+        jasper-version: [2.0.33, 3.0.5, 4.0.0]
+        w3emc-version: [2.9.3]
 
     steps:
-
-    # See https://software.intel.com/content/www/us/en/develop/articles/oneapi-repo-instructions.html
-    - name: install-intel
+    - name: install-dependencies
       run: |
-        cd /tmp
-        wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-        sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-        rm GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-        echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
-        sudo apt-get update
-        sudo apt-get install intel-oneapi-dev-utilities intel-oneapi-mpi-devel intel-oneapi-openmp intel-oneapi-compiler-fortran intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
-        echo "source /opt/intel/oneapi/setvars.sh" >> ~/.bash_profile
-      
+        sudo apt-get update &> /dev/null
+        sudo apt-get install libpng-dev libjpeg-dev 
+          
     - name: cache-jasper
       id: cache-jasper
       uses: actions/cache@v2
       with:
         path: ~/jasper
-        key: jasper-Intel-2.0.33
+        key: jasper-Linux_versions-${{ matrix.jasper-version }}
 
     - name: checkout-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -52,7 +45,7 @@ jobs:
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-2.0.33
+        ref: version-${{ matrix.jasper-version }}
 
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -68,7 +61,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/bacio
-        key: bacio-Intel-${{ runner.os }}-v2.5.0
+        key: bacio-${{ runner.os }}-v${{ matrix.bacio-version }}
 
     - name: checkout-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
@@ -76,7 +69,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-bacio
         path: bacio
-        ref: v2.5.0
+        ref: v${{ matrix.bacio-version }}
     
     - name: build-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
@@ -92,7 +85,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/sp
-        key: sp-Intel-${{ runner.os }}-2.3.3-1
+        key: sp-${{ runner.os }}-2.3.3-1
 
     - name: checkout-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
@@ -117,7 +110,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/w3emc
-        key: w3emc-Intel-${{ runner.os }}-2.9.2-bacio-2.5.0
+        key: w3emc-${{ runner.os }}-${{ matrix.w3emc-version }}-bacio-${{ matrix.bacio-version }}
 
     - name: checkout-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -125,7 +118,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-w3emc
         path: w3emc
-        ref: v2.9.2
+        ref: v${{ matrix.w3emc-version }}
 
     - name: build-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -142,7 +135,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/ip
-        key: ip-Intel-${{ runner.os }}-3.3.3
+        key: ip-${{ runner.os }}-3.3.3
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -162,28 +155,36 @@ jobs:
         make -j2
         make install
           
-    - name: cache-g2
-      id: cache-g2
-      uses: actions/cache@v2
+    - name: checkout-g2c
+      uses: actions/checkout@v2
       with:
-        path: ~/g2
-        key: g2-Intel-${{ runner.os }}-2.0.33-2.5.0-3.4.5
+        repository: NOAA-EMC/NCEPLIBS-g2c
+        path: g2c
+        ref: develop
 
+    - name: build-g2c
+      run: |
+        cd g2c
+        mkdir build
+        cd build
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2c -DCMAKE_PREFIX_PATH="~/jasper" ..
+        make -j2
+        make install
+                 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
       uses: actions/checkout@v2
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: v3.4.5
+        ref: ${{ matrix.g2-version }}
 
     - name: build-g2
-      if: steps.cache-g2.outputs.cache-hit != 'true'
       run: |
         cd g2
         mkdir build
         cd build
-        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper" ..
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/w3emc;~/g2c" ..
         make -j2
         make install
                  
@@ -196,7 +197,8 @@ jobs:
       run: |
         cd grib_utils
         mkdir build && cd build
-        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" ..
-        make -j2
+        export LD_LIBRARY_PATH=/home/runner/jasper/lib
+        export PATH="~/g2c/bin:$PATH"
+        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2;~/g2c" ..
+        make -j2 VERBOSE=1
         ctest --output-on-failure --rerun-failed --verbose
-

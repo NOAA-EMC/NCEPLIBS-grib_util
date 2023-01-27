@@ -71,10 +71,15 @@ gu_copy_test_data(ref_gdaswave.t00z.wcoast.0p16.f000_2.grib2.idx)
 # Run these shell tests.
 gu_test(run_cnvgrib_tests)
 gu_test(run_copygb_tests)
-gu_test(run_copygb2_tests)
 gu_test(run_degrib2_tests)
 gu_test(run_grbindex_tests)
 gu_test(run_grb2index_tests)
+
+# This test depends on the g2c_compare utility, which may not be
+# present.
+if (G2C_COMPARE)
+  gu_test(run_copygb2_tests)
+endif()
 
 # Does the user want to get extra test files from the FTP site, and
 # run extra tests on them?
