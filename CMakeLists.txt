@@ -11,6 +11,7 @@ project(gributil VERSION ${pVersion} LANGUAGES C Fortran)
 option(OPENMP "use OpenMP threading" OFF)
 option(ENABLE_DOCS "Enable generation of doxygen-based documentation." OFF)
 option(FTP_TEST_FILES "Fetch and test with files on FTP site." OFF)
+option(BUILD_TESTING "Build tests of the library" ON)
 option(LARGE_FTP_TESTS "When testing with FTP files, include very large (> 2GB) test files - this is slow!" OFF)
 SET(TEST_FILE_DIR "." CACHE STRING "Check this directory for test files before using FTP.")
 
@@ -66,18 +67,19 @@ else()
 endif()
 message(STATUS "Using bacio library ${bacio_name}")
 
+add_subdirectory(src)
+
+# Turn on tests.
+if(BUILD_TESTING)
+  include(CTest)
+  add_subdirectory(tests)
+endif()
+
 # Determine whether or not to generate documentation.
 if(ENABLE_DOCS)
   find_package(Doxygen REQUIRED)
   add_subdirectory(docs)  
 endif()
 
-add_subdirectory(src)
-
-# Turn on tests.
-include(CTest)
-if(BUILD_TESTING)
-  add_subdirectory(tests)
-endif()
 
 
