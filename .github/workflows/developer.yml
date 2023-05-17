@@ -22,7 +22,7 @@ jobs:
       CC: gcc-11
     strategy:
       matrix:
-        g2-branch: [develop, v3.4.x]
+        g2-branch: [develop, v3.5.x]
 
     steps:
     - name: install-dependencies
@@ -66,7 +66,7 @@ jobs:
       run: |
         cd bacio
         mkdir build && cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/bacio
+        cmake -DCMAKE_INSTALL_PREFIX=~/bacio ..
         make -j2
         make install
 
