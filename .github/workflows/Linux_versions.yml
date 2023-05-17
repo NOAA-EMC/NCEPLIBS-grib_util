@@ -21,7 +21,7 @@ jobs:
       CC: gcc-11
     strategy:
       matrix:
-        g2-version: [3.4.5, 3.4.x]
+        g2-version: [3.4.5, 3.5.x]
         bacio-version: [2.4.1, 2.5.0]
         jasper-version: [2.0.33]
         w3emc-version: [2.9.2, 2.9.3, 2.10.0]
