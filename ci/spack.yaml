@@ -11,6 +11,7 @@ spack:
   - bacio@2.4.1
   - w3emc@2.9.2
   - g2@3.4.5
+  - g2c@1.7.0
   - sp@2.3.3
   - ip@3.3.3
   view: true
