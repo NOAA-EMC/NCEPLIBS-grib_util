@@ -8,6 +8,13 @@ https://noaa-emc.github.io/NCEPLIBS-grib_util/. For the NCEP WMO GRIB2
 Documentation see
 https://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_doc/.
 
+To submit bug reports, feature requests, or other code-related issues
+including installation and usage questions, please create a [GitHub
+issue](https://github.com/NOAA-EMC/NCEPLIBS-grib_util/issues). For general
+NCEPLIBS inquiries, contact [Edward
+Hartnett](mailto:edward.hartnett@noaa.gov) (secondary point of contact
+[Alex Richert](mailto:alexander.richert@noaa.gov)).
+
 ## Related NCEPLIBS Projects
 
 Repository | Notes
@@ -31,7 +38,8 @@ tocgrib2 | Stephen Gilbert, Boi Vuong | (GFS, NAM, SMOKE, RAP, HRRR, NWPS, etc.)
 tocgrib2super | Stephen Gilbert, Boi Vuong | (GFS, NAM, SMOKE, RAP, HRRR, NWPS, etc.) in production for AWIPS  and NDFD
 wgrib | W. Ebisuzaki | FAA and AWIPS (CONUS grid id 211)
 
-Code Manager : Hang Lei, Edward Hartnett
+Code Manager : [Hang Lei](mailto:hang.lei@noaa.gov), [Ed
+Hartnett](mailto:edward.hartnett@noaa.gov)
 
 ## Prerequisites
 
