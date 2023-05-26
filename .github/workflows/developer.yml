@@ -21,6 +21,7 @@ jobs:
       FC: gfortran-11
       CC: gcc-11
     strategy:
+      fail-fast: true
       matrix:
         g2-branch: [develop, v3.5.x]
 
