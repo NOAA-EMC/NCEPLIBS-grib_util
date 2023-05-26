@@ -22,15 +22,14 @@ jobs:
       CC: gcc-11
     strategy:
       matrix:
-        g2-branch: [develop, v3.5.x]
+        g2-branch: [v3.4.5, develop, v3.5.x]
 
     steps:
     - name: install-dependencies
       run: |
         sudo apt-get update &> /dev/null
         sudo apt-get install libpng-dev
-        sudo apt-get install libjpeg-dev doxygen
-        python3 -m pip install gcovr        
+        sudo apt-get install libjpeg-dev doxygen gcovr
           
     - name: checkout-jasper
       uses: actions/checkout@v2
