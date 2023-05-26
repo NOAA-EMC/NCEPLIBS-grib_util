@@ -22,7 +22,7 @@ jobs:
       CC: gcc-11
     strategy:
       matrix:
-        g2-branch: [v3.4.5, develop, v3.5.x]
+        g2-branch: [develop, v3.5.x]
 
     steps:
     - name: install-dependencies
@@ -36,21 +36,21 @@ jobs:
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-3.0.5
+        ref: version-4.0.0
 
     - name: cache-jasper
       id: cache-jasper
       uses: actions/cache@v2
       with:
         path: ~/jasper
-        key: jasper-${{ runner.os }}-2.0.33-1
+        key: jasper-${{ runner.os }}-4.0.0
 
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
       run: |
         cd jasper
         mkdir b && cd b
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/jasper
+        cmake -DCMAKE_INSTALL_PREFIX=~/jasper ..
         make -j2
         make install
 
@@ -90,7 +90,7 @@ jobs:
         cd sp
         mkdir build
         cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/sp
+        cmake -DCMAKE_INSTALL_PREFIX=~/sp ..
         make -j2
         make install
           
@@ -122,7 +122,7 @@ jobs:
         cd ip
         mkdir build
         cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp
+        cmake -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp ..
         make -j2
         make install
           
