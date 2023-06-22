@@ -19,9 +19,9 @@ Hartnett](mailto:edward.hartnett@noaa.gov) (secondary point of contact
 
 Project | Notes
 -----------|------
-[libjasper.a](http://www.ece.uvic.ca/~mdadams/jasper/) | [JPEG-2000](http://www.jpeg.org/JPEG2000.html) library
+[Jasper](http://www.ece.uvic.ca/~mdadams/jasper/) | [JPEG-2000](http://www.jpeg.org/JPEG2000.html) library
 [libpng](http://www.libpng.org/pub/png/libpng.html) | PNG compression library
-[libz](http://www.gzip.org/zlib/) | zlib compression library
+[zlib](http://www.zlib.net/) | zlib compression library
 
 ## Prerequisite NCEPLIBS Projects
 
