@@ -15,12 +15,29 @@ NCEPLIBS inquiries, contact [Edward
 Hartnett](mailto:edward.hartnett@noaa.gov) (secondary point of contact
 [Alex Richert](mailto:alexander.richert@noaa.gov)).
 
-## Related NCEPLIBS Projects
+## Prerequisite External Projects
+
+Project | Notes
+-----------|------
+[Jasper](http://www.ece.uvic.ca/~mdadams/jasper/) | [JPEG-2000](http://www.jpeg.org/JPEG2000.html) library
+[libpng](http://www.libpng.org/pub/png/libpng.html) | PNG compression library
+[zlib](http://www.zlib.net/) | zlib compression library
+
+## Prerequisite NCEPLIBS Projects
+
+Repository | Notes
+-----------|------
+[NCEPLIBS-bacio](https://github.com/NOAA-EMC/NCEPLIBS-bacio) | binary I/O for NCEP models
+[NCEPLIBS-sp](https://github.com/NOAA-EMC/NCEPLIBS-sp) | spectral transform functions
+[NCEPLIBS-ip](https://github.com/NOAA-EMC/NCEPLIBS-ip) | interpolating between NCEP grids
+[NCEPLIBS-g2](https://github.com/NOAA-EMC/NCEPLIBS-g2) | Fortran implementation of the GRIB 2 functions
+[NCEPLIBS-w3emc](https://github.com/NOAA-EMC/NCEPLIBS-w3emc) | GRIB1 library
+
+## Other Related NCEPLIBS Projects
 
 Repository | Notes
 -----------|------
 [NCEPLIBS-g2c](https://github.com/NOAA-EMC/NCEPLIBS-g2c) | C implementation of the GRIB 2 functions
-[NCEPLIBS-g2](https://github.com/NOAA-EMC/NCEPLIBS-g2) | Fortran implementation of the GRIB 2 functions
 [NCEPLIBS-g2tmpl](https://github.com/NOAA-EMC/NCEPLIBS-g2tmpl) | Utilities for GRIB2 templates
 
 ## Authors
@@ -30,31 +47,16 @@ Utility | Author(s) | User(s)
 cnvgrib | Stephen Gilbert, Gordon, Boi Vuong | ???
 copygb | Mark Iredell, Stephen Gilbert, Trojan, Boi Vuong | UFS_UTILS
 copygb2 | Mark Iredell, Stephen Gilbert, Boi Vuong | ???
-degrib2 | Boi Vuong | ???
+degrib2 | Boi Vuong | many GRIB2 users
 grb2index | Mark Iredell, Stephen Gilbert, Boi Vuong | ???
 grbindex | Mark Iredell, Stephen Gilbert, Boi Vuong, W. Ebisuzaki | FAA and AWIPS (CONUS grid id 211)
 tocgrib | Stephen Gilbert, Boi Vuong, Farley, R. E. Jones | RAP for FAA
-tocgrib2 | Stephen Gilbert, Boi Vuong | (GFS, NAM, SMOKE, RAP, HRRR, NWPS, etc.) in production for AWIPS  and NDFD
-tocgrib2super | Stephen Gilbert, Boi Vuong | (GFS, NAM, SMOKE, RAP, HRRR, NWPS, etc.) in production for AWIPS  and NDFD
+tocgrib2 | Stephen Gilbert, Boi Vuong | (GFS, NAM, SMOKE, RAP, HRRR, NWPS, etc.) in production for AWIPS and NDFD
+tocgrib2super | Stephen Gilbert, Boi Vuong | (GFS, NAM, SMOKE, RAP, HRRR, NWPS, etc.) in production for AWIPS and NDFD
 wgrib | W. Ebisuzaki | FAA and AWIPS (CONUS grid id 211)
 
 Code Manager : [Hang Lei](mailto:hang.lei@noaa.gov), [Ed
 Hartnett](mailto:edward.hartnett@noaa.gov)
-
-## Prerequisites
-
-This package requires the following third party libraries:
-- [Jasper](http://www.ece.uvic.ca/~mdadams/jasper/)
-- [libpng](http://www.libpng.org/pub/png/libpng.html)
-- [libz](http://www.gzip.org/zlib/)
-
-This package requires the folling NCEPLIBS libraries:
-- [NCEPLIBS-sp](https://github.com/NOAA-EMC/NCEPLIBS-sp)
-- [NCEPLIBS-ip](https://github.com/NOAA-EMC/NCEPLIBS-ip)
-- [NCEPLIBS-bacio](https://github.com/NOAA-EMC/NCEPLIBS-bacio)
-- [NCEPLIBS-g2](https://github.com/NOAA-EMC/NCEPLIBS-g2)
-- [NCEPLIBS-w3nco](https://github.com/NOAA-EMC/NCEPLIBS-w3nco) (before version 1.3.0)
-- [NCEPLIBS-w3emc](https://github.com/NOAA-EMC/NCEPLIBS-w3emc) (starting version 1.3.0)
 
 ## Installing
 
