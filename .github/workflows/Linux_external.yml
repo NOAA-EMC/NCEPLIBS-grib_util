@@ -20,6 +20,7 @@ jobs:
       FC: gfortran-11
       CC: gcc-11
     strategy:
+      fail-fast: true
       matrix:
         g2-version: [develop, v3.5.x]
         bacio-version: [2.5.0]
