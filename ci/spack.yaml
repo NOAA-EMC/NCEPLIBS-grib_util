@@ -8,8 +8,8 @@ spack:
       - intel
       - gcc@10:10
   specs:
-  - bacio@2.4.1
-  - w3emc@2.9.2
+  - bacio@2.5.0
+  - w3emc@2.9.3
   - g2@3.4.5
   - g2c@1.7.0
   - sp@2.3.3

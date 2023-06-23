@@ -39,7 +39,7 @@ env:
 # so each build of UPP can reuse the cached dependencies to save time (and compute).
 
 jobs:
-  spack-setup:
+  macos-spack-setup:
     runs-on: macos-latest
 
     steps:
@@ -72,7 +72,7 @@ jobs:
           spack install -v --fail-fast --dirty
           spack clean -a
 
-  spack-build:
+  macos-spack-build:
     needs: spack-setup
     runs-on: ubuntu-latest
 
