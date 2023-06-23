@@ -20,11 +20,12 @@ jobs:
       FC: gfortran-11
       CC: gcc-11
     strategy:
+      fail-fast: true
       matrix:
-        g2-version: [3.4.5, 3.4.x]
+        g2-version: [3.4.5, 3.5.x]
         bacio-version: [2.4.1, 2.5.0]
         jasper-version: [2.0.33]
-        w3emc-version: [2.9.2, 2.9.3]
+        w3emc-version: [2.9.2, 2.9.3, 2.10.0]
 
     steps:
     - name: install-dependencies
@@ -126,7 +127,7 @@ jobs:
         cd w3emc
         mkdir build
         cd build
-        cmake .. -DCMAKE_PREFIX_PATH=~/bacio -DCMAKE_INSTALL_PREFIX=~/w3emc
+        cmake -DCMAKE_PREFIX_PATH=~/bacio -DCMAKE_INSTALL_PREFIX=~/w3emc -DBUILD_WITH_BUFR=OFF ..
         make -j2
         make install
           
@@ -155,6 +156,22 @@ jobs:
         make -j2
         make install
           
+    - name: checkout-g2c
+      uses: actions/checkout@v2
+      with:
+        repository: NOAA-EMC/NCEPLIBS-g2c
+        path: g2c
+        ref: develop
+
+    - name: build-g2c
+      run: |
+        cd g2c
+        mkdir build
+        cd build
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2c -DCMAKE_PREFIX_PATH="~/jasper" ..
+        make -j2
+        make install
+                 
     - name: cache-g2
       id: cache-g2
       uses: actions/cache@v2
@@ -176,7 +193,7 @@ jobs:
         cd g2
         mkdir build
         cd build
-        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/w3emc" ..
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/w3emc;~/g2c" ..
         make -j2
         make install
                  
@@ -189,6 +206,7 @@ jobs:
       run: |
         cd grib_utils
         mkdir build && cd build
-        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" ..
+        export LD_LIBRARY_PATH=/home/runner/jasper/lib
+        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2;~/g2c" ..
         make -j2 VERBOSE=1
         ctest --output-on-failure --rerun-failed --verbose

@@ -21,37 +21,37 @@ jobs:
       FC: gfortran-11
       CC: gcc-11
     strategy:
+      fail-fast: true
       matrix:
-        g2-branch: [develop, v3.4.x]
+        g2-branch: [develop, v3.5.x]
 
     steps:
     - name: install-dependencies
       run: |
         sudo apt-get update &> /dev/null
         sudo apt-get install libpng-dev
-        sudo apt-get install libjpeg-dev doxygen
-        python3 -m pip install gcovr        
+        sudo apt-get install libjpeg-dev doxygen gcovr
           
     - name: checkout-jasper
       uses: actions/checkout@v2
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-3.0.5
+        ref: version-4.0.0
 
     - name: cache-jasper
       id: cache-jasper
       uses: actions/cache@v2
       with:
         path: ~/jasper
-        key: jasper-${{ runner.os }}-2.0.33-1
+        key: jasper-${{ runner.os }}-4.0.0
 
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
       run: |
         cd jasper
         mkdir b && cd b
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/jasper
+        cmake -DCMAKE_INSTALL_PREFIX=~/jasper ..
         make -j2
         make install
 
@@ -66,7 +66,7 @@ jobs:
       run: |
         cd bacio
         mkdir build && cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/bacio
+        cmake -DCMAKE_INSTALL_PREFIX=~/bacio ..
         make -j2
         make install
 
@@ -91,7 +91,7 @@ jobs:
         cd sp
         mkdir build
         cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/sp
+        cmake -DCMAKE_INSTALL_PREFIX=~/sp ..
         make -j2
         make install
           
@@ -107,7 +107,7 @@ jobs:
         cd w3emc
         mkdir build
         cd build
-        cmake .. -DCMAKE_PREFIX_PATH=~/bacio -DCMAKE_INSTALL_PREFIX=~/w3emc
+        cmake -DCMAKE_PREFIX_PATH=~/bacio -DCMAKE_INSTALL_PREFIX=~/w3emc -DBUILD_WITH_BUFR=OFF ..
         make -j2
         make install
           
@@ -123,7 +123,7 @@ jobs:
         cd ip
         mkdir build
         cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp
+        cmake -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp ..
         make -j2
         make install
           
