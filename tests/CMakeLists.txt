@@ -70,6 +70,8 @@ gu_copy_test_data(ref_gdaswave.t00z.wcoast.0p16.f000_2.grib2.idx)
 gu_copy_test_data(ref_gfs.landmask.grib1)
 gu_copy_test_data(ref_grid_172.landmask.grib1)
 gu_copy_test_data(ref_grid_220.landmask.grib1)
+gu_copy_test_data(ref_blend.t19z.core.f001.co.grib2.degrib2)
+gu_copy_test_data(ref_cmc_geavg.t12z.pgrb2a.0p50.f000.degrib2)
 
 # Run these shell tests.
 gu_test(run_cnvgrib_tests)
