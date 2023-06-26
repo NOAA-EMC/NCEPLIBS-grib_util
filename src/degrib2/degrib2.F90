@@ -25,8 +25,8 @@ program degrib2
   integer :: listsec1(13)
   character(len = 250) :: gfile1
   character(len = 8) :: pabbrev
-  character(len = 30) :: labbrev
-  character(len = 90) :: tabbrev
+  character(len = 40) :: labbrev
+  character(len = 100) :: tabbrev
   integer(4) narg, iargc, temparg
   integer :: currlen = 0,  numpts = 0
   logical :: unpack, expand

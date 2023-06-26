@@ -86,24 +86,26 @@ subroutine prvtime(ipdtn, ipdtmpl, listsec1, tabbrev)
      iunit2 = 1
   else
      iutpos2 = ipos2(ipdtn)
-     selectcase(ipdtmpl(iutpos2))
-     case (0)
-        iunit2 = 1
-     case (1)
-        iunit2 = 1
-     case (2)
-        iunit2 = 1
-     case (3)
-        iuni2t2 = 1
-     case (4)
-        iunit2 = 1
-     case (10)
-        iunit2 = 3
-     case (11)
-        iunit2 = 6
-     case default
-        iunit2 = 1
-     end select
+     if (iutpos2 .gt. 0) then
+        selectcase(ipdtmpl(iutpos2))
+        case (0)
+           iunit2 = 1
+        case (1)
+           iunit2 = 1
+        case (2)
+           iunit2 = 1
+        case (3)
+           iuni2t2 = 1
+        case (4)
+           iunit2 = 1
+        case (10)
+           iunit2 = 3
+        case (11)
+           iunit2 = 6
+        case default
+           iunit2 = 1
+        end select
+     endif
   endif
 
   write(reftime, fmt = '(i4,3i2.2,":",i2.2,":",i2.2)') (listsec1(j), j = 6, 11)
