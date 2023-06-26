@@ -9,15 +9,6 @@
 !>
 !> @note Command line can have only one file name.
 !>
-!> ### Program History Log
-!> Date | Programmer | Comments
-!> -----|------------|---------
-!> 2010-09-06 | Vuong | Initial
-!> 2011-10-03 | Vuong | Added to check for reference time for PDT 4.15
-!> 2012-06-07 | Vuong | Changed PRINT statement to WRITE with format specifier
-!> 2017-01-21 | Vuong | Added to check for undefine values
-!> 2022-09-06 | Hartnett | Added implicit none
-!>
 !> @return 0 for success.
 !> @author Stephen Gilbert @date 2010-09-08
 program degrib2
