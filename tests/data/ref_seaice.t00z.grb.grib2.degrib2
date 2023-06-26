@@ -1,10 +1,10 @@
- 
+
  GRIB MESSAGE  1  starts at 1
- 
+
   SECTION 0:  10 2 51345
   SECTION 1:  7 0 2 1 1 2022 11 17 0 0 0 0 1
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  10 2
   SECTION 1:  7 0 2 1 1 2022 11 17 0 0 0 0 1

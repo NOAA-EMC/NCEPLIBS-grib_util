@@ -1,10 +1,10 @@
- 
+
  GRIB MESSAGE  1  starts at 1
- 
+
   SECTION 0:  0 2 552511
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -19,13 +19,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= PRES ) :  MIN=           51187.53906250 AVE=           96642.53125000 MAX=          103746.74218750
- 
+
  GRIB MESSAGE  2  starts at 552512
- 
+
   SECTION 0:  0 2 422551
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -40,13 +40,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= PRES ) :  MIN=              27.35723877 AVE=             162.97578430 MAX=            5248.95751953
- 
+
  GRIB MESSAGE  3  starts at 975063
- 
+
   SECTION 0:  0 2 390061
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -61,13 +61,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=           10681.81640625 AVE=           11742.47753906 MAX=           12523.41699219
- 
+
  GRIB MESSAGE  4  starts at 1365124
- 
+
   SECTION 0:  0 2 390061
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -82,13 +82,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=            9314.32910156 AVE=           10312.72167969 MAX=           11030.32910156
- 
+
  GRIB MESSAGE  5  starts at 1755185
- 
+
   SECTION 0:  0 2 357571
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -103,13 +103,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=            4810.53271484 AVE=            5518.91748047 MAX=            5912.93310547
- 
+
  GRIB MESSAGE  6  starts at 2112756
- 
+
   SECTION 0:  0 2 357571
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -124,13 +124,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=            2335.91796875 AVE=            2948.51806641 MAX=            3221.51806641
- 
+
  GRIB MESSAGE  7  starts at 2470327
- 
+
   SECTION 0:  0 2 357571
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -145,13 +145,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=             814.38195801 AVE=            1405.27392578 MAX=            1654.38208008
- 
+
  GRIB MESSAGE  8  starts at 2827898
- 
+
   SECTION 0:  0 2 325081
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -166,13 +166,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=             143.31634521 AVE=             721.05755615 MAX=             956.91632080
- 
+
  GRIB MESSAGE  9  starts at 3152979
- 
+
   SECTION 0:  0 2 325081
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -187,13 +187,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=            -480.63238525 AVE=              82.40405273 MAX=             317.76763916
- 
+
  GRIB MESSAGE  10  starts at 3478060
- 
+
   SECTION 0:  0 2 162631
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -208,13 +208,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=               4.56069899 AVE=              12.14069748 MAX=              26.96069908
- 
+
  GRIB MESSAGE  11  starts at 3640691
- 
+
   SECTION 0:  0 2 162631
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -229,13 +229,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=               4.42022943 AVE=              12.43251610 MAX=              27.62022972
- 
+
  GRIB MESSAGE  12  starts at 3803322
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -250,13 +250,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=               3.31496215 AVE=              10.78373528 MAX=              32.91496277
- 
+
  GRIB MESSAGE  13  starts at 3998443
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -271,13 +271,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=               2.63134766 AVE=               7.99745226 MAX=              33.83134842
- 
+
  GRIB MESSAGE  14  starts at 4193564
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -292,13 +292,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=               2.33757949 AVE=               7.05052423 MAX=              39.93758011
- 
+
  GRIB MESSAGE  15  starts at 4388685
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -313,13 +313,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=               2.33482218 AVE=               7.24241447 MAX=              50.33481979
- 
+
  GRIB MESSAGE  16  starts at 4583806
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -334,13 +334,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=               2.41636252 AVE=               7.98959875 MAX=              59.21636581
- 
+
  GRIB MESSAGE  17  starts at 4811417
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -355,13 +355,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             194.25073242 AVE=             216.45820618 MAX=             233.45072937
- 
+
  GRIB MESSAGE  18  starts at 5006538
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -376,13 +376,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             202.04295349 AVE=             221.98780823 MAX=             238.84294128
- 
+
  GRIB MESSAGE  19  starts at 5201659
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -397,13 +397,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             228.71560669 AVE=             252.81706238 MAX=             271.91561890
- 
+
  GRIB MESSAGE  20  starts at 5396780
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -418,13 +418,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             232.65400696 AVE=             267.53457642 MAX=             290.25399780
- 
+
  GRIB MESSAGE  21  starts at 5624391
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -439,13 +439,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             242.29856873 AVE=             274.46139526 MAX=             303.09857178
- 
+
  GRIB MESSAGE  22  starts at 5852002
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -460,13 +460,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             245.78970337 AVE=             277.05618286 MAX=             308.18969727
- 
+
  GRIB MESSAGE  23  starts at 6079613
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -481,13 +481,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             244.99601746 AVE=             280.45251465 MAX=             308.99603271
- 
+
  GRIB MESSAGE  24  starts at 6307224
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -502,13 +502,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             221.80381775 AVE=             278.28198242 MAX=             309.00381470
- 
+
  GRIB MESSAGE  25  starts at 6534835
- 
+
   SECTION 0:  0 2 162631
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -523,13 +523,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=               0.15565713 AVE=               1.18323302 MAX=              12.95565701
- 
+
  GRIB MESSAGE  26  starts at 6697466
- 
+
   SECTION 0:  0 2 65161
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -544,13 +544,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=               0.19349314 AVE=               0.61950588 MAX=               2.59349322
- 
+
  GRIB MESSAGE  27  starts at 6762627
- 
+
   SECTION 0:  0 2 65161
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -565,13 +565,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=               0.21344160 AVE=               0.61284757 MAX=               2.61344171
- 
+
  GRIB MESSAGE  28  starts at 6827788
- 
+
   SECTION 0:  0 2 97651
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -586,13 +586,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=               0.20780168 AVE=               0.61976862 MAX=               4.20780182
- 
+
  GRIB MESSAGE  29  starts at 6925439
- 
+
   SECTION 0:  0 2 97651
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -607,13 +607,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=               0.17253481 AVE=               0.89029109 MAX=               4.97253513
- 
+
  GRIB MESSAGE  30  starts at 7023090
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -628,13 +628,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=               0.22287515 AVE=               1.06549966 MAX=               9.02287579
- 
+
  GRIB MESSAGE  31  starts at 7153231
- 
+
   SECTION 0:  0 2 162631
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -649,13 +649,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=               0.21457215 AVE=               1.06206179 MAX=              13.01457214
- 
+
  GRIB MESSAGE  32  starts at 7315862
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -670,13 +670,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=               0.17104805 AVE=               1.18908703 MAX=               7.37104797
- 
+
  GRIB MESSAGE  33  starts at 7446003
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -691,13 +691,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.22642858 AVE=              32.59527588 MAX=              85.02642822
- 
+
  GRIB MESSAGE  34  starts at 7673614
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -712,13 +712,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.34828499 AVE=              42.11209488 MAX=              87.54828644
- 
+
  GRIB MESSAGE  35  starts at 7901225
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -733,13 +733,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.56444436 AVE=              45.88330078 MAX=              95.76445007
- 
+
  GRIB MESSAGE  36  starts at 8128836
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -754,13 +754,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.41246033 AVE=              50.89618301 MAX=              98.81246185
- 
+
  GRIB MESSAGE  37  starts at 8356447
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -775,13 +775,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.71227199 AVE=              63.60497665 MAX=              99.11227417
- 
+
  GRIB MESSAGE  38  starts at 8584058
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -796,13 +796,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               4.76895475 AVE=              73.79652405 MAX=              99.16896057
- 
+
  GRIB MESSAGE  39  starts at 8811669
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -817,13 +817,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               4.66361952 AVE=              71.37456512 MAX=              99.06362152
- 
+
  GRIB MESSAGE  40  starts at 9039280
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -838,13 +838,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               7.73840046 AVE=              77.30265045 MAX=              98.93840790
- 
+
  GRIB MESSAGE  41  starts at 9266891
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -859,13 +859,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.13983987 AVE=              13.32641792 MAX=              40.13984299
- 
+
  GRIB MESSAGE  42  starts at 9462012
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -880,13 +880,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.26972666 AVE=              15.97757721 MAX=              41.06972885
- 
+
  GRIB MESSAGE  43  starts at 9657133
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -901,13 +901,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.29744908 AVE=              13.41523838 MAX=              38.69744873
- 
+
  GRIB MESSAGE  44  starts at 9852254
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -922,13 +922,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.36315709 AVE=              13.40484238 MAX=              41.96315765
- 
+
  GRIB MESSAGE  45  starts at 10047375
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -943,13 +943,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.46693394 AVE=              13.32704926 MAX=              43.66693497
- 
+
  GRIB MESSAGE  46  starts at 10242496
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -964,13 +964,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.45217952 AVE=              11.12197113 MAX=              43.65217972
- 
+
  GRIB MESSAGE  47  starts at 10437617
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -985,13 +985,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               1.04362011 AVE=               8.80253029 MAX=              44.24361801
- 
+
  GRIB MESSAGE  48  starts at 10632738
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1006,13 +1006,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.56080103 AVE=               6.13725233 MAX=              37.36080170
- 
+
  GRIB MESSAGE  49  starts at 10827859
- 
+
   SECTION 0:  0 2 260101
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1027,13 +1027,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -25.94930077 AVE=              15.68957901 MAX=              76.45069885
- 
+
  GRIB MESSAGE  50  starts at 11087960
- 
+
   SECTION 0:  0 2 260101
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1048,13 +1048,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -28.42732239 AVE=              14.32478237 MAX=              81.17268372
- 
+
  GRIB MESSAGE  51  starts at 11348061
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1069,13 +1069,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -23.88969231 AVE=               6.68329144 MAX=              50.51031113
- 
+
  GRIB MESSAGE  52  starts at 11575672
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1090,13 +1090,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -31.32382584 AVE=               3.07954025 MAX=              36.67617416
- 
+
  GRIB MESSAGE  53  starts at 11803283
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1111,13 +1111,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -35.38311768 AVE=               0.92695832 MAX=              38.21688461
- 
+
  GRIB MESSAGE  54  starts at 12030894
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1132,13 +1132,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -31.68843460 AVE=               0.13630410 MAX=              35.51156616
- 
+
  GRIB MESSAGE  55  starts at 12258505
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1153,13 +1153,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -22.62512779 AVE=              -0.43355471 MAX=              28.57487297
- 
+
  GRIB MESSAGE  56  starts at 12486116
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1174,13 +1174,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -21.72445107 AVE=              -0.42469111 MAX=              27.07555008
- 
+
  GRIB MESSAGE  57  starts at 12681237
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1195,13 +1195,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=               0.53141361 AVE=               2.31421280 MAX=              11.73141384
- 
+
  GRIB MESSAGE  58  starts at 12811378
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1216,13 +1216,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=               0.66933721 AVE=               2.53376436 MAX=              11.86933804
- 
+
  GRIB MESSAGE  59  starts at 12941519
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1237,13 +1237,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=               0.24848919 AVE=               2.16119695 MAX=               9.84848976
- 
+
  GRIB MESSAGE  60  starts at 13071660
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1258,13 +1258,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=               0.15272318 AVE=               1.83360195 MAX=               8.95272350
- 
+
  GRIB MESSAGE  61  starts at 13201801
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1279,13 +1279,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=               0.09011731 AVE=               1.62988460 MAX=               8.89011765
- 
+
  GRIB MESSAGE  62  starts at 13331942
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1300,13 +1300,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=               0.11495437 AVE=               1.52261376 MAX=              10.51495457
- 
+
  GRIB MESSAGE  63  starts at 13462083
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1321,13 +1321,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=               0.09356615 AVE=               1.31490135 MAX=               8.89356613
- 
+
  GRIB MESSAGE  64  starts at 13592224
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1342,13 +1342,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=               0.09477907 AVE=               1.18589556 MAX=               8.09477901
- 
+
  GRIB MESSAGE  65  starts at 13722365
- 
+
   SECTION 0:  0 2 260101
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1363,13 +1363,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -58.10303497 AVE=              -0.02838204 MAX=              48.29696655
- 
+
  GRIB MESSAGE  66  starts at 13982466
- 
+
   SECTION 0:  0 2 260101
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1384,13 +1384,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -68.75592041 AVE=               0.11383695 MAX=              56.84408188
- 
+
  GRIB MESSAGE  67  starts at 14242567
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1405,13 +1405,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -57.97848511 AVE=               0.01408576 MAX=              42.82151413
- 
+
  GRIB MESSAGE  68  starts at 14470178
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1426,13 +1426,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -39.64230347 AVE=              -0.03249808 MAX=              28.35769653
- 
+
  GRIB MESSAGE  69  starts at 14697789
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1447,13 +1447,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -31.89925194 AVE=              -0.01072199 MAX=              33.70074844
- 
+
  GRIB MESSAGE  70  starts at 14925400
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1468,13 +1468,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -32.23096085 AVE=               0.10547027 MAX=              30.16904068
- 
+
  GRIB MESSAGE  71  starts at 15153011
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1489,13 +1489,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -23.33145905 AVE=               0.15507305 MAX=              23.86854172
- 
+
  GRIB MESSAGE  72  starts at 15348132
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1510,13 +1510,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -22.22955132 AVE=               0.17918450 MAX=              22.57044792
- 
+
  GRIB MESSAGE  73  starts at 15543253
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1531,13 +1531,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=               0.50654411 AVE=               2.27068520 MAX=              10.10654449
- 
+
  GRIB MESSAGE  74  starts at 15673394
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1552,13 +1552,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=               0.64928788 AVE=               2.52276850 MAX=              12.64928818
- 
+
  GRIB MESSAGE  75  starts at 15803535
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1573,13 +1573,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=               0.36023310 AVE=               2.14803028 MAX=               8.36023331
- 
+
  GRIB MESSAGE  76  starts at 15933676
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1594,13 +1594,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=               0.17362124 AVE=               1.79782987 MAX=               8.17362118
- 
+
  GRIB MESSAGE  77  starts at 16063817
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1615,13 +1615,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=               0.14869431 AVE=               1.59489536 MAX=               9.74869442
- 
+
  GRIB MESSAGE  78  starts at 16193958
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1636,13 +1636,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=               0.13426226 AVE=               1.51280463 MAX=              12.13426208
- 
+
  GRIB MESSAGE  79  starts at 16324099
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1657,13 +1657,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=               0.10770346 AVE=               1.31124556 MAX=               9.70770359
- 
+
  GRIB MESSAGE  80  starts at 16454240
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1678,13 +1678,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=               0.10767098 AVE=               1.19585121 MAX=               8.90767097
- 
+
  GRIB MESSAGE  81  starts at 16584381
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1699,13 +1699,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               1.11253917 AVE=              21.29057693 MAX=              80.31253815
- 
+
  GRIB MESSAGE  82  starts at 16811992
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1720,13 +1720,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               1.34484243 AVE=              21.36730957 MAX=              81.34484100
- 
+
  GRIB MESSAGE  83  starts at 17039603
- 
+
   SECTION 0:  0 2 227611
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1741,13 +1741,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.95446551 AVE=              13.12590790 MAX=              64.15447235
- 
+
  GRIB MESSAGE  84  starts at 17267214
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1762,13 +1762,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.36914071 AVE=               9.82847881 MAX=              45.96914291
- 
+
  GRIB MESSAGE  85  starts at 17462335
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1783,13 +1783,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.37042964 AVE=               8.86705589 MAX=              39.57043076
- 
+
  GRIB MESSAGE  86  starts at 17657456
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1804,13 +1804,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.27962577 AVE=               8.78822231 MAX=              38.67962646
- 
+
  GRIB MESSAGE  87  starts at 17852577
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1825,13 +1825,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.27953455 AVE=               7.27986383 MAX=              29.07953453
- 
+
  GRIB MESSAGE  88  starts at 18047698
- 
+
   SECTION 0:  0 2 195121
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1846,13 +1846,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.27058575 AVE=               6.53755236 MAX=              27.47058678
- 
+
  GRIB MESSAGE  89  starts at 18242819
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1867,13 +1867,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.56668115 AVE=               2.30967140 MAX=              11.76668072
- 
+
  GRIB MESSAGE  90  starts at 18372960
- 
+
   SECTION 0:  0 2 162631
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1888,13 +1888,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.67879766 AVE=               2.54037905 MAX=              14.27879810
- 
+
  GRIB MESSAGE  91  starts at 18535591
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1909,13 +1909,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.35391629 AVE=               2.10987401 MAX=               8.35391617
- 
+
  GRIB MESSAGE  92  starts at 18665732
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1930,13 +1930,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.16505796 AVE=               1.78418946 MAX=               7.36505842
- 
+
  GRIB MESSAGE  93  starts at 18795873
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1951,13 +1951,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.14712325 AVE=               1.61208701 MAX=               8.14712334
- 
+
  GRIB MESSAGE  94  starts at 18926014
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1972,13 +1972,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.13077186 AVE=               1.49928820 MAX=               9.73077202
- 
+
  GRIB MESSAGE  95  starts at 19056155
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -1993,13 +1993,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.11424323 AVE=               1.28425062 MAX=               8.11424351
- 
+
  GRIB MESSAGE  96  starts at 19186296
- 
+
   SECTION 0:  0 2 130141
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2014,13 +2014,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.09653272 AVE=               1.15478516 MAX=               7.29653263
- 
+
  GRIB MESSAGE  97  starts at 19316437
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2035,13 +2035,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.00000000 AVE=              58.91909790 MAX=             100.00000000
- 
+
  GRIB MESSAGE  98  starts at 19544059
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2056,13 +2056,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.00000000 AVE=              50.24220276 MAX=             100.00000000
- 
+
  GRIB MESSAGE  99  starts at 19771681
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2077,13 +2077,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= GUST ) :  MIN=               0.00000000 AVE=              49.94455338 MAX=             100.00000000
- 
+
  GRIB MESSAGE  100  starts at 19999303
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2098,13 +2098,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= GUST ) :  MIN=               0.00000000 AVE=              15.40096474 MAX=             100.00000000
- 
+
  GRIB MESSAGE  101  starts at 20226925
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2119,13 +2119,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= GUST ) :  MIN=               0.00000000 AVE=               2.46543074 MAX=             100.00000000
- 
+
  GRIB MESSAGE  102  starts at 20454547
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2140,13 +2140,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= GUST ) :  MIN=               0.00000000 AVE=               0.11218377 MAX=              91.20000458
- 
+
  GRIB MESSAGE  103  starts at 20682169
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2161,13 +2161,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=              18.80230141 MAX=             100.00000000
- 
+
  GRIB MESSAGE  104  starts at 20909791
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2182,13 +2182,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               8.07761002 MAX=             100.00000000
- 
+
  GRIB MESSAGE  105  starts at 21137413
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2203,13 +2203,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               3.50269914 MAX=             100.00000000
- 
+
  GRIB MESSAGE  106  starts at 21365035
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2224,13 +2224,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=              15.12583447 MAX=             100.00000000
- 
+
  GRIB MESSAGE  107  starts at 21592657
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2245,13 +2245,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               6.41252565 MAX=             100.00000000
- 
+
  GRIB MESSAGE  108  starts at 21820279
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2266,13 +2266,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               2.32146764 MAX=              96.80000305
- 
+
  GRIB MESSAGE  109  starts at 22047901
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2287,13 +2287,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               8.84117031 MAX=             100.00000000
- 
+
  GRIB MESSAGE  110  starts at 22275523
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2308,13 +2308,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               3.41994762 MAX=             100.00000000
- 
+
  GRIB MESSAGE  111  starts at 22503145
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2329,13 +2329,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               1.28503156 MAX=              96.80000305
- 
+
  GRIB MESSAGE  112  starts at 22730767
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2350,13 +2350,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               5.91494846 MAX=             100.00000000
- 
+
  GRIB MESSAGE  113  starts at 22958389
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2371,13 +2371,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               1.77165842 MAX=              92.80000305
- 
+
  GRIB MESSAGE  114  starts at 23186011
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2392,13 +2392,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.51177615 MAX=              64.00000000
- 
+
  GRIB MESSAGE  115  starts at 23413633
- 
+
   SECTION 0:  0 2 192
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2413,13 +2413,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
- 
+
  GRIB MESSAGE  116  starts at 23413825
- 
+
   SECTION 0:  0 2 192
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2434,13 +2434,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
- 
+
  GRIB MESSAGE  117  starts at 23414017
- 
+
   SECTION 0:  0 2 192
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2455,13 +2455,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
- 
+
  GRIB MESSAGE  118  starts at 23414209
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2476,13 +2476,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=               0.00000000 AVE=              34.60972595 MAX=             100.00000000
- 
+
  GRIB MESSAGE  119  starts at 23641831
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2497,13 +2497,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=               0.00000000 AVE=               0.16645557 MAX=              98.40000153
- 
+
  GRIB MESSAGE  120  starts at 23869453
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2518,13 +2518,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=               0.00000000 AVE=              36.03074265 MAX=             100.00000000
- 
+
  GRIB MESSAGE  121  starts at 24097075
- 
+
   SECTION 0:  0 2 260099
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2539,13 +2539,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=             -90.00000000 AVE=               0.05964143 MAX=              90.00000000
- 
+
  GRIB MESSAGE  122  starts at 24357174
- 
+
   SECTION 0:  0 2 292589
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2560,13 +2560,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=            -179.50000000 AVE=               0.29987189 MAX=             179.69999695
- 
+
  GRIB MESSAGE  123  starts at 24649763
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2581,13 +2581,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=               0.00000000 AVE=              40.56405640 MAX=             100.00000000
- 
+
  GRIB MESSAGE  124  starts at 24877385
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2602,13 +2602,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=               0.00000000 AVE=              48.23694992 MAX=             100.00000000
- 
+
  GRIB MESSAGE  125  starts at 25105007
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2623,13 +2623,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= PRMSL ) :  MIN=               0.00000000 AVE=               9.04498959 MAX=             100.00000000
- 
+
  GRIB MESSAGE  126  starts at 25332629
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2644,13 +2644,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= PRMSL ) :  MIN=               0.00000000 AVE=              20.26829338 MAX=             100.00000000
- 
+
  GRIB MESSAGE  127  starts at 25560251
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2665,13 +2665,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.00000000 AVE=               0.63163483 MAX=             100.00000000
- 
+
  GRIB MESSAGE  128  starts at 25787873
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2686,13 +2686,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.00000000 AVE=              45.12957764 MAX=             100.00000000
- 
+
  GRIB MESSAGE  129  starts at 26015495
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2707,13 +2707,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=              33.78586960 MAX=             100.00000000
- 
+
  GRIB MESSAGE  130  starts at 26243117
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2728,13 +2728,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=              22.70354652 MAX=             100.00000000
- 
+
  GRIB MESSAGE  131  starts at 26470739
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2749,13 +2749,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=              13.00906277 MAX=             100.00000000
- 
+
  GRIB MESSAGE  132  starts at 26698361
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2770,13 +2770,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= PWAT ) :  MIN=               0.00000000 AVE=              28.35539627 MAX=             100.00000000
- 
+
  GRIB MESSAGE  133  starts at 26925983
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2791,13 +2791,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= PWAT ) :  MIN=               0.00000000 AVE=               5.95830250 MAX=             100.00000000
- 
+
  GRIB MESSAGE  134  starts at 27153605
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2812,13 +2812,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=              50.50914383 MAX=             100.00000000
- 
+
  GRIB MESSAGE  135  starts at 27381227
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2833,13 +2833,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=              15.02941513 MAX=             100.00000000
- 
+
  GRIB MESSAGE  136  starts at 27608849
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2854,13 +2854,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             222.58671570 AVE=             278.19757080 MAX=             311.38671875
- 
+
  GRIB MESSAGE  137  starts at 27836458
- 
+
   SECTION 0:  0 2 195119
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2875,13 +2875,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             193.90002441 AVE=             216.23200989 MAX=             233.90002441
- 
+
  GRIB MESSAGE  138  starts at 28031577
- 
+
   SECTION 0:  0 2 195119
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2896,13 +2896,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             201.42474365 AVE=             222.05065918 MAX=             239.82475281
- 
+
  GRIB MESSAGE  139  starts at 28226696
- 
+
   SECTION 0:  0 2 195119
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2917,13 +2917,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             228.54995728 AVE=             252.83821106 MAX=             272.54995728
- 
+
  GRIB MESSAGE  140  starts at 28421815
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2938,13 +2938,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             231.41477966 AVE=             267.04782104 MAX=             292.21478271
- 
+
  GRIB MESSAGE  141  starts at 28649424
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2959,13 +2959,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             240.11477661 AVE=             273.93545532 MAX=             304.91476440
- 
+
  GRIB MESSAGE  142  starts at 28877033
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -2980,13 +2980,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             243.41242981 AVE=             276.91079712 MAX=             309.81243896
- 
+
  GRIB MESSAGE  143  starts at 29104642
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3001,13 +3001,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TMP ) :  MIN=             242.87034607 AVE=             280.55462646 MAX=             314.07034302
- 
+
  GRIB MESSAGE  144  starts at 29332251
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3022,13 +3022,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -21.02111244 AVE=              -0.38580132 MAX=              30.17888832
- 
+
  GRIB MESSAGE  145  starts at 29559860
- 
+
   SECTION 0:  0 2 260099
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3043,13 +3043,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -28.18057060 AVE=              15.73355865 MAX=              83.01943207
- 
+
  GRIB MESSAGE  146  starts at 29819959
- 
+
   SECTION 0:  0 2 260099
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3064,13 +3064,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -30.43996048 AVE=              14.37498474 MAX=              86.36003876
- 
+
  GRIB MESSAGE  147  starts at 30080058
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3085,13 +3085,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -26.96638870 AVE=               6.75090218 MAX=              53.83361435
- 
+
  GRIB MESSAGE  148  starts at 30307667
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3106,13 +3106,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -32.17910385 AVE=               3.18787503 MAX=              38.22089767
- 
+
  GRIB MESSAGE  149  starts at 30535276
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3127,13 +3127,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -34.21038437 AVE=               1.02954912 MAX=              43.38961411
- 
+
  GRIB MESSAGE  150  starts at 30762885
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3148,13 +3148,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -30.46265030 AVE=               0.21038666 MAX=              40.73735046
- 
+
  GRIB MESSAGE  151  starts at 30990494
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3169,13 +3169,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UGRD ) :  MIN=             -23.09036064 AVE=              -0.38385639 MAX=              32.90963745
- 
+
  GRIB MESSAGE  152  starts at 31218103
- 
+
   SECTION 0:  0 2 195119
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3190,13 +3190,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -23.64285278 AVE=               0.16534296 MAX=              23.55714798
- 
+
  GRIB MESSAGE  153  starts at 31413222
- 
+
   SECTION 0:  0 2 260099
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3211,13 +3211,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -58.09341049 AVE=               0.01792126 MAX=              49.90659332
- 
+
  GRIB MESSAGE  154  starts at 31673321
- 
+
   SECTION 0:  0 2 260099
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3232,13 +3232,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -74.07244873 AVE=               0.18596172 MAX=              60.32755280
- 
+
  GRIB MESSAGE  155  starts at 31933420
- 
+
   SECTION 0:  0 2 260099
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3253,13 +3253,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -62.60810471 AVE=               0.04479525 MAX=              45.39189529
- 
+
  GRIB MESSAGE  156  starts at 32193519
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3274,13 +3274,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -41.74958038 AVE=              -0.01533901 MAX=              34.25042343
- 
+
  GRIB MESSAGE  157  starts at 32421128
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3295,13 +3295,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -36.11452866 AVE=               0.00181264 MAX=              35.08547211
- 
+
  GRIB MESSAGE  158  starts at 32648737
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3316,13 +3316,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -33.09259033 AVE=               0.12546879 MAX=              31.70741081
- 
+
  GRIB MESSAGE  159  starts at 32876346
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3337,13 +3337,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= VGRD ) :  MIN=             -25.03988457 AVE=               0.14273016 MAX=              26.16011620
- 
+
  GRIB MESSAGE  160  starts at 33103955
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3358,13 +3358,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               3.69572115 AVE=              77.96832275 MAX=              99.69572449
- 
+
  GRIB MESSAGE  161  starts at 33331564
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3379,13 +3379,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.10000002 AVE=              36.19892120 MAX=             100.09999847
- 
+
  GRIB MESSAGE  162  starts at 33559173
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3400,13 +3400,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.03195190 AVE=              47.39522552 MAX=             100.03195190
- 
+
  GRIB MESSAGE  163  starts at 33786782
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3421,13 +3421,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.00000000 AVE=              49.35638046 MAX=             100.00000000
- 
+
  GRIB MESSAGE  164  starts at 34014391
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3442,13 +3442,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.00000000 AVE=              54.35227585 MAX=             100.00000000
- 
+
  GRIB MESSAGE  165  starts at 34242000
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3463,13 +3463,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.00000000 AVE=              69.40615082 MAX=             100.00000000
- 
+
  GRIB MESSAGE  166  starts at 34469609
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3484,13 +3484,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               0.51475233 AVE=              78.87756348 MAX=              99.71475220
- 
+
  GRIB MESSAGE  167  starts at 34697218
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3505,13 +3505,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= RH ) :  MIN=               2.98795557 AVE=              75.75222778 MAX=              99.78795624
- 
+
  GRIB MESSAGE  168  starts at 34924827
- 
+
   SECTION 0:  0 2 390059
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3526,13 +3526,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=           10669.45214844 AVE=           11731.65039062 MAX=           12515.05273438
- 
+
  GRIB MESSAGE  169  starts at 35314886
- 
+
   SECTION 0:  0 2 390059
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3547,13 +3547,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=            9298.79101562 AVE=           10303.30078125 MAX=           11020.39062500
- 
+
  GRIB MESSAGE  170  starts at 35704945
- 
+
   SECTION 0:  0 2 357569
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3568,13 +3568,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=            4793.75781250 AVE=            5509.07666016 MAX=            5908.15771484
- 
+
  GRIB MESSAGE  171  starts at 36062514
- 
+
   SECTION 0:  0 2 357569
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3589,13 +3589,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=            2318.17822266 AVE=            2943.26538086 MAX=            3238.17822266
- 
+
  GRIB MESSAGE  172  starts at 36420083
- 
+
   SECTION 0:  0 2 357569
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3610,13 +3610,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=             802.82983398 AVE=            1402.84240723 MAX=            1699.62988281
- 
+
  GRIB MESSAGE  173  starts at 36777652
- 
+
   SECTION 0:  0 2 357569
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3631,13 +3631,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=             133.54454041 AVE=             719.09350586 MAX=            1011.14453125
- 
+
  GRIB MESSAGE  174  starts at 37135221
- 
+
   SECTION 0:  0 2 357569
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3652,13 +3652,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= HGT ) :  MIN=            -488.84512329 AVE=              81.78554535 MAX=             365.55490112
- 
+
  GRIB MESSAGE  175  starts at 37492790
- 
+
   SECTION 0:  0 2 455039
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3673,13 +3673,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= PRMSL ) :  MIN=           94095.78125000 AVE=          101026.97656250 MAX=          104846.98437500
- 
+
  GRIB MESSAGE  176  starts at 37947829
- 
+
   SECTION 0:  0 2 455041
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3694,13 +3694,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= PRMSL ) :  MIN=           94189.88281250 AVE=          101023.14062500 MAX=          104372.28125000
- 
+
  GRIB MESSAGE  177  starts at 38402870
- 
+
   SECTION 0:  0 2 325081
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3715,13 +3715,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= PRMSL ) :  MIN=              28.68695641 AVE=             101.83486938 MAX=             755.08697510
- 
+
  GRIB MESSAGE  178  starts at 38727951
- 
+
   SECTION 0:  0 2 422549
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3736,13 +3736,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= CAPE ) :  MIN=            -212.68174744 AVE=             164.88642883 MAX=            4208.11865234
- 
+
  GRIB MESSAGE  179  starts at 39150500
- 
+
   SECTION 0:  0 2 357569
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3757,13 +3757,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= CAPE ) :  MIN=               0.00000000 AVE=              85.08364868 MAX=            1556.00000000
- 
+
  GRIB MESSAGE  180  starts at 39508069
- 
+
   SECTION 0:  0 2 325079
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3778,13 +3778,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= CIN ) :  MIN=            -579.23168945 AVE=              -3.85065889 MAX=              -0.03168945
- 
+
  GRIB MESSAGE  181  starts at 39833148
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3799,13 +3799,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= WIND ) :  MIN=               0.00000000 AVE=              34.56636429 MAX=             100.00000000
- 
+
  GRIB MESSAGE  182  starts at 40060770
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3820,13 +3820,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TCDC ) :  MIN=               0.00000000 AVE=              29.31168365 MAX=             100.00000000
- 
+
  GRIB MESSAGE  183  starts at 40288379
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3841,13 +3841,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TCDC ) :  MIN=               0.00000000 AVE=              45.83716583 MAX=             100.00000000
- 
+
  GRIB MESSAGE  184  starts at 40515988
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3862,13 +3862,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TCDC ) :  MIN=               0.00000000 AVE=              31.74422646 MAX=             100.00000000
- 
+
  GRIB MESSAGE  185  starts at 40743597
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3883,13 +3883,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TCDC ) :  MIN=               0.00000000 AVE=              18.84619141 MAX=             100.00000000
- 
+
  GRIB MESSAGE  186  starts at 40971206
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3904,13 +3904,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TCDC ) :  MIN=               0.00000000 AVE=              16.24309921 MAX=             100.00000000
- 
+
  GRIB MESSAGE  187  starts at 41198815
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3925,13 +3925,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TCDC ) :  MIN=               0.00000000 AVE=               8.79217720 MAX=             100.00000000
- 
+
  GRIB MESSAGE  188  starts at 41426424
- 
+
   SECTION 0:  0 2 227609
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3946,13 +3946,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= TCDC ) :  MIN=               0.00000000 AVE=               3.86485505 MAX=             100.00000000
- 
+
  GRIB MESSAGE  189  starts at 41654033
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3967,13 +3967,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=              32.11504745 MAX=              90.40000153
- 
+
  GRIB MESSAGE  190  starts at 41881655
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -3988,13 +3988,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=              17.26718903 MAX=              70.40000153
- 
+
  GRIB MESSAGE  191  starts at 42109277
- 
+
   SECTION 0:  0 2 195132
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4009,13 +4009,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               6.06249714 MAX=              35.20000076
- 
+
  GRIB MESSAGE  192  starts at 42304409
- 
+
   SECTION 0:  0 2 455052
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4030,13 +4030,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=             -50.00000000 AVE=             -32.61013794 MAX=            8747.60058594
- 
+
  GRIB MESSAGE  193  starts at 42759461
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4051,13 +4051,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=              16.96234894 MAX=             100.00000000
- 
+
  GRIB MESSAGE  194  starts at 42987083
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4072,13 +4072,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.07645891 MAX=              82.40000153
- 
+
  GRIB MESSAGE  195  starts at 43214705
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4093,13 +4093,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= SNFALB ) :  MIN=               0.00000000 AVE=               2.61185527 MAX=             100.00000000
- 
+
  GRIB MESSAGE  196  starts at 43442327
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4114,13 +4114,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.25522614 MAX=              90.40000153
- 
+
  GRIB MESSAGE  197  starts at 43669949
- 
+
   SECTION 0:  0 2 455041
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4135,13 +4135,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= CWDI ) :  MIN=               0.00000000 AVE=              16.51787949 MAX=            6922.39990234
- 
+
  GRIB MESSAGE  198  starts at 44124990
- 
+
   SECTION 0:  0 2 682469
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4156,13 +4156,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= CEIL ) :  MIN=               0.00062500 AVE=          294402.06250000 MAX=          999999.18750000
- 
+
  GRIB MESSAGE  199  starts at 44807459
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4177,13 +4177,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               4.66951990 MAX=             100.00000000
- 
+
  GRIB MESSAGE  200  starts at 45035081
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4198,13 +4198,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.71112013 MAX=             100.00000000
- 
+
  GRIB MESSAGE  201  starts at 45262703
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4219,13 +4219,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.14029597 MAX=              98.40000153
- 
+
  GRIB MESSAGE  202  starts at 45490325
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4240,13 +4240,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               4.25503206 MAX=             100.00000000
- 
+
  GRIB MESSAGE  203  starts at 45717947
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4261,13 +4261,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.59563464 MAX=              99.20000458
- 
+
  GRIB MESSAGE  204  starts at 45945569
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4282,13 +4282,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.07596227 MAX=              86.40000153
- 
+
  GRIB MESSAGE  205  starts at 46173191
- 
+
   SECTION 0:  0 2 192
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4303,13 +4303,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
- 
+
  GRIB MESSAGE  206  starts at 46173383
- 
+
   SECTION 0:  0 2 192
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4324,13 +4324,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
- 
+
  GRIB MESSAGE  207  starts at 46173575
- 
+
   SECTION 0:  0 2 192
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4345,13 +4345,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
- 
+
  GRIB MESSAGE  208  starts at 46173767
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4366,13 +4366,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               1.80758309 MAX=             100.00000000
- 
+
  GRIB MESSAGE  209  starts at 46401389
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4387,13 +4387,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.41011944 MAX=             100.00000000
- 
+
  GRIB MESSAGE  210  starts at 46629011
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4408,13 +4408,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.08473696 MAX=              97.59999847
- 
+
  GRIB MESSAGE  211  starts at 46856633
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4429,13 +4429,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               2.95149875 MAX=             100.00000000
- 
+
  GRIB MESSAGE  212  starts at 47084255
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4450,13 +4450,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.13246115 MAX=              90.40000153
- 
+
  GRIB MESSAGE  213  starts at 47311877
- 
+
   SECTION 0:  0 2 162642
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4471,13 +4471,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.00269313 MAX=              13.60000038
- 
+
  GRIB MESSAGE  214  starts at 47474519
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4492,13 +4492,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               4.00640345 MAX=             100.00000000
- 
+
  GRIB MESSAGE  215  starts at 47702141
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4513,13 +4513,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.54165047 MAX=              98.40000153
- 
+
  GRIB MESSAGE  216  starts at 47929763
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4534,13 +4534,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               0.04246818 MAX=              56.79999924
- 
+
  GRIB MESSAGE  217  starts at 48157385
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4555,13 +4555,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=              13.61466026 MAX=             100.00000000
- 
+
  GRIB MESSAGE  218  starts at 48385007
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
@@ -4576,13 +4576,13 @@
   Data Values:
   Num. of Data Points =  259920   Num. of Data Undefined = 0
 ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=               1.80091810 MAX=              99.20000458
- 
+
  GRIB MESSAGE  219  starts at 48612629
- 
+
   SECTION 0:  0 2 227622
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0
   Contains  0  Local Sections  and  1  data fields.
- 
+
   FIELD  1
   SECTION 0:  0 2
   SECTION 1:  57 4 1 1 1 2022 10 30 0 0 0 0 0

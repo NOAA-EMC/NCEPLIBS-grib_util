@@ -70,12 +70,20 @@ gu_copy_test_data(ref_gdaswave.t00z.wcoast.0p16.f000_2.grib2.idx)
 gu_copy_test_data(ref_gfs.landmask.grib1)
 gu_copy_test_data(ref_grid_172.landmask.grib1)
 gu_copy_test_data(ref_grid_220.landmask.grib1)
-gu_copy_test_data(ref_blend.t19z.core.f001.co.grib2.degrib2)
-gu_copy_test_data(ref_cmc_geavg.t12z.pgrb2a.0p50.f000.degrib2)
-gu_copy_test_data(ref_WW3_Regional_US_West_Coast_20220718_0000.grib2.degrib2)
-gu_copy_test_data(ref_WW3_Regional_US_East_Coast_20220717_0600.grib2.degrib2)
-gu_copy_test_data(ref_gdas.t12z.pgrb2.1p00.anl.grib2.degrib2)
-gu_copy_test_data(ref_flxf2022111712.01.2022111712.grb2.degrib2)
+if(FTP_TEST_FILES)
+  gu_copy_test_data(ref_blend.t19z.core.f001.co.grib2.degrib2)
+  gu_copy_test_data(ref_cmc_geavg.t12z.pgrb2a.0p50.f000.degrib2)
+  gu_copy_test_data(ref_WW3_Regional_US_West_Coast_20220718_0000.grib2.degrib2)
+  gu_copy_test_data(ref_WW3_Regional_US_East_Coast_20220717_0600.grib2.degrib2)
+  gu_copy_test_data(ref_gdas.t12z.pgrb2.1p00.anl.grib2.degrib2)
+  gu_copy_test_data(ref_flxf2022111712.01.2022111712.grb2.degrib2)
+  gu_copy_test_data(ref_GLOBAL.grib2.2022103000.0000.degrib2)
+  gu_copy_test_data(ref_hiresw.t00z.arw_5km.f00.hi.grib2.degrib2)
+  gu_copy_test_data(ref_naefs_ge10pt.t12z.pgrb2a.0p50_bcf003.degrib2)
+  gu_copy_test_data(ref_rap.t00z.awp130pgrbf00.grib2.degrib2)
+  gu_copy_test_data(ref_seaice.t00z.grb.grib2.degrib2)
+  gu_copy_test_data(ref_sgx_nwps_CG3_20221117_1200.grib2.degrib2)
+endif()
 
 # Run these shell tests.
 gu_test(run_cnvgrib_tests)
@@ -94,22 +102,18 @@ endif()
 # run extra tests on them?
 if(FTP_TEST_FILES)
   set(G2_FTP_URL "https://ftp.emc.ncep.noaa.gov/static_files/public/NCEPLIBS-g2")
-  set(WW3_WEST_FILE "WW3_Regional_US_West_Coast_20220718_0000.grib2")
-  set(WW3_EAST_FILE "WW3_Regional_US_East_Coast_20220717_0600.grib2")
-  set(GDAS_FILE "gdas.t12z.pgrb2.1p00.anl.grib2")
-  set(BLEND_FILE "blend.t19z.core.f001.co.grib2")
-  set(CMC_FILE "cmc_geavg.t12z.pgrb2a.0p50.f000")
-  
-  # Get the files from the FTP site.
-  foreach(THE_FILE IN LISTS WW3_WEST_FILE WW3_EAST_FILE GDAS_FILE BLEND_FILE CMC_FILE
-      "flxf2022111712.01.2022111712.grb2"
-      "GLOBAL.grib2.2022103000.0000"
-      "hiresw.t00z.arw_5km.f00.hi.grib2"
-      "naefs_ge10pt.t12z.pgrb2a.0p50_bcf003"
-      "rap.t00z.awp130pgrbf00.grib2"
-      "seaice.t00z.grb.grib2"
-      "sgx_nwps_CG3_20221117_1200.grib2"  
-    ) 
+
+  set(FTP_TEST_FILES WW3_Regional_US_West_Coast_20220718_0000.grib2
+    WW3_Regional_US_East_Coast_20220717_0600.grib2
+    gdas.t12z.pgrb2.1p00.anl.grib2 blend.t19z.core.f001.co.grib2
+    cmc_geavg.t12z.pgrb2a.0p50.f000 flxf2022111712.01.2022111712.grb2
+    GLOBAL.grib2.2022103000.0000 hiresw.t00z.arw_5km.f00.hi.grib2
+    naefs_ge10pt.t12z.pgrb2a.0p50_bcf003 rap.t00z.awp130pgrbf00.grib2
+    seaice.t00z.grb.grib2 sgx_nwps_CG3_20221117_1200.grib2
+    GLOBAL.grib2.2022103000.0000 hiresw.t00z.arw_5km.f00.hi.grib2
+    naefs_ge10pt.t12z.pgrb2a.0p50_bcf003 rap.t00z.awp130pgrbf00.grib2
+    sgx_nwps_CG3_20221117_1200.grib2)
+  foreach(THE_FILE IN LISTS FTP_TEST_FILES)
     PULL_DATA(${G2_FTP_URL} ${THE_FILE})
   endforeach()
 
