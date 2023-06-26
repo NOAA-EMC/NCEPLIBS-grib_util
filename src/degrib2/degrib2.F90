@@ -9,15 +9,6 @@
 !>
 !> @note Command line can have only one file name.
 !>
-!> ### Program History Log
-!> Date | Programmer | Comments
-!> -----|------------|---------
-!> 2010-09-06 | Vuong | Initial
-!> 2011-10-03 | Vuong | Added to check for reference time for PDT 4.15
-!> 2012-06-07 | Vuong | Changed PRINT statement to WRITE with format specifier
-!> 2017-01-21 | Vuong | Added to check for undefine values
-!> 2022-09-06 | Hartnett | Added implicit none
-!>
 !> @return 0 for success.
 !> @author Stephen Gilbert @date 2010-09-08
 program degrib2
@@ -34,8 +25,8 @@ program degrib2
   integer :: listsec1(13)
   character(len = 250) :: gfile1
   character(len = 8) :: pabbrev
-  character(len = 30) :: labbrev
-  character(len = 90) :: tabbrev
+  character(len = 40) :: labbrev
+  character(len = 100) :: tabbrev
   integer(4) narg, iargc, temparg
   integer :: currlen = 0,  numpts = 0
   logical :: unpack, expand
@@ -175,8 +166,8 @@ program degrib2
         write(6, *)' Data Values:'
         write(6, '(A,I0,A,I0)')'  Num. of Data Points =  ', &
              gfld%ndpts, '   Num. of Data Undefined = ', gfld%ndpts-numpts
-        write(6, fmt = '( "( PARM= ",A," ) : ", " MIN=",f25.8," AVE=",f25.8, &
-             " MAX=",f25.8)') trim(pabbrev), fldmin, sum / numpts, fldmax
+        write(6, fmt = '( "( PARM= ",A," ) : ", " MIN=",f25.8," AVE=",f25.8, " MAX=",f25.8)') &
+             trim(pabbrev), fldmin, sum / numpts, fldmax
 
         ! Free memory allocated to hold field.
         call gf_free(gfld)
@@ -184,4 +175,5 @@ program degrib2
   enddo
   write(6, *)" "
   write(6, '(A,I0)')'  Total Number of Fields Found =  ', itot
+  if (allocated(cgrib)) deallocate(cgrib)  
 end program degrib2
