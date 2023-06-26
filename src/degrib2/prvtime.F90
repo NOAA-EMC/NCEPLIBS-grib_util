@@ -24,7 +24,7 @@ subroutine prvtime(ipdtn, ipdtmpl, listsec1, tabbrev)
 
   character(len = 16) :: reftime, endtime
   character(len = 10) :: tmpval, tmpval2
-  character(len = 10) :: tunit, tunit2
+  character(len = 10) :: tunit
   integer, dimension(200) :: ipos, ipos2
   integer :: is, itemp, itemp2, iunit, iuni2t2, iunit2, iutpos, iutpos2, j
   
@@ -82,33 +82,29 @@ subroutine prvtime(ipdtn, ipdtmpl, listsec1, tabbrev)
   end select
 
   ! Determine second unit of time range.
-  iutpos2 = ipos2(ipdtn)
-  selectcase(ipdtmpl(iutpos2))
-  case (0)
-     tunit2 = "minute"
+  if (ipdtn .eq. 0) then
      iunit2 = 1
-  case (1)
-     tunit2 = "hour"
-     iunit2 = 1
-  case (2)
-     tunit2 = "day"
-     iunit2 = 1
-  case (3)
-     tunit2 = "month"
-     iuni2t2 = 1
-  case (4)
-     tunit2 = "year"
-     iunit2 = 1
-  case (10)
-     tunit2 = "hour"
-     iunit2 = 3
-  case (11)
-     tunit2 = "hour"
-     iunit2 = 6
-  case default
-     tunit2 = "hour"
-     iunit2 = 1
-  end select
+  else
+     iutpos2 = ipos2(ipdtn)
+     selectcase(ipdtmpl(iutpos2))
+     case (0)
+        iunit2 = 1
+     case (1)
+        iunit2 = 1
+     case (2)
+        iunit2 = 1
+     case (3)
+        iuni2t2 = 1
+     case (4)
+        iunit2 = 1
+     case (10)
+        iunit2 = 3
+     case (11)
+        iunit2 = 6
+     case default
+        iunit2 = 1
+     end select
+  endif
 
   write(reftime, fmt = '(i4,3i2.2,":",i2.2,":",i2.2)') (listsec1(j), j = 6, 11)
   itemp = abs (ipdtmpl(iutpos + 1)) * iunit

@@ -175,8 +175,8 @@ program degrib2
         write(6, *)' Data Values:'
         write(6, '(A,I0,A,I0)')'  Num. of Data Points =  ', &
              gfld%ndpts, '   Num. of Data Undefined = ', gfld%ndpts-numpts
-        write(6, fmt = '( "( PARM= ",A," ) : ", " MIN=",f25.8," AVE=",f25.8, &
-             " MAX=",f25.8)') trim(pabbrev), fldmin, sum / numpts, fldmax
+        write(6, fmt = '( "( PARM= ",A," ) : ", " MIN=",f25.8," AVE=",f25.8, " MAX=",f25.8)') &
+             trim(pabbrev), fldmin, sum / numpts, fldmax
 
         ! Free memory allocated to hold field.
         call gf_free(gfld)
