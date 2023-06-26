@@ -13,12 +13,14 @@ ftp_files="blend.t19z.core.f001.co.grib2 \
 cmc_geavg.t12z.pgrb2a.0p50.f000 \
 WW3_Regional_US_West_Coast_20220718_0000.grib2 \
 WW3_Regional_US_East_Coast_20220717_0600.grib2 \
-gdas.t12z.pgrb2.1p00.anl.grib2"
+gdas.t12z.pgrb2.1p00.anl.grib2 \
+flxf2022111712.01.2022111712.grb2 \
+"
 
 for f in $ftp_files
 do
-    echo "Testing with file $f"
-    ls -l data/$f
+    echo "Testing degrib2 with file $f"
+#    ls -l data/$f
     ../src/degrib2/degrib2 data/$f > ${f}.degrib2
     diff -w ${f}.degrib2 data/ref_${f}.degrib2
 done

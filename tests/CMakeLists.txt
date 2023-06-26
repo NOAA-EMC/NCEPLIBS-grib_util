@@ -75,6 +75,7 @@ gu_copy_test_data(ref_cmc_geavg.t12z.pgrb2a.0p50.f000.degrib2)
 gu_copy_test_data(ref_WW3_Regional_US_West_Coast_20220718_0000.grib2.degrib2)
 gu_copy_test_data(ref_WW3_Regional_US_East_Coast_20220717_0600.grib2.degrib2)
 gu_copy_test_data(ref_gdas.t12z.pgrb2.1p00.anl.grib2.degrib2)
+gu_copy_test_data(ref_flxf2022111712.01.2022111712.grb2.degrib2)
 
 # Run these shell tests.
 gu_test(run_cnvgrib_tests)
@@ -100,7 +101,15 @@ if(FTP_TEST_FILES)
   set(CMC_FILE "cmc_geavg.t12z.pgrb2a.0p50.f000")
   
   # Get the files from the FTP site.
-  foreach(THE_FILE IN LISTS WW3_WEST_FILE WW3_EAST_FILE GDAS_FILE BLEND_FILE CMC_FILE) 
+  foreach(THE_FILE IN LISTS WW3_WEST_FILE WW3_EAST_FILE GDAS_FILE BLEND_FILE CMC_FILE
+      "flxf2022111712.01.2022111712.grb2"
+      "GLOBAL.grib2.2022103000.0000"
+      "hiresw.t00z.arw_5km.f00.hi.grib2"
+      "naefs_ge10pt.t12z.pgrb2a.0p50_bcf003"
+      "rap.t00z.awp130pgrbf00.grib2"
+      "seaice.t00z.grb.grib2"
+      "sgx_nwps_CG3_20221117_1200.grib2"  
+    ) 
     PULL_DATA(${G2_FTP_URL} ${THE_FILE})
   endforeach()
 
