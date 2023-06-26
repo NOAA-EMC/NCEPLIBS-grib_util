@@ -70,6 +70,10 @@ gu_copy_test_data(ref_gdaswave.t00z.wcoast.0p16.f000_2.grib2.idx)
 gu_copy_test_data(ref_gfs.landmask.grib1)
 gu_copy_test_data(ref_grid_172.landmask.grib1)
 gu_copy_test_data(ref_grid_220.landmask.grib1)
+gu_copy_test_data(ref_blend.t19z.core.f001.co.grib2.degrib2)
+gu_copy_test_data(ref_cmc_geavg.t12z.pgrb2a.0p50.f000.degrib2)
+gu_copy_test_data(ref_WW3_Regional_US_West_Coast_20220718_0000.grib2.degrib2)
+gu_copy_test_data(ref_WW3_Regional_US_East_Coast_20220717_0600.grib2.degrib2)
 
 # Run these shell tests.
 gu_test(run_cnvgrib_tests)
@@ -95,9 +99,7 @@ if(FTP_TEST_FILES)
   set(CMC_FILE "cmc_geavg.t12z.pgrb2a.0p50.f000")
   
   # Get the files from the FTP site.
-  # Not using the East Coast file yet.
-  # foreach(THE_FILE IN LISTS WW3_WEST_FILE WW3_EAST_FILE) 
-  foreach(THE_FILE IN LISTS WW3_WEST_FILE GDAS_FILE BLEND_FILE CMC_FILE) 
+  foreach(THE_FILE IN LISTS WW3_WEST_FILE WW3_EAST_FILE GDAS_FILE BLEND_FILE CMC_FILE) 
     PULL_DATA(${G2_FTP_URL} ${THE_FILE})
   endforeach()
 
