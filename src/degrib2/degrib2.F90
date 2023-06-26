@@ -52,6 +52,7 @@ program degrib2
   ncgb = len_trim(gfile1)
   call baopenr(ifl1, gfile1(1:ncgb), ios)
 
+  ! Process each message in the file.
   itot = 0
   icount = 0
   iseek = 0
@@ -172,7 +173,15 @@ program degrib2
         ! Free memory allocated to hold field.
         call gf_free(gfld)
      enddo
+     
+     ! If we allocated cgrib, deallocate it.
+     if (allocated(cgrib)) then
+        deallocate(cgrib)
+        currlen = 0
+     endif
+     
   enddo
   write(6, *)" "
   write(6, '(A,I0)')'  Total Number of Fields Found =  ', itot
+
 end program degrib2
