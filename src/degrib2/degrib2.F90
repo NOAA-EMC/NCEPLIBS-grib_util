@@ -175,4 +175,5 @@ program degrib2
   enddo
   write(6, *)" "
   write(6, '(A,I0)')'  Total Number of Fields Found =  ', itot
+  if (allocated(cgrib)) deallocate(cgrib)  
 end program degrib2
