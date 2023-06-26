@@ -10,10 +10,10 @@ echo "*** Running degrib2 test"
 # Degrib2 a GRIB2 file.
 ../src/degrib2/degrib2 data/ref_gdaswave.t00z.wcoast.0p16.f000.grib2 &> test_gdaswave.degrib2.txt
 
-echo "got:"
-cat test_gdaswave.degrib2.txt
-echo "expected:"
-cat data/ref_gdaswave.degrib2.txt
+#echo "got:"
+#cat test_gdaswave.degrib2.txt
+#echo "expected:"
+#cat data/ref_gdaswave.degrib2.txt
 
 # Check against expected output.
 diff -w test_gdaswave.degrib2.txt data/ref_gdaswave.degrib2.txt
