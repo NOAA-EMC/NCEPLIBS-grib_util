@@ -15,39 +15,38 @@ program test_degrib2_int
   integer :: pt_8_0(29) = (/ 1, 228, 2, 255, 104, 65535, 255, 1, 0, 1, 0, 0, 255, 0, 0, 2022, 11, 17, &
        20, 0, 0, 1, 0, 1, 2, 1, 1, 1, 0 /)
   integer :: s1_0(13) = (/ 7, 14, 1, 1, 1, 2022, 11, 17, 19, 0, 0, 0, 1 /)
+  integer :: s1(13)
   character(len = 40) :: la
   character(len = 100) :: ta
-  integer :: NUM_TN, t
+  integer :: NUM_TN, t, NUM_TN_T
   parameter(NUM_TN = 8)
   integer :: tn(NUM_TN) = (/ 999, 91, 52, 50, 48, 0, 40, 44 /)
   integer :: ipos(NUM_TN) = (/ 10, 10, 13, 10, 21, 10, 11, 16 /)
+  parameter(NUM_TN_T = 8)
+  integer :: tn_t(NUM_TN_T) = (/ 999, 91, 0, 1, 40, 44, 48, 52 /)
+  integer :: iutpos(NUM_TN_T) = (/ 8, 8, 8, 8, 9, 14, 19, 11 /)
 
   print *, 'Testing degrib2 level and date/time descriptions...'
 
-  ! Template 0 with various options.
-  call prlevel(0, pt_0_0, la)
-  if (la .ne. " Surface") stop 10
-  call prvtime(0, pt_0_0, s1_0, ta)
-  if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 11
+  ! Test all the prvtime values.
+  do t = 1, NUM_TN_T
+     print *, '*** Testing prvtime() with pdtn ', tn_t(t)
 
-  call prlevel(0, pt_0_1, la)
-  if (la .ne. " 800 mb") stop 20
-  call prvtime(0, pt_0_1, s1_0, ta)
-  if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 21
-  
-  call prlevel(0, pt_0_2, la)
-  if (trim(la) .ne. "2 m above ground") stop 30
-  call prvtime(0, pt_0_2, s1_0, ta)
-  if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 31
-
-  call prlevel(0, pt_0_3, la)
-  if (trim(la) .ne. " 400 -  300 mb") stop 40
-  call prvtime(0, pt_0_3, s1_0, ta)
-  if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 41
+     pt(iutpos(t)) = 0
+     call prvtime(tn_t(t), pt, s1, ta)
+     print *, '/',trim(ta),'/'
+     if (t .eq. 1) then
+        if (trim(ta) .ne.  "valid at     0") stop 41
+     elseif (t .eq. 2) then
+        if (trim(ta) .ne.  "(0 -0 hr) valid  0 minute after    0000000:00:00 to    0000000:00:00") stop 41
+     else
+        if (trim(ta) .ne.  "valid  0 minute after    0000000:00:00") stop 41
+     end if
+  end do
 
   ! Test all the prlevel values.
   do t = 1, NUM_TN
-     print *, '*** Testing pdtn ', tn(t)
+     print *, '*** Testing prlevel() with pdtn ', tn(t)
      pt(ipos(t)) = 101
      call prlevel(tn(t), pt, la)
      if (la .ne. " Mean Sea Level ") stop 40
@@ -57,14 +56,14 @@ program test_degrib2_int
      pt(ipos(t) + 2) = 0
      pt(ipos(t) + 3) = 255
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. "0 m above MSL") stop 40
      pt(ipos(t) + 3) = 0
 
      pt(ipos(t)) = 103
      pt(ipos(t) + 3) = 0
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. "  103 (Unknown Lvl)") stop 40
 
      pt(ipos(t)) = 103
@@ -74,7 +73,7 @@ program test_degrib2_int
      pt(ipos(t) + 4) = 1
      pt(ipos(t) + 5) = 1
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. "0 m above ground") stop 40
 
      pt(ipos(t)) = 103
@@ -84,7 +83,7 @@ program test_degrib2_int
      pt(ipos(t) + 4) = 1
      pt(ipos(t) + 5) = 1
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. "0 - .1 m AGL") stop 40
 
      pt(ipos(t)) = 104
@@ -92,7 +91,7 @@ program test_degrib2_int
      pt(ipos(t) + 2) = 0
      pt(ipos(t) + 3) = 255
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. "0 sigma") stop 40
 
      pt(ipos(t)) = 104
@@ -102,7 +101,7 @@ program test_degrib2_int
      pt(ipos(t) + 4) = 1
      pt(ipos(t) + 5) = 1
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. "0 - .1 sigma") stop 40
 
      pt(ipos(t)) = 105
@@ -110,7 +109,7 @@ program test_degrib2_int
      pt(ipos(t) + 2) = 0
      pt(ipos(t) + 3) = 255
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. "0 hybrid lvl") stop 40
 
      pt(ipos(t)) = 105
@@ -120,7 +119,7 @@ program test_degrib2_int
      pt(ipos(t) + 4) = 1
      pt(ipos(t) + 5) = 1
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. "0 - .1 hybrid lvl") stop 40
 
      pt(ipos(t)) = 106
@@ -128,7 +127,7 @@ program test_degrib2_int
      pt(ipos(t) + 2) = 0
      pt(ipos(t) + 3) = 255
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. "0 m below land") stop 40
 
      pt(ipos(t)) = 106
@@ -138,12 +137,12 @@ program test_degrib2_int
      pt(ipos(t) + 4) = 1
      pt(ipos(t) + 5) = 1
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. "0 - .1 m DBLY") stop 40
 
      pt(ipos(t)) = 107
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. " Isentropic level") stop 40
 
      pt(ipos(t)) = 108
@@ -153,12 +152,12 @@ program test_degrib2_int
      pt(ipos(t) + 4) = 1
      pt(ipos(t) + 5) = 1
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. " 0 - .001 mb SPDY") stop 40
 
      pt(ipos(t)) = 110
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. " Layer bet 2-hyb lvl") stop 40
 
      pt(ipos(t)) = 109
@@ -166,27 +165,27 @@ program test_degrib2_int
      pt(ipos(t) + 2) = 0
      pt(ipos(t) + 3) = 255
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. " 0 pv surface") stop 40
 
      pt(ipos(t)) = 111
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. " Eta level") stop 40
 
      pt(ipos(t)) = 114
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. " Layer bet. 2-isent.") stop 40
 
      pt(ipos(t)) = 117
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. " Mixed layer depth") stop 50
 
      pt(ipos(t)) = 120
      call prlevel(tn(t), pt, la)
-     print *, pt(ipos(t)), '/', trim(la), '/'     
+!     print *, pt(ipos(t)), '/', trim(la), '/'     
      if (trim(la) .ne. " Layer bet. 2-Eta lvl") stop 50
 
      pt(ipos(t)) = 121
@@ -421,8 +420,28 @@ program test_degrib2_int
      call prlevel(tn(t), pt, la)
      !  print *, '/', trim(la), '/'
      if (trim(la) .ne. "  999 (Unknown Lvl)") stop 50
-
   end do
+
+  ! Template 0 with various options.
+  call prlevel(0, pt_0_0, la)
+  if (la .ne. " Surface") stop 10
+  call prvtime(0, pt_0_0, s1_0, ta)
+  if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 11
+
+  call prlevel(0, pt_0_1, la)
+  if (la .ne. " 800 mb") stop 20
+  call prvtime(0, pt_0_1, s1_0, ta)
+  if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 21
+  
+  call prlevel(0, pt_0_2, la)
+  if (trim(la) .ne. "2 m above ground") stop 30
+  call prvtime(0, pt_0_2, s1_0, ta)
+  if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 31
+
+  call prlevel(0, pt_0_3, la)
+  if (trim(la) .ne. " 400 -  300 mb") stop 40
+  call prvtime(0, pt_0_3, s1_0, ta)
+  if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 41
 
   ! Template 8 with various options.
   call prlevel(8, pt_8_0, la)

@@ -82,7 +82,7 @@ subroutine prvtime(ipdtn, ipdtmpl, listsec1, tabbrev)
   end select
 
   ! Determine second unit of time range.
-  if (ipdtn .eq. 0) then
+  if (ipdtn .eq. 0 .or.ipdtn .gt. size(ipos2)) then
      iunit2 = 1
   else
      iutpos2 = ipos2(ipdtn)
@@ -121,7 +121,11 @@ subroutine prvtime(ipdtn, ipdtmpl, listsec1, tabbrev)
        (ipdtn .ge. 50 .and. ipdtn .le. 52)) then ! Point in time
      tabbrev = "valid  " // trim(tmpval) // " " // trim(tunit) // " after " // reftime
   else
-     is = ipos(ipdtn) ! Continuous time interval
+     if (ipdtn .gt. 0 .and. ipdtn .le. size(ipos)) then
+        is = ipos(ipdtn) ! Continuous time interval
+     else
+        is = 1
+     endif
      write(endtime, fmt = '(i4,3i2.2,":",i2.2,":",i2.2)') (ipdtmpl(j), j = is, is + 5)
      if (ipdtn .eq. 8 .and. ipdtmpl(9) .lt. 0) then
         tabbrev = "(" // trim(tmpval) // " -" &
