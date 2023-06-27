@@ -21,7 +21,7 @@ program test_degrib2_int
   parameter(NUM_TN = 8)
   integer :: tn(NUM_TN) = (/ 999, 91, 52, 50, 48, 0, 40, 44 /)
   integer :: ipos(NUM_TN) = (/ 10, 10, 13, 10, 21, 10, 11, 16 /)
-  !integer :: s1(13)
+  integer :: s1(13)
   integer :: NUM_TN_T
   parameter(NUM_TN_T = 8)
   integer :: tn_t(NUM_TN_T) = (/ 999, 91, 0, 1, 40, 44, 48, 52 /)
