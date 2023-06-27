@@ -34,6 +34,17 @@ program test_degrib2_int
 
      pt(iutpos(t)) = 0
      call prvtime(tn_t(t), pt, s1, ta)
+!     print *, '/',trim(ta),'/'
+     if (t .eq. 1) then
+        if (trim(ta) .ne.  "valid at     0") stop 41
+     elseif (t .eq. 2) then
+        if (trim(ta) .ne.  "(0 -0 hr) valid  0 minute after    0000000:00:00 to    0000000:00:00") stop 41
+     else
+        if (trim(ta) .ne.  "valid  0 minute after    0000000:00:00") stop 41
+     end if
+
+     pt(iutpos(t)) = 1
+     call prvtime(tn_t(t), pt, s1, ta)
      print *, '/',trim(ta),'/'
      if (t .eq. 1) then
         if (trim(ta) .ne.  "valid at     0") stop 41
