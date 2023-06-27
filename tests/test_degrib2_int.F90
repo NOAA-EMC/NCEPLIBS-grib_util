@@ -116,8 +116,248 @@ program test_degrib2_int
 
   pt(10) = 114
   call prlevel(0, pt, la)
-  print *, '/', trim(la), '/'
   if (trim(la) .ne. " Layer bet. 2-isent.") stop 40
+
+  pt(10) = 117
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Mixed layer depth") stop 50
+
+  pt(10) = 120
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Layer bet. 2-Eta lvl") stop 50
+
+  pt(10) = 121
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Layer bet. 2-isob.") stop 50
+
+  pt(10) = 125
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Specified height lvl") stop 50
+
+  pt(10) = 126
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Isobaric level") stop 50
+
+  pt(10) = 160
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Depth below sea lvl") stop 50
+
+  pt(10) = 170
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Ionospheric D-region lvl") stop 50
+
+  pt(10) = 1
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Surface ") stop 50
+
+  pt(10) = 2
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Cloud base lvl") stop 50
+
+  pt(10) = 3
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Cloud top lvl") stop 50
+
+  pt(10) = 4
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " 0 Deg Isotherm") stop 50
+
+  pt(10) = 5
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Level of adiabatic") stop 50
+
+  pt(10) = 6
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Max wind lvl") stop 50
+
+  pt(10) = 7
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Tropopause") stop 50
+
+  pt(10) = 8
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Nom. top") stop 50
+
+  pt(10) = 9
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Sea Bottom") stop 50
+
+  pt(10) = 10
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Entire Atmosphere") stop 50
+
+  pt(10) = 11
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Cumulonimbus Base") stop 50
+
+  pt(10) = 12
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Cumulonimbus Top") stop 50
+
+  pt(10) = 20
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Isothermal level") stop 50
+
+  pt(10) = 200
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Entire Atmosphere") stop 50
+
+  pt(10) = 201
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Entire ocean") stop 50
+
+  pt(10) = 204
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Highest Frz. lvl") stop 50
+
+  pt(10) = 206
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Grid scale cloud bl") stop 50
+
+  pt(10) = 207
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Grid scale cloud tl") stop 50
+
+  pt(10) = 209
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Boundary layer cbl") stop 50
+
+  pt(10) = 210
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Boundary layer ctl") stop 50
+
+  pt(10) = 211
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Boundary layer cl") stop 50
+
+  pt(10) = 212
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Low cloud bot. lvl") stop 50
+
+  pt(10) = 213
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Low cloud top lvl") stop 50
+
+  pt(10) = 214
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Low cloud layer") stop 50
+
+  pt(10) = 215
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Cloud ceiling") stop 50
+
+  pt(10) = 220
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Planetary boundary") stop 50
+
+  pt(10) = 221
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Layer 2 Hybrid lvl ") stop 50
+
+  pt(10) = 222
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Mid. cloud bot. lvl") stop 50
+
+  pt(10) = 223
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Mid. cloud top lvl") stop 50
+
+  pt(10) = 224
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Middle cloud layer") stop 50
+
+  pt(10) = 232
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " High cloud bot. lvl") stop 50
+
+  pt(10) = 233
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " High cloud top lvl") stop 50
+
+  pt(10) = 234
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " High cloud layer") stop 50
+
+  pt(10) = 235
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Ocean Isotherm lvl") stop 50
+
+  pt(10) = 236
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Layer 2-depth below") stop 50
+
+  pt(10) = 237
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Bot. Ocean mix. lyr") stop 50
+
+  pt(10) = 238
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Bot. Ocean iso. lyr") stop 50
+
+  pt(10) = 239
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " layer ocean sfc 26C") stop 50
+
+  pt(10) = 240
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Ocean Mixed Layer") stop 50
+
+  pt(10) = 241
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Order Seq. Of Data") stop 50
+
+  pt(10) = 242
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Con. cloud bot. lvl") stop 50
+
+  pt(10) = 243
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Con. cloud top lvl") stop 50
+
+  pt(10) = 244
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Conv. cloud layer") stop 50
+
+  pt(10) = 245
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Lowest lvl wet bulb") stop 50
+
+  pt(10) = 246
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Max. equi. potential") stop 50
+
+  pt(10) = 247
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Equilibrium level") stop 50
+
+  pt(10) = 248
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Shallow con. cld bl") stop 50
+
+  pt(10) = 249
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Shallow con. cld tl") stop 50
+
+  pt(10) = 251
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Deep conv. cld bl") stop 50
+
+  pt(10) = 252
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Deep conv. cld tl") stop 50
+
+  pt(10) = 253
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " Lowest bot. lvl sup") stop 50
+
+  pt(10) = 254
+  call prlevel(0, pt, la)
+  if (trim(la) .ne. " highest top lvl sup") stop 50
+
+  pt(10) = 999
+  call prlevel(0, pt, la)
+!  print *, '/', trim(la), '/'
+  if (trim(la) .ne. "  999 (Unknown Lvl)") stop 50
 
   ! Template 8 with various options.
   call prlevel(8, pt_8_0, la)
