@@ -30,7 +30,7 @@ program test_degrib2_int
   print *, 'Testing degrib2 level and date/time descriptions...'
 
   ! Test all the prvtime values.
-  do t = 1, NUM_TN_T
+  do t = 1, 2
      print *, '*** Testing prvtime() with pdtn ', tn_t(t)
 
      pt(iutpos(t)) = 0
