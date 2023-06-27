@@ -34,7 +34,7 @@ program test_degrib2_int
      print *, '*** Testing prvtime() with pdtn ', tn_t(t)
 
      pt(iutpos(t)) = 0
-     pt(iutpos(t) + 1) = 0
+     pt(iutpos(t) + 1) = 1
      call prvtime(tn_t(t), pt, s1_0, ta)
      print *, t,'/',trim(ta),'/'
      if (t .eq. 1) then
