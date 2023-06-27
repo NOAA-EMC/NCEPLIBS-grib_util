@@ -22,19 +22,21 @@ program test_degrib2_int
   integer :: tn(NUM_TN) = (/ 999, 91, 52, 50, 48, 0, 40, 44 /)
   integer :: ipos(NUM_TN) = (/ 10, 10, 13, 10, 21, 10, 11, 16 /)
   !integer :: s1(13)
-  ! integer :: NUM_TN_T
-  ! parameter(NUM_TN_T = 8)
-  ! integer :: tn_t(NUM_TN_T) = (/ 999, 91, 0, 1, 40, 44, 48, 52 /)
-  ! integer :: iutpos(NUM_TN_T) = (/ 8, 8, 8, 8, 9, 14, 19, 11 /)
+  integer :: NUM_TN_T
+  parameter(NUM_TN_T = 8)
+  integer :: tn_t(NUM_TN_T) = (/ 999, 91, 0, 1, 40, 44, 48, 52 /)
+  integer :: iutpos(NUM_TN_T) = (/ 8, 8, 8, 8, 9, 14, 19, 11 /)
 
   print *, 'Testing degrib2 level and date/time descriptions...'
 
   ! Test all the prvtime values.
-!   do t = 8, NUM_TN_T
-!      print *, '*** Testing prvtime() with pdtn ', tn_t(t)
+  do t = 8, NUM_TN_T
+     print *, '*** Testing prvtime() with pdtn ', tn_t(t)
 
-!      pt(iutpos(t)) = 0
-!      call prvtime(tn_t(t), pt, s1, ta)
+     pt(iutpos(t)) = 0
+     call prvtime(tn_t(t), pt, s1, ta)
+     print *, t,'/',trim(ta),'/'
+     if (trim(ta) .ne.  "valid  0 minute after    0000000:00:00") stop 41     
 !      if (t .eq. 1) then
 !         if (trim(ta) .ne.  "valid at     0") stop 41
 !      elseif (t .eq. 2) then
@@ -114,7 +116,7 @@ program test_degrib2_int
 ! !         if (trim(ta) .ne.  "valid  0 hour after    0000000:00:00") stop 41
 ! !      end if
 
-!   end do
+  end do
 
   ! Test all the prlevel values.
   do t = 1, NUM_TN
