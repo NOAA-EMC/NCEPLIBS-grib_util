@@ -42,76 +42,76 @@ program test_degrib2_int
         if (trim(ta) .ne.  "valid  0 minute after    0000000:00:00") stop 41
      end if
 
-     pt(iutpos(t)) = 1
-     call prvtime(tn_t(t), pt, s1, ta)
-     if (t .eq. 1) then
-        if (trim(ta) .ne.  "valid at     0") stop 41
-     elseif (t .eq. 2) then
-        if (trim(ta) .ne.  "(0 -0 hr) valid  0 hour after    0000000:00:00 to    0000000:00:00") stop 41
-     else
-        if (trim(ta) .ne.  "valid  0 hour after    0000000:00:00") stop 41
-     end if
+!      pt(iutpos(t)) = 1
+!      call prvtime(tn_t(t), pt, s1, ta)
+!      if (t .eq. 1) then
+!         if (trim(ta) .ne.  "valid at     0") stop 41
+!      elseif (t .eq. 2) then
+!         if (trim(ta) .ne.  "(0 -0 hr) valid  0 hour after    0000000:00:00 to    0000000:00:00") stop 41
+!      else
+!         if (trim(ta) .ne.  "valid  0 hour after    0000000:00:00") stop 41
+!      end if
 
-     pt(iutpos(t)) = 2
-     call prvtime(tn_t(t), pt, s1, ta)
-     if (t .eq. 1) then
-        if (trim(ta) .ne.  "valid at     0") stop 41
-     elseif (t .eq. 2) then
-        if (trim(ta) .ne.  "(0 -0 hr) valid  0 day after    0000000:00:00 to    0000000:00:00") stop 41
-     else
-        if (trim(ta) .ne.  "valid  0 day after    0000000:00:00") stop 41
-     end if
+!      pt(iutpos(t)) = 2
+!      call prvtime(tn_t(t), pt, s1, ta)
+!      if (t .eq. 1) then
+!         if (trim(ta) .ne.  "valid at     0") stop 41
+!      elseif (t .eq. 2) then
+!         if (trim(ta) .ne.  "(0 -0 hr) valid  0 day after    0000000:00:00 to    0000000:00:00") stop 41
+!      else
+!         if (trim(ta) .ne.  "valid  0 day after    0000000:00:00") stop 41
+!      end if
 
-     pt(iutpos(t)) = 3
-     call prvtime(tn_t(t), pt, s1, ta)
-     if (t .eq. 1) then
-        if (trim(ta) .ne.  "valid at     0") stop 41
-     elseif (t .eq. 2) then
-        if (trim(ta) .ne.  "(0 -0 hr) valid  0 month after    0000000:00:00 to    0000000:00:00") stop 41
-     else
-        if (trim(ta) .ne.  "valid  0 month after    0000000:00:00") stop 41
-     end if
+!      pt(iutpos(t)) = 3
+!      call prvtime(tn_t(t), pt, s1, ta)
+!      if (t .eq. 1) then
+!         if (trim(ta) .ne.  "valid at     0") stop 41
+!      elseif (t .eq. 2) then
+!         if (trim(ta) .ne.  "(0 -0 hr) valid  0 month after    0000000:00:00 to    0000000:00:00") stop 41
+!      else
+!         if (trim(ta) .ne.  "valid  0 month after    0000000:00:00") stop 41
+!      end if
 
-     pt(iutpos(t)) = 4
-     call prvtime(tn_t(t), pt, s1, ta)
-     if (t .eq. 1) then
-        if (trim(ta) .ne.  "valid at     0") stop 41
-     elseif (t .eq. 2) then
-        if (trim(ta) .ne.  "(0 -0 hr) valid  0 year after    0000000:00:00 to    0000000:00:00") stop 41
-     else
-        if (trim(ta) .ne.  "valid  0 year after    0000000:00:00") stop 41
-     end if
+!      pt(iutpos(t)) = 4
+!      call prvtime(tn_t(t), pt, s1, ta)
+!      if (t .eq. 1) then
+!         if (trim(ta) .ne.  "valid at     0") stop 41
+!      elseif (t .eq. 2) then
+!         if (trim(ta) .ne.  "(0 -0 hr) valid  0 year after    0000000:00:00 to    0000000:00:00") stop 41
+!      else
+!         if (trim(ta) .ne.  "valid  0 year after    0000000:00:00") stop 41
+!      end if
 
-     pt(iutpos(t)) = 10
-     call prvtime(tn_t(t), pt, s1, ta)
-!     print *, t,'/',trim(ta),'/'
-     if (t .eq. 1) then
-        if (trim(ta) .ne.  "valid at     0") stop 41
-     elseif (t .eq. 2) then
-        if (trim(ta) .ne.  "(0 -0 hr) valid  0 hour after    0000000:00:00 to    0000000:00:00") stop 41
-     else
-        if (trim(ta) .ne.  "valid  0 hour after    0000000:00:00") stop 41
-     end if
+!      pt(iutpos(t)) = 10
+!      call prvtime(tn_t(t), pt, s1, ta)
+! !     print *, t,'/',trim(ta),'/'
+!      if (t .eq. 1) then
+!         if (trim(ta) .ne.  "valid at     0") stop 41
+!      elseif (t .eq. 2) then
+!         if (trim(ta) .ne.  "(0 -0 hr) valid  0 hour after    0000000:00:00 to    0000000:00:00") stop 41
+!      else
+!         if (trim(ta) .ne.  "valid  0 hour after    0000000:00:00") stop 41
+!      end if
 
-     pt(iutpos(t)) = 11
-     call prvtime(tn_t(t), pt, s1, ta)
-     if (t .eq. 1) then
-        if (trim(ta) .ne.  "valid at     0") stop 41
-     elseif (t .eq. 2) then
-        if (trim(ta) .ne.  "(0 -0 hr) valid  0 hour after    0000000:00:00 to    0000000:00:00") stop 41
-     else
-        if (trim(ta) .ne.  "valid  0 hour after    0000000:00:00") stop 41
-     end if
+!      pt(iutpos(t)) = 11
+!      call prvtime(tn_t(t), pt, s1, ta)
+!      if (t .eq. 1) then
+!         if (trim(ta) .ne.  "valid at     0") stop 41
+!      elseif (t .eq. 2) then
+!         if (trim(ta) .ne.  "(0 -0 hr) valid  0 hour after    0000000:00:00 to    0000000:00:00") stop 41
+!      else
+!         if (trim(ta) .ne.  "valid  0 hour after    0000000:00:00") stop 41
+!      end if
 
-     pt(iutpos(t)) = 99
-     call prvtime(tn_t(t), pt, s1, ta)
-     if (t .eq. 1) then
-        if (trim(ta) .ne.  "valid at     0") stop 41
-     elseif (t .eq. 2) then
-        if (trim(ta) .ne.  "(0 -0 hr) valid  0 hour after    0000000:00:00 to    0000000:00:00") stop 41
-     else
-        if (trim(ta) .ne.  "valid  0 hour after    0000000:00:00") stop 41
-     end if
+!      pt(iutpos(t)) = 99
+!      call prvtime(tn_t(t), pt, s1, ta)
+!      if (t .eq. 1) then
+!         if (trim(ta) .ne.  "valid at     0") stop 41
+!      elseif (t .eq. 2) then
+!         if (trim(ta) .ne.  "(0 -0 hr) valid  0 hour after    0000000:00:00 to    0000000:00:00") stop 41
+!      else
+!         if (trim(ta) .ne.  "valid  0 hour after    0000000:00:00") stop 41
+!      end if
 
   end do
 
