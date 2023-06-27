@@ -26,8 +26,14 @@ program test_degrib2_int
   parameter(NUM_TN_T = 7)
   integer :: tn_t(NUM_TN_T) = (/ 91, 0, 1, 40, 44, 48, 52 /)
   integer :: iutpos(NUM_TN_T) = (/ 8, 8, 8, 9, 14, 19, 11 /)
+  integer :: i
 
   print *, 'Testing degrib2 level and date/time descriptions...'
+
+  ! Initialize.
+  do i = 1, MAX_PT)
+     pt(i) = 0
+  end do
 
   ! Test all the prvtime values.
   do t = 1, 2
