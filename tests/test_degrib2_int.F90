@@ -31,7 +31,7 @@ program test_degrib2_int
   print *, 'Testing degrib2 level and date/time descriptions...'
 
   ! Initialize.
-  do i = 1, MAX_PT)
+  do i = 1, MAX_PT
      pt(i) = 0
   end do
 
