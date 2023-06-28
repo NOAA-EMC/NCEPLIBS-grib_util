@@ -83,6 +83,7 @@ if(FTP_TEST_FILES)
   gu_copy_test_data(ref_rap.t00z.awp130pgrbf00.grib2.degrib2)
   gu_copy_test_data(ref_seaice.t00z.grb.grib2.degrib2)
   gu_copy_test_data(ref_sgx_nwps_CG3_20221117_1200.grib2.degrib2)
+  gu_copy_test_data(ref_aqm.t12z.max_8hr_o3.227.grib2.degrib2)
 endif()
 
 # Run these shell tests.
@@ -114,7 +115,8 @@ if(FTP_TEST_FILES)
     naefs_ge10pt.t12z.pgrb2a.0p50_bcf003
     rap.t00z.awp130pgrbf00.grib2
     seaice.t00z.grb.grib2
-    sgx_nwps_CG3_20221117_1200.grib2)
+    sgx_nwps_CG3_20221117_1200.grib2
+    aqm.t12z.max_8hr_o3.227.grib2)
   foreach(THE_FILE IN LISTS FTP_TEST_FILES)
     PULL_DATA(${G2_FTP_URL} ${THE_FILE})
   endforeach()
