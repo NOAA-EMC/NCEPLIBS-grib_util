@@ -1,7 +1,8 @@
 #!/bin/sh
 # This is a test script for the NCEPLIBS-grib_util project.
 #
-# This script tests with GRIB2 data files downloaded from the NOAA EMC FTP site.
+# This script runs degrib2 on GRIB2 data files downloaded from the
+# NOAA EMC FTP site, and checks the output against reference output.
 #
 # Ed Hartnett, 11/24/22
 
