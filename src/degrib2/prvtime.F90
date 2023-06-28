@@ -123,24 +123,21 @@ subroutine prvtime(ipdtn, ipdtmpl, listsec1, tabbrev)
   else
      is = ipos(ipdtn) ! Continuous time interval
      write(endtime, fmt = '(i4,3i2.2,":",i2.2,":",i2.2)') (ipdtmpl(j), j = is, is + 5)
+     itemp2 = abs (ipdtmpl(iutpos2 + 1)) * iunit2
+     itemp2 = itemp + itemp2
+     write(tmpval2, '(I0)') itemp2
      if (ipdtn .eq. 8 .and. ipdtmpl(9) .lt. 0) then
         tabbrev = "(" // trim(tmpval) // " -" &
              // trim(tmpval2) // ") valid  " // trim(tmpval) // &
              " " // trim(tunit) // " before " &
              // reftime // " to " //endtime
-
      elseif ((ipdtn .ge. 8 .and. ipdtn .le. 14) .or. &
           (ipdtn .ge. 42 .and. ipdtn .le. 47) .or. &
           ipdtn .eq. 91) then ! Continuous time interval
-        itemp2 = abs (ipdtmpl(iutpos2 + 1)) * iunit2
-        itemp2 = itemp + itemp2
-        write(tmpval2, '(I0)') itemp2
-
         tabbrev = "(" // trim(tmpval) // " -" &
              // trim(tmpval2) // " hr) valid  " // trim(tmpval) // &
              " " // trim(tunit) // " after " &
              // reftime // " to " // endtime
-
      endif
   endif
 
