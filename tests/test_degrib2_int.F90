@@ -31,7 +31,8 @@ program test_degrib2_int
   ! Test all the prvtime values.
   do t = 1, 2
      print *, '*** Testing prvtime() with pdtn ', tn_t(t)
-     
+
+     pt(1) = 2
      pt(iutpos(t)) = 0
      pt(iutpos(t) + 1) = 1
      call prvtime(tn_t(t), pt, s1_0, ta)
