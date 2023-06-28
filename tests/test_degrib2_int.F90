@@ -34,7 +34,7 @@ program test_degrib2_int
   end do
 
   ! Test all the prvtime values.
-  do t = 1, 2
+  do t = 1, 7
      print *, '*** Testing prvtime() with pdtn ', tn_t(t)
 
      pt(iutpos(t)) = 0
@@ -46,6 +46,7 @@ program test_degrib2_int
      else
         if (trim(ta) .ne.  "valid  1 minute after 2022111719:00:00") stop 41     
      end if
+     pt(iutpos(t) + 1) = 0
   end do
   
   ! Test all the prlevel values.

@@ -135,7 +135,6 @@ subroutine prvtime(ipdtn, ipdtmpl, listsec1, tabbrev)
      elseif ((ipdtn .ge. 8 .and. ipdtn .le. 14) .or. &
           (ipdtn .ge. 42 .and. ipdtn .le. 47) .or. &
           ipdtn .eq. 91) then ! Continuous time interval
-        print *, iutpos2, ipdtmpl(iutpos2 + 1), itemp, itemp2
         tabbrev = "(" // trim(tmpval) // " -" &
              // trim(tmpval2) // " hr) valid  " // trim(tmpval) // &
              " " // trim(tunit) // " after " &
