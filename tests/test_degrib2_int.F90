@@ -94,7 +94,6 @@ program test_degrib2_int
 
      pt(iutpos(t)) = 11
      call prvtime(tn_t(t), pt, s1_0, ta)
-     print *, t,'/',trim(ta),'/'
      if (t .eq. 1) then
         if (trim(ta) .ne.  "(0 -0 hr) valid  0 hour after 2022111719:00:00 to    0000000:00:00") stop 41
      else
@@ -102,6 +101,15 @@ program test_degrib2_int
      end if
      pt(iutpos(t)) = 0
      
+     pt(iutpos(t)) = 99
+     call prvtime(tn_t(t), pt, s1_0, ta)
+     print *, t,'/',trim(ta),'/'
+     if (t .eq. 1) then
+        if (trim(ta) .ne.  "(0 -0 hr) valid  0 hour after 2022111719:00:00 to    0000000:00:00") stop 41
+     else
+        if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 41
+     end if
+     pt(iutpos(t)) = 0
   end do
   
   ! Test all the prlevel values.
