@@ -34,7 +34,7 @@ program test_degrib2_int
   end do
 
   ! Test all the prvtime values.
-  do t = 1, 7
+  do t = 1, NUM_TN_T
      print *, '*** Testing prvtime() with pdtn ', tn_t(t)
 
      pt(iutpos(t)) = 0
