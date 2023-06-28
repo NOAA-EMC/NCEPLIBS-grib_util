@@ -84,6 +84,7 @@ subroutine prvtime(ipdtn, ipdtmpl, listsec1, tabbrev)
   ! Determine second unit of time range.
   if (ipdtn .eq. 0) then
      iunit2 = 1
+     iutpos2 = 0
   else
      iutpos2 = ipos2(ipdtn)
      if (iutpos2 .gt. 0) then
