@@ -6,7 +6,7 @@
 program test_degrib2_int
   implicit none
   integer :: MAX_PT
-  parameter(MAX_PT = 30)
+  parameter(MAX_PT = 100)
   integer :: pt(MAX_PT)
   integer :: pt_0_0(15) = (/ 2, 1, 2, 0, 11, 0, 0, 1, 0, 1, 0, 1, 255, 0, 0 /)
   integer :: pt_0_1(15) = (/ 2, 10, 0, 0, 81, 0, 0, 1, 0, 100, 0, 80000, 255, 0, 0 /)
@@ -25,14 +25,18 @@ program test_degrib2_int
   parameter(NUM_TN_T = 7)
   integer :: tn_t(NUM_TN_T) = (/ 91, 0, 1, 40, 44, 48, 52 /)
   integer :: iutpos(NUM_TN_T) = (/ 8, 8, 8, 9, 14, 19, 11 /)
+  integer :: i
 
   print *, 'Testing degrib2 level and date/time descriptions...'
+
+  do i = 1, MAX_PT
+     pt(i) = 0
+  end do
 
   ! Test all the prvtime values.
   do t = 1, 2
      print *, '*** Testing prvtime() with pdtn ', tn_t(t)
 
-     pt(1) = 2
      pt(iutpos(t)) = 0
      pt(iutpos(t) + 1) = 1
      call prvtime(tn_t(t), pt, s1_0, ta)
