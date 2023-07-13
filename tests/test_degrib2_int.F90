@@ -6,7 +6,7 @@
 program test_degrib2_int
   implicit none
   integer :: MAX_PT
-  parameter(MAX_PT = 30)
+  parameter(MAX_PT = 100)
   integer :: pt(MAX_PT)
   integer :: pt_0_0(15) = (/ 2, 1, 2, 0, 11, 0, 0, 1, 0, 1, 0, 1, 255, 0, 0 /)
   integer :: pt_0_1(15) = (/ 2, 10, 0, 0, 81, 0, 0, 1, 0, 100, 0, 80000, 255, 0, 0 /)
@@ -21,9 +21,161 @@ program test_degrib2_int
   parameter(NUM_TN = 8)
   integer :: tn(NUM_TN) = (/ 999, 91, 52, 50, 48, 0, 40, 44 /)
   integer :: ipos(NUM_TN) = (/ 10, 10, 13, 10, 21, 10, 11, 16 /)
+  integer :: NUM_TN_T
+  parameter(NUM_TN_T = 8)
+  integer :: tn_t(NUM_TN_T) = (/ 90, 91, 0, 1, 40, 44, 48, 52 /)
+  integer :: iutpos(NUM_TN_T) = (/ 8, 8, 8, 8, 9, 14, 19, 11 /)
+  integer :: i
 
   print *, 'Testing degrib2 level and date/time descriptions...'
 
+  do i = 1, MAX_PT
+     pt(i) = 0
+  end do
+
+  ! Test all the prvtime values.
+  do t = 1, NUM_TN_T
+     print *, '*** Testing prvtime() with pdtn ', tn_t(t)
+
+     pt(iutpos(t)) = 0
+     pt(iutpos(t) + 1) = 1
+     call prvtime(tn_t(t), pt, s1_0, ta)
+!     print *, t,'/',trim(ta),'/'
+     if (t .eq. 1) then
+        if (trim(ta) .ne.  "valid at     1") stop 41
+     elseif (t .eq. 2) then
+        if (trim(ta) .ne.  "(1 -1 hr) valid  1 minute after 2022111719:00:00 to    0000000:00:00") stop 41
+     else
+        if (trim(ta) .ne.  "valid  1 minute after 2022111719:00:00") stop 41     
+     end if
+     pt(iutpos(t) + 1) = 0
+
+     pt(iutpos(t)) = 1
+     call prvtime(tn_t(t), pt, s1_0, ta)
+!     print *, t,'/',trim(ta),'/'
+     if (t .eq. 1) then
+        if (trim(ta) .ne.  "valid at     0") stop 41
+     elseif (t .eq. 2) then
+        if (trim(ta) .ne.  "(0 -0 hr) valid  0 hour after 2022111719:00:00 to    0000000:00:00") stop 41
+     else
+        if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 41
+     end if
+     pt(iutpos(t)) = 0
+
+     pt(iutpos(t)) = 2
+     call prvtime(tn_t(t), pt, s1_0, ta)
+!     print *, t,'/',trim(ta),'/'
+     if (t .eq. 1) then
+        if (trim(ta) .ne.  "valid at     0") stop 41
+     elseif (t .eq. 2) then
+        if (trim(ta) .ne.  "(0 -0 hr) valid  0 day after 2022111719:00:00 to    0000000:00:00") stop 41
+     else
+        if (trim(ta) .ne.  "valid  0 day after 2022111719:00:00") stop 41
+     end if
+     pt(iutpos(t)) = 0
+
+     pt(iutpos(t)) = 3
+     call prvtime(tn_t(t), pt, s1_0, ta)
+!     print *, t,'/',trim(ta),'/'
+     if (t .eq. 1) then
+        if (trim(ta) .ne.  "valid at     0") stop 41
+     elseif (t .eq. 2) then
+        if (trim(ta) .ne.  "(0 -0 hr) valid  0 month after 2022111719:00:00 to    0000000:00:00") stop 41
+     else
+        if (trim(ta) .ne.  "valid  0 month after 2022111719:00:00") stop 41
+     end if
+     pt(iutpos(t)) = 0
+
+     pt(iutpos(t)) = 4
+     call prvtime(tn_t(t), pt, s1_0, ta)
+!     print *, t,'/',trim(ta),'/'
+     if (t .eq. 1) then
+        if (trim(ta) .ne.  "valid at     0") stop 41
+     elseif (t .eq. 2) then
+        if (trim(ta) .ne.  "(0 -0 hr) valid  0 year after 2022111719:00:00 to    0000000:00:00") stop 41
+     else
+        if (trim(ta) .ne.  "valid  0 year after 2022111719:00:00") stop 41
+     end if
+     pt(iutpos(t)) = 0
+     
+     pt(iutpos(t)) = 10
+     call prvtime(tn_t(t), pt, s1_0, ta)
+!     print *, t,'/',trim(ta),'/'
+     if (t .eq. 1) then
+        if (trim(ta) .ne.  "valid at     0") stop 41
+     elseif (t .eq. 2) then
+        if (trim(ta) .ne.  "(0 -0 hr) valid  0 hour after 2022111719:00:00 to    0000000:00:00") stop 41
+     else
+        if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 41
+     end if
+     pt(iutpos(t)) = 0
+
+     pt(iutpos(t)) = 11
+     call prvtime(tn_t(t), pt, s1_0, ta)
+!     print *, t,'/',trim(ta),'/'
+     if (t .eq. 1) then
+        if (trim(ta) .ne.  "valid at     0") stop 41
+     elseif (t .eq. 2) then
+        if (trim(ta) .ne.  "(0 -0 hr) valid  0 hour after 2022111719:00:00 to    0000000:00:00") stop 41
+     else
+        if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 41
+     end if
+     pt(iutpos(t)) = 0
+     
+     pt(iutpos(t)) = 99
+     call prvtime(tn_t(t), pt, s1_0, ta)
+!     print *, t,'/',trim(ta),'/'
+     if (t .eq. 1) then
+        if (trim(ta) .ne.  "valid at     0") stop 41
+     elseif (t .eq. 2) then
+        if (trim(ta) .ne.  "(0 -0 hr) valid  0 hour after 2022111719:00:00 to    0000000:00:00") stop 41
+     else
+        if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 41
+     end if
+     pt(iutpos(t)) = 0
+  end do
+
+  ! Check different units for secondary times.
+  pt(iutpos(t)) = 99
+  pt(33) = 2
+  call prvtime(91, pt, s1_0, ta)
+!  print *, t,'/',trim(ta),'/'
+  if (trim(ta) .ne.  "(0 -0 hr) valid  0 minute after 2022111719:00:00 to    0000000:00:00") stop 55
+  pt(iutpos(t)) = 0
+  pt(33) = 0
+  
+  pt(iutpos(t)) = 99
+  pt(33) = 3
+  call prvtime(91, pt, s1_0, ta)
+!  print *, t,'/',trim(ta),'/'
+  if (trim(ta) .ne.  "(0 -0 hr) valid  0 minute after 2022111719:00:00 to    0000000:00:00") stop 55
+  pt(iutpos(t)) = 0
+  pt(33) = 0
+
+  pt(iutpos(t)) = 99
+  pt(33) = 4
+  call prvtime(91, pt, s1_0, ta)
+!  print *, t,'/',trim(ta),'/'
+  if (trim(ta) .ne.  "(0 -0 hr) valid  0 minute after 2022111719:00:00 to    0000000:00:00") stop 55
+  pt(iutpos(t)) = 0
+  pt(33) = 0
+  
+  pt(iutpos(t)) = 99
+  pt(33) = 10
+  call prvtime(91, pt, s1_0, ta)
+!  print *, t,'/',trim(ta),'/'
+  if (trim(ta) .ne.  "(0 -0 hr) valid  0 minute after 2022111719:00:00 to    0000000:00:00") stop 55
+  pt(iutpos(t)) = 0
+  pt(33) = 0
+  
+  pt(iutpos(t)) = 99
+  pt(33) = 11
+  call prvtime(91, pt, s1_0, ta)
+!  print *, t,'/',trim(ta),'/'
+  if (trim(ta) .ne.  "(0 -0 hr) valid  0 minute after 2022111719:00:00 to    0000000:00:00") stop 55
+  pt(iutpos(t)) = 0
+  pt(33) = 0
+  
   ! Test all the prlevel values.
   do t = 1, NUM_TN
      print *, '*** Testing prlevel() with pdtn ', tn(t)
