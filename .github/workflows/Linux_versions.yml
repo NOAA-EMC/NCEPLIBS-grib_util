@@ -35,7 +35,7 @@ jobs:
           
     - name: cache-jasper
       id: cache-jasper
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ~/jasper
         key: jasper-Linux_versions-${{ matrix.jasper-version }}
@@ -59,7 +59,7 @@ jobs:
 
     - name: cache-bacio
       id: cache-bacio
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ~/bacio
         key: bacio-${{ runner.os }}-v${{ matrix.bacio-version }}
@@ -83,7 +83,7 @@ jobs:
 
     - name: cache-sp
       id: cache-sp
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ~/sp
         key: sp-${{ runner.os }}-2.3.3-1
@@ -108,7 +108,7 @@ jobs:
           
     - name: cache-w3emc
       id: cache-w3emc
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ~/w3emc
         key: w3emc-${{ runner.os }}-${{ matrix.w3emc-version }}-bacio-${{ matrix.bacio-version }}
@@ -133,7 +133,7 @@ jobs:
           
     - name: cache-ip
       id: cache-ip
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ~/ip
         key: ip-${{ runner.os }}-3.3.3
@@ -174,7 +174,7 @@ jobs:
                  
     - name: cache-g2
       id: cache-g2
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ~/g2
         key: g2-${{ runner.os }}-${{ matrix.bacio-version }}-${{ matrix.jasper-version }}-${{ matrix.w3emc-version }}-${{ matrix.g2-version }}
