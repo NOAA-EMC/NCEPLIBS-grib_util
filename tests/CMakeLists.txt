@@ -135,5 +135,5 @@ if(FTP_TEST_FILES)
 
   # Run these shell tests which use the FTP files.  
   gu_test(run_ftp_tests)
-  gu_test(run_all_ftp_tests)
+  gu_test(run_degrib2_ftp_tests)
 endif()
