@@ -152,7 +152,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/g2
-        key: g2-MacOS-${{ runner.os }}-2.0.33-2.5.0-3.4.5
+        key: g2-MacOS-${{ runner.os }}-2.0.33-2.5.0-3.4.6
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
@@ -160,7 +160,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: v3.4.5
+        ref: v3.4.6
 
     - name: build-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
