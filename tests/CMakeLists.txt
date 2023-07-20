@@ -119,13 +119,17 @@ if(FTP_TEST_FILES)
     PULL_DATA(${G2_FTP_URL} ${THE_FILE})
   endforeach()
 
-  # Fetch the large test file(s) from FTP if desired.
-  set(LARGE_FTP_FILES "fv3lam.t00z.namerica.f00.grib2")
-  if(LARGE_FTP_TESTS)
-    foreach(THE_FILE IN LISTS LARGE_FTP_FILES) 
-      PULL_DATA(${G2_FTP_URL} ${THE_FILE})
-    endforeach()
-    add_definitions(-DLARGE_FTP_TESTS)
+  # Extra tests are those that apply to files not yet available on FTP.
+  if(FTP_EXTRA_TEST_FILES)
+    # Fetch the large test file(s) from FTP if desired.
+    #    set(LARGE_FTP_FILES "fv3lam.t00z.namerica.f00.grib2")
+    set(LARGE_FTP_FILES "fv3lam.t00z.prslev.f000.grib2")
+    if(FTP_LARGE_TEST_FILES)
+      foreach(THE_FILE IN LISTS LARGE_FTP_FILES) 
+        PULL_DATA(${G2_FTP_URL} ${THE_FILE})
+      endforeach()
+      add_definitions(-DLARGE_FTP_TESTS)
+    endif()
   endif()
 
   # Copy this inventory from the test directory. It's the expected
