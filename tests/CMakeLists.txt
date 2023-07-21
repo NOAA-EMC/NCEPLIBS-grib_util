@@ -58,6 +58,7 @@ endfunction()
 
 # Copy necessary test data files.
 gu_copy_test_data(ref_gdaswave.t00z.wcoast.0p16.f000.grib2)
+gu_copy_test_data(ref_gdaswave.t00z.wcoast.0p16.f000.ip.grib2)
 gu_copy_test_data(ref_gdaswave.t00z.wcoast.0p16.f000.grib1)
 gu_copy_test_data(ref_gdaswave_2.idx)
 gu_copy_test_data(ref_gdaswave.degrib2.txt)
@@ -92,10 +93,11 @@ gu_test(run_degrib2_tests)
 gu_test(run_grbindex_tests)
 gu_test(run_grb2index_tests)
 
-# This test depends on the g2c_compare utility, which may not be
-# present.
-if (G2C_COMPARE)
+find_program(G2C_COMPARE g2c_compare)
+if(G2C_COMPARE)
   gu_test(run_copygb2_tests)
+else()
+  message(STATUS "g2c_compare not found.")
 endif()
 
 # Does the user want to get extra test files from the FTP site, and
