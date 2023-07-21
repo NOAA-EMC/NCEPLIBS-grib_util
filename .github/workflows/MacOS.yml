@@ -102,7 +102,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/w3emc
-        key: w3emc-MacOS-${{ runner.os }}-2.9.3
+        key: w3emc-MacOS-${{ runner.os }}-2.10.0
 
     - name: checkout-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -110,7 +110,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-w3emc
         path: w3emc
-        ref: v2.9.3
+        ref: v2.10.0
 
     - name: build-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
