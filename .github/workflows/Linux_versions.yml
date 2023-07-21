@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        g2-version: [3.4.6]
+        g2-version: [3.5.x]
         bacio-version: [2.6.0]
         jasper-version: [2.0.32]
         w3emc-version: [2.10.0]
