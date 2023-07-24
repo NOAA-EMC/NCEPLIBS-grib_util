@@ -44,7 +44,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/jasper
-        key: jasper-Intel-2.0.33
+        key: jasper-Intel-2.0.33-1
 
     - name: checkout-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -68,7 +68,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/bacio
-        key: bacio-Intel-${{ runner.os }}-v2.5.0
+        key: bacio-Intel-${{ runner.os }}-v2.5.0-1
 
     - name: checkout-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
@@ -92,7 +92,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/sp
-        key: sp-Intel-${{ runner.os }}-2.3.3-1
+        key: sp-Intel-${{ runner.os }}-2.3.3-2
 
     - name: checkout-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
@@ -117,7 +117,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/w3emc
-        key: w3emc-Intel-${{ runner.os }}-2.10.0-bacio-2.5.0
+        key: w3emc-Intel-${{ runner.os }}-2.10.0-bacio-2.5.0-1
 
     - name: checkout-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -142,7 +142,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/ip
-        key: ip-Intel-${{ runner.os }}-3.3.3
+        key: ip-Intel-${{ runner.os }}-4.1.0-1
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -150,7 +150,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
-        ref: v3.3.3
+        ref: v4.1.0
 
     - name: build-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -167,7 +167,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/g2
-        key: g2-Intel-${{ runner.os }}-2.0.33-2.5.0-3.4.5
+        key: g2-Intel-${{ runner.os }}-2.0.33-2.5.0-3.4.5-1
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
