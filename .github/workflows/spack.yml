@@ -18,7 +18,7 @@ defaults:
     shell: bash -leo pipefail {0}
 
 env:
-  cache_key: gcc3  # The number (#) following the cache_key "gcc" is to flush Action cache.
+  cache_key: gcc4  # The number (#) following the cache_key "gcc" is to flush Action cache.
   CC: gcc-10
   FC: gfortran-10
   CXX: g++-10
@@ -62,7 +62,7 @@ jobs:
       - name: install-dependencies-with-spack
         if: steps.cache-env.outputs.cache-hit != 'true'
         run: |
-          git clone -c feature.manyFiles=true https://github.com/spack/spack.git
+          git clone https://github.com/AlexanderRichert-NOAA/spack -b w3emc_update_jul23
           source spack/share/spack/setup-env.sh
           spack env create grib_utils-env grib_utils/ci/spack.yaml
           spack env activate grib_utils-env
