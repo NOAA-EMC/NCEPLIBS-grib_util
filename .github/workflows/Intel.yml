@@ -158,7 +158,7 @@ jobs:
         cd ip
         mkdir build
         cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp -DCMAKE_BUILD_TYPE=Debug
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp 
         make VERBOSE=1
         make install
           
