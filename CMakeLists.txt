@@ -48,14 +48,6 @@ else()
   find_package(g2c 1.7.0)
 endif()
 
-# See if the g2c_compare program is available.
-find_program(G2C_COMPARE g2c_compare)
-if (G2C_COMPARE)
-  message(STATUS "g2c_compare found: ${G2C_COMPARE}")
-else()
-  message(STATUS "g2c_compare not found.")
-endif()
-
 # The name of the bacio library changed with the 2.5.0 release. The
 # "_4" was removed from the library and include directory name in the
 # bacio-2.5.0 release. Set a name variable to be used in the rest of
