@@ -67,7 +67,6 @@ jobs:
           spack env create grib_utils-env grib_utils/ci/spack.yaml
           spack env activate grib_utils-env
           spack external find
-          spack add mpich@3.4.2
           spack concretize
           spack install -v --fail-fast --dirty
           spack clean -a
@@ -95,10 +94,7 @@ jobs:
       - name: build-grib_utils
         run: |
           source spack/share/spack/setup-env.sh
-          sudo apt install cmake libxerces-c-dev
           spack env activate grib_utils-env
-          export CC=mpicc
-          export FC=mpif90
           cd grib_utils
           mkdir -p build && cd build
           cmake -DCMAKE_INSTALL_PREFIX=../install ..
