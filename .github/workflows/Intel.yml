@@ -196,7 +196,7 @@ jobs:
       run: |
         cd grib_utils
         mkdir build && cd build
-        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" -DCMAKE_Fortran_FLAGS="-O0" ..
+        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" -DCMAKE_Fortran_FLAGS="-heap-arrays" ..
         make VERBOSE=1
         ctest --output-on-failure --rerun-failed --verbose
 
