@@ -116,7 +116,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
-        ref: v3.3.3
+        ref: v4.1.0
 
     - name: build-ip
       run: |

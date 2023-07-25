@@ -142,7 +142,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/ip
-        key: ip-Intel-${{ runner.os }}-3.3.3
+        key: ip-Intel-${{ runner.os }}-4.1.0
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -150,7 +150,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
-        ref: v3.3.3
+        ref: v4.1.0
 
     - name: build-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'

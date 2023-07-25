@@ -13,7 +13,7 @@ spack:
   - g2@3.4.5
   - g2c@1.7.0
   - sp@2.3.3
-  - ip@3.3.3
+  - ip@4.1.0
   view: true
   concretizer:
     unify: true
