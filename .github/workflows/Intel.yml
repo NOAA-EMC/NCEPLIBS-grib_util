@@ -158,7 +158,7 @@ jobs:
         cd ip
         mkdir build
         cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp -DCMAKE_BUILD_TYPE=Debug
         make -j2
         make install
           
@@ -196,7 +196,7 @@ jobs:
       run: |
         cd grib_utils
         mkdir build && cd build
-        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" -DCMAKE_Fortran_FLAGS="-heap-arrays" ..
+        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" -DCMAKE_Fortran_FLAGS="-traceback -g -O0 -heap-arrays" -DCMAKE_BUILD_TYPE=Debug ..
         make -j2
         ctest --output-on-failure --rerun-failed --verbose
 
