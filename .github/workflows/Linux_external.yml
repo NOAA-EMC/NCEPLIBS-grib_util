@@ -25,7 +25,7 @@ jobs:
         g2-version: [develop, v3.5.x]
         bacio-version: [2.5.0]
         jasper-version: [2.0.33, 3.0.5, 4.0.0]
-        w3emc-version: [2.9.3, 2.10.0]
+        w3emc-version: [2.10.0]
 
     steps:
     - name: install-dependencies
