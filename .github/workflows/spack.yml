@@ -66,7 +66,7 @@ jobs:
           source spack/share/spack/setup-env.sh
           spack env create grib_utils-env grib_utils/ci/spack.yaml
           spack env activate grib_utils-env
-          spack external find
+          spack external find --all
           spack concretize
           spack install -v --fail-fast --dirty
           spack clean -a
