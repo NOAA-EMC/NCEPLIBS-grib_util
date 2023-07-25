@@ -159,7 +159,7 @@ jobs:
         mkdir build
         cd build
         cmake .. -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp 
-        make VERBOSE=1
+        make -j2
         make install
           
     - name: cache-g2
@@ -197,6 +197,6 @@ jobs:
         cd grib_utils
         mkdir build && cd build
         cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" -DCMAKE_Fortran_FLAGS="-heap-arrays" ..
-        make VERBOSE=1
+        make -j2
         ctest --output-on-failure --rerun-failed --verbose
 
