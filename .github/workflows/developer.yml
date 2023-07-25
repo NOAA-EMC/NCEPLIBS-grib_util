@@ -37,14 +37,14 @@ jobs:
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-4.0.0
+        ref: version-2.0.32
 
     - name: cache-jasper
       id: cache-jasper
       uses: actions/cache@v2
       with:
         path: ~/jasper
-        key: jasper-${{ runner.os }}-4.0.0
+        key: jasper-${{ runner.os }}-2.0.32
 
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
