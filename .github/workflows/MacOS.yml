@@ -102,7 +102,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/w3emc
-        key: w3emc-MacOS-${{ runner.os }}-2.9.3
+        key: w3emc-MacOS-${{ runner.os }}-2.10.0
 
     - name: checkout-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -110,7 +110,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-w3emc
         path: w3emc
-        ref: v2.9.3
+        ref: v2.10.0
 
     - name: build-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -118,7 +118,7 @@ jobs:
         cd w3emc
         mkdir build
         cd build
-        cmake .. -DCMAKE_PREFIX_PATH=~/bacio -DCMAKE_INSTALL_PREFIX=~/w3emc
+        cmake .. -DCMAKE_PREFIX_PATH=~/bacio -DCMAKE_INSTALL_PREFIX=~/w3emc -DBUILD_WITH_BUFR=OFF
         make -j2
         make install
           
@@ -127,7 +127,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/ip
-        key: ip-MacOS-${{ runner.os }}-3.3.3
+        key: ip-MacOS-${{ runner.os }}-4.1.0
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -135,7 +135,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
-        ref: v3.3.3
+        ref: v4.1.0
 
     - name: build-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
