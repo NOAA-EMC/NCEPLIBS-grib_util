@@ -26,6 +26,7 @@ jobs:
         bacio-version: [2.4.1, 2.5.0]
         jasper-version: [2.0.33]
         w3emc-version: [2.10.0]
+        ip-version: [3.3.3, 4.1.0]
 
     steps:
     - name: install-dependencies
@@ -136,7 +137,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/ip
-        key: ip-${{ runner.os }}-4.1.0
+        key: ip-${{ runner.os }}-${{ matrix.ip-version }}
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -144,7 +145,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
-        ref: v4.1.0
+        ref: v${{ matrix.ip-version }}
 
     - name: build-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
