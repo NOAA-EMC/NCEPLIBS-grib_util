@@ -32,6 +32,10 @@ if(OpenMP_Fortran_FOUND)
   target_link_libraries(${exe_name} PRIVATE OpenMP::OpenMP_Fortran)
 endif()
 
+if(ip_VERSION VERSION_GREATER_EQUAL 4.0.0)
+  target_compile_definitions(${exe_name} PRIVATE USEIPMOD)
+endif()
+
 # Install the copygb2 executable.
 install(TARGETS ${exe_name} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 

@@ -39,7 +39,7 @@ find_package(ZLIB REQUIRED)
 # Find the NCEPLIBS libraries we need.
 find_package(bacio 2.4.0 REQUIRED)
 find_package(sp 2.3.3 REQUIRED)
-find_package(ip 4.0.0 REQUIRED)
+find_package(ip 3.3.3 REQUIRED)
 find_package(w3emc 2.10.0 REQUIRED)
 find_package(g2 3.4.0 REQUIRED)
 if (g2_VERSION GREATER_EQUAL 3.5.0)
