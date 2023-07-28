@@ -33,7 +33,7 @@ if(OpenMP_Fortran_FOUND)
 endif()
 
 if(ip_VERSION VERSION_GREATER_EQUAL 4.0.0)
-  add_compile_definitions(USEIPMOD)
+  target_compile_definitions(${exe_name} PRIVATE USEIPMOD)
 endif()
 
 # Install the copygb2 executable.
