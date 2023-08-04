@@ -74,7 +74,7 @@ jobs:
 
   macos-spack-build:
     needs: spack-setup
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - name: checkout-grib_utils
