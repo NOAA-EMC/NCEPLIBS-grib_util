@@ -73,7 +73,7 @@ jobs:
           spack clean -a
 
   macos-spack-build:
-    needs: spack-setup
+    needs: macos-spack-setup
     runs-on: macos-latest
 
     steps:
