@@ -3,13 +3,7 @@
 #
 # Ed Hartnett, 12/19/22
 name: spack-macos
-on:
-  push:
-    branches:
-    - develop
-  pull_request:
-    branches:
-    - develop
+on: [push, pull_request]
 
 # Use custom shell with -l so .bash_profile is sourced
 # without having to do it in manually every step
