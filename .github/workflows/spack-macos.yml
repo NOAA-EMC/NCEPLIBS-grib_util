@@ -89,7 +89,6 @@ jobs:
       - name: build-grib_utils
         run: |
           source spack/share/spack/setup-env.sh
-          sudo apt install cmake libxerces-c-dev
           spack env activate grib_utils-env
           export CC=mpicc
           export FC=mpif90
