@@ -68,7 +68,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/bacio
-        key: bacio-Intel-${{ matrix.compilers }}-${{ runner.os }}-v2.5.0
+        key: bacio-Intel-${{ matrix.compilers }}-${{ runner.os }}-develop
 
     - name: checkout-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
@@ -76,7 +76,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-bacio
         path: bacio
-        ref: v2.5.0
+        ref: develop
     
     - name: build-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
@@ -92,7 +92,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/sp
-        key: sp-Intel-${{ matrix.compilers }}-${{ runner.os }}-2.3.3-1
+        key: sp-Intel-${{ matrix.compilers }}-${{ runner.os }}-develop
 
     - name: checkout-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
@@ -100,7 +100,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-sp
         path: sp
-        ref: v2.3.3
+        ref: develop
 
     - name: build-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
@@ -117,7 +117,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/w3emc
-        key: w3emc-Intel-${{ matrix.compilers }}-${{ runner.os }}-2.10.0-bacio-2.5.0
+        key: w3emc-Intel-${{ matrix.compilers }}-${{ runner.os }}-develop
 
     - name: checkout-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -125,7 +125,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-w3emc
         path: w3emc
-        ref: v2.10.0
+        ref: develop
 
     - name: build-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -142,7 +142,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/ip
-        key: ip-Intel-${{ matrix.compilers }}-${{ runner.os }}-4.1.0
+        key: ip-Intel-${{ matrix.compilers }}-${{ runner.os }}-develop
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -150,7 +150,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
-        ref: v4.1.0
+        ref: develop
 
     - name: build-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -167,7 +167,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/g2
-        key: g2-Intel-${{ matrix.compilers }}-${{ runner.os }}-2.0.33-2.5.0-3.4.5
+        key: g2-Intel-${{ matrix.compilers }}-${{ runner.os }}-develop
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
@@ -175,7 +175,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: v3.4.5
+        ref: develop
 
     - name: build-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
@@ -183,7 +183,7 @@ jobs:
         cd g2
         mkdir build
         cd build
-        ${{ matrix.compilers }} cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper" ..
+        ${{ matrix.compilers }} cmake -DCMAKE_INSTALL_PREFIX=~/g2 -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/w3emc" ..
         make -j2
         make install
                  
