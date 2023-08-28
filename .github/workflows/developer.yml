@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        g2-branch: [develop, v3.5.x]
+        g2-branch: [develop, v3.4.6]
 
     steps:
     - name: install-dependencies
@@ -41,7 +41,7 @@ jobs:
 
     - name: cache-jasper
       id: cache-jasper
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ~/jasper
         key: jasper-${{ runner.os }}-2.0.32
@@ -72,7 +72,7 @@ jobs:
 
     - name: cache-sp
       id: cache-sp
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ~/sp
         key: sp-developer-${{ runner.os }}-2.3.3
