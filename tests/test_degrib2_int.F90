@@ -135,6 +135,8 @@ program test_degrib2_int
      pt(iutpos(t)) = 0
   end do
 
+  t = NUM_TN_T
+
   ! Check different units for secondary times.
   pt(iutpos(t)) = 99
   pt(33) = 2

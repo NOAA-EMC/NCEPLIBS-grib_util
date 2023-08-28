@@ -4,7 +4,7 @@
 # George Gayno, Mark Potts
 
 # Set the compiler flags.
-if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel)$")
+if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel|IntelLLVM)$")
   set(CMAKE_Fortran_FLAGS "-g -r8 -auto ${CMAKE_Fortran_FLAGS}")
   set(CMAKE_Fortran_FLAGS_RELEASE "-O3 ${CMAKE_Fortran_FLAGS}")
 elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU)$")
@@ -23,6 +23,10 @@ target_link_libraries(${exe_name} PRIVATE bacio::${bacio_name} w3emc::w3emc_d ip
 # Use openMP if found.
 if(OpenMP_Fortran_FOUND)
   target_link_libraries(${exe_name} PRIVATE OpenMP::OpenMP_Fortran)
+endif()
+
+if(ip_VERSION VERSION_GREATER_EQUAL 4.0.0)
+  target_compile_definitions(${exe_name} PRIVATE USEIPMOD)
 endif()
 
 # Install the utility.
