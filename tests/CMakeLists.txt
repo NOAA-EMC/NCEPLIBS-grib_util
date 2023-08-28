@@ -58,6 +58,7 @@ endfunction()
 
 # Copy necessary test data files.
 gu_copy_test_data(ref_gdaswave.t00z.wcoast.0p16.f000.grib2)
+gu_copy_test_data(ref_gdaswave.t00z.wcoast.0p16.f000.ip.grib2)
 gu_copy_test_data(ref_gdaswave.t00z.wcoast.0p16.f000.grib1)
 gu_copy_test_data(ref_gdaswave_2.idx)
 gu_copy_test_data(ref_gdaswave.degrib2.txt)
@@ -92,10 +93,12 @@ gu_test(run_degrib2_tests)
 gu_test(run_grbindex_tests)
 gu_test(run_grb2index_tests)
 
-# This test depends on the g2c_compare utility, which may not be
-# present.
-if (G2C_COMPARE)
+option(G2C_COMPARE OFF)
+if(G2C_COMPARE)
+  find_program(G2C_COMPARE g2c_compare)
   gu_test(run_copygb2_tests)
+else()
+  message(STATUS "g2c_compare not found.")
 endif()
 
 # Does the user want to get extra test files from the FTP site, and
@@ -119,13 +122,17 @@ if(FTP_TEST_FILES)
     PULL_DATA(${G2_FTP_URL} ${THE_FILE})
   endforeach()
 
-  # Fetch the large test file(s) from FTP if desired.
-  set(LARGE_FTP_FILES "fv3lam.t00z.namerica.f00.grib2")
-  if(LARGE_FTP_TESTS)
-    foreach(THE_FILE IN LISTS LARGE_FTP_FILES) 
-      PULL_DATA(${G2_FTP_URL} ${THE_FILE})
-    endforeach()
-    add_definitions(-DLARGE_FTP_TESTS)
+  # Extra tests are those that apply to files not yet available on FTP.
+  if(FTP_EXTRA_TEST_FILES)
+    # Fetch the large test file(s) from FTP if desired.
+    #    set(LARGE_FTP_FILES "fv3lam.t00z.namerica.f00.grib2")
+    set(LARGE_FTP_FILES "fv3lam.t00z.prslev.f000.grib2")
+    if(FTP_LARGE_TEST_FILES)
+      foreach(THE_FILE IN LISTS LARGE_FTP_FILES) 
+        PULL_DATA(${G2_FTP_URL} ${THE_FILE})
+      endforeach()
+      add_definitions(-DLARGE_FTP_TESTS)
+    endif()
   endif()
 
   # Copy this inventory from the test directory. It's the expected
