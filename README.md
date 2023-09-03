@@ -1,7 +1,19 @@
+![Status](https://github.com/NOAA-EMC/NCEPLIBS-grib_util/workflows/developer/badge.svg)
+
 # NCEPLIBS-grib_util
 
-This is a collection of NCEP GRIB related utilities. This is related
-to the [NCEPLIBS](https://github.com/NOAA-EMC/NCEPLIBS) project.
+This is a collection of NCEP GRIB related utilities, for GRIB1 and
+GRIB2.
+
+GRIdded Binary or General Regularly-distributed Information in Binary
+form (GRIB) is a data format for meteorological and forecast data,
+standardized by the World Meteorological Organization (WMO). GRIB
+edition 1 was approved by the WMO Working Group on Data Management
+(WGDM) in 1994. GRIB edition 2 (GRIB2) was approved by the WGDM in
+2003.
+
+This is part of the [NCEPLIBS](https://github.com/NOAA-EMC/NCEPLIBS)
+project.
 
 For complete documentation see
 https://noaa-emc.github.io/NCEPLIBS-grib_util/. For the NCEP WMO GRIB2
@@ -14,6 +26,21 @@ issue](https://github.com/NOAA-EMC/NCEPLIBS-grib_util/issues). For general
 NCEPLIBS inquiries, contact [Edward
 Hartnett](mailto:edward.hartnett@noaa.gov) (secondary point of contact
 [Alex Richert](mailto:alexander.richert@noaa.gov)).
+
+## The grib_util Utilities
+
+Utility | Purpose
+--------|--------
+cnvgrib | Convert between GRIB1 and GRIB2.
+copygb | Copy all or part of a GRIB1 file.p
+copygb2 | Copy all or part of a GRIB2 file.
+degrib2 | Inventory a GRIB2 file.
+grb2index | Create an index from a GRIB1 file.
+grbindex | Create an index from a GRIB2 file.
+tocgrib | Copy some GRIB2 fields to a new GRIB1 file.
+tocgrib2 | Copy some GRIB2 fields to a new GRIB2 file.
+tocgrib2super | Copy some GRIB2 fields to a new GRIB2 file with super WMO header.
+wgrib | Manipulate GRIB1 files.
 
 ## Prerequisite External Projects
 
@@ -44,15 +71,15 @@ Repository | Notes
 
 Utility | Author(s) | User(s)
 --------|-----------|--------
-cnvgrib | Stephen Gilbert, Gordon, Boi Vuong | ???
-copygb | Mark Iredell, Stephen Gilbert, Trojan, Boi Vuong | UFS_UTILS
-copygb2 | Mark Iredell, Stephen Gilbert, Boi Vuong | ???
-degrib2 | Boi Vuong | many GRIB2 users
-grb2index | Mark Iredell, Stephen Gilbert, Boi Vuong | ???
-grbindex | Mark Iredell, Stephen Gilbert, Boi Vuong, W. Ebisuzaki | FAA and AWIPS (CONUS grid id 211)
-tocgrib | Stephen Gilbert, Boi Vuong, Farley, R. E. Jones | RAP for FAA
-tocgrib2 | Stephen Gilbert, Boi Vuong | (GFS, NAM, SMOKE, RAP, HRRR, NWPS, etc.) in production for AWIPS and NDFD
-tocgrib2super | Stephen Gilbert, Boi Vuong | (GFS, NAM, SMOKE, RAP, HRRR, NWPS, etc.) in production for AWIPS and NDFD
+cnvgrib | Stephen Gilbert, Gordon, Mark Iredell, Boi Vuong | 
+copygb | Stephen Gilbert, Mark Iredell, Trojan, Boi Vuong | UFS_UTILS
+copygb2 | Stephen Gilbert, Mark Iredell, Boi Vuong | 
+degrib2 | Stephen Gilbert, Boi Vuong | many GRIB2 users
+grb2index | Mark Iredell, Stephen Gilbert, Boi Vuong | 
+grbindex | W. Ebisuzaki, Farley, Stephen Gilbert, Mark Iredell, Boi Vuong | FAA and AWIPS (CONUS grid id 211)
+tocgrib | Farley, Stephen Gilbert, R. E. Jones, Boi Vuong | RAP for FAA
+tocgrib2 | Farley, Stephen Gilbert, R. E. Jones, Boi Vuong  | (GFS, NAM, SMOKE, RAP, HRRR, NWPS, etc.) in production for AWIPS and NDFD
+tocgrib2super | Farley, Stephen Gilbert, R. E. Jones, Boi Vuong  | (GFS, NAM, SMOKE, RAP, HRRR, NWPS, etc.) in production for AWIPS and NDFD
 wgrib | W. Ebisuzaki | FAA and AWIPS (CONUS grid id 211)
 
 Code Manager : [Hang Lei](mailto:hang.lei@noaa.gov), [Ed
