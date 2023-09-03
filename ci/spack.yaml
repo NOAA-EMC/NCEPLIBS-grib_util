@@ -9,11 +9,11 @@ spack:
       - gcc@10:10
   specs:
   - bacio@2.5.0
-  - w3emc@2.9.3
-  - g2@3.4.6
+  - w3emc@2.10.0
+  - g2@3.4.5
   - g2c@1.7.0
   - sp@2.3.3
-  - ip@3.3.3
+  - ip@4.1.0
   view: true
   concretizer:
     unify: true

@@ -37,14 +37,14 @@ jobs:
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-4.0.0
+        ref: version-2.0.32
 
     - name: cache-jasper
       id: cache-jasper
       uses: actions/cache@v3
       with:
         path: ~/jasper
-        key: jasper-${{ runner.os }}-4.0.0
+        key: jasper-${{ runner.os }}-2.0.32
 
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -116,7 +116,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
-        ref: v3.3.3
+        ref: v4.1.0
 
     - name: build-ip
       run: |
@@ -174,7 +174,7 @@ jobs:
         ls -l ~/jasper/lib
         export LD_LIBRARY_PATH=/home/runner/jasper/lib
         export PATH="~/g2c/bin:$PATH"
-        cmake -DENABLE_DOCS=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2;~/g2c" -DCMAKE_Fortran_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" -DCMAKE_C_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" ..
+        cmake -DENABLE_DOCS=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2;~/g2c" -DCMAKE_Fortran_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" -DCMAKE_C_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" -DG2C_COMPARE=ON ..
         make -j2 VERBOSE=1
         ctest --output-on-failure --rerun-failed --verbose
 

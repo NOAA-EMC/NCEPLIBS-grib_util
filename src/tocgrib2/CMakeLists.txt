@@ -4,7 +4,7 @@
 # Mark Potts, Kyle Gerheiser
 
 # Set the compiler flags.
-if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel)$")
+if(CMAKE_Fortran_COMPILER_ID MATCHES "^(Intel|IntelLLVM)$")
   set(CMAKE_Fortran_FLAGS "-g -axCORE-AVX2 ${CMAKE_Fortran_FLAGS}")
   set(CMAKE_Fortran_FLAGS_RELEASE "-O3 ${CMAKE_Fortran_FLAGS}")
 elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU)$")
