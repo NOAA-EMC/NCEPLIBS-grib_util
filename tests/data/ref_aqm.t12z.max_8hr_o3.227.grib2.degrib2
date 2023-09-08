@@ -1,0 +1,65 @@
+
+ GRIB MESSAGE  1  starts at 1
+
+  SECTION 0:  0 2 757557
+  SECTION 1:  7 0 0 1 1 2022 11 1 12 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 0 0 1 1 2022 11 1 12 0 0 0 1
+  SECTION 3:  0 1509825 0 0 30
+  GRID TEMPLATE 3. 30 :  6 0 0 0 0 0 0 1473 1025 12190000 226541000 48 25000000 265000000 5079000 5079000 0 64 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 8: ( PARAMETER = OZMAX8   0 14 201 )  14 201 2 0 89 0 0 1 -1 105 0 1 255 -127 -2147483647 2022 11 2 10 0 0 1 0 0 2 1 23 255 0
+  FIELD: OZMAX8  1 hybrid lvl (1 -24) valid  1 hour before 2022110112:00:00 to 2022110210:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  1509825     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1102324794 -5 0 11 0 1 1 1649987994 -1 51278 0 4 1 1 40 7 1 2
+  Data Values:
+  Num. of Data Points =  1509825   Num. of Data Undefined = 129961
+( PARM= OZMAX8 ) :  MIN=              22.51768875 AVE=              44.23855591 MAX=              79.61143494
+
+ GRIB MESSAGE  2  starts at 757558
+
+  SECTION 0:  0 2 872297
+  SECTION 1:  7 0 0 1 1 2022 11 1 12 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 0 0 1 1 2022 11 1 12 0 0 0 1
+  SECTION 3:  0 1509825 0 0 30
+  GRID TEMPLATE 3. 30 :  6 0 0 0 0 0 0 1473 1025 12190000 226541000 48 25000000 265000000 5079000 5079000 0 64 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 8: ( PARAMETER = OZMAX8   0 14 201 )  14 201 2 0 89 0 0 1 23 105 0 1 255 -127 -2147483647 2022 11 3 10 0 0 1 0 0 2 1 23 255 0
+  FIELD: OZMAX8  1 hybrid lvl (23 -46 hr) valid  23 hour after 2022110112:00:00 to 2022110310:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  1509825     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1101446063 -6 0 12 0 1 1 1649987994 -1 53209 0 4 1 1 14 7 1 2
+  Data Values:
+  Num. of Data Points =  1509825   Num. of Data Undefined = 129961
+( PARM= OZMAX8 ) :  MIN=              20.84164238 AVE=              44.12677002 MAX=              73.31039429
+
+ GRIB MESSAGE  3  starts at 1629855
+
+  SECTION 0:  0 2 863685
+  SECTION 1:  7 0 0 1 1 2022 11 1 12 0 0 0 1
+  Contains  0  Local Sections  and  1  data fields.
+
+  FIELD  1
+  SECTION 0:  0 2
+  SECTION 1:  7 0 0 1 1 2022 11 1 12 0 0 0 1
+  SECTION 3:  0 1509825 0 0 30
+  GRID TEMPLATE 3. 30 :  6 0 0 0 0 0 0 1473 1025 12190000 226541000 48 25000000 265000000 5079000 5079000 0 64 25000000 25000000 -90000000 0
+  NO Optional List Defining Number of Data Points.
+  PRODUCT TEMPLATE 4. 8: ( PARAMETER = OZMAX8   0 14 201 )  14 201 2 0 89 0 0 1 47 105 0 1 255 -127 -2147483647 2022 11 4 10 0 0 1 0 0 2 1 23 255 0
+  FIELD: OZMAX8  1 hybrid lvl (47 -70 hr) valid  47 hour after 2022110112:00:00 to 2022110410:00:00
+  NO Optional Vertical Coordinate List.
+  Num. of Data Points =  1509825     NO BIT-MAP 
+  DRS TEMPLATE 5. 3 :  1099993774 -6 0 12 0 1 1 1649987994 -1 52355 0 4 1 1 15 7 1 2
+  Data Values:
+  Num. of Data Points =  1509825   Num. of Data Undefined = 129961
+( PARM= OZMAX8 ) :  MIN=              18.07162094 AVE=              43.54134750 MAX=              70.52474976
+  
+  Total Number of Fields Found =  3
