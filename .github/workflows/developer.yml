@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        g2-branch: [develop, v3.4.6]
+        g2-branch: [develop, v3.4.7]
 
     steps:
     - name: install-dependencies
