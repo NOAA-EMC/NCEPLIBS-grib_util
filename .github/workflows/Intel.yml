@@ -44,7 +44,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/jasper
-        key: jasper-Intel-${{ matrix.compilers }}-2.0.33
+        key: jasper-Intel-${{ matrix.compilers }}-4.0.0
 
     - name: checkout-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -52,7 +52,7 @@ jobs:
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-2.0.33
+        ref: version-4.0.0
 
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -68,7 +68,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/bacio
-        key: bacio-Intel-${{ matrix.compilers }}-${{ runner.os }}-develop
+        key: bacio-Intel-${{ matrix.compilers }}-${{ runner.os }}-2.6.0
 
     - name: checkout-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
@@ -76,7 +76,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-bacio
         path: bacio
-        ref: develop
+        ref: v2.6.0
     
     - name: build-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
@@ -92,7 +92,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/sp
-        key: sp-Intel-${{ matrix.compilers }}-${{ runner.os }}-develop
+        key: sp-Intel-${{ matrix.compilers }}-${{ runner.os }}-2.4.0
 
     - name: checkout-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
@@ -100,7 +100,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-sp
         path: sp
-        ref: develop
+        ref: v2.4.0
 
     - name: build-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
@@ -117,7 +117,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/w3emc
-        key: w3emc-Intel-${{ matrix.compilers }}-${{ runner.os }}-develop
+        key: w3emc-Intel-${{ matrix.compilers }}-${{ runner.os }}-2.10.0
 
     - name: checkout-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -125,7 +125,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-w3emc
         path: w3emc
-        ref: develop
+        ref: v2.10.0
 
     - name: build-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
@@ -142,7 +142,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/ip
-        key: ip-Intel-${{ matrix.compilers }}-${{ runner.os }}-develop
+        key: ip-Intel-${{ matrix.compilers }}-${{ runner.os }}-4.2.0
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -150,7 +150,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
-        ref: develop
+        ref: v4.2.0
 
     - name: build-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -167,7 +167,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/g2
-        key: g2-Intel-${{ matrix.compilers }}-${{ runner.os }}-develop
+        key: g2-Intel-${{ matrix.compilers }}-${{ runner.os }}-3.4.7
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
@@ -175,7 +175,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: develop
+        ref: v3.4.7
 
     - name: build-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
