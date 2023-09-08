@@ -24,9 +24,9 @@ jobs:
       matrix:
         g2-version: [3.4.7]
         bacio-version: [2.4.1, 2.5.0]
-        jasper-version: [2.0.33]
+        jasper-version: [4.0.0]
         w3emc-version: [2.10.0]
-        ip-version: [3.3.3, 4.1.0]
+        ip-version: [3.3.3, 4.1.0, 4.2.0]
 
     steps:
     - name: install-dependencies
@@ -87,7 +87,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/sp
-        key: sp-${{ runner.os }}-2.3.3-1
+        key: sp-${{ runner.os }}-2.4.0
 
     - name: checkout-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
@@ -95,7 +95,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-sp
         path: sp
-        ref: v2.3.3
+        ref: v2.4.0
 
     - name: build-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
