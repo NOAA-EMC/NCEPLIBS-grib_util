@@ -16,10 +16,11 @@ program degrib2
   use params
   implicit none
 
-  integer :: msk1, msk2, icount, ifl1, iseek, itot, j, lengrib, lgrib, lskip
+  integer :: msk2, icount, ifl1, iseek, itot, j, lengrib, lgrib, lskip
+  integer*8 :: ifl18, iseek8, msk18, lskip8, lgrib8
   integer :: maxlocal, n, ncgb, numfields, numlocal
   real :: fldmax, fldmin, sum
-  parameter(msk1 = 32000, msk2 = 4000)
+  parameter(msk18 = 32000, msk2 = 4000)
   character(len = 1), allocatable, dimension(:) :: cgrib
   integer :: listsec0(3)
   integer :: listsec1(13)
@@ -57,7 +58,12 @@ program degrib2
   iseek = 0
   do
      ! Find a GRIB2 message in the file.
-     call skgb(ifl1, iseek, msk1, lskip, lgrib)
+     !call skgb(ifl1, iseek, msk1, lskip, lgrib)
+     ifl18 = ifl1
+     iseek8 = iseek
+     call skgb8(ifl18, iseek8, msk18, lskip8, lgrib8)
+     lskip = lskip8
+     lgrib = lgrib8
      if (lgrib .eq. 0) exit    ! end loop at EOF or problem
 
      ! Read the GRIB2 message from the file.
