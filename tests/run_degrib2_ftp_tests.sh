@@ -8,7 +8,7 @@
 
 set -e
 echo ""
-echo "*** Running all FTP file tests"
+echo "*** Running degrib2 FTP file tests"
 
 ftp_files="blend.t19z.core.f001.co.grib2 \
 aqm.t12z.max_8hr_o3.227.grib2 \
