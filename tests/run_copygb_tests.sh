@@ -16,6 +16,8 @@ echo "*** Running copygb test"
 # Check against expected output. First 120 bytes contain differences,
 # so ignore them.
 hexdump -C test_gdaswave_2.grib1.idx
+../src/degrib2/degrib2 test_gdaswave_2.grib1.idx
+../src/degrib2/degrib2 data/ref_gdaswave_2.grib1.idx
 cmp -i 120 test_gdaswave_2.grib1.idx data/ref_gdaswave_2.grib1.idx
 
 # Interpolate GFS landmask to NCEP grid 172
