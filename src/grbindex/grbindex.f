@@ -1,18 +1,16 @@
 !> @file
-!> Create an index file from a grib file.
+!> Create an index file from a GRIB1 file.
 !> @author Iredell @date 1998-09-15
 
-!> Create an index file from a grib file.
+!> Create an index file from a GRIB1 file.
 !>      
-!> The index file serves as a table of contents for the grib file,
-!> enabling quick access to the data. The grib file must be unblocked,
+!> The index file serves as a table of contents for the GRIB1 file,
+!> enabling quick access to the data. The GRIB1 file must be unblocked,
 !> but there can be a gap before the first grib message of at most 32000
 !> bytes and gaps between messages of at most 4000 bytes. The two file
 !> names are retrieved from the command line arguments. The first
 !> argument is the name of the input grib file. The second argument is
 !> the name of the output index file.
-!>
-!> Currently, only version 1 of grib can be read.
 !>
 !> Version 1 of the index file has the following format:
 !>      
@@ -37,23 +35,6 @@
 !> -  byte 113-172: (optional) bytes 41-100 of the pds
 !> -  byte 173-184: (optional) bytes 29-40 of the pds
 !> -  byte 185-320: (optional) bytes 43-178 of the gds
-!>
-!> ### Program History Log
-!> Date | Programmer | Comments
-!> -----|------------|---------
-!> 92-11-22 | Iredell | Initial
-!> 94-06-08 | Ebisuzaki | eliminate ishell calls
-!> 94-08-26 | Iredell | 40 byte pds extension
-!> 95-10-31 | Iredell | considerably reduce i/o
-!> 96-10-31 | Iredell | augmented optional definitions to byte 320
-!> 1999-04-27 | Gilbert | Changed CALL EXIT(N) to CALL ERREXIT(N) to pass proper error code
-!> 2012-07-31 | Vuong | changed hostname to hostnam
-!>
-!> ### Input File
-!> - gribfile unblocked grib file
-!>
-!> ### Output File
-!> -  indexfile    unblocked index file
 !>
 !> @return
 !> - 0 - successful run
