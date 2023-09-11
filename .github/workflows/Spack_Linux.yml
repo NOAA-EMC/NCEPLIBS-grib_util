@@ -1,0 +1,65 @@
+# This is a CI workflow for the NCEPLIBS-grib_util project.
+#
+# This workflow builds grib_util with Spack, including installing with the "--test
+# root" option to run the CTest suite. It also has a one-off job that validates
+# the recipe by ensuring that every CMake option that should be set in the
+# Spack recipe is so set.
+#
+# Alex Richert, Sep 2023
+name: Spack
+on:
+  push:
+    branches:
+    - develop
+  pull_request:
+    branches:
+    - develop
+
+jobs:
+  # This job builds with Spack using every combination of variants and runs the CTest suite each time
+  Linux:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        openmp: ["+openmp", "~openmp"]
+
+    steps:
+
+    - name: checkout-grib-util
+      uses: actions/checkout@v4
+      with:
+        path: grib-util
+
+    - name: spack-build-and-test
+      run: |
+        git clone -c feature.manyFiles=true https://github.com/spack/spack
+        . spack/share/spack/setup-env.sh
+        spack env create grib-util-env
+        spack env activate grib-util-env
+        cp $GITHUB_WORKSPACE/grib-util/spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/grib-util/package.py
+        mv $GITHUB_WORKSPACE/grib-util $SPACK_ENV/grib-util
+        spack develop --no-clone grib-util@develop
+        spack add grib-util@develop%gcc@11 ${{ matrix.openmp }}
+        spack external find cmake gmake
+        spack concretize
+        spack install --verbose --test root
+
+  # This job validates the Spack recipe by making sure each cmake build option is represented
+  recipe-check:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: checkout-grib-util
+      uses: actions/checkout@v4
+      with:
+        path: grib-util
+
+    - name: recipe-check
+      run: |
+        echo "If this jobs fails, look at the most recently output CMake option below and make sure that option appears in spack/package.py"
+        for opt in $(grep -ioP '^option\(\K(?!(ENABLE_DOCS))[^ ]+' $GITHUB_WORKSPACE/grib-util/CMakeLists.txt) ; do
+          echo "Checking for presence of '$opt' CMake option in package.py"
+          grep -cP "define.+\b${opt}\b" $GITHUB_WORKSPACE/grib-util/spack/package.py
+        done
