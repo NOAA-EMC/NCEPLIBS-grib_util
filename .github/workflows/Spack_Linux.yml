@@ -35,12 +35,12 @@ jobs:
       run: |
         git clone -c feature.manyFiles=true https://github.com/spack/spack
         . spack/share/spack/setup-env.sh
-        spack env create grib-util-env
+        spack env create grib-util-env $GITHUB_WORKSPACE/grib-util/spack/spack.yaml
         spack env activate grib-util-env
-        cp $GITHUB_WORKSPACE/grib-util/spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/grib-util/package.py
+        cp $GITHUB_WORKSPACE/grib-util/spack/package.py
         mv $GITHUB_WORKSPACE/grib-util $SPACK_ENV/grib-util
         spack develop --no-clone grib-util@develop
-        spack add grib-util@develop%gcc@11 ${{ matrix.openmp }}
+        spack add grib-util@develop%gcc@11 ${{ matrix.openmp }} ^bacio@2.5.0 ^w3emc@2.10.0 ^g2@3.4.6 ^g2c@1.7.0 ^sp@2.3.3 ^ip@4.1.0
         spack external find cmake gmake
         spack concretize
         spack install --verbose --test root
