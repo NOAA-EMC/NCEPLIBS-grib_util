@@ -30,7 +30,7 @@ class GribUtil(CMakePackage):
     depends_on("w3emc precision=4,d", when="^w3emc@2.10:")
     depends_on("w3nco", when="@:1.2.3")
     depends_on("g2")
-    depends_on("g2c", when="^g2 @3.5:")
+    depends_on("g2c@1.7:", when="^g2 @3.5:")
     depends_on("bacio")
     depends_on("ip")
     depends_on("ip@:3.3.3", when="@:1.2")
