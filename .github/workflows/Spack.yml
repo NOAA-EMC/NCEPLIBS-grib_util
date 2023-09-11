@@ -41,10 +41,13 @@ jobs:
         cp $GITHUB_WORKSPACE/grib-util/spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/grib-util/package.py
         mv $GITHUB_WORKSPACE/grib-util $SPACK_ENV/grib-util
         spack develop --no-clone grib-util@develop
-        spack add grib-util@develop%gcc@11 ${{ matrix.openmp }} ^bacio@2.6.0 ^w3emc@2.10.0 ^g2@3.4.6 ^g2c@1.7.0 ^ip@4.1.0 ^sp@2.4.0
+        spack add grib-util@develop%gcc@11 ${{ matrix.openmp }} ^bacio@2.5.0 ^w3emc@2.10.0 ^g2@3.4.6 ^g2c@1.7.0 ^ip@4.1.0 ^sp@2.3.3
         spack external find cmake gmake
         spack concretize
-        spack install --verbose --test root
+        # Run installation and run CTest suite
+        spack install --verbose --fail-fast --test root
+        # Run 'spack load' to check for obvious errors in setup_run_environment
+        spack load grib-util
 
   # This job validates the Spack recipe by making sure each cmake build option is represented
   recipe-check:
