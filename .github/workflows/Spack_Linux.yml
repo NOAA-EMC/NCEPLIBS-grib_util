@@ -35,7 +35,7 @@ jobs:
       run: |
         git clone -c feature.manyFiles=true https://github.com/spack/spack
         . spack/share/spack/setup-env.sh
-        spack env create grib-util-env $GITHUB_WORKSPACE/grib-util/spack/spack.yaml
+        spack env create grib-util-env
         spack env activate grib-util-env
         cp $GITHUB_WORKSPACE/grib-util/spack/package.py
         mv $GITHUB_WORKSPACE/grib-util $SPACK_ENV/grib-util
