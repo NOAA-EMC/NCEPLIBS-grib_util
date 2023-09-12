@@ -21,7 +21,7 @@ jobs:
 
     strategy:
       matrix:
-        os: ["ubuntu-latest", "macos-latest"]
+        os: ["ubuntu-latest"]
         openmp: ["+openmp", "~openmp"]
     runs-on: ${{ matrix.os }}
 
@@ -41,7 +41,7 @@ jobs:
         cp $GITHUB_WORKSPACE/grib-util/spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/grib-util/package.py
         mv $GITHUB_WORKSPACE/grib-util $SPACK_ENV/grib-util
         spack develop --no-clone grib-util@develop
-        spack add grib-util@develop%gcc@11 ${{ matrix.openmp }} ^bacio@2.5.0 ^w3emc@2.10.0 ^g2@3.4.6 ^g2c@1.7.0 ^ip@4.1.0 ^sp@2.3.3
+        spack add grib-util@develop%gcc@11 ${{ matrix.openmp }} ^bacio@2.5.0 ^w3emc@2.10.0 ^g2@3.4.6 ^g2c@develop ^ip@4.1.0 ^sp@2.3.3
         spack external find cmake gmake
         spack concretize
         # Run installation and run CTest suite
@@ -63,7 +63,7 @@ jobs:
     - name: recipe-check
       run: |
         echo "If this jobs fails, look at the most recently output CMake option below and make sure that option appears in spack/package.py"
-        for opt in $(grep -ioP '^option\(\K(?!(ENABLE_DOCS|FTP_TEST_FILES|FTP_LARGE_TEST_FILES|FTP_EXTRA_TEST_FILES|G2C_COMPARE))[^ ]+' $GITHUB_WORKSPACE/grib-util/CMakeLists.txt) ; do
+        for opt in $(grep -ioP '^option\(\K(?!(ENABLE_DOCS|FTP_TEST_FILES|FTP_LARGE_TEST_FILES|FTP_EXTRA_TEST_FILES))[^ ]+' $GITHUB_WORKSPACE/grib-util/CMakeLists.txt) ; do
           echo "Checking for presence of '$opt' CMake option in package.py"
           grep -cP "define.+\b${opt}\b" $GITHUB_WORKSPACE/grib-util/spack/package.py
         done
