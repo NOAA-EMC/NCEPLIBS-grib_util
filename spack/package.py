@@ -37,5 +37,12 @@ class GribUtil(CMakePackage):
     depends_on("sp")
 
     def cmake_args(self):
-        args = [self.define_from_variant("OPENMP", "openmp")]
+        args = [
+            self.define_from_variant("OPENMP", "openmp"),
+            self.define("BUILD_TESTING", self.run_tests),
+        ]
         return args
+
+    def check(self):
+        with working_dir(self.builder.build_directory):
+            make("test")
