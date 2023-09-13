@@ -1,0 +1,3 @@
+This directory contains an authoritative, up-to-date Spack recipe for NCEPLIBS-grib_util, which is found under Spack as "grib-util".
+
+Before each release of NCEPLIBS-grib_util, this file should be updated to accommodate changes in build options, etc., and .github/workflows/spack.yml should be updated to exercise all variants. Only the version entry should need to be updated after the release prior to incorporation into the Spack repository and the JCSDA Spack fork.
