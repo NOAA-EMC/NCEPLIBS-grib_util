@@ -29,7 +29,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/jasper
-        key: jasper-MacOS-${{ runner.os }}-2.0.33
+        key: jasper-MacOS-${{ runner.os }}-4.0.0
 
     - name: checkout-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -37,7 +37,7 @@ jobs:
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-2.0.33
+        ref: version-4.0.0
 
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -53,7 +53,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/bacio
-        key: bacio-MacOS-${{ runner.os }}-2.5.0
+        key: bacio-MacOS-${{ runner.os }}-2.6.0
 
     - name: checkout-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
@@ -61,7 +61,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-bacio
         path: bacio
-        ref: v2.5.0
+        ref: v2.6.0
     
     - name: build-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
@@ -77,7 +77,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/sp
-        key: sp-${{ runner.os }}-2.3.3-1
+        key: sp-${{ runner.os }}-2.4.0
 
     - name: checkout-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
@@ -85,7 +85,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-sp
         path: sp
-        ref: v2.3.3
+        ref: v2.4.0
 
     - name: build-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
@@ -127,7 +127,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/ip
-        key: ip-MacOS-${{ runner.os }}-4.1.0
+        key: ip-MacOS-${{ runner.os }}-4.2.0
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -135,7 +135,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
-        ref: v4.1.0
+        ref: v4.2.0
 
     - name: build-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -152,7 +152,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/g2
-        key: g2-MacOS-${{ runner.os }}-2.0.33-2.5.0-3.4.6
+        key: g2-MacOS-${{ runner.os }}-4.0.0-2.6.0-3.4.7
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
@@ -160,7 +160,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: v3.4.6
+        ref: v3.4.7
 
     - name: build-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
