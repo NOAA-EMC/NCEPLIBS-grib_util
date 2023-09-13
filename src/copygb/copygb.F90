@@ -17,23 +17,6 @@
 !> also be appended to a file (-a option). Some defaults can be
 !> overridden in a namelist file (-N option).
 !>
-!> ### Program History Log
-!> Date | Programmer | Comments
-!> -----|------------|---------
-!> 96-07-19 | Iredell | Initial
-!> 97-03-05 | Iredell | corrected the copying of the v-wind field when no interpolation is done
-!> 97-03-18 | Iredell | increased verbosity
-!> 1998-09-03 | Iredell | instrumented and made platform-independent
-!> 1999-10-05 | Iredell | added append option and wgrib request option
-!> 1999-10-06 | Iredell | added merge option
-!> 2000-01-19 | Iredell | added namelist option
-!> 2001-03-16 | Iredell | added ensemble extension option
-!> 2002-01-10 | Iredell | corrected v-wind search to include subcenter
-!> 2006-02-07 | Gilbert | changed v-wind search to exclude decimal scale factor
-!> 2007-06-22 | Iredell | corrected pre-interpolation mask bitmap setting
-!> 2007-07-13 | Trojan  | allowed nearest neighbour interpolation for waf grids
-!> 2013-03-14 | Vuong   | added omp_set_num_threads to single thread to execute in parallel mode
-!>
 !> ### Command Line Options
 !>   -a
 !>      Appends rather than overwrites the output GRIB file.

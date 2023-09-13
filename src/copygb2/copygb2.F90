@@ -25,23 +25,6 @@
 !>
 !> Some defaults can be overridden in a namelist file (-N option).
 !>
-!> ### Program History Log
-!> Date | Programmer | Comments
-!> -----|------------|---------
-!>  96-07-19 | Iredell | Initial
-!>  97-03-05 | Iredell | corrected the copying of the v-wind field when no interpolation is done
-!>  97-03-18 | Iredell | increased verbosity
-!> 1998-09-03 | Iredell | instrumented and made platform-independent
-!> 1999-10-05 | Iredell | added append option and wgrib request option
-!> 1999-10-06 | Iredell | added merge option
-!> 2000-01-19 | Iredell | added namelist option
-!> 2001-03-16 | Iredell | added ensemble extension option
-!> 2002-01-10 | Iredell | corrected v-wind search to include subcenter
-!> 2005-02-17 | Gilbert | modified from copygb for use with grib2 files.
-!> 2012-10-03 | Vuong | modified to remove deallocate l1i,f1i,g1i
-!> 2013-05-08 | Vuong | initialized variables mm and allones to zero
-!> 2016-10-03 | vuong | initialized pointers, changed allocations
-!>
 !> ## COMMAND LINE OPTIONS:
 !>   -a
 !>      Appends rather than overwrites the output GRIB file.
