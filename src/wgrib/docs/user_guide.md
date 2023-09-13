@@ -2,6 +2,9 @@
 
 # Introduction
 
+wgrib is deprecated and no longer supported. It should not be used in
+operational workflows.
+
 The command wgrib both inventories and decodes GRIB-1
 files. There are three types of inventories (regular, short,
 and verbose) which can be viewed as a human-readable index file.

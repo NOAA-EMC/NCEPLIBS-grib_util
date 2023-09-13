@@ -16,14 +16,6 @@
 !> message if the requested field is the only field in the GRIB2
 !> message.
 !>
-!> ### Program History Log
-!> Date | Programmer | Comments
-!> -----|------------|---------
-!> 2004-05-17 | Gilbert | Initial
-!> 2012-06-14 | Vuong | Modified write statement with format specifier
-!> 2012-10-22 | Vuong | Changed variable envvar to character*6
-!> 2016-10-15 | Vuong | Increased length of file name to 200 Characters
-!>
 !> ### Input Files
 !> - 5 namelist of grib fields and associated wmo headers.
 !> - 11 input grib2 file.
