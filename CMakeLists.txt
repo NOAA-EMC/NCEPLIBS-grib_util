@@ -13,6 +13,7 @@ option(ENABLE_DOCS "Enable generation of doxygen-based documentation." OFF)
 option(FTP_TEST_FILES "Fetch and test with files on FTP site." OFF)
 option(FTP_LARGE_TEST_FILES "Fetch and test with very large files on FTP site." OFF)
 option(FTP_EXTRA_TEST_FILES "Test with files not yet available via FTP." OFF)
+option(G2C_COMPARE "Enable copygb2 tests using g2c_compare" OFF)
 SET(TEST_FILE_DIR "." CACHE STRING "Check this directory for test files before using FTP.")
 
 if(NOT CMAKE_BUILD_TYPE MATCHES "^(Debug|Release|RelWithDebInfo|MinSizeRel)$")
@@ -62,7 +63,7 @@ message(STATUS "Using bacio library ${bacio_name}")
 # Determine whether or not to generate documentation.
 if(ENABLE_DOCS)
   find_package(Doxygen REQUIRED)
-  add_subdirectory(docs)  
+  add_subdirectory(docs)
 endif()
 
 add_subdirectory(src)
