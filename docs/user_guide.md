@@ -7,7 +7,7 @@
 ## Introduction
 
 The NCEPLIBS-grib_util project contains a collection of NCEP grib
-related utilities. This is related to the
+related utilities. This is part of the
 [NCEPLIBS](https://github.com/NOAA-EMC/NCEPLIBS) project.
 
 The utilities:

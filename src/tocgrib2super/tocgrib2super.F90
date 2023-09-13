@@ -3,7 +3,7 @@
 !> with WMO super header.
 !> @author Gilbert @date 2004-05-17
 
-!> Program reads selected GRIB2 fields from a file, adds a flag Field
+!> This program reads selected GRIB2 fields from a file, adds a flag Field
 !> separator block and the size in bytes of the grib file, and the WMO
 !> super header and the time stamp, adds a TOC Flag Field separator
 !> block and WMO Header in front of each GRIB2 field, and writes them
@@ -18,16 +18,6 @@
 !> requested field (extract=.true.). Both options return the same
 !> message if the requested field is the only field in the GRIB2
 !> message.
-!>
-!> ### Program History Log
-!> Date | Programmer | Comments
-!> -----|------------|---------
-!> 2004-05-17 | Gilbert | Initial
-!> 2008-02-25 | VUONG |  Modified the original tocgrib2 program to add super wmo header for NDFD grib file
-!> 2010-09-02 | VUONG |  Rename program name aqm_smoke to tocgrib2super
-!> 2012-06-14 | VUONG |  Modifed write statement with format specifier
-!> 2012-10-22 | VUONG |  CHANGED VARIABLE ENVVAR TO CHARACTER*6
-!> 2016-10-15 | VUONG |  Increased length of file name to 200 Characters
 !>
 !> ### Input Files
 !> - 5 Namelist of grib fields and associated wmo headers.

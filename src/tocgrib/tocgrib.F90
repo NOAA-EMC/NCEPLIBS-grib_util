@@ -2,19 +2,14 @@
 !> @brief Create new GRIB2 file from exiting GRIB2 file.
 !> @author Gilbert @date 2003-03-28
 
-!> Program reads selected GRIB fields from a file, adds a TOC Flag Field
-!> separator block and WMO Header in front of each GRIB field, and
-!> writes them out to a new file. The output file is in the format
-!> required for TOC's FTP Input Service, which can be used to
+!> Create new GRIB2 file from exiting GRIB2 file.
+!>
+!> This program reads selected GRIB2 fields from a file, adds a TOC
+!> Flag Field separator block and WMO Header in front of each GRIB2
+!> field, and writes them out to a new file. The output file is in the
+!> format required for TOC's FTP Input Service, which can be used to
 !> disseminate the GRIB bulletins. This service is described at
 !> http://weather.gov/tg/ftpingest.html.
-!>
-!> ### Program History Log
-!> Date | Programmer | Comments
-!> -----|------------|---------
-!> 2003-03-28 | Gilbert | Initial
-!> 2012-10-22 | Vuong | changed variable envvar to character*6
-!> 2016-10-15 | Vuong | increased length of file name to 200 characters
 !>
 !> ### Input Files
 !>  - 5 list of grib fields and associated wmo headers.
