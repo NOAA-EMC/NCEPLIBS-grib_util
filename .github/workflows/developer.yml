@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        g2-branch: [develop, v3.4.6]
+        g2-branch: [develop, v3.4.7]
 
     steps:
     - name: install-dependencies
@@ -37,14 +37,14 @@ jobs:
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-2.0.32
+        ref: version-4.0.0
 
     - name: cache-jasper
       id: cache-jasper
       uses: actions/cache@v3
       with:
         path: ~/jasper
-        key: jasper-${{ runner.os }}-2.0.32
+        key: jasper-${{ runner.os }}-4.0.0
 
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
