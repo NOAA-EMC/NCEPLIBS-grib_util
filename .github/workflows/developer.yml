@@ -2,7 +2,7 @@
 # project.
 #
 # This workflow tests the build as a developer would do it, with
-# address sanitizer and documentation build.
+# address sanitizer and documentation build, and also memcheck build.
 #
 # Ed Hartnett 1/9/23
 name: developer
