@@ -32,6 +32,13 @@ jobs:
       with:
         path: grib-util
 
+    - name: cache-spack
+      id: cache-spack
+      uses: actions/cache@v3
+      with:
+        path: ~/spack-build-cache
+        key: spack-build-cache-${{ matrix.os }}-1
+
     - name: spack-build-and-test
       run: |
         git clone -c feature.manyFiles=true https://github.com/spack/spack
@@ -41,13 +48,25 @@ jobs:
         cp $GITHUB_WORKSPACE/grib-util/spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/grib-util/package.py
         mv $GITHUB_WORKSPACE/grib-util $SPACK_ENV/grib-util
         spack develop --no-clone grib-util@develop
-        spack add grib-util@develop%gcc@11 ${{ matrix.openmp }} ^bacio@2.5.0 ^w3emc@2.10.0 ^g2@3.4.6 ^g2c@develop ^ip@4.1.0 ^sp@2.3.3
+        spack add grib-util@develop%gcc@11 ${{ matrix.openmp }} ^bacio@2.5.0 ^w3emc@2.10.0 ^g2@3.4.6 ^g2c@develop ^ip@4.2.0 ^sp@2.4.0
         spack external find cmake gmake
+        spack mirror add spack-build-cache ~/spack-build-cache
         spack concretize
         # Run installation and run CTest suite
-        spack install --verbose --fail-fast --test root
+        spack install --fail-fast --no-check-signature --test root
+        # Print test results
+        cat $(spack location -i grib-util)/.spack/install-time-test-log.txt
         # Run 'spack load' to check for obvious errors in setup_run_environment
+        echo "Loading grib-util through Spack..."
         spack load grib-util
+        spack buildcache push --only dependencies --unsigned ~/spack-build-cache grib-util
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: ${{ failure() }}
+      with:
+        name: spackci-ctest-output-${{ matrix.os }}-${{ matrix.openmp }}
+        path: ${{ github.workspace }}/grib-util/spack-build-*/Testing/Temporary/LastTest.log
 
   # This job validates the Spack recipe by making sure each cmake build option is represented
   recipe-check:
