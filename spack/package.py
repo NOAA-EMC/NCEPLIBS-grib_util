@@ -33,8 +33,10 @@ class GribUtil(CMakePackage):
     depends_on("g2c@1.7: +utils")
     depends_on("bacio")
     depends_on("ip")
+    depends_on("ip precision=d", when="ip@4.1:")
     depends_on("ip@:3.3.3", when="@:1.2")
     depends_on("sp")
+    depends_on("sp precision=d", when="sp@2.4:")
 
     def cmake_args(self):
         args = [
