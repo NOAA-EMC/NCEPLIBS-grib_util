@@ -2,7 +2,7 @@
 # project.
 #
 # This workflow tests the build as a developer would do it, with
-# address sanitizer and documentation build.
+# address sanitizer and documentation build, and also memcheck build.
 #
 # Ed Hartnett 1/9/23
 name: developer
@@ -18,12 +18,11 @@ jobs:
   developer:
     runs-on: ubuntu-latest
     env:
-      FC: gfortran-11
-      CC: gcc-11
+      FC: gfortran
+      CC: gcc
     strategy:
-      fail-fast: true
       matrix:
-        g2-branch: [develop, v3.4.7]
+        g2-branch: [develop]
 
     steps:
     - name: install-dependencies
@@ -37,14 +36,14 @@ jobs:
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-2.0.32
+        ref: version-4.0.0
 
     - name: cache-jasper
       id: cache-jasper
       uses: actions/cache@v3
       with:
         path: ~/jasper
-        key: jasper-${{ runner.os }}-2.0.32
+        key: jasper-${{ runner.os }}-4.0.0-111
 
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -98,7 +97,7 @@ jobs:
         cd w3emc
         mkdir build
         cd build
-        cmake -DCMAKE_PREFIX_PATH=~/bacio -DCMAKE_INSTALL_PREFIX=~/w3emc -DBUILD_WITH_BUFR=OFF ..
+        cmake -DCMAKE_PREFIX_PATH=~/bacio -DCMAKE_INSTALL_PREFIX=~/w3emc -DBUILD_WITH_BUFR=OFF -DBUILD_WITH_EXTRA_DEPS=ON ..
         make -j2
         make install
           
