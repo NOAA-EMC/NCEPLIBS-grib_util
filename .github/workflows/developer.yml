@@ -22,7 +22,7 @@ jobs:
       CC: gcc-11
     strategy:
       matrix:
-        g2-branch: [develop, v3.4.7]
+        g2-branch: [develop]
 
     steps:
     - name: install-dependencies
