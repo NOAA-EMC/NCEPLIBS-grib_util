@@ -24,10 +24,10 @@ jobs:
       matrix:
         sp-version: [2.3.3]
         ip-version: [4.1.0]
-        g2-version: [develop, v3.4.7]
+        g2-version: [3.4.7]
         bacio-version: [2.6.0]
         jasper-version: [2.0.33, 3.0.5, 4.0.0]
-        w3emc-version: [2.10.0, 2.11.0]
+        w3emc-version: [2.11.0]
 
     steps:
     - name: install-dependencies
@@ -44,7 +44,7 @@ jobs:
 
     - name: checkout-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: jasper-software/jasper
         path: jasper
@@ -68,7 +68,7 @@ jobs:
 
     - name: checkout-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-bacio
         path: bacio
@@ -92,7 +92,7 @@ jobs:
 
     - name: checkout-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-sp
         path: sp
@@ -117,7 +117,7 @@ jobs:
 
     - name: checkout-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-w3emc
         path: w3emc
@@ -142,7 +142,7 @@ jobs:
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
@@ -159,7 +159,7 @@ jobs:
         make install
           
     - name: checkout-g2c
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-g2c
         path: g2c
@@ -174,13 +174,20 @@ jobs:
         make -j2
         make install
                  
+    - name: cache-g2
+      id: cache-g2
+      uses: actions/cache@v3
+      with:
+        path: ~/g2
+        key: g2-${{ runner.os }}-${{ matrix.g2-version }}
+
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: ${{ matrix.g2-version }}
+        ref: v${{ matrix.g2-version }}
 
     - name: build-g2
       run: |
@@ -192,7 +199,7 @@ jobs:
         make install
                  
     - name: checkout-grib_utils
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with: 
         path: grib_utils
 

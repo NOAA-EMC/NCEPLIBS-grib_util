@@ -29,7 +29,7 @@ jobs:
         sudo apt-get install libjpeg-dev doxygen gcovr
           
     - name: checkout-jasper
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: jasper-software/jasper
         path: jasper
@@ -52,7 +52,7 @@ jobs:
         make install
 
     - name: checkout-bacio
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-bacio
         path: bacio
@@ -67,7 +67,7 @@ jobs:
         make install
 
     - name: checkout-sp
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-sp
         path: sp
@@ -83,7 +83,7 @@ jobs:
         make install
           
     - name: checkout-w3emc
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-w3emc
         path: w3emc
@@ -99,7 +99,7 @@ jobs:
         make install
           
     - name: checkout-ip
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
@@ -115,7 +115,7 @@ jobs:
         make install
           
     - name: checkout-g2c
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-g2c
         path: g2c
@@ -131,7 +131,7 @@ jobs:
         make install
                  
     - name: checkout-g2
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
@@ -150,7 +150,7 @@ jobs:
         make install
                  
     - name: checkout-grib_utils
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with: 
         path: grib_utils
 
