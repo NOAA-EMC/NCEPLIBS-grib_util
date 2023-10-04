@@ -17,15 +17,17 @@ jobs:
   Linux_external:
     runs-on: ubuntu-latest
     env:
-      FC: gfortran-11
-      CC: gcc-11
+      FC: gfortran
+      CC: gcc
     strategy:
       fail-fast: true
       matrix:
+        sp-version: [2.3.3]
+        ip-version: [4.1.0]
         g2-version: [develop, v3.4.7]
-        bacio-version: [2.5.0]
+        bacio-version: [2.6.0]
         jasper-version: [2.0.33, 3.0.5, 4.0.0]
-        w3emc-version: [2.10.0]
+        w3emc-version: [2.10.0, 2.11.0]
 
     steps:
     - name: install-dependencies
@@ -86,7 +88,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/sp
-        key: sp-${{ runner.os }}-2.3.3-1
+        key: sp-${{ runner.os }}-${{ matrix.sp-version }}
 
     - name: checkout-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
@@ -94,7 +96,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-sp
         path: sp
-        ref: v2.3.3
+        ref: v${{ matrix.sp-version }}
 
     - name: build-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
@@ -127,7 +129,7 @@ jobs:
         cd w3emc
         mkdir build
         cd build
-        cmake -DCMAKE_PREFIX_PATH=~/bacio -DCMAKE_INSTALL_PREFIX=~/w3emc -DBUILD_WITH_BUFR=OFF ..
+        cmake -DCMAKE_PREFIX_PATH=~/bacio -DCMAKE_INSTALL_PREFIX=~/w3emc -DBUILD_WITH_BUFR=OFF -DBUILD_WITH_EXTRA_DEPS=ON ..
         make -j2
         make install
           
@@ -136,7 +138,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/ip
-        key: ip-${{ runner.os }}-4.1.0
+        key: ip-${{ runner.os }}-${{ matrix.ip-version }}
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -144,7 +146,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
-        ref: v4.1.0
+        ref: v${{ matrix.ip-version }}
 
     - name: build-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
