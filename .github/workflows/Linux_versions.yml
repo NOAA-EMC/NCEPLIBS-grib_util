@@ -17,15 +17,16 @@ jobs:
   Linux_versions:
     runs-on: ubuntu-latest
     env:
-      FC: gfortran-11
-      CC: gcc-11
+      FC: gfortran
+      CC: gcc
     strategy:
       fail-fast: true
       matrix:
         g2-version: [3.4.7]
-        bacio-version: [2.4.1, 2.5.0]
+        bacio-version: [2.4.1, 2.5.0, 2.6.0]
         jasper-version: [4.0.0]
-        w3emc-version: [2.10.0]
+        w3emc-version: [2.10.0, 2.11.0]
+        sp-version: [2.3.3, 2.4.0]
         ip-version: [3.3.3, 4.1.0, 4.2.0]
 
     steps:
@@ -87,7 +88,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/sp
-        key: sp-${{ runner.os }}-2.3.3-1
+        key: sp-${{ runner.os }}-${{ matrix.sp-version }}
 
     - name: checkout-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
@@ -95,7 +96,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-sp
         path: sp
-        ref: v2.3.3
+        ref: v${{ matrix.sp-version }}
 
     - name: build-sp
       if: steps.cache-sp.outputs.cache-hit != 'true'
