@@ -20,9 +20,6 @@ jobs:
     env:
       FC: gfortran
       CC: gcc
-    strategy:
-      matrix:
-        g2-branch: [develop]
 
     steps:
     - name: install-dependencies
@@ -138,7 +135,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: ${{ matrix.g2-branch }}
+        ref: develop
 
     - name: build-g2
       run: |
