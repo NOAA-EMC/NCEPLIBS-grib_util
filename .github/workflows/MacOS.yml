@@ -16,8 +16,8 @@ jobs:
   MacOS: 
     runs-on: macos-latest
     env:
-      FC: gfortran-11
-      CC: gcc-11
+      FC: gfortran
+      CC: gcc
 
     steps:
     - name: install-dependencies
@@ -152,7 +152,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/g2
-        key: g2-MacOS-${{ runner.os }}-4.0.0-2.6.0-3.4.7
+        key: g2-MacOS-${{ runner.os }}-4.0.0-2.6.0-3.4.8
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
@@ -160,7 +160,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: v3.4.7
+        ref: v3.4.8
 
     - name: build-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
