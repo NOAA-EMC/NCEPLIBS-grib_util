@@ -167,7 +167,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/g2
-        key: g2-Intel-${{ matrix.compilers }}-${{ runner.os }}-develop-1
+        key: g2-Intel-${{ matrix.compilers }}-${{ runner.os }}-v3.4.8
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
@@ -175,7 +175,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: develop
+        ref: v3.4.8
 
     - name: build-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
