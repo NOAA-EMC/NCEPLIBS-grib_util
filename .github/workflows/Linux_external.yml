@@ -179,7 +179,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/g2
-        key: g2-${{ runner.os }}-${{ matrix.g2-version }}-${{ matrix.jasper-version }}-${{ matrix.bacio-version }}-${{ matrix.w3emc-version }}-1
+        key: g2-${{ runner.os }}-${{ matrix.g2-version }}-${{ matrix.jasper-version }}-${{ matrix.bacio-version }}-${{ matrix.w3emc-version }}-${{ matrix.ip-version }}-${{ matrix.sp-version }}-1
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
