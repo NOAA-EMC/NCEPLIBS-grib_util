@@ -23,7 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        compilers: ["CC=icc FC=ifort", "CC=icx FC=ifx"]
+#        compilers: ["CC=icc FC=ifort", "CC=icx FC=ifx"]
+        compilers: ["CC=icc FC=ifort"]
 
     steps:
 
@@ -44,7 +45,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/jasper
-        key: jasper-Intel-${{ matrix.compilers }}-2.0.33
+        key: jasper-Intel-${{ matrix.compilers }}-4.0.0
 
     - name: checkout-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -52,7 +53,7 @@ jobs:
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-2.0.33
+        ref: version-4.0.0
 
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -167,7 +168,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/g2
-        key: g2-Intel-${{ matrix.compilers }}-${{ runner.os }}-v3.4.8
+        key: g2-Intel-${{ matrix.compilers }}-${{ runner.os }}-v3.4.8-1
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
