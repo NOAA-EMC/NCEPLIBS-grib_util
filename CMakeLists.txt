@@ -42,7 +42,7 @@ find_package(bacio 2.4.0 REQUIRED)
 find_package(sp 2.3.3 REQUIRED)
 find_package(ip 3.3.3 REQUIRED)
 find_package(w3emc 2.10.0 REQUIRED)
-find_package(g2 3.4.0 REQUIRED)
+find_package(g2 3.4.8 REQUIRED)
 # g2c is not required.
 #find_package(g2c 1.7.0)
 
