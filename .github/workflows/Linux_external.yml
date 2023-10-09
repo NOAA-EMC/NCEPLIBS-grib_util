@@ -24,7 +24,7 @@ jobs:
       matrix:
         sp-version: [2.3.3]
         ip-version: [4.1.0]
-        g2-version: [3.4.7]
+        g2-version: [3.4.8]
         bacio-version: [2.6.0]
         jasper-version: [2.0.33, 3.0.5, 4.0.0]
         w3emc-version: [2.11.0]
@@ -179,7 +179,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/g2
-        key: g2-${{ runner.os }}-${{ matrix.g2-version }}-${{ matrix.jasper-version }}-${{ matrix.bacio-version }}-${{ matrix.w3emc-version }}-${{ matrix.ip-version }}-${{ matrix.sp-version }}-1
+        key: linux_external_g2-${{ runner.os }}-${{ matrix.g2-version }}-${{ matrix.jasper-version }}-${{ matrix.bacio-version }}-${{ matrix.w3emc-version }}-${{ matrix.ip-version }}-${{ matrix.sp-version }}-2
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'

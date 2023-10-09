@@ -16,10 +16,11 @@ program degrib2
   use params
   implicit none
 
-  integer :: msk1, msk2, icount, ifl1, iseek, itot, j, lengrib, lgrib, lskip
+  integer :: msk2, icount, ifl1, iseek, itot, j, lengrib, lgrib, lskip
+  integer*8 :: iseek8, msk18, lskip8, lgrib8, lengrib8
   integer :: maxlocal, n, ncgb, numfields, numlocal
   real :: fldmax, fldmin, sum
-  parameter(msk1 = 32000, msk2 = 4000)
+  parameter(msk18 = 32000, msk2 = 4000)
   character(len = 1), allocatable, dimension(:) :: cgrib
   integer :: listsec0(3)
   integer :: listsec1(13)
@@ -57,21 +58,28 @@ program degrib2
   iseek = 0
   do
      ! Find a GRIB2 message in the file.
-     call skgb(ifl1, iseek, msk1, lskip, lgrib)
-     if (lgrib .eq. 0) exit    ! end loop at EOF or problem
+     !call skgb(ifl1, iseek, msk1, lskip, lgrib)
+     iseek8 = iseek
+     call skgb8(ifl1, iseek8, msk18, lskip8, lgrib8)
+     lskip = lskip8
+     lgrib = lgrib8
+     if (lgrib8 .eq. 0) exit    ! end loop at EOF or problem
 
      ! Read the GRIB2 message from the file.
-     if (lgrib .gt. currlen) then
+     if (lgrib8 .gt. currlen) then
         if (allocated(cgrib)) deallocate(cgrib)
-        allocate(cgrib(lgrib), stat = is)
-        currlen = lgrib
+        allocate(cgrib(lgrib8), stat = is)
+        currlen = lgrib8
      endif
-     call baread(ifl1, lskip, lgrib, lengrib, cgrib)
-     if (lgrib .ne. lengrib) then
+     !call baread(ifl1, lskip, lgrib, lengrib, cgrib)
+     lskip8 = lskip
+     call bareadl(ifl1, lskip8, lgrib8, lengrib8, cgrib)
+     lengrib = lengrib8
+     if (lgrib8 .ne. lengrib) then
         write(6, *)' degrib2: IO Error.'
         call errexit(9)
      endif
-     iseek = lskip + lgrib
+     iseek = lskip + lgrib8
      icount = icount + 1
      write (6, *)
      write(6, '(A,I0,A,I0)') ' GRIB MESSAGE  ', icount, '  starts at ', lskip + 1

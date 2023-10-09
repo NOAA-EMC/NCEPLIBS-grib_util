@@ -85,6 +85,9 @@ if(FTP_TEST_FILES)
   gu_copy_test_data(ref_seaice.t00z.grb.grib2.degrib2)
   gu_copy_test_data(ref_sgx_nwps_CG3_20221117_1200.grib2.degrib2)
   gu_copy_test_data(ref_aqm.t12z.max_8hr_o3.227.grib2.degrib2)
+  if(FTP_LARGE_TEST_FILES)
+    gu_copy_test_data(ref_fv3lam.t00z.prslev.f000.grib2.degrib2)
+  endif()
 endif()
 
 # Run these shell tests.
@@ -123,17 +126,13 @@ if(FTP_TEST_FILES)
     PULL_DATA(${G2_FTP_URL} ${THE_FILE})
   endforeach()
 
-  # Extra tests are those that apply to files not yet available on FTP.
-  if(FTP_EXTRA_TEST_FILES)
-    # Fetch the large test file(s) from FTP if desired.
-    #    set(LARGE_FTP_FILES "fv3lam.t00z.namerica.f00.grib2")
-    set(LARGE_FTP_FILES "fv3lam.t00z.prslev.f000.grib2")
-    if(FTP_LARGE_TEST_FILES)
-      foreach(THE_FILE IN LISTS LARGE_FTP_FILES) 
-        PULL_DATA(${G2_FTP_URL} ${THE_FILE})
-      endforeach()
-      add_definitions(-DLARGE_FTP_TESTS)
-    endif()
+  # Fetch the large test file(s) from FTP if desired.
+  set(LARGE_FTP_FILES "fv3lam.t00z.prslev.f000.grib2")
+  if(FTP_LARGE_TEST_FILES)
+    foreach(THE_FILE IN LISTS LARGE_FTP_FILES) 
+      PULL_DATA(${G2_FTP_URL} ${THE_FILE})
+    endforeach()
+    add_definitions(-DLARGE_FTP_TESTS)
   endif()
 
   # Copy this inventory from the test directory. It's the expected
@@ -144,4 +143,7 @@ if(FTP_TEST_FILES)
   # Run these shell tests which use the FTP files.  
   gu_test(run_ftp_tests)
   gu_test(run_degrib2_ftp_tests)
+  if(FTP_LARGE_TEST_FILES)
+    gu_test(run_degrib2_large_file_tests)
+  endif()
 endif()
