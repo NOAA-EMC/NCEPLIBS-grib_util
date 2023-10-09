@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['copygb2_2ef_4',['copygb2.f',['../copygb2_8f.html',1,'']]]
+  ['copygb2_2ef90_9',['copygb2.F90',['../copygb2_8F90.html',1,'']]]
 ];

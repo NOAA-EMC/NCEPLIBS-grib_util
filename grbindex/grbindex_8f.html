@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">grbindex
-   &#160;<span id="projectnumber">1.2.3</span>
+   &#160;<span id="projectnumber">1.3.0</span>
    </div>
   </td>
  </tr>
@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('grbindex_8f.html',''); initResizable()
 </div><!--header-->
 <div class="contents">
 
-<p>WRITE AN INDEX FILE.  
+<p>Create an index file from a grib file.  
 <a href="#details">More...</a></p>
 
 <p><a href="grbindex_8f_source.html">Go to the source code of this file.</a></p>
@@ -97,18 +97,18 @@ $(document).ready(function(){initNavTree('grbindex_8f.html',''); initResizable()
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions/Subroutines</h2></td></tr>
 <tr class="memitem:a7153d6aef963b95174fa4c2bc01cd6c2"><td class="memItemLeft" align="right" valign="top">program&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grbindex_8f.html#a7153d6aef963b95174fa4c2bc01cd6c2">grbindex</a></td></tr>
-<tr class="memdesc:a7153d6aef963b95174fa4c2bc01cd6c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">PROGRAM CREATES AN INDEX FILE FROM A GRIB FILE.  <a href="grbindex_8f.html#a7153d6aef963b95174fa4c2bc01cd6c2">More...</a><br /></td></tr>
+<tr class="memdesc:a7153d6aef963b95174fa4c2bc01cd6c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an index file from a grib file.  <a href="grbindex_8f.html#a7153d6aef963b95174fa4c2bc01cd6c2">More...</a><br /></td></tr>
 <tr class="separator:a7153d6aef963b95174fa4c2bc01cd6c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2db0eae473d630ee479f8b987602c0f"><td class="memItemLeft" align="right" valign="top"><a id="ac2db0eae473d630ee479f8b987602c0f"></a>
-function&#160;</td><td class="memItemRight" valign="bottom"><b>ncbase</b> (C, N)</td></tr>
+<tr class="memitem:ac2db0eae473d630ee479f8b987602c0f"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grbindex_8f.html#ac2db0eae473d630ee479f8b987602c0f">ncbase</a> (C, N)</td></tr>
+<tr class="memdesc:ac2db0eae473d630ee479f8b987602c0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locate basename of a file.  <a href="grbindex_8f.html#ac2db0eae473d630ee479f8b987602c0f">More...</a><br /></td></tr>
 <tr class="separator:ac2db0eae473d630ee479f8b987602c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a034d02b38ce18196f539d9adb17f86ca"><td class="memItemLeft" align="right" valign="top"><a id="a034d02b38ce18196f539d9adb17f86ca"></a>
-subroutine&#160;</td><td class="memItemRight" valign="bottom"><b>wrgi1h</b> (LUGI, NLEN, NNUM, CGB)</td></tr>
+<tr class="memitem:a034d02b38ce18196f539d9adb17f86ca"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grbindex_8f.html#a034d02b38ce18196f539d9adb17f86ca">wrgi1h</a> (LUGI, NLEN, NNUM, CGB)</td></tr>
+<tr class="memdesc:a034d02b38ce18196f539d9adb17f86ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write index headers.  <a href="grbindex_8f.html#a034d02b38ce18196f539d9adb17f86ca">More...</a><br /></td></tr>
 <tr class="separator:a034d02b38ce18196f539d9adb17f86ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>WRITE AN INDEX FILE. </p>
-<dl class="section author"><dt>Author</dt><dd>IREDELL </dd></dl>
+<div class="textblock"><p>Create an index file from a grib file. </p>
+<dl class="section author"><dt>Author</dt><dd>Iredell </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>1998-09-15 </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="grbindex_8f_source.html">grbindex.f</a>.</p>
@@ -125,56 +125,141 @@ subroutine&#160;</td><td class="memItemRight" valign="bottom"><b>wrgi1h</b> (LUG
       </table>
 </div><div class="memdoc">
 
-<p>PROGRAM CREATES AN INDEX FILE FROM A GRIB FILE. </p>
-<p>THE INDEX FILE SERVES AS A TABLE OF CONTENTS FOR THE GRIB FILE, ENABLING QUICK ACCESS TO THE DATA. THE GRIB FILE MUST BE UNBLOCKED, BUT THERE CAN BE A GAP BEFORE THE FIRST GRIB MESSAGE OF AT MOST 32000 BYTES AND GAPS BETWEEN MESSAGES OF AT MOST 4000 BYTES. THE TWO FILE NAMES ARE RETRIEVED FROM THE COMMAND LINE ARGUMENTS. THE FIRST ARGUMENT IS THE NAME OF THE INPUT GRIB FILE. THE SECOND ARGUMENT IS THE NAME OF THE OUTPUT INDEX FILE. CURRENTLY, ONLY VERSION 1 OF GRIB CAN BE READ. VERSION 1 OF THE INDEX FILE HAS THE FOLLOWING FORMAT: 81-BYTE S.LORD HEADER WITH 'GB1IX1' IN COLUMNS 42-47 FOLLOWED BY 81-BYTE HEADER WITH NUMBER OF BYTES TO SKIP BEFORE INDEX RECORDS, NUMBER OF BYTES IN EACH INDEX RECORD, NUMBER OF INDEX RECORDS, AND GRIB FILE BASENAME WRITTEN IN FORMAT ('IX1FORM:',3I10,2X,A40). EACH FOLLOWING INDEX RECORD CORRESPONDS TO A GRIB MESSAGE AND HAS THE INTERNAL FORMAT:</p><ul>
-<li>BYTE 001-004: BYTES TO SKIP IN DATA FILE BEFORE GRIB MESSAGE</li>
-<li>BYTE 005-008: BYTES TO SKIP IN MESSAGE BEFORE PDS</li>
-<li>BYTE 009-012: BYTES TO SKIP IN MESSAGE BEFORE GDS (0 IF NO GDS)</li>
-<li>BYTE 013-016: BYTES TO SKIP IN MESSAGE BEFORE BMS (0 IF NO BMS)</li>
-<li>BYTE 017-020: BYTES TO SKIP IN MESSAGE BEFORE BDS</li>
-<li>BYTE 021-024: BYTES TOTAL IN THE MESSAGE</li>
-<li>BYTE 025-025: GRIB VERSION NUMBER</li>
-<li>BYTE 026-053: PRODUCT DEFINITION SECTION (PDS)</li>
-<li>BYTE 054-095: GRID DEFINITION SECTION (GDS) (OR NULLS)</li>
-<li>BYTE 096-101: FIRST PART OF THE BIT MAP SECTION (BMS) (OR NULLS)</li>
-<li>BYTE 102-112: FIRST PART OF THE BINARY DATA SECTION (BDS)</li>
-<li>BYTE 113-172: (OPTIONAL) BYTES 41-100 OF THE PDS</li>
-<li>BYTE 173-184: (OPTIONAL) BYTES 29-40 OF THE PDS</li>
-<li>BYTE 185-320: (OPTIONAL) BYTES 43-178 OF THE GDS</li>
+<p>Create an index file from a grib file. </p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Usage</h2>
+<p>grbindex &lt;GRIB1 file&gt; &lt;index filename&gt;</p>
+<dl class="section return"><dt>Returns</dt><dd><ul>
+<li>0 - successful run</li>
+<li>1 - grib message not found</li>
+<li>2 - incorrect arguments</li>
+<li>8 - error accessing file</li>
 </ul>
-<p>PROGRAM HISTORY LOG:</p><ul>
-<li>92-11-22 IREDELL</li>
-<li>94-06-08 EBISUZAKI - ELIMINATE ISHELL CALLS</li>
-<li>94-08-26 IREDELL - 40 BYTE PDS EXTENSION</li>
-<li>95-10-31 IREDELL - CONSIDERABLY REDUCE I/O</li>
-<li>96-10-31 IREDELL - AUGMENTED OPTIONAL DEFINITIONS TO BYTE 320</li>
-<li>1999-04-27 GILBERT - Changed CALL EXIT(N) to CALL ERREXIT(N) so that the proper error return value is passed back to the shell.</li>
-<li>2012-07-31 VUONG - CHANGED HOSTNAME TO HOSTNAM</li>
-</ul>
-<p>USAGE: grbindex gribfile indexfile</p>
-<p>INPUT FILE:</p><ul>
-<li>gribfile UNBLOCKED GRIB FILE</li>
-</ul>
-<p>OUTPUT FILE:</p><ul>
-<li>indexfile UNBLOCKED INDEX FILE</li>
-</ul>
-<p>SUBPROGRAMS CALLED:</p><ul>
-<li>IARGC COUNT THE COMMAND LINE ARGUMENTS</li>
-<li>GETARG GET COMMAND LINE ARGUMENT</li>
-<li>WRGI1H WRITE INDEX HEADERS</li>
-<li>GETGIR GET INDEX BUFFER</li>
-<li>BAWRITE BYTE-ADDRESSABLE WRITE</li>
-<li>ERRMSG WRITE A MESSAGE TO STDERR</li>
-<li>ERREXIT EXIT WITH RETURN CODE</li>
-</ul>
-<p>EXIT STATES:</p><ul>
-<li>COND = 0 - SUCCESSFUL RUN</li>
-<li>COND = 1 - GRIB MESSAGE NOT FOUND</li>
-<li>COND = 2 - INCORRECT ARGUMENTS</li>
-<li>COND = 8 - ERROR ACCESSING FILE </li>
-</ul>
+</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Iredell </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>1998-09-15 <br  />
+ </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="grbindex_8f_source.html#l00070">70</a> of file <a class="el" href="grbindex_8f_source.html">grbindex.f</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grbindex_8f_source.html#l00017">17</a> of file <a class="el" href="grbindex_8f_source.html">grbindex.f</a>.</p>
+
+<p class="reference">References <a class="el" href="grbindex_8f_source.html#l00104">wrgi1h()</a>.</p>
+
+</div>
+</div>
+<a id="ac2db0eae473d630ee479f8b987602c0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2db0eae473d630ee479f8b987602c0f">&#9670;&nbsp;</a></span>ncbase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">function ncbase </td>
+          <td>(</td>
+          <td class="paramtype">character, dimension(*)&#160;</td>
+          <td class="paramname"><em>C</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>N</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Locate basename of a file. </p>
+<p>This subprogram locates the character number after the last in a character string. For unix filenames, the character number returned marks the beginning of the basename of the file.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">C</td><td>CHARACTER STRING TO SEARCH </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">N</td><td>INTEGER LENGTH OF STRING</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The index of the basename within the string.</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Iredell </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>93-11-22 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="grbindex_8f_source.html#l00164">164</a> of file <a class="el" href="grbindex_8f_source.html">grbindex.f</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grbindex_8f_source.html#l00104">wrgi1h()</a>.</p>
+
+</div>
+</div>
+<a id="a034d02b38ce18196f539d9adb17f86ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a034d02b38ce18196f539d9adb17f86ca">&#9670;&nbsp;</a></span>wrgi1h()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">subroutine wrgi1h </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>LUGI</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>NLEN</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>NNUM</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">character, dimension(*)&#160;</td>
+          <td class="paramname"><em>CGB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write index headers. </p>
+<p>This subprogram writes two index headers. Currently, the length of each index record is 152.</p>
+<h3><a class="anchor" id="autotoc_md5"></a>
+Program History Log</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Date   </th><th class="markdownTableHeadNone">Programmer   </th><th class="markdownTableHeadNone">Comments    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">93-11-22   </td><td class="markdownTableBodyNone">Iredell   </td><td class="markdownTableBodyNone">Initial    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">95-10-31   </td><td class="markdownTableBodyNone">Iredell   </td><td class="markdownTableBodyNone">Modularize system calls    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">2012-07-31   </td><td class="markdownTableBodyNone">Vuong   </td><td class="markdownTableBodyNone">Changed hostname to hostnam   </td></tr>
+</table>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lugi</td><td>integer logical unit of output index file </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">nlen</td><td>integer length of index records </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">nnum</td><td>integer number of index records </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cgb</td><td>character name of grib file</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section author"><dt>Author</dt><dd>Iredell </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>93-11-22 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="grbindex_8f_source.html#l00103">103</a> of file <a class="el" href="grbindex_8f_source.html">grbindex.f</a>.</p>
+
+<p class="reference">References <a class="el" href="grbindex_8f_source.html#l00165">ncbase()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grbindex_8f_source.html#l00017">grbindex()</a>.</p>
 
 </div>
 </div>

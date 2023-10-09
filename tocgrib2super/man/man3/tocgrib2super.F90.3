@@ -1,0 +1,98 @@
+.TH "/home/ed/NCEPLIBS-grib_util/src/tocgrib2super/tocgrib2super.F90" 3 "Mon Oct 9 2023" "Version 1.3.0" "tocrib2super" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/ed/NCEPLIBS-grib_util/src/tocgrib2super/tocgrib2super.F90 \- Read fields from a GRIB2 file and write them to a new file with WMO super header\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "program \fBtocgrib2super\fP"
+.br
+.RI "This program reads selected GRIB2 fields from a file, adds a flag Field separator block and the size in bytes of the grib file, and the WMO super header and the time stamp, adds a TOC Flag Field separator block and WMO Header in front of each GRIB2 field, and writes them out to a new file\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Read fields from a GRIB2 file and write them to a new file with WMO super header\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2004-05-17 
+.RE
+.PP
+
+.PP
+Definition in file \fBtocgrib2super\&.F90\fP\&.
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "program tocgrib2super"
+
+.PP
+This program reads selected GRIB2 fields from a file, adds a flag Field separator block and the size in bytes of the grib file, and the WMO super header and the time stamp, adds a TOC Flag Field separator block and WMO Header in front of each GRIB2 field, and writes them out to a new file\&. The output file is in the format required for TOC's FTP Input Service, which can be used to disseminate the GRIB2 bulletins\&. This service is described at http://weather.gov/tg/ftpingest.html\&.
+.PP
+\fBNote\fP
+.RS 4
+The 'EXTRACT' variable in the namelist allows users to choose whether they want the entire GRIB2 message containing the requested field (extract=\&.false\&.), OR a GRIB2 message containing only the requested field (extract=\&.true\&.)\&. Both options return the same message if the requested field is the only field in the GRIB2 message\&.
+.RE
+.PP
+.SS "Input Files"
+.IP "\(bu" 2
+5 Namelist of grib fields and associated wmo headers\&.
+.IP "\(bu" 2
+11 Input grib2 file\&.
+.IP "\(bu" 2
+12 Get the file size of the grib file
+.IP "\(bu" 2
+31 Corresponding input grib2 index file\&.
+.PP
+.SS "Output Files  (Including Scratch Files)"
+.IP "\(bu" 2
+6 standard fortran print file
+.IP "\(bu" 2
+51 output grib bulletin file in toc format
+.PP
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0 - Successful run
+.IP "\(bu" 2
+10 - Error opening input GRIB2 data file
+.IP "\(bu" 2
+20 - Error opening output GRIB transmission file
+.IP "\(bu" 2
+19 - error reading control card file - all bulletins missing
+.IP "\(bu" 2
+30 - some bulletins are missing
+.PP
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2004-05-17 
+.RE
+.PP
+
+.PP
+Definition at line 40 of file tocgrib2super\&.F90\&.
+.PP
+References makwmo()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for tocrib2super from the source code\&.

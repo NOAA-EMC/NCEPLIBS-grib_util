@@ -26,6 +26,8 @@ var NAVTREE =
 [
   [ "grbindex", "index.html", [
     [ "Introduction", "index.html#autotoc_md1", null ],
+    [ "Usage", "index.html#autotoc_md2", null ],
+    [ "Index File Format", "index.html#autotoc_md3", null ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "Globals", "globals.html", [

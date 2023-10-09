@@ -1,0 +1,126 @@
+.TH "/home/ed/NCEPLIBS-grib_util/src/cnvgrib/pds2pdt.F90" 3 "Mon Oct 9 2023" "Version 1.3.0" "cnvgrib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/ed/NCEPLIBS-grib_util/src/cnvgrib/pds2pdt.F90 \- Convert a GRIB1 PDS (Section 1) info to a GRIB2 PDS (Section 4) info\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBcnvlevel\fP (ltype, lval, ipdstmpl)"
+.br
+.RI "This routine converts a GRIB1 Level type and Level value to GRIB2 values and fills in the appropriate PDT values for the level/layer information\&. "
+.ti -1c
+.RI "subroutine \fBpds2pdt\fP (kpds, ipdsnum, ipdstmpl, numcoord, coordlist, iret)"
+.br
+.RI "This routine converts a GRIB1 PDS (Section 1) info to a GRIB2 PDS (Section 4) info with appropriate Product Definition Template\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Convert a GRIB1 PDS (Section 1) info to a GRIB2 PDS (Section 4) info\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Stephen Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2003-06-12 
+.RE
+.PP
+
+.PP
+Definition in file \fBpds2pdt\&.F90\fP\&.
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine cnvlevel (integer, intent(in) ltype, integer, intent(in) lval, integer, dimension(*), intent(inout) ipdstmpl)"
+
+.PP
+This routine converts a GRIB1 Level type and Level value to GRIB2 values and fills in the appropriate PDT values for the level/layer information\&. 
+.SS "Program History Log"
+Date   Programmer   Comments    2003-06-12   Gilbert   Initial\&.    2011-01-13   Boi Vuong   Added level/layer values from 235 to 239   
+.PP
+\fBParameters\fP
+.RS 4
+\fIltype\fP GRIB1 level type (PDS octet 10) 
+.br
+\fIlval\fP GRIB1 level/layer value(s) (PDS octets 11 and 12) 
+.br
+\fIipdstmpl\fP GRIB2 Product Definition Template values\&.
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Stephen Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2003-06-12 
+.RE
+.PP
+
+.PP
+Definition at line 345 of file pds2pdt\&.F90\&.
+.PP
+Referenced by pds2pdt(), and pds2pdtens()\&.
+.SS "subroutine pds2pdt (integer, dimension(*), intent(in) kpds, integer, intent(out) ipdsnum, integer, dimension(*), intent(out) ipdstmpl, integer, intent(out) numcoord, real, dimension(*), intent(out) coordlist, integer, intent(out) iret)"
+
+.PP
+This routine converts a GRIB1 PDS (Section 1) info to a GRIB2 PDS (Section 4) info with appropriate Product Definition Template\&. 
+.PP
+\fBNote\fP
+.RS 4
+Use pds2pdtens for ensemble related PDS\&.
+.RE
+.PP
+.SS "Program History Log"
+Date   Programmer   Comments    2003-06-12   Gilbert   Initial\&.    2005-04-19   Gilbert   Changed scaling factor used with potential vorticity surfaces\&.    2007-02-07   Gilbert   fixed end date calculation    2007-03-26   Gordon   Added check for ECMWF data to reference ECMWF Conversion tables\&.    2007-05-14   Boi Vuong   Added Time Range Indicator 51 (Climatological Mean Value)    2009-05-20   Boi Vuong   Added check for WAFS to use PDT 4\&.8 for Max Wind    2009-12-14   Boi Vuong   Added check for WAFS to use PDT 4\&.15 for Icing, Turbulence and Cumulonimbus    2010-02-18   Boi Vuong   Added Time Range Indicator 7    2010-08-10   Boi Vuong   Removed check for WAFS to use PDT 4\&.8 for Max Wind    2011-10-24   Boi Vuong   Added check for parameters (MAXUW, MAXVW, to set type of statistical processing (MIN and MAX)   
+.PP
+\fBParameters\fP
+.RS 4
+\fIkpds\fP GRIB1 PDS info as specified in W3FI63\&. 
+.br
+\fIipdsnum\fP GRIB2 Product Definition Template Number 
+.br
+\fIipdstmpl\fP GRIB2 Product Definition Template entries for PDT 4\&.ipdsnum 
+.br
+\fInumcoord\fP number of vertical discretisation values (not implemented) 
+.br
+\fIcoordlist\fP rtical discretisation values (not implemented) 
+.br
+\fIiret\fP Error return value:
+.IP "\(bu" 2
+0 Successful
+.IP "\(bu" 2
+1 Unrecognized GRIB1 Time Range Indicator
+.PP
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Stephen Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2003-06-12 
+.RE
+.PP
+
+.PP
+Definition at line 35 of file pds2pdt\&.F90\&.
+.PP
+References cnvlevel()\&.
+.PP
+Referenced by cnv12()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for cnvgrib from the source code\&.

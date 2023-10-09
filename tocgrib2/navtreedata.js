@@ -26,7 +26,9 @@ var NAVTREE =
 [
   [ "tocgrib2", "index.html", [
     [ "tocgri2", "index.html", [
-      [ "Introduction", "index.html#autotoc_md1", null ]
+      [ "Introduction", "index.html#autotoc_md1", [
+        [ "Return Values", "index.html#autotoc_md4", null ]
+      ] ]
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],

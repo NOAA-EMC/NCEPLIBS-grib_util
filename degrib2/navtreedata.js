@@ -38,7 +38,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"degrib2_8f.html"
+"degrib2_8F90.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

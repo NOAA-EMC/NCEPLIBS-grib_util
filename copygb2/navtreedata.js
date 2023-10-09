@@ -25,7 +25,12 @@
 var NAVTREE =
 [
   [ "copygb2", "index.html", [
-    [ "Introduction", "index.html#autotoc_md1", null ],
+    [ "Introduction", "index.html#autotoc_md1", [
+      [ "Synopsis", "index.html#autotoc_md2", null ],
+      [ "Description", "index.html#autotoc_md3", null ],
+      [ "Options", "index.html#autotoc_md4", null ],
+      [ "Examples", "index.html#autotoc_md5", null ]
+    ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "Globals", "globals.html", [
@@ -38,7 +43,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"copygb2_8f.html"
+"copygb2_8F90.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

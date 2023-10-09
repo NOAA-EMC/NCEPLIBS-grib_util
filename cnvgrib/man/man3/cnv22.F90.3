@@ -1,0 +1,100 @@
+.TH "/home/ed/NCEPLIBS-grib_util/src/cnvgrib/cnv22.F90" 3 "Mon Oct 9 2023" "Version 1.3.0" "cnvgrib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/ed/NCEPLIBS-grib_util/src/cnvgrib/cnv22.F90 \- Converts every GRIB2 field to another GRIB2 field, with different packing options\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBcnv22\fP (ifl1, ifl2, ipack, usemiss, imiss, table_ver)"
+.br
+.RI "This subroutine converts every GRIB2 field in a file to another GRIB2 field, most likely one using a different packing option\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Converts every GRIB2 field to another GRIB2 field, with different packing options\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Stephen Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2003-06-11 
+.RE
+.PP
+
+.PP
+Definition in file \fBcnv22\&.F90\fP\&.
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine cnv22 (integer, intent(in) ifl1, integer, intent(in) ifl2, integer, intent(in) ipack, logical, intent(in) usemiss,  imiss, integer table_ver)"
+
+.PP
+This subroutine converts every GRIB2 field in a file to another GRIB2 field, most likely one using a different packing option\&. 
+.SS "Program History Log"
+Date   Programmer   Comments    2003-06-11   Gilbert   Initial    2008-05-14   Vuong   Add missing value management option 0    2009-05-20   Vuong   Initialize variables idsect,local,list_opt   
+.PP
+\fBParameters\fP
+.RS 4
+\fIifl1\fP Fortran unit number of input GRIB2 file\&. 
+.br
+\fIifl2\fP Fortran unit number of output GRIB2 file\&. 
+.br
+\fIipack\fP GRIB2 packing option:
+.IP "\(bu" 2
+0 simple packing
+.IP "\(bu" 2
+2 group packing
+.IP "\(bu" 2
+31 group pack with 1st order differencing
+.IP "\(bu" 2
+32 group pack with 2nd order differencing
+.IP "\(bu" 2
+40 JPEG2000 encoding
+.IP "\(bu" 2
+40000 JPEG2000 encoding (obsolete)
+.IP "\(bu" 2
+41 PNG encoding
+.IP "\(bu" 2
+40010 PNG encoding (obsolete) if ipack \&.ne\&. one of the values above, 31 is used as a default\&. 
+.PP
+.br
+\fIusemiss\fP uses missing value management (instead of bitmaps), for use with ipack options 2, 31, and 32\&. 
+.br
+\fIimiss\fP Missing value management:
+.IP "\(bu" 2
+0 No explicit missing values included within data values
+.IP "\(bu" 2
+1 Primary missing values included within data values 
+.PP
+.br
+\fItable_ver\fP Master Table version, where x is number from 2 to 10\&.
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Stephen Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2003-06-11 
+.RE
+.PP
+
+.PP
+Definition at line 37 of file cnv22\&.F90\&.
+.PP
+Referenced by cnvgrib()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for cnvgrib from the source code\&.

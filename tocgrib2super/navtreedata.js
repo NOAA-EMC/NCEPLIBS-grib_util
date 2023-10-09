@@ -26,14 +26,23 @@ var NAVTREE =
 [
   [ "tocrib2super", "index.html", [
     [ "tocgrib2super", "index.html", [
-      [ "Introduction", "index.html#autotoc_md1", null ]
+      [ "Introduction", "index.html#autotoc_md1", [
+        [ "Return Values", "index.html#autotoc_md4", null ]
+      ] ]
+    ] ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
+      [ "Globals", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions/Subroutines", "globals_func.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"dir_68267d1309a1af8e8297ef4c3efbcdba.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

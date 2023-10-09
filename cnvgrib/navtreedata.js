@@ -25,8 +25,9 @@
 var NAVTREE =
 [
   [ "cnvgrib", "index.html", [
-    [ "Introduction", "index.html#autotoc_md1", null ],
-    [ "cnvgrib", "md__home_ed_NCEPLIBS_grib_util_src_cnvgrib_cnvgrib.html", null ],
+    [ "Introduction", "index.html#autotoc_md1", [
+      [ "History", "index.html#autotoc_md2", null ]
+    ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "Globals", "globals.html", [
@@ -39,7 +40,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"cnv12_8f.html"
+"cnv12_8F90.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

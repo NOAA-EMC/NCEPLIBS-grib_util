@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">grbindex
-   &#160;<span id="projectnumber">1.2.3</span>
+   &#160;<span id="projectnumber">1.3.0</span>
    </div>
   </td>
  </tr>
@@ -89,7 +89,37 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="textblock"><p><a class="anchor" id="md__home_ed_NCEPLIBS_grib_util_src_grbindex_docs_user_guide"></a> </p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Introduction</h1>
-<p>Create an index from a GRIB1 file. </p>
+<p>The index file serves as a table of contents for the GRIB1 file, enabling quick access to the data.</p>
+<p>For GRIB2 files, use <a href="../grb2index/index.html">grb2index</a>.</p>
+<p>There can be a gap before the first GRIB1 message of at most 32000 bytes and gaps between messages of at most 4000 bytes.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Usage</h1>
+<div class="fragment"><div class="line">grbindex &lt;GRIB1 file&gt; &lt;index filename&gt;</div>
+</div><!-- fragment --><p>The first argument is the name of the input GRIB1 file. The second argument is the name of the output index file.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Index File Format</h1>
+<p>Version 1 of the index file format is used with GRIB1 files, and has the following format:</p>
+<ul>
+<li>81-byte "Steve Lord" header with 'GB1IX1' in columns 42-47</li>
+<li>81-byte header with number of bytes to skip before index records, number of bytes in each index record, number of index records, and GRIB1 file basename written in format ('IX1FORM:',3i10,2x,a40).</li>
+</ul>
+<p>Each following index record corresponds to a GRIB1 message and has the format. All integers are in big-endian format in the file.</p>
+<ul>
+<li>byte 001-004: bytes to skip in data file before GRIB1 message</li>
+<li>byte 005-008: bytes to skip in message before pds</li>
+<li>byte 009-012: bytes to skip in message before gds (0 if no gds)</li>
+<li>byte 013-016: bytes to skip in message before bms (0 if no bms)</li>
+<li>byte 017-020: bytes to skip in message before bds</li>
+<li>byte 021-024: bytes total in the message</li>
+<li>byte 025-025: GRIB version number</li>
+<li>byte 026-053: product definition section (pds)</li>
+<li>byte 054-095: grid definition section (gds) (or nulls)</li>
+<li>byte 096-101: first part of the bit map section (bms) (or nulls)</li>
+<li>byte 102-112: first part of the binary data section (bds)</li>
+<li>byte 113-172: (optional) bytes 41-100 of the pds</li>
+<li>byte 173-184: (optional) bytes 29-40 of the pds</li>
+<li>byte 185-320: (optional) bytes 43-178 of the gds </li>
+</ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

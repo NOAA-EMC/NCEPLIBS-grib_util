@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">cnvgrib
-   &#160;<span id="projectnumber">1.2.3</span>
+   &#160;<span id="projectnumber">1.3.0</span>
    </div>
   </td>
  </tr>
@@ -89,7 +89,101 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="textblock"><p><a class="anchor" id="md__home_ed_NCEPLIBS_grib_util_src_cnvgrib_docs_user_guide"></a> </p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Introduction</h1>
-<p>Convert between GRIB1 and GRIB2. </p>
+<p>Convert between GRIB1 and GRIB2.</p>
+<p>This command line utility program converts every GRIB message in the input file from one GRIB edition to another. It converts GRIB1 to GRIB2, and GRIB2 to GRIB1 using WMO master tables as well as various NCEP local tables.</p>
+<p>We have added support for PNG and JPEG2000 image compression algorithms within the GRIB2 standard. If you would like this converter to be able to utilize these new GRIB2 Templates, then NCEPLIBS-g2 must be compiled with this support enabled. The README file included with the NCEPLIBS-g2 library describes how to compile that library to support PNG and JPEG2000, and it also lists the external libraries that are required.</p>
+<p>Usage: cnvgrib [-h] {-g12|-g21|-g22} [-m|-m0] [-nv] [{-p0|-p2|-p31|-p32|-p40|-p41}] ingribfile outgribfile</p>
+<p>Must use one of the following options: -g12 converts GRIB1 to GRIB2 -g21 converts GRIB2 to GRIB1 -g22 converts GRIB2 to GRIB2 (used to change packing option)</p>
+<p>Optional packing options: (for use with -g12 and -g22 only) -p0 simple packing -p2 complex packing -p31 complex pack with 1st order diffs -p32 complex pack with 2nd order diffs -p40 JPEG2000 encoding -p41 PNG encoding</p>
+<p>Other Optional options: -nv Do not combine U, V wind components</p>
+<p>Use missing value management instead of bitmap (ONLY valid with Complex Packing options: -p2, -p31 or -p32 )</p>
+<p>-m Primary missing values included within the data values -m0 No explicit missing values included within the data values -mastertable_ver_x Master Table version where x is number from 2 to 21</p>
+<h2><a class="anchor" id="autotoc_md2"></a>
+History</h2>
+<p>cnvgrib-1.0 - August 2003 - Original version</p>
+<p>cnvgrib-1.0.1 - October 2003 - Corrected error converting level info for "depth below land surface" from GRIB1 to GRIB2.</p><ul>
+<li>Removed statement that set GRIB1 local table version to "2".</li>
+</ul>
+<p>cnvgrib-1.0.2 - May 2004</p><ul>
+<li>Added support for Gaussian grids.</li>
+<li>Changed Master Table Version Number from 1 to the current "operational" value of 2, when converting from GRIB1 to GRIB2.</li>
+<li>Few minor bug fixes relating to: 1) ensemble params 191 and 192 (grib1 table ver 2) 2) negative pv surface values 3) radius of earth 4) # of missing values in PDS/PDT</li>
+</ul>
+<p>cnvgrib-1.1.0 - January 2005 - WMO approved the JPEG2000 and PNG Data Representation Templates ( 5.40000 and 5.40010, respectively ) for operational use. The templates were assigned WMO values of 5.40 and 5.41, respectively. Changes were made to the source and to acceptable program options to recognize either template number.</p><ul>
+<li>Added new option "-m" to support encoding of "Missing" data values within the data field when using Data Representation Templates 5.2 (option -p2) and 5.3 (options -p31 and -p32 ). Missing value management is an alternative to encoding a bitmap when using DRTs 5.2 and 5.3.</li>
+<li>Fixed bug passing null pointers to routines expecting a valid target. Thanks to Jaakko Hyvatti and Portland Group.</li>
+<li>Added fix for bug that caused seg faults on some systems when generating GRIB1 messages. Thanks to Robert Shectman for this one.</li>
+</ul>
+<p>cnvgrib-1.1.1 - April 2005 - Corrected the scaling factor used when converting potential vorticity surface values.</p>
+<p>cnvgrib-1.1.2 - January 2006</p><ul>
+<li>Added a new option "-nv" to cause vector quantities to be stored in individual GRIB messages versus being bundled together which is the default.</li>
+</ul>
+<p>cnvgrib-1.1.4 - May 2007</p><ul>
+<li>Added a new Grid Definition Template number 204</li>
+<li>Corrected the sale factor for probabilities</li>
+<li>Added more parameters</li>
+<li>Added the Time Range indicator 51</li>
+</ul>
+<p>cnvgrib-1.1.5 - Dec 2007</p><ul>
+<li>Added new local parameters conversion entries</li>
+<li>Declared the variable rmin,rmax in routine (jpcpack.f and pngpack.f) with double precision to fix for bug that caused seg fault on NAM tile files</li>
+<li>Added a check for the length of KPDS to determine the grib is ensemble.</li>
+<li>Added new level (Nominal top of the Atmosphere cnvgrib-1.1.6 - Jan 2008</li>
+<li>Added new local parameters conversion entries</li>
+<li>Added new grid id 195 and 196</li>
+<li>Fixed the V-GRD By setting the LPDS(22)=-1 cnvgrib-1.1.7 - May 2008</li>
+<li>Add missing management value option 0 : No explicit missing values included within data values Note: Valid only with complex packing:<ol type="1">
+<li>Complex packing</li>
+<li>Complex packing and spatial differencing cnvgrib-1.1.8 - Aug 2008</li>
+</ol>
+</li>
+<li>Added new local parameters conversion entries and table 131</li>
+<li>Added a new Grid Definition Template number 3.32768 (Added Rotate Lat/Lon E-grid)</li>
+</ul>
+<p>cnvgrib-1.1.9 - June 2009 - Update Jasper version 1.900.1, libpng-1.2.35 and zlib-1.2.3</p><ul>
+<li>Allow negative scale factors and limits for Templates 4.5 and 4.9</li>
+<li>Fixed bug causing seg fault when using PNG 1.2.35</li>
+<li>Added new local parameters conversion entries</li>
+<li>Added level 126 (Isobaric Levea) in Pascal</li>
+</ul>
+<p>cnvgrib-1.2.0 - Mar 2010 - Fixed bug for checking (LUGB) unit index file</p><ul>
+<li>Modified to increase length of seek (512)</li>
+<li>Added Templates (Satellite Product) 4.31</li>
+<li>Added Templates (ICAO WAFS Product) 4.15</li>
+<li>Added new local parameters conversion entries</li>
+<li>Added Time Range Indicator Average (7)</li>
+</ul>
+<p>cnvgrib-1.2.1 - Aug 2010 - Added new local parameters conversion entries</p><ul>
+<li>Added Templates 4.40,4.41,4.42,4.43</li>
+<li>Added a new Grid Definition Template number 3.32769 (Added Rotate Lat/Lon None E-grid)</li>
+<li>Added Type of Ensemble forecast 4 and 192</li>
+<li>Corrected parameters U/V Max Wind level to use PDT 4.0 for WAFS product</li>
+</ul>
+<p>cnvgrib-1.2.2 - Mar 2011 - Added new local parameters conversion entries</p><ul>
+<li>Added an option "masterable_ver_x to change Master Table Version when converts from GRIB1 to GRIB2.</li>
+<li>Added new option -mastertable_ver_x to allow user to change the grib master table version from 2 to 6</li>
+<li>Added level/layer values from 235 to 239</li>
+</ul>
+<p>cnvgrib-1.2.3 - Jul 2011 - Added new local parameters conversion entries</p><ul>
+<li>Changed variable kprob(1) to kpds(5) in calling</li>
+<li>routine param_g1_to_g2</li>
+</ul>
+<p>cnvgrib-1.5.0 - Aug 2013 - Added new parameters conversion entries</p><ul>
+<li>Fixed bug to allow to use same unit file number for index file</li>
+<li>Added new Grid Definition Template 3.4, 3.5, 3.12,3.140</li>
+<li>Added new Product Definition Template 4.33, 4.34, 4.53, 4.54</li>
+</ul>
+<p>cnvgrib-3.0.0 - OCT 2016 - Added new parameters in conversion entries</p><ul>
+<li>Restore original getidx.f from version 1.2.3 and</li>
+<li>Modified GETIDEX to allow to open range of unit file number up to 9999</li>
+<li>Added new Product Definition Template numbers: 4.60, 4.61</li>
+<li>Fixed memory leak</li>
+<li>Fixed complex endcoding - single-value fields or almost-single-value (ie:1.000-1.001) will lead to crash or invalid data when using complex encoding.</li>
+<li>Fixed the use of alog(real(value)+1)/alog(2) in encoding is leading to precision issues. Replaced this with an integer implementation that is completely accurate.</li>
+<li>Code assumes masked fields have at least one point turned on. If all points are masked out, the code will crash or produce a bad grib record once in a while. These fixes are for simple coding and complex coding.</li>
+</ul>
+<p>cnvgrib-3.1.0 - JAN 2017 - Re-compiled with G2LIB version 3.1.0</p>
+<p>cnvgrib-3.1.1 - July 2018 - Checked Time Range for continuous accumulated APCP after F252 when convert from grib2 to grib1 </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

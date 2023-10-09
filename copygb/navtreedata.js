@@ -24,12 +24,25 @@
 */
 var NAVTREE =
 [
-  [ "copygb", "index.html", ]
+  [ "copygb", "index.html", [
+    [ "Introduction", "index.html#autotoc_md1", null ],
+    [ "Synopsis", "index.html#autotoc_md2", null ],
+    [ "Description", "index.html#autotoc_md3", null ],
+    [ "Options", "index.html#autotoc_md4", null ],
+    [ "Examples", "index.html#autotoc_md5", null ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
+      [ "Globals", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions/Subroutines", "globals_func.html", null ]
+      ] ]
+    ] ]
+  ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"copygb_8F90.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
