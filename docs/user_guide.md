@@ -1,9 +1,5 @@
 @mainpage
 
-## Documentation for Previous Versions of NCEPLIBS-grib_util
-
-* [NCEPLIBS-grib_util Version 1.2.4](ver-1.2.4/index.html)
-
 ## Introduction
 
 The NCEPLIBS-grib_util project contains a collection of NCEP grib
