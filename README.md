@@ -15,10 +15,10 @@ edition 1 was approved by the WMO Working Group on Data Management
 This is part of the [NCEPLIBS](https://github.com/NOAA-EMC/NCEPLIBS)
 project.
 
-For complete documentation see
-https://noaa-emc.github.io/NCEPLIBS-grib_util/. For the NCEP WMO GRIB2
-Documentation see
-https://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_doc/.
+For more information see the [NCEPLIBS-grib_util
+documentation](https://noaa-emc.github.io/NCEPLIBS-grib_util/) and the
+[NCEP WMO GRIB2
+Documentation](https://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_doc/).
 
 To submit bug reports, feature requests, or other code-related issues
 including installation and usage questions, please create a [GitHub
