@@ -18,6 +18,8 @@ program test_degrib2_int
   integer :: pt_2_0(17) = (/ 0, 192, 4, 70, 70, 0, 0, 1, 0, 106, 0, 0, 106, 1, 1, 0, 20 /)
   integer :: pt_2_1(17) = (/ 3, 1, 4, 70, 70, 0, 0, 1, 0, 101, 0, 0, 255, 0, 0, 0, 20 /)
   integer :: pt_15_0(18) = (/ 0, 27, 2, 255, 104, 65535, 255, 1, 1, 103, 0, 610, 100, 0, 40000, 241, 241, 241 /)
+  integer :: pt_9_0(36) = (/ 1, 8, 2, 255, 104, 65535, 255, 1, 0, 1, 0, 0, 255, 0, 0, 255, 255, 1, -127, &
+       255, 3, 254, 2022, 11, 17, 20, 0, 0, 1, 0, 1, 2, 1, 1, 1, 0 /)
   integer :: s1_0(13) = (/ 7, 14, 1, 1, 1, 2022, 11, 17, 19, 0, 0, 0, 1 /)
   integer :: s1_1(13) = (/ 54, 0, 4, 1, 1, 2022, 11, 17, 12, 0, 0, 0, 4 /)
   integer :: s1_2(13) = (/ 54, 0, 4, 0, 1, 2022, 11, 17, 12, 0, 0, 0, 4 /)
@@ -704,6 +706,35 @@ program test_degrib2_int
   call prvtime(15, pt_15_0, s1_0, ta)
   !print *, ta
   if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 81
+
+  ! This is from ref_blend.t19z.core.f001.co.grib2.degrib2:
+  !  GRIB MESSAGE  36  starts at 46129905
+  !
+  !   SECTION 0:  0 2 775840
+  !   SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  0 2
+  !   SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  !   SECTION 3:  0 3744965 0 0 30
+  !   GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 9: ( PARAMETER = APCP     0 1 8 )  1 8 2 255 104 65535 255 1 0 1 0 0 255 0 0 255 255 1 -127 255 3 254 2022 11 17 20 0 0 1 0 1 2 1 1 1 0
+  !   FIELD: APCP     Surface (0 -1 hr) valid  0 hour after 2022111719:00:00 to 2022111720:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  3744965     NO BIT-MAP 
+  !   DRS TEMPLATE 5. 3 :  0 0 0 6 0 1 1 1176255488 255 82673 1 3 1 1 59 8 2 1
+  !   Data Values:
+  !   Num. of Data Points =  3744965   Num. of Data Undefined = 0
+  ! ( PARM= APCP ) :  MIN=               0.00000000 AVE=               3.45403767 MAX=              94.00000000
+  call prlevel(9, pt_9_0, la)
+  print *, la
+  if (trim(la) .ne. " Surface") stop 90
+  call prvtime(9, pt_9_0, s1_0, ta)
+  print *, ta
+  if (trim(ta) .ne.  "(0 -1 hr) valid  0 hour after 2022111719:00:00 to 2022111720:00:00") stop 91
+  
   
   print *, 'OK!'
   print *, 'SUCCESS!'
