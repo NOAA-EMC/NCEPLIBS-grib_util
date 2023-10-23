@@ -12,8 +12,10 @@ program test_degrib2_int
   integer :: pt_0_1(15) = (/ 2, 10, 0, 0, 81, 0, 0, 1, 0, 100, 0, 80000, 255, 0, 0 /)
   integer :: pt_0_2(15) = (/ 0, 21, 2, 255, 104, 65535, 255, 1, 1, 103, 0, 2, 255, 0, 0 /)
   integer :: pt_0_3(15) = (/ 19, 238, 2, 255, 104, 65535, 255, 1, 1, 100, 0, 40000, 100, 0, 30000 /)
+  integer :: pt_0_4(15) = (/ 0, 192, 2, 0, 98, 0, 0, 1, 0, 106, 2, 0, 106, 2, 10 /)
   integer :: pt_8_0(29) = (/ 1, 228, 2, 255, 104, 65535, 255, 1, 0, 1, 0, 0, 255, 0, 0, 2022, 11, 17, &
        20, 0, 0, 1, 0, 1, 2, 1, 1, 1, 0 /)
+  integer :: pt_2_0(17) = (/ 0, 192, 4, 70, 70, 0, 0, 1, 0, 106, 0, 0, 106, 1, 1, 0, 20 /)
   integer :: s1_0(13) = (/ 7, 14, 1, 1, 1, 2022, 11, 17, 19, 0, 0, 0, 1 /)
   character(len = 40) :: la
   character(len = 100) :: ta
@@ -27,15 +29,16 @@ program test_degrib2_int
   integer :: iutpos(NUM_TN_T) = (/ 8, 8, 8, 8, 9, 14, 19, 11 /)
   integer :: i
 
-  print *, 'Testing degrib2 level and date/time descriptions...'
+  print *, 'Testing degrib2 level and date/time descriptions.'
 
   do i = 1, MAX_PT
      pt(i) = 0
   end do
 
   ! Test all the prvtime values.
+  print *, '*** testing prvtime() with various pdtns...'
   do t = 1, NUM_TN_T
-     print *, '*** Testing prvtime() with pdtn ', tn_t(t)
+     print *, '***    testing prvtime() with pdtn ', tn_t(t)
 
      pt(iutpos(t)) = 0
      pt(iutpos(t) + 1) = 1
@@ -134,7 +137,9 @@ program test_degrib2_int
      end if
      pt(iutpos(t)) = 0
   end do
+  print *, 'OK!'
 
+  print *, '*** testing different units for secondary times...'
   t = NUM_TN_T
 
   ! Check different units for secondary times.
@@ -177,10 +182,13 @@ program test_degrib2_int
   if (trim(ta) .ne.  "(0 -0 hr) valid  0 minute after 2022111719:00:00 to    0000000:00:00") stop 55
   pt(iutpos(t)) = 0
   pt(33) = 0
+
+  print *, 'OK!'
+  print *, '*** testing prlevel() with various pdtns...'
   
   ! Test all the prlevel values.
   do t = 1, NUM_TN
-     print *, '*** Testing prlevel() with pdtn ', tn(t)
+     print *, '***    testing prlevel() with pdtn ', tn(t)
      pt(ipos(t)) = 101
      call prlevel(tn(t), pt, la)
      if (la .ne. " Mean Sea Level ") stop 40
@@ -556,6 +564,9 @@ program test_degrib2_int
      if (trim(la) .ne. "  999 (Unknown Lvl)") stop 50
   end do
 
+  print *, 'OK!'
+  print *, '*** Testing prlevel() and prvtime() with various cases from test files...'
+
   ! Template 0 with various options.
   call prlevel(0, pt_0_0, la)
   if (la .ne. " Surface") stop 10
@@ -583,6 +594,61 @@ program test_degrib2_int
   call prvtime(8, pt_8_0, s1_0, ta)
   if (trim(ta) .ne.  "(0 -1 hr) valid  0 hour after 2022111719:00:00 to 2022111720:00:00") stop 41
 
+  ! From cmc_geavg.t12z.pgrb2a.0p50.f000.degrib2.
+  !  GRIB MESSAGE  69  starts at 8674274
+  !
+  !   SECTION 0:  2 2 138064
+  !   SECTION 1:  54 0 4 1 1 2022 11 17 12 0 0 0 4
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  2 2
+  !   SECTION 1:  54 0 4 1 1 2022 11 17 12 0 0 0 4
+  !   SECTION 3:  0 259920 0 0 0
+  !   GRID TEMPLATE 3. 0 :  6 0 0 0 0 0 0 720 361 0 0 -90000000 0 48 90000000 359500000 500000 500000 64
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 2: ( PARAMETER = SOILW    2 0 192 )  0 192 4 70 70 0 0 1 0 106 0 0 106 1 1 0 20
+  !   FIELD: SOILW   0 - .1 m DBLY valid  0 hour after 2022111712:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  87979    with BIT-MAP  0
+  !   DRS TEMPLATE 5. 40 :  1115711650 -2 4 16 0 0 255
+  !   Data Values:
+  !   Num. of Data Points =  87979   Num. of Data Undefined = 0
+  ! ( PARM= SOILW ) :  MIN=               0.00642044 AVE=               0.39450106 MAX=               0.88289541
+  call prlevel(2, pt_2_0, la)
+  if (trim(la) .ne. "0 - .1 m DBLY") stop 50
+  call prvtime(2, pt_2_0, s1_0, ta)
+  if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 51
+
+  ! This is from ref_flxf2022111712.01.2022111712.grb2.degrib2.
+  !  GRIB MESSAGE  6  starts at 276682
+  !
+  !   SECTION 0:  2 2 33672
+  !   SECTION 1:  7 0 2 1 1 2022 11 17 12 0 0 0 1
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  2 2
+  !   SECTION 1:  7 0 2 1 1 2022 11 17 12 0 0 0 1
+  !   SECTION 3:  0 72960 0 0 40
+  !   GRID TEMPLATE 3. 40 :  6 0 0 0 0 0 0 384 190 0 0 89277000 0 48 -89277000 359062000 938000 95 0
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 0: ( PARAMETER = SOILW    2 0 192 )  0 192 2 0 98 0 0 1 0 106 2 0 106 2 10
+  !   FIELD: SOILW    0 - .10 m DBLY valid  0 hour after 2022111712:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  24626    with BIT-MAP  0
+  !   DRS TEMPLATE 5. 40 :  1133707264 0 4 14 0 0 255
+  !   Data Values:
+  !   Num. of Data Points =  24626   Num. of Data Undefined = 0
+  ! ( PARM= SOILW ) :  MIN=               0.02940000 AVE=               0.51248300 MAX=               1.00000000
+  call prlevel(0, pt_0_4, la)
+  print *, la
+  if (trim(la) .ne. " 0 - .10 m DBLY") stop 60
+  call prvtime(2, pt_0_4, s1_0, ta)
+  print *, ta
+  if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 61
+
+  print *, 'OK!'
   print *, 'SUCCESS!'
   
 end program test_degrib2_int
