@@ -17,6 +17,7 @@ program test_degrib2_int
        20, 0, 0, 1, 0, 1, 2, 1, 1, 1, 0 /)
   integer :: pt_2_0(17) = (/ 0, 192, 4, 70, 70, 0, 0, 1, 0, 106, 0, 0, 106, 1, 1, 0, 20 /)
   integer :: s1_0(13) = (/ 7, 14, 1, 1, 1, 2022, 11, 17, 19, 0, 0, 0, 1 /)
+  integer :: s1_1(13) = (/ 54, 0, 4, 1, 1, 2022, 11, 17, 12, 0, 0, 0, 4 /)
   character(len = 40) :: la
   character(len = 100) :: ta
   integer :: NUM_TN, t
@@ -617,8 +618,8 @@ program test_degrib2_int
   ! ( PARM= SOILW ) :  MIN=               0.00642044 AVE=               0.39450106 MAX=               0.88289541
   call prlevel(2, pt_2_0, la)
   if (trim(la) .ne. "0 - .1 m DBLY") stop 50
-  call prvtime(2, pt_2_0, s1_0, ta)
-  if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 51
+  call prvtime(2, pt_2_0, s1_1, ta)
+  if (trim(ta) .ne.  "valid  0 hour after 2022111712:00:00") stop 51
 
   ! This is from ref_flxf2022111712.01.2022111712.grb2.degrib2.
   !  GRIB MESSAGE  6  starts at 276682
@@ -642,11 +643,9 @@ program test_degrib2_int
   !   Num. of Data Points =  24626   Num. of Data Undefined = 0
   ! ( PARM= SOILW ) :  MIN=               0.02940000 AVE=               0.51248300 MAX=               1.00000000
   call prlevel(0, pt_0_4, la)
-  print *, la
   if (trim(la) .ne. " 0 - .10 m DBLY") stop 60
-  call prvtime(2, pt_0_4, s1_0, ta)
-  print *, ta
-  if (trim(ta) .ne.  "valid  0 hour after 2022111719:00:00") stop 61
+  call prvtime(2, pt_0_4, s1_1, ta)
+  if (trim(ta) .ne.  "valid  0 hour after 2022111712:00:00") stop 61
 
   print *, 'OK!'
   print *, 'SUCCESS!'
