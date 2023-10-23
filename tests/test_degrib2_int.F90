@@ -17,6 +17,7 @@ program test_degrib2_int
        20, 0, 0, 1, 0, 1, 2, 1, 1, 1, 0 /)
   integer :: pt_2_0(17) = (/ 0, 192, 4, 70, 70, 0, 0, 1, 0, 106, 0, 0, 106, 1, 1, 0, 20 /)
   integer :: pt_2_1(17) = (/ 3, 1, 4, 70, 70, 0, 0, 1, 0, 101, 0, 0, 255, 0, 0, 0, 20 /)
+  integer :: pt_15_0(18) = (/ 0, 27, 2, 255, 104, 65535, 255, 1, 1, 103, 0, 610, 100, 0, 40000, 241, 241, 241 /)
   integer :: s1_0(13) = (/ 7, 14, 1, 1, 1, 2022, 11, 17, 19, 0, 0, 0, 1 /)
   integer :: s1_1(13) = (/ 54, 0, 4, 1, 1, 2022, 11, 17, 12, 0, 0, 0, 4 /)
   integer :: s1_2(13) = (/ 54, 0, 4, 0, 1, 2022, 11, 17, 12, 0, 0, 0, 4 /)
@@ -675,6 +676,34 @@ program test_degrib2_int
   call prvtime(2, pt_2_1, s1_2, ta)
   !print *, ta
   if (trim(ta) .ne.  "valid  0 hour after 2022111712:00:00") stop 71
+
+  ! From ref_blend.t19z.core.f001.co.grib2.degrib2:
+  !  GRIB MESSAGE  34  starts at 44231011
+  !
+  !   SECTION 0:  0 2 1371114
+  !   SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  0 2
+  !   SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  !   SECTION 3:  0 3744965 0 0 30
+  !   GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 15: ( PARAMETER = UNKNOWN  0 0 27 )  0 27 2 255 104 65535 255 1 1 103 0 610 100 0 40000 241 241 241
+  !   FIELD: UNKNOWN   103 (Unknown Lvl) valid  1 hour after 2022111719:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  3744965     NO BIT-MAP 
+  !   DRS TEMPLATE 5. 3 :  1159272448 2 1 7 0 1 1 1176255488 255 209539 1 3 1 1 11 6 2 1
+  !   Data Values:
+  !   Num. of Data Points =  3744965   Num. of Data Undefined = 0
+  ! ( PARM= UNKNOWN ) :  MIN=             244.94999695 AVE=             267.56930542 MAX=             294.55001831
+  call prlevel(15, pt_15_0, la)
+  !print *, la
+  if (trim(la) .ne. "  103 (Unknown Lvl)") stop 80
+  call prvtime(15, pt_15_0, s1_0, ta)
+  !print *, ta
+  if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 81
   
   print *, 'OK!'
   print *, 'SUCCESS!'
