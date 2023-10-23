@@ -16,8 +16,10 @@ program test_degrib2_int
   integer :: pt_8_0(29) = (/ 1, 228, 2, 255, 104, 65535, 255, 1, 0, 1, 0, 0, 255, 0, 0, 2022, 11, 17, &
        20, 0, 0, 1, 0, 1, 2, 1, 1, 1, 0 /)
   integer :: pt_2_0(17) = (/ 0, 192, 4, 70, 70, 0, 0, 1, 0, 106, 0, 0, 106, 1, 1, 0, 20 /)
+  integer :: pt_2_1(17) = (/ 3, 1, 4, 70, 70, 0, 0, 1, 0, 101, 0, 0, 255, 0, 0, 0, 20 /)
   integer :: s1_0(13) = (/ 7, 14, 1, 1, 1, 2022, 11, 17, 19, 0, 0, 0, 1 /)
   integer :: s1_1(13) = (/ 54, 0, 4, 1, 1, 2022, 11, 17, 12, 0, 0, 0, 4 /)
+  integer :: s1_2(13) = (/ 54, 0, 4, 0, 1, 2022, 11, 17, 12, 0, 0, 0, 4 /)
   character(len = 40) :: la
   character(len = 100) :: ta
   integer :: NUM_TN, t
@@ -644,9 +646,36 @@ program test_degrib2_int
   ! ( PARM= SOILW ) :  MIN=               0.02940000 AVE=               0.51248300 MAX=               1.00000000
   call prlevel(0, pt_0_4, la)
   if (trim(la) .ne. " 0 - .10 m DBLY") stop 60
-  call prvtime(2, pt_0_4, s1_1, ta)
+  call prvtime(0, pt_0_4, s1_1, ta)
   if (trim(ta) .ne.  "valid  0 hour after 2022111712:00:00") stop 61
 
+  !  GRIB MESSAGE  62  starts at 7836496
+  !
+  !   SECTION 0:  0 2 84897
+  !   SECTION 1:  54 0 4 0 1 2022 11 17 12 0 0 0 4
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  0 2
+  !   SECTION 1:  54 0 4 0 1 2022 11 17 12 0 0 0 4
+  !   SECTION 3:  0 259920 0 0 0
+  !   GRID TEMPLATE 3. 0 :  6 0 0 0 0 0 0 720 361 0 0 -90000000 0 48 90000000 359500000 500000 500000 64
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 2: ( PARAMETER = PRMSL    0 3 1 )  3 1 4 70 70 0 0 1 0 101 0 0 255 0 0 0 20
+  !   FIELD: PRMSL   Mean Sea Level  valid  0 hour after 2022111712:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  259920     NO BIT-MAP 
+  !   DRS TEMPLATE 5. 40 :  1203330578 2 0 12 0 0 255
+  !   Data Values:
+  !   Num. of Data Points =  259920   Num. of Data Undefined = 0
+  ! ( PARM= PRMSL ) :  MIN=           94908.14062500 AVE=          100994.26562500 MAX=          105356.14062500
+  call prlevel(2, pt_2_1, la)
+  !print *, la
+  if (trim(la) .ne. " Mean Sea Level") stop 70
+  call prvtime(2, pt_2_1, s1_2, ta)
+  !print *, ta
+  if (trim(ta) .ne.  "valid  0 hour after 2022111712:00:00") stop 71
+  
   print *, 'OK!'
   print *, 'SUCCESS!'
   
