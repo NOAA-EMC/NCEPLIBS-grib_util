@@ -14,6 +14,7 @@ program test_degrib2_int
   integer :: pt_0_3(15) = (/ 19, 238, 2, 255, 104, 65535, 255, 1, 1, 100, 0, 40000, 100, 0, 30000 /)
   integer :: pt_0_4(15) = (/ 0, 192, 2, 0, 98, 0, 0, 1, 0, 106, 2, 0, 106, 2, 10 /)
   integer :: pt_0_5(15) = (/ 19, 236, 2, 255, 104, 65535, 255, 1, 1, 102, 0, 0, 255, 0, 0 /)
+  integer :: pt_0_6(15) = (/ 0, 0, 2, 0, 116, 0, 0, 1, 0, 108, 0, 3000, 108, 0, 0 /)
   integer :: pt_8_0(29) = (/ 1, 228, 2, 255, 104, 65535, 255, 1, 0, 1, 0, 0, 255, 0, 0, 2022, 11, 17, &
        20, 0, 0, 1, 0, 1, 2, 1, 1, 1, 0 /)
   integer :: pt_2_0(17) = (/ 0, 192, 4, 70, 70, 0, 0, 1, 0, 106, 0, 0, 106, 1, 1, 0, 20 /)
@@ -24,6 +25,7 @@ program test_degrib2_int
   integer :: s1_0(13) = (/ 7, 14, 1, 1, 1, 2022, 11, 17, 19, 0, 0, 0, 1 /)
   integer :: s1_1(13) = (/ 54, 0, 4, 1, 1, 2022, 11, 17, 12, 0, 0, 0, 4 /)
   integer :: s1_2(13) = (/ 54, 0, 4, 0, 1, 2022, 11, 17, 12, 0, 0, 0, 4 /)
+  integer :: s1_3(13) = (/ 7, 0, 2, 1, 1, 2022, 11, 17, 0, 0, 0, 0, 1 /)
   character(len = 40) :: la
   character(len = 100) :: ta
   integer :: NUM_TN, t
@@ -752,11 +754,37 @@ program test_degrib2_int
   !   Num. of Data Points =  3744965   Num. of Data Undefined = 0
   ! ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=            1427.00317383 MAX=            4080.00000000
   call prlevel(0, pt_0_5, la)
-  print *, la
   if (trim(la) .ne. "0 m above MSL") stop 100
   call prvtime(0, pt_0_5, s1_0, ta)
-  print *, ta
   if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 101
+
+  ! From ref_hiresw.t00z.arw_5km.f00.hi.grib2.degrib2
+  !  GRIB MESSAGE  197  starts at 3014616
+  !
+  !   SECTION 0:  0 2 11719
+  !   SECTION 1:  7 0 2 1 1 2022 11 17 0 0 0 0 1
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  0 2
+  !   SECTION 1:  7 0 2 1 1 2022 11 17 0 0 0 0 1
+  !   SECTION 3:  0 37910 0 0 0
+  !   GRID TEMPLATE 3. 0 :  6 0 0 0 0 0 0 223 170 0 -1 16400000 197650000 56 24005000 207640000 45000 45000 64
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 0: ( PARAMETER = TMP      0 0 0 )  0 0 2 0 116 0 0 1 0 108 0 3000 108 0 0
+  !   FIELD: TMP      30 -  0 mb SPDY valid  0 hour after 2022111700:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  37910     NO BIT-MAP 
+  !   DRS TEMPLATE 5. 3 :  1133056139 -4 0 7 0 1 0 1649987994 -1 701 0 4 1 1 29 8 2 2
+  !   Data Values:
+  !   Num. of Data Points =  37910   Num. of Data Undefined = 0
+  ! ( PARM= TMP ) :  MIN=             274.12924194 AVE=             296.74426270 MAX=             300.44174194
+  call prlevel(0, pt_0_6, la)
+  !print *, la
+  if (trim(la) .ne. " 30 -  0 mb SPDY") stop 110
+  call prvtime(0, pt_0_6, s1_3, ta)
+  !print *, ta
+  if (trim(ta) .ne.  "valid  0 hour after 2022111700:00:00") stop 111
   
   print *, 'OK!'
   print *, 'SUCCESS!'
