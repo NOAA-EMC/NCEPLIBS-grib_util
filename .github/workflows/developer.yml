@@ -126,7 +126,7 @@ jobs:
         cd g2c
         mkdir build
         cd build
-        cmake -DCMAKE_INSTALL_PREFIX=~/g2c -DCMAKE_PREFIX_PATH="~/jasper" ..
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2c -DCMAKE_PREFIX_PATH="~/jasper" -DBUILD_G2C=ON ..
         make -j2
         make install
                  
