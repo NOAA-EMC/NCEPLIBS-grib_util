@@ -13,6 +13,7 @@ program test_degrib2_int
   integer :: pt_0_2(15) = (/ 0, 21, 2, 255, 104, 65535, 255, 1, 1, 103, 0, 2, 255, 0, 0 /)
   integer :: pt_0_3(15) = (/ 19, 238, 2, 255, 104, 65535, 255, 1, 1, 100, 0, 40000, 100, 0, 30000 /)
   integer :: pt_0_4(15) = (/ 0, 192, 2, 0, 98, 0, 0, 1, 0, 106, 2, 0, 106, 2, 10 /)
+  integer :: pt_0_5(15) = (/ 19, 236, 2, 255, 104, 65535, 255, 1, 1, 102, 0, 0, 255, 0, 0 /)
   integer :: pt_8_0(29) = (/ 1, 228, 2, 255, 104, 65535, 255, 1, 0, 1, 0, 0, 255, 0, 0, 2022, 11, 17, &
        20, 0, 0, 1, 0, 1, 2, 1, 1, 1, 0 /)
   integer :: pt_2_0(17) = (/ 0, 192, 4, 70, 70, 0, 0, 1, 0, 106, 0, 0, 106, 1, 1, 0, 20 /)
@@ -673,10 +674,8 @@ program test_degrib2_int
   !   Num. of Data Points =  259920   Num. of Data Undefined = 0
   ! ( PARM= PRMSL ) :  MIN=           94908.14062500 AVE=          100994.26562500 MAX=          105356.14062500
   call prlevel(2, pt_2_1, la)
-  !print *, la
   if (trim(la) .ne. " Mean Sea Level") stop 70
   call prvtime(2, pt_2_1, s1_2, ta)
-  !print *, ta
   if (trim(ta) .ne.  "valid  0 hour after 2022111712:00:00") stop 71
 
   ! From ref_blend.t19z.core.f001.co.grib2.degrib2:
@@ -701,10 +700,8 @@ program test_degrib2_int
   !   Num. of Data Points =  3744965   Num. of Data Undefined = 0
   ! ( PARM= UNKNOWN ) :  MIN=             244.94999695 AVE=             267.56930542 MAX=             294.55001831
   call prlevel(15, pt_15_0, la)
-  !print *, la
   if (trim(la) .ne. "  103 (Unknown Lvl)") stop 80
   call prvtime(15, pt_15_0, s1_0, ta)
-  !print *, ta
   if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 81
 
   ! This is from ref_blend.t19z.core.f001.co.grib2.degrib2:
@@ -729,12 +726,37 @@ program test_degrib2_int
   !   Num. of Data Points =  3744965   Num. of Data Undefined = 0
   ! ( PARM= APCP ) :  MIN=               0.00000000 AVE=               3.45403767 MAX=              94.00000000
   call prlevel(9, pt_9_0, la)
-  print *, la
   if (trim(la) .ne. " Surface") stop 90
   call prvtime(9, pt_9_0, s1_0, ta)
-  print *, ta
   if (trim(ta) .ne.  "(0 -1 hr) valid  0 hour after 2022111719:00:00 to 2022111720:00:00") stop 91
-  
+
+  ! This is from ref_blend.t19z.core.f001.co.grib2.degrib2:
+  !  GRIB MESSAGE  52  starts at 62185534
+  !
+  !   SECTION 0:  0 2 987256
+  !   SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  0 2
+  !   SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  !   SECTION 3:  0 3744965 0 0 30
+  !   GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 0: ( PARAMETER = UNKNOWN  0 19 236 )  19 236 2 255 104 65535 255 1 1 102 0 0 255 0 0
+  !   FIELD: UNKNOWN 0 m above MSL valid  1 hour after 2022111719:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  3744965     NO BIT-MAP 
+  !   DRS TEMPLATE 5. 3 :  0 3 0 7 0 1 1 1176255488 255 91497 1 3 1 1 256 8 2 2
+  !   Data Values:
+  !   Num. of Data Points =  3744965   Num. of Data Undefined = 0
+  ! ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=            1427.00317383 MAX=            4080.00000000
+  call prlevel(0, pt_0_5, la)
+  print *, la
+  if (trim(la) .ne. "0 m above MSL") stop 100
+  call prvtime(0, pt_0_5, s1_0, ta)
+  print *, ta
+  if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 101
   
   print *, 'OK!'
   print *, 'SUCCESS!'
