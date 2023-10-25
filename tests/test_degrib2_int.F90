@@ -17,6 +17,8 @@ program test_degrib2_int
   integer :: pt_0_6(15) = (/ 0, 0, 2, 0, 116, 0, 0, 1, 0, 108, 0, 3000, 108, 0, 0 /)
   integer :: pt_8_0(29) = (/ 1, 228, 2, 255, 104, 65535, 255, 1, 0, 1, 0, 0, 255, 0, 0, 2022, 11, 17, &
        20, 0, 0, 1, 0, 1, 2, 1, 1, 1, 0 /)
+  integer :: pt_8_1(29) = (/ 14, 201, 2, 0, 89, 0, 0, 1, -1, 105, 0, 1, 255, -127, -2147483647, 2022, &
+       11, 2, 10, 0, 0, 1, 0, 0, 2, 1, 23, 255, 0 /)
   integer :: pt_2_0(17) = (/ 0, 192, 4, 70, 70, 0, 0, 1, 0, 106, 0, 0, 106, 1, 1, 0, 20 /)
   integer :: pt_2_1(17) = (/ 3, 1, 4, 70, 70, 0, 0, 1, 0, 101, 0, 0, 255, 0, 0, 0, 20 /)
   integer :: pt_15_0(18) = (/ 0, 27, 2, 255, 104, 65535, 255, 1, 1, 103, 0, 610, 100, 0, 40000, 241, 241, 241 /)
@@ -26,6 +28,7 @@ program test_degrib2_int
   integer :: s1_1(13) = (/ 54, 0, 4, 1, 1, 2022, 11, 17, 12, 0, 0, 0, 4 /)
   integer :: s1_2(13) = (/ 54, 0, 4, 0, 1, 2022, 11, 17, 12, 0, 0, 0, 4 /)
   integer :: s1_3(13) = (/ 7, 0, 2, 1, 1, 2022, 11, 17, 0, 0, 0, 0, 1 /)
+  integer :: s1_4(13) = (/ 7, 0, 0, 1, 1, 2022, 11, 1, 12, 0, 0, 0, 1 /)
   character(len = 40) :: la
   character(len = 100) :: ta
   integer :: NUM_TN, t
@@ -780,11 +783,37 @@ program test_degrib2_int
   !   Num. of Data Points =  37910   Num. of Data Undefined = 0
   ! ( PARM= TMP ) :  MIN=             274.12924194 AVE=             296.74426270 MAX=             300.44174194
   call prlevel(0, pt_0_6, la)
-  !print *, la
   if (trim(la) .ne. " 30 -  0 mb SPDY") stop 110
   call prvtime(0, pt_0_6, s1_3, ta)
-  !print *, ta
   if (trim(ta) .ne.  "valid  0 hour after 2022111700:00:00") stop 111
+
+  ! This is from ref_aqm.t12z.max_8hr_o3.227.grib2.degrib2:
+  !  GRIB MESSAGE  1  starts at 1
+  !
+  !   SECTION 0:  0 2 757557
+  !   SECTION 1:  7 0 0 1 1 2022 11 1 12 0 0 0 1
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  0 2
+  !   SECTION 1:  7 0 0 1 1 2022 11 1 12 0 0 0 1
+  !   SECTION 3:  0 1509825 0 0 30
+  !   GRID TEMPLATE 3. 30 :  6 0 0 0 0 0 0 1473 1025 12190000 226541000 48 25000000 265000000 5079000 5079000 0 64 25000000 25000000 -90000000 0
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 8: ( PARAMETER = OZMAX8   0 14 201 )  14 201 2 0 89 0 0 1 -1 105 0 1 255 -127 -2147483647 2022 11 2 10 0 0 1 0 0 2 1 23 255 0
+  !   FIELD: OZMAX8  1 hybrid lvl (1 -24) valid  1 hour before 2022110112:00:00 to 2022110210:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  1509825     NO BIT-MAP 
+  !   DRS TEMPLATE 5. 3 :  1102324794 -5 0 11 0 1 1 1649987994 -1 51278 0 4 1 1 40 7 1 2
+  !   Data Values:
+  !   Num. of Data Points =  1509825   Num. of Data Undefined = 129961
+  ! ( PARM= OZMAX8 ) :  MIN=              22.51768875 AVE=              44.23855591 MAX=              79.61143494
+  call prlevel(8, pt_8_1, la)
+  !print *, la
+  if (trim(la) .ne. "1 hybrid lvl") stop 120
+  call prvtime(8, pt_8_1, s1_4, ta)
+  !print *, ta
+  if (trim(ta) .ne.  "(1 -24) valid  1 hour before 2022110112:00:00 to 2022110210:00:00") stop 121
   
   print *, 'OK!'
   print *, 'SUCCESS!'
