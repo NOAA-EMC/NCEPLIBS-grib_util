@@ -23,11 +23,11 @@ jobs:
       fail-fast: true
       matrix:
         g2-version: [3.4.8]
-        bacio-version: [2.4.1, 2.5.0, 2.6.0]
+        bacio-version: [2.4.1, 2.6.0]
         jasper-version: [4.0.0]
         w3emc-version: [2.10.0, 2.11.0]
         sp-version: [v2.3.3, v2.4.0, null]
-        ip-version: [v3.3.3, v4.1.0, v4.2.0, v5.0.0]
+        ip-version: [v3.3.3, v4.4.0, v5.0.0]
         exclude:
           - sp-version: v2.3.3
             ip-version: v5.0.0
@@ -36,9 +36,7 @@ jobs:
           - sp-version: null
             ip-version: v3.3.3
           - sp-version: null
-            ip-version: v4.1.0
-          - sp-version: null
-            ip-version: v4.2.0
+            ip-version: v4.4.0
 
     steps:
     - name: install-dependencies
