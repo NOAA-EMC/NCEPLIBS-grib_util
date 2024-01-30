@@ -108,7 +108,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-sp
         path: sp
-        ref: matrix.sp-version
+        ref: ${{ matrix.sp-version }}
 
     - name: build-sp
       if: steps.cache-sp.outputs.cache-hit != 'true' && matrix.sp-version != 'null'
@@ -158,7 +158,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
-        ref: matrix.ip-version
+        ref: ${{ matrix.ip-version }}
 
     - name: build-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
