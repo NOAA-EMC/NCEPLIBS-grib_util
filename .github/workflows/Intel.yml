@@ -24,6 +24,7 @@ jobs:
     strategy:
       matrix:
         compilers: ["CC=icc FC=ifort", "CC=icx FC=ifx"]
+        ip_version: ["v5.0.0", "v4.5.0"]
 
     steps:
 
@@ -90,12 +91,13 @@ jobs:
     - name: cache-sp
       id: cache-sp
       uses: actions/cache@v3
+      if: matrix.ip_version == 'v4.5.0'
       with:
         path: ~/sp
         key: sp-Intel-${{ matrix.compilers }}-${{ runner.os }}-v2.4.0
 
     - name: checkout-sp
-      if: steps.cache-sp.outputs.cache-hit != 'true'
+      if: steps.cache-sp.outputs.cache-hit != 'true' && matrix.ip_version == 'v4.5.0'
       uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-sp
@@ -103,7 +105,7 @@ jobs:
         ref: v2.4.0
 
     - name: build-sp
-      if: steps.cache-sp.outputs.cache-hit != 'true'
+      if: steps.cache-sp.outputs.cache-hit != 'true' && matrix.ip_version == 'v4.5.0'
       run: |
         cd sp
         mkdir build
@@ -142,7 +144,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/ip
-        key: ip-Intel-${{ matrix.compilers }}-${{ runner.os }}-v4.3.0
+        key: ip-Intel-${{ matrix.compilers }}-${{ runner.os }}-${{ matrix.ip_version }}
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -150,7 +152,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
-        ref: v4.3.0
+        ref: ${{ matrix.ip_version }}
 
     - name: build-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'

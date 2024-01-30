@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -25,24 +25,23 @@ class GribUtil(CMakePackage):
 
     depends_on("jasper")
     depends_on("libpng")
-    depends_on("zlib")
+    depends_on("zlib-api")
     depends_on("w3emc +extradeps", when="@1.2.4:")
     depends_on("w3emc precision=4,d", when="^w3emc@2.10:")
     depends_on("w3nco", when="@:1.2.3")
     depends_on("g2")
-    depends_on("g2c@1.7: +utils")
     depends_on("bacio")
     depends_on("ip")
-    depends_on("ip precision=d", when="ip@4.1:")
+    depends_on("ip precision=d", when="^ip@4.1:")
     depends_on("ip@:3.3.3", when="@:1.2")
-    depends_on("sp")
-    depends_on("sp precision=d", when="sp@2.4:")
+    depends_on("sp", when="^ip@:4")
+    depends_on("sp precision=d", when="^ip@:4 ^sp@2.4:")
 
     def cmake_args(self):
         args = [
             self.define_from_variant("OPENMP", "openmp"),
             self.define("BUILD_TESTING", self.run_tests),
-            self.define("G2C_COMPARE", self.run_tests),
+            self.define("G2C_COMPARE", False),
         ]
         return args
 

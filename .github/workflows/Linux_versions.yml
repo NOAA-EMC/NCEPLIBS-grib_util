@@ -26,8 +26,13 @@ jobs:
         bacio-version: [2.4.1, 2.5.0, 2.6.0]
         jasper-version: [4.0.0]
         w3emc-version: [2.10.0, 2.11.0]
-        sp-version: [2.3.3, 2.4.0]
-        ip-version: [3.3.3, 4.1.0, 4.2.0]
+        sp-version: [2.3.3, 2.4.0, null]
+        ip-version: [3.3.3, 4.1.0, 4.2.0, 5.0.0]
+      exclude:
+        - sp-version: 2.3.3
+          ip-version: 5.0.0
+        - sp-version: 2.4.0
+          ip-version: 5.0.0
 
     steps:
     - name: install-dependencies
@@ -86,12 +91,13 @@ jobs:
     - name: cache-sp
       id: cache-sp
       uses: actions/cache@v3
+      if: matrix.sp-version != 'null'
       with:
         path: ~/sp
         key: sp-${{ runner.os }}-${{ matrix.sp-version }}
 
     - name: checkout-sp
-      if: steps.cache-sp.outputs.cache-hit != 'true'
+      if: steps.cache-sp.outputs.cache-hit != 'true' && matrix.sp-version != 'null'
       uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-sp
@@ -99,7 +105,7 @@ jobs:
         ref: v${{ matrix.sp-version }}
 
     - name: build-sp
-      if: steps.cache-sp.outputs.cache-hit != 'true'
+      if: steps.cache-sp.outputs.cache-hit != 'true' && matrix.sp-version != 'null'
       run: |
         cd sp
         mkdir build
