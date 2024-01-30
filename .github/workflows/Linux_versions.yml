@@ -33,6 +33,12 @@ jobs:
           ip-version: 5.0.0
         - sp-version: 2.4.0
           ip-version: 5.0.0
+        - sp-version: null
+          ip-version: 3.3.3
+        - sp-version: null
+          ip-version: 4.1.0
+        - sp-version: null
+          ip-version: 4.2.0
 
     steps:
     - name: install-dependencies
