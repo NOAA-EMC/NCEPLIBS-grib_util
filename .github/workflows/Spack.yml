@@ -38,7 +38,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/spack-build-cache
-        key: spack-build-cache-${{ matrix.os }}-${{ matrix.ip_spec }}1
+        key: spack-build-cache-${{ matrix.os }}-${{ matrix.ip_spec }}-1
 
     - name: spack-build-and-test
       run: |
