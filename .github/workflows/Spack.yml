@@ -49,7 +49,7 @@ jobs:
         cp $GITHUB_WORKSPACE/grib-util/spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/grib-util/package.py
         mv $GITHUB_WORKSPACE/grib-util $SPACK_ENV/grib-util
         spack develop --no-clone grib-util@develop
-        spack add grib-util@develop%gcc@11 ${{ matrix.openmp }} ^bacio@2.6.0 ^w3emc@2.10.0 ^g2@3.4.8 ^g2c@develop ${{ ip_spec }}
+        spack add grib-util@develop%gcc@11 ${{ matrix.openmp }} ^bacio@2.6.0 ^w3emc@2.10.0 ^g2@3.4.8 ^g2c@develop ${{ matrix.ip_spec }}
         spack external find cmake gmake
         spack mirror add spack-build-cache ~/spack-build-cache
         spack concretize
