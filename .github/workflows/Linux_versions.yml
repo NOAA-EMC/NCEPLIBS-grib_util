@@ -28,17 +28,17 @@ jobs:
         w3emc-version: [2.10.0, 2.11.0]
         sp-version: [2.3.3, 2.4.0, null]
         ip-version: [3.3.3, 4.1.0, 4.2.0, 5.0.0]
-      exclude:
-        - sp-version: 2.3.3
-          ip-version: 5.0.0
-        - sp-version: 2.4.0
-          ip-version: 5.0.0
-        - sp-version: null
-          ip-version: 3.3.3
-        - sp-version: null
-          ip-version: 4.1.0
-        - sp-version: null
-          ip-version: 4.2.0
+        exclude:
+          - sp-version: 2.3.3
+            ip-version: 5.0.0
+          - sp-version: 2.4.0
+            ip-version: 5.0.0
+          - sp-version: null
+            ip-version: 3.3.3
+          - sp-version: null
+            ip-version: 4.1.0
+          - sp-version: null
+            ip-version: 4.2.0
 
     steps:
     - name: install-dependencies
