@@ -56,7 +56,7 @@ Repository | Notes
 -----------|------
 [NCEPLIBS-bacio](https://github.com/NOAA-EMC/NCEPLIBS-bacio) | binary I/O for NCEP models
 [NCEPLIBS-ip](https://github.com/NOAA-EMC/NCEPLIBS-ip) | interpolating between NCEP grids
-[NCEPLIBS-sp](https://github.com/NOAA-EMC/NCEPLIBS-sp) | spectral transform functions - only needed for ip v4 and lower
+[NCEPLIBS-sp](https://github.com/NOAA-EMC/NCEPLIBS-sp) | spectral transform functions - only needed for NCEPLIBS-ip v4 and below
 [NCEPLIBS-g2](https://github.com/NOAA-EMC/NCEPLIBS-g2) | Fortran implementation of the GRIB 2 functions
 [NCEPLIBS-w3emc](https://github.com/NOAA-EMC/NCEPLIBS-w3emc) | GRIB1 library
 
