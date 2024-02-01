@@ -22,8 +22,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        sp-version: [2.3.3]
-        ip-version: [4.1.0]
+        ip-version: [5.0.0]
         g2-version: [3.4.8]
         bacio-version: [2.6.0]
         jasper-version: [2.0.33, 3.0.5, 4.0.0]
@@ -83,31 +82,6 @@ jobs:
         make -j2
         make install
 
-    - name: cache-sp
-      id: cache-sp
-      uses: actions/cache@v3
-      with:
-        path: ~/sp
-        key: sp-${{ runner.os }}-${{ matrix.sp-version }}
-
-    - name: checkout-sp
-      if: steps.cache-sp.outputs.cache-hit != 'true'
-      uses: actions/checkout@v3
-      with:
-        repository: NOAA-EMC/NCEPLIBS-sp
-        path: sp
-        ref: v${{ matrix.sp-version }}
-
-    - name: build-sp
-      if: steps.cache-sp.outputs.cache-hit != 'true'
-      run: |
-        cd sp
-        mkdir build
-        cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/sp
-        make -j2
-        make install
-          
     - name: cache-w3emc
       id: cache-w3emc
       uses: actions/cache@v3
@@ -154,7 +128,7 @@ jobs:
         cd ip
         mkdir build
         cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/ip
         make -j2
         make install
           
@@ -179,7 +153,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/g2
-        key: linux_external_g2-${{ runner.os }}-${{ matrix.g2-version }}-${{ matrix.jasper-version }}-${{ matrix.bacio-version }}-${{ matrix.w3emc-version }}-${{ matrix.ip-version }}-${{ matrix.sp-version }}-3
+        key: linux_external_g2-${{ runner.os }}-${{ matrix.g2-version }}-${{ matrix.jasper-version }}-${{ matrix.bacio-version }}-${{ matrix.w3emc-version }}-${{ matrix.ip-version }}-3
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
@@ -210,6 +184,6 @@ jobs:
         mkdir build && cd build
         export LD_LIBRARY_PATH=/home/runner/jasper/lib
         export PATH="~/g2c/bin:$PATH"
-        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2;~/g2c" ..
+        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/ip;~/w3emc;~/g2;~/g2c" ..
         make -j2 VERBOSE=1
         ctest --output-on-failure --rerun-failed --verbose

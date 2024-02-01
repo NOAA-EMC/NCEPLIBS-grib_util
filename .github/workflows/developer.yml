@@ -65,22 +65,6 @@ jobs:
         cmake -DCMAKE_INSTALL_PREFIX=~/bacio ..
         make -j2
         make install
-
-    - name: checkout-sp
-      uses: actions/checkout@v3
-      with:
-        repository: NOAA-EMC/NCEPLIBS-sp
-        path: sp
-        ref: develop
-
-    - name: build-sp
-      run: |
-        cd sp
-        mkdir build
-        cd build
-        cmake -DCMAKE_INSTALL_PREFIX=~/sp ..
-        make -j2
-        make install
           
     - name: checkout-w3emc
       uses: actions/checkout@v3
@@ -110,7 +94,7 @@ jobs:
         cd ip
         mkdir build
         cd build
-        cmake -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp ..
+        cmake -DCMAKE_INSTALL_PREFIX=~/ip ..
         make -j2
         make install
           
@@ -126,7 +110,7 @@ jobs:
         cd g2c
         mkdir build
         cd build
-        cmake -DCMAKE_INSTALL_PREFIX=~/g2c -DCMAKE_PREFIX_PATH="~/jasper" ..
+        cmake -DCMAKE_INSTALL_PREFIX=~/g2c -DCMAKE_PREFIX_PATH="~/jasper" -DBUILD_G2C=ON ..
         make -j2
         make install
                  
@@ -161,7 +145,7 @@ jobs:
         ls -l ~/jasper/lib
         export LD_LIBRARY_PATH=/home/runner/jasper/lib
         export PATH="~/g2c/bin:$PATH"
-        cmake -DENABLE_DOCS=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2;~/g2c" -DCMAKE_Fortran_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" -DCMAKE_C_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" -DG2C_COMPARE=ON ..
+        cmake -DENABLE_DOCS=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/ip;~/w3emc;~/g2;~/g2c" -DCMAKE_Fortran_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" -DCMAKE_C_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" -DG2C_COMPARE=ON ..
         make -j2 VERBOSE=1
         ctest --output-on-failure --rerun-failed --verbose
 
