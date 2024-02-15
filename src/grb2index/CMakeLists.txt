@@ -12,12 +12,9 @@ elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(GNU)$")
   set(CMAKE_Fortran_FLAGS_RELEASE "-O3 ${CMAKE_Fortran_FLAGS}")
 endif()
 
-# This is the fortran source code.
-set(fortran_src grb2index.F90)
-
 # Build the executable.
 set(exe_name grb2index)
-add_executable(${exe_name} ${fortran_src})
+add_executable(${exe_name} grb2index.F90)
 target_link_libraries(${exe_name} PRIVATE g2::g2_4 w3emc::w3emc_4 bacio::${bacio_name})
 
 # Install the utility.
