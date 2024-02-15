@@ -105,7 +105,7 @@ end program grb2index
 subroutine wrgi1h(lugi, nlen, nnum, cgb)
   implicit none
   character cgb*(*)
-  character cd8*8, ct10*10, hostname*15
+  character cd8*8, ct10*10, hn*15
 #ifdef __GFORTRAN__
   integer istat
 #endif
@@ -126,14 +126,14 @@ subroutine wrgi1h(lugi, nlen, nnum, cgb)
   chead(1)(42:47) = 'GB2IX1'
   chead(1)(49:54) = '      '
 #ifdef __GFORTRAN__
-  istat=hostnm(hostname)
+  istat = hostnm(hn)
   if (istat .eq. 0) then
      chead(1)(56:70) = '0000'
   else
      chead(1)(56:70) = '0001'
   endif
 #else
-  chead(1)(56:70) = hostnam(hostname)
+  chead(1)(56:70) = hostnam(hn)
 #endif
   chead(1)(72:80) = 'grb2index'
   chead(1)(81:81) = char(10)
