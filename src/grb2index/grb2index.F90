@@ -12,86 +12,86 @@
 !> - 8 error accessing file
 !>
 !> @author Iredell @date 1992-11-22
-PROGRAM GRB2INDEX
-  PARAMETER(MSK1=32000,MSK2=4000)
-  CHARACTER CGB*256,CGI*256
-  CHARACTER(LEN=1),POINTER,DIMENSION(:) :: CBUF
-  CHARACTER CARG*300
-  INTEGER NARG,IARGC
-  INTERFACE
-     SUBROUTINE GETG2IR(LUGB,MSK1,MSK2,MNUM,CBUF,NLEN,NNUM, &
-          NMESS,IRET)
-       INTEGER,INTENT(IN) :: LUGB,MSK1,MSK2,MNUM
-       CHARACTER(LEN=1),POINTER,DIMENSION(:) :: CBUF
-       INTEGER,INTENT(OUT) :: NLEN,NNUM,NMESS,IRET
-     END SUBROUTINE GETG2IR
-  END INTERFACE
+program grb2index
+  parameter(msk1=32000,msk2=4000)
+  character cgb*256,cgi*256
+  character(len=1),pointer,dimension(:) :: cbuf
+  character carg*300
+  integer narg,iargc
+  interface
+     subroutine getg2ir(lugb,msk1,msk2,mnum,cbuf,nlen,nnum, &
+          nmess,iret)
+       integer,intent(in) :: lugb,msk1,msk2,mnum
+       character(len=1),pointer,dimension(:) :: cbuf
+       integer,intent(out) :: nlen,nnum,nmess,iret
+     end subroutine getg2ir
+  end interface
 
-  !  GET ARGUMENTS
-  NARG=IARGC()
-  IF(NARG.NE.2) THEN
-     CALL ERRMSG('grb2index:  Incorrect usage')
-     CALL ERRMSG('Usage: grb2index gribfile indexfile')
-     CALL ERREXIT(2)
-  ENDIF
-  CALL GETARG(1,CGB)
-  NCGB=LEN_TRIM(CGB)
-  CALL BAOPENR(11,CGB(1:NCGB),IOS)
-  !CALL BASETO(1,1)
-  IF(IOS.NE.0) THEN
-     LCARG=LEN('grb2index:  Error accessing file '//CGB(1:NCGB))
-     CARG(1:LCARG)='grb2index:  Error accessing file '//CGB(1:NCGB)
-     CALL ERRMSG(CARG(1:LCARG))
-     CALL ERREXIT(8)
-  ENDIF
-  CALL GETARG(2,CGI)
-  NCGI=LEN_TRIM(CGI)
-  CALL BAOPEN(31,CGI(1:NCGI),IOS)
-  IF(IOS.NE.0) THEN
-     LCARG=LEN('grb2index:  Error accessing file '//CGI(1:NCGI))
-     CARG(1:LCARG)='grb2index:  Error accessing file '//CGI(1:NCGI)
-     CALL ERRMSG(CARG(1:LCARG))
-     CALL ERREXIT(8)
-  ENDIF
+  !  get arguments
+  narg=iargc()
+  if(narg.ne.2) then
+     call errmsg('grb2index:  Incorrect usage')
+     call errmsg('Usage: grb2index gribfile indexfile')
+     call errexit(2)
+  endif
+  call getarg(1,cgb)
+  ncgb=len_trim(cgb)
+  call baopenr(11,cgb(1:ncgb),ios)
+  !call baseto(1,1)
+  if(ios.ne.0) then
+     lcarg=len('grb2index:  Error accessing file '//cgb(1:ncgb))
+     carg(1:lcarg)='grb2index:  Error accessing file '//cgb(1:ncgb)
+     call errmsg(carg(1:lcarg))
+     call errexit(8)
+  endif
+  call getarg(2,cgi)
+  ncgi=len_trim(cgi)
+  call baopen(31,cgi(1:ncgi),ios)
+  if(ios.ne.0) then
+     lcarg=len('grb2index:  Error accessing file '//cgi(1:ncgi))
+     carg(1:lcarg)='grb2index:  Error accessing file '//cgi(1:ncgi)
+     call errmsg(carg(1:lcarg))
+     call errexit(8)
+  endif
 
-  !  WRITE INDEX FILE
-  MNUM=0
-  CALL GETG2IR(11,MSK1,MSK2,MNUM,CBUF,NLEN,NNUM,NMESS,IRGI)
-  IF(IRGI.GT.1.OR.NNUM.EQ.0.OR.NLEN.EQ.0) THEN
-     CALL ERRMSG('grb2index:  No GRIB messages detected in file ' &
-          //CGB(1:NCGB))
-     CALL BACLOSE(11,IRET)
-     CALL BACLOSE(31,IRET)
-     CALL ERREXIT(1)
-  ENDIF
-  NUMTOT=NUMTOT+NNUM
-  MNUM=MNUM+NMESS
-  CALL WRGI1H(31,NLEN,NUMTOT,CGB(1:NCGB))
-  IW=162
-  CALL BAWRITE(31,IW,NLEN,KW,CBUF)
-  IW=IW+NLEN
+  !  write index file
+  mnum=0
+  call getg2ir(11,msk1,msk2,mnum,cbuf,nlen,nnum,nmess,irgi)
+  if(irgi.gt.1.or.nnum.eq.0.or.nlen.eq.0) then
+     call errmsg('grb2index:  No GRIB messages detected in file ' &
+          //cgb(1:ncgb))
+     call baclose(11,iret)
+     call baclose(31,iret)
+     call errexit(1)
+  endif
+  numtot=numtot+nnum
+  mnum=mnum+nmess
+  call wrgi1h(31,nlen,numtot,cgb(1:ncgb))
+  iw=162
+  call bawrite(31,iw,nlen,kw,cbuf)
+  iw=iw+nlen
 
-  !  EXTEND INDEX FILE IF INDEX BUFFER LENGTH TOO LARGE TO HOLD IN MEMORY
-  IF(IRGI.EQ.1) THEN
-     DO WHILE(IRGI.EQ.1.AND.NNUM.GT.0)
-        IF (ASSOCIATED(CBUF)) THEN
-           DEALLOCATE(CBUF)
-           NULLIFY(CBUF)
-        ENDIF
-        CALL GETG2IR(11,MSK1,MSK2,MNUM,CBUF,NLEN,NNUM,NMESS,IRGI)
-        IF(IRGI.LE.1.AND.NNUM.GT.0) THEN
-           NUMTOT=NUMTOT+NNUM
-           MNUM=MNUM+NMESS
-           CALL BAWRITE(31,IW,NLEN,KW,CBUF)
-           IW=IW+NLEN
-        ENDIF
-     ENDDO
-     CALL WRGI1H(31,IW,NUMTOT,CGB(1:NCGB))
-  ENDIF
-  CALL BACLOSE(11,IRET)
-  CALL BACLOSE(31,IRET)
+  !  extend index file if index buffer length too large to hold in memory
+  if(irgi.eq.1) then
+     do while(irgi.eq.1.and.nnum.gt.0)
+        if (associated(cbuf)) then
+           deallocate(cbuf)
+           nullify(cbuf)
+        endif
+        call getg2ir(11,msk1,msk2,mnum,cbuf,nlen,nnum,nmess,irgi)
+        if(irgi.le.1.and.nnum.gt.0) then
+           numtot=numtot+nnum
+           mnum=mnum+nmess
+           call bawrite(31,iw,nlen,kw,cbuf)
+           iw=iw+nlen
+        endif
+     enddo
+     call wrgi1h(31,iw,numtot,cgb(1:ncgb))
+  endif
+  call baclose(11,iret)
+  call baclose(31,iret)
 
-END PROGRAM GRB2INDEX
+end program grb2index
 
 !> Write index headers.
 !>
@@ -108,54 +108,54 @@ END PROGRAM GRB2INDEX
 !> @param[in] cgb character name of GRIB file
 !>
 !> @author Iredell @date 93-11-22
-SUBROUTINE WRGI1H(LUGI,NLEN,NNUM,CGB)
-  CHARACTER CGB*(*)
+subroutine wrgi1h(lugi,nlen,nnum,cgb)
+  character cgb*(*)
 #ifdef __GFORTRAN__
-  CHARACTER CD8*8,CT10*10,HOSTNAME*15
-  INTEGER ISTAT
+  character cd8*8,ct10*10,hostname*15
+  integer istat
 #else
-  CHARACTER CD8*8,CT10*10,HOSTNAM*15
+  character cd8*8,ct10*10,hostnam*15
 #endif
-  CHARACTER CHEAD(2)*81
+  character chead(2)*81
 
-  !  FILL FIRST 81-BYTE HEADER
-  NCGB=LEN(CGB)
-  NCGB1=NCBASE(CGB,NCGB)
-  NCGB2=NCBASE(CGB,NCGB1-2)
-  CALL DATE_AND_TIME(CD8,CT10)
-  CHEAD(1)='!GFHDR!'
-  CHEAD(1)(9:10)=' 1'
-  CHEAD(1)(12:14)='  1'
-  WRITE(CHEAD(1)(16:20),'(I5)') 162
-  CHEAD(1)(22:31)=CD8(1:4)//'-'//CD8(5:6)//'-'//CD8(7:8)
-  CHEAD(1)(33:40)=CT10(1:2)//':'//CT10(3:4)//':'//CT10(5:6)
-  CHEAD(1)(42:47)='GB2IX1'
-  !CHEAD(1)(49:54)=CGB(NCGB2:NCGB1-2)
-  CHEAD(1)(49:54)='      '
+  !  fill first 81-byte header
+  ncgb=len(cgb)
+  ncgb1=ncbase(cgb,ncgb)
+  ncgb2=ncbase(cgb,ncgb1-2)
+  call date_and_time(cd8,ct10)
+  chead(1)='!GFHDR!'
+  chead(1)(9:10)=' 1'
+  chead(1)(12:14)='  1'
+  write(chead(1)(16:20),'(i5)') 162
+  chead(1)(22:31)=cd8(1:4)//'-'//cd8(5:6)//'-'//cd8(7:8)
+  chead(1)(33:40)=ct10(1:2)//':'//ct10(3:4)//':'//ct10(5:6)
+  chead(1)(42:47)='gb2ix1'
+  !chead(1)(49:54)=cgb(ncgb2:ncgb1-2)
+  chead(1)(49:54)='      '
 #ifdef __GFORTRAN__
-  ISTAT=HOSTNM(HOSTNAME)
-  IF(ISTAT.eq.0) THEN
-     CHEAD(1)(56:70)='0000'
-  ELSE
-     CHEAD(1)(56:70)='0001'
-  ENDIF
+  istat=hostnm(hostname)
+  if(istat.eq.0) then
+     chead(1)(56:70)='0000'
+  else
+     chead(1)(56:70)='0001'
+  endif
 #else
-  CHEAD(1)(56:70)=HOSTNAM(HOSTNAME)
+  chead(1)(56:70)=hostnam(hostname)
 #endif
-  CHEAD(1)(72:80)='grb2index'
-  CHEAD(1)(81:81)=CHAR(10)
+  chead(1)(72:80)='grb2index'
+  chead(1)(81:81)=char(10)
 
-  !  FILL SECOND 81-BYTE HEADER
-  CHEAD(2)='IX1FORM:'
-  WRITE(CHEAD(2)(9:38),'(3I10)') 162,NLEN,NNUM
-  CHEAD(2)(41:80)=CGB(NCGB1:NCGB)
-  CHEAD(2)(81:81)=CHAR(10)
+  !  fill second 81-byte header
+  chead(2)='IX1FORM:'
+  write(chead(2)(9:38),'(3i10)') 162,nlen,nnum
+  chead(2)(41:80)=cgb(ncgb1:ncgb)
+  chead(2)(81:81)=char(10)
 
-  !  WRITE HEADERS AT BEGINNING OF INDEX FILE
-  CALL BAWRITE(LUGI,0,162,KW,CHEAD)
+  !  write headers at beginning of index file
+  call bawrite(lugi,0,162,kw,chead)
 
-  RETURN
-END SUBROUTINE WRGI1H
+  return
+end subroutine wrgi1h
 
 !> Locate basename of a file.
 !>
@@ -169,14 +169,14 @@ END SUBROUTINE WRGI1H
 !> @return The index of the basename within the string.
 !>
 !> @author Iredell @date 93-11-22
-FUNCTION NCBASE(C,N)
-  CHARACTER C*(*)
+function ncbase(c,n)
+  character c*(*)
 
-  K=N
-  DO WHILE(K.GE.1.AND.C(K:K).NE.'/')
-     K=K-1
-  ENDDO
-  NCBASE=K+1
+  k=n
+  do while(k.ge.1.and.c(k:k).ne.'/')
+     k=k-1
+  enddo
+  ncbase=k+1
 
-  RETURN
-END FUNCTION NCBASE
+  return
+end function ncbase
