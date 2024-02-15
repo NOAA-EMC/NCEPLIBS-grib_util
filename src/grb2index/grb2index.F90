@@ -13,15 +13,47 @@
 !> @author Iredell @date 1992-11-22
 program grb2index
   implicit none
+  integer narg,iargc
+  character cgb*256,cgi*256
+  integer :: idxver = 1
+  integer :: iret
+  
+  !  get arguments
+  narg = iargc()
+  if (narg.ne.2) then
+     call errmsg('grb2index:  Incorrect usage')
+     call errmsg('Usage: grb2index gribfile indexfile')
+     call errexit(2)
+  endif
+  call getarg(1,cgb)
+  call getarg(2,cgi)
+
+  call g2_create_index(cgb, cgi, idxver, iret)
+  if (iret .ne. 0) stop iret
+
+end program grb2index
+
+!> Create a version 1 or 2 index file for a GRIB2 file.
+!>
+!> @param[in] cgb Path to GRIB2 file.
+!> @param[in] cgi Path where index file will be written.
+!> @param[in] idxver Index version.
+!> @param[out] iret Return code, 0 for success.
+!>
+!> @author Ed Hartnett, Mark Iredell @date Feb 15, 2024
+subroutine g2_create_index(cgb, cgi, idxver, iret)
+  implicit none
+  
+  character, intent(in) :: cgb*256,cgi*256
+  integer, intent(in) :: idxver
+  integer, intent(out) :: iret
   
   integer :: msk1, msk2
   parameter(msk1=32000,msk2=4000)
-  character cgb*256,cgi*256
   character(len=1),pointer,dimension(:) :: cbuf
   character carg*300
-  integer narg,iargc
   integer :: numtot, nnum, nlen, ncgi, mnum, lcarg, kw
-  integer :: ios, iret, irgi, iw, ncgb, nmess
+  integer :: ios, iret1, irgi, iw, ncgb, nmess
   
   interface
      subroutine getg2ir(lugb, msk1, msk2, mnum, cbuf, nlen, nnum, &
@@ -32,19 +64,8 @@ program grb2index
      end subroutine getg2ir
   end interface
 
-  !  get arguments
-  narg = iargc()
-  if (narg.ne.2) then
-     call errmsg('grb2index:  Incorrect usage')
-     call errmsg('Usage: grb2index gribfile indexfile')
-     call errexit(2)
-  endif
-  call getarg(1,cgb)
-  ncgb = len_trim(cgb)
-  call getarg(2,cgi)
-  ncgi = len_trim(cgi)
-
   ! Open GRIB2 file for reading.
+  ncgb = len_trim(cgb)
   call baopenr(11,cgb(1:ncgb), ios)
   if (ios .ne. 0) then
      lcarg = len('grb2index:  Error accessing file '//cgb(1:ncgb))
@@ -54,6 +75,7 @@ program grb2index
   endif
 
   ! Open output file where index will be written.
+  ncgi = len_trim(cgi)
   call baopen(31, cgi(1:ncgi), ios)
   if (ios .ne. 0) then
      lcarg = len('grb2index:  Error accessing file '//cgi(1:ncgi))
@@ -67,8 +89,8 @@ program grb2index
   call getg2ir(11, msk1, msk2, mnum, cbuf, nlen, nnum, nmess, irgi)
   if (irgi .gt. 1 .or. nnum .eq. 0 .or. nlen .eq. 0) then
      call errmsg('grb2index:  No GRIB messages detected in file ' // cgb(1:ncgb))
-     call baclose(11, iret)
-     call baclose(31, iret)
+     call baclose(11, iret1)
+     call baclose(31, iret1)
      call errexit(1)
   endif
   numtot = numtot + nnum
@@ -95,10 +117,11 @@ program grb2index
      enddo
      call wrgi1h(31, iw, numtot, cgb(1:ncgb))
   endif
-  call baclose(11, iret)
-  call baclose(31, iret)
+  call baclose(11, iret1)
+  call baclose(31, iret1)
+  iret = 0
 
-end program grb2index
+end subroutine g2_create_index
 
 !> Write index headers.
 !>
