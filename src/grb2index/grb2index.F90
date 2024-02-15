@@ -111,11 +111,11 @@ subroutine wrgi1h(lugi,nlen,nnum,cgb)
 
   integer :: lugi, nlen, nnum
   character cgb*(*)
-#ifdef __GFORTRAN__
   character cd8*8,ct10*10,hostname*15
+#ifdef __GFORTRAN__
   integer istat
 #else
-  character cd8*8,ct10*10,hostnam*15
+  character hostnam*15
   integer hostnm
 #endif
   character chead(2)*81
