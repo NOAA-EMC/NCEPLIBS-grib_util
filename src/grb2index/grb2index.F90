@@ -116,6 +116,7 @@ subroutine wrgi1h(lugi,nlen,nnum,cgb)
   integer istat
 #else
   character cd8*8,ct10*10,hostnam*15
+  integer hostnm
 #endif
   character chead(2)*81
   integer :: kw, ncgb, ncgb1, ncgb2, ncbase
