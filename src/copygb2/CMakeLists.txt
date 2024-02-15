@@ -24,8 +24,11 @@ target_link_libraries(${exe_name} PRIVATE
   ${JASPER_LIBRARIES}
   bacio::${bacio_name}
   w3emc::w3emc_d
-  ip::ip_d
-  sp::sp_d)
+  ip::ip_d)
+
+if(ip_VERSION LESS 5.0)
+  target_link_libraries(${exe_name} PRIVATE sp::sp_d)
+endif()
 
 # If OpenMP is available, use it.
 if(OpenMP_Fortran_FOUND)

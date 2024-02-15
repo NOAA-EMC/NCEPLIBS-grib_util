@@ -71,31 +71,6 @@ jobs:
         cmake .. -DCMAKE_INSTALL_PREFIX=~/bacio
         make -j2
         make install
-
-    - name: cache-sp
-      id: cache-sp
-      uses: actions/cache@v3
-      with:
-        path: ~/sp
-        key: sp-${{ runner.os }}-2.4.0
-
-    - name: checkout-sp
-      if: steps.cache-sp.outputs.cache-hit != 'true'
-      uses: actions/checkout@v3
-      with:
-        repository: NOAA-EMC/NCEPLIBS-sp
-        path: sp
-        ref: v2.4.0
-
-    - name: build-sp
-      if: steps.cache-sp.outputs.cache-hit != 'true'
-      run: |
-        cd sp
-        mkdir build
-        cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/sp
-        make -j2
-        make install
           
     - name: cache-w3emc
       id: cache-w3emc
@@ -127,7 +102,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/ip
-        key: ip-MacOS-${{ runner.os }}-4.2.0
+        key: ip-MacOS-${{ runner.os }}-5.0.0
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -135,7 +110,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
-        ref: v4.2.0
+        ref: v5.0.0
 
     - name: build-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
@@ -143,7 +118,7 @@ jobs:
         cd ip
         mkdir build
         cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/ip -DCMAKE_PREFIX_PATH=~/sp
+        cmake .. -DCMAKE_INSTALL_PREFIX=~/ip
         make -j2
         make install
           
@@ -181,6 +156,6 @@ jobs:
       run: |
         cd grib_utils
         mkdir build && cd build
-        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/sp;~/ip;~/w3emc;~/g2" ..
+        cmake -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/ip;~/w3emc;~/g2" ..
         make -j2
         ctest --output-on-failure --rerun-failed --verbose
