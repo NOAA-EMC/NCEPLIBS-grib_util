@@ -8,7 +8,7 @@ file(STRINGS "VERSION" pVersion)
 project(gributil VERSION ${pVersion} LANGUAGES C Fortran)
 
 # Handle user options.
-option(OPENMP "use OpenMP threading" OFF)
+option(OPENMP "Use OpenMP threading" OFF)
 option(ENABLE_DOCS "Enable generation of doxygen-based documentation." OFF)
 option(FTP_TEST_FILES "Fetch and test with files on FTP site." OFF)
 option(FTP_LARGE_TEST_FILES "Fetch and test with very large files on FTP site." OFF)
@@ -39,8 +39,10 @@ find_package(ZLIB REQUIRED)
 
 # Find the NCEPLIBS libraries we need.
 find_package(bacio 2.4.0 REQUIRED)
-find_package(sp 2.3.3 REQUIRED)
 find_package(ip 3.3.3 REQUIRED)
+if(ip_VERSION LESS 5.0)
+  find_package(sp 2.3.3 REQUIRED)
+endif()
 find_package(w3emc 2.10.0 REQUIRED)
 find_package(g2 3.4.8 REQUIRED)
 # g2c is not required.

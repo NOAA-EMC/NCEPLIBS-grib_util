@@ -23,11 +23,20 @@ jobs:
       fail-fast: true
       matrix:
         g2-version: [3.4.8]
-        bacio-version: [2.4.1, 2.5.0, 2.6.0]
+        bacio-version: [2.4.1, 2.6.0]
         jasper-version: [4.0.0]
         w3emc-version: [2.10.0, 2.11.0]
-        sp-version: [2.3.3, 2.4.0]
-        ip-version: [3.3.3, 4.1.0, 4.2.0]
+        sp-version: [v2.3.3, v2.4.0, null]
+        ip-version: [v3.3.3, v4.4.0, v5.0.0]
+        exclude:
+          - sp-version: v2.3.3
+            ip-version: v5.0.0
+          - sp-version: v2.4.0
+            ip-version: v5.0.0
+          - sp-version: null
+            ip-version: v3.3.3
+          - sp-version: null
+            ip-version: v4.4.0
 
     steps:
     - name: install-dependencies
@@ -86,20 +95,21 @@ jobs:
     - name: cache-sp
       id: cache-sp
       uses: actions/cache@v3
+      if: matrix.sp-version != 'null'
       with:
         path: ~/sp
         key: sp-${{ runner.os }}-${{ matrix.sp-version }}
 
     - name: checkout-sp
-      if: steps.cache-sp.outputs.cache-hit != 'true'
+      if: steps.cache-sp.outputs.cache-hit != 'true' && matrix.sp-version != 'null'
       uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-sp
         path: sp
-        ref: v${{ matrix.sp-version }}
+        ref: ${{ matrix.sp-version }}
 
     - name: build-sp
-      if: steps.cache-sp.outputs.cache-hit != 'true'
+      if: steps.cache-sp.outputs.cache-hit != 'true' && matrix.sp-version != 'null'
       run: |
         cd sp
         mkdir build
@@ -146,7 +156,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
-        ref: v${{ matrix.ip-version }}
+        ref: ${{ matrix.ip-version }}
 
     - name: build-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
