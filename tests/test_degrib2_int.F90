@@ -12,9 +12,23 @@ program test_degrib2_int
   integer :: pt_0_1(15) = (/ 2, 10, 0, 0, 81, 0, 0, 1, 0, 100, 0, 80000, 255, 0, 0 /)
   integer :: pt_0_2(15) = (/ 0, 21, 2, 255, 104, 65535, 255, 1, 1, 103, 0, 2, 255, 0, 0 /)
   integer :: pt_0_3(15) = (/ 19, 238, 2, 255, 104, 65535, 255, 1, 1, 100, 0, 40000, 100, 0, 30000 /)
+  integer :: pt_0_4(15) = (/ 0, 192, 2, 0, 98, 0, 0, 1, 0, 106, 2, 0, 106, 2, 10 /)
+  integer :: pt_0_5(15) = (/ 19, 236, 2, 255, 104, 65535, 255, 1, 1, 102, 0, 0, 255, 0, 0 /)
+  integer :: pt_0_6(15) = (/ 0, 0, 2, 0, 116, 0, 0, 1, 0, 108, 0, 3000, 108, 0, 0 /)
   integer :: pt_8_0(29) = (/ 1, 228, 2, 255, 104, 65535, 255, 1, 0, 1, 0, 0, 255, 0, 0, 2022, 11, 17, &
        20, 0, 0, 1, 0, 1, 2, 1, 1, 1, 0 /)
+  integer :: pt_8_1(29) = (/ 14, 201, 2, 0, 89, 0, 0, 1, -1, 105, 0, 1, 255, -127, -2147483647, 2022, &
+       11, 2, 10, 0, 0, 1, 0, 0, 2, 1, 23, 255, 0 /)
+  integer :: pt_2_0(17) = (/ 0, 192, 4, 70, 70, 0, 0, 1, 0, 106, 0, 0, 106, 1, 1, 0, 20 /)
+  integer :: pt_2_1(17) = (/ 3, 1, 4, 70, 70, 0, 0, 1, 0, 101, 0, 0, 255, 0, 0, 0, 20 /)
+  integer :: pt_15_0(18) = (/ 0, 27, 2, 255, 104, 65535, 255, 1, 1, 103, 0, 610, 100, 0, 40000, 241, 241, 241 /)
+  integer :: pt_9_0(36) = (/ 1, 8, 2, 255, 104, 65535, 255, 1, 0, 1, 0, 0, 255, 0, 0, 255, 255, 1, -127, &
+       255, 3, 254, 2022, 11, 17, 20, 0, 0, 1, 0, 1, 2, 1, 1, 1, 0 /)
   integer :: s1_0(13) = (/ 7, 14, 1, 1, 1, 2022, 11, 17, 19, 0, 0, 0, 1 /)
+  integer :: s1_1(13) = (/ 54, 0, 4, 1, 1, 2022, 11, 17, 12, 0, 0, 0, 4 /)
+  integer :: s1_2(13) = (/ 54, 0, 4, 0, 1, 2022, 11, 17, 12, 0, 0, 0, 4 /)
+  integer :: s1_3(13) = (/ 7, 0, 2, 1, 1, 2022, 11, 17, 0, 0, 0, 0, 1 /)
+  integer :: s1_4(13) = (/ 7, 0, 0, 1, 1, 2022, 11, 1, 12, 0, 0, 0, 1 /)
   character(len = 40) :: la
   character(len = 100) :: ta
   integer :: NUM_TN, t
@@ -27,15 +41,16 @@ program test_degrib2_int
   integer :: iutpos(NUM_TN_T) = (/ 8, 8, 8, 8, 9, 14, 19, 11 /)
   integer :: i
 
-  print *, 'Testing degrib2 level and date/time descriptions...'
+  print *, 'Testing degrib2 level and date/time descriptions.'
 
   do i = 1, MAX_PT
      pt(i) = 0
   end do
 
   ! Test all the prvtime values.
+  print *, '*** testing prvtime() with various pdtns...'
   do t = 1, NUM_TN_T
-     print *, '*** Testing prvtime() with pdtn ', tn_t(t)
+     print *, '***    testing prvtime() with pdtn ', tn_t(t)
 
      pt(iutpos(t)) = 0
      pt(iutpos(t) + 1) = 1
@@ -134,7 +149,9 @@ program test_degrib2_int
      end if
      pt(iutpos(t)) = 0
   end do
+  print *, 'OK!'
 
+  print *, '*** testing different units for secondary times...'
   t = NUM_TN_T
 
   ! Check different units for secondary times.
@@ -177,10 +194,13 @@ program test_degrib2_int
   if (trim(ta) .ne.  "(0 -0 hr) valid  0 minute after 2022111719:00:00 to    0000000:00:00") stop 55
   pt(iutpos(t)) = 0
   pt(33) = 0
+
+  print *, 'OK!'
+  print *, '*** testing prlevel() with various pdtns...'
   
   ! Test all the prlevel values.
   do t = 1, NUM_TN
-     print *, '*** Testing prlevel() with pdtn ', tn(t)
+     print *, '***    testing prlevel() with pdtn ', tn(t)
      pt(ipos(t)) = 101
      call prlevel(tn(t), pt, la)
      if (la .ne. " Mean Sea Level ") stop 40
@@ -556,6 +576,9 @@ program test_degrib2_int
      if (trim(la) .ne. "  999 (Unknown Lvl)") stop 50
   end do
 
+  print *, 'OK!'
+  print *, '*** Testing prlevel() and prvtime() with various cases from test files...'
+
   ! Template 0 with various options.
   call prlevel(0, pt_0_0, la)
   if (la .ne. " Surface") stop 10
@@ -583,6 +606,216 @@ program test_degrib2_int
   call prvtime(8, pt_8_0, s1_0, ta)
   if (trim(ta) .ne.  "(0 -1 hr) valid  0 hour after 2022111719:00:00 to 2022111720:00:00") stop 41
 
+  ! From cmc_geavg.t12z.pgrb2a.0p50.f000.degrib2.
+  !  GRIB MESSAGE  69  starts at 8674274
+  !
+  !   SECTION 0:  2 2 138064
+  !   SECTION 1:  54 0 4 1 1 2022 11 17 12 0 0 0 4
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  2 2
+  !   SECTION 1:  54 0 4 1 1 2022 11 17 12 0 0 0 4
+  !   SECTION 3:  0 259920 0 0 0
+  !   GRID TEMPLATE 3. 0 :  6 0 0 0 0 0 0 720 361 0 0 -90000000 0 48 90000000 359500000 500000 500000 64
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 2: ( PARAMETER = SOILW    2 0 192 )  0 192 4 70 70 0 0 1 0 106 0 0 106 1 1 0 20
+  !   FIELD: SOILW   0 - .1 m DBLY valid  0 hour after 2022111712:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  87979    with BIT-MAP  0
+  !   DRS TEMPLATE 5. 40 :  1115711650 -2 4 16 0 0 255
+  !   Data Values:
+  !   Num. of Data Points =  87979   Num. of Data Undefined = 0
+  ! ( PARM= SOILW ) :  MIN=               0.00642044 AVE=               0.39450106 MAX=               0.88289541
+  call prlevel(2, pt_2_0, la)
+  if (trim(la) .ne. "0 - .1 m DBLY") stop 50
+  call prvtime(2, pt_2_0, s1_1, ta)
+  if (trim(ta) .ne.  "valid  0 hour after 2022111712:00:00") stop 51
+
+  ! This is from ref_flxf2022111712.01.2022111712.grb2.degrib2.
+  !  GRIB MESSAGE  6  starts at 276682
+  !
+  !   SECTION 0:  2 2 33672
+  !   SECTION 1:  7 0 2 1 1 2022 11 17 12 0 0 0 1
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  2 2
+  !   SECTION 1:  7 0 2 1 1 2022 11 17 12 0 0 0 1
+  !   SECTION 3:  0 72960 0 0 40
+  !   GRID TEMPLATE 3. 40 :  6 0 0 0 0 0 0 384 190 0 0 89277000 0 48 -89277000 359062000 938000 95 0
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 0: ( PARAMETER = SOILW    2 0 192 )  0 192 2 0 98 0 0 1 0 106 2 0 106 2 10
+  !   FIELD: SOILW    0 - .10 m DBLY valid  0 hour after 2022111712:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  24626    with BIT-MAP  0
+  !   DRS TEMPLATE 5. 40 :  1133707264 0 4 14 0 0 255
+  !   Data Values:
+  !   Num. of Data Points =  24626   Num. of Data Undefined = 0
+  ! ( PARM= SOILW ) :  MIN=               0.02940000 AVE=               0.51248300 MAX=               1.00000000
+  call prlevel(0, pt_0_4, la)
+  if (trim(la) .ne. " 0 - .10 m DBLY") stop 60
+  call prvtime(0, pt_0_4, s1_1, ta)
+  if (trim(ta) .ne.  "valid  0 hour after 2022111712:00:00") stop 61
+
+  !  GRIB MESSAGE  62  starts at 7836496
+  !
+  !   SECTION 0:  0 2 84897
+  !   SECTION 1:  54 0 4 0 1 2022 11 17 12 0 0 0 4
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  0 2
+  !   SECTION 1:  54 0 4 0 1 2022 11 17 12 0 0 0 4
+  !   SECTION 3:  0 259920 0 0 0
+  !   GRID TEMPLATE 3. 0 :  6 0 0 0 0 0 0 720 361 0 0 -90000000 0 48 90000000 359500000 500000 500000 64
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 2: ( PARAMETER = PRMSL    0 3 1 )  3 1 4 70 70 0 0 1 0 101 0 0 255 0 0 0 20
+  !   FIELD: PRMSL   Mean Sea Level  valid  0 hour after 2022111712:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  259920     NO BIT-MAP 
+  !   DRS TEMPLATE 5. 40 :  1203330578 2 0 12 0 0 255
+  !   Data Values:
+  !   Num. of Data Points =  259920   Num. of Data Undefined = 0
+  ! ( PARM= PRMSL ) :  MIN=           94908.14062500 AVE=          100994.26562500 MAX=          105356.14062500
+  call prlevel(2, pt_2_1, la)
+  if (trim(la) .ne. " Mean Sea Level") stop 70
+  call prvtime(2, pt_2_1, s1_2, ta)
+  if (trim(ta) .ne.  "valid  0 hour after 2022111712:00:00") stop 71
+
+  ! From ref_blend.t19z.core.f001.co.grib2.degrib2:
+  !  GRIB MESSAGE  34  starts at 44231011
+  !
+  !   SECTION 0:  0 2 1371114
+  !   SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  0 2
+  !   SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  !   SECTION 3:  0 3744965 0 0 30
+  !   GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 15: ( PARAMETER = UNKNOWN  0 0 27 )  0 27 2 255 104 65535 255 1 1 103 0 610 100 0 40000 241 241 241
+  !   FIELD: UNKNOWN   103 (Unknown Lvl) valid  1 hour after 2022111719:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  3744965     NO BIT-MAP 
+  !   DRS TEMPLATE 5. 3 :  1159272448 2 1 7 0 1 1 1176255488 255 209539 1 3 1 1 11 6 2 1
+  !   Data Values:
+  !   Num. of Data Points =  3744965   Num. of Data Undefined = 0
+  ! ( PARM= UNKNOWN ) :  MIN=             244.94999695 AVE=             267.56930542 MAX=             294.55001831
+  call prlevel(15, pt_15_0, la)
+  if (trim(la) .ne. "  103 (Unknown Lvl)") stop 80
+  call prvtime(15, pt_15_0, s1_0, ta)
+  if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 81
+
+  ! This is from ref_blend.t19z.core.f001.co.grib2.degrib2:
+  !  GRIB MESSAGE  36  starts at 46129905
+  !
+  !   SECTION 0:  0 2 775840
+  !   SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  0 2
+  !   SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  !   SECTION 3:  0 3744965 0 0 30
+  !   GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 9: ( PARAMETER = APCP     0 1 8 )  1 8 2 255 104 65535 255 1 0 1 0 0 255 0 0 255 255 1 -127 255 3 254 2022 11 17 20 0 0 1 0 1 2 1 1 1 0
+  !   FIELD: APCP     Surface (0 -1 hr) valid  0 hour after 2022111719:00:00 to 2022111720:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  3744965     NO BIT-MAP 
+  !   DRS TEMPLATE 5. 3 :  0 0 0 6 0 1 1 1176255488 255 82673 1 3 1 1 59 8 2 1
+  !   Data Values:
+  !   Num. of Data Points =  3744965   Num. of Data Undefined = 0
+  ! ( PARM= APCP ) :  MIN=               0.00000000 AVE=               3.45403767 MAX=              94.00000000
+  call prlevel(9, pt_9_0, la)
+  if (trim(la) .ne. " Surface") stop 90
+  call prvtime(9, pt_9_0, s1_0, ta)
+  if (trim(ta) .ne.  "(0 -1 hr) valid  0 hour after 2022111719:00:00 to 2022111720:00:00") stop 91
+
+  ! This is from ref_blend.t19z.core.f001.co.grib2.degrib2:
+  !  GRIB MESSAGE  52  starts at 62185534
+  !
+  !   SECTION 0:  0 2 987256
+  !   SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  0 2
+  !   SECTION 1:  7 14 1 1 1 2022 11 17 19 0 0 0 1
+  !   SECTION 3:  0 3744965 0 0 30
+  !   GRID TEMPLATE 3. 30 :  1 0 6371200 255 255 255 255 2345 1597 19229000 233723400 48 25000000 265000000 2539703 2539703 0 80 25000000 25000000 -90000000 0
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 0: ( PARAMETER = UNKNOWN  0 19 236 )  19 236 2 255 104 65535 255 1 1 102 0 0 255 0 0
+  !   FIELD: UNKNOWN 0 m above MSL valid  1 hour after 2022111719:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  3744965     NO BIT-MAP 
+  !   DRS TEMPLATE 5. 3 :  0 3 0 7 0 1 1 1176255488 255 91497 1 3 1 1 256 8 2 2
+  !   Data Values:
+  !   Num. of Data Points =  3744965   Num. of Data Undefined = 0
+  ! ( PARM= UNKNOWN ) :  MIN=               0.00000000 AVE=            1427.00317383 MAX=            4080.00000000
+  call prlevel(0, pt_0_5, la)
+  if (trim(la) .ne. "0 m above MSL") stop 100
+  call prvtime(0, pt_0_5, s1_0, ta)
+  if (trim(ta) .ne.  "valid  1 hour after 2022111719:00:00") stop 101
+
+  ! From ref_hiresw.t00z.arw_5km.f00.hi.grib2.degrib2
+  !  GRIB MESSAGE  197  starts at 3014616
+  !
+  !   SECTION 0:  0 2 11719
+  !   SECTION 1:  7 0 2 1 1 2022 11 17 0 0 0 0 1
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  0 2
+  !   SECTION 1:  7 0 2 1 1 2022 11 17 0 0 0 0 1
+  !   SECTION 3:  0 37910 0 0 0
+  !   GRID TEMPLATE 3. 0 :  6 0 0 0 0 0 0 223 170 0 -1 16400000 197650000 56 24005000 207640000 45000 45000 64
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 0: ( PARAMETER = TMP      0 0 0 )  0 0 2 0 116 0 0 1 0 108 0 3000 108 0 0
+  !   FIELD: TMP      30 -  0 mb SPDY valid  0 hour after 2022111700:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  37910     NO BIT-MAP 
+  !   DRS TEMPLATE 5. 3 :  1133056139 -4 0 7 0 1 0 1649987994 -1 701 0 4 1 1 29 8 2 2
+  !   Data Values:
+  !   Num. of Data Points =  37910   Num. of Data Undefined = 0
+  ! ( PARM= TMP ) :  MIN=             274.12924194 AVE=             296.74426270 MAX=             300.44174194
+  call prlevel(0, pt_0_6, la)
+  if (trim(la) .ne. " 30 -  0 mb SPDY") stop 110
+  call prvtime(0, pt_0_6, s1_3, ta)
+  if (trim(ta) .ne.  "valid  0 hour after 2022111700:00:00") stop 111
+
+  ! This is from ref_aqm.t12z.max_8hr_o3.227.grib2.degrib2:
+  !  GRIB MESSAGE  1  starts at 1
+  !
+  !   SECTION 0:  0 2 757557
+  !   SECTION 1:  7 0 0 1 1 2022 11 1 12 0 0 0 1
+  !   Contains  0  Local Sections  and  1  data fields.
+  !
+  !   FIELD  1
+  !   SECTION 0:  0 2
+  !   SECTION 1:  7 0 0 1 1 2022 11 1 12 0 0 0 1
+  !   SECTION 3:  0 1509825 0 0 30
+  !   GRID TEMPLATE 3. 30 :  6 0 0 0 0 0 0 1473 1025 12190000 226541000 48 25000000 265000000 5079000 5079000 0 64 25000000 25000000 -90000000 0
+  !   NO Optional List Defining Number of Data Points.
+  !   PRODUCT TEMPLATE 4. 8: ( PARAMETER = OZMAX8   0 14 201 )  14 201 2 0 89 0 0 1 -1 105 0 1 255 -127 -2147483647 2022 11 2 10 0 0 1 0 0 2 1 23 255 0
+  !   FIELD: OZMAX8  1 hybrid lvl (1 -24) valid  1 hour before 2022110112:00:00 to 2022110210:00:00
+  !   NO Optional Vertical Coordinate List.
+  !   Num. of Data Points =  1509825     NO BIT-MAP 
+  !   DRS TEMPLATE 5. 3 :  1102324794 -5 0 11 0 1 1 1649987994 -1 51278 0 4 1 1 40 7 1 2
+  !   Data Values:
+  !   Num. of Data Points =  1509825   Num. of Data Undefined = 129961
+  ! ( PARM= OZMAX8 ) :  MIN=              22.51768875 AVE=              44.23855591 MAX=              79.61143494
+  call prlevel(8, pt_8_1, la)
+  !print *, la
+  if (trim(la) .ne. "1 hybrid lvl") stop 120
+  call prvtime(8, pt_8_1, s1_4, ta)
+  !print *, ta
+  if (trim(ta) .ne.  "(1 -24) valid  1 hour before 2022110112:00:00 to 2022110210:00:00") stop 121
+  
+  print *, 'OK!'
   print *, 'SUCCESS!'
   
 end program test_degrib2_int
