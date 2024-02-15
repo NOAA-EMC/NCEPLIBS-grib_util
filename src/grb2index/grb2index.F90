@@ -106,12 +106,12 @@ end program grb2index
 !> @param[in] cgb character name of GRIB file
 !>
 !> @author Iredell @date 93-11-22
-subroutine wrgi1h(lugi,nlen,nnum,cgb)
+subroutine wrgi1h(lugi, nlen, nnum, cgb)
   implicit none
 
   integer :: lugi, nlen, nnum
   character cgb*(*)
-  character cd8*8,ct10*10,hostname*15
+  character cd8*8, ct10*10, hostname*15
 #ifdef __GFORTRAN__
   integer istat
 #else
@@ -122,37 +122,36 @@ subroutine wrgi1h(lugi,nlen,nnum,cgb)
   integer :: kw, ncgb, ncgb1, ncgb2, ncbase
 
   !  fill first 81-byte header
-  ncgb=len(cgb)
-  ncgb1=ncbase(cgb,ncgb)
-  ncgb2=ncbase(cgb,ncgb1-2)
+  ncgb = len(cgb)
+  ncgb1 = ncbase(cgb,ncgb)
+  ncgb2 = ncbase(cgb,ncgb1-2)
   call date_and_time(cd8,ct10)
-  chead(1)='!GFHDR!'
-  chead(1)(9:10)=' 1'
-  chead(1)(12:14)='  1'
+  chead(1) = '!GFHDR!'
+  chead(1)(9:10) = ' 1'
+  chead(1)(12:14) = '  1'
   write(chead(1)(16:20),'(i5)') 162
-  chead(1)(22:31)=cd8(1:4)//'-'//cd8(5:6)//'-'//cd8(7:8)
-  chead(1)(33:40)=ct10(1:2)//':'//ct10(3:4)//':'//ct10(5:6)
-  chead(1)(42:47)='gb2ix1'
-  !chead(1)(49:54)=cgb(ncgb2:ncgb1-2)
-  chead(1)(49:54)='      '
+  chead(1)(22:31) = cd8(1:4) // '-' // cd8(5:6) // '-' // cd8(7:8)
+  chead(1)(33:40) = ct10(1:2) // ':' // ct10(3:4) // ':' // ct10(5:6)
+  chead(1)(42:47) = 'gb2ix1'
+  chead(1)(49:54) = '      '
 #ifdef __GFORTRAN__
-  istat=hostnm(hostname)
+  istat = hostnm(hostname)
   if(istat.eq.0) then
-     chead(1)(56:70)='0000'
+     chead(1)(56:70) = '0000'
   else
-     chead(1)(56:70)='0001'
+     chead(1)(56:70) = '0001'
   endif
 #else
-  chead(1)(56:70)=hostnam(hostname)
+  chead(1)(56:70) = hostnam(hostname)
 #endif
-  chead(1)(72:80)='grb2index'
-  chead(1)(81:81)=char(10)
+  chead(1)(72:80) = 'grb2index'
+  chead(1)(81:81) = char(10)
 
   !  fill second 81-byte header
-  chead(2)='IX1FORM:'
+  chead(2) = 'IX1FORM:'
   write(chead(2)(9:38),'(3i10)') 162,nlen,nnum
-  chead(2)(41:80)=cgb(ncgb1:ncgb)
-  chead(2)(81:81)=char(10)
+  chead(2)(41:80) = cgb(ncgb1:ncgb)
+  chead(2)(81:81) = char(10)
 
   !  write headers at beginning of index file
   call bawrite(lugi,0,162,kw,chead)
