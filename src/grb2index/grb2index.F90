@@ -4,7 +4,6 @@
 
 !> This program creates an index file from a GRIB2 file.
 !>
-!>
 !> @return
 !> - 0 successful run
 !> - 1 GRIB message not found
@@ -13,11 +12,17 @@
 !>
 !> @author Iredell @date 1992-11-22
 program grb2index
+  implicit none
+  
+  integer :: msk1, msk2
   parameter(msk1=32000,msk2=4000)
   character cgb*256,cgi*256
   character(len=1),pointer,dimension(:) :: cbuf
   character carg*300
   integer narg,iargc
+  integer :: numtot, nnum, nlen, ncgi, mnum, lcarg, kw
+  integer :: ios, iret, irgi, iw, ncgb, nmess
+  
   interface
      subroutine getg2ir(lugb,msk1,msk2,mnum,cbuf,nlen,nnum, &
           nmess,iret)
