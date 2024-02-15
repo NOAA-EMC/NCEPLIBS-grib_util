@@ -24,77 +24,79 @@ program grb2index
   integer :: ios, iret, irgi, iw, ncgb, nmess
   
   interface
-     subroutine getg2ir(lugb,msk1,msk2,mnum,cbuf,nlen,nnum, &
-          nmess,iret)
-       integer,intent(in) :: lugb,msk1,msk2,mnum
+     subroutine getg2ir(lugb, msk1, msk2, mnum, cbuf, nlen, nnum, &
+          nmess, iret)
+       integer,intent(in) :: lugb, msk1, msk2, mnum
        character(len=1),pointer,dimension(:) :: cbuf
-       integer,intent(out) :: nlen,nnum,nmess,iret
+       integer,intent(out) :: nlen, nnum, nmess, iret
      end subroutine getg2ir
   end interface
 
   !  get arguments
-  narg=iargc()
-  if(narg.ne.2) then
+  narg = iargc()
+  if (narg.ne.2) then
      call errmsg('grb2index:  Incorrect usage')
      call errmsg('Usage: grb2index gribfile indexfile')
      call errexit(2)
   endif
   call getarg(1,cgb)
-  ncgb=len_trim(cgb)
-  call baopenr(11,cgb(1:ncgb),ios)
-  !call baseto(1,1)
-  if(ios.ne.0) then
-     lcarg=len('grb2index:  Error accessing file '//cgb(1:ncgb))
-     carg(1:lcarg)='grb2index:  Error accessing file '//cgb(1:ncgb)
-     call errmsg(carg(1:lcarg))
-     call errexit(8)
-  endif
+  ncgb = len_trim(cgb)
   call getarg(2,cgi)
-  ncgi=len_trim(cgi)
-  call baopen(31,cgi(1:ncgi),ios)
-  if(ios.ne.0) then
-     lcarg=len('grb2index:  Error accessing file '//cgi(1:ncgi))
-     carg(1:lcarg)='grb2index:  Error accessing file '//cgi(1:ncgi)
+  ncgi = len_trim(cgi)
+
+  ! Open GRIB2 file for reading.
+  call baopenr(11,cgb(1:ncgb), ios)
+  if (ios .ne. 0) then
+     lcarg = len('grb2index:  Error accessing file '//cgb(1:ncgb))
+     carg(1:lcarg) = 'grb2index:  Error accessing file '//cgb(1:ncgb)
      call errmsg(carg(1:lcarg))
      call errexit(8)
   endif
 
-  !  write index file
-  mnum=0
-  call getg2ir(11,msk1,msk2,mnum,cbuf,nlen,nnum,nmess,irgi)
-  if(irgi.gt.1.or.nnum.eq.0.or.nlen.eq.0) then
-     call errmsg('grb2index:  No GRIB messages detected in file ' &
-          //cgb(1:ncgb))
-     call baclose(11,iret)
-     call baclose(31,iret)
+  ! Open output file where index will be written.
+  call baopen(31, cgi(1:ncgi), ios)
+  if (ios .ne. 0) then
+     lcarg = len('grb2index:  Error accessing file '//cgi(1:ncgi))
+     carg(1:lcarg) = 'grb2index:  Error accessing file '//cgi(1:ncgi)
+     call errmsg(carg(1:lcarg))
+     call errexit(8)
+  endif
+
+  ! Write index file.
+  mnum = 0
+  call getg2ir(11, msk1, msk2, mnum, cbuf, nlen, nnum, nmess, irgi)
+  if (irgi .gt. 1 .or. nnum .eq. 0 .or. nlen .eq. 0) then
+     call errmsg('grb2index:  No GRIB messages detected in file ' // cgb(1:ncgb))
+     call baclose(11, iret)
+     call baclose(31, iret)
      call errexit(1)
   endif
-  numtot=numtot+nnum
-  mnum=mnum+nmess
-  call wrgi1h(31,nlen,numtot,cgb(1:ncgb))
-  iw=162
-  call bawrite(31,iw,nlen,kw,cbuf)
-  iw=iw+nlen
+  numtot = numtot + nnum
+  mnum = mnum + nmess
+  call wrgi1h(31, nlen, numtot, cgb(1:ncgb))
+  iw = 162
+  call bawrite(31, iw, nlen, kw, cbuf)
+  iw = iw + nlen
 
   !  extend index file if index buffer length too large to hold in memory
-  if(irgi.eq.1) then
-     do while(irgi.eq.1.and.nnum.gt.0)
+  if (irgi .eq. 1) then
+     do while (irgi .eq. 1 .and. nnum .gt. 0)
         if (associated(cbuf)) then
            deallocate(cbuf)
            nullify(cbuf)
         endif
-        call getg2ir(11,msk1,msk2,mnum,cbuf,nlen,nnum,nmess,irgi)
-        if(irgi.le.1.and.nnum.gt.0) then
-           numtot=numtot+nnum
-           mnum=mnum+nmess
-           call bawrite(31,iw,nlen,kw,cbuf)
-           iw=iw+nlen
+        call getg2ir(11, msk1, msk2, mnum, cbuf, nlen, nnum, nmess, irgi)
+        if (irgi .le. 1 .and. nnum .gt. 0) then
+           numtot = numtot + nnum
+           mnum = mnum + nmess
+           call bawrite(31, iw, nlen, kw, cbuf)
+           iw = iw + nlen
         endif
      enddo
-     call wrgi1h(31,iw,numtot,cgb(1:ncgb))
+     call wrgi1h(31, iw, numtot, cgb(1:ncgb))
   endif
-  call baclose(11,iret)
-  call baclose(31,iret)
+  call baclose(11, iret)
+  call baclose(31, iret)
 
 end program grb2index
 
@@ -136,7 +138,7 @@ subroutine wrgi1h(lugi, nlen, nnum, cgb)
   chead(1)(49:54) = '      '
 #ifdef __GFORTRAN__
   istat = hostnm(hostname)
-  if(istat.eq.0) then
+  if (istat .eq. 0) then
      chead(1)(56:70) = '0000'
   else
      chead(1)(56:70) = '0001'
