@@ -95,13 +95,6 @@ end program grb2index
 
 !> Write index headers.
 !>
-!> ### Program History Log
-!> Date | Programmer | Comments
-!> -----|------------|---------
-!> 95-10-31 | Iredell | modularize system calls
-!> 2005-02-25 | Gilbert | et Header bytes  49-54 to blanks.
-!> 2012-08-01 | Vuong | changed hostname to hostnam
-!>
 !> @param[in] lugi integer logical unit of output index file
 !> @param[in] nlen integer total length of index records
 !> @param[in] nnum integer number of index records
@@ -109,6 +102,9 @@ end program grb2index
 !>
 !> @author Iredell @date 93-11-22
 subroutine wrgi1h(lugi,nlen,nnum,cgb)
+  implicit none
+
+  integer :: lugi, nlen, nnum
   character cgb*(*)
 #ifdef __GFORTRAN__
   character cd8*8,ct10*10,hostname*15
@@ -117,6 +113,7 @@ subroutine wrgi1h(lugi,nlen,nnum,cgb)
   character cd8*8,ct10*10,hostnam*15
 #endif
   character chead(2)*81
+  integer :: kw, ncgb, ncgb1, ncgb2, ncbase
 
   !  fill first 81-byte header
   ncgb=len(cgb)
