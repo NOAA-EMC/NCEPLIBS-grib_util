@@ -169,14 +169,16 @@ end subroutine wrgi1h
 !> @return The index of the basename within the string.
 !>
 !> @author Iredell @date 93-11-22
-function ncbase(c,n)
+integer function ncbase(c,n)
+  implicit none
   character c*(*)
+  integer :: n
+  integer :: k
 
-  k=n
-  do while(k.ge.1.and.c(k:k).ne.'/')
-     k=k-1
+  k = n
+  do while (k .ge. 1 .and. c(k:k) .ne. '/')
+     k = k - 1
   enddo
-  ncbase=k+1
+  ncbase = k + 1
 
-  return
 end function ncbase
