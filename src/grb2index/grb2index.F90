@@ -2,7 +2,7 @@
 !> Write a GRIB2 index file.
 !> @author Iredell @date 1992-11-22
 
-!> This program creates an index file from a GRIB2 file.
+!> This program creates an index file from a GRIB2 file. 
 !>
 !> @return
 !> - 0 successful run
