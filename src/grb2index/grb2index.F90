@@ -96,13 +96,6 @@ end program grb2index
 
 !> Write index headers.
 !>
-!> ### Program History Log
-!> Date | Programmer | Comments
-!> -----|------------|---------
-!> 95-10-31 | Iredell | modularize system calls
-!> 2005-02-25 | Gilbert | et Header bytes  49-54 to blanks.
-!> 2012-08-01 | Vuong | changed hostname to hostnam
-!>
 !> @param[in] lugi integer logical unit of output index file
 !> @param[in] nlen integer total length of index records
 !> @param[in] nnum integer number of index records
