@@ -228,7 +228,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  12  starts at 54145442
 
@@ -459,7 +459,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  23  starts at 165476756
 
@@ -669,7 +669,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  33  starts at 206054941
 
@@ -816,7 +816,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  40  starts at 270968984
 
@@ -879,7 +879,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= REFZR ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= REFZR ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  43  starts at 284309732
 
@@ -900,7 +900,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= REFZI ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= REFZI ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  44  starts at 286116504
 
@@ -1110,7 +1110,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= PBLREG ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= PBLREG ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  54  starts at 356946652
 
@@ -1341,7 +1341,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  65  starts at 420619911
 
@@ -1467,7 +1467,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  71  starts at 431460683
 
@@ -1677,7 +1677,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  81  starts at 496340396
 
@@ -1803,7 +1803,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  87  starts at 507181168
 
@@ -2013,7 +2013,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  97  starts at 566489446
 
@@ -2139,7 +2139,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  103  starts at 577330218
 
@@ -2349,7 +2349,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  113  starts at 639529545
 
@@ -2475,7 +2475,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  119  starts at 650370317
 
@@ -2685,7 +2685,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  129  starts at 715504469
 
@@ -2811,7 +2811,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  135  starts at 726345241
 
@@ -3021,7 +3021,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  145  starts at 791965290
 
@@ -3147,7 +3147,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  151  starts at 802806099
 
@@ -3357,7 +3357,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  161  starts at 865520394
 
@@ -3483,7 +3483,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  167  starts at 876566333
 
@@ -3693,7 +3693,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  177  starts at 936170829
 
@@ -3819,7 +3819,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  183  starts at 947069118
 
@@ -4029,7 +4029,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  193  starts at 1010824600
 
@@ -4155,7 +4155,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  199  starts at 1021980214
 
@@ -4365,7 +4365,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  209  starts at 1087630887
 
@@ -4491,7 +4491,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  215  starts at 1099232220
 
@@ -4701,7 +4701,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  225  starts at 1169842983
 
@@ -4827,7 +4827,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  231  starts at 1181948832
 
@@ -5037,7 +5037,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  241  starts at 1249528563
 
@@ -5163,7 +5163,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  247  starts at 1262355310
 
@@ -5394,7 +5394,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  258  starts at 1339016390
 
@@ -5520,7 +5520,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  264  starts at 1352871190
 
@@ -5730,7 +5730,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  274  starts at 1431943142
 
@@ -5856,7 +5856,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  280  starts at 1446533900
 
@@ -6108,7 +6108,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  292  starts at 1531172491
 
@@ -6234,7 +6234,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  298  starts at 1546482274
 
@@ -6444,7 +6444,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  308  starts at 1626790375
 
@@ -6570,7 +6570,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  314  starts at 1643015494
 
@@ -6801,7 +6801,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  325  starts at 1726359208
 
@@ -6927,7 +6927,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  331  starts at 1742807374
 
@@ -7137,7 +7137,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  341  starts at 1824095556
 
@@ -7263,7 +7263,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  347  starts at 1840558173
 
@@ -7473,7 +7473,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  357  starts at 1920078820
 
@@ -7599,7 +7599,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  363  starts at 1936353001
 
@@ -7809,7 +7809,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  373  starts at 2016060954
 
@@ -7935,7 +7935,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  379  starts at 2032362652
 
@@ -8166,7 +8166,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  390  starts at 2117835187
 
@@ -8292,7 +8292,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  396  starts at 2133848233
 
@@ -8502,7 +8502,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  406  starts at 2218723150
 
@@ -8628,7 +8628,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  412  starts at 2234629340
 
@@ -8838,7 +8838,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  422  starts at 2319113426
 
@@ -8964,7 +8964,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  428  starts at 2335083502
 
@@ -9174,7 +9174,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  438  starts at 2419402010
 
@@ -9300,7 +9300,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  444  starts at 2435134577
 
@@ -9552,7 +9552,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  456  starts at 2527393992
 
@@ -9678,7 +9678,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  462  starts at 2543322156
 
@@ -9888,7 +9888,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  472  starts at 2629448074
 
@@ -10014,7 +10014,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  478  starts at 2645438938
 
@@ -10224,7 +10224,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  488  starts at 2731535024
 
@@ -10350,7 +10350,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= RIME ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= RIME ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  494  starts at 2747588215
 
@@ -10560,7 +10560,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  504  starts at 2833976219
 
@@ -10896,7 +10896,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  520  starts at 2937031293
 
@@ -11232,7 +11232,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  536  starts at 3037017413
 
@@ -11568,7 +11568,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  552  starts at 3137359724
 
@@ -11904,7 +11904,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  568  starts at 3238024772
 
@@ -12261,7 +12261,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  585  starts at 3341449067
 
@@ -12597,7 +12597,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  601  starts at 3443031814
 
@@ -12954,7 +12954,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  618  starts at 3546820850
 
@@ -13290,7 +13290,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  634  starts at 3649243684
 
@@ -13626,7 +13626,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  650  starts at 3753923487
 
@@ -13962,7 +13962,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  666  starts at 3855812091
 
@@ -14340,7 +14340,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  684  starts at 3963071253
 
@@ -14676,7 +14676,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  700  starts at 4067036786
 
@@ -15012,7 +15012,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  716  starts at 4175464176
 
@@ -15369,7 +15369,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  733  starts at 4292210257
 
@@ -15726,7 +15726,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  750  starts at 4401538646
 
@@ -16083,7 +16083,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  767  starts at 4517433967
 
@@ -16419,7 +16419,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TKE ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TKE ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  783  starts at 4618285092
 
@@ -16776,7 +16776,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= REFZR ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= REFZR ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  800  starts at 4699440998
 
@@ -16797,7 +16797,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= REFZI ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= REFZI ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  801  starts at 4701247770
 
@@ -16839,7 +16839,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= REFZR ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= REFZR ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  803  starts at 4710360492
 
@@ -16860,7 +16860,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= REFZI ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= REFZI ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  804  starts at 4712167264
 
@@ -17427,7 +17427,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= TSOIL ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= TSOIL ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  831  starts at 4894357708
 
@@ -17868,7 +17868,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= POT ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= POT ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  852  starts at 5024434464
 
@@ -17889,7 +17889,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= SPFH ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= SPFH ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  853  starts at 5026241236
 
@@ -18078,7 +18078,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= LSPA ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= LSPA ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  862  starts at 5054043499
 
@@ -18099,7 +18099,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= SNOM ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= SNOM ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  863  starts at 5055850295
 
@@ -18141,7 +18141,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= BGRUN ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= BGRUN ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  865  starts at 5060105929
 
@@ -18372,7 +18372,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= EVP ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= EVP ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  876  starts at 5117048890
 
@@ -18477,7 +18477,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= UFLX ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= UFLX ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  881  starts at 5144106299
 
@@ -18498,7 +18498,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= VFLX ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= VFLX ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  882  starts at 5145913071
 
@@ -19128,7 +19128,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= SWHR ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= SWHR ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  912  starts at 5271575499
 
@@ -19149,7 +19149,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= LWHR ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= LWHR ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  913  starts at 5273382271
 
@@ -19170,7 +19170,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= LRGHR ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= LRGHR ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  914  starts at 5275189067
 
@@ -19359,7 +19359,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= CDLYR ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= CDLYR ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  923  starts at 5315556422
 
@@ -19695,7 +19695,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= ULWRF ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= ULWRF ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  939  starts at 5477815660
 
@@ -19800,7 +19800,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= CSDSF ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= CSDSF ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  944  starts at 5523478736
 
@@ -22635,7 +22635,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= ALBDO ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= ALBDO ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  1079  starts at 6727928115
 
@@ -22656,7 +22656,7 @@
   DRS TEMPLATE 5. 0 :  0 0 0 0 0
   Data Values:
   Num. of Data Points =  0   Num. of Data Undefined = -1
-( PARM= SNFALB ) :  MIN=              -0.00000000 AVE=              -0.00000000 MAX=              -0.00000000
+( PARM= SNFALB ) :  MIN=               0.00000000 AVE=               0.00000000 MAX=               0.00000000
 
  GRIB MESSAGE  1080  starts at 6729734887
 
