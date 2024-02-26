@@ -23,7 +23,7 @@ subroutine prvtime(ipdtn, ipdtmpl, listsec1, tabbrev)
   character(len = 100), intent(out) :: tabbrev
 
   character(len = 16) :: reftime, endtime
-  character(len = 10) :: tmpval, tmpval2
+  character(len = 12) :: tmpval, tmpval2
   character(len = 10) :: tunit
   integer, dimension(200) :: ipos, ipos2
   integer :: is, itemp, itemp2, iunit, iuni2t2, iunit2, iutpos, iutpos2, j

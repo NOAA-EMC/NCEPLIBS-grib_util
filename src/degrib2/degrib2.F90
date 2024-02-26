@@ -16,7 +16,7 @@ program degrib2
   use params
   implicit none
 
-  integer :: msk2, icount, ifl1, iseek, itot, j, lengrib, lgrib, lskip
+  integer :: msk2, icount, ifl1, itot, j, lengrib
   integer*8 :: iseek8, msk18, lskip8, lgrib8, lengrib8
   integer :: maxlocal, n, ncgb, numfields, numlocal
   real :: fldmax, fldmin, sum
@@ -55,14 +55,10 @@ program degrib2
 
   itot = 0
   icount = 0
-  iseek = 0
+  iseek8 = 0
   do
      ! Find a GRIB2 message in the file.
-     !call skgb(ifl1, iseek, msk1, lskip, lgrib)
-     iseek8 = iseek
      call skgb8(ifl1, iseek8, msk18, lskip8, lgrib8)
-     lskip = lskip8
-     lgrib = lgrib8
      if (lgrib8 .eq. 0) exit    ! end loop at EOF or problem
 
      ! Read the GRIB2 message from the file.
@@ -71,18 +67,16 @@ program degrib2
         allocate(cgrib(lgrib8), stat = is)
         currlen = lgrib8
      endif
-     !call baread(ifl1, lskip, lgrib, lengrib, cgrib)
-     lskip8 = lskip
      call bareadl(ifl1, lskip8, lgrib8, lengrib8, cgrib)
      lengrib = lengrib8
      if (lgrib8 .ne. lengrib) then
         write(6, *)' degrib2: IO Error.'
         call errexit(9)
      endif
-     iseek = lskip + lgrib8
+     iseek8 = lskip8 + lgrib8
      icount = icount + 1
      write (6, *)
-     write(6, '(A,I0,A,I0)') ' GRIB MESSAGE  ', icount, '  starts at ', lskip + 1
+     write(6, '(A,I0,A,I0)') ' GRIB MESSAGE  ', icount, '  starts at ', lskip8 + 1
      write (6, *)
 
      ! Get info about the message.
