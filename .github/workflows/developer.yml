@@ -138,6 +138,13 @@ jobs:
       with: 
         path: grib_utils
 
+    - name: cache-data
+      id: cache-data
+      uses: actions/cache@v4
+      with:
+        path: ~/data
+        key: data-developer-1
+
     - name: build-grib_utils
       run: |
         cd grib_utils
@@ -145,10 +152,16 @@ jobs:
         ls -l ~/jasper/lib
         export LD_LIBRARY_PATH=/home/runner/jasper/lib
         export PATH="~/g2c/bin:$PATH"
-        cmake -DENABLE_DOCS=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/ip;~/w3emc;~/g2;~/g2c" -DCMAKE_Fortran_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" -DCMAKE_C_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" -DG2C_COMPARE=ON ..
+        cmake -DFTP_LARGE_TEST_FILES=ON -DFTP_TEST_FILES=ON -DTEST_FILE_DIR=/home/runner/data -DENABLE_DOCS=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH="~/bacio;~/jasper;~/ip;~/w3emc;~/g2;~/g2c" -DCMAKE_Fortran_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" -DCMAKE_C_FLAGS="-fprofile-arcs -ftest-coverage -O0 -Wall" -DG2C_COMPARE=ON ..
         make -j2 VERBOSE=1
         ctest --output-on-failure --rerun-failed --verbose
 
+    - name: cache-data
+      if: steps.cache-data.outputs.cache-hit != 'true'
+      run: |
+        mkdir ~/data
+        cp $GITHUB_WORKSPACE/grib_utils/build/tests/data/* ~/data
+        
     - name: generate-test-coverage
       run: |
         cd grib_utils/build
