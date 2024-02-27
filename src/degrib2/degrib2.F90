@@ -145,26 +145,33 @@ program degrib2
         endif
         write(6, '(A,I0,A,20(1x,I0))')'  DRS TEMPLATE 5. ', gfld%idrtnum, ' : ', &
              (gfld%idrtmpl(j), j = 1, gfld%idrtlen)
-        if (gfld%fld(1) .eq. 9.9990003E+20) then  ! checking undefined values
+        if (gfld%ndpts .eq. 0) then
            fldmax = 0.0
-           fldmin = 99999.99
-           sum = 0.0
-           numpts = 0
-        else
-           fldmax = gfld%fld(1)
-           fldmin = gfld%fld(1)
-           sum = gfld%fld(1)
+           fldmin = 0.0
            numpts = 1
-        end if
-        do j = 2, gfld%ndpts
-           if (gfld%fld(j) .eq. 9.9990003E+20) then ! checking undefined values
-              cycle
-           end if
-           if (gfld%fld(j) .gt. fldmax) fldmax = gfld%fld(j)
-           if (gfld%fld(j) .lt. fldmin) fldmin = gfld%fld(j)
-           sum = sum + gfld%fld(j)
-           numpts = numpts + 1
-        enddo
+           sum = 0.0
+        else
+           if (gfld%fld(1) .eq. 9.9990003E+20) then  ! checking undefined values
+              fldmax = 0.0
+              fldmin = 99999.99
+              sum = 0.0
+              numpts = 0
+           else
+              fldmax = gfld%fld(1)
+              fldmin = gfld%fld(1)
+              sum = gfld%fld(1)
+              numpts = 1
+           endif
+           do j = 2, gfld%ndpts
+              if (gfld%fld(j) .eq. 9.9990003E+20) then ! checking undefined values
+                 cycle
+              end if
+              if (gfld%fld(j) .gt. fldmax) fldmax = gfld%fld(j)
+              if (gfld%fld(j) .lt. fldmin) fldmin = gfld%fld(j)
+              sum = sum + gfld%fld(j)
+              numpts = numpts + 1
+           enddo
+        endif
 
         write(6, *)' Data Values:'
         write(6, '(A,I0,A,I0)')'  Num. of Data Points =  ', &
