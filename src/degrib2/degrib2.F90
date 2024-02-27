@@ -16,7 +16,7 @@ program degrib2
   use params
   implicit none
 
-  integer :: msk2, icount, ifl1, itot, j, lengrib
+  integer :: msk2, icount, ifl1, itot, j, lengrib, lgrib
   integer*8 :: iseek8, msk18, lskip8, lgrib8, lengrib8
   integer :: maxlocal, n, ncgb, numfields, numlocal
   real :: fldmax, fldmin, sum
@@ -27,7 +27,7 @@ program degrib2
   character(len = 250) :: gfile1
   character(len = 8) :: pabbrev
   character(len = 40) :: labbrev
-  character(len = 100) :: tabbrev
+  character(len = 110) :: tabbrev
   integer(4) narg, iargc, temparg
   integer :: currlen = 0,  numpts = 0
   logical :: unpack, expand
@@ -59,6 +59,7 @@ program degrib2
   do
      ! Find a GRIB2 message in the file.
      call skgb8(ifl1, iseek8, msk18, lskip8, lgrib8)
+     lgrib = lgrib8
      if (lgrib8 .eq. 0) exit    ! end loop at EOF or problem
 
      ! Read the GRIB2 message from the file.
@@ -168,6 +169,7 @@ program degrib2
         write(6, *)' Data Values:'
         write(6, '(A,I0,A,I0)')'  Num. of Data Points =  ', &
              gfld%ndpts, '   Num. of Data Undefined = ', gfld%ndpts-numpts
+        !print *, trim(pabbrev), fldmin, sum / numpts, fldmax
         write(6, fmt = '( "( PARM= ",A," ) : ", " MIN=",f25.8," AVE=",f25.8, " MAX=",f25.8)') &
              trim(pabbrev), fldmin, sum / numpts, fldmax
 
