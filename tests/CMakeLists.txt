@@ -88,6 +88,10 @@ if(FTP_TEST_FILES)
   if(FTP_LARGE_TEST_FILES)
     gu_copy_test_data(ref_fv3lam.t00z.prslev.f000.grib2.degrib2)
   endif()
+  if(FTP_EXTRA_TEST_FILES)
+    gu_copy_test_data(ref_GFSPRS.GrbF06.degrib2)
+    gu_copy_test_data(ref_rrfs.t18z.prslev.f000.grib2.degrib2)
+  endif()
 endif()
 
 # Run these shell tests.
