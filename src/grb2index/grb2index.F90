@@ -18,7 +18,7 @@ program grb2index
   integer :: idxver = 1
   integer :: lugb = 11, lugi = 12
   integer :: ncgb, ncgb1
-  integer :: iret
+  integer :: iret, ios, ncbase
   
   !  get arguments
   narg = iargc()
@@ -38,7 +38,7 @@ program grb2index
   endif
 
   ! Open index file for output.
-  call baopenw(lugi, trim(cg1), ios)
+  call baopenw(lugi, trim(cgi), ios)
   if (ios .ne. 0) then
      print *, 'grb2index:  Error accessing file ', trim(cgi)
      stop 3
