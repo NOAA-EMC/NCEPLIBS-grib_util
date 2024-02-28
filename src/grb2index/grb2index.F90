@@ -34,14 +34,14 @@ program grb2index
   call baopenr(lugb, trim(cgb), ios)
   if (ios .ne. 0) then
      print *, 'grb2index:  Error accessing file ', trim(cgb)
-     return 2;
+     stop 2
   endif
 
   ! Open index file for output.
   call baopenw(lugi, trim(cg1), ios)
   if (ios .ne. 0) then
      print *, 'grb2index:  Error accessing file ', trim(cgi)
-     return 2;
+     stop 3
   endif
 
   ! Locate base name of file.
