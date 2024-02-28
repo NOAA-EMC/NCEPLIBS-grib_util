@@ -13,7 +13,7 @@
 !> @author Iredell @date 1992-11-22
 program grb2index
   implicit none
-  integer narg,iargc
+  integer narg, iargc
   character cgb*256,cgi*256
   integer :: idxver = 1
   integer :: lugb = 11, lugi = 12
@@ -22,13 +22,13 @@ program grb2index
   
   !  get arguments
   narg = iargc()
-  if (narg.ne.2) then
+  if (narg .ne. 2) then
      call errmsg('grb2index:  Incorrect usage')
      call errmsg('Usage: grb2index gribfile indexfile')
      call errexit(2)
   endif
-  call getarg(1,cgb)
-  call getarg(2,cgi)
+  call getarg(1, cgb)
+  call getarg(2, cgi)
 
   ! Open binary GRIB2 file for input.
   call baopenr(lugb, trim(cgb), ios)
