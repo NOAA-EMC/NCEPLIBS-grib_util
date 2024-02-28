@@ -16,7 +16,7 @@ program degrib2
   use params
   implicit none
 
-  integer :: msk2, icount, ifl1, iseek, itot, j, lengrib, lgrib, lskip
+  integer :: msk2, icount, ifl1, itot, j, lengrib, lgrib
   integer*8 :: iseek8, msk18, lskip8, lgrib8, lengrib8
   integer :: maxlocal, n, ncgb, numfields, numlocal
   real :: fldmax, fldmin, sum
@@ -27,7 +27,7 @@ program degrib2
   character(len = 250) :: gfile1
   character(len = 8) :: pabbrev
   character(len = 40) :: labbrev
-  character(len = 100) :: tabbrev
+  character(len = 110) :: tabbrev
   integer(4) narg, iargc, temparg
   integer :: currlen = 0,  numpts = 0
   logical :: unpack, expand
@@ -55,13 +55,10 @@ program degrib2
 
   itot = 0
   icount = 0
-  iseek = 0
+  iseek8 = 0
   do
      ! Find a GRIB2 message in the file.
-     !call skgb(ifl1, iseek, msk1, lskip, lgrib)
-     iseek8 = iseek
      call skgb8(ifl1, iseek8, msk18, lskip8, lgrib8)
-     lskip = lskip8
      lgrib = lgrib8
      if (lgrib8 .eq. 0) exit    ! end loop at EOF or problem
 
@@ -71,18 +68,16 @@ program degrib2
         allocate(cgrib(lgrib8), stat = is)
         currlen = lgrib8
      endif
-     !call baread(ifl1, lskip, lgrib, lengrib, cgrib)
-     lskip8 = lskip
      call bareadl(ifl1, lskip8, lgrib8, lengrib8, cgrib)
      lengrib = lengrib8
      if (lgrib8 .ne. lengrib) then
         write(6, *)' degrib2: IO Error.'
         call errexit(9)
      endif
-     iseek = lskip + lgrib8
+     iseek8 = lskip8 + lgrib8
      icount = icount + 1
      write (6, *)
-     write(6, '(A,I0,A,I0)') ' GRIB MESSAGE  ', icount, '  starts at ', lskip + 1
+     write(6, '(A,I0,A,I0)') ' GRIB MESSAGE  ', icount, '  starts at ', lskip8 + 1
      write (6, *)
 
      ! Get info about the message.
@@ -150,30 +145,38 @@ program degrib2
         endif
         write(6, '(A,I0,A,20(1x,I0))')'  DRS TEMPLATE 5. ', gfld%idrtnum, ' : ', &
              (gfld%idrtmpl(j), j = 1, gfld%idrtlen)
-        if (gfld%fld(1) .eq. 9.9990003E+20) then  ! checking undefined values
+        if (gfld%ndpts .eq. 0) then
            fldmax = 0.0
-           fldmin = 99999.99
-           sum = 0.0
-           numpts = 0
-        else
-           fldmax = gfld%fld(1)
-           fldmin = gfld%fld(1)
-           sum = gfld%fld(1)
+           fldmin = 0.0
            numpts = 1
-        end if
-        do j = 2, gfld%ndpts
-           if (gfld%fld(j) .eq. 9.9990003E+20) then ! checking undefined values
-              cycle
-           end if
-           if (gfld%fld(j) .gt. fldmax) fldmax = gfld%fld(j)
-           if (gfld%fld(j) .lt. fldmin) fldmin = gfld%fld(j)
-           sum = sum + gfld%fld(j)
-           numpts = numpts + 1
-        enddo
+           sum = 0.0
+        else
+           if (gfld%fld(1) .eq. 9.9990003E+20) then  ! checking undefined values
+              fldmax = 0.0
+              fldmin = 99999.99
+              sum = 0.0
+              numpts = 0
+           else
+              fldmax = gfld%fld(1)
+              fldmin = gfld%fld(1)
+              sum = gfld%fld(1)
+              numpts = 1
+           endif
+           do j = 2, gfld%ndpts
+              if (gfld%fld(j) .eq. 9.9990003E+20) then ! checking undefined values
+                 cycle
+              end if
+              if (gfld%fld(j) .gt. fldmax) fldmax = gfld%fld(j)
+              if (gfld%fld(j) .lt. fldmin) fldmin = gfld%fld(j)
+              sum = sum + gfld%fld(j)
+              numpts = numpts + 1
+           enddo
+        endif
 
         write(6, *)' Data Values:'
         write(6, '(A,I0,A,I0)')'  Num. of Data Points =  ', &
              gfld%ndpts, '   Num. of Data Undefined = ', gfld%ndpts-numpts
+        !print *, trim(pabbrev), fldmin, sum / numpts, fldmax
         write(6, fmt = '( "( PARM= ",A," ) : ", " MIN=",f25.8," AVE=",f25.8, " MAX=",f25.8)') &
              trim(pabbrev), fldmin, sum / numpts, fldmax
 

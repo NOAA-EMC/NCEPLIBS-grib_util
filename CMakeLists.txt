@@ -12,7 +12,7 @@ option(OPENMP "Use OpenMP threading" OFF)
 option(ENABLE_DOCS "Enable generation of doxygen-based documentation." OFF)
 option(FTP_TEST_FILES "Fetch and test with files on FTP site." OFF)
 option(FTP_LARGE_TEST_FILES "Fetch and test with very large files on FTP site." OFF)
-option(FTP_EXTRA_TEST_FILES "Test with files not yet available via FTP." OFF)
+option(FTP_EXTRA_TEST_FILES "Test with even more large files available via FTP." OFF)
 option(G2C_COMPARE "Enable copygb2 tests using g2c_compare" OFF)
 SET(TEST_FILE_DIR "." CACHE STRING "Check this directory for test files before using FTP.")
 
