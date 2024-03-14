@@ -25,7 +25,7 @@ program grb2index
   if (narg .ne. 2) then
      call errmsg('grb2index:  Incorrect usage')
      call errmsg('Usage: grb2index gribfile indexfile')
-     call errexit(2)
+     call exit(2)
   endif
   call getarg(1, cgb)
   call getarg(2, cgi)
@@ -34,14 +34,14 @@ program grb2index
   call baopenr(lugb, trim(cgb), ios)
   if (ios .ne. 0) then
      print *, 'grb2index:  Error accessing file ', trim(cgb)
-     stop 2
+     call exit(8)
   endif
 
   ! Open index file for output.
   call baopenw(lugi, trim(cgi), ios)
   if (ios .ne. 0) then
      print *, 'grb2index:  Error accessing file ', trim(cgi)
-     stop 3
+     call exit(1)
   endif
 
   ! Locate base name of file.
@@ -50,7 +50,9 @@ program grb2index
 
   ! Create the index file and write it to lugi.
   call g2_create_index(lugb, lugi, cgi, idxver, cgb(ncgb1:ncgb), iret)
-  if (iret .ne. 0) stop iret
+  if (iret .ne. 0) then
+     call exit(1)
+  endif
 
   ! Close our files.
   call baclose(lugb,iret)  

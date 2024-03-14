@@ -17,7 +17,6 @@ echo "*** Running grb2index tests"
 # Confirm that input file can be read, otherwise an error code of 8 is returned.
 ../src/grb2index/grb2index missing1 missing2 && exit 1
 [ $? -ne 8 ] && exit 2
-
 # When there are no grib2 messages in the file, an error code of 1 is returned.
 ../src/grb2index/grb2index data/ref_gdaswave_2.idx missing2 && exit 1
 [ $? -ne 1 ] && exit 2
