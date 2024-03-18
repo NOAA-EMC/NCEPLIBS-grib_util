@@ -189,7 +189,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/g2
-        key: g2-${{ runner.os }}-${{ matrix.bacio-version }}-${{ matrix.jasper-version }}-${{ matrix.w3emc-version }}-${{ matrix.g2-version }}
+        key: g2-${{ runner.os }}-${{ matrix.bacio-version }}-${{ matrix.jasper-version }}-${{ matrix.w3emc-version }}-${{ matrix.g2-version }}-2
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
@@ -197,7 +197,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: v${{ matrix.g2-version }}
+        ref: develop
 
     - name: build-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
