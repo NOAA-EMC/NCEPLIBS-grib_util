@@ -48,7 +48,7 @@ jobs:
         spack env activate grib-util-env
         cp $GITHUB_WORKSPACE/grib-util/spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/grib-util/package.py
         spack develop --no-clone --path $GITHUB_WORKSPACE/grib-util grib-util@develop
-        spack add grib-util@develop%gcc@11 ${{ matrix.openmp }} ^bacio@2.6.0 ^w3emc@2.10.0 ^g2@3.4.8 ^g2c@develop +utils +build_v2_api ${{ matrix.ip_spec }}
+        spack add grib-util@develop%gcc@11 ${{ matrix.openmp }} ^bacio@2.6.0 ^w3emc@2.10.0 ^g2@develop ^g2c@develop +utils +build_v2_api ${{ matrix.ip_spec }}
         spack external find cmake gmake
         spack mirror add spack-build-cache ~/spack-build-cache
         spack concretize
