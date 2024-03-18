@@ -184,15 +184,15 @@ jobs:
         make -j2
         make install
                  
-    - name: cache-g2
-      id: cache-g2
-      uses: actions/cache@v3
-      with:
-        path: ~/g2
-        key: g2-${{ runner.os }}-${{ matrix.bacio-version }}-${{ matrix.jasper-version }}-${{ matrix.w3emc-version }}-${{ matrix.g2-version }}-2
+    # - name: cache-g2
+    #   id: cache-g2
+    #   uses: actions/cache@v3
+    #   with:
+    #     path: ~/g2
+    #     key: g2-${{ runner.os }}-${{ matrix.bacio-version }}-${{ matrix.jasper-version }}-${{ matrix.w3emc-version }}-${{ matrix.g2-version }}-2
 
     - name: checkout-g2
-      if: steps.cache-g2.outputs.cache-hit != 'true'
+#      if: steps.cache-g2.outputs.cache-hit != 'true'
       uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
@@ -200,7 +200,7 @@ jobs:
         ref: develop
 
     - name: build-g2
-      if: steps.cache-g2.outputs.cache-hit != 'true'
+#      if: steps.cache-g2.outputs.cache-hit != 'true'
       run: |
         cd g2
         mkdir build
