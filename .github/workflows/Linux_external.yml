@@ -137,7 +137,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2c
         path: g2c
-        ref: developer
+        ref: develop
 
     - name: build-g2c
       run: |
