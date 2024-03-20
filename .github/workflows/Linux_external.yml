@@ -137,7 +137,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2c
         path: g2c
-        ref: v${{ matrix.g2-version }}
+        ref: developer
 
     - name: build-g2c
       run: |
@@ -161,7 +161,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: develop
+        ref: v${{ matrix.g2-version }}
 
     - name: build-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'      
