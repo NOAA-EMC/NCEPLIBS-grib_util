@@ -5,7 +5,7 @@
 
 set -e
 echo ""
-echo "*** Running copygb2 test"
+echo "*** Running copygb2 test..."
 
 # Copy GRIB2 file.
 ../src/copygb2/copygb2 -x data/ref_gdaswave.t00z.wcoast.0p16.f000.grib2 test_gdaswave_2.grib2
