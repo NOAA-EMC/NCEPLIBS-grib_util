@@ -23,7 +23,7 @@ echo "*** Running grb2index tests"
 [ $? -ne 1 ] && exit 2
 
 # Create an index of a GRIB2 file.
-../src/grb2index/grb2index data/ref_gdaswave.t00z.wcoast.0p16.f000.grib2 test_gdaswave.grb2index.idx
+../src/grb2index/grb2index 1 data/ref_gdaswave.t00z.wcoast.0p16.f000.grib2 test_gdaswave.grb2index.idx
 
 # Check against expected output. First 120 bytes contain differences,
 # so ignore them.

@@ -16,7 +16,7 @@ program grb2index
   integer narg, iargc
   character cgb * 256, cgi * 256
   character cidxver * 1
-  integer :: idxver = 1
+  integer :: idxver = 2
   integer :: lugb = 11, lugi = 12
   integer :: ncgb, ncgb1
   integer :: iret, ios, ncbase, argnum = 0
