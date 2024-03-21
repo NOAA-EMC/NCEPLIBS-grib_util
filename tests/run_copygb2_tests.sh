@@ -10,9 +10,6 @@ echo "*** Running copygb2 test"
 # Copy GRIB2 file.
 ../src/copygb2/copygb2 -x data/ref_gdaswave.t00z.wcoast.0p16.f000.grib2 test_gdaswave_2.grib2
 
-# Make degrib2 output for the copied file.
-../src/degrib2/degrib2 test_gdaswave_2.grib2 > test_gdaswave_2.grib2.degrib2
-
 # Are the files the same?
 g2c_compare -v data/ref_gdaswave.t00z.wcoast.0p16.f000.grib2 test_gdaswave_2.grib2
 
