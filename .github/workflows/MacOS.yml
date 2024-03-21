@@ -122,12 +122,12 @@ jobs:
         make -j2
         make install
           
-    # - name: cache-g2
-    #   id: cache-g2
-    #   uses: actions/cache@v3
-    #   with:
-    #     path: ~/g2
-    #     key: g2-MacOS-${{ runner.os }}-4.0.0-2.6.0-develop
+    - name: cache-g2
+      id: cache-g2
+      uses: actions/cache@v3
+      with:
+        path: ~/g2
+        key: g2-MacOS-${{ runner.os }}-4.0.0-2.6.0-3.4.9
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
@@ -135,7 +135,7 @@ jobs:
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: develop
+        ref: v3.4.9
 
     - name: build-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'

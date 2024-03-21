@@ -23,7 +23,7 @@ jobs:
       fail-fast: true
       matrix:
         ip-version: [5.0.0]
-        g2-version: [3.4.8]
+        g2-version: [3.4.9]
         bacio-version: [2.6.0]
         jasper-version: [2.0.33, 3.0.5, 4.0.0]
         w3emc-version: [2.11.0]
@@ -148,23 +148,23 @@ jobs:
         make -j2
         make install
                  
-    # - name: cache-g2
-    #   id: cache-g2
-    #   uses: actions/cache@v3
-    #   with:
-    #     path: ~/g2
-    #     key: linux_external_g2-${{ runner.os }}-${{ matrix.g2-version }}-${{ matrix.jasper-version }}-${{ matrix.bacio-version }}-${{ matrix.w3emc-version }}-${{ matrix.ip-version }}-4
+    - name: cache-g2
+      id: cache-g2
+      uses: actions/cache@v3
+      with:
+        path: ~/g2
+        key: linux_external_g2-${{ runner.os }}-${{ matrix.g2-version }}-${{ matrix.jasper-version }}-${{ matrix.bacio-version }}-${{ matrix.w3emc-version }}-${{ matrix.ip-version }}-5
 
     - name: checkout-g2
-#      if: steps.cache-g2.outputs.cache-hit != 'true'
+      if: steps.cache-g2.outputs.cache-hit != 'true'
       uses: actions/checkout@v3
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
-        ref: develop
+        ref: v${{ matrix.g2-version }}
 
     - name: build-g2
- #     if: steps.cache-g2.outputs.cache-hit != 'true'      
+      if: steps.cache-g2.outputs.cache-hit != 'true'      
       run: |
         cd g2
         mkdir build
