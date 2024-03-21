@@ -14,11 +14,12 @@
 program grb2index
   implicit none
   integer narg, iargc
-  character cgb*256,cgi*256
-  integer :: idxver = 1
+  character cgb * 256, cgi * 256
+  character cidxver * 1
+  integer :: idxver = 2
   integer :: lugb = 11, lugi = 12
   integer :: ncgb, ncgb1
-  integer :: iret, ios, ncbase
+  integer :: iret, ios, ncbase, argnum = 0
 
   interface
      subroutine g2_create_index(lugb, lugi, idxver, filename, iret)
@@ -29,15 +30,21 @@ program grb2index
      end subroutine g2_create_index
   end interface
   
-  !  get arguments
+  ! Get arguments.
   narg = iargc()
-  if (narg .ne. 2) then
+  if (narg .ne. 2 .and. narg .ne. 3) then
      call errmsg('grb2index:  Incorrect usage')
      call errmsg('Usage: grb2index gribfile indexfile')
+     call errmsg('or: grb2index idxver gribfile indexfile')
      call exit(2)
   endif
-  call getarg(1, cgb)
-  call getarg(2, cgi)
+  if (narg .eq. 3) then
+     call getarg(1, cidxver)
+     read(cidxver, '(i1)') idxver
+     argnum = 1
+  end if
+  call getarg(argnum + 1, cgb)
+  call getarg(argnum + 2, cgi)
 
   ! Open binary GRIB2 file for input.
   call baopenr(lugb, trim(cgb), ios)
