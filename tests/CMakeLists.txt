@@ -57,6 +57,7 @@ function(PULL_DATA THE_URL THE_FILE)
 endfunction()
 
 # Copy necessary test data files.
+gu_copy_test_data(ref_copygb2_test_gdaswave.degrib2.txt)
 gu_copy_test_data(ref_gdaswave.t00z.wcoast.0p16.f000.grib2)
 gu_copy_test_data(ref_gdaswave.t00z.wcoast.0p16.f000.ip.grib2)
 gu_copy_test_data(ref_gdaswave.t00z.wcoast.0p16.f000.grib1)
@@ -97,6 +98,7 @@ endif()
 # Run these shell tests.
 gu_test(run_cnvgrib_tests)
 gu_test(run_copygb_tests)
+gu_test(run_copygb2_tests2)
 gu_test(run_degrib2_tests)
 gu_test(run_grbindex_tests)
 gu_test(run_grb2index_tests)
