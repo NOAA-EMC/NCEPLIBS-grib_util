@@ -1,0 +1,62 @@
+.TH "/home/ed/NCEPLIBS-grib_util/src/cnvgrib/cnv21.f" 3 "Tue Dec 14 2021" "Version 1.2.3" "cnvgrib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/ed/NCEPLIBS-grib_util/src/cnvgrib/cnv21.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBcnv21\fP (ifl1, ifl2)"
+.br
+.RI "This subroutine converts every GRIB2 field in a file to a GRIB1 field\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+
+\&. \&. \&. 
+.PP
+\fBAuthor\fP
+.RS 4
+Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2003-06-11 
+.RE
+.PP
+
+.PP
+Definition in file \fBcnv21\&.f\fP\&.
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine cnv21 (integer, intent(in) ifl1, integer, intent(in) ifl2)"
+
+.PP
+This subroutine converts every GRIB2 field in a file to a GRIB1 field\&. If a GRIB2 message contains more than one data field, then each field is saved in individual GRIB1 messages\&.
+.PP
+PROGRAM HISTORY LOG: 2003-06-11 Gilbert 2008-05-14 Vuong - Add option -m0 No explicit missing values included within data values
+.PP
+USAGE: CALL cnv21(ifl1,ifl2) INPUT ARGUMENT LIST: ifl1 - Fortran unit number of input GRIB2 file ifl2 - Fortran unit number of output GRIB1 file
+.PP
+INPUT FILES: See ifl1
+.PP
+OUTPUT FILES: See ifl2
+.PP
+REMARKS: None
+.PP
+ATTRIBUTES: LANGUAGE: Fortran 90 MACHINE: IBM SP 
+.PP
+Definition at line 31 of file cnv21\&.f\&.
+.PP
+References gdt2gds(), makepds(), makepdsens(), and putgbexn()\&.
+.PP
+Referenced by cnvgrib()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for cnvgrib from the source code\&.

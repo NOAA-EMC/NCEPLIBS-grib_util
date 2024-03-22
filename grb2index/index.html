@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">grb2index
-   &#160;<span id="projectnumber">1.3.0</span>
+   &#160;<span id="projectnumber">1.4.0</span>
    </div>
   </td>
  </tr>
@@ -96,33 +96,54 @@ Introduction</h1>
 Usage</h1>
 <div class="fragment"><div class="line">grb2index &lt;GRIB2 file&gt; &lt;index filename&gt;</div>
 </div><!-- fragment --><p>The first argument is the name of the input GRIB2 file. The second argument is the name of the output index file.</p>
+<p>or</p>
+<div class="fragment"><div class="line">grb2index &lt;idxver&gt; &lt;GRIB2 file&gt; &lt;index filename&gt;</div>
+</div><!-- fragment --><p>The first argument is the index format, 1 or 2. The second is the name of the input GRIB2 file. The third argument is the name of the output index file.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Index File Format</h1>
-<p>Version 2 of the index file format is used with GRIB2 files, and has the following format:</p>
-<p>The index file has two header records:</p><ul>
-<li>81-byte "Steve Lord" header with 'GB2IX1' in columns 42-47</li>
-<li>81-byte header with number of bytes to skip before index records, total length in bytes of the index records, number of index records, and GRIB file basename written in format ('IX1FORM:',3i10,2x,a40).</li>
-</ul>
-<p>Each following index record corresponds to a GRIB1 message and contains the following fields. All integers are in big-endian format in the file.</p>
-<ul>
-<li>byte 001 - 004 length of index record</li>
-<li>byte 005 - 008 bytes to skip in data file before grib message</li>
-<li>byte 009 - 012 bytes to skip in message before lus (local use) set = 0, if no local section.</li>
-<li>byte 013 - 016 bytes to skip in message before gds</li>
-<li>byte 017 - 020 bytes to skip in message before pds</li>
-<li>byte 021 - 024 bytes to skip in message before drs</li>
-<li>byte 025 - 028 bytes to skip in message before bms</li>
-<li>byte 029 - 032 bytes to skip in message before data section</li>
-<li>byte 033 - 040 bytes total in the message</li>
-<li>byte 041 - 041 grib version number (currently 2)</li>
-<li>byte 042 - 042 message discipline</li>
-<li>byte 043 - 044 field number within grib2 message</li>
-<li>byte 045 - ii identification section (ids)</li>
-<li>byte ii+1- jj grid definition section (gds)</li>
-<li>byte jj+1- kk product definition section (pds)</li>
-<li>byte kk+1- ll the data representation section (drs)</li>
-<li>byte ll+1-ll+6 first 6 bytes of the bit map section (bms) </li>
-</ul>
+<p>The index file has two header records:</p><ol type="1">
+<li>an 81-byte header with 'GB2IX1' in columns 42-47</li>
+<li>an 81-byte header with the index version number, the number of bytes to skip before index records, total length in bytes of the index records, number of index records, and the GRIB file basename.</li>
+</ol>
+<p>Each record in the index table contains the following fields. All integers are in big-endian format in the file. The only difference between index version 1 and index version 2 is the size of the field containing the number of bytes to skip in file before message. To accomodate files &gt; 2 GB, this must be a 64-bit int.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Index Version 1   </th><th class="markdownTableHeadNone">Index Version 2   </th><th class="markdownTableHeadNone">Contents    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">001 - 004   </td><td class="markdownTableBodyNone">001 - 004   </td><td class="markdownTableBodyNone">length of index record    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">005 - 008   </td><td class="markdownTableBodyNone">005 - 012   </td><td class="markdownTableBodyNone">bytes to skip in data file before grib message    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">009 - 012   </td><td class="markdownTableBodyNone">013 - 016   </td><td class="markdownTableBodyNone">bytes to skip in message before lus (local use) set = 0, if no local section.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">013 - 016   </td><td class="markdownTableBodyNone">017 - 020   </td><td class="markdownTableBodyNone">bytes to skip in message before gds    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">017 - 020   </td><td class="markdownTableBodyNone">021 - 024   </td><td class="markdownTableBodyNone">bytes to skip in message before pds    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">021 - 024   </td><td class="markdownTableBodyNone">025 - 028   </td><td class="markdownTableBodyNone">bytes to skip in message before drs    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">025 - 028   </td><td class="markdownTableBodyNone">029 - 032   </td><td class="markdownTableBodyNone">bytes to skip in message before bms    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">029 - 032   </td><td class="markdownTableBodyNone">033 - 036   </td><td class="markdownTableBodyNone">bytes to skip in message before data section    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">033 - 040   </td><td class="markdownTableBodyNone">037 - 044   </td><td class="markdownTableBodyNone">bytes total in the message    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">041 - 041   </td><td class="markdownTableBodyNone">045 - 045   </td><td class="markdownTableBodyNone">grib version number (always 2)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">042 - 042   </td><td class="markdownTableBodyNone">046 - 046   </td><td class="markdownTableBodyNone">message discipline    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">043 - 044   </td><td class="markdownTableBodyNone">047 - 048   </td><td class="markdownTableBodyNone">field number within grib2 message    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">045 - ii   </td><td class="markdownTableBodyNone">045 - ii   </td><td class="markdownTableBodyNone">identification section (ids)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">ii+1- jj   </td><td class="markdownTableBodyNone">ii+1- jj   </td><td class="markdownTableBodyNone">grid definition section (gds)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">jj+1- kk   </td><td class="markdownTableBodyNone">jj+1- kk   </td><td class="markdownTableBodyNone">product definition section (pds)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">kk+1- ll   </td><td class="markdownTableBodyNone">kk+1- ll   </td><td class="markdownTableBodyNone">the data representation section (drs)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ll+1-ll+6   </td><td class="markdownTableBodyNone">ll+1-ll+6   </td><td class="markdownTableBodyNone">first 6 bytes of the bit map section (bms)   </td></tr>
+</table>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

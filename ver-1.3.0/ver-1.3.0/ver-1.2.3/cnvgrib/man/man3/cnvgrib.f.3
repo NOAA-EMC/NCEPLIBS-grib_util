@@ -1,0 +1,86 @@
+.TH "/home/ed/NCEPLIBS-grib_util/src/cnvgrib/cnvgrib.f" 3 "Tue Dec 14 2021" "Version 1.2.3" "cnvgrib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/ed/NCEPLIBS-grib_util/src/cnvgrib/cnvgrib.f
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "program \fBcnvgrib\fP"
+.br
+.RI "This program converts every GRIB field in a file from\&. "
+.ti -1c
+.RI "subroutine \fBusage\fP (iopt)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+\fBAuthor\fP
+.RS 4
+Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2003-06-06 
+.RE
+.PP
+
+.PP
+Definition in file \fBcnvgrib\&.f\fP\&.
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "program cnvgrib"
+
+.PP
+This program converts every GRIB field in a file from\&. 
+.IP "\(bu" 2
+(1) GRIB1 to GRIB2
+.IP "\(bu" 2
+(2) GRIB2 to GRIB1
+.IP "\(bu" 2
+(3) GRIB2 to GRIB2\&.
+.PP
+.PP
+PROGRAM HISTORY LOG:
+.IP "\(bu" 2
+2003-06-06 Gilbert
+.IP "\(bu" 2
+2008-05-14 Vuong Added the option -m0 (No explicit missing values included within the datavalues, modified the options and help messages
+.IP "\(bu" 2
+2010-12-02 Vuong Changed Master Table Version Number from 2 to 6\&. Add option -mastertable_ver_x where x is mater table version 2 to 10
+.IP "\(bu" 2
+2012-03-29 Vuong Changed Master Table Version Number from 2 to 8\&.
+.IP "\(bu" 2
+2013-07-24 Vuong Changed Master Table Version Number from 2 to 11
+.IP "\(bu" 2
+2016-09-30 Vuong Modified to correct forecast hour beyon F252 when convert from grib2 to grib1\&. Fixed memory leak and complex packing
+.IP "\(bu" 2
+2018-07-26 Vuong Checked Time Range for continuous accumulated APCP after F252 when convert from grib2 to grib1
+.PP
+.PP
+USAGE:
+.IP "\(bu" 2
+INPUT FILES: UNIT 10 - Input GRIB file
+.IP "\(bu" 2
+OUTPUT FILES: UNIT 50 - Output GRIB file
+.IP "\(bu" 2
+LIBRARY: W3LIB - errexit BACIO - baopenr, baopenw, baclose
+.IP "\(bu" 2
+EXIT STATES: COND = 0 - SUCCESSFUL RUN = 2 - Problem processing command line arguments = 3 - Problem opening input GRIB file = 4 - Problem opening output GRIB file = 5 - Unknown conversion option
+.PP
+.PP
+REMARKS: LIST CAVEATS, OTHER HELPFUL HINTS OR INFORMATION 
+.PP
+Definition at line 46 of file cnvgrib\&.f\&.
+.PP
+References cnv12(), cnv21(), and cnv22()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for cnvgrib from the source code\&.
