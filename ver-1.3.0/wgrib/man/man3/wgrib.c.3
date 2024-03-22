@@ -1,0 +1,1166 @@
+.TH "/home/ed/NCEPLIBS-grib_util/src/wgrib/wgrib.c" 3 "Tue Oct 10 2023" "Version 1.3.0" "wgrib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/ed/NCEPLIBS-grib_util/src/wgrib/wgrib.c \- version 1\&.2\&.1 of grib headers w\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <stddef\&.h>\fP
+.br
+\fC#include <math\&.h>\fP
+.br
+\fC#include <float\&.h>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fB__LEN24\fP(pds)   ((pds) == NULL ? 0 : (int) ((pds[0]<<16)+(pds[1]<<8)+pds[2]))"
+.br
+.ti -1c
+.RI "#define \fBBDS_BinScale\fP(bds)   INT2(bds[4],bds[5])"
+.br
+.ti -1c
+.RI "#define \fBBDS_ComplexPacking\fP(bds)   ((bds[3] & 64) != 0)"
+.br
+.ti -1c
+.RI "#define \fBBDS_DataStart\fP(bds)   ((int) (11 + BDS_MoreFlags(bds)*3))"
+.br
+.ti -1c
+.RI "#define \fBBDS_Flag\fP(bds)   (bds[3])"
+.br
+.ti -1c
+.RI "#define \fBBDS_Grid\fP(bds)   ((bds[3] & 128) == 0)"
+.br
+.ti -1c
+.RI "#define \fBBDS_Harmonic\fP(bds)   (bds[3] & 128)"
+.br
+.ti -1c
+.RI "#define \fBBDS_Harmonic_RefValue\fP(bds)   (ibm2flt(bds+11))"
+.br
+.ti -1c
+.RI "#define \fBBDS_LEN\fP(bds)   (ec_large_grib ? len_ec_bds : ((int) ((bds[0]<<16)+(bds[1]<<8)+bds[2])) )"
+.br
+.ti -1c
+.RI "#define \fBBDS_MoreFlags\fP(bds)   ((bds[3] & 16) != 0)"
+.br
+.ti -1c
+.RI "#define \fBBDS_NumBits\fP(bds)   ((int) bds[10])"
+.br
+.ti -1c
+.RI "#define \fBBDS_OriginalFloat\fP(bds)   ((bds[3] & 32) == 0)"
+.br
+.ti -1c
+.RI "#define \fBBDS_OriginalInt\fP(bds)   ((bds[3] & 32) != 0)"
+.br
+.ti -1c
+.RI "#define \fBBDS_OriginalType\fP(bds)   ((bds[3] & 32) != 0)"
+.br
+.ti -1c
+.RI "#define \fBBDS_P1\fP(bds)   (bds[16] * 256 + bds[17])"
+.br
+.ti -1c
+.RI "#define \fBBDS_P2\fP(bds)   (bds[18] * 256 + bds[19])"
+.br
+.ti -1c
+.RI "#define \fBBDS_Packing\fP(bds)   ((bds[3] & 64) != 0)"
+.br
+.ti -1c
+.RI "#define \fBBDS_RefValue\fP(bds)   (ibm2flt(bds+6))"
+.br
+.ti -1c
+.RI "#define \fBBDS_SimplePacking\fP(bds)   ((bds[3] & 64) == 0)"
+.br
+.ti -1c
+.RI "#define \fBBDS_UnusedBits\fP(bds)   ((int) (bds[3] & 15))"
+.br
+.ti -1c
+.RI "#define \fBBMS_bitmap\fP(bms)   ((bms) == NULL ? NULL : (bms)+6)"
+.br
+.ti -1c
+.RI "#define \fBBMS_LEN\fP(bms)   ((bms) == NULL ? 0 : (bms[0]<<16)+(bms[1]<<8)+bms[2])"
+.br
+.ti -1c
+.RI "#define \fBBMS_nxny\fP(bms)"
+.br
+.ti -1c
+.RI "#define \fBBMS_StdMap\fP(bms)   ((bms) == NULL ? 0 : ((bms[4]<<8) + bms[5]))"
+.br
+.ti -1c
+.RI "#define \fBBMS_UnusedBits\fP(bms)   ((bms) == NULL ? 0 : bms[3])"
+.br
+.ti -1c
+.RI "#define \fBBSIZ\fP   1024*4"
+.br
+.ti -1c
+.RI "#define \fBBUFF_ALLOC0\fP   40000"
+.br
+.ti -1c
+.RI "#define \fBCENTURY\fP   7"
+.br
+.ti -1c
+.RI "#define \fBCHECK_GRIB\fP"
+.br
+.ti -1c
+.RI "#define \fBCHM\fP   146"
+.br
+.ti -1c
+.RI "#define \fBCMC\fP   54"
+.br
+.ti -1c
+.RI "#define \fBCPTEC\fP   46"
+.br
+.ti -1c
+.RI "#define \fBDAY\fP   2"
+.br
+.ti -1c
+.RI "#define \fBDECADE\fP   5"
+.br
+.ti -1c
+.RI "#define \fBDEF_T62_NCEP_TABLE\fP   rean"
+.br
+.ti -1c
+.RI "#define \fBDWD\fP   78"
+.br
+.ti -1c
+.RI "#define \fBECMWF\fP   98"
+.br
+.ti -1c
+.RI "#define \fBFEB29\fP   (31+29)"
+.br
+.ti -1c
+.RI "#define \fBGDS_Albers\fP(gds)   (gds[5] == 8)"
+.br
+.ti -1c
+.RI "#define \fBGDS_DataType\fP(gds)   (gds[5])"
+.br
+.ti -1c
+.RI "#define \fBGDS_fEgrid\fP(gds)   (gds[5] == 202) /* filled E grid */"
+.br
+.ti -1c
+.RI "#define \fBGDS_fEgrid_di\fP(gds)   (gds[16] & 128 ? INT2(gds[23],gds[24]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_fEgrid_dj\fP(gds)   (gds[16] & 128 ? INT2(gds[25],gds[26]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_fEgrid_La1\fP(gds)   INT3(gds[10],gds[11],gds[12])"
+.br
+.ti -1c
+.RI "#define \fBGDS_fEgrid_La2\fP(gds)   UINT3(gds[17],gds[18],gds[19])"
+.br
+.ti -1c
+.RI "#define \fBGDS_fEgrid_Lo1\fP(gds)   INT3(gds[13],gds[14],gds[15])"
+.br
+.ti -1c
+.RI "#define \fBGDS_fEgrid_Lo2\fP(gds)   UINT3(gds[20],gds[21],gds[22])"
+.br
+.ti -1c
+.RI "#define \fBGDS_fEgrid_mode\fP(gds)   (gds[16])"
+.br
+.ti -1c
+.RI "#define \fBGDS_fEgrid_n\fP(gds)   UINT2(gds[6],gds[7])"
+.br
+.ti -1c
+.RI "#define \fBGDS_fEgrid_n_dum\fP(gds)   UINT2(gds[8],gds[9])"
+.br
+.ti -1c
+.RI "#define \fBGDS_fEgrid_scan\fP(gds)   (gds[27])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Gaussian\fP(gds)   (gds[5] == 4)"
+.br
+.ti -1c
+.RI "#define \fBGDS_Gaussian_nlat\fP(gds)   ((gds[25]<<8)+gds[26])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Gnomonic\fP(gds)   (gds[5] == 2)"
+.br
+.ti -1c
+.RI "#define \fBGDS_Harmonic\fP(gds)   (gds[5] == 50)"
+.br
+.ti -1c
+.RI "#define \fBGDS_Harmonic_mode\fP(gds)   (gds[13])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Harmonic_nj\fP(gds)   ((int) ((gds[6] << 8) + gds[7]))"
+.br
+.ti -1c
+.RI "#define \fBGDS_Harmonic_nk\fP(gds)   ((int) ((gds[8] << 8) + gds[9]))"
+.br
+.ti -1c
+.RI "#define \fBGDS_Harmonic_nm\fP(gds)   ((int) ((gds[10] << 8) + gds[11]))"
+.br
+.ti -1c
+.RI "#define \fBGDS_Harmonic_type\fP(gds)   (gds[12])"
+.br
+.ti -1c
+.RI "#define \fBGDS_has_dy\fP(mode)   ((mode) & 128)"
+.br
+.ti -1c
+.RI "#define \fBGDS_Lambert\fP(gds)   (gds[5] == 3)"
+.br
+.ti -1c
+.RI "#define \fBGDS_Lambert_dx\fP(gds)   INT3(gds[20],gds[21],gds[22])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Lambert_dy\fP(gds)   INT3(gds[23],gds[24],gds[25])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Lambert_La1\fP(gds)   INT3(gds[10],gds[11],gds[12])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Lambert_Latin1\fP(gds)   INT3(gds[28],gds[29],gds[30])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Lambert_Latin2\fP(gds)   INT3(gds[31],gds[32],gds[33])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Lambert_LatSP\fP(gds)   INT3(gds[34],gds[35],gds[36])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Lambert_Lo1\fP(gds)   INT3(gds[13],gds[14],gds[15])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Lambert_LonSP\fP(gds)   INT3(gds[37],gds[38],gds[39])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Lambert_Lov\fP(gds)   INT3(gds[17],gds[18],gds[19])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Lambert_mode\fP(gds)   (gds[16])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Lambert_NP\fP(gds)   ((gds[26] & 128) == 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_Lambert_nx\fP(gds)   ((gds[6] << 8) + gds[7])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Lambert_ny\fP(gds)   ((gds[8] << 8) + gds[9])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Lambert_scan\fP(gds)   (gds[27])"
+.br
+.ti -1c
+.RI "#define \fBGDS_LatLon\fP(gds)   (gds[5] == 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_LatLon_dx\fP(gds)   (gds[16] & 128 ? INT2(gds[23],gds[24]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_LatLon_dy\fP(gds)   (gds[16] & 128 ? INT2(gds[25],gds[26]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_LatLon_La1\fP(gds)   INT3(gds[10],gds[11],gds[12])"
+.br
+.ti -1c
+.RI "#define \fBGDS_LatLon_La2\fP(gds)   INT3(gds[17],gds[18],gds[19])"
+.br
+.ti -1c
+.RI "#define \fBGDS_LatLon_Lo1\fP(gds)   INT3(gds[13],gds[14],gds[15])"
+.br
+.ti -1c
+.RI "#define \fBGDS_LatLon_Lo2\fP(gds)   INT3(gds[20],gds[21],gds[22])"
+.br
+.ti -1c
+.RI "#define \fBGDS_LatLon_mode\fP(gds)   (gds[16])"
+.br
+.ti -1c
+.RI "#define \fBGDS_LatLon_nx\fP(gds)   ((int) ((gds[6] << 8) + gds[7]))"
+.br
+.ti -1c
+.RI "#define \fBGDS_LatLon_ny\fP(gds)   ((int) ((gds[8] << 8) + gds[9]))"
+.br
+.ti -1c
+.RI "#define \fBGDS_LatLon_scan\fP(gds)   (gds[27])"
+.br
+.ti -1c
+.RI "#define \fBGDS_LEN\fP(gds)   ((int) ((gds[0]<<16)+(gds[1]<<8)+gds[2]))"
+.br
+.ti -1c
+.RI "#define \fBGDS_Len1\fP(gds)   (gds[0])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Len2\fP(gds)   (gds[1])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Len3\fP(gds)   (gds[2])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Merc_dx\fP(gds)   (gds[16] & 128 ? INT3(gds[28],gds[29],gds[30]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_Merc_dy\fP(gds)   (gds[16] & 128 ? INT3(gds[31],gds[32],gds[33]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_Merc_La1\fP(gds)   INT3(gds[10],gds[11],gds[12])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Merc_La2\fP(gds)   INT3(gds[17],gds[18],gds[19])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Merc_Latin\fP(gds)   INT3(gds[23],gds[24],gds[25])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Merc_Lo1\fP(gds)   INT3(gds[13],gds[14],gds[15])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Merc_Lo2\fP(gds)   INT3(gds[20],gds[21],gds[22])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Merc_mode\fP(gds)   (gds[16])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Merc_nx\fP(gds)   UINT2(gds[6],gds[7])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Merc_ny\fP(gds)   UINT2(gds[8],gds[9])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Merc_scan\fP(gds)   (gds[27])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Mercator\fP(gds)   (gds[5] == 1)"
+.br
+.ti -1c
+.RI "#define \fBGDS_NV\fP(gds)   (gds[3])"
+.br
+.ti -1c
+.RI "#define \fBGDS_PL\fP(gds)   ((gds[4] == 255) ? \-1 : (int) gds[3] * 4 + (int) gds[4] \- 1)"
+.br
+.ti -1c
+.RI "#define \fBGDS_Polar\fP(gds)   (gds[5] == 5)"
+.br
+.ti -1c
+.RI "#define \fBGDS_Polar_Dx\fP(gds)   INT3(gds[20], gds[21], gds[22])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Polar_Dy\fP(gds)   INT3(gds[23], gds[24], gds[25])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Polar_La1\fP(gds)   INT3(gds[10],gds[11],gds[12])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Polar_Lo1\fP(gds)   INT3(gds[13],gds[14],gds[15])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Polar_Lov\fP(gds)   INT3(gds[17],gds[18],gds[19])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Polar_mode\fP(gds)   (gds[16])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Polar_nx\fP(gds)   (gds[16] & 128 ? ((gds[6] << 8) + gds[7]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_Polar_ny\fP(gds)   (gds[16] & 128 ? ((gds[8] << 8) + gds[9]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_Polar_pole\fP(gds)   ((gds[26] & 128) == 128)"
+.br
+.ti -1c
+.RI "#define \fBGDS_Polar_scan\fP(gds)   (gds[27])"
+.br
+.ti -1c
+.RI "#define \fBGDS_PV\fP(gds)   ((gds[3] == 0) ? \-1 : (int) gds[4] \- 1)"
+.br
+.ti -1c
+.RI "#define \fBGDS_RotLL\fP(gds)   (gds[5] == 10)"
+.br
+.ti -1c
+.RI "#define \fBGDS_RotLL_dx\fP(gds)   (gds[16] & 128 ? INT2(gds[23],gds[24]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_RotLL_dy\fP(gds)   (gds[16] & 128 ? INT2(gds[25],gds[26]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_RotLL_La1\fP(gds)   INT3(gds[10],gds[11],gds[12])"
+.br
+.ti -1c
+.RI "#define \fBGDS_RotLL_La2\fP(gds)   INT3(gds[17],gds[18],gds[19])"
+.br
+.ti -1c
+.RI "#define \fBGDS_RotLL_LaSP\fP(gds)   INT3(gds[32],gds[33],gds[34])"
+.br
+.ti -1c
+.RI "#define \fBGDS_RotLL_Lo1\fP(gds)   INT3(gds[13],gds[14],gds[15])"
+.br
+.ti -1c
+.RI "#define \fBGDS_RotLL_Lo2\fP(gds)   INT3(gds[20],gds[21],gds[22])"
+.br
+.ti -1c
+.RI "#define \fBGDS_RotLL_LoSP\fP(gds)   INT3(gds[35],gds[36],gds[37])"
+.br
+.ti -1c
+.RI "#define \fBGDS_RotLL_mode\fP(gds)   (gds[16])"
+.br
+.ti -1c
+.RI "#define \fBGDS_RotLL_nx\fP(gds)   UINT2(gds[6],gds[7])"
+.br
+.ti -1c
+.RI "#define \fBGDS_RotLL_ny\fP(gds)   UINT2(gds[8],gds[9])"
+.br
+.ti -1c
+.RI "#define \fBGDS_RotLL_RotAng\fP(gds)   ibm2flt(&(gds[38]))"
+.br
+.ti -1c
+.RI "#define \fBGDS_RotLL_scan\fP(gds)   (gds[27])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dBgrid\fP(gds)   (gds[5] == 205) /* semi\-staggered B grid 2 d*/"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dBgrid_di\fP(gds)   (gds[16] & 128 ? INT2(gds[23],gds[24]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dBgrid_dj\fP(gds)   (gds[16] & 128 ? INT2(gds[25],gds[26]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dBgrid_La1\fP(gds)   INT3(gds[10],gds[11],gds[12])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dBgrid_La2\fP(gds)   INT3(gds[17],gds[18],gds[19])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dBgrid_Lo1\fP(gds)   INT3(gds[13],gds[14],gds[15])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dBgrid_Lo2\fP(gds)   INT3(gds[20],gds[21],gds[22])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dBgrid_mode\fP(gds)   (gds[16])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dBgrid_nx\fP(gds)   UINT2(gds[6],gds[7])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dBgrid_ny\fP(gds)   UINT2(gds[8],gds[9])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dBgrid_scan\fP(gds)   (gds[27])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dEgrid\fP(gds)   (gds[5] == 203) /* semi\-staggered E grid 2 d*/"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dEgrid_di\fP(gds)   (gds[16] & 128 ? INT2(gds[23],gds[24]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dEgrid_dj\fP(gds)   (gds[16] & 128 ? INT2(gds[25],gds[26]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dEgrid_La1\fP(gds)   INT3(gds[10],gds[11],gds[12])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dEgrid_La2\fP(gds)   INT3(gds[17],gds[18],gds[19])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dEgrid_Lo1\fP(gds)   INT3(gds[13],gds[14],gds[15])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dEgrid_Lo2\fP(gds)   INT3(gds[20],gds[21],gds[22])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dEgrid_mode\fP(gds)   (gds[16])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dEgrid_nx\fP(gds)   UINT2(gds[6],gds[7])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dEgrid_ny\fP(gds)   UINT2(gds[8],gds[9])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ss2dEgrid_scan\fP(gds)   (gds[27])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ssEgrid\fP(gds)   (gds[5] == 201) /* semi\-staggered E grid */"
+.br
+.ti -1c
+.RI "#define \fBGDS_ssEgrid_di\fP(gds)   (gds[16] & 128 ? INT2(gds[23],gds[24]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_ssEgrid_dj\fP(gds)   (gds[16] & 128 ? INT2(gds[25],gds[26]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBGDS_ssEgrid_La1\fP(gds)   INT3(gds[10],gds[11],gds[12])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ssEgrid_La2\fP(gds)   UINT3(gds[17],gds[18],gds[19])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ssEgrid_Lo1\fP(gds)   INT3(gds[13],gds[14],gds[15])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ssEgrid_Lo2\fP(gds)   UINT3(gds[20],gds[21],gds[22])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ssEgrid_mode\fP(gds)   (gds[16])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ssEgrid_n\fP(gds)   UINT2(gds[6],gds[7])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ssEgrid_n_dum\fP(gds)   UINT2(gds[8],gds[9])"
+.br
+.ti -1c
+.RI "#define \fBGDS_ssEgrid_scan\fP(gds)   (gds[27])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Triangular\fP(gds)   (gds[5] == 192)"
+.br
+.ti -1c
+.RI "#define \fBGDS_Triangular_nd\fP(gds)   INT3(gds[10],gds[11],gds[12])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Triangular_ni\fP(gds)   INT3(gds[13],gds[14],gds[15])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Triangular_ni2\fP(gds)   INT2(gds[6],gds[7])"
+.br
+.ti -1c
+.RI "#define \fBGDS_Triangular_ni3\fP(gds)   INT2(gds[8],gds[9])"
+.br
+.ti -1c
+.RI "#define \fBHOUR\fP   1"
+.br
+.ti -1c
+.RI "#define \fBHOURS12\fP   12"
+.br
+.ti -1c
+.RI "#define \fBHOURS3\fP   10"
+.br
+.ti -1c
+.RI "#define \fBHOURS6\fP   11"
+.br
+.ti -1c
+.RI "#define \fBINT2\fP(a,  b)   ((1\-(int) ((unsigned) (a & 0x80) >> 6)) * (int) (((a & 0x7f) << 8) + b))"
+.br
+.ti -1c
+.RI "#define \fBINT3\fP(a,  b,  c)   ((1\-(int) ((unsigned) (a & 0x80) >> 6)) * (int) (((a & 127) << 16)+(b<<8)+c))"
+.br
+.ti -1c
+.RI "#define \fBJMA\fP   34"
+.br
+.ti -1c
+.RI "#define \fBLAMI\fP   200"
+.br
+.ti -1c
+.RI "#define \fBLEN_HEADER_PDS\fP   (28+8)"
+.br
+.ti -1c
+.RI "#define \fBmax\fP(a,  b)   ((a) < (b) ? (b) : (a))"
+.br
+.ti -1c
+.RI "#define \fBmin\fP(a,  b)   ((a) < (b) ? (a) : (b))"
+.br
+.ti -1c
+.RI "#define \fBMINUTE\fP   0"
+.br
+.ti -1c
+.RI "#define \fBMINUTES15\fP   13"
+.br
+.ti -1c
+.RI "#define \fBMINUTES30\fP   14"
+.br
+.ti -1c
+.RI "#define \fBMONTH\fP   3"
+.br
+.ti -1c
+.RI "#define \fBMSEEK\fP   1024"
+.br
+.ti -1c
+.RI "#define \fBNCOL\fP   15"
+.br
+.ti -1c
+.RI "#define \fBNMC\fP   7"
+.br
+.ti -1c
+.RI "#define \fBNORMAL\fP   6"
+.br
+.ti -1c
+.RI "#define \fBPDS_Center\fP(pds)   (pds[4])"
+.br
+.ti -1c
+.RI "#define \fBPDS_Century\fP(pds)   (pds[24])"
+.br
+.ti -1c
+.RI "#define \fBPDS_Day\fP(pds)   (pds[14])"
+.br
+.ti -1c
+.RI "#define \fBPDS_DecimalScale\fP(pds)   INT2(pds[26],pds[27])"
+.br
+.ti -1c
+.RI "#define \fBPDS_Ec16AvePeriod\fP(pds)   (PDS_EcLocalId(pds) == 16 ? pds[59] : 0)"
+.br
+.ti -1c
+.RI "#define \fBPDS_Ec16FcstMon\fP(pds)   (PDS_EcLocalId(pds) == 16 ? UINT2(pds[60],pds[61]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBPDS_Ec16MethodNum\fP(pds)   (PDS_EcLocalId(pds) == 16 ? UINT2(pds[53],pds[54]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBPDS_Ec16Number\fP(pds)   (PDS_EcLocalId(pds) == 16 ? UINT2(pds[49],pds[50]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBPDS_Ec16SysNum\fP(pds)   (PDS_EcLocalId(pds) == 16 ? UINT2(pds[51],pds[52]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBPDS_Ec16VerfMon\fP(pds)   (PDS_EcLocalId(pds) == 16 ? UINT4(pds[55],pds[56],pds[57],pds[58]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBPDS_Ec16Version\fP(pds)   (pds + 45)"
+.br
+.ti -1c
+.RI "#define \fBPDS_EcClass\fP(pds)   (PDS_LEN(pds) >= 42 ? (pds[41]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBPDS_EcENS\fP(pds)"
+.br
+.ti -1c
+.RI "#define \fBPDS_EcFcstNo\fP(pds)   (pds[49])"
+.br
+.ti -1c
+.RI "#define \fBPDS_EcLocalId\fP(pds)   (PDS_LEN(pds) >= 41 ? (pds[40]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBPDS_EcStream\fP(pds)   (PDS_LEN(pds) >= 45 ? (INT2(pds[43], pds[44])) : 0)"
+.br
+.ti -1c
+.RI "#define \fBPDS_EcType\fP(pds)   (PDS_LEN(pds) >= 43 ? (pds[42]) : 0)"
+.br
+.ti -1c
+.RI "#define \fBPDS_Field\fP(pds)   ((pds[8]<<24)+(pds[9]<<16)+(pds[10]<<8)+pds[11])"
+.br
+.ti -1c
+.RI "#define \fBPDS_ForecastTimeUnit\fP(pds)   (pds[17])"
+.br
+.ti -1c
+.RI "#define \fBPDS_Grid\fP(pds)   (pds[6])"
+.br
+.ti -1c
+.RI "#define \fBPDS_HAS_BMS\fP(pds)   ((pds[7] & 64) != 0)"
+.br
+.ti -1c
+.RI "#define \fBPDS_HAS_GDS\fP(pds)   ((pds[7] & 128) != 0)"
+.br
+.ti -1c
+.RI "#define \fBPDS_Hour\fP(pds)   (pds[15])"
+.br
+.ti -1c
+.RI "#define \fBPDS_KPDS5\fP(pds)   (pds[8])"
+.br
+.ti -1c
+.RI "#define \fBPDS_KPDS6\fP(pds)   (pds[9])"
+.br
+.ti -1c
+.RI "#define \fBPDS_KPDS7\fP(pds)   ((int) ((pds[10]<<8) + pds[11]))"
+.br
+.ti -1c
+.RI "#define \fBPDS_L_TYPE\fP(pds)   (pds[9])"
+.br
+.ti -1c
+.RI "#define \fBPDS_LEN\fP(pds)   ((int) ((pds[0]<<16)+(pds[1]<<8)+pds[2]))"
+.br
+.ti -1c
+.RI "#define \fBPDS_Len1\fP(pds)   (pds[0])"
+.br
+.ti -1c
+.RI "#define \fBPDS_Len2\fP(pds)   (pds[1])"
+.br
+.ti -1c
+.RI "#define \fBPDS_Len3\fP(pds)   (pds[2])"
+.br
+.ti -1c
+.RI "#define \fBPDS_LEVEL1\fP(pds)   (pds[10])"
+.br
+.ti -1c
+.RI "#define \fBPDS_LEVEL2\fP(pds)   (pds[11])"
+.br
+.ti -1c
+.RI "#define \fBPDS_Minute\fP(pds)   (pds[16])"
+.br
+.ti -1c
+.RI "#define \fBPDS_Model\fP(pds)   (pds[5])"
+.br
+.ti -1c
+.RI "#define \fBPDS_Month\fP(pds)   (pds[13])"
+.br
+.ti -1c
+.RI "#define \fBPDS_NcepENS\fP(pds)   (PDS_LEN(pds) >= 44 && pds[25] == 2 && pds[40] == 1)"
+.br
+.ti -1c
+.RI "#define \fBPDS_NcepFcstNo\fP(pds)   (pds[42])"
+.br
+.ti -1c
+.RI "#define \fBPDS_NcepFcstProd\fP(pds)   (pds[43])"
+.br
+.ti -1c
+.RI "#define \fBPDS_NcepFcstType\fP(pds)   (pds[41])"
+.br
+.ti -1c
+.RI "#define \fBPDS_NumAve\fP(pds)   ((int) ((pds[21]<<8)+pds[22]))"
+.br
+.ti -1c
+.RI "#define \fBPDS_NumMissing\fP(pds)   (pds[23])"
+.br
+.ti -1c
+.RI "#define \fBPDS_P1\fP(pds)   (pds[18])"
+.br
+.ti -1c
+.RI "#define \fBPDS_P2\fP(pds)   (pds[19])"
+.br
+.ti -1c
+.RI "#define \fBPDS_PARAM\fP(pds)   (pds[8])"
+.br
+.ti -1c
+.RI "#define \fBPDS_Subcenter\fP(pds)   (pds[25])"
+.br
+.ti -1c
+.RI "#define \fBPDS_TimeRange\fP(pds)   (pds[20])"
+.br
+.ti -1c
+.RI "#define \fBPDS_Vsn\fP(pds)   (pds[3])"
+.br
+.ti -1c
+.RI "#define \fBPDS_Year\fP(pds)   (pds[12])"
+.br
+.ti -1c
+.RI "#define \fBPDS_Year4\fP(pds)   (pds[12] + 100*(pds[24] \- 1))"
+.br
+.ti -1c
+.RI "#define \fBSECOND\fP   254"
+.br
+.ti -1c
+.RI "#define \fBSTART\fP   \-1"
+.br
+.ti -1c
+.RI "#define \fBUINT2\fP(a,  b)   ((int) ((a << 8) + (b)))"
+.br
+.ti -1c
+.RI "#define \fBUINT3\fP(a,  b,  c)   ((int) ((a << 16) + (b << 8) + (c)))"
+.br
+.ti -1c
+.RI "#define \fBUINT4\fP(a,  b,  c,  d)   ((int) ((a << 24) + (b << 16) + (c << 8) + (d)))"
+.br
+.ti -1c
+.RI "#define \fBUNDEFINED\fP   9\&.999e20"
+.br
+.ti -1c
+.RI "#define \fBVERSION\fP   'v1\&.8\&.2 (3\-17) Wesley Ebisuzaki\\n\\t\\tDWD\-tables 2,201\-205 (11\-28\-2005) Helmut P\&. Frank\\n\\t\\tspectral: Luis Kornblueh (MPI)'"
+.br
+.ti -1c
+.RI "#define \fBYEAR\fP   4"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBfilled\fP, \fBnot_found\fP, \fBnot_checked\fP, \fBno_file\fP, \fBinit\fP }"
+.br
+.ti -1c
+.RI "enum \fBDef_NCEP_Table\fP { \fBrean\fP, \fBopn\fP, \fBrean_nowarn\fP, \fBopn_nowarn\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBadd_time\fP (int *year, int *month, int *day, int *hour, int dtime, int unit)"
+.br
+.ti -1c
+.RI "int \fBBDS_NValues\fP (unsigned char *bds)"
+.br
+.ti -1c
+.RI "void \fBBDS_unpack\fP (float *flt, unsigned char *bds, unsigned char *bitmap, int n_bits, int n, double ref, double scale)"
+.br
+.ti -1c
+.RI "void \fBEC_ext\fP (unsigned char *pds, char *prefix, char *suffix, int verbose)"
+.br
+.ti -1c
+.RI "long \fBechack\fP (FILE *file, long pos, long len_grib)"
+.br
+.ti -1c
+.RI "void \fBensemble\fP (unsigned char *pds, int mode)"
+.br
+.ti -1c
+.RI "int \fBflt2ieee\fP (float x, unsigned char *ieee)"
+.br
+.ti -1c
+.RI "int \fBGDS_grid\fP (unsigned char *gds, unsigned char *bds, int *nx, int *ny, long int *nxny)"
+.br
+.ti -1c
+.RI "void \fBGDS_prt_thin_lon\fP (unsigned char *gds)"
+.br
+.ti -1c
+.RI "void \fBGDS_winds\fP (unsigned char *gds, int verbose)"
+.br
+.ti -1c
+.RI "double \fBibm2flt\fP (unsigned char *ibm)"
+.br
+.ti -1c
+.RI "double \fBint_power\fP (double x, int y)"
+.br
+.ti -1c
+.RI "char * \fBk5_comments\fP (unsigned char *pds)"
+.br
+.ti -1c
+.RI "char * \fBk5toa\fP (unsigned char *pds)"
+.br
+.ti -1c
+.RI "static int \fBleap\fP (int year)"
+.br
+.ti -1c
+.RI "void \fBlevels\fP (int, int, int, int verbose)"
+.br
+.ti -1c
+.RI "int \fBmain\fP (int argc, char **argv)"
+.br
+.ti -1c
+.RI "int \fBmissing_points\fP (unsigned char *bitmap, int n)"
+.br
+.ti -1c
+.RI "static const struct ParmTable * \fBParm_Table\fP (unsigned char *pds)"
+.br
+.ti -1c
+.RI "int \fBPDS_date\fP (unsigned char *pds, int option, int verf_time)"
+.br
+.ti -1c
+.RI "void \fBPDStimes\fP (int time_range, int p1, int p2, int time_unit)"
+.br
+.ti -1c
+.RI "void \fBprint_gds\fP (unsigned char *gds, int print_GDS, int print_GDS10, int verbose)"
+.br
+.ti -1c
+.RI "void \fBprint_pds\fP (unsigned char *pds, int print_PDS, int print_PDS10, int verbose)"
+.br
+.ti -1c
+.RI "int \fBread_grib\fP (FILE *file, long pos, long len_grib, unsigned char *buffer)"
+.br
+.ti -1c
+.RI "unsigned char * \fBseek_grib\fP (FILE *file, unsigned long *pos, long *len_grib, unsigned char *buffer, unsigned int buf_len)"
+.br
+.ti -1c
+.RI "int \fBsetup_user_table\fP (int center, int subcenter, int ptable)"
+.br
+.ti -1c
+.RI "int \fBverf_time\fP (unsigned char *pds, int *year, int *month, int *day, int *hour)"
+.br
+.ti -1c
+.RI "int \fBwrtieee\fP (float *array, int n, int header, FILE *output)"
+.br
+.ti -1c
+.RI "int \fBwrtieee_header\fP (unsigned int n, FILE *output)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "static int \fBbitsum\fP [256]"
+.br
+.ti -1c
+.RI "int \fBcmc_eq_ncep\fP = 0"
+.br
+.ti -1c
+.RI "enum Def_NCEP_Table \fBdef_ncep_table\fP = DEF_T62_NCEP_TABLE"
+.br
+.ti -1c
+.RI "int \fBec_large_grib\fP = 0"
+.br
+.ti -1c
+.RI "int \fBlen_ec_bds\fP"
+.br
+.ti -1c
+.RI "static unsigned int \fBmap_masks\fP [8] = {128, 64, 32, 16, 8, 4, 2, 1}"
+.br
+.ti -1c
+.RI "static unsigned int \fBmask\fP [] = {0,1,3,7,15,31,63,127,255}"
+.br
+.ti -1c
+.RI "int \fBminute\fP = 0"
+.br
+.ti -1c
+.RI "static int \fBmonthjday\fP [13]"
+.br
+.ti -1c
+.RI "static int \fBmsg_count\fP = 0"
+.br
+.ti -1c
+.RI "int \fBncep_ens\fP = 0"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_cptec_254\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_dwd_002\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_dwd_201\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_dwd_202\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_dwd_203\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_dwd_204\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_dwd_205\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_128\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_129\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_130\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_131\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_132\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_133\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_140\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_150\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_151\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_160\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_162\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_170\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_171\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_172\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_173\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_174\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_180\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_190\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_200\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_210\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_211\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ecmwf_228\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_jra55_200\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_mdl_nceptab\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ncep_opn\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_ncep_reanal\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_nceptab_128\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_nceptab_129\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_nceptab_130\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_nceptab_131\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_nceptab_133\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_nceptab_140\fP [256]"
+.br
+.ti -1c
+.RI "const struct ParmTable \fBparm_table_nceptab_141\fP [256]"
+.br
+.ti -1c
+.RI "struct ParmTable \fBparm_table_user\fP [256]"
+.br
+.ti -1c
+.RI "static char * \fBscan_mode\fP [8]"
+.br
+.ti -1c
+.RI "static double \fBshift\fP [9] = {1\&.0, 2\&.0, 4\&.0, 8\&.0, 16\&.0, 32\&.0, 64\&.0, 128\&.0, 256\&.0}"
+.br
+.ti -1c
+.RI "static enum  { \&.\&.\&. }  \fBstatus\fP = init"
+.br
+.ti -1c
+.RI "static char * \fBunits\fP []"
+.br
+.ti -1c
+.RI "static int \fBuser_center\fP = 0"
+.br
+.ti -1c
+.RI "static int \fBuser_ptable\fP = 0"
+.br
+.ti -1c
+.RI "static int \fBuser_subcenter\fP = 0"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+version 1\&.2\&.1 of grib headers w\&. 
+
+ebisuzaki 1\&.2\&.2 added access to spectral reference value l\&. kornblueh 
+.PP
+Definition in file \fBwgrib\&.c\fP\&.
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define BMS_nxny(bms)"
+\fBValue:\fP
+.PP
+.nf
+                                 ((((bms) == NULL) || BMS_StdMap(bms))   \
+                                 ? 0 : (BMS_LEN(bms)*8 - 48 - BMS_UnusedBits(bms)))
+.fi
+.PP
+Definition at line 55 of file wgrib\&.c\&.
+.SS "#define PDS_EcENS(pds)"
+\fBValue:\fP
+.PP
+.nf
+                                 (PDS_LEN(pds) >= 52 && pds[40] == 1 &&  \
+                                 pds[43] * 256 + pds[44] == 1035 && pds[50] != 0)
+.fi
+.PP
+Definition at line 398 of file wgrib\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "int bitsum[256]\fC [static]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+= {
+    8, 7, 7, 6, 7, 6, 6, 5, 7, 6, 6, 5, 6, 5, 5, 4,
+    7, 6, 6, 5, 6, 5, 5, 4, 6, 5, 5, 4, 5, 4, 4, 3,
+    7, 6, 6, 5, 6, 5, 5, 4, 6, 5, 5, 4, 5, 4, 4, 3,
+    6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2,
+    7, 6, 6, 5, 6, 5, 5, 4, 6, 5, 5, 4, 5, 4, 4, 3,
+    6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2,
+    6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2,
+    5, 4, 4, 3, 4, 3, 3, 2, 4, 3, 3, 2, 3, 2, 2, 1,
+    7, 6, 6, 5, 6, 5, 5, 4, 6, 5, 5, 4, 5, 4, 4, 3,
+    6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2,
+    6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2,
+    5, 4, 4, 3, 4, 3, 3, 2, 4, 3, 3, 2, 3, 2, 2, 1,
+    6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2,
+    5, 4, 4, 3, 4, 3, 3, 2, 4, 3, 3, 2, 3, 2, 2, 1,
+    5, 4, 4, 3, 4, 3, 3, 2, 4, 3, 3, 2, 3, 2, 2, 1,
+    4, 3, 3, 2, 3, 2, 2, 1, 3, 2, 2, 1, 2, 1, 1, 0}
+.fi
+.PP
+Definition at line 2456 of file wgrib\&.c\&.
+.SS "int monthjday[13]\fC [static]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+= {
+    0,31,59,90,120,151,181,212,243,273,304,334,365}
+.fi
+.PP
+Definition at line 11264 of file wgrib\&.c\&.
+.SS "char* scan_mode[8]\fC [static]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+= {
+    "WE:NS",
+    "NS:WE",
+
+    "WE:SN",
+    "SN:WE",
+
+    "EW:NS",
+    "NS:EW",
+
+    "EW:SN",
+    "SN:EW" }
+.fi
+.PP
+Definition at line 10997 of file wgrib\&.c\&.
+.SS "char* units[]\fC [static]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+= {
+    "min", "hr", "d", "mon", "yr",
+    "decade", "normal", "century", "??", "??", " x3 hours", " x6 hours",
+    " x12 hours",
+    "x15 min", "x30 min", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", "??", "??", "??", "??", "??", "??", "??", "??", "??",
+    "??", " sec"}
+.fi
+.PP
+Definition at line 2218 of file wgrib\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for wgrib from the source code\&.

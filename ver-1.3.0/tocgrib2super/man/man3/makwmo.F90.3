@@ -1,0 +1,78 @@
+.TH "/home/ed/NCEPLIBS-grib_util/src/tocgrib2super/makwmo.F90" 3 "Tue Oct 10 2023" "Version 1.3.0" "tocrib2super" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/ed/NCEPLIBS-grib_util/src/tocgrib2super/makwmo.F90 \- Format the wmo header\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBmakwmo\fP (BULHED, IDAY, IHOUR, IMIN, KWBX, HEADER)"
+.br
+.RI "Forms the wmo header for a given bulletin\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Format the wmo header\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Farley 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+84-07-06 
+.RE
+.PP
+
+.PP
+Definition in file \fBmakwmo\&.F90\fP\&.
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine makwmo (character * 6 BULHED,  IDAY,  IHOUR,  IMIN, character * 4 KWBX, character * 1, dimension (*) HEADER)"
+
+.PP
+Forms the wmo header for a given bulletin\&. 
+.SS "Program History Log"
+Date   Programmer   Comments    84-07-06   Farley   Original author    94-10-10   R\&. E\&. Jones   Changes for cray    95-10-18   R\&. E\&. Jones   Add parameter kwbx to call    98-06-16   Gilbert   Changed argument list to pass in day and hour instead of the old O\&.N\&. 84 date word\&.    2003-03-28   Gilbert   Removed equivalences\&.   
+.PP
+\fBParameters\fP
+.RS 4
+\fIbulhed\fP ttaaii bulletin header ft10 
+.br
+\fIiday\fP day of month 
+.br
+\fIihour\fP hour of day\&. 
+.br
+\fIimin\fP min of hour\&. 
+.br
+\fIkwbx\fP 4 characters (kwbc to kwbq) 
+.br
+\fIheader\fP complete wmo header in ascii
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Farley 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+84-07-06 
+.RE
+.PP
+
+.PP
+Definition at line 24 of file makwmo\&.F90\&.
+.PP
+Referenced by tocgrib2super()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for tocrib2super from the source code\&.

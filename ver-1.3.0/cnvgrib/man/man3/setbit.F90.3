@@ -1,0 +1,82 @@
+.TH "/home/ed/NCEPLIBS-grib_util/src/cnvgrib/setbit.F90" 3 "Tue Oct 10 2023" "Version 1.3.0" "cnvgrib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/ed/NCEPLIBS-grib_util/src/cnvgrib/setbit.F90 \- Compute bits required to pack a given field\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBsetbit\fP (IBM, IBS, IDS, LEN, MG, G, GMIN, GMAX, NBIT)"
+.br
+.RI "The number of bits required to pack a given field for particular binary and decimal scalings is computed\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Compute bits required to pack a given field\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Mark Iredell 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+92-10-31 
+.RE
+.PP
+
+.PP
+Definition in file \fBsetbit\&.F90\fP\&.
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine setbit ( IBM,  IBS,  IDS,  LEN, dimension(len) MG, dimension(len) G,  GMIN,  GMAX,  NBIT)"
+
+.PP
+The number of bits required to pack a given field for particular binary and decimal scalings is computed\&. The minimum and maximum rounded field values are also returned\&. GRIB bitmap masking for valid data is optionally used\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIibm\fP integer bitmap flag (=0 for no bitmap)\&. 
+.br
+\fIibs\fP integer binary scaling (e\&.g\&. ibs=3 to round field to nearest eighth value)\&. 
+.br
+\fIids\fP integer decimal scaling (e\&.g\&. ids=3 to round field to nearest milli-value) (note that ids and ibs can both be nonzero, e\&.g\&. ids=1 and ibs=1 rounds to the nearest twentieth)\&. 
+.br
+\fIlen\fP integer length of the field and bitmap\&. 
+.br
+\fImg\fP integer (len) bitmap if ibm=1 (0 to skip, 1 to keep)\&. 
+.br
+\fIg\fP real (len) field\&. 
+.br
+\fIgmin\fP real minimum valid rounded field value\&. 
+.br
+\fIgmax\fP real maximum valid rounded field value\&. 
+.br
+\fInbit\fP integer number of bits to pack\&.
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Mark Iredell 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+92-10-31 
+.RE
+.PP
+
+.PP
+Definition at line 24 of file setbit\&.F90\&.
+.PP
+Referenced by putgbexn()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for cnvgrib from the source code\&.

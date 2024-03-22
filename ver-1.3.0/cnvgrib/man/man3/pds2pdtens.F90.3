@@ -1,0 +1,105 @@
+.TH "/home/ed/NCEPLIBS-grib_util/src/cnvgrib/pds2pdtens.F90" 3 "Tue Oct 10 2023" "Version 1.3.0" "cnvgrib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/ed/NCEPLIBS-grib_util/src/cnvgrib/pds2pdtens.F90 \- Convert a GRIB1 PDS (Section 1) that includes NCEP ensemble PDS extensions to a GRIB2 PDS (Section 4) info\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBpds2pdtens\fP (kpds, kens, kprob, xprob, kclust, kmember, ipdsnum, ipdstmpl, numcoord, coordlist, iret)"
+.br
+.RI "This routine converts a GRIB1 PDS (Section 1) that includes NCEP ensemble PDS extensions to a GRIB2 PDS (Section 4) info with appropriate Product Definition Template\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Convert a GRIB1 PDS (Section 1) that includes NCEP ensemble PDS extensions to a GRIB2 PDS (Section 4) info\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Stephen Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2003-06-12 
+.RE
+.PP
+
+.PP
+Definition in file \fBpds2pdtens\&.F90\fP\&.
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine pds2pdtens (integer, dimension(*), intent(in) kpds, integer, dimension(*), intent(in) kens, integer, dimension(*), intent(in) kprob, real, dimension(*), intent(in) xprob, integer, dimension(*), intent(in) kclust, integer, dimension(*), intent(in) kmember, integer, intent(out) ipdsnum, integer, dimension(*), intent(out) ipdstmpl, integer, intent(out) numcoord, real, dimension(*), intent(out) coordlist, integer, intent(out) iret)"
+
+.PP
+This routine converts a GRIB1 PDS (Section 1) that includes NCEP ensemble PDS extensions to a GRIB2 PDS (Section 4) info with appropriate Product Definition Template\&. 
+.PP
+\fBNote\fP
+.RS 4
+Use routine pds2pdt for non ensemble related PDS\&.
+.RE
+.PP
+.SS "Program History Log"
+Date   Programmer   Comments    2003-06-12   Gilbert   Initial\&.    2007-02-07   Gilbert   fixed end date calculation    2007-05-14   Boi Vuong   Added Time Range Indicator 51 (Climatological Mean Value)   
+.PP
+\fBParameters\fP
+.RS 4
+\fIkpds\fP GRIB1 PDS info as specified in W3FI63\&. 
+.br
+\fIkens\fP Ensemble identification from PDS octets 41-45\&. 
+.br
+\fIkprob\fP Ensemble probability info from PDS octets 46 & 47\&. 
+.br
+\fIxprob\fP Ensemble probability info from PDS octets 48-55\&. 
+.br
+\fIkclust\fP Ensemble cluster info from PDS octets 61-76\&. 
+.br
+\fIkmember-\fP semble membership info from PDS octest 77-86\&. 
+.br
+\fIipdsnum\fP GRIB2 Product Definition Template Number\&. 
+.br
+\fIipdstmpl\fP GRIB2 Product Definition Template entries for PDT 4\&.ipdsnum\&. 
+.br
+\fInumcoord\fP number of vertical discretisation values (not implemented)\&. 
+.br
+\fIcoordlist-\fP rtical discretisation values (not implemented)\&. 
+.br
+\fIiret\fP Error return value:
+.IP "\(bu" 2
+0 = Successful
+.IP "\(bu" 2
+1 = Unrecognized GRIB1 Time Range Indicator for ensembles
+.IP "\(bu" 2
+2 = Unrecognized GRIB1 Ensemble type
+.IP "\(bu" 2
+10 = Unrecognized GRIB1 Time Range Indicator for probabilities
+.PP
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Stephen Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2003-06-12 
+.RE
+.PP
+
+.PP
+Definition at line 36 of file pds2pdtens\&.F90\&.
+.PP
+References cnvlevel()\&.
+.PP
+Referenced by cnv12()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for cnvgrib from the source code\&.

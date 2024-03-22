@@ -1,0 +1,547 @@
+.TH "/home/ed/NCEPLIBS-grib_util/src/copygb2/copygb2.F90" 3 "Tue Oct 10 2023" "Version 1.3.0" "copygb2" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/ed/NCEPLIBS-grib_util/src/copygb2/copygb2.F90 \- Copy all or part of one GRIB2 file to another GRIB2 file\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "program \fBcopygb2\fP"
+.br
+.RI "The command copygb2 copies all or part of one GRIB2 file to another GRIB2 file, interpolating if necessary\&. "
+.ti -1c
+.RI "subroutine \fBcpgb\fP (LG1, LX1, LGB, LXB, LGM, LXM, LG2, IGDTN, KGDTI, IP, IPOPT, JPDTN, JPDT, NUV, IUV, JPDSB, JB, JBK, LAB, AB, LAM, AM, LXX, LWG, IDS, IBS, NBS)"
+.br
+.RI "Copy grib files\&. "
+.ti -1c
+.RI "subroutine \fBcpgb1\fP (LG1, LX1, M1, MBUF, MF, MI, IGDTN, KGDTI, IP, IPOPT, JPDTN, JPDT, NUV, IUV, JPDSB, JB, JBK, LAB, AB, LAM, AM, IDS, IBS, NBS, LGB, LXB, MB, CBUFB, NLENB, NNUMB, MNUMB, LGM, LXM, MM, LG2, LXX, KS1, NO, IRET)"
+.br
+.RI "Copy one grib field\&. "
+.ti -1c
+.RI "subroutine \fBeusage\fP"
+.br
+.RI "Print proper usage to stderr\&. "
+.ti -1c
+.RI "subroutine \fBintgrib1\fP (K1F, KGDS1F, K2F, KGDS2F, MRL, MRO, IV, IP, IPOPT, KGDS1, K1, IB1, L1, F1, G1, KGDS2, K2, IB2, L2, F2, G2, IRET)"
+.br
+.RI "Interpolate field\&. "
+.ti -1c
+.RI "subroutine \fBintgrib2\fP (IV, IP, IPOPT, NGDT1, KGDT1, IDEFN1, IDEF1, K1, IB1, L1, F1, G1, NGDT2, KGDT2, K2, IB2, L2, F2, G2, IRET)"
+.br
+.RI "Interpolate field\&. "
+.ti -1c
+.RI "function \fBlengdsf\fP (KGDS, KGDSF)"
+.br
+.RI "Return the length of a filled grid\&. "
+.ti -1c
+.RI "function \fBnumpts\fP (IGDTN, KGDT)"
+.br
+.RI "Return the number of points in a grid\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Copy all or part of one GRIB2 file to another GRIB2 file\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Iredell 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+1998-10-22 
+.RE
+.PP
+
+.PP
+Definition in file \fBcopygb2\&.F90\fP\&.
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "program copygb2"
+
+.PP
+The command copygb2 copies all or part of one GRIB2 file to another GRIB2 file, interpolating if necessary\&. Unless otherwise directed (-x option), the GRIB2 index file is also used to speed the reading\&.
+.PP
+The fields are interpolated to an output grid if specified (-g option)\&. The interpolation type defaults to bilinear but may be specified directly (-i option)\&.
+.PP
+The copying may be limited to specific fields (-k option)\&. It may also be limited to a specified subgrid of the output grid or to a subrange of the input fields (-B and -b, -A, and -K options)\&. Fields can be identified as scalars or vectors (-v option), which are interpolated differently\&. The invalid data in the output field can be filled with mask values or merged with a merge field (-M and -m options)\&.
+.PP
+The output GRIB2 message can also be appended to a file (-a option)\&.
+.PP
+Some defaults can be overridden in a namelist file (-N option)\&.
+.SS "COMMAND LINE OPTIONS:"
+-a Appends rather than overwrites the output GRIB file\&.
+.PP
+-A '<> mapthreshold' Inequality and threshold used in determining where on the map the data will be copied\&. The data are copied only where the given map field is on the correct side of the threshold\&. The mapthreshold defaults to '>-1\&.e30'; in this case, only the map field's bitmap will limit the domain\&.
+.PP
+-b mapindex Optional index file used to get the map field\&.
+.PP
+-B mapgrib GRIB file used to get the map field\&. The map field is read from the GRIB file and compared to the map threshold to determine for which region on the map the data will be copied\&. The mapgrib can be the name of an actual GRIB file (in which case the index file may be specified with the -b option) or it can be '-1'\&. If mapgrib is '-1', then the input GRIB file (first positional argument) is used\&. The -K option specifies which field to read from the mapgrib GRIB file\&. If mapgrib is an actual file, then the first field is taken if -K is not specified\&. On the other hand, if mapgrib is '-1', then if the if -K is not specified, the current field is taken as the map field\&. A special exception is if -K '-1' is specified, in which case the current field is taken as the map field and it is applied before any interpolation; otherwise the map field is always applied after interpolation\&.
+.PP
+-g 'kgdtn [kgds]' Output grid identification\&. If kgdtn=-1 (the default), then the output grid is the same as the input grid\&. If kgdtn=-4, then the grid is that of the map field\&. If kgdtn=-5, then the grid is that of the merge field\&. If 0<=kgdtn<65535, then grid designates a specific GRIB2 Grid Definition Template (GDT) Number\&. In this case, kgdt is the list of the full set of Grid Definition Template values for the GDT 3\&.kgdtn, defining the output grid\&.
+.PP
+-i 'ip [ipopts]' Interpolation options\&. The default is bilinear interpolation (ip=0)\&. Other interpolation options are bicubic (ip=1), neighbor (ip=2), budget (ip=3), and spectral (ip=4)\&. Spectral interpolation is forced even if the input and output grids are the same\&. See the documentation for iplib for further details\&.
+.PP
+-k 'kpdtn kpdt' Full set of Production Definition Template parameters determining the field(s) to be copied\&. kpdtn is Product Definition Template (PDT) number 4\&.kpdtn\&. A wildcard, indicating search all template numbers, is specified by -1 (the default)\&. The kpdt array contains the values of each entry of PDT 4\&.kpdtn, and a wildcard for any entry can be specified as -9999\&. If the -k is not specified, then copygb will attempt to copy every field in the input GRIB file\&.
+.PP
+-K 'mapkpds' Full set of kpds parameters determing a GRIB PDS (product definition section) in the W3FI63 format determining the map field to be used to determine where on the map the data will be copied\&. A wildcard is specified by -1 (the defaults)\&.
+.PP
+-m mergeindex Optional index file used to get the merge field\&.
+.PP
+-M 'mask'/mergegrib Mask used to fill out bitmapped areas of the map\&. If specified, there will be no bitmap in the output\&. The mask must be in the format '#value' where value is the real number used to fill out the field\&. Otherwise, the argument is interpreted as a merge GRIB file\&. Then for each GRIB message copied, a merge field is found in the merge GRIB file with the same parameter and level indicators as the copied field\&. This merge field is interpolated to the output grid and used to fill out the bitmapped areas of the map, at least where the merge field is not bitmapped\&. No merging is done if no merge field is found\&.
+.PP
+-N namelist Namelist file to override default output options\&. The namelist must start with ' &NLCOPYGB' and end with '/'\&. Namelist variables are IDS(255) Output decimal scaling by parameter IBS(255) Output binary scaling by parameter NBS(255) Output number of bits by parameter
+.PP
+-v 'uparms' Parameter indicator(s) for the u-component of vectors\&. A specific parameter is indicated by three numbers: disc|cat|num\&. Any parameter value in uparms is defined as (65536*disc)+(256*cat)+num\&. The parameter indicator for the v-component is assumed to be one more than that of the u-component\&. If the -v option is not specified, then the wind components (parameters 0|2|2 = 514 and 0|2|3 = 515) are the only fields assumed to be vector components in the GRIB file\&.
+.PP
+-x Turns off the use of an index file\&. The index records are then extracted from the GRIB file, which will increase the time taken by copygb2\&.
+.PP
+-X Turns on verbose printout\&. This option is incompatible with GRIB output to standard output\&.
+.SS "Files"
+.SS "Input Files"
+.IP "\(bu" 2
+unit 11 input grib file
+.IP "\(bu" 2
+unit 14 map grib file
+.IP "\(bu" 2
+unit 15 merge grib file
+.IP "\(bu" 2
+unit 31 input grib index file
+.IP "\(bu" 2
+unit 34 map grib index file
+.IP "\(bu" 2
+unit 35 merge grib index file
+.PP
+.SS "Output Files"
+.IP "\(bu" 2
+unit 51 output grib file
+.PP
+.PP
+\fBReturns\fP
+.RS 4
+0 for success\&. 
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Iredell 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+1998-10-22 
+.RE
+.PP
+
+.PP
+Definition at line 161 of file copygb2\&.F90\&.
+.PP
+References cpgb(), eusage(), and numpts()\&.
+.SS "subroutine copygb2::cpgb ( LG1,  LX1,  LGB,  LXB,  LGM,  LXM,  LG2,  IGDTN, integer, dimension(200) KGDTI,  IP, integer, dimension(20) IPOPT,  JPDTN, integer, dimension(200) JPDT,  NUV, integer, dimension(100) IUV, integer, dimension(100) JPDSB,  JB,  JBK,  LAB,  AB,  LAM,  AM,  LXX,  LWG, integer, dimension(255) IDS, integer, dimension(255) IBS, integer, dimension(255) NBS)"
+
+.PP
+Copy grib files\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIlg1\fP integer unit number for grib file 1 
+.br
+\fIlx1\fP integer unit number for grib index file 1 
+.br
+\fIlgb\fP integer unit number for grib file map 
+.br
+\fIlxb\fP integer unit number for grib index file map 
+.br
+\fIlgm\fP integer unit number for grib file merge 
+.br
+\fIlxm\fP integer unit number for grib index file merge 
+.br
+\fIlg2\fP integer unit number for grib file 2 
+.br
+\fIigdtn\fP integer output grid identification 
+.br
+\fIkgdti\fP integer (200) output grid definition template values 
+.br
+\fIip\fP integer interpolation type 
+.br
+\fIipopt\fP integer (20) interpolation options 
+.br
+\fIjpdtn\fP integer product definition template number search options 
+.br
+\fIjpdt\fP integer (100) product definition template values search options 
+.br
+\fInuv\fP integer number of vector parameter ids 
+.br
+\fIiuv\fP integer (100) vector parameter ids 
+.br
+\fIjpdsb\fP integer (100) kpds search options (map) 
+.br
+\fIjb\fP integer flag for map option 
+.br
+\fIjbk\fP integer flag for map option 
+.br
+\fIlab\fP integer flag for map threshold inequality 
+.br
+\fIab\fP real map threshold 
+.br
+\fIlam\fP integer flag for mask value 
+.br
+\fIam\fP real mask value 
+.br
+\fIlxx\fP integer flag for verbose output 
+.br
+\fIlwg\fP integer flag for stdin selection 
+.br
+\fIids\fP integer (255) decimal scaling (-9999 for no change) 
+.br
+\fIibs\fP integer (255) binary scaling (-9999 for no change) 
+.br
+\fInbs\fP integer (255) number of bits (-9999 for no change)
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Iredell 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+96-07-19 
+.RE
+.PP
+
+.PP
+Definition at line 586 of file copygb2\&.F90\&.
+.PP
+References cpgb1(), and numpts()\&.
+.PP
+Referenced by copygb2()\&.
+.SS "subroutine copygb2::cpgb1 ( LG1,  LX1,  M1,  MBUF,  MF,  MI,  IGDTN, integer, dimension(200), target KGDTI,  IP, integer, dimension(20) IPOPT,  JPDTN, integer, dimension(100) JPDT,  NUV, integer, dimension(100) IUV, integer, dimension(100) JPDSB,  JB,  JBK,  LAB,  AB,  LAM,  AM, integer, dimension(255) IDS, integer, dimension(255) IBS, integer, dimension(255) NBS,  LGB,  LXB,  MB, character, dimension(mbuf) CBUFB,  NLENB,  NNUMB,  MNUMB,  LGM,  LXM,  MM,  LG2,  LXX,  KS1,  NO,  IRET)"
+
+.PP
+Copy one grib field\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIlg1\fP integer unit number for grib file 1 
+.br
+\fIlx1\fP integer unit number for grib index file 1 
+.br
+\fIm1\fP integer dimension of grib field 1 
+.br
+\fImbuf\fP integer dimension of index buffers 
+.br
+\fImf\fP integer dimension of field 
+.br
+\fImi\fP integer dimension of output grid 
+.br
+\fIigdtn\fP integer output grid definition template number 
+.br
+\fIkgdti\fP integer (200) output grid definition template values 
+.br
+\fIip\fP integer interpolation type 
+.br
+\fIipopt\fP integer (20) interpolation options 
+.br
+\fIjpdtn\fP integer product definition template number search options 
+.br
+\fIjpdt\fP integer (100) product definition template values search options 
+.br
+\fInuv\fP integer number of vector parameter ids 
+.br
+\fIiuv\fP integer (100) vector parameter ids 
+.br
+\fIjpdsb\fP integer (100) kpds search options (map) 
+.br
+\fIjb\fP integer flag for map option 
+.br
+\fIjbk\fP integer flag for map option 
+.br
+\fIlab\fP integer flag for map threshold inequality 
+.br
+\fIab\fP real map threshold 
+.br
+\fIlam\fP integer flag for mask value 
+.br
+\fIam\fP real mask value 
+.br
+\fIids\fP integer (255) decimal scaling (-9999 for no change) 
+.br
+\fIibs\fP integer (255) binary scaling (-9999 for no change) 
+.br
+\fInbs\fP integer (255) number of bits (-9999 for no change) 
+.br
+\fIlgb\fP integer unit number for grib file map 
+.br
+\fIlxb\fP integer unit number for grib index file map 
+.br
+\fImb\fP integer dimension of grib field map 
+.br
+\fIcbufb\fP character (mbuf) index buffer map 
+.br
+\fInlenb\fP integer length of each index record map 
+.br
+\fInnumb\fP integer number of index records map 
+.br
+\fImnumb\fP integer number of index records map skipped 
+.br
+\fIlgm\fP integer unit number for grib file merge 
+.br
+\fIlxm\fP integer unit number for grib index file merge 
+.br
+\fImm\fP integer dimension of grib field merge 
+.br
+\fIlg2\fP integer unit number for grib file 2 
+.br
+\fIlxx\fP integer flag for verbose output 
+.br
+\fIks1\fP integer input record counter 
+.br
+\fIno\fP integer output record counter 
+.br
+\fIiret\fP integer return code
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Iredell 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+96-07-19 
+.RE
+.PP
+
+.PP
+Definition at line 821 of file copygb2\&.F90\&.
+.PP
+References intgrib2()\&.
+.PP
+Referenced by cpgb()\&.
+.SS "subroutine copygb2::eusage"
+
+.PP
+Print proper usage to stderr\&. 
+.PP
+\fBAuthor\fP
+.RS 4
+Iredell 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+1996-07-19 
+.RE
+.PP
+
+.PP
+Definition at line 535 of file copygb2\&.F90\&.
+.PP
+Referenced by copygb2()\&.
+.SS "subroutine copygb2::intgrib1 ( K1F, integer, dimension(200) KGDS1F,  K2F, integer, dimension(200) KGDS2F,  MRL,  MRO,  IV,  IP, integer, dimension(20) IPOPT, integer, dimension(200) KGDS1,  K1,  IB1, logical*1, dimension(k1) L1, real, dimension(k1) F1, real, dimension(k1) G1, integer, dimension(200) KGDS2,  K2,  IB2, logical*1, dimension(k2) L2, real, dimension(k2) F2, real, dimension(k2) G2,  IRET)"
+
+.PP
+Interpolate field\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIk1f\fP integer regularized input dimension 
+.br
+\fIkgds1f\fP integer (200) regularized input grid parameters 
+.br
+\fIk2f\fP integer regularized output dimension 
+.br
+\fIkgds2f\fP integer (200) regularized output grid parameters 
+.br
+\fImrl\fP integer dimension of rlat and rlon 
+.br
+\fImro\fP integer dimension of crot and srot 
+.br
+\fIiv\fP integer vector flag 
+.br
+\fIip\fP integer interpolation type 
+.br
+\fIipopt\fP integer (20) interpolation options 
+.br
+\fIkgds1\fP integer (200) input grid parameters 
+.br
+\fIk1\fP integer input dimension 
+.br
+\fIib1\fP integer input bitmap flag 
+.br
+\fIl1\fP logical*1 (k1) input bitmap if ib1=1 
+.br
+\fIf1\fP real (k1) input field 
+.br
+\fIg1\fP real (k1) input y-component if iv=1 
+.br
+\fIkgds2\fP integer (200) output grid parameters 
+.br
+\fIk2\fP integer output dimension 
+.br
+\fIib2\fP integer output bitmap flag 
+.br
+\fIl2\fP logical*1 (k2) output bitmap 
+.br
+\fIf2\fP real (k2) output field 
+.br
+\fIg2\fP real (k2) output y-component if iv=1 
+.br
+\fIiret\fP integer return code
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Iredell 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+96-07-19 
+.RE
+.PP
+
+.PP
+Definition at line 1332 of file copygb2\&.F90\&.
+.PP
+Referenced by intgrib2()\&.
+.SS "subroutine copygb2::intgrib2 ( IV,  IP, integer, dimension(20) IPOPT,  NGDT1, integer, dimension(*) KGDT1,  IDEFN1, integer, dimension(idefn1) IDEF1,  K1,  IB1, logical*1, dimension(k1) L1, real, dimension(k1) F1, real, dimension(k1) G1,  NGDT2, integer, dimension(*) KGDT2,  K2,  IB2, logical*1, dimension(k2) L2, real, dimension(k2) F2, real, dimension(k2) G2,  IRET)"
+
+.PP
+Interpolate field\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIiv\fP integer vector flag 
+.br
+\fIip\fP integer interpolation type 
+.br
+\fIipopt\fP integer (20) interpolation options 
+.br
+\fIngdt1\fP integer (200) input grid definition template number 
+.br
+\fIkgdt1\fP integer (200) input grid definition template values 
+.br
+\fIidefn1\fP ??? 
+.br
+\fIidef1\fP ??? 
+.br
+\fIk1\fP integer input dimension 
+.br
+\fIib1\fP integer input bitmap flag 
+.br
+\fIl1\fP logical*1 (k1) input bitmap if ib1=1 
+.br
+\fIf1\fP real (k1) input field 
+.br
+\fIg1\fP real (k1) input y-component if iv=1 
+.br
+\fIngdt2\fP integer (200) output grid definition template number 
+.br
+\fIkgdt2\fP integer (200) output grid definition template values 
+.br
+\fIk2\fP integer output dimension 
+.br
+\fIib2\fP integer output bitmap flag 
+.br
+\fIl2\fP logical*1 (k2) output bitmap 
+.br
+\fIf2\fP real (k2) output field 
+.br
+\fIg2\fP real (k2) output y-component if iv=1 
+.br
+\fIiret\fP integer return code
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Iredell 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+96-07-19 
+.RE
+.PP
+
+.PP
+Definition at line 1233 of file copygb2\&.F90\&.
+.PP
+References intgrib1(), and lengdsf()\&.
+.PP
+Referenced by cpgb1()\&.
+.SS "function copygb2::lengdsf (integer, dimension(200) KGDS, integer, dimension(200) KGDSF)"
+
+.PP
+Return the length of a filled grid\&. Given a grid description section (in w3fi63 format), return the grid description section and size of its regularized counterpart\&. That is, if the input grid is regular, then itself is returned along with its grid size; however if the input grid is only quasi-regular (such as the wafs grids), then its filled regular version is returned along with its filled grid size\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIkgds\fP integer (200) gds parameters in w3fi63 format 
+.br
+\fIkgdsf\fP integer (200) regular gds parameters in w3fi63 format
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+integer size of regularized grid
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Iredell 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+96-07-19 
+.RE
+.PP
+
+.PP
+Definition at line 1455 of file copygb2\&.F90\&.
+.PP
+Referenced by intgrib2()\&.
+.SS "function copygb2::numpts (integer, intent(in) IGDTN, integer, dimension(*), intent(in) KGDT)"
+
+.PP
+Return the number of points in a grid\&. Given a grid definition template number and the grid definition template values, this function will return the number of grid points defined by the specified grid\&. If the grid template is not recognized, a negative value is returned\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIigdtn\fP integer grid definition template number 
+.br
+\fIkgdt\fP integer (200) grid definition template values
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+integer number of grid points in grid
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2005-01-10 
+.RE
+.PP
+
+.PP
+Definition at line 1491 of file copygb2\&.F90\&.
+.PP
+Referenced by copygb2(), and cpgb()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for copygb2 from the source code\&.

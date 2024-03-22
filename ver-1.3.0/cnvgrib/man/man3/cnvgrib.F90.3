@@ -1,0 +1,114 @@
+.TH "/home/ed/NCEPLIBS-grib_util/src/cnvgrib/cnvgrib.F90" 3 "Tue Oct 10 2023" "Version 1.3.0" "cnvgrib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/ed/NCEPLIBS-grib_util/src/cnvgrib/cnvgrib.F90 \- Convert files between GRIB1 and GRIB2\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "program \fBcnvgrib\fP"
+.br
+.RI "This program converts every GRIB field in a file between GRIB1 and GRIB2\&. "
+.ti -1c
+.RI "subroutine \fBusage\fP (iopt)"
+.br
+.RI "This routine prints a brief description of the command line options\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Convert files between GRIB1 and GRIB2\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Stephen Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2003-06-06 
+.RE
+.PP
+
+.PP
+Definition in file \fBcnvgrib\&.F90\fP\&.
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "program cnvgrib"
+
+.PP
+This program converts every GRIB field in a file between GRIB1 and GRIB2\&. The following conversions are supported:
+.IP "1." 4
+GRIB1 to GRIB2
+.IP "2." 4
+GRIB2 to GRIB1
+.IP "3." 4
+GRIB2 to GRIB2\&.
+.PP
+.SS "Program History Log"
+Date   Programmer   Comments    2003-06-06   Gilbert   Initial    2008-05-14   Vuong   Added the option -m0 (No explicit missing values included within the datavalues, modified the options and help messages    2010-12-02   Vuong   Changed Master Table Version Number from 2 to 6\&. Add option -mastertable_ver_x where x is mater table version 2 to 10    2012-03-29   Vuong   Changed Master Table Version Number from 2 to 8\&.    2013-07-24   Vuong   Changed Master Table Version Number from 2 to 11    2016-09-30   Vuong   Modified to correct forecast hour beyon F252 when convert from grib2 to grib1\&. Fixed memory leak and complex packing    2018-07-26   Vuong   Checked Time Range for continuous accumulated APCP after F252 when convert from grib2 to grib1   
+.PP
+\fBReturns\fP
+.RS 4
+.IP "\(bu" 2
+0 Success\&.
+.IP "\(bu" 2
+2 Problem processing command line arguments\&.
+.IP "\(bu" 2
+3 Problem opening input GRIB file\&.
+.IP "\(bu" 2
+4 Problem opening output GRIB file\&.
+.IP "\(bu" 2
+5 Unknown conversion option\&.
+.PP
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Stephen Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2003-06-06 
+.RE
+.PP
+
+.PP
+Definition at line 32 of file cnvgrib\&.F90\&.
+.PP
+References cnv12(), cnv21(), cnv22(), and usage()\&.
+.SS "subroutine usage (integer, intent(in) iopt)"
+
+.PP
+This routine prints a brief description of the command line options\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIiopt\fP ouput option: 1 = print description of arguments, otherwise, print command usage summary\&.
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Stephen Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2003-06-06 
+.RE
+.PP
+
+.PP
+Definition at line 264 of file cnvgrib\&.F90\&.
+.PP
+Referenced by cnvgrib()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for cnvgrib from the source code\&.

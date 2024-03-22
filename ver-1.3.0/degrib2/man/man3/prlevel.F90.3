@@ -1,0 +1,105 @@
+.TH "/home/ed/NCEPLIBS-grib_util/src/degrib2/prlevel.F90" 3 "Tue Oct 10 2023" "Version 1.3.0" "degrib2" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/ed/NCEPLIBS-grib_util/src/degrib2/prlevel.F90 \- Print level information to a character array, given the GRIB2 Product Definition Template information\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions/Subroutines"
+
+.in +1c
+.ti -1c
+.RI "subroutine \fBfrmt\fP (cval, ival, iscal)"
+.br
+.RI "Format the level description\&. "
+.ti -1c
+.RI "subroutine \fBprlevel\fP (ipdtn, ipdtmpl, labbrev)"
+.br
+.RI "Print level information to a character array, given the GRIB2 Product Definition Template information\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Print level information to a character array, given the GRIB2 Product Definition Template information\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Stephen Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2010-09-08 
+.RE
+.PP
+
+.PP
+Definition in file \fBprlevel\&.F90\fP\&.
+.SH "Function/Subroutine Documentation"
+.PP 
+.SS "subroutine frmt (character(len = 10), intent(out) cval, integer, intent(in) ival, integer, intent(in) iscal)"
+
+.PP
+Format the level description\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcval\fP char array that gets the level description\&. 
+.br
+\fIival\fP value to be used in level description\&. 
+.br
+\fIiscal\fP scaling factor (if any) for ival\&.
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Vuong 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2010-09-08 
+.RE
+.PP
+
+.PP
+Definition at line 258 of file prlevel\&.F90\&.
+.PP
+Referenced by prlevel()\&.
+.SS "subroutine prlevel (integer, intent(in) ipdtn, integer, dimension(*), intent(in) ipdtmpl, character(len = 40), intent(out) labbrev)"
+
+.PP
+Print level information to a character array, given the GRIB2 Product Definition Template information\&. This subroutine finds the 'Type of first fixed surface' (see [Code table 4\&.5](https://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_doc/grib2_temp4-0.shtml)) using the product definition template value\&. The location in the template array varies depending on the template number\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIipdtn\fP Product Definition Template Number (\fCCode Table 4\&.0\fP)\&. 
+.br
+\fIipdtmpl\fP Array of data values for the Product Definition Template specified by ipdtn\&. 
+.br
+\fIlabbrev\fP Character array which gets the string describing the level\&. Must be of length 40\&.
+.RE
+.PP
+\fBAuthor\fP
+.RS 4
+Stephen Gilbert 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2010-09-08 
+.RE
+.PP
+
+.PP
+Definition at line 24 of file prlevel\&.F90\&.
+.PP
+References frmt()\&.
+.PP
+Referenced by degrib2()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for degrib2 from the source code\&.
