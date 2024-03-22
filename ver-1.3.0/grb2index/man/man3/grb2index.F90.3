@@ -1,4 +1,4 @@
-.TH "/home/ed/NCEPLIBS-grib_util/src/grb2index/grb2index.F90" 3 "Tue Oct 10 2023" "Version 1.3.0" "grb2index" \" -*- nroff -*-
+.TH "/home/ed/NCEPLIBS-grib_util/src/grb2index/grb2index.F90" 3 "Fri Mar 22 2024" "Version 1.4.0" "grb2index" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -15,13 +15,9 @@
 .br
 .RI "This program creates an index file from a GRIB2 file\&. "
 .ti -1c
-.RI "function \fBncbase\fP (C, N)"
+.RI "integer function \fBncbase\fP (c, n)"
 .br
 .RI "Locate basename of a file\&. "
-.ti -1c
-.RI "subroutine \fBwrgi1h\fP (LUGI, NLEN, NNUM, CGB)"
-.br
-.RI "Write index headers\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -75,10 +71,10 @@ Iredell
 .PP
 
 .PP
-Definition at line 15 of file grb2index\&.F90\&.
+Definition at line 14 of file grb2index\&.F90\&.
 .PP
-References wrgi1h()\&.
-.SS "function ncbase (character, dimension(*) C,  N)"
+References ncbase()\&.
+.SS "integer function ncbase (character, dimension(*) c, integer n)"
 
 .PP
 Locate basename of a file\&. This subprogram locates the character number after the last '/' in a character string\&. For unix filenames, the character number returned marks the beginning of the basename of the file\&.
@@ -107,42 +103,7 @@ Iredell
 .PP
 
 .PP
-Definition at line 172 of file grb2index\&.F90\&.
-.PP
-Referenced by wrgi1h()\&.
-.SS "subroutine wrgi1h ( LUGI,  NLEN,  NNUM, character, dimension(*) CGB)"
-
-.PP
-Write index headers\&. 
-.SS "Program History Log"
-Date   Programmer   Comments    95-10-31   Iredell   modularize system calls    2005-02-25   Gilbert   et Header bytes 49-54 to blanks\&.    2012-08-01   Vuong   changed hostname to hostnam   
-.PP
-\fBParameters\fP
-.RS 4
-\fIlugi\fP integer logical unit of output index file 
-.br
-\fInlen\fP integer total length of index records 
-.br
-\fInnum\fP integer number of index records 
-.br
-\fIcgb\fP character name of GRIB file
-.RE
-.PP
-\fBAuthor\fP
-.RS 4
-Iredell 
-.RE
-.PP
-\fBDate\fP
-.RS 4
-93-11-22 
-.RE
-.PP
-
-.PP
-Definition at line 111 of file grb2index\&.F90\&.
-.PP
-References ncbase()\&.
+Definition at line 93 of file grb2index\&.F90\&.
 .PP
 Referenced by grb2index()\&.
 .SH "Author"
