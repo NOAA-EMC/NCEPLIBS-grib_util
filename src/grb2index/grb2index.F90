@@ -9,6 +9,7 @@
 !> - 1 GRIB message not found
 !> - 2 incorrect arguments
 !> - 8 error accessing file
+!> - 9 error closing file
 !>
 !> @author Iredell @date 1992-11-22
 program grb2index
@@ -72,9 +73,9 @@ program grb2index
 
   ! Close our files.
   call baclose(lugb,iret)  
-  if (iret .ne. 0) stop iret
+  if (iret .ne. 0) stop 9
   call baclose(lugi,iret)  
-  if (iret .ne. 0) stop iret
+  if (iret .ne. 0) stop 9
 
 end program grb2index
 
