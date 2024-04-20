@@ -101,6 +101,7 @@ gu_test(run_copygb_tests)
 gu_test(run_degrib2_tests)
 gu_test(run_grbindex_tests)
 gu_test(run_grb2index_tests)
+gu_test(run_tocgrib2_tests)
 
 if(G2C_COMPARE)
   find_program(G2C_COMPARE g2c_compare)
