@@ -9,8 +9,9 @@ echo ""
 echo "*** Running tocgrib2 test"
 
 # Convert test file to GRIB1.
-#../src/tocgrib2/tocgrib2  data/ref_gdaswave.t00z.wcoast.0p16.f000.grib2 test_gdaswave.t00z.wcoast.0p16.f000.grib1
-
+export FORT11="../../tests/data/ref_gdaswave.t00z.wcoast.0p16.f000.grib2"
+export FORT51=out.grib2
+../src/tocgrib2/tocgrib2
 
 echo "*** SUCCESS!"
 exit 0
