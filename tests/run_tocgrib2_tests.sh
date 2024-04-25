@@ -14,7 +14,7 @@ unset FORT51
 ../src/tocgrib2/tocgrib2 && exit 1
 
 # Convert test file to GRIB1.
-export FORT11="../../tests/data/ref_gdaswave.t00z.wcoast.0p16.f000.grib2"
+export FORT11="../../tests/data/ref_gdaswave.t00z.wcoast.0p16.f000.ip.grib2"
 export FORT51=out.grib2
 ../src/tocgrib2/tocgrib2
 
