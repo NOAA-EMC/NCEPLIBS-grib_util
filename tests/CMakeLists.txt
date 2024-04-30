@@ -101,6 +101,7 @@ gu_test(run_copygb_tests)
 gu_test(run_degrib2_tests)
 gu_test(run_grbindex_tests)
 gu_test(run_grb2index_tests)
+gu_test(run_tocgrib2_tests)
 
 if(G2C_COMPARE)
   find_program(G2C_COMPARE g2c_compare)
@@ -155,7 +156,6 @@ if(FTP_TEST_FILES)
   gu_copy_test_data(ref_test_WW3_West.grib2.idx)
 
   # Run these shell tests which use the FTP files.  
-  gu_test(run_tocgrib2_tests)
   gu_test(run_ftp_tests)
   gu_test(run_degrib2_ftp_tests)
   if(FTP_LARGE_TEST_FILES)
