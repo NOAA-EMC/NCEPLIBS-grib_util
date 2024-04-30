@@ -14,7 +14,7 @@ unset FORT51
 ../src/tocgrib2/tocgrib2 && exit 1
 
 # Convert test file to GRIB1.
-export FORT11="data/ref_gdas.t12z.pgrb2.1p00.anl.75r"
+export FORT11="data/hiresw.t00z.arw_5km.f00.hi.grib2"
 export FORT51=out.grib2
 ../src/tocgrib2/tocgrib2
 
