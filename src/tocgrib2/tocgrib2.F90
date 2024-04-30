@@ -122,6 +122,7 @@ PROGRAM tocgrib2
      EXTRACT=.false.
 
      READ (*,GRIBIDS,iostat=ios,end=999)
+     write(6,*) "GRIBIDS = ", GRIBIDS
      nrec = nrec + 1
      if (ios .ne. 0) then
         write(6,fmt='(" Error reading PDS from input file. iostat = " &
