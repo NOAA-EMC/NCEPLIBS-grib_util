@@ -52,7 +52,7 @@ PROGRAM tocgrib2
   character(len=1),pointer,dimension(:) :: gribm
 
   logical :: extract=.false.
-  integer idxver = 2
+  integer idxver
   integer (kind = 8) :: itot8
 
   interface
@@ -157,6 +157,7 @@ PROGRAM tocgrib2
      endif
 
      !        Read and return packed GRIB field
+     idxver = 2
      CALL GETGB2P2(lugb,lugi,jrew,DSCPL,IDS,PDTN,PDT, &
           GDTN,GDT,extract,idxver,KREW,gribm,itot8,iret)
      itot = int(itot8, kind(4))
