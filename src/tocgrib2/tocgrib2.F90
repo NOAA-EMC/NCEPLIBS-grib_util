@@ -53,6 +53,7 @@ PROGRAM tocgrib2
 
   logical :: extract=.false.
   integer idxver = 2
+  integer (kind = 8) :: itot8
 
   interface
      subroutine getgb2p2(lugb, lugi, j, jdisc, jids, jpdtn, jpdt, jgdtn, jgdt,  &
@@ -157,7 +158,8 @@ PROGRAM tocgrib2
 
      !        Read and return packed GRIB field
      CALL GETGB2P2(lugb,lugi,jrew,DSCPL,IDS,PDTN,PDT, &
-          GDTN,GDT,extract,idxver,KREW,gribm,itot,iret)
+          GDTN,GDT,extract,idxver,KREW,gribm,itot8,iret)
+     itot = int(itot8, kind(4))
      IF (IRET.NE.0) THEN
         IF (IRET.EQ.96)WRITE(6,'(A)')' GETGB2P: ERROR READING INDEX' &
              //' FILE'
