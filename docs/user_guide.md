@@ -20,6 +20,7 @@ The utilities:
 
 ## Documentation for Previous Versions of NCEPLIBS-grib_util
 
+* [NCEPLIBS-grib_util Version 1.4.0](ver-1.4.0/index.html)
 * [NCEPLIBS-grib_util Version 1.3.0](ver-1.3.0/index.html)
 * [NCEPLIBS-grib_util Version 1.2.3](ver-1.2.3/index.html)
 
