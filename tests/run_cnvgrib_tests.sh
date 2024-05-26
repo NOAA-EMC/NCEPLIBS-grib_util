@@ -24,17 +24,17 @@ cmp test_gdaswave.t00z.wcoast.0p16.f000.grib1.inventory.txt data/ref_gdaswave_gr
 
 # Check against expected output. First 120 bytes contain differences,
 # so ignore them.
-#cmp -i 120 test_gdaswave.t00z.wcoast.0p16.f000.grib2.idx data/ref_gdaswave.t00z.wcoast.0p16.f000.grib2.idx
+cmp -i 120 test_gdaswave.t00z.wcoast.0p16.f000.grib2.idx data/ref_gdaswave.t00z.wcoast.0p16.f000.grib2.idx
 
 # Convert test file to another GRIB2 file.
 ../src/cnvgrib/cnvgrib -g22 data/ref_gdaswave.t00z.wcoast.0p16.f000.grib2 test_gdaswave.t00z.wcoast.0p16.f000_2.grib2
 
 # Create an index of the new GRIB2 file.
-#../src/grb2index/grb2index 1 test_gdaswave.t00z.wcoast.0p16.f000_2.grib2 test_gdaswave.t00z.wcoast.0p16.f000_2.grib2.idx
+../src/grb2index/grb2index 1 test_gdaswave.t00z.wcoast.0p16.f000_2.grib2 test_gdaswave.t00z.wcoast.0p16.f000_2.grib2.idx
 
 # Check against expected output. First 120 bytes contain differences,
 # so ignore them.
-#cmp -i 120 test_gdaswave.t00z.wcoast.0p16.f000_2.grib2.idx data/ref_gdaswave.t00z.wcoast.0p16.f000_2.grib2.idx
+cmp -i 120 test_gdaswave.t00z.wcoast.0p16.f000_2.grib2.idx data/ref_gdaswave.t00z.wcoast.0p16.f000_2.grib2.idx
 
 echo "*** SUCCESS!"
 exit 0
