@@ -99,7 +99,6 @@ if(FTP_TEST_FILES)
 endif()
 
 # Run these shell tests.
-gu_test(run_tocgrib2_tests)
 gu_test(run_cnvgrib_tests)
 gu_test(run_copygb_tests)
 gu_test(run_degrib2_tests)
@@ -130,7 +129,9 @@ if(FTP_TEST_FILES)
     rap.t00z.awp130pgrbf00.grib2
     seaice.t00z.grb.grib2
     sgx_nwps_CG3_20221117_1200.grib2
-    aqm.t12z.max_8hr_o3.227.grib2)
+    aqm.t12z.max_8hr_o3.227.grib2
+    rrfs.t12z.prslevfaa.f010.na3km.grib2 
+    )
   foreach(THE_FILE IN LISTS FTP_TEST_FILES)
     PULL_DATA(${G2_FTP_URL} ${THE_FILE})
   endforeach()
@@ -166,5 +167,6 @@ if(FTP_TEST_FILES)
   endif()
   if(FTP_EXTRA_TEST_FILES)
     gu_test(run_degrib2_extra_file_tests)
+    gu_test(run_tocgrib2_tests)
   endif()
 endif()
