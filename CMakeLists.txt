@@ -44,7 +44,7 @@ if(ip_VERSION LESS 5.0)
   find_package(sp 2.3.3 REQUIRED)
 endif()
 find_package(w3emc 2.10.0 REQUIRED)
-find_package(g2 3.4.9 REQUIRED)
+find_package(g2 3.5.0 REQUIRED)
 # g2c is not required.
 #find_package(g2c 1.7.0)
 
