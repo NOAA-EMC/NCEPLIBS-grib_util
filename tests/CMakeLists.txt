@@ -97,6 +97,7 @@ if(FTP_TEST_FILES)
 endif()
 
 # Run these shell tests.
+gu_test(run_tocgrib2_tests)
 gu_test(run_cnvgrib_tests)
 gu_test(run_copygb_tests)
 gu_test(run_degrib2_tests)
