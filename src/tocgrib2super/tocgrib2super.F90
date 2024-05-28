@@ -232,6 +232,7 @@ PROGRAM tocgrib2super
      !
      !        Read and return packed GRIB field
      !
+     idxver = 2
      CALL GETGB2P2(lugb,lugi,jrew,DSCPL,IDS,PDTN,PDT, &
           GDTN,GDT,extract,idxver,KREW,gribm,itot8,iret)
      itot = int(itot8, kind(4))
