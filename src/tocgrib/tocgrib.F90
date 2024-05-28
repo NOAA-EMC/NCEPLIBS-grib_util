@@ -61,29 +61,28 @@ PROGRAM tocgrib
 
   LOGICAL IW3PDS
 
-  HEXPDS=0
-  LUGB=11
-  LUGI=31
-  LUGO=51
+  HEXPDS = 0
+  LUGB = 11
+  LUGI = 31
+  LUGO = 51
 
-  ! GET PARM FIELD WITH UP TO 100 CHARACTERS
-  ! Parm field should contain the originating center part of
-  ! the WMO Header.
+  ! Get parm field with up to 100 characters. Parm field should
+  ! contain the originating center part of the WMO Header.
   CPARM = '    '
   KWBX  = 'KWBC'
-  CALL W3AS00(NPARM,CPARM,IER)
-  IF (IER.EQ.0) THEN
-     IF (NPARM.EQ.0.OR.CPARM(1:4).EQ.'    ') THEN
+  CALL W3AS00(NPARM, CPARM, IER)
+  IF (IER .EQ. 0) THEN
+     IF (NPARM .EQ. 0 .OR. CPARM(1:4) .EQ. '    ') THEN
         PRINT *,'THERE IS A PARM FIELD BUT IT IS EMPTY'
         PRINT *,'OR BLANK, I WILL USE THE DEFAULT KWBC'
      ELSE
         KWBX(1:4) = CPARM(1:4)
      END IF
-  ELSE IF (IER.EQ.2.OR.IER.EQ.3) THEN
-     PRINT *,'W3AS00 ERROR = ',IER
+  ELSE IF (IER .EQ. 2 .OR. IER .EQ. 3) THEN
+     PRINT *,'W3AS00 ERROR = ', IER
      PRINT *,'THERE IS NO PARM FIELD, I USED DEFAULT KWBC'
   ELSE
-     PRINT *,'W3AS00 ERROR = ',IER
+     PRINT *,'W3AS00 ERROR = ', IER
   END IF
   PRINT *,'NPARM = ',NPARM
   PRINT *,'CPARM = ',CPARM(1:4)
