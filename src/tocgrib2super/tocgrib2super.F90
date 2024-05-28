@@ -59,16 +59,25 @@ PROGRAM tocgrib2super
   character(len=1),pointer,dimension(:) :: gribm
 
   logical :: extract=.false.
+  integer idxver
+  integer (kind = 8) :: itot8
 
   interface
-     SUBROUTINE GETGB2P(LUGB,LUGI,J,JDISC,JIDS,JPDTN,JPDT,JGDTN,JGDT, &
-          EXTRACT,K,GRIBM,LENG,IRET)
-       INTEGER,INTENT(IN) :: LUGB,LUGI,J,JDISC,JPDTN,JGDTN
-       INTEGER,DIMENSION(:) :: JIDS(*),JPDT(*),JGDT(*)
-       LOGICAL,INTENT(IN) :: EXTRACT
-       INTEGER,INTENT(OUT) :: K,IRET
-       CHARACTER(LEN=1),POINTER,DIMENSION(:) :: GRIBM
-     END SUBROUTINE GETGB2P
+     subroutine getgb2p2(lugb, lugi, j, jdisc, jids, jpdtn, jpdt, jgdtn, jgdt, &
+          extract, idxver, k, gribm, leng8, iret)
+       integer, intent(in) :: lugb, lugi, j, jdisc
+       integer, dimension(:) :: jids(*)
+       integer, intent(in) :: jpdtn
+       integer, dimension(:) :: jpdt(*)
+       integer, intent(in) :: jgdtn
+       integer, dimension(:) :: jgdt(*)
+       logical, intent(in) :: extract
+       integer, intent(inout) :: idxver
+       integer, intent(out) :: k
+       character(len = 1), pointer, dimension(:) :: gribm
+       integer (kind = 8), intent(out) :: leng8
+       integer, intent(out) :: iret
+     end subroutine getgb2p2
   end interface
 
   NAMELIST /GRIBIDS/DSCPL,IDS,GDTN,GDT,PDTN,PDT,DESC,WMOHEAD,EXTRACT
@@ -223,8 +232,9 @@ PROGRAM tocgrib2super
      !
      !        Read and return packed GRIB field
      !
-     CALL GETGB2P(lugb,lugi,jrew,DSCPL,IDS,PDTN,PDT, &
-          GDTN,GDT,extract,KREW,gribm,itot,iret)
+     CALL GETGB2P2(lugb,lugi,jrew,DSCPL,IDS,PDTN,PDT, &
+          GDTN,GDT,extract,idxver,KREW,gribm,itot8,iret)
+     itot = int(itot8, kind(4))
      IF (IRET.NE.0) THEN
         IF (IRET.EQ.96)WRITE(6,'(A)')' GETGB2P: ERROR READING INDEX' &
              //' FILE'
