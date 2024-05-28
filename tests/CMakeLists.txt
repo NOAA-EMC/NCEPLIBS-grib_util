@@ -94,7 +94,9 @@ if(FTP_TEST_FILES)
   if(FTP_EXTRA_TEST_FILES)
     gu_copy_test_data(ref_rrfs.t12z.prslevfaa.f010.na3km.grib2.degrib2)
     gu_copy_test_data(ref_GFSPRS.GrbF06.degrib2)
+    gu_copy_test_data(ref_rrfs.t12z.prslevfaa.f010.na3km.grib2.degrib2)
     gu_copy_test_data(ref_rrfs.t18z.prslev.f000.grib2.degrib2)
+    gu_copy_test_data(ref_grib2.awips.rrfs.010)
   endif()
 endif()
 
@@ -137,7 +139,7 @@ if(FTP_TEST_FILES)
   endforeach()
 
   # Fetch a large test file from FTP if desired.
-  set(LARGE_FTP_FILES fv3lam.t00z.prslev.f000.grib2 rrfs.t12z.prslevfaa.f010.na3km.grib2)
+  set(LARGE_FTP_FILES fv3lam.t00z.prslev.f000.grib2)
   if(FTP_LARGE_TEST_FILES)
     foreach(THE_FILE IN LISTS LARGE_FTP_FILES) 
       PULL_DATA(${G2_FTP_URL} ${THE_FILE})
@@ -146,7 +148,8 @@ if(FTP_TEST_FILES)
   endif()
 
   # Fetch the even more large test files from FTP if desired.
-  set(EXTRA_FTP_FILES rrfs.t18z.prslev.f000.grib2 GFSPRS.GrbF06)
+  set(EXTRA_FTP_FILES  rrfs.t12z.prslevfaa.f010.na3km.grib2
+    rrfs.t18z.prslev.f000.grib2 GFSPRS.GrbF06 grib2.awips.rrfs.010)
   if(FTP_EXTRA_TEST_FILES)
     foreach(THE_FILE IN LISTS EXTRA_FTP_FILES) 
       PULL_DATA(${G2_FTP_URL} ${THE_FILE})
