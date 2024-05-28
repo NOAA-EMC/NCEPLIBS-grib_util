@@ -19,6 +19,16 @@ grb2index \<GRIB2 file\> \<index filename\>
 The first argument is the name of the input GRIB2 file. The second argument is
 the name of the output index file.
 
+or
+
+@code
+grb2index \<idxver\> \<GRIB2 file\> \<index filename\>
+@endcode
+
+The first argument is the index format, 1 or 2. The second is the name
+of the input GRIB2 file. The third argument is the name of the output
+index file.
+
 # Index File Format
 
 The index file has two header records:

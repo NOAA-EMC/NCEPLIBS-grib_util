@@ -23,7 +23,7 @@ jobs:
       fail-fast: true
       matrix:
         ip-version: [5.0.0]
-        g2-version: [3.4.9]
+        g2-version: [3.5.0]
         bacio-version: [2.6.0]
         jasper-version: [2.0.33, 3.0.5, 4.0.0]
         w3emc-version: [2.11.0]

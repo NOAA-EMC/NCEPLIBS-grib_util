@@ -22,7 +22,7 @@ cmp test_gdaswave.t00z.wcoast.0p16.f000.grib1.inventory.txt data/ref_gdaswave_gr
 ../src/cnvgrib/cnvgrib -g12 test_WW3_West.grib1 test_WW3_West.grib2
 
 # Create an index of a GRIB2 file.
-../src/grb2index/grb2index test_WW3_West.grib2 test_WW3_West.grib2.idx
+../src/grb2index/grb2index 1 test_WW3_West.grib2 test_WW3_West.grib2.idx
 
 # Check against expected output. First 120 bytes contain differences,
 # so ignore them.

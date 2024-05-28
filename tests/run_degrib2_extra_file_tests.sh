@@ -12,7 +12,7 @@ set -e
 echo ""
 echo "*** Running degrib2 FTP extra file tests"
 
-ftp_files="rrfs.t18z.prslev.f000.grib2 GFSPRS.GrbF06"
+ftp_files="rrfs.t12z.prslevfaa.f010.na3km.grib2 rrfs.t18z.prslev.f000.grib2 GFSPRS.GrbF06"
 
 for f in $ftp_files
 do
