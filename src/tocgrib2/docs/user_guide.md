@@ -1,4 +1,4 @@
-# tocgri2
+# tocgrib2
 
 # Introduction
 
@@ -14,6 +14,10 @@ they want the entire GRIB2 message containing the requested field
 (extract=.false.), OR a GRIB2 message containing only the requested
 field (extract=.true.). Both options return the same message if the
 requested field is the only field in the GRIB2 message.
+
+This program is used by a number of operational applications, 
+including ECMWF, ETSS, GEFS, GFS, GLMP, GLWU, HiResW, HREF, HRRR, LMP,
+NWPS, RAP, RTMA/URMA, RTOFS, seaice_analysis, SREF, and WSP.
 
 ### Input Files
 - 5 namelist of grib fields and associated wmo headers.
