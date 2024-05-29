@@ -18,6 +18,9 @@ requested field (extract=.true.). Both options return the same
 message if the requested field is the only field in the GRIB2
 message.
 
+This program is used by operational applications that include
+AQM, GLMP, and RAP.
+
 ### Input Files
 
 - 5 Namelist of grib fields and associated wmo headers.
