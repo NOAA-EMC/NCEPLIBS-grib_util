@@ -18,8 +18,10 @@ requested field (extract=.true.). Both options return the same
 message if the requested field is the only field in the GRIB2
 message.
 
-This program is used by operational applications that include
-AQM, GLMP, and RAP.
+This program is used by operational applications including:
+ - [Air Quality Model (AQM)](https://www.nco.ncep.noaa.gov/pmb/products/aqm/)
+ - [Gridded LAMP (GLMP)](https://vlab.noaa.gov/web/mdl/gridded-lamp)
+ - [Rapid Refresh (RAP)](https://rapidrefresh.noaa.gov/)
 
 ### Input Files
 
