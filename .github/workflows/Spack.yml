@@ -1,0 +1,53 @@
+# This is a CI workflow for the NCEPLIBS-grib_util project.
+#
+# This workflow builds grib_util with Spack, including installing with the "--test
+# root" option to run the CTest suite. It also has a one-off job that validates
+# the recipe by ensuring that every CMake option that should be set in the
+# Spack recipe is so set.
+#
+# Alex Richert, Sep 2023
+name: Spack
+on:
+  push:
+    branches:
+    - develop
+  pull_request:
+    branches:
+    - develop
+
+jobs:
+  # This job builds with Spack using every combination of variants and runs the CTest suite each time
+  Spack:
+
+    strategy:
+      matrix:
+        os: ["ubuntu-latest"]
+        openmp: ["+openmp", "~openmp"]
+        ip_spec: ["^ip@5.0.0", "^ip@4.2.0 ^sp@2.4.0"]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+
+    - name: "Build Spack package"
+      uses: NOAA-EMC/ci-test-spack-package@develop
+      with:
+        package-name: grib-util
+        package-variants: +tests ${{ matrix.openmp }} ^bacio@2.6.0 ^w3emc@2.10.0 ^g2@develop ^g2c@develop +utils +build_v2_api ${{ matrix.ip_spec }}
+        custom-recipe: spack/package.py
+        use-repo-cache: true
+        spack-compiler: gcc
+        repo-cache-key-suffix: ${{ matrix.os }}-${{ matrix.openmp }}-${{ matrix.ip_spec }}-1
+
+
+  # This job validates the Spack recipe by making sure each cmake build option is represented
+  recipe-check:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: recipe-check
+      uses: NOAA-EMC/ci-check-spack-recipe@develop
+      with:
+        recipe-file: package/spack/package.py
+        cmakelists-txt: package/CMakeLists.txt
+        ignore-list: ENABLE_DOCS,FTP_TEST_FILES,FTP_LARGE_TEST_FILES,FTP_EXTRA_TEST_FILES
