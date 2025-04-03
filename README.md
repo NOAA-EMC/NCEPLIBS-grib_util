@@ -85,14 +85,16 @@ wgrib | W. Ebisuzaki | FAA and AWIPS (CONUS grid id 211)
 Code Manager : [Hang Lei](mailto:hang.lei@noaa.gov), [Ed
 Hartnett](mailto:edward.hartnett@noaa.gov)
 
-## Installing
+## Installation
 
-```
-mkdir build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=/path/to/install -DCMAKE_PREFIX_PATH=/path/to/dependencies ..
-make -j4
-make install
+```console
+git clone https://github.com/NOAA-EMC/NCEPLIBS-grib_util # or download a release from https://github.com/NOAA-EMC/NCEPLIBS-grib_util/releases
+# Use $CMAKE_PREFIX_PATH shell variable or -DCMAKE_PREFIX_PATH to point to dependencies
+cmake -S NCEPLIBS-grib_util -B NCEPLIBS-grib_util/build # <add'l CMake options>
+cmake --build NCEPLIBS-grib_util/build
+ctest --test-dir NCEPLIBS-grib_util/build # <add'l CTest options>
+# Install to CMAKE_INSTALL_PREFIX (/usr/local by default):
+cmake --install NCEPLIBS-grib_util/build
 ```
 
 ## Disclaimer
