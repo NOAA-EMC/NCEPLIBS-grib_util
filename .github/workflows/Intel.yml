@@ -45,7 +45,7 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/jasper
-        key: jasper-Intel-${{ matrix.compilers }}-2.0.33
+        key: jasper-Intel-${{ matrix.compilers }}-4.0.0
 
     - name: checkout-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -53,7 +53,7 @@ jobs:
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-2.0.33
+        ref: version-4.0.0
 
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
