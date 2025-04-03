@@ -16,8 +16,8 @@ jobs:
   MacOS: 
     runs-on: macos-latest
     env:
-      FC: gfortran
-      CC: gcc
+      FC: gfortran-12
+      CC: gcc-12
 
     steps:
     - name: install-dependencies
