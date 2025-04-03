@@ -30,7 +30,7 @@ jobs:
 
     - name: 'Install dependencies'
       run: |
-        apt-get install libjpeg-dev
+        sudo apt-get install libjpeg-dev
 
     # See https://software.intel.com/content/www/us/en/develop/articles/oneapi-repo-instructions.html
     - name: install-intel
