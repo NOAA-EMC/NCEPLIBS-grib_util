@@ -1,6 +1,6 @@
 # degrib2
 
-# Introduction
+## Introduction
 
 Inventory a GRIB2 file.
 

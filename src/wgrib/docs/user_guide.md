@@ -21,7 +21,7 @@ table in cases of ambiguity.
 The program does not handle spectral files nor files with complex
 packing.
 
-### Program History Log
+## Program History Log
 - 1997-08-19  EBISUZAKI  OPERATIONAL VERSION 1.6.0
 - 1998-08-24  EBISUZAKI  OPERATIONAL VERSION 1.7.0b, added '-d all',
                         fixed -H, reanalysis ID code upgrade,
@@ -74,7 +74,7 @@ packing.
                         Updates to NCEP tables 128 and 129
                         Better support for user-defined grib tables
 
-### Command Line Options
+## Command Line Options
 
 Options for stdout (terminal output), mutually exclusive
 - -s     short inventory
