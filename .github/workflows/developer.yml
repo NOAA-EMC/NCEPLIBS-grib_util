@@ -24,6 +24,7 @@ jobs:
     steps:
     - name: install-dependencies
       run: |
+        sudo mv /usr/local /usr/local_mv
         sudo apt-get update &> /dev/null
         sudo apt-get install libpng-dev libjpeg-dev doxygen libopenblas-dev
         sudo pip install --break-system-packages gcovr==5.1
@@ -162,7 +163,7 @@ jobs:
         mkdir ~/data
         cp $GITHUB_WORKSPACE/grib_utils/build/tests/data/* ~/data
 
-    - name: cache-data
+    - name: save-cache
       uses: actions/cache/save@v4
       if: always() && steps.restore-cache.outputs.cache-hit != 'true'
       with:
