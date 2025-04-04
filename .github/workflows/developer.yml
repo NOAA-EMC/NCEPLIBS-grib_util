@@ -139,8 +139,8 @@ jobs:
         path: grib_utils
 
     - name: cache-data
-      id: cache-data
-      uses: actions/cache@v4
+      id: restore-cache
+      uses: actions/cache/restore@v4
       with:
         path: ~/data
         key: data-developer-1
@@ -157,11 +157,18 @@ jobs:
         ctest --output-on-failure --rerun-failed --verbose
 
     - name: cache-data
-      if: steps.cache-data.outputs.cache-hit != 'true'
+      if: always() && steps.restore-cache.outputs.cache-hit != 'true'
       run: |
         mkdir ~/data
         cp $GITHUB_WORKSPACE/grib_utils/build/tests/data/* ~/data
-        
+
+    - name: cache-data
+      uses: actions/cache/save@v4
+      if: always() && steps.restore-cache.outputs.cache-hit != 'true'
+      with:
+        path: ~/data
+        key: data-developer-1
+
     - name: generate-test-coverage
       run: |
         cd grib_utils/build
