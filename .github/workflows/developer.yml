@@ -25,7 +25,8 @@ jobs:
     - name: install-dependencies
       run: |
         sudo apt-get update &> /dev/null
-        sudo apt-get install libpng-dev libjpeg-dev doxygen gcovr libopenblas-dev
+        sudo apt-get install libpng-dev libjpeg-dev doxygen libopenblas-dev
+        sudo pip install --break-system-packages gcovr
           
     - name: checkout-jasper
       uses: actions/checkout@v4
