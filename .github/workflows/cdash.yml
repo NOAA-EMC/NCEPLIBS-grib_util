@@ -1,0 +1,33 @@
+name: cdash
+on:
+  push:
+    branches:
+    - develop
+    - add_cdash
+
+jobs:
+  cdash:
+    runs-on: ubuntu-latest
+
+    env:
+      FC: gfortran
+      CC: gcc
+      CDASH_TOKEN: ${{ secrets.CDASH_TOKEN }}
+
+    steps:
+
+    - name: "Install a couple deps with apt"
+      run: sudo apt-get install cmake libopenblas-serial-dev
+
+    - name: "Build dependencies with Spack"
+      uses: NOAA-EMC/ci-test-spack-package@dependencies-only
+      with:
+        package-name: grib-util
+        package-variants: +tests ^bacio@2.6.0 ^w3emc@2.10.0 ^g2@develop +g2c_compare ^g2c@develop +utils +build_v2_api
+        repo-cache-key-suffix: spack-deps-1
+        use-common-build-cache: false
+        spack-externals: cmake gmake python perl openblas
+        dependencies-only: true
+
+    - name: CDash
+      uses: NOAA-EMC/ci-cdash@develop
