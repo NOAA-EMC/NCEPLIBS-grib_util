@@ -1,3 +1,5 @@
+@mainpage
+
 # tocgrib2
 
 # Introduction
@@ -35,12 +37,12 @@ including:
  - [Short-Range Ensemble Forecast (SREF)](https://www.nco.ncep.noaa.gov/pmb/products/sref/)
  - [Wind Speed Probabilities (WSP)](https://www.nhc.noaa.gov/gis/)
 
-### Input Files
+## Input Files
 - 5 namelist of grib fields and associated wmo headers.
 - 11 input grib2 file.
 - 31 corresponding input grib2 index file.
 
-### Output Files (Including Scratch Files)
+## Output Files (Including Scratch Files)
 - 6 standard fortran print file
 - 51 output grib bulletin file in toc format
 
