@@ -1,3 +1,5 @@
+@mainpage
+
 # grb2index
 
 # Introduction

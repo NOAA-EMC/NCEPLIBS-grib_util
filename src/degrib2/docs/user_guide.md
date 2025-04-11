@@ -1,3 +1,5 @@
+@mainpage
+
 # degrib2
 
 # Introduction
