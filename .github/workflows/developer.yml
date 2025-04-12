@@ -24,9 +24,8 @@ jobs:
     steps:
     - name: install-dependencies
       run: |
-        sudo mv /usr/local /usr/local_mv
         sudo apt-get update &> /dev/null
-        sudo apt-get install libpng-dev libjpeg-dev libopenblas-serial-dev doxygen cmake
+        sudo apt-get install libpng-dev libjpeg-dev libopenblas-serial-dev doxygen
         sudo pip install --break-system-packages gcovr==6
           
     - name: checkout-jasper
