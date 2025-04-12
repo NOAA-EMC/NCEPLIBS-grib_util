@@ -1,3 +1,5 @@
+@mainpage
+
 # wgrib
 
 # Introduction

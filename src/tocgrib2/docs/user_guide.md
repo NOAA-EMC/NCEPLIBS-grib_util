@@ -1,3 +1,5 @@
+@mainpage
+
 # tocgrib2
 
 # Introduction

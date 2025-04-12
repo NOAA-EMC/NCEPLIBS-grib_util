@@ -45,10 +45,11 @@ if(ip_VERSION LESS 5.0)
 endif()
 find_package(w3emc 2.10.0 REQUIRED)
 find_package(g2 3.5.0 REQUIRED)
-# g2c is not required.
+
 if(g2_VERSION VERSION_GREATER_EQUAL 4.0)
   find_package(g2c 1.7.0)
 endif()
+find_package(g2c)
 
 # The name of the bacio library changed with the 2.5.0 release. The
 # "_4" was removed from the library and include directory name in the
