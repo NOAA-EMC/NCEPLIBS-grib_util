@@ -95,7 +95,7 @@ make -j4
 make install
 ```
 
-NCEPLIBS-grib_util is also available through Spack as '[grib-util](https://github.com/spack/spack/tree/develop/var/spack/repos/builtin/packages/grib-util)'.
+NCEPLIBS-grib_util is also available through [Spack](https://spack.io) as '[grib-util](https://github.com/spack/spack/tree/develop/var/spack/repos/builtin/packages/grib-util)'.
 
 ## Disclaimer
 
