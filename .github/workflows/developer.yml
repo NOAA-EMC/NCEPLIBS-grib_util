@@ -169,7 +169,7 @@ jobs:
       with:
         path: /tmp/data
         key: data-developer-2
-        
+
     - name: generate-test-coverage
       run: |
         cd grib_utils/build
