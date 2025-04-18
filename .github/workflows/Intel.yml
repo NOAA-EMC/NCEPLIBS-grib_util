@@ -28,6 +28,11 @@ jobs:
 
     steps:
 
+    - name: 'Install dependencies'
+      run: |
+        if [ ${{ matrix.ip_version }} != "v4.4.0" ]; then openblas=libopenblas-dev; fi
+        sudo apt-get install libpng-dev libjpeg-dev $openblas
+
     # See https://software.intel.com/content/www/us/en/develop/articles/oneapi-repo-instructions.html
     - name: install-intel
       run: |
