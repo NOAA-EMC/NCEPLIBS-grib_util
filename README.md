@@ -97,6 +97,8 @@ ctest --test-dir NCEPLIBS-grib_util/build # <add'l CTest options>
 cmake --install NCEPLIBS-grib_util/build
 ```
 
+NCEPLIBS-grib_util is also available through [Spack](https://spack.io) as '[grib-util](https://github.com/spack/spack/tree/develop/var/spack/repos/builtin/packages/grib-util)'.
+
 ## Disclaimer
 
 The United States Department of Commerce (DOC) GitHub project code is
