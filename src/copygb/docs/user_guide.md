@@ -1,3 +1,5 @@
+@mainpage
+
 # copygb
 
 # Introduction

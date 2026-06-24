@@ -1,3 +1,5 @@
+@mainpage
+
 # tocgrib2super
 
 # Introduction
@@ -23,14 +25,14 @@ This program is used by operational applications including:
  - [Gridded LAMP (GLMP)](https://vlab.noaa.gov/web/mdl/gridded-lamp)
  - [Rapid Refresh (RAP)](https://rapidrefresh.noaa.gov/)
 
-### Input Files
+## Input Files
 
 - 5 Namelist of grib fields and associated wmo headers.
 - 11 Input grib2 file.
 - 12 Get the file size of the grib file
 - 31 Corresponding input grib2 index file.
 
-### Output Files  (Including Scratch Files)
+## Output Files  (Including Scratch Files)
 
 - 6 standard fortran print file
 - 51 output grib bulletin file in toc format

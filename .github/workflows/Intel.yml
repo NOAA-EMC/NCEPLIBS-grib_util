@@ -28,6 +28,11 @@ jobs:
 
     steps:
 
+    - name: 'Install dependencies'
+      run: |
+        if [ ${{ matrix.ip_version }} != "v4.4.0" ]; then openblas=libopenblas-dev; fi
+        sudo apt-get install libpng-dev libjpeg-dev $openblas
+
     # See https://software.intel.com/content/www/us/en/develop/articles/oneapi-repo-instructions.html
     - name: install-intel
       run: |
@@ -37,23 +42,23 @@ jobs:
         rm GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
         echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
         sudo apt-get update
-        sudo apt-get install intel-oneapi-openmp intel-oneapi-compiler-fortran-2023.2.1 intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-2023.2.1
+        sudo apt-get install intel-oneapi-openmp intel-oneapi-compiler-fortran-2023.2.1 intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-2023.2.1 libjpeg-dev libpng-dev
         echo "source /opt/intel/oneapi/setvars.sh" >> ~/.bash_profile
       
     - name: cache-jasper
       id: cache-jasper
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/jasper
-        key: jasper-Intel-${{ matrix.compilers }}-2.0.33
+        key: jasper-Intel-${{ matrix.compilers }}-4.0.0
 
     - name: checkout-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: jasper-software/jasper
         path: jasper
-        ref: version-2.0.33
+        ref: version-4.0.0
 
     - name: build-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
@@ -66,14 +71,14 @@ jobs:
 
     - name: cache-bacio
       id: cache-bacio
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/bacio
         key: bacio-Intel-${{ matrix.compilers }}-${{ runner.os }}-v2.6.0
 
     - name: checkout-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: NOAA-EMC/NCEPLIBS-bacio
         path: bacio
@@ -90,7 +95,7 @@ jobs:
 
     - name: cache-sp
       id: cache-sp
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       if: matrix.ip_version == 'v4.4.0'
       with:
         path: ~/sp
@@ -98,7 +103,7 @@ jobs:
 
     - name: checkout-sp
       if: steps.cache-sp.outputs.cache-hit != 'true' && matrix.ip_version == 'v4.4.0'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: NOAA-EMC/NCEPLIBS-sp
         path: sp
@@ -116,14 +121,14 @@ jobs:
           
     - name: cache-w3emc
       id: cache-w3emc
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/w3emc
         key: w3emc-Intel-${{ matrix.compilers }}-${{ runner.os }}-2.11.0
 
     - name: checkout-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: NOAA-EMC/NCEPLIBS-w3emc
         path: w3emc
@@ -141,14 +146,14 @@ jobs:
           
     - name: cache-ip
       id: cache-ip
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/ip
         key: ip-Intel-${{ matrix.compilers }}-${{ runner.os }}-${{ matrix.ip_version }}
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
@@ -166,14 +171,14 @@ jobs:
           
     - name: cache-g2
       id: cache-g2
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/g2
         key: g2-Intel-${{ matrix.compilers }}-${{ runner.os }}-3.5.0
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
@@ -190,7 +195,7 @@ jobs:
         make install
                  
     - name: checkout-grib_utils
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with: 
         path: grib_utils
 

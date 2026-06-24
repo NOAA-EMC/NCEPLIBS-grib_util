@@ -32,7 +32,7 @@ jobs:
       uses: NOAA-EMC/ci-test-spack-package@develop
       with:
         package-name: grib-util
-        package-variants: +tests ${{ matrix.openmp }} ^bacio@2.6.0 ^w3emc@2.10.0 ^g2@develop ^g2c@develop +utils +build_v2_api ${{ matrix.ip_spec }}
+        package-variants: +tests ${{ matrix.openmp }} ^bacio@2.6.0 ^w3emc@2.10.0 ^g2@develop +g2c_compare ^g2c@develop +utils +build_v2_api ${{ matrix.ip_spec }}
         custom-recipe: spack/package.py
         use-repo-cache: true
         spack-compiler: gcc

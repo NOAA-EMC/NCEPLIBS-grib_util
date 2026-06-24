@@ -1,3 +1,5 @@
+@mainpage
+
 # cnvgrib
 
 # Introduction

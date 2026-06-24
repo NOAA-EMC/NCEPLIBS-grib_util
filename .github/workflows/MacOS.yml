@@ -16,8 +16,8 @@ jobs:
   MacOS: 
     runs-on: macos-latest
     env:
-      FC: gfortran-11
-      CC: gcc-11
+      FC: gfortran-12
+      CC: gcc-12
 
     steps:
     - name: install-dependencies
@@ -26,14 +26,14 @@ jobs:
 
     - name: cache-jasper
       id: cache-jasper
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/jasper
         key: jasper-MacOS-${{ runner.os }}-4.0.0
 
     - name: checkout-jasper
       if: steps.cache-jasper.outputs.cache-hit != 'true'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: jasper-software/jasper
         path: jasper
@@ -50,14 +50,14 @@ jobs:
 
     - name: cache-bacio
       id: cache-bacio
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/bacio
         key: bacio-MacOS-${{ runner.os }}-2.6.0
 
     - name: checkout-bacio
       if: steps.cache-bacio.outputs.cache-hit != 'true'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: NOAA-EMC/NCEPLIBS-bacio
         path: bacio
@@ -74,14 +74,14 @@ jobs:
           
     - name: cache-w3emc
       id: cache-w3emc
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/w3emc
         key: w3emc-MacOS-${{ runner.os }}-2.10.0
 
     - name: checkout-w3emc
       if: steps.cache-w3emc.outputs.cache-hit != 'true'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: NOAA-EMC/NCEPLIBS-w3emc
         path: w3emc
@@ -99,14 +99,14 @@ jobs:
           
     - name: cache-ip
       id: cache-ip
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/ip
         key: ip-MacOS-${{ runner.os }}-5.0.0
 
     - name: checkout-ip
       if: steps.cache-ip.outputs.cache-hit != 'true'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: NOAA-EMC/NCEPLIBS-ip
         path: ip
@@ -124,14 +124,14 @@ jobs:
           
     - name: cache-g2
       id: cache-g2
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/g2
         key: g2-MacOS-${{ runner.os }}-4.0.0-2.6.0-3.5.0
 
     - name: checkout-g2
       if: steps.cache-g2.outputs.cache-hit != 'true'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: NOAA-EMC/NCEPLIBS-g2
         path: g2
@@ -148,7 +148,7 @@ jobs:
         make install
                  
     - name: checkout-grib_utils
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with: 
         path: grib_utils
 
