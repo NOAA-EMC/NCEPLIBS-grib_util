@@ -1,11 +1,10 @@
-![Status](https://github.com/NOAA-EMC/NCEPLIBS-grib_util/workflows/developer/badge.svg)
+>[!IMPORTANT]
+>This repository is now deprecated. The utilities have been moved to
+>the [NCEPLIBS-g2](https://github.com/NOAA-EMC/NCEPLIBS-g2)
+>project. The utilities will continue to be maintained as part of
+>NCEPLIBS-g2. It is no longer necessary to install NCEPLIBS-grib_util.
 
 # NCEPLIBS-grib_util
-
-This repository is now deprecated. The utilities have been moved to
-the [NCEPLIBS-g2](https://github.com/NOAA-EMC/NCEPLIBS-g2)
-project. The utilities will continue to be maintained as part of
-NCEPLIBS-g2. It is no longer necessary to install NCEPLIBS-grib_util.
 
 This is a collection of NCEP GRIB related utilities, for GRIB1 and
 GRIB2.
